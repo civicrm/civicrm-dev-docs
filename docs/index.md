@@ -27,7 +27,7 @@ add-ons and integrations), and collaboratively developed.
       <td>Create a feature or fix for CiviCRM</td>
     </tr>
     <tr>
-      <td><a href="test">Test</a></td>
+      <td><a href="testing">Testing</a></td>
       <td>Make it good</td>
     </tr>
     <tr>
