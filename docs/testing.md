@@ -25,11 +25,11 @@ In order to reproduce the bug you can reproduce the issue in the appropraite [Ci
 
 CiviCRM uses a system called Jenkins to do out automated testing. To get to Jenkins results for a specific PR click *Show all checks* and then *Details*. 
 
-![Jenkins Show Results](/img/Jenkis_Show_Results.png)
+![Jenkins Show Results](img/Jenkis_Show_Results.png)
 
 When Jenkins runs the tests, it also setups a test site that will be available for aproximately one week. To find the link to the site click "Console Output" on the left hand menu. Click "Full Log" at the top of the page and then you can search for *CMS_URL* in the output. 
 
-![CMS_URL Example](/img/CMS_URL.png) 
+![CMS_URL Example](img/CMS_URL.png) 
 
 There are multiple times that CMS_URL is in the log output.  
 
