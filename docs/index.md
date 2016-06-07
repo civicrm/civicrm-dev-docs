@@ -37,6 +37,8 @@ add-ons and integrations), and collaboratively developed.
   </tbody>
 </table>
 
+These documents are a work in progress. You may find things in the <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/Develop" target="_blank">wiki</a> that are not documented here. 
+
 # Collaborate
 
 As an open-source project, CiviCRM is managed by an international community
