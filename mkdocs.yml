@@ -15,5 +15,4 @@ pages:
    - hookref-old: hookref-old.md
    - hooks-db: hooks-db.md
  - Gunk:
-   - chapter: chapter.md
    - markdown: markdownrules.md
