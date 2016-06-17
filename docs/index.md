@@ -52,10 +52,6 @@ plans for new development, reach out online.
       <td>Read about the big developments</td>
     </tr>
     <tr>
-      <td><a href="http://forum.civicrm.org/">Forum</a></td>
-      <td>Converse in the public square</td>
-    </tr>
-    <tr>
       <td><a href="https://github.com/civicrm/civicrm-core/">Github</a></td>
       <td>Tap the firehose of core development</td>
     </tr>
@@ -64,12 +60,16 @@ plans for new development, reach out online.
       <td>Check the rules of the road</td>
     </tr>
     <tr>
-      <td><a href="https://irc.civicrm.org/">IRC</a></td>
-      <td>Chat with other developers in real-time</td>
-    </tr>
-    <tr>
       <td><a href="http://issues.civicrm.org/">Issues</a></td>
       <td>Discover on-going and resolved issues</td>
+    </tr>
+    <tr>
+      <td><a href="http://lists.civicrm.org/lists/info/civicrm-dev">Mailing List</a></td>
+      <td>Converse in the public square</td>
+    </tr>
+    <tr>
+      <td><a href="https://chat.civicrm.org/">Mattermost</a></td>
+      <td>Chat with other developers in real-time</td>
     </tr>
     <tr>
       <td><a href="FIXME">Publish</a></td>
