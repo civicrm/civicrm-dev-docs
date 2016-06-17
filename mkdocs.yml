@@ -1,2 +1,19 @@
 site_name: CiviCRM Developer Documentation
 theme: readthedocs
+pages:
+ - Home: index.md
+ - Guide:
+   - Requirements: requirements.md
+   - Build: build.md
+   - Customize: customize.md
+   - Extend: extend.md
+   - Develop: develop.md
+   - Testing: testing.md
+ - Reference:
+   - API: api.md
+   - hook: hook.md
+   - hookref-old: hookref-old.md
+   - hooks-db: hooks-db.md
+ - Gunk:
+   - chapter: chapter.md
+   - markdown: markdownrules.md

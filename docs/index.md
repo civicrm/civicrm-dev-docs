@@ -1,4 +1,4 @@
-# Build
+<h1>Build</h1>
 
 CiviCRM is an open-source application which can be poked, prodded, twisted,
 and hacked.  It can be customized (with minimal code skills), extended (for
@@ -39,7 +39,7 @@ add-ons and integrations), and collaboratively developed.
 
 These documents are a work in progress. You may find things in the <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/Develop" target="_blank">wiki</a> that are not documented here. 
 
-# Collaborate
+<h1>Collaborate</h1>
 
 As an open-source project, CiviCRM is managed by an international community
 of developers and activists. If you have questions, issues, or want to make

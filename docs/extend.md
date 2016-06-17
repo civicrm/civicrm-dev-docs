@@ -1,5 +1,3 @@
-# Extend
-
 **CiviCRM Extensions** are packaged pieces of functionality that extend CiviCRM's out-of-the-box functionality, independent of CMS plaform.
 
 This section covers writing extensions, submitting extensions to the public extensions directory, and the review process for extensions submitted to the directory.
