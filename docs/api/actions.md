@@ -1,0 +1,96 @@
+Most entities support the following actions:
+
+create
+------
+
+Insert or update one record. (Note: If an *"id*" is specified, then an
+existing record will be modified.)
+
+delete
+------
+
+Delete one record. (Note: Requires an explicit "*id*".  Note: if you
+want to skip the 'recycle bin' for entities that support undelete (e.g.
+contacts) you should set \$param['skip\_undelete'] =\> 1);
+
+get
+---
+
+Search for records
+
+getsingle
+---------
+
+Search for records and return the first or only match. (Note: This
+returns the record in a simplified format which is easy to use)
+
+getvalue
+--------
+Does a **getsingle** & returns a single value - you need to also set
+
+````
+$param['return'] => 'fieldname'
+````
+
+getcount
+--------
+Search for records and return the quantity. (Note: In many cases in
+early versions queries are limited to 25 so this may not always be
+accurate)
+
+getrefcount
+-----------
+
+Counts the number of references to a record
+
+getfields
+---------
+
+Fetch entity metadata, i.e. the list of fields supported by the entity
+
+getlist
+-------
+
+Used for autocomplete lookups by the
+[entityRef](/confluence/display/CRMDOC/EntityRef+Fields) widget
+
+getoptions
+----------
+
+Returns the options for a specified field e.g.
+````
+civicrm_api3(
+  'contact',
+  'getoptions', 
+  array('field' => 'gender_id')
+  ); 
+````
+
+returns
+
+````
+array(
+  1 => 'Female', 
+  2 => 'Male', 
+  3 => 'Transgender'
+)
+````
+
+replace
+-------
+
+Replace an old set of records with a new or modified set of records.
+(For example, replace the set of "Phone" numbers with a different set of
+"Phone" numbers.). 
+
+Warning - REPLACE includes an implicit delete - use with care & test well before using in productions
+
+<del>setvalue</del>
+-------------------
+
+**Deprecated.** Use the create action with the param 'id' instead.
+
+<del>update</del>
+-----------------
+
+**Deprecated.** Use the create action with the param 'id' instead.
