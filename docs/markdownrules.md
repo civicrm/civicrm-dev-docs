@@ -48,6 +48,19 @@ Heading 3
 
 ````
 
+Trivial Headings
+----------------
+
+Standard Markdown headings are treated as navigational elements and added to
+the navbar. However, some headings indicate trivial distinctions among
+subsections and should not be highlighted in the navigation. Demarcate these
+using raw HTML.
+
+```html
+<h3>Local Heading</h3>
+```
+
+
 Styling Text
 ------------
 
