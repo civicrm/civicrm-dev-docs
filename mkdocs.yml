@@ -11,8 +11,7 @@ pages:
    - Testing: testing.md
  - 'Reference: APIv3':
    - General: api/general.md
-   - 'Basic Usage': api/basic.md
-   - Bindings: api/binding.md
+   - 'Usage': api/usage.md
    - Actions: api/actions.md
    - Parameters: api/params.md
    - Chaining: api/chaining.md
