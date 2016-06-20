@@ -1,7 +1,15 @@
 # CiviCRM developer documentation
 
-This will likely be merged with the civicrm-core repo at some point.
+```bash
+git clone https://github.com/civicrm/civicrm-dev-docs
+cd civicrm-dev-docs
+mkdocs serve
+```
 
-See https://github.com/civicrm/civicrm-docs for more information on contributing.
+This will likely be merged with the `civicrm-core` repo at some point.
 
-This repository can be previewed at http://docs.civicrm.org/dev/en/master.
+# See also
+
+ * Download mkdocs: http://mkdocs.org/
+ * Browse published dev docs: http://docs.civicrm.org/dev/en/master
+ * Review general info about CiviCRM docs: https://github.com/civicrm/civicrm-docs
