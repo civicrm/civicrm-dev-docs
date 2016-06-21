@@ -49,10 +49,6 @@ a __package__ with two CSS files:
 The remainder of this document will explore the specifics of the coding
 conventions and packaging mechanics.
 
-# Quickstart
-
-_TODO: Discuss copying an example theme. Maybe add a civix helper._
-
 # Coding: civicrm.css
 
 _TODO: Discuss history of civicrm.css. Provide instructions on viewing the style-guide. Discuss
@@ -63,6 +59,51 @@ maintenance challenges._
 _TODO: Discuss history of bootstrap.css. Provide instructions on viewing the style-guide._
 
 _TODO: Application developers may need to `addStyleFile('civicrm, 'css/bootstrap.css')`._
+
+# Mechanics
+
+CSS files are loaded in CiviCRM by calling `addStyleFile()`, e.g.
+
+```php
+Civi::resources()->addStyleFile('civicrm', 'css/civicrm.css');
+Civi::resources()->addStyleFile('org.example.mymodule', 'style/non-standard.css');
+```
+
+`addStyleFile()` asks the theming service (`Civi::service('themes')`) for a
+list of CSS URLs.  When debugging or customizing the system, you can make a
+similar request through the command line
+([`cv`](https://github.com/civicrm/cv)).
+
+```
+$ cv ev 'return Civi::service("themes")->resolveUrls("greenwich", "civicrm", "css/civicrm.css");'
+[
+    "http://dmaster.l/sites/all/modules/civicrm/css/civicrm.css?r=gWD8J"
+]
+```
+
+It may also be useful to inspect the definition of the themes. This allows
+you to see the full definition (including default and computed options).
+Use the `getAll()` function.
+
+```
+$ cv ev 'return Civi::service("themes")->getAll();'
+{
+    ...
+    "greenwich": {
+        "name": "greenwich",
+        "url_callback": "\\Civi\\Core\\Themes\\Resolvers::simple",
+        "search_order": [
+            "greenwich",
+            "_fallback_"
+        ],
+        "ext": "civicrm",
+        "title": "Greenwich",
+        "help": "CiviCRM 4.x look-and-feel"
+    }
+    ...
+}
+```
+
 
 # Packaging: CiviCRM Extension
 
@@ -331,46 +372,3 @@ accordingly.
 </table>
 
 
-# Internals
-
-CSS files are loaded in CiviCRM by calling `addStyleFile()`, e.g.
-
-```php
-Civi::resources()->addStyleFile('civicrm', 'css/civicrm.css');
-Civi::resources()->addStyleFile('org.example.mymodule', 'style/non-standard.css');
-```
-
-`addStyleFile()` asks the theming service (`Civi::service('themes')` aka
-`Civi/Core/Themes.php`) for a list of CSS URLs. When debugging or
-customizing the system, you can make a similar request through the
-command line ([`cv`](https://github.com/civicrm/cv)).
-
-```
-$ cv ev 'return Civi::service("themes")->resolveUrls("greenwich", "civicrm", "css/civicrm.css");'
-[
-    "http://dmaster.l/sites/all/modules/civicrm/css/civicrm.css?r=gWD8J"
-]
-```
-
-It may also be useful to inspect the definition of the themes. This allows
-you to see the full definition (including default and computed options).
-Use the `getAll()` function.
-
-```
-$ cv ev 'return Civi::service("themes")->getAll();'
-{
-    ...
-    "greenwich": {
-        "name": "greenwich",
-        "url_callback": "\\Civi\\Core\\Themes\\Resolvers::simple",
-        "search_order": [
-            "greenwich",
-            "_fallback_"
-        ],
-        "ext": "civicrm",
-        "title": "Greenwich",
-        "help": "CiviCRM 4.x look-and-feel"
-    }
-    ...
-}
-```
