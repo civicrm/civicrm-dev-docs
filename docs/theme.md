@@ -1,3 +1,4 @@
+
 # Introduction
 
 CiviCRM supports CSS-based theming. You may define a theme which overrides
@@ -202,11 +203,10 @@ org.civicrm.theme.newyork/wallstreet/css/bootstrap.css
 
 # Advanced: <code>search_order</code>
 
-Sometimes you may want to share files shared among themes; for example,
-the `astoria` and `wallstreet` themes might use a common version of
-`civicrm.css` (but have their own versions of `bootstrap.css`). You
-might manipulate the `search_order` to have to define your own fallback
-sequence:
+Sometimes you may want to share files among themes; for example, the
+`astoria` and `wallstreet` themes might use a common version of
+`civicrm.css` (but have their own versions of `bootstrap.css`).  You may
+manipulate the `search_order` to define your own fallback sequence:
 
 ```php
 // FILE: newyork.php
@@ -243,7 +243,7 @@ org.civicrm.theme.newyork/wallstreet/css/bootstrap.css
 
 # Advanced: <code>url_callback</code>
 
-The previous theming examples are based on _file-name conventions_. 
+The previous theming examples are based on _file-name conventions_.
 However, file-name conventions are fairly static and may be unsuitable in
 cases like:
 
@@ -294,12 +294,12 @@ The logic in `_newyork_css_url()` is fairly open-ended. A few tricks that may be
 Generally, one should only override the `civicrm.css` and `bootstrap.css`
 files.  If some styling issue cannot be addressed well through those files,
 then you should have some discussion about how to improve the coding-conventions
-or style-guide.
+or the style-guide.
 
-However, as a themer, there may be edge-cases where you wish to override
-other CSS files.  Your file structure should match the original file
-structure.  If you wish to override a CSS file defined by another extension,
-then include the extension as part of the name.
+However, there may be edge-cases where you wish to override other CSS files.
+Your file structure should match the original file structure.  If you wish
+to override a CSS file defined by another extension, then include the
+extension as part of the name.
 
 <table>
   <thead>
@@ -313,25 +313,51 @@ then include the extension as part of the name.
   </tbody>
 </table>
 
+If you use a multitheme/prefixed configuration, then theme prefixes apply
+accordingly.
+
+<table>
+  <thead>
+  <tr><td><strong>Original File</strong></td><td><strong>Theme File</strong></td></tr>
+  </thead>
+  <tbody>
+  <tr><td>civicrm-core/<code>css/dashboard.css</code></td><td>org.civicrm.theme.newyork/astoria/<code>css/dashboard.css</code></td></tr>
+  <tr><td>civicrm-core/<code>ang/crmMailing.css</code></td><td>org.civicrm.theme.newyork/astoria/<code>ang/crmMailing.css</code></td></tr>
+  <tr><td>org.civicrm.volunteer/<code>css/main.css</code></td><td>org.civicrm.theme.newyork/astoria/<code>org.civicrm.volunteer-css/dashboard.css</code></td></tr>
+  <tr><td>org.civicrm.rules/<code>style/admin.css</code></td><td>org.civicrm.theme.newyork/astoria/<code>org.civicrm.rules-style/admin.css</code></td></tr>
+  </tbody>
+</table>
+
+
 # Internals
 
 CSS files are loaded in CiviCRM by calling `addStyleFile()`, e.g.
 
 ```php
-Civi::resources()->addStyleFile('example.extension', 'example-file.css');
+Civi::resources()->addStyleFile('civicrm', 'css/civicrm.css');
+Civi::resources()->addStyleFile('org.example.mymodule', 'style/non-standard.css');
 ```
 
 `addStyleFile()` asks the theming service (`Civi::service('themes')` aka
 `Civi/Core/Themes.php`) for a list of CSS URLs. When debugging or
-customizing the system, it may help to interact with the theming service.
-You can call it directly via CLI using [`cv`](https://github.com/civicrm/cv).
+customizing the system, you can make a similar request through the
+command line ([`cv`](https://github.com/civicrm/cv)).
 
-For example, to inspect a list of all themes (with their definitions and defaults),
-call the `getAll()` function:
+```
+$ cv ev 'return Civi::service("themes")->resolveUrls("greenwich", "civicrm", "css/civicrm.css");'
+[
+    "http://dmaster.l/sites/all/modules/civicrm/css/civicrm.css?r=gWD8J"
+]
+```
+
+It may also be useful to inspect the definition of the themes. This allows
+you to see the full definition (including default and computed options).
+Use the `getAll()` function.
 
 ```
 $ cv ev 'return Civi::service("themes")->getAll();'
 {
+    ...
     "greenwich": {
         "name": "greenwich",
         "url_callback": "\\Civi\\Core\\Themes\\Resolvers::simple",
@@ -345,14 +371,4 @@ $ cv ev 'return Civi::service("themes")->getAll();'
     }
     ...
 }
-```
-
-To lookup the URL(s) for a CSS file within a specific theme, call
-`resolveUrls()`:
-
-```
-$ cv ev 'return Civi::service("themes")->resolveUrls("greenwich", "civicrm", "css/civicrm.css");'
-[
-    "http://dmaster.l/sites/all/modules/civicrm/css/civicrm.css?r=gWD8J"
-]
 ```
