@@ -5,7 +5,7 @@ Testing in CiviCRM is done by a combination of human code review and testing as 
 Automated tests
 ---------------
 
-TODO:
+TO DO:
 
  * http://wiki.civicrm.org/confluence/display/CRMDOC/Testing
 
