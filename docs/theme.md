@@ -310,6 +310,8 @@ function newyork_civicrm_themes(&$themes) {
 }
 
 /**
+ * Determine the URL for a CSS resource file.
+ *
  * @param \Civi\Core\Themes $themes
  * @param string $themeKey
  *   Identify the active theme (ex: 'newyork-blue', 'newyork-hicontrast').
@@ -317,8 +319,10 @@ function newyork_civicrm_themes(&$themes) {
  *   Identify the requested CSS file (ex: 'civicrm', 'org.civicrm.volunteer').
  * @param string $cssFile
  *   Identify the requested CSS file (ex: 'css/civicrm.css', 'css/bootstrap.css').
- * @return array
+ * @return array|\Civi\Core\Themes::PASSTHRU
  *   A list of zero or more CSS URLs.
+ *   To pass responsibility to another URL callback, return
+ *   the constant \Civi\Core\Themes::PASSTHRU.
  */
 function _newyork_css_url($themes, $themeKey, $cssExt, $cssFile) {
   return array('http://example.com/css/myfile.css');
