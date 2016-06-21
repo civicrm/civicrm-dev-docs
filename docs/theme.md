@@ -215,19 +215,21 @@ function newyork_civicrm_themes(&$themes) {
     'ext' => 'org.civicrm.theme.newyork',
     'title' => 'Astoria',
     'prefix' => 'astoria/',
-    'search_order' => array('astoria', 'newyork-base', '*fallback*'),
+    'search_order' => array('astoria', '_newyork_common_', '_fallback_'),
   );
   $themes['wallstreet'] = array(
     'ext' => 'org.civicrm.theme.newyork',
     'title' => 'Wall Street',
     'prefix' => 'wallstreet/',
-    'search_order' => array('wallstreet', 'newyork-base', '*fallback*'),
+    'search_order' => array('wallstreet', '_newyork_common_', '_fallback_'),
   );
-  $themes['newyork-base'] = array(
+  $themes['_newyork_common_'] = array(
     'ext' => 'org.civicrm.theme.newyork',
     'title' => 'New York (Base Theme)',
-    'prefix' => 'base/',
+    'prefix' => 'common/',
   );
+  // Note: "_newyork_common_" begins with "_".  It is a hidden, abstract
+  // theme which cannot be directly activated.
 }
 ```
 
@@ -236,7 +238,7 @@ The corresponding file structure would be:
 ```
 org.civicrm.theme.newyork/info.xml
 org.civicrm.theme.newyork/newyork.php
-org.civicrm.theme.newyork/base/css/civicrm.css
+org.civicrm.theme.newyork/common/css/civicrm.css
 org.civicrm.theme.newyork/astoria/css/bootstrap.css
 org.civicrm.theme.newyork/wallstreet/css/bootstrap.css
 ```
@@ -363,7 +365,7 @@ $ cv ev 'return Civi::service("themes")->getAll();'
         "url_callback": "\\Civi\\Core\\Themes\\Resolvers::simple",
         "search_order": [
             "greenwich",
-            "*fallback*"
+            "_fallback_"
         ],
         "ext": "civicrm",
         "title": "Greenwich",
