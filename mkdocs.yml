@@ -8,6 +8,7 @@ pages:
    - Customize: customize.md
    - Extend: extend.md
    - Develop: develop.md
+   - Git: git.md
    - Testing: testing.md
  - 'Reference: APIv3':
    - General: api/general.md
@@ -18,6 +19,8 @@ pages:
  - 'Reference: Hooks':
    - General: hook.md
    - Database: hooks-db.md
- - Gunk:
+ - Miscellaneous:
    - Markdown: markdownrules.md
    - hookref-old: hookref-old.md
+ - Deprecated:
+   - 'Building CiviCRM from source': develop-deprecated.md

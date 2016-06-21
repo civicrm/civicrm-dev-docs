@@ -1,3 +1,22 @@
-*Develop*
+# Develop
 
-TODO: Assimilate http://wiki.civicrm.org/confluence/display/CRMDOC/GitHub+for+CiviCRM
+Tip: If Git or GitHub are unfamiliar to you, see [Git and GitHub](git.md) first.
+
+## Repositories
+
+CiviCRM is divided into a few repositories. This allows developers to work with different components, allows different teams to manage each component, and will allow all the pieces to be remixed using different tools (civibuild, shell scripts, Drush & Drush make, or composer). The repositories are:
+
+* [civicrm-core](https://github.com/civicrm/civicrm-core/) - Core application which can be embedded in different systems (Drupal, Joomla, etc).
+* [civicrm-drupal](https://github.com/civicrm/civicrm-drupal/) - Drupal integration modules, with branches for each CiviCRM release & Drupal major version (e.g. 7.x-4.6, 7.x-4.7, 6.x-4.4, 6.x-4.6).
+* [civicrm-joomla](https://github.com/civicrm/civicrm-joomla/) - Joomla integration modules.
+* [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/) - WordPress integration modules.
+* [civicrm-packages](https://github.com/civicrm/civicrm-packages/) - External dependencies required by CiviCRM.
+* [civicrm-l10n](https://github.com/civicrm/civicrm-l10n/) - Localization data.
+
+## Obtaining a development build of CiviCRM
+
+The recommended method is to use [CiviCRM Buildkit](https://github.com/civicrm/civicrm-buildkit/) to build a CiviCRM codebase to develop with.
+
+## Deprecated instructions
+
+Previous methods for obtaining a CiviCRM source build are documented at [Deprecated Developer Processes](develop-deprecated.md).
