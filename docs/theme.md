@@ -118,13 +118,13 @@ help:
    is different.  For example, a Drupal module named `foobar` would have the
    extension-key `drupal.foobar`.  (These prefixes are not frequently used;
    we may encounter bugs when using different prefixes.  Patchwelcome.)
- * __Exclude `bootstrap.css`__: If the the CMS theme already loads a copy of
+ * __Exclude Files__: If the the CMS theme already loads a copy of
    `bootstrap.css` through the CMS, then it may be redundant to load a copy of `bootstrap.css`
-   through Civi's theming layer. See the section below, "Advanced: excludes".
+   through Civi's theming layer. See the section below, "_Advanced: `excludes`_".
  * __Define a callback__:  When loading a CSS file such as `civicrm.css`, the default loader
-   tries to read it from the extension. However, if your package has a different file structure
-   (or if there's a bug in locating your package's folder), you can define a custom
-   callback function. See the secion below, "Advanced: url_callback".
+   tries to read it from your package. However, if your package has a different file structure
+   (or if there's a bug in locating your package's folder), you should define a custom
+   callback function. See the section below, "_Advanced: `url_callback`_".
 
 # Packaging: Legacy
 
