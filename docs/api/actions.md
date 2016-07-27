@@ -52,7 +52,7 @@ getlist
 -------
 
 Used for autocomplete lookups by the
-[entityRef](/confluence/display/CRMDOC/EntityRef+Fields) widget
+[entityRef](https://wiki.civicrm.org/confluence/display/CRMDOC/EntityRef+Fields) widget
 
 getoptions
 ----------

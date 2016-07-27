@@ -81,7 +81,7 @@ for usability:
 *Note*: If you're writing a Drupal module, a Joomla extension, a WordPress
 plugin, or a standalone script, then you may need to **bootstrap** CiviCRM
 before using the API.  See the examples in [Bootstrap
-Reference](/confluence/display/CRMDOC/Bootstrap+Reference). 
+Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Bootstrap+Reference). 
 
 
 PHP (class.api.php)
@@ -144,7 +144,7 @@ and options available using the [api
 explorer](http://sandbox.civicrm.org/civicrm/ajax/doc#explorer) (also on
 your site!)
 
-Please note that the REST interface is subject to [API Security](/confluence/display/CRMDOC/API+Security).
+Please note that the REST interface is subject to [API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security).
 
 For more details, see [REST
 interface](http://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface). 
@@ -158,11 +158,11 @@ CRM.api3('entity', 'action', [params], [statusMessage]);
 ````
 
 For more details, see [AJAX
-Interface](/confluence/display/CRMDOC/AJAX+Interface).
+Interface](https://wiki.civicrm.org/confluence/display/CRMDOC/AJAX+Interface).
 
 The AJAX interface is automatically available for web-pages generated through CiviCRM (such as ***standard CiviCRM web-page****s***, CiviCRM ***extensions***, and custom CiviCRM ***templates***).
 
-The AJAX interface could be made available to other parts of the same website (e.g. a drupal module or wordpress widget) by calling CRM\_Core\_Resources::singleton()-\>addCoreResources() from php. Please note that the AJAX interface is subject to [API Security](/confluence/display/CRMDOC/API+Security) and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see REST interface documentation.
+The AJAX interface could be made available to other parts of the same website (e.g. a drupal module or wordpress widget) by calling CRM\_Core\_Resources::singleton()-\>addCoreResources() from php. Please note that the AJAX interface is subject to [API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security) and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see REST interface documentation.
 
 Smarty
 ------
@@ -179,7 +179,7 @@ The smarty call is to add extra information, therefore *create* or
 *delete* actions don't make sense in this case.
 
 For more details, see [Smarty API
-interface](/confluence/display/CRMDOC/Smarty+API+interface).
+interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface).
 
 CLI (drush)
 -----

@@ -87,14 +87,14 @@ also find the examples on GitHub:
 There is also the code-level documentation which can be found at
 [http://api.civicrm.org/v3/](http://api.civicrm.org/v3/)
 
-Also, the [API Reference](/confluence/display/CRMDOC/API+Reference) page
+Also, the [API Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference) page
 on this wiki.
 
 Changelog
 ---------
 
 Any API change you should be aware of will be recorded on this wiki
-documentation at [API changes](/confluence/display/CRMDOC/API+changes)
+documentation at [API changes](https://wiki.civicrm.org/confluence/display/CRMDOC/API+changes)
 
 Examples
 ========

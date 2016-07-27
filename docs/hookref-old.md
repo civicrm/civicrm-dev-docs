@@ -54,7 +54,7 @@ For A CiviCRM (native) Extension
 --------------------------------
 
 -   See this page for [creating an extension and implementing hooks
-    within it](/confluence/display/CRMDOC/Create+a+Module+Extension).
+    within it](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
 
 For A Drupal Module
 -------------------
@@ -70,7 +70,7 @@ For a Joomla Plugin
     observer design pattern.
 -   Hook plugins should be placed in the civicrm plugin group in a subfolder with the same name as the plugin.
 -   Once created plugins may be packaged and installed with the Joomla installer or the files can be placed in the appropriate folder and installed with the discover method.
--   See this [sample Joomla plugin for CiviCRM hooks](/confluence/display/CRMDOC/Example+Joomla+Plugin+for+implementing+hooks)
+-   See this [sample Joomla plugin for CiviCRM hooks](https://wiki.civicrm.org/confluence/display/CRMDOC/Example+Joomla+Plugin+for+implementing+hooks)
 
 For a WordPress Plugin
 ----------------------

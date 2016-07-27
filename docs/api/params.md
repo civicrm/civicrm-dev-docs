@@ -5,7 +5,7 @@ API examples. However, some parameters are particularly dynamic or
 generic; these may not be explained well by the auto-generated
 documentation. The format for passing options as parameters using the
 REST interface is explained at [REST
-interface\#optionsparameters](/confluence/display/CRMDOC/REST+interface#RESTinterface-optionsparameters).
+interface\#optionsparameters](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface#RESTinterface-optionsparameters).
 
 
 **sequential**
@@ -268,6 +268,6 @@ $param['return'] => 'custom_N,custom_O,custom_P';
 
 For setting custom date fields, (ie CustomValue create), date format is YmdHis, for example: 20050425000000.
 
-This is just a brief introduction; each API may have different requirements and allow different formats for accessing the custom data.  See the [API function documentation](/confluence/display/CRMDOC/Using+the+API) and also read the comments and documentation in each API php file (under civicrm/CRM/api/v3 in your CiviCRM installation) for exact details, which vary for each API entity and function.
+This is just a brief introduction; each API may have different requirements and allow different formats for accessing the custom data.  See the [API function documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/Using+the+API) and also read the comments and documentation in each API php file (under civicrm/CRM/api/v3 in your CiviCRM installation) for exact details, which vary for each API entity and function.
 
-For more details and examples, [see the tutorial on using custom data with the API here](/confluence/display/CRMDOC/Using+Custom+Data+with+the+API).
+For more details and examples, [see the tutorial on using custom data with the API here](https://wiki.civicrm.org/confluence/display/CRMDOC/Using+Custom+Data+with+the+API).
