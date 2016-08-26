@@ -20,6 +20,7 @@ pages:
    - General: hook.md
    - Database: hooks-db.md
  - Miscellaneous:
+   - 'Extension Lifecycle': extend-stages.md
    - Markdown: markdownrules.md
    - hookref-old: hookref-old.md
  - Deprecated:
