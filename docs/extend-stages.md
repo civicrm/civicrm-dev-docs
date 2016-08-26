@@ -103,9 +103,9 @@ extensions are subject to more stringent review (more criteria).
 
 Based on a project's maturity and stewardship, it may be eligible to use resources from `civicrm.org`.
 
-| Action Type	| Benefit/Resource/Privilege	| Eligibility |
-| - | - | - |
-| Admin	| The project code may be stored in github.com/civicrm/civicrm-core.git.	| "Official" projects (regardless of stability)
+| Action Type | Benefit/Resource/Privilege	| Eligibility |
+| ----------- | ---------------------------- | ----------- |
+| Admin	| The project code may be stored in github.com/civicrm/civicrm-core.git.	| "Official" projects (regardless of stability) |
 | Admin	| The project code may be stored in github.com/civicrm/{$project}	| "Official" projects (regardless of stability)
 | Communication	| Direct discussions through `chat.civicrm.org` 	| All projects
 | Communication	| Direct discussions through `lists.civicrm.org`	| All projects
