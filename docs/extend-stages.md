@@ -23,8 +23,8 @@ extensions through the CiviCRM ecosystem.
  * __Project Maturity__: Should we expect this to work for most users? Should we expect to work in 6 months?
      * __Experimental__: An experimental project offers zero support, stability, or maintenance. It may be useful for discussion, finding collaborators, or proving a concept.
      * __Incubation__: An incubation project offers some degree of support, stability, or maintenance. It's probably in use at multiple organizations. However, the levels are not guaranteed; some gaps and roadbumps should be expected. A project may be "Incubation" for days or months or years.
-     * __Maintained__: A maintained project has undertaken significant efforts to ensure that it works and continues working in the future. It has a strong quality-signal.
-     * __Unmaintained__: The project is no longer being maintained. It may work today; but it's liable to break tomorrow (unless someone steps up to manage it).
+     * __Stable__: A stable project has undertaken significant efforts to ensure that it works and continues working in the future. It has a strong quality-signal.
+     * __Deprecated__: The project is no longer being maintained. It may work today; but it's liable to break tomorrow (unless someone steps up to manage it).
  * __Stewardship__: Who manages a project? Who decides whether the project is experimental? Or maintained? Or unmaintained?
      * __Contributed__: This project is managed by an individual or company in the ecosystem. All design, support, and maintenance are at discretion of the original author.
      * __Official__: The project is monitored as a community resource. Generally, the original author retains editorial control, but the project receives more strenuous reviews and follows stricter standards with feedback from others in the community.
@@ -49,8 +49,8 @@ of the project -- with a few basic rules of thumb:
 
  * The author always registers his extension on `civicrm.org` by creating an `extension` node.
  * *Official* extensions are subject to more scrutiny than *Contributed* extensions.
- * *Experimental*, *Incubation*, and *Unmaintained* extensions have simple, open processes -- such as *Self-Assessment* or *Informal Discussion*.
- * *Maintained* extensions require some kind of *Formal Review*.
+ * *Experimental*, *Incubation*, and *Deprecated* extensions have simple, open processes -- such as *Self-Assessment* or *Informal Discussion*.
+ * *Stable* extensions require some kind of *Formal Review*.
 
 Based on these rules, we can fill out a full table of the workflow:
 
@@ -61,15 +61,15 @@ Based on these rules, we can fill out a full table of the workflow:
 | Experimental	| Official	| Informal Discussion	| As above. *Additionally* The author announces to a high-visibility medium (such as blog or mailing-list). If discussion is persuasive, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Incubation	| Contributed	| Self-Assessment	| In `civicrm.org`, the author creates an "extension" node and flags it as "Incubation".	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Incubation	| Official	| Informal Discussion	| As above. *Additionally* The author announces to a high-visibility medium (such as blog or mailing-list). If discussion is persuasive, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
-| Maintained	| Contributed	| Formal Review (light)	| In JIRA, the author requests a formal peer review.  Once the reviewer is satisfied, he marks the node in `civicrm.org` as Maintained.	| In app, go to "Add New" and choose the extension.
-| Maintained	| Official	| Formal Review (heavy)	| As above. *Additionally* FormalReview criteria are more detailed. Announce to a high-visibility medium. At least one reviewer must be a senior member of the core team.	| In app, go to "Add New" and choose the extension.
-| Unmaintained	| Contributed	| Self-Assessment	| In `civicrm.org`, the author marks the "extension" node as deprecated and announce to a high-visibility medium.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
-| Unmaintained	| Official	| Informal Discussion	| The author announces intent to deprecate in a high-visibility medium. If discussion is persuasive and no alternative maintainer comes forward, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
+| Stable	| Contributed	| Formal Review (light)	| In JIRA, the author requests a formal peer review.  Once the reviewer is satisfied, he marks the node in `civicrm.org` as Stable.	| In app, go to "Add New" and choose the extension.
+| Stable	| Official	| Formal Review (heavy)	| As above. *Additionally* FormalReview criteria are more detailed. Announce to a high-visibility medium. At least one reviewer must be a senior member of the core team.	| In app, go to "Add New" and choose the extension.
+| Deprecated	| Contributed	| Self-Assessment	| In `civicrm.org`, the author marks the "extension" node as deprecated and announce to a high-visibility medium.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
+| Deprecated	| Official	| Informal Discussion	| The author announces intent to deprecate in a high-visibility medium. If discussion is persuasive and no alternative maintainer comes forward, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 
 
 ## Formal Review
 
-To designate an extension as *Maintained*, someone must conduct a *Formal Review* and assess several criteria.
+To designate an extension as *Stable*, someone must conduct a *Formal Review* and assess several criteria.
 As a rule of thumb, *Contributed* extensions are subject to a gentler review (fewer criteria), and *Official*
 extensions are subject to more stringent review (more criteria).
 
@@ -84,12 +84,12 @@ extensions are subject to more stringent review (more criteria).
 | Admin	| Release schedule is aligned with core.	| Not assessed	| Suggested (Not Required)
 | Coding	| All code complies with civicrm-core style guidelines.	| Not assessed	| Required
 | Coding	| Automated tests execute within 3 minutes (or less).	| Not assessed	| Suggested (Not Required)
-| Coding	| All dependencies are at similar stage. (Ex: An incubation project should not depend on a sandbox project.)	| Not assessed	| Required
+| Coding	| All dependencies are at similar stage. (Ex: A stable project should not depend on an experimental project.)	| Not assessed	| Required
 | Coding	| Strings are wrapped in ts()	| Suggested (Not Required)	| Required
 | Coding	| The project does not *override* PHP, TPL, JS, or SQL from civicrm-core.	| Required	| Required
 | Coding	| The project does not *conflict* with other official projects.	| Suggested (Not Required)	| Suggested (Not Required)
 | Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin.	| Required	| Required
-| Distribution	| Have a Maintained (1.0+; not alpha or beta) version	| Required	| Required
+| Distribution	| Have a stable version (1.0+; not alpha or beta)	| Required	| Required
 | Distribution	| Provide a demo site	| Suggested (Not Required)	| Suggested (Not Required)
 | QA	| Works in all CMS's (for CiviCRM Extension)	| Suggested (Not Required)	| Suggested (Not Required)
 | QA	| Include an automated test suite	| Suggested (Not Required)	| Required
@@ -110,11 +110,11 @@ Based on a project's maturity and stewardship, it may be eligible to use resourc
 | Communication	| Direct discussions through `chat.civicrm.org` 	| All projects
 | Communication	| Direct discussions through `lists.civicrm.org`	| All projects
 | Communication	| Direct discussions through `wiki.civicrm.org` 	| All projects
-| Distribution	| Discovery on the in-app screen (ie. automated distribution)	| All projects ("Maintained" or "Incubation") [where technically applicable]
-| Distribution	| Project may be bundled into the standard CiviCRM tarballs.	| "Official" projects ("Maintained" or "Incubation")
+| Distribution	| Discovery on the in-app screen (ie. automated distribution)	| All projects ("Stable" or "Incubation") [where technically applicable]
+| Distribution	| Project may be bundled into the standard CiviCRM tarballs.	| "Official" projects ("Stable" or "Incubation")
 | Distribution	| The project is listed in `http://civicrm.org/extensions`	| All projects
-| Distribution	| Test and demo sites on civicrm.org include the extension.	| "Official" projects ("Maintained" or "Incubation")
-| Marketing	| The project is included in official marketing literature about CiviCRM	| "Maintained", "Official" projects
+| Distribution	| Test and demo sites on civicrm.org include the extension.	| "Official" projects ("Stable" or "Incubation")
+| Marketing	| The project is included in official marketing literature about CiviCRM	| "Stable", "Official" projects
 | QA	| The `civicrm.org` build-bot runs extension tests for PRs (own repo)	| "Official" projects (regardless of stability)
-| QA	| The `civicrm.org` build-bot runs extension tests for PRs (civicrm-core repo)	| "Official" projects ("Maintained" or "Incubation")
+| QA	| The `civicrm.org` build-bot runs extension tests for PRs (civicrm-core repo)	| "Official" projects ("Stable" or "Incubation")
 | Support	| The project may have its own space or component on "issues.civicrm.org" (JIRA)	| "Official" projects (regardless of stability)
