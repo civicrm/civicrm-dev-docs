@@ -1,6 +1,6 @@
 <h1>About this documentation</h1>
 
-CiviCRM is an open-source application. The code can poked, prodded, twisted, and hacked. It can be customized, extended, and collaboratively developed. This documentation tells you how to do that.
+CiviCRM is an open-source application. The code can be poked, prodded, twisted, and hacked. It can be customized, extended, and collaboratively developed. This documentation tells you how to do that.
 
 It starts with a ***guide*** - a high level introduction to get you familiar with CiviCRM development. It covers setting up your developer environment, ensuring that you really need to start coding (i.e. you can't acheive what you want thought configuration or installing an already existing extension), best practice ways to extend CiviCRM (aka how to write an extensions), things you should know before you start hacking on core, and best practice for testing.
 
