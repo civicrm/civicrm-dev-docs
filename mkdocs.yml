@@ -10,6 +10,7 @@ pages:
    - Develop: develop.md
    - Git: git.md
    - Testing: testing.md
+   - Writing Documentation: documentation.md
  - 'Reference: APIv3':
    - General: api/general.md
    - 'Usage': api/usage.md
