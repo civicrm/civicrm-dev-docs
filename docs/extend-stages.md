@@ -12,13 +12,13 @@ have a split role, e.g.
    expect these to just work -- both now and going forward (with future upgrades).
  * Sometimes, we are developers.  We enjoy building great functionality, and we
    want to invite people to use our products, but we need to juggle the
-   publishing tasks (like testing and maintenance releases) with the goals 
+   publishing tasks (like testing and maintenance releases) with the goals
    and resources provided by our bosses and clients.
 
 The purpose of this document is to describe the process of publishing
 extensions through the CiviCRM ecosystem.
 
-## Definitions	
+## Definitions
 
  * __Project Maturity__: Should we expect this to work for most users? Should we expect to work in 6 months?
      * __Experimental__: An experimental project offers zero support, stability, or maintenance. It may be useful for discussion, finding collaborators, or proving a concept.
@@ -31,7 +31,7 @@ extensions through the CiviCRM ecosystem.
      * __Seeking Maintainer__: This project does not have a person or organization responsible for it. If you think the project is useful, feel free to take responsibility for it.
  * __Support Model__: How do you submit questions and requests about issues?
      * __Free__: Submit questions and requests to an open bug-tracker.
-     * __Negotiated__: Issues may be reported to open bug-tracker. If the author agrees it is critical or data-loss, he may address it. Otherwise, you need to negotiate a contract.
+     * __Negotiated__: Issues may be reported to open bug-tracker. If the author agrees it is critical or data-loss, they may address it. Otherwise, you need to negotiate a contract.
      * __Pre-Paid__: The author will not engage in any support discussions unless you have pre-paid for support.
  * __Quality Signals__: How do we know if an extension is any good?
      * __Self-Assessment__: An author makes a claim about the stability of his work. (This is a low-tech, low-touch process.)
@@ -42,7 +42,7 @@ extensions through the CiviCRM ecosystem.
 
 ## Workflow
 
-The database on `civicrm.org` publishes information about available extensions, including maturity and stewardship. 
+The database on `civicrm.org` publishes information about available extensions, including maturity and stewardship.
 This is significant because it affects authors (who publish the extension) and users (who download the extension) and
 determines access to communal resources on `civicrm.org`.  The particulars are determined the maturity and stewardship
 of the project -- with a few basic rules of thumb:
@@ -61,7 +61,7 @@ Based on these rules, we can fill out a full table of the workflow:
 | Experimental	| Official	| Informal Discussion	| As above. *Additionally* The author announces to a high-visibility medium (such as blog or mailing-list). If discussion is persuasive, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Incubation	| Contributed	| Self-Assessment	| In `civicrm.org`, the author creates an "extension" node and flags it as "Incubation".	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Incubation	| Official	| Informal Discussion	| As above. *Additionally* The author announces to a high-visibility medium (such as blog or mailing-list). If discussion is persuasive, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
-| Stable	| Contributed	| Formal Review (light)	| In JIRA, the author requests a formal peer review.  Once the reviewer is satisfied, he marks the node in `civicrm.org` as Stable.	| In app, go to "Add New" and choose the extension.
+| Stable	| Contributed	| Formal Review (light)	| In JIRA, the author requests a formal peer review.  Once the reviewer is satisfied, they mark the node in `civicrm.org` as Stable.	| In app, go to "Add New" and choose the extension.
 | Stable	| Official	| Formal Review (heavy)	| As above. *Additionally* FormalReview criteria are more detailed. Announce to a high-visibility medium. At least one reviewer must be a senior member of the core team.	| In app, go to "Add New" and choose the extension.
 | Deprecated	| Contributed	| Self-Assessment	| In `civicrm.org`, the author marks the "extension" node as deprecated and announce to a high-visibility medium.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Deprecated	| Official	| Informal Discussion	| The author announces intent to deprecate in a high-visibility medium. If discussion is persuasive and no alternative maintainer comes forward, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
