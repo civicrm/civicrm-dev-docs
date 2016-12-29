@@ -1,14 +1,24 @@
-<h1>About this documentation</h1>
+# About this documentation
 
-CiviCRM is an open-source application. The code can poked, prodded, twisted, and hacked. It can be customized, extended, and collaboratively developed. This documentation tells you how to do that.
+## Overview
 
-It starts with a ***guide*** - a high level introduction to get you familiar with CiviCRM development. It covers setting up your developer environment, ensuring that you really need to start coding (i.e. you can't acheive what you want thought configuration or installing an already existing extension), best practice ways to extend CiviCRM (aka how to write an extensions), things you should know before you start hacking on core, and best practice for testing.
+[CiviCRM](https://civicrm.org) is an open-source application. The code can be poked, prodded, twisted, and hacked. It can be customized, extended, and collaboratively developed. This documentation tells you how to do that.
+
+It starts with a ***guide*** - a high level introduction to get you familiar with CiviCRM development. It covers setting up your developer environment, ensuring that you really need to start coding (i.e. you can't achieve what you want thought configuration or installing an already existing extension), best practice ways to extend CiviCRM (aka how to write an extensions), things you should know before you start hacking on core, and best practice for testing.
 
 The guide is followed by detailed ***references*** for tools and subsystems of CiviCRM. These cover topics like the API and hook system and are intended for use by people that are familiar with CiviCRM development.
 
-These documents are a work in progress. You may find things in the [wiki](http://wiki.civicrm.org/confluence/display/CRMDOC/Develop)  that are not documented here. 
+## Editing & reading offline 
 
-<h1>Other sources of information</h1>
+* This documentation is made with mkdocs and [stored in GitHub](https://github.com/civicrm/civicrm-dev-docs)
+* See the "[Writing Documentation](documentation.md)" section in this guide for specific details on editing this documentation (and others using mkdocs). You can also learn how to read these docs off-line! 
+
+## Caveats
+
+* These documents are a work in progress.  
+* You may find things in the [wiki](http://wiki.civicrm.org/confluence/display/CRMDOC/Develop)  that are not documented here. 
+
+# Other sources of information
 
 As an open-source project, CiviCRM is managed by an international community of developers and activists. Help from these people can be found in the following ways: 
 
