@@ -3,25 +3,6 @@ Overview
 
 In order for your CiviCRM extension to be compliant, you must provide a minimal extension documentation, written in [Markdown](https://guides.github.com/features/mastering-markdown/) language.
 
-The allowed structure is the following:
-
-* Headings (eg. [Heading 1](#heading-1), [Heading 2](#heading-2), [Heading 3](#heading-3))
-
-* [Styling Texts](#styling-text)
-
-* [Blockquotes](#blockquotes)
-
-* [Unordered Lists](#unordered-lists)
-
-* [Ordered Lists](#ordered lists)
-
-* [Nested Lists](#nested-lists)
-
-* Inline code block (see [example](#code-inline))
-
-* [Links](#links)
-
-* Table creation - Avoid creating tables! If you still want to use them, avoid complex columns/rows
 
 Examples
 ========

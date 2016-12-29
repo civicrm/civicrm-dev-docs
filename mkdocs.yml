@@ -1,4 +1,7 @@
 site_name: CiviCRM Developer Documentation
+repo_url: https://github.com/civicrm/civicrm-dev-docs
+site_description: 'A guide for CiviCRM developers.'
+site_author: 'The CiviCRM community'
 theme: readthedocs
 pages:
  - Home: index.md
@@ -10,6 +13,7 @@ pages:
    - Develop: develop.md
    - Git: git.md
    - Testing: testing.md
+   - Writing Documentation: documentation.md
  - 'Reference: APIv3':
    - General: api/general.md
    - 'Usage': api/usage.md
