@@ -1,143 +1,337 @@
-Overview
-========
+Markdown Syntax
+==============
 
-In order for your CiviCRM extension to be compliant, you must provide a minimal extension documentation, written in [Markdown](https://guides.github.com/features/mastering-markdown/) language.
+Learning [Markdown](https://guides.github.com/features/mastering-markdown/)
+language is useful for:
+
+-   Writing CiviCRM [extensions](extend) -- In order for your extension to be
+    compliant, you must provide extension documentation, written in markdown.
+-   Writing other *.md* files that display on [GitHub]
+-   Contributing to CiviCRM [documentation](documentation)
+-   Chatting on [Mattermost](http://chat.civicrm.org)
+-   Q&A on [Stack Exchange](http://civicrm.stackexchange.com)
+
+[GitHub]: https://github.com
+
+Markdown language is mostly consistent across these platforms, but some
+discrepancies do exist and should be noted below.
+
+Markdown has some redundant syntax (e.g. `*italic*` and `_italic_`).
+Within CiviCRM documentation we want consistent code, so we list
+***unapproved variants*** below to make it clear which syntax is preferred by
+CiviCRM, especially in large guides like this one. 
 
 
-Examples
-========
+Basics
+------
 
-Heading 1
----------
-````javascript
-This is a heading 1
-===================
-````
+-   `*italics*`
+-   `**bold**`
+-   `***bold and italics***`
+-   `~~strikethrough~~` *(GitHub/Mattermost only)*
 
-Heading 2
----------
-````javascript
-This is a heading 2
--------------------
-````
+***Unapproved variants:*** Underscores for `_italics_` and `__bold__` work, 
+but use asterisks for consistency.
 
-Heading 3
----------
 
-````javascript
-### This is a heading 3
+Hyperlinks
+----------
 
-````
+-   A basic hyperlink
 
-Trivial Headings
-----------------
+        Try [CiviCRM](https://civicrm.org) for your database.
 
-Standard Markdown headings are treated as navigational elements and added to
-the navbar. However, some headings indicate trivial distinctions among
-subsections and should not be highlighted in the navigation. Demarcate these
-using raw HTML.
+-   With long URLs, the following syntax is better. 
 
-```html
-<h3>Local Heading</h3>
+        See [this issue][CRM-19799] for more details.
+
+        [CRM-19799]: https://issues.civicrm.org/jira/browse/CRM-19799
+
+    -   The second line can be placed anywhere in the file.
+    -   Optionally, if the link ID ("CRM-19799" in this case) is omitted, you
+        can use the link text ("this issue") to reference the link in the 
+        second line.
+
+
+Line breaks and whitespace
+--------------------------
+
+**Single line breaks** in markdown code are eliminated in display:
+
+```md
+This text will all show up
+on the
+same
+line.
+```
+
+This makes it easy to avoid very long lines in markdown code. As a rule of
+thumb, **keep your markdown code free of lines longer than 80 characters**
+where possible.
+
+Also, please **remove trailing whitespace** from the end of markdown code.
+
+**Double line breaks** create separate paragraphs:
+
+```md
+This is
+one paragraph.
+
+This is a second.
 ```
 
 
-Styling Text
-------------
 
-Both bold and italic can use either a * or an _ around the text for styling. This allows you to combine both bold and italic if needed.
+Headings
+--------
 
 
-````
-*This text will be italic*
-**This text will be bold**
-````
+```md
+Heading 1
+=========
 
-Blockquotes
------------
+Heading 2
+---------
+```
 
-You can indicate blockquotes with a >.
+***Unapproved variants:*** `# Heading 1` and `# Heading 2` also work, but use 
+`=` and `-` for consistency. 
 
-````
-In the words of Abraham Lincoln:
+For headings beyond 1 and 2, the `#` syntax is okay...
 
-> Pardon my french
-````
+```md
+### Heading 3
+
+#### Heading 4
+```
+
+***Convention:*** Each page should have one and only one *Heading 1*,
+which should be at the top of the page as a page title. Other headings within
+page content should be level 2 or greater.
+
+
 
 Lists
 -----
 
-Unordered lists
----------------
+### Unordered lists
 
-You can make an unordered list by preceding list items with either a * or a -.
-
-````
-* Item
-* Item
-* Item
-
-- Item
-- Item
-- Item
-````
-
-Ordered lists
--------------
-
-You can make an ordered list by preceding list items with a number.
-
-````
-1. Item 1
-2. Item 2
-3. Item 3
-````
-
-
-Nested lists
-------------
-
-You can create nested lists by indenting list items by two spaces.
-
-````
-1. Item 1
-  1. A corollary to the above item.
-  2. Yet another point to consider.
-2. Item 2
-  * A corollary that does not need to be ordered.
-    * This is indented four spaces, because it's two spaces further than the item above.
-    * You might want to consider making a new list.
-3. Item 3
-````
-
-
-
-Inline code block
------------------
-
-### Inline formats
-
-Use single backticks (`) to format text in a special monospace format. Everything within the backticks appear as-is, with no other special formatting.
-
-Here's an idea: why don't we take `SuperiorProject` and turn it into `**Reasonable**Project`.
-
-### Multiple lines
-
-You can use prepend and append triple backticks (```) to format text as its own distinct block.
-
-Check out this neat program I wrote:
-
-```
-x = 0
-x = 2 + 2
-what is x
+```md
+-   My first item is here.
+-   My second item is here and a
+    bit longer than the first.
+-   Then, a third.
 ```
 
-Links
------
+***Unapproved variants:***
 
-You can create an inline link by wrapping link text in brackets ( [ ] ), and then wrapping the link in parentheses ( ( ) ). 
+-   Unordered lists also recognize `*` and `+` as item delimiters, but use `-`
+    for consistency.
+-   Markdown is somewhat flexible with the quantity and position of spaces when
+    making lists, but for consistency, please stick to the example above which
+    has: **1 dash, 3 spaces, then content**, and has **long lines beginning
+    with 4 spaces** so they line up nicely.
 
+
+### Ordered lists
+
+```md
+1.  Item
+2.  Item
+3.  Item
+```
+
+***Unapproved variants:*** 
+
+-   Ordered lists items are automatically re-numbered sequentially upon display
+    which means all items can begin with `1`, but for the sake of consistency
+    with existing docs, please number your lists sequentially in code.
+-   Similar to the comment above for unordered lists, please keep all list
+    content beginning 4 characters in, which means a digit character, a period,
+    then two spaces, then content.
+
+
+### Nested lists
+
+List items must be indented 4 spaces:
+
+```md
+1.  Item
+    1.  Item
+    2.  Item
+2.  Item
+    * Item
+    * Item
+    * Item
+3. Item
+```
+
+
+Code
+----
+
+### Inline code
+
+Use backticks to create inline monospace text:
+
+```md
+Some `monospace text` amid a paragraph.
+```
+
+And if you need to put a backtick inside your monospace text, begin and end
+with two backticks:
+
+```md
+Some ``monospace text with `backticks` inside``, and all amid a paragraph.
+```
+
+
+### Code blocks
+
+A block of **"fenced code"** with three or more backticks on their own line.
+
+````md
+```
+CODE
+BLOCK
+```
 ````
-This is a [demo link](https://www.google.com)
+
+*Fenced code can use more backticks when necessary to represent code with
+3 backticks (which is what you'd see in the source for this page).*
+
+***Unapproved variants:*** For fenced code, the tilde `~` character also works
+in place of the backtick character but should be avoided for consistency.
+
+
+A block of **"indented code"** with four spaces at the start of each line:
+
+```md
+    CODE
+    BLOCK
+```
+
+
+### Syntax highlighting for code
+
+-   For code blocks, most platforms (e.g. mkdocs, GitHub) will guess guess the
+    language of the code and automatically apply syntax highlighting to the
+    display.
+-   To force a particular type of syntax highlighting, use fenced code with a
+    keyword (like `javascript` in this case) as follows:
+
+        ```javascript
+        var cj = CRM.$ = jQuery;
+        ```
+
+-   Available language keywords for forced syntax highlighting differ slightly
+    by markdown platform, but here are some common ones:
+    `as`, `atom`, `bas`, `bash`, `boot`, `c`, `c++`, `cake`, `cc`, `cjsx`,
+    `cl2`, `clj`, `cljc`, `cljs`, `cljsc`, `cljs.hl`, `cljx`, `clojure`,
+    `coffee`, `_coffee`, `coffeescript`, `cpp`, `cs`, `csharp`, `cson`, `css`,
+    `d`, `dart`, `delphi`, `dfm`, `di`, `diff`, `django`, `docker`,
+    `dockerfile`, `dpr`, `erl`, `erlang`, `f90`, `f95`, `freepascal`, `fs`,
+    `fsharp`, `gcode`, `gemspec`, `go`, `groovy`, `gyp`, `h`, `h++`,
+    `handlebars`, `haskell`, `haxe`, `hbs`, `hic`, `hpp`, `hs`, `html`,
+    `html.handlebars`, `html.hbs`, `hx`, `iced`, `irb`, `java`, `javascript`,
+    `jinja`, `jl`, `js`, `json`, `jsp`, `jsx`, `julia`, `kotlin`, `kt`, `ktm`,
+    `kts`, `lazarus`, `less`, `lfm`, `lisp`, `lpr`, `lua`, `m`, `mak`,
+    `makefile`, `markdown`, `matlab`, `md`, `mk`, `mkd`, `mkdown`, `ml`, `mm`,
+    `nc`, `objc`, `obj-c`, `objectivec`, `ocaml`, `osascript`, `pas`, `pascal`,
+    `perl`, `php`, `pl`, `plist`, `podspec`, `powershell`, `pp`, `ps`, `ps1`,
+    `puppet`, `py`, `python`, `r`, `rb`, `rs`, `rss`, `ruby`, `rust`, `scala`,
+    `scheme`, `scm`, `scpt`, `scss`, `sh`, `sld`, `smalltalk`, `sql`, `st`,
+    `swift`, `tex`, `thor`, `v`, `vb`, `vbnet`, `vbs`, `vbscript`, `veo`,
+    `xhtml`, `xml`, `xsl`, `yaml`, `zsh`
+-   Syntax highlighting cannot be forced for indented code.
+-   Syntax highlighting is not available for inline code. 
+-   [Stack Exchange syntax highlighting][stack exchange syntax highlighting] is
+    done differently.
+
+[stack exchange syntax highlighting]: http://stackoverflow.com/editing-help#syntax-highlighting
+
+### Code blocks within lists 
+
+You can use **indented code within lists** by keeping a blank line 
+above/below and indenting *4 spaces more than your list content*, like this:
+
+```md
+-   First item
+-   Look at this code:
+
+        CODE BLOCK WITHIN
+        TOP LEVEL LIST ITEM
+
+-   More list items
+-   A nested list is here:
+    1.  Alpha
+    2.  Beta, with some code
+
+            CODE BLOCK WITHIN
+            SUB-LIST ITEM
+
+    3. Gamma
+
+-   Fun, right?
+```
+
+**Fenced code within lists** is shown below. It works on GitHub but **not
+mkdocs**:
+
+````md
+-   First item
+-   Look at this code:
+
+    ```md
+    code
+    block
+    ```
+
+-   More list items
 ````
+
+
+
+Images
+------
+
+Images function mostly the same as hyperlinks, but preceded by an exclamation
+point and with alt text in place of the link text.
+
+```md
+![Alt text](image.png)
+```
+
+or 
+
+```md
+![Alt text][id]
+
+[id]: image.png
+```
+
+
+Other markdown syntax
+---------------------
+
+-   [Tables] (to be avoided when possible)
+-   [Emojis] (great for Mattermost)
+-   Blockquotes
+
+        > This text is a blockquote, typically used
+        > to represent prose written by a person. It
+        > will be displayed slightly indented.
+
+[Emojis]: http://www.webpagefx.com/tools/emoji-cheat-sheet/
+[Tables]: https://help.github.com/articles/organizing-information-with-tables
+
+External references
+-------------------
+
+-   [Mattermost markdown](https://docs.mattermost.com/help/messaging/formatting-text.html)
+-   [Stack Exchange markdown](http://stackoverflow.com/editing-help)
+-   [GitHub markdown](https://help.github.com/categories/writing-on-github/)
+-   [Official markdown reference](https://daringfireball.net/projects/markdown/syntax) 
+    (though somewhat difficult to read)
+
+
