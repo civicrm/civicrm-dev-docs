@@ -1,31 +1,31 @@
 site_name: CiviCRM Developer Documentation
 repo_url: https://github.com/civicrm/civicrm-dev-docs
-site_description: 'A guide for CiviCRM developers.'
-site_author: 'The CiviCRM community'
+site_description: A guide for CiviCRM developers.
+site_author: The CiviCRM community
 theme: readthedocs
 pages:
- - Home: index.md
- - Guide:
-   - Requirements: requirements.md
-   - Build: build.md
-   - Customize: customize.md
-   - Extend: extend.md
-   - Develop: develop.md
-   - Git: git.md
-   - Testing: testing.md
-   - Writing Documentation: documentation.md
- - 'Reference: APIv3':
-   - General: api/general.md
-   - 'Usage': api/usage.md
-   - Actions: api/actions.md
-   - Parameters: api/params.md
-   - Chaining: api/chaining.md
- - 'Reference: Hooks':
-   - General: hook.md
-   - Database: hooks-db.md
- - Miscellaneous:
-   - 'Extension Lifecycle': extend-stages.md
+- Home: index.md
+- Guide:
+  - Requirements: requirements.md
+  - Build: build.md
+  - Customize: customize.md
+  - Extend: extend.md
+  - Develop: develop.md
+  - Git: git.md
+  - Testing: testing.md
+  - Writing Documentation: documentation.md
+- APIv3:
+  - API Intro: api/general.md
+  - API Usage: api/usage.md
+  - API Actions: api/actions.md
+  - API Parameters: api/params.md
+  - API Chaining: api/chaining.md
+- Hooks:
+   - How to Use Hooks: hook.md
+   - All Available Hooks: hooks-db.md
+- Miscellaneous:
+   - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md
    - hookref-old: hookref-old.md
- - Deprecated:
-   - 'Building CiviCRM from source': develop-deprecated.md
+- Deprecated:
+   - Building CiviCRM from source: develop-deprecated.md

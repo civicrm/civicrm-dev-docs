@@ -1,16 +1,22 @@
+All Available Hooks
+===================
+
+This page provides official documentation on the specifics of each hook
+available within CiviCRM.
+
 hook_civicrm_copy
 =================
 
 This hook is called after a CiviCRM object (Event, ContributionPage, Profile) has been copied
 
-* Parameters: 
+* Parameters:
  	* $objectName - the name of the object that is being copied (Event, ContributionPage, UFGroup)
  	* $object - reference to the copied object
 
-* Returns: 
+* Returns:
 	* null
 
-* Definition/Example: 
+* Definition/Example:
 ```
 hook_civicrm_copy( $objectName, &$object )
 ```
@@ -27,7 +33,7 @@ This hook is called AFTER the db write on a custom table
     * object $entityID - the entityID of the row in the custom table
     * array $params - the parameters that were sent into the calling function
 
-* Returns: 
+* Returns:
 	* null - the return value is ignored
 
 * Definition/Example:
@@ -36,34 +42,34 @@ This hook is called AFTER the db write on a custom table
 /**
  * This example generates a custom contact ID (year + number, ex: 20080000001)
  */
- 
+
 function MODULENAME_civicrm_custom( $op, $groupID, $entityID, &$params ) {
     if ( $op != 'create' && $op != 'edit' ) {
         return;
     }
- 
+
     if ($groupID == 1) {
         $needs_update = false;
         $tableName = CRM_Core_DAO::getFieldValue( 'CRM_Core_DAO_CustomGroup',
                                                       $groupID,
                                                       'table_name' );
- 
- 
+
+
         $sql = "SELECT member_id_4 FROM $tableName WHERE entity_id = $entityID";
         $dao = CRM_Core_DAO::executeQuery( $sql, CRM_Core_DAO::$_nullArray );
- 
+
         if (! $dao->fetch()) {
             $needs_update = true;
         }
- 
+
         // Value may also be empty. i.e. delete the value in the interface to reset the field.
         if (! $dao->member_id_4) {
             $needs_update = true;
         }
- 
+
         if ($needs_update) {
                 $member_id = date('Y') . sprintf('%07d', $entityID);
- 
+
                 $sql = "UPDATE $tableName SET member_id_4 = $member_id WHERE entity_id = $entityID";
                 CRM_Core_DAO::executeQuery( $sql, CRM_Core_DAO::$_nullArray );
         }
@@ -98,7 +104,7 @@ For more background, see [API and the Art of Installation](http://civicrm.org/bl
 
     * void - the return value is ignored
 
-* Definition/Example: 
+* Definition/Example:
 
 ```
 /**
@@ -144,13 +150,13 @@ The contents of $data will vary based on the $type of data being passed:
 * relTables:
 
     an array of tables used for asking user which elements to merge, as used at civicrm/contact/merge; each table in the array has this format:
-    
+
     `'rel_table_UNIQUE-TABLE-NICKNAME' => array(
          'title'  => ts('TITLE'),
          'tables' => array('TABLE-NAME' [, ...]),
          'url'    => CRM_Utils_System::url(PATH, QUERY),
     )`
-    
+
 * sqls:
     a one-dimensional array of SQL statements to be run in the final merge operation;
     These SQL statements are run within a single transaction.
@@ -180,7 +186,7 @@ hook_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL, $tables = N
  * This hook ensures that data in these two tables is included in CiviCRM merge operations.
  */
 function civitest_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL, $tables = NULL ) {
- 
+
     // If you are using Drupal and you use separate DBs for Drupal and CiviCRM, use the following to prefix
     // your tables with the name of the Drupal database.
     global $db_url;
@@ -191,7 +197,7 @@ function civitest_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL
     else {
       $db_default = '';
     }
- 
+
     switch ($type) {
         case 'relTables':
             // Allow user to decide whether or not to merge records in `civitest_foo` table
@@ -205,14 +211,14 @@ function civitest_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL
                                                         // CiviCRM contact ID.
             );
         break;
- 
+
         case 'cidRefs':
             // Add references to civitest_foo.contact_id, and civitest_foo.foo_id, both of which
             // are foreign keys to civicrm_contact.id.  By adding this to $data, records in this
             // table will be automatically included in the merge.
             $data[$db_default . 'civitest_foo'] = array('contact_id', 'foo_id');
         break;
- 
+
         case 'eidRefs':
             // Add references to civitest_bar table, which is keyed to civicrm_contact.id
             // using `bar_entity_id` column, when `entity_table` is equal to 'civicrm_contact'. By
@@ -220,7 +226,7 @@ function civitest_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL
             // the merge.
             $data[$db_default . 'civitest_bar'] = array('entity_table' => 'bar_entity_id');
         break;
- 
+
         case 'sqls':
             // Note that this hook can be called twice with $type = 'sqls': once with $tables
             // and once without. In our case, SQL statements related to table `civitest_foo`
@@ -236,7 +242,7 @@ function civitest_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL
                 // modify existing SQL statements in $data.
             }
         break;
- 
+
     }
 }
 
@@ -323,7 +329,7 @@ FILE #2 /drupal_install_dir/sites/all/modules/civicrm/drupal/modules/example_sen
 ```
 <?php
 function exampleSendEmailOnIndividual_civicrm_post($op, $objectName, $objectId, &$objectRef) {
- 
+
   /**************************************************************
    * Send an email when Individual Contact is CREATED or EDITED or DELETED
    */
@@ -332,7 +338,7 @@ function exampleSendEmailOnIndividual_civicrm_post($op, $objectName, $objectId, 
   $email_from = 'me@mydomain.com'; //FROM email address
   $email_sbj = 'CiviCRM exampleSendEmailOnIndividual';
   $email_msg = "CiviCRM exampleSendEmailOnIndividual was called.\n".$op." ".$objectName."\n".$objectId." ";
- 
+
   if ($op == 'create' && $objectName == 'Individual') {
     $email_sbj .= "- ADDED NEW contact";
     $email_msg .= $objectRef->display_name."\n";
@@ -348,11 +354,11 @@ function exampleSendEmailOnIndividual_civicrm_post($op, $objectName, $objectId, 
     $email_msg .= 'Email: '.$objectRef->email."\n";
     $send_an_email = true;
   }
- 
+
   if ($send_an_email) {
     mail($email_to, $email_sbj, $email_msg, "From: ".$email_from);
   }
- 
+
 }//end FUNCTION
 ?>
 ```
@@ -376,7 +382,7 @@ hook_civicrm_postSave_[table_name]($dao)
 ```
 hook_civicrm_postSave_civicrm_contact($dao) {
   $contact_id = $dao->id;
-  // Do something with this contact, but be careful not to create an infinite 
+  // Do something with this contact, but be careful not to create an infinite
   // loop if you update it via the api! This hook will get called again with every update.
 }
 ```
@@ -516,7 +522,7 @@ function regionfields_civicrm_triggerInfo(&$info, $tableName) {
 	if(civicrm_api3('custom_field', 'getcount', array('id' => $customFieldID, 'column_name' => 'region_45', 'is_active' => 1)) == 0) {
 		return;
 	}
-	
+
 	$sql = "
 	REPLACE INTO `$table_name` (entity_id, $columnName)
 	SELECT  * FROM (

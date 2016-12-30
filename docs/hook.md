@@ -1,5 +1,5 @@
-Hooks
-=====
+How to use hooks
+================
 
 TODO:
 
@@ -27,11 +27,6 @@ A good test for whether or not to use a hook is to ask yourself whether what
 you're trying to do can be expressed with a sentence like this: "I want X to
 happen every time someone does Y."
 
-How to use hooks
-================
-
-How you use hooks depends on whether you're using CiviCRM with Drupal or
-Joomla!.
 
 Using hooks with Drupal
 -----------------------
