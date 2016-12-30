@@ -1,7 +1,7 @@
 Markdown Syntax
 ==============
 
-Learning [Markdown](https://guides.github.com/features/mastering-markdown/)
+Learning [Markdown](https://en.wikipedia.org/wiki/Markdown)
 language is useful for:
 
 -   Writing CiviCRM [extensions](extend) -- In order for your extension to be
@@ -27,11 +27,12 @@ Basics
 
 -   `*italics*`
 -   `**bold**`
--   `***bold and italics***`
--   `~~strikethrough~~` *(GitHub/Mattermost only)*
+-   `***bold and italic***`
+-   `~~strikethrough~~` *(GitHub/Mattermost/StackExchange)*
+-   `<del>strikethrough</del>` *(mkdocs)*
 
-***Unapproved variants:*** Underscores for `_italics_` and `__bold__` work, 
-but use asterisks for consistency.
+***Unapproved variants:*** Underscores for `_italics_` and `__bold__` work. But
+please but use asterisks for consistency.
 
 
 Hyperlinks
@@ -94,8 +95,8 @@ Heading 2
 ---------
 ```
 
-***Unapproved variants:*** `# Heading 1` and `# Heading 2` also work, but use 
-`=` and `-` for consistency. 
+***Unapproved variants:*** `# Heading 1` and `# Heading 2` also work. But please
+use `=` and `-` for consistency.
 
 For headings beyond 1 and 2, the `#` syntax is okay...
 
@@ -125,8 +126,8 @@ Lists
 
 ***Unapproved variants:***
 
--   Unordered lists also recognize `*` and `+` as item delimiters, but use `-`
-    for consistency.
+-   Unordered lists also recognize `*` and `+` as item delimiters.
+    But please use `-` for consistency.
 -   Markdown is somewhat flexible with the quantity and position of spaces when
     making lists, but for consistency, please stick to the example above which
     has: **1 dash, 3 spaces, then content**, and has **long lines beginning
