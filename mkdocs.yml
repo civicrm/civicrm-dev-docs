@@ -1,11 +1,11 @@
-site_name: CiviCRM Developer Documentation
+site_name: CiviCRM Developer Guide
 repo_url: https://github.com/civicrm/civicrm-dev-docs
 site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
 theme: readthedocs
 pages:
 - Home: index.md
-- Guide:
+- Basics:
   - Requirements: requirements.md
   - Build: build.md
   - Customize: customize.md
