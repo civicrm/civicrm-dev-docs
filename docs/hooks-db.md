@@ -4,6 +4,9 @@ All Available Hooks
 This page provides official documentation on the specifics of each hook
 available within CiviCRM.
 
+**This page is currently incomplete**. Info needs to be moved from this
+[wiki page](https://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
+
 hook_civicrm_copy
 =================
 
