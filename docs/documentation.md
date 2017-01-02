@@ -47,8 +47,10 @@ For minor changes you can simply edit the markdown online using GitHub. However,
 See [Markdown](markdownrules) for formatting syntax within mkdocs.
 
 
-## Documentation in the wiki
+## Wiki migration
 
 The [CiviCRM wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) has lots of great info but is slowly falling out of use in favor of mkdocs.
 
-
+If you migrate content from the wiki to mkdocs, you may want to setup an HTTP redirect from the wiki
+(`https://wiki.civicrm.org/confluence/display/CRMDOC/{$x}`) to mkdocs (`https://docs.civicrm.org/dev/en/master/{$y}`).
+To do this, add a new row to the [redirects/wiki-crmdoc.txt](redirects/wiki-crmdoc.txt).
