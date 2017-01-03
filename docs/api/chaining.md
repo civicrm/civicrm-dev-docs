@@ -1,61 +1,72 @@
-It is now possible to do two api calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as 'contact\_id'. Likewise you can ask for all activities or all contributions to be returned when you do a get. Some examples will explain
+API Chaining
+============
 
-* [https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/ContactCreate.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/ContactCreate.php)
+It is now possible to do two API calls at once with the first call feeding into
+the second. E.g. to create a contact with a contribution you can nest the
+contribution create into the contact create. Once the contact has been created
+it will action the contribution create using the id from the contact create as
+`contact_id`. Likewise you can ask for all activities or all contributions to
+be returned when you do a get.
 
-* [https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/ContactGet.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/ContactGet.php)
+See [api/v3/examples] within the core source code for a plethora of examples
+(from unit tests) that use API chaining. To start, look at these examples:
 
-* [https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArray.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArray.php)
+-   [APIChainedArray.php]
+-   [APIChainedArrayFormats.php]
+-   [APIChainedArrayValuesFromSiblingFunction.php]
 
-* [https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayFormats.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayFormats.php)
+[api/v3/examples]: https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples
+[APIChainedArray.php]: https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArray.php
+[APIChainedArrayFormats.php]: https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayFormats.php
+[APIChainedArrayValuesFromSiblingFunction.php]: https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayValuesFromSiblingFunction.php
 
-* [https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayValuesFromSiblingFunction.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayValuesFromSiblingFunction.php)
 
-Note that there are a few supported syntaxes
+Note that there are a few supported syntaxes:
 
-```
-civicrm('Contact', 'Create', 
-array(
-    'version' => 3, 
-    'contact_type' => 'Individual', 
-    'display_name' => 'BA Baracus', 
-    'api.website.create' => array('url' => 'Ateam.com'));
+```php
+civicrm('Contact', 'Create', array(
+    'version' => 3,
+    'contact_type' => 'Individual',
+    'display_name' => 'BA Baracus',
+    'api.website.create' => array('url' => 'example.com'));
 ```
 
 is the same as
 
-````
+```php
 civicrm('Contact', 'Create', array(
-    'version' => 3, 
-    'contact_type' => 'Individual', 
-    'display_name' => 'BA Baracus', 
-    'api.website' => array('url' => 'Ateam.com'));
-````
+    'version' => 3,
+    'contact_type' => 'Individual',
+    'display_name' => 'BA Baracus',
+    'api.website' => array('url' => 'example.com'));
+```
 
-If you have 2 websites to create you can pass them as ids after the '.'
+If you have 2 websites to create you can pass them as ids after the `.`
 or an array
 
-````
+```php
 civicrm('Contact', 'Create', array(
-    'version' => 3, 
-    'contact_type' => 'Individual', 
-    'display_name' => 'BA Baracus', 
-    'api.website.create'    => array('url' => 'Ateam.com',),
-    'api.website.create.2'  => array('url' => 'warmbeer.com', ));
-
-````
+    'version' => 3,
+    'contact_type' => 'Individual',
+    'display_name' => 'BA Baracus',
+    'api.website.create'    => array('url' => 'example.com',),
+    'api.website.create.2'  => array('url' => 'example.org', ));
+```
 
 OR
 
-````
+```php
 civicrm('Contact', 'Create', array(
     'version' => 3, 
     'contact_type' => 'Individual', 
     'display_name' => 'BA Baracus', 
     'api.website.create' => array(
-        array('url' => 'Ateam.com', ), 
-        array('url' => 'warmbeer.com', )));
-````
+        array('url' => 'example.com', ), 
+        array('url' => 'example.org', )));
+```
 
 the format you use on the way in will dictate the format on the way out.
 
-Currently this supports any entity & it will convert to 'entity\_id' - ie. a PledgePayment inside a contribution will receive the contribution\_id from the outer call
+Currently this supports any entity and it will convert to `entity_id` -
+i.e. a PledgePayment inside a contribution will receive the `contribution_id`
+from the outer call.

@@ -1,17 +1,20 @@
+API Actions
+===========
+
 Most entities support the following actions:
 
 create
 ------
 
-Insert or update one record. (Note: If an *"id*" is specified, then an
+Insert or update one record. (Note: If an `id` is specified, then an
 existing record will be modified.)
 
 delete
 ------
 
-Delete one record. (Note: Requires an explicit "*id*".  Note: if you
+Delete one record. (Note: Requires an explicit `id`. Note: if you
 want to skip the 'recycle bin' for entities that support undelete (e.g.
-contacts) you should set \$param['skip\_undelete'] =\> 1);
+contacts) you should set `$param['skip_undelete'] => 1);`
 
 get
 ---
@@ -26,11 +29,8 @@ returns the record in a simplified format which is easy to use)
 
 getvalue
 --------
-Does a **getsingle** & returns a single value - you need to also set
-
-````
-$param['return'] => 'fieldname'
-````
+Does a `getsingle` and returns a single value - you need to also set 
+`$param['return'] => 'fieldname'`.
 
 getcount
 --------
@@ -58,32 +58,33 @@ getoptions
 ----------
 
 Returns the options for a specified field e.g.
-````
+```php
 civicrm_api3(
   'contact',
   'getoptions', 
   array('field' => 'gender_id')
   ); 
-````
+```
 
 returns
 
-````
+```php
 array(
   1 => 'Female', 
   2 => 'Male', 
   3 => 'Transgender'
 )
-````
+```
 
 replace
 -------
 
 Replace an old set of records with a new or modified set of records.
 (For example, replace the set of "Phone" numbers with a different set of
-"Phone" numbers.). 
+"Phone" numbers.).
 
-Warning - REPLACE includes an implicit delete - use with care & test well before using in productions
+Warning - REPLACE includes an implicit delete - use with care & test well 
+before using in productions
 
 <del>setvalue</del>
 -------------------
