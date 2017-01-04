@@ -6,6 +6,7 @@ theme: readthedocs
 pages:
 - Home: index.md
 - Basics:
+  - Developer Community: basics/community.md
   - Requirements: requirements.md
   - Build: build.md
   - Customize: customize.md
