@@ -1,5 +1,4 @@
-The CiviCRM API
-===============
+# The CiviCRM API
 
 CiviCRM has a stable comprehensive **API** (Application Programming
 Interface) that can be used to access and manage data in CiviCRM. The
@@ -19,8 +18,7 @@ The best place to begin working with the API is your own ***test*** install of
 CiviCRM, using the API explorer and the API parameter list.
 
 
-API explorer
-------------
+## API explorer
 
 The API explorer gives you the possibility to actually
 try out the API in action and is available at
@@ -42,8 +40,7 @@ Try out the [API explorer on the demo site], *after you login as demo/demo*.
 [API explorer on the demo site]: http://drupal.sandbox.civicrm.org/civicrm/api/explorer
 
 
-API parameter list
-------------------
+## API parameter list
 
 The API parameter list shows all available entities which
 can be manipulated by the API and is available at:
@@ -60,8 +57,7 @@ with the API and what parameters you can use to refine your get
 action or complete your create or update action.
 
 
-API Examples
-------------
+## API Examples
 
 CiviCRM ships with API examples included in the distribution. You can
 find the examples specific to your installed version at:
@@ -71,8 +67,7 @@ find the examples specific to your installed version at:
 [Explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples)
 
 
-Changelog
----------
+## Changelog
 
 All important changes made to the API are be recorded on the wiki at:
 [API changes](https://wiki.civicrm.org/confluence/display/CRMDOC/API+changes)

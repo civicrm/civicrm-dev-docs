@@ -1,5 +1,4 @@
-API Chaining
-============
+# API Chaining
 
 It is now possible to do two API calls at once with the first call feeding into
 the second. E.g. to create a contact with a contribution you can nest the

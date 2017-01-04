@@ -1,5 +1,4 @@
-API Usage
-=========
+# API Usage
 
 Every API call consists of three elements: the *entity*, *action*, and
 *parameters*.  For example, consider a few commonly-used entities along
@@ -58,8 +57,7 @@ array(
 return success in a different format.)
 
 
-PHP (civicrm_api3)
-------------------
+## PHP (civicrm_api3)
 
 This is the most common way to call the API.
 
@@ -90,8 +88,7 @@ before using the API.  See the examples in [Bootstrap Reference].
 
 [Bootstrap Reference]: https://wiki.civicrm.org/confluence/display/CRMDOC/Bootstrap+Reference
 
-PHP (class.api.php)
--------------------
+## PHP (class.api.php)
 
 CiviCRM v3.4 introduced an object-oriented API client, `class.api.php`.
 This class be used locally or remotely to invoke APIs, as in:
@@ -116,8 +113,7 @@ If you call the API in the object oriented fashion, you do not have to
 specify 'version' as a parameter
 
 
-REST
-----
+## REST
 
 For external services:
 
@@ -157,8 +153,7 @@ For more details, see [REST
 interface](http://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface). 
 
 
-AJAX
-----
+## AJAX
 
 ```javascript
 CRM.api3('entity', 'action', [params], [statusMessage]);
@@ -181,8 +176,7 @@ and
 [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). 
 To use it from an external site or application, see REST interface documentation.
 
-Smarty
-------
+## Smarty
 
 ```smarty
 {crmAPI var="myContactList" entity="Contact" action="get" version="3" first_name="Alice" last_name="Roberts" }
@@ -195,8 +189,7 @@ actions don't make sense in this case.
 For more details, see
 [Smarty API interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface).
 
-Command line
-------------
+## Command line
 
 ### drush
 

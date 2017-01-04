@@ -1,5 +1,4 @@
-Markdown Syntax
-==============
+# Markdown Syntax
 
 Learning [Markdown](https://en.wikipedia.org/wiki/Markdown)
 language is useful for:
@@ -17,8 +16,7 @@ Markdown language is mostly consistent across these platforms, but some
 discrepancies do exist and should be noted below.
 
 
-Basics
-------
+## Basics
 
 -   `*italics*`
 -   `**bold**`
@@ -30,8 +28,7 @@ Alternate syntax: Underscores for `_italics_` and `__bold__` also work on most
 platforms.
 
 
-Hyperlinks
-----------
+## Hyperlinks
 
 -   A basic hyperlink
 
@@ -49,8 +46,7 @@ Hyperlinks
         second line.
 
 
-Line breaks and whitespace
---------------------------
+## Line breaks and whitespace
 
 **Single line breaks** in markdown code are eliminated in display:
 
@@ -75,8 +71,7 @@ This is a second.
 ```
 
 
-Headings
---------
+## Headings
 
 ```md
 # Heading 1
@@ -103,8 +98,7 @@ which should be at the top of the page as a page title. Other headings within
 page content should be level 2 or greater.
 
 
-Lists
------
+## Lists
 
 ### Unordered lists
 
@@ -154,8 +148,7 @@ List items must be indented 4 spaces:
 ```
 
 
-Code
-----
+## Code
 
 ### Inline code
 
@@ -279,8 +272,7 @@ mkdocs**:
 
 
 
-Images
-------
+## Images
 
 Images function mostly the same as hyperlinks, but preceded by an exclamation
 point and with alt text in place of the link text.
@@ -298,8 +290,7 @@ or
 ```
 
 
-Other markdown syntax
----------------------
+## Other markdown syntax
 
 -   [Tables] (to be avoided when possible)
 -   [Emojis] (great for Mattermost)
@@ -312,8 +303,7 @@ Other markdown syntax
 [Emojis]: http://www.webpagefx.com/tools/emoji-cheat-sheet/
 [Tables]: https://help.github.com/articles/organizing-information-with-tables
 
-External references
--------------------
+## External references
 
 -   [Mattermost markdown](https://docs.mattermost.com/help/messaging/formatting-text.html)
 -   [Stack Exchange markdown](http://stackoverflow.com/editing-help)

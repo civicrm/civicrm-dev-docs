@@ -1,8 +1,6 @@
-Developing CiviCRM
-==================
+# Developing CiviCRM
 
-Repositories
-------------
+## Repositories
 
 CiviCRM is divided into a few repositories. This allows developers to work
 with different components, allows different teams to manage each component,
@@ -24,15 +22,13 @@ shell scripts, Drush & Drush make, or composer). The repositories are:
 -   [civicrm-l10n](https://github.com/civicrm/civicrm-l10n/) -
     Localization data.
 
-Obtaining a development build of CiviCRM
-----------------------------------------
+## Obtaining a development build of CiviCRM
 
 The recommended method is to use
 [CiviCRM Buildkit](https://github.com/civicrm/civicrm-buildkit/) to build a
 CiviCRM codebase to develop with.
 
-Deprecated instructions
------------------------
+## Deprecated instructions
 
 Previous methods for obtaining a CiviCRM source build are documented at
 [Deprecated Developer Processes](develop-deprecated.md).

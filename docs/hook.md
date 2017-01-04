@@ -1,5 +1,4 @@
-How to use hooks
-================
+# How to use hooks
 
 TODO:
 
@@ -28,8 +27,7 @@ you're trying to do can be expressed with a sentence like this: "I want X to
 happen every time someone does Y."
 
 
-Using hooks with Drupal
------------------------
+## Using hooks with Drupal
 
 In order to start using hooks with a Drupal-based CiviCRM installation, you or
 your administrator needs to do the following:
@@ -76,8 +74,7 @@ $user = user_save('',array(..));
 $config->inCiviCRM = FALSE;
 ```
 
-Using hooks with Joomla!
-------------------------
+## Using hooks with Joomla!
 
 Hooks may be implemented in Joomla in two ways, depending on the version of
 CiviCRM and Joomla you are using. For sites running Joomla 1.5 with CiviCRM up
@@ -157,8 +154,7 @@ article](http://civicrm.org/blogs/mcsmom/hooks-and-joomla)
 Note the reference in the comments to a sample plugin which you can download
 and modify.
 
-Refine what you want to act upon
---------------------------------
+## Refine what you want to act upon
 
 When you create a hook, it will be called for all the types of entities. For
 instance, a civicrm\_post is called after the creation or modification of any
@@ -181,8 +177,7 @@ code for each hook within your test:
 if ($objectName == "Individual" && $op == "edit") {   // Your hook }
 ```
 
-Pitfalls of hooks
------------------
+## Pitfalls of hooks
 
 Because you have little control over what CiviCRM passes to your hook function,
 it is very helpful to look inside those objects (especially `$objectRef`) to
@@ -190,8 +185,7 @@ make sure you're getting what you expect. A good debugger is indispensable here.
 See the Developer Tips & Tricks chapter at the end of this section for more
 information on setting up a debugger for your development environment.
 
-Examples of using hooks
------------------------
+## Examples of using hooks
 
 Some example hooks follow.
 

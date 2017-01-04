@@ -1,61 +1,50 @@
-API Actions
-===========
+# API Actions
 
 Most entities support the following actions:
 
-create
-------
+## create
 
 Insert or update one record. (Note: If an `id` is specified, then an
 existing record will be modified.)
 
-delete
-------
+## delete
 
 Delete one record. (Note: Requires an explicit `id`. Note: if you
 want to skip the 'recycle bin' for entities that support undelete (e.g.
 contacts) you should set `$param['skip_undelete'] => 1);`
 
-get
----
+## get
 
 Search for records
 
-getsingle
----------
+## getsingle
 
 Search for records and return the first or only match. (Note: This
 returns the record in a simplified format which is easy to use)
 
-getvalue
---------
+## getvalue
 Does a `getsingle` and returns a single value - you need to also set 
 `$param['return'] => 'fieldname'`.
 
-getcount
---------
+## getcount
 Search for records and return the quantity. (Note: In many cases in
 early versions queries are limited to 25 so this may not always be
 accurate)
 
-getrefcount
------------
+## getrefcount
 
 Counts the number of references to a record
 
-getfields
----------
+## getfields
 
 Fetch entity metadata, i.e. the list of fields supported by the entity
 
-getlist
--------
+## getlist
 
 Used for autocomplete lookups by the
 [entityRef](https://wiki.civicrm.org/confluence/display/CRMDOC/EntityRef+Fields) widget
 
-getoptions
-----------
+## getoptions
 
 Returns the options for a specified field e.g.
 ```php
@@ -76,8 +65,7 @@ array(
 )
 ```
 
-replace
--------
+## replace
 
 Replace an old set of records with a new or modified set of records.
 (For example, replace the set of "Phone" numbers with a different set of
@@ -86,12 +74,10 @@ Replace an old set of records with a new or modified set of records.
 Warning - REPLACE includes an implicit delete - use with care & test well 
 before using in productions
 
-<del>setvalue</del>
--------------------
+## <del>setvalue</del>
 
 **Deprecated.** Use the create action with the param 'id' instead.
 
-<del>update</del>
------------------
+## <del>update</del>
 
 **Deprecated.** Use the create action with the param 'id' instead.

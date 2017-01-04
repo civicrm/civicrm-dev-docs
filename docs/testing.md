@@ -1,5 +1,4 @@
-Testing
-=======
+# Testing
 
 Testing in CiviCRM is done by a combination of human code review and testing
 as well as automated testing. Testing is done based on pull requests (PRs)
@@ -7,15 +6,13 @@ in [GitHub](https://github.com/civicrm/civicrm-core/pulls). Pull requests are
 code submitted in response to issues reported in
 [JIRA](https://issues.civicrm.org/), the issue tracking system for CiviCRM.
 
-Automated tests
----------------
+## Automated tests
 
 TO DO:
 
 -   http://wiki.civicrm.org/confluence/display/CRMDOC/Testing
 
-Manual testing
----------------
+## Manual testing
 
 When testing the process you should use is:
 
@@ -105,8 +102,7 @@ and issue is posted on [github.com/civicrm](http://github.com/civicrm).
 The GitHub post mentions the account names of everyone who has submitted a
 PR recently (so that they get a notification).
 
-Notifications
--------------
+## Notifications
 
 -   When opening a PR, submitter is pointed to the CiviCRM Core
     [contributing documentation](https://github.com/civicrm/civicrm-core/blob/master/.github/CONTRIBUTING.md)

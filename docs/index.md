@@ -1,5 +1,4 @@
-CiviCRM Developer Guide
-=======================
+# CiviCRM Developer Guide
 
 [CiviCRM](https://civicrm.org) is an open-source application. The code can be
 poked, prodded, twisted, and hacked. It can be customized, extended, and
@@ -16,8 +15,7 @@ The guide also includes detailed references for tools and subsystems
 of CiviCRM. These cover topics like the API and hook system and are intended
 for use by people that are familiar with CiviCRM development.
 
-Editing & reading offline
--------------------------
+## Editing & reading offline
 
 -   This documentation is made with mkdocs and
     [stored in GitHub](https://github.com/civicrm/civicrm-dev-docs)
@@ -25,8 +23,7 @@ Editing & reading offline
     for specific details on editing this documentation (and others using
     mkdocs). You can also learn how to read these docs off-line!
 
-Migration of content is in progress
------------------------------------
+## Migration of content is in progress
 
 As of early 2017 we are actively working to migrate content from the [wiki] to
 this guide. Read more about this [migration process][migration], including how
@@ -35,8 +32,7 @@ to help out!
 [wiki]: http://wiki.civicrm.org/confluence/display/CRMDOC/Develop
 [migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
 
-Other sources of information
-------------------------------
+## Other sources of information
 
 As an open-source project, CiviCRM is managed by an international community of
 developers and activists. Help from these people can be found in the following

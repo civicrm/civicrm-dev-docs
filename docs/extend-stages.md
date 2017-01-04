@@ -1,5 +1,4 @@
-Extension Life cycle
-====================
+# Extension Life cycle
 
 The CiviCRM ecosystem is built on the belief that non-profit
 organizations can serve themselves best by collaborating in development of their
@@ -22,8 +21,7 @@ have a split role, e.g.
 The purpose of this document is to describe the process of publishing
 extensions through the CiviCRM ecosystem.
 
-Definitions
------------
+## Definitions
 
 -   **Project Maturity**: Should we expect this to work for most users? Should
     we expect to work in 6 months?
@@ -75,8 +73,7 @@ Definitions
         test-results, style-checks, or cyclomatic complexity) are checked by a
         bot. (This is a high-tech, low-touch process.)
 
-Workflow
---------
+## Workflow
 
 The database on `civicrm.org` publishes information about available extensions,
 including maturity and stewardship. This is significant because it affects
@@ -108,8 +105,7 @@ Based on these rules, we can fill out a full table of the workflow:
 | Deprecated	| Official	| Informal Discussion	| The author announces intent to deprecate in a high-visibility medium. If discussion is persuasive and no alternative maintainer comes forward, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 
 
-Formal Review
--------------
+## Formal Review
 
 To designate an extension as *Stable*, someone must conduct a *Formal Review*
 and assess several criteria. As a rule of thumb, *Contributed* extensions are
@@ -142,8 +138,7 @@ subject to more stringent review (more criteria).
 | Support	| Publish documentation	| Suggested (Not Required)	| Required
 | Support	| Track issues in an open, public issue management system	| Suggested (Not Required)	| Required
 
-Benefits
---------
+## Benefits
 
 Based on a project's maturity and stewardship, it may be eligible to use
 resources from `civicrm.org`.

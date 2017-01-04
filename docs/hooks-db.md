@@ -1,5 +1,4 @@
-All Available Hooks
-===================
+# All Available Hooks
 
 This page provides official documentation on the specifics of each hook
 available within CiviCRM.
@@ -7,8 +6,7 @@ available within CiviCRM.
 **This page is currently incomplete**. Info needs to be moved from this
 [wiki page](https://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
 
-hook_civicrm_copy
-=================
+# hook_civicrm_copy
 
 This hook is called after a CiviCRM object (Event, ContributionPage, Profile) has been copied
 
@@ -25,8 +23,7 @@ hook_civicrm_copy( $objectName, &$object )
 ```
 
 
-hook_civicrm_custom
-===================
+# hook_civicrm_custom
 This hook is called AFTER the db write on a custom table
 
 * Parameters
@@ -81,8 +78,7 @@ function MODULENAME_civicrm_custom( $op, $groupID, $entityID, &$params ) {
 
 ```
 
-hook_civicrm_managed
-====================
+# hook_civicrm_managed
 
 This hook allows a module to declare a list of 'managed' entities using the CiviCRM API - a managed entity will be automatically inserted, updated, deactivated, and deleted in tandem with enabling, disabling, and uninstalling the module. The hook is called periodically during cache-clear operations.
 
@@ -130,8 +126,7 @@ function modulename_civicrm_managed(&$entities) {
 }
 ```
 
-hook_civicrm_merge
-==================
+# hook_civicrm_merge
 
 This hook allows modification of the data used to perform merging of duplicates. This can be useful if your custom module has added its own tables related to CiviCRM contacts.
 Availability
@@ -251,8 +246,7 @@ function civitest_civicrm_merge ( $type, &$data, $mainId = NULL, $otherId = NULL
 
 ```
 
-hook_civicrm_post
-=================
+# hook_civicrm_post
 
 This hook is called after a db write on some core objects.
 
@@ -369,8 +363,7 @@ function exampleSendEmailOnIndividual_civicrm_post($op, $objectName, $objectId, 
 Once the files are in the directory, you need to login to Drupal admin, go to Modules and enable our new module and click Save. Now go and edit a contact and you should get an email!
 
 
-hook_civicrm_postSave_table_name
-================================
+# hook_civicrm_postSave_table_name
 
 This hook is called after writing to a database table that has an associated DAO. This includes core tables but not custom tables or log tables.
 
@@ -390,8 +383,7 @@ hook_civicrm_postSave_civicrm_contact($dao) {
 }
 ```
 
-hook_civicrm_pre
-================
+# hook_civicrm_pre
 
 This hook is called before a db write on some core objects. This hook does not allow the abort of the operation, use a form hook instead.
 
@@ -441,8 +433,7 @@ hook_civicrm_pre($op, $objectName, $id, &$params)
 ```
 
 
-hook_civicrm_referenceCounts
-============================
+# hook_civicrm_referenceCounts
 
 This hook is called to determine the reference-count for a record. For example, when counting references to the activity type "Phone Call", one would want a tally that includes:
 
@@ -492,8 +483,7 @@ function familytracker_civicrm_referenceCounts($dao, &$refCounts) {
 ```
 
 
-hook_civicrm_trigger_info
-=========================
+# hook_civicrm_trigger_info
 
 efine MYSQL Triggers. Using the hooks causes them not to clash with core or other extension triggers. They are compiled into one trigger with core triggers.
 
