@@ -83,8 +83,6 @@ These content standards apply to all guides written in MkDocs.
         folder. The folder serves as a "part" and the page serves as a "chapter"
         which is in keeping with the structure common to most text books and
         manuals. Do not make deeper levels of page hierarchy.
--   Spelling -- use US English spelling (e.g. "Standardize" instead of
-    "Standardise")
 
 
 [Markdown]: markdownrules.md
