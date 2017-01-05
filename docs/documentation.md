@@ -61,5 +61,30 @@ However, for a better editing experience we highly recommend installing
 1.  When you are happy with your edits, use git to commit and push your changes.
     Then submit a  pull request on GitHub.
 
+### Content standards for guides
+
+These content standards apply to all guides written in MkDocs.
+
+-   Keep it simple
+    -   Be concise.
+    -   When possible, avoid the use of: tables, deeply nested lists, and
+        images.
+-   Page titles
+    -   *In navigation menu:* (as stored in `mkdocs.yml`) should be short enough
+        to fit nicely in the menu, but should also long enough to stand on its
+        own to a reasonable extent. The titles set here are used in the
+        navigation menu *and* the page title that displays in the browser tab.
+        The guide will be more usable if the reader sees two tabs titled
+        "Using Hooks" and "API Usage" instead of "Usage" and "Usage".
+    -   *In page content:* Insert one heading 1 at the top of each page. In the
+        rest of the page, use headings of level 2 and greater.
+-   Navigation structure
+    -   Each page (except "Home") should be contained within one and only one
+        folder. The folder serves as a "part" and the page serves as a "chapter"
+        which is in keeping with the structure common to most text books and
+        manuals. Do not make deeper levels of page hierarchy.
+-   Spelling -- use US English spelling (e.g. "Standardize" instead of
+    "Standardise")
+
 
 [Markdown]: markdownrules.md
