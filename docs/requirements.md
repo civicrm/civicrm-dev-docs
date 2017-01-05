@@ -1,8 +1,6 @@
-Development requirements
-========================
+# Development requirements
 
-Languages and Services
-----------------------
+## Languages and Services
 
 -   Unix-like environment (Linux, OS X, or a virtual machine)
 -   [PHP v5.3+](http://php.net/)
@@ -12,8 +10,7 @@ Languages and Services
 -   Recommended: Apache HTTPD v2.2+
 -   Recommended: Ruby/Rake
 
-Command Line
-------------
+## Command Line
 
 There are many ways to install MySQL, PHP, and other dependencies -- for
 example, `apt-get` and `yum` can download packages automatically; `php.net`
@@ -33,8 +30,7 @@ for MAMP).
 In subsequent steps, the download script will attempt to identify
 misconfigurations and display an appropriate message.
 
-Buildkit
---------
+## Buildkit
 
 The developer docs reference a large number of developer tools, such as
 `drush` (the Drupal command line), `civix` (the CiviCRM code-generator), and

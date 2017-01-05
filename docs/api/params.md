@@ -1,5 +1,4 @@
-API Parameters
-==============
+# API Parameters
 
 There are many parameters accepted by the CiviCRM API. Most parameters
 depend on the entity – for current details in your see the [API Explorer]
@@ -12,8 +11,7 @@ interface\#optionsparameters](https://wiki.civicrm.org/confluence/display/CRMDOC
 [API Explorer]: /api/general/#api-explorer
 [API examples]: /api/general/#api-examples
 
-sequential
-----------
+## sequential
 
 -   **Action**: get
 -   **Type**: bool
@@ -42,8 +40,7 @@ Note that a single record is returned in this example - whenever a single
 record is returned the `entity_id` of that record should be in `$result['id']`
 
 
-options.limit
--------------
+## options.limit
 
 -   **Action**: get
 -   **Type**: int
@@ -66,8 +63,7 @@ civicrm_api('UFMatch','Get', array(
 ```
 
 
-options.offset
---------------
+## options.offset
 
 -   **Action**: get
 -   **Type**: int
@@ -89,8 +85,7 @@ civicrm_api('UFMatch','Get', array(
 ));
 ```
 
-options.sort
-------------
+## options.sort
 
 -   **Action**: get
 -   **Type**: ??
@@ -110,8 +105,7 @@ civicrm_api3('Contact', 'get', array(
 ));
 ```
 
-options.reload
---------------
+## options.reload
 
 -   **Action**: create
 -   **Type**: bool
@@ -137,8 +131,7 @@ civicrm_api('Contact', 'create', array(
 ));
 ```
 
-options.match
--------------
+## options.match
 
 -   **Action**: create | replace
 -   **Type**: string | array
@@ -170,8 +163,7 @@ civicrm_api('contact', 'create', array(
 ));
 ```
 
-options.match-mandatory
------------------------
+## options.match-mandatory
 
 -   **Action**: create | replace
 -   **Type**: string | array
@@ -204,8 +196,7 @@ civicrm_api('contact', 'create', array(
 ```
 
 
-Custom Data
------------
+## Custom Data
 
 Custom data attached to entities is referenced by `custom_N` where `N` is
 the unique numerical ID for the custom data field.

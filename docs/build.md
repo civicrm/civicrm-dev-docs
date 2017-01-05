@@ -1,5 +1,4 @@
-Building CiviCRM
-================
+# Building CiviCRM
 
 TODO:
 

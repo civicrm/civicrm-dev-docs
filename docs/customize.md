@@ -1,5 +1,4 @@
-Customizing CiviCRM
-===================
+# Customizing CiviCRM
 
 TODO:
 

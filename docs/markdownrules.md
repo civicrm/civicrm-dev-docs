@@ -1,5 +1,4 @@
-Markdown Syntax
-==============
+# Markdown Syntax
 
 Learning [Markdown](https://en.wikipedia.org/wiki/Markdown)
 language is useful for:
@@ -16,14 +15,8 @@ language is useful for:
 Markdown language is mostly consistent across these platforms, but some
 discrepancies do exist and should be noted below.
 
-Markdown has some redundant syntax (e.g. `*italic*` and `_italic_`).
-Within CiviCRM documentation we want consistent code, so we list
-***unapproved variants*** below to make it clear which syntax is preferred by
-CiviCRM, especially in large guides like this one. 
 
-
-Basics
-------
+## Basics
 
 -   `*italics*`
 -   `**bold**`
@@ -31,18 +24,17 @@ Basics
 -   `~~strikethrough~~` *(GitHub/Mattermost/StackExchange)*
 -   `<del>strikethrough</del>` *(mkdocs)*
 
-***Unapproved variants:*** Underscores for `_italics_` and `__bold__` work. But
-please but use asterisks for consistency.
+Alternate syntax: Underscores for `_italics_` and `__bold__` also work on most
+platforms.
 
 
-Hyperlinks
-----------
+## Hyperlinks
 
 -   A basic hyperlink
 
         Try [CiviCRM](https://civicrm.org) for your database.
 
--   With long URLs, the following syntax is better. 
+-   With long URLs, the following syntax is better.
 
         See [this issue][CRM-19799] for more details.
 
@@ -50,12 +42,11 @@ Hyperlinks
 
     -   The second line can be placed anywhere in the file.
     -   Optionally, if the link ID ("CRM-19799" in this case) is omitted, you
-        can use the link text ("this issue") to reference the link in the 
+        can use the link text ("this issue") to reference the link in the
         second line.
 
 
-Line breaks and whitespace
---------------------------
+## Line breaks and whitespace
 
 **Single line breaks** in markdown code are eliminated in display:
 
@@ -67,10 +58,8 @@ line.
 ```
 
 This makes it easy to avoid very long lines in markdown code. As a rule of
-thumb, **keep your markdown code free of lines longer than 80 characters**
+thumb, keep your markdown code free of lines longer than 80 characters
 where possible.
-
-Also, please **remove trailing whitespace** from the end of markdown code.
 
 **Double line breaks** create separate paragraphs:
 
@@ -82,10 +71,19 @@ This is a second.
 ```
 
 
+## Headings
 
-Headings
---------
+```md
+# Heading 1
 
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+```
+
+Alternate syntax (only works for h1 and h2):
 
 ```md
 Heading 1
@@ -95,25 +93,12 @@ Heading 2
 ---------
 ```
 
-***Unapproved variants:*** `# Heading 1` and `# Heading 2` also work. But please
-use `=` and `-` for consistency.
-
-For headings beyond 1 and 2, the `#` syntax is okay...
-
-```md
-### Heading 3
-
-#### Heading 4
-```
-
 ***Convention:*** Each page should have one and only one *Heading 1*,
 which should be at the top of the page as a page title. Other headings within
 page content should be level 2 or greater.
 
 
-
-Lists
------
+## Lists
 
 ### Unordered lists
 
@@ -124,32 +109,27 @@ Lists
 -   Then, a third.
 ```
 
-***Unapproved variants:***
+Alternate syntax:
 
 -   Unordered lists also recognize `*` and `+` as item delimiters.
-    But please use `-` for consistency.
 -   Markdown is somewhat flexible with the quantity and position of spaces when
-    making lists, but for consistency, please stick to the example above which
-    has: **1 dash, 3 spaces, then content**, and has **long lines beginning
-    with 4 spaces** so they line up nicely.
+    making lists, but using 3 spaces after the dash means that sub-lists look
+    nicer in code.
 
 
 ### Ordered lists
 
 ```md
 1.  Item
-2.  Item
-3.  Item
+1.  Item
+1.  Item
 ```
 
-***Unapproved variants:*** 
+Alternate syntax:
 
 -   Ordered lists items are automatically re-numbered sequentially upon display
-    which means all items can begin with `1`, but for the sake of consistency
-    with existing docs, please number your lists sequentially in code.
--   Similar to the comment above for unordered lists, please keep all list
-    content beginning 4 characters in, which means a digit character, a period,
-    then two spaces, then content.
+    which means all items can begin with `1`, or they can be ordered
+    sequentially in code.
 
 
 ### Nested lists
@@ -168,8 +148,7 @@ List items must be indented 4 spaces:
 ```
 
 
-Code
-----
+## Code
 
 ### Inline code
 
@@ -201,7 +180,7 @@ BLOCK
 *Fenced code can use more backticks when necessary to represent code with
 3 backticks (which is what you'd see in the source for this page).*
 
-***Unapproved variants:*** For fenced code, the tilde `~` character also works
+Alternate syntax: For fenced code, the tilde `~` character also works
 in place of the backtick character but should be avoided for consistency.
 
 
@@ -245,15 +224,15 @@ A block of **"indented code"** with four spaces at the start of each line:
     `swift`, `tex`, `thor`, `v`, `vb`, `vbnet`, `vbs`, `vbscript`, `veo`,
     `xhtml`, `xml`, `xsl`, `yaml`, `zsh`
 -   Syntax highlighting cannot be forced for indented code.
--   Syntax highlighting is not available for inline code. 
+-   Syntax highlighting is not available for inline code.
 -   [Stack Exchange syntax highlighting][stack exchange syntax highlighting] is
     done differently.
 
 [stack exchange syntax highlighting]: http://stackoverflow.com/editing-help#syntax-highlighting
 
-### Code blocks within lists 
+### Code blocks within lists
 
-You can use **indented code within lists** by keeping a blank line 
+You can use **indented code within lists** by keeping a blank line
 above/below and indenting *4 spaces more than your list content*, like this:
 
 ```md
@@ -293,8 +272,7 @@ mkdocs**:
 
 
 
-Images
-------
+## Images
 
 Images function mostly the same as hyperlinks, but preceded by an exclamation
 point and with alt text in place of the link text.
@@ -303,7 +281,7 @@ point and with alt text in place of the link text.
 ![Alt text](image.png)
 ```
 
-or 
+or
 
 ```md
 ![Alt text][id]
@@ -312,8 +290,7 @@ or
 ```
 
 
-Other markdown syntax
----------------------
+## Other markdown syntax
 
 -   [Tables] (to be avoided when possible)
 -   [Emojis] (great for Mattermost)
@@ -326,13 +303,12 @@ Other markdown syntax
 [Emojis]: http://www.webpagefx.com/tools/emoji-cheat-sheet/
 [Tables]: https://help.github.com/articles/organizing-information-with-tables
 
-External references
--------------------
+## External references
 
 -   [Mattermost markdown](https://docs.mattermost.com/help/messaging/formatting-text.html)
 -   [Stack Exchange markdown](http://stackoverflow.com/editing-help)
 -   [GitHub markdown](https://help.github.com/categories/writing-on-github/)
--   [Official markdown reference](https://daringfireball.net/projects/markdown/syntax) 
+-   [Official markdown reference](https://daringfireball.net/projects/markdown/syntax)
     (though somewhat difficult to read)
 
 

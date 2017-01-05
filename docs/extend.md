@@ -1,5 +1,4 @@
-Creating CiviCRM Extensions
-===========================
+# Creating CiviCRM Extensions
 
 **CiviCRM Extensions** are packaged pieces of functionality that extend
 CiviCRM's out-of-the-box functionality, independent of CMS plaform.
