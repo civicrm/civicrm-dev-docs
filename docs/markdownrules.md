@@ -83,7 +83,10 @@ This is a second.
 #### Heading 4
 ```
 
-Alternate syntax (only works for h1 and h2):
+The above syntax is [called](http://pandoc.org/MANUAL.html#headers)
+"ATX style headers" in markdown terminology, and is preferred my most.
+An alternate syntax called "setext style headers" works for h1 and h2 as
+follows:
 
 ```md
 Heading 1
