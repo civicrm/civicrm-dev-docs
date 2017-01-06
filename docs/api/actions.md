@@ -49,7 +49,7 @@ Used for autocomplete lookups by the
 Returns the options for a specified field e.g.
 ```php
 civicrm_api3(
-  'contact',
+  'Contact',
   'getoptions',
   array('field' => 'gender_id')
 );
