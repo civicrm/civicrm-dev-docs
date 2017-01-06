@@ -23,6 +23,8 @@ pages:
 - Hooks:
    - How to Use Hooks: hook.md
    - All Available Hooks: hooks-db.md
+- Best Practices:
+  - Documentation Style Guide: best-practices/documentation-style-guide.md
 - Miscellaneous:
    - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md

@@ -1,24 +1,26 @@
 # Documentation style guide
 
-This page is a place to collectively write the style guide for the
-CiviCRM books, i.e. for high quality 'finished' documentation about
-CiviCRM. Please join the documentation team, familiarise yourself with
-these guidelines, and follow them where they make sense.  Please also
-suggest improvements to the documentation.
+All CiviCRM guides *(like this Developer Guide)* are intended to provide
+high-quality "finished" documentation about CiviCRM. This Style Guide page
+documents the standards we wish to uphold to ensure all guides maintain this
+high level of quality.
 
-## Chapters and sections
+## Parts, chapters, sections
 
-The book is divided into chapters.  Each chapter is further divided into
-sections.
+As with any text book or manual, we divide our guides into "parts", "chapters",
+and "sections". In mkdocs, these blocks translate as follows:
 
-Each section should start with a paragraph that explains what will be
-covered in the section, e.g.
+-   "part" -- folder
+-   "chapter" -- file (in markdown), also one web page with a given URL
+-   "section" -- heading within the page
 
-*This section discusses [one or two sentences which discuss the
-section]. It will help if you already have [those things you should know
-when writing this sections, e.g. other sections of the book, etc.]*
+Keep the page hierarchy to this depth (i.e. do not put folders within other
+folders).
 
-Don't use terms like previous section, etc. because we may re-arrange
+Each chapter should start with a paragraph that explains what will be
+covered in the chapter.
+
+Don't use terms like "previous chapter", etc. because we may re-arrange
 sections and we don't want or need to encourage people to read the book
 from front to back.
 
@@ -35,7 +37,7 @@ are system administrator tasks out there (setting up an SSL certificate,
 configuring CiviMail etc.) and point them in the right direction when
 they want to know about those tasks.
 
-### Refering to different users, contacts etc.
+### Referring to different users, contacts etc.
 
 People who interact via the front end should be called end users /
 contacts.
@@ -48,20 +50,18 @@ More techincal people are called hosting providers or system
 administrators
 
 We should avoid using the word CiviCRM core team.  Instead we can say
-'CiviCRM' if we want to talk about something standard or official or
-'the CiviCRM community' when we want to talk about the wider ecosystem
+"CiviCRM" if we want to talk about something standard or official or
+"the CiviCRM community" when we want to talk about the wider ecosystem
 of users, developers, etc.
 
 ## Formatting conventions
-
-Some formatting conventions...
 
 ### Describing the CiviCRM user interface
 
 Menu selections, buttons, tabs (basically, things that the reader is
 being told to click) should be in bold.
 
--   Navigate to **Administer \> CiviEvent \> Event Types** to review the
+-   Navigate to **Administer > CiviEvent > Event Types** to review the
     default list of event types, shown in the following screenshot.
 -   Modify event type labels by clicking **Edit** on any row.
 -   Click **Add Event Type** to create a new category for your events.
@@ -75,17 +75,17 @@ and a generic activity (e.g., the Send Email activity versus sending an
 email). However, sometimes it is too cumbersome or just plain weird to
 capitalize every instance of a term even if it refers to a specific Civi
 thing or technical definition (e.g., scheduled reminders, plain text).
-Use your best judgement as to what serves the reader; trying to enforce
+Use your best judgment as to what serves the reader; trying to enforce
 consistency in this arena will slow us down/drive us crazy.
 
 Quotes should be avoided as much as possible; however, do use them when
 they seem necessary for clarity (e.g., if you are talking about setting
 or field labels that are long phrases).
 
-You can divide the CivICRM interface into CivICRM admin/administration
-pages and CivICRM public/front-end pages.
+You can divide the CiviCRM interface into CiviCRM admin/administration
+pages and CiviCRM public/front-end pages.
 
-### Refering to other sections and to other sources of information
+### Referring to other sections and to other sources of information
 
 An example of an internal reference as written in markdown is: Read more
 about [defining memberships](../membership/defining-memberships).
@@ -182,40 +182,17 @@ Donations.pdf](/confluence/download/attachments/65307021/Quick%20Start%20Guide%2
 ## Spelling and punctuation
 
 Both U.K. and U.S. English spellings are acceptable; we actually welcome
-inconsistency around this. Civi is an international project, so it's
+inconsistency around this. CiviCRM is an international project, so it's
 mixing it up is a benefit.
 
 Double quotes are preferred over single quotes.
 
 ### Frequently used terms
 
-Autoresponder (not auto-responder)
+-   "Autoresponder" *(not auto-responder)*
+-   "Deduplicate", "dedupe" *(not "de-duplicate" or "de-dupe")*
+-   "Dropdown", "dropdown menu" *(not "drop-down")*
+-   "Meetup" (noun)
+-   "Set up" (verb), "set-up" (noun)
+-   "Unsubscribe" *(not "un-subscribe")*
 
-Deduplicate, dedupe (not de-duplicate or de-dupe)
-
-Dropdown, dropdown menu (not drop-down)
-
-
-
-Meetup (noun)
-
-Set up (verb), set-up (noun)
-
-Unsubscribe (not un-subscribe)
-
-### Helpful
-
-If looking for a specific term throughout the latest version (including
-unpublished changes) of the entire book ????
-
-
-
-### Style Guide by example - WIP
-
-![Gliffy](/confluence/download/resources/com.gliffy.integration.confluence:gliffy-macro-key/icons/gliffy-logo-20px.png "Gliffy")
-Gliffy
-[![Zoom](/confluence/download/resources/com.gliffy.integration.confluence:gliffy-macro-key/icons/gliffy_macro_icon_zoom.png "Zoom")
-Zoom](/confluence/download/attachments/65307021/Book%20style%20guide%20examples%20-%20WIP.png?version=6&modificationDate=1454632726000&api=v2)
-
-![](/confluence/download/attachments/65307021/Book%20style%20guide%20examples%20-%20WIP.png?version=6&modificationDate=1454632726000&api=v2)
-![Gliffy](/confluence/download/resources/com.gliffy.integration.confluence:gliffy-macro-key/icons/gliffy-logo-20px.png "Gliffy")
