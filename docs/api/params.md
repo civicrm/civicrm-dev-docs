@@ -29,7 +29,7 @@ $result = civicrm_api('UFMatch', 'get', array(
   'version' => 3,
   'uf_id' => $user->uid,
 ));
-$contactid = $contact['values'][$result['id']]['contact_id'];
+$contactId = $result['values'][$result['id']]['contact_id'];
 ```
 
 Example with sequential:
@@ -40,7 +40,7 @@ $result = civicrm_api('UFMatch', 'get', array(
   'uf_id' => $user->uid,
   'sequential' => 1,
 ));
-$contactid = $result['values'][0]['contact_id'];
+$contactId = $result['values'][0]['contact_id'];
 ```
 
 Note that a single record is returned in this example - whenever a single
