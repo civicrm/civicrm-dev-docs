@@ -32,30 +32,3 @@ to help out!
 [wiki]: http://wiki.civicrm.org/confluence/display/CRMDOC/Develop
 [migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
 
-## Other sources of information
-
-As an open-source project, CiviCRM is managed by an international community of
-developers and activists. Help from these people can be found in the following
-ways:
-
--   Our [chat rooms](https://chat.civicrm.org/) and
-    [mailing lists](http://lists.civicrm.org/lists/info/civicrm-dev) are great
-    places to say hello and discuss CiviCRM issues with others.
-
--   If you need help, your best bet is probably our
-    [stack exchange Q+A site](http://civicrm.stackexchange.com/).
-
--   If you've identified a problem, you can file issues on our
-    [issue](http://issues.civicrm.org/) on our issue tracker or fix the issue
-    and submit a pull request on
-    [Github](https://github.com/civicrm/civicrm-core/).
-
--   If you've written an extension, please share it in our
-    [extensions directory](https://civicrm.org).
-
--   Use the [wiki](http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki)
-    to share drafts, notes, and specs.
-
--   And don't forget you are always welcome to come to a
-    [real world event](https://civicrm.org/events) like a conference meet-up
-    or sprint.
