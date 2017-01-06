@@ -1,5 +1,4 @@
-Goals and background
---------------------
+## Goals and background
 
 -   This documents how to extend CiviCRM to meet your needs. CiviCRM
     uses hooks in a very similar manner to Drupal, primarily because
@@ -12,8 +11,7 @@ Goals and background
 -   See [CRM/Utils/Hook.php](http://svn.civicrm.org/civicrm/trunk/CRM/Utils/Hook.php)
     in CiviCRM for the source code that invokes these hooks.
 
-Implementing hooks
-------------------
+## Implementing hooks
 
 -   In Drupal or CiviCRM, hooks can be implemented within a module or
     extension. In general, implement a hook by declaring a global
@@ -50,21 +48,18 @@ function my_plugin_pre_callback( $op, $objectName, $objectId, &$objectRef ) {
 As long as the plugin is active (or - if the code is in 'functions.php' - as long as your theme is active), this function will be called every time CiviCRM is about to save data to the database.
 
 
-For A CiviCRM (native) Extension
---------------------------------
+## For A CiviCRM (native) Extension
 
 -   See this page for [creating an extension and implementing hooks
     within it](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
 
-For A Drupal Module
--------------------
+## For A Drupal Module
 
 -   See this page for [creating a module in Drupal](http://drupal.org/node/1074360) esp. the section on implementing hooks.
 -   For a working example, see the hook\_civicrm\_postProcess documentation below.
 -   You can also find examples in your CiviCRM install in [drupal/civitest.module.sample](http://svn.civicrm.org/civicrm/trunk/drupal/civitest.module.sample)
 
-For a Joomla Plugin
--------------------
+## For a Joomla Plugin
 
 -   See this page for [creating a Joomla plugin](http://docs.joomla.org/Plugin). Joomla plugins implement the
     observer design pattern.
@@ -72,8 +67,7 @@ For a Joomla Plugin
 -   Once created plugins may be packaged and installed with the Joomla installer or the files can be placed in the appropriate folder and installed with the discover method.
 -   See this [sample Joomla plugin for CiviCRM hooks](https://wiki.civicrm.org/confluence/display/CRMDOC/Example+Joomla+Plugin+for+implementing+hooks)
 
-For a WordPress Plugin
-----------------------
+## For a WordPress Plugin
 
 -   For a detailed overview of the updated relationship between WordPress and CiviCRM, see the blog post [Working with CiviCRM 4.6 in WordPress](https://civicrm.org/blogs/haystack/working-civicrm-46-wordpress) on the CiviCRM website.
 -   In summary, as of CiviCRM 4.6 there is (almost) full compatibility with the WordPress actions and filters system.
@@ -99,8 +93,7 @@ add_filter( 'civicrm_pre', array( $this, 'my_callback_method', 10, 4 )
 
 For more details (as well as the exceptions to this rule) see the [blog post](https://civicrm.org/blogs/haystack/working-civicrm-46-wordpress) mentioned above.
 
-Inspecting hooks
-----------------
+## Inspecting hooks
 
 The documentation about hooks can be somewhat abstract, and it sometimes
 helps to see interactively how the hooks run.
@@ -113,8 +106,7 @@ helps to see interactively how the hooks run.
     -   [Query Monitor](https://wordpress.org/plugins/query-monitor/)
 
 
-Example Drupal module for implementing hooks
----
+## Example Drupal module for implementing hooks
 I found it useful, when implementing hooks, to write wrapper code for most of them.  The [attached zip](http://wiki.civicrm.org/confluence/download/attachments/86213379/callhooks.zip?version=1&modificationDate=1372586243000&api=v2) file is an example Drupal module that illustrates this technique.  From the README file:
 
 This is just example code to implement custom hooks for CiviCRM.
@@ -132,8 +124,7 @@ To use:
 
 
 
-Example Joomla Plugin for implementing hooks
----
+## Example Joomla Plugin for implementing hooks
 
 This is a simple example of a plugin for Joomla that implements CiviCRM hooks. It consists of two file tabs.php and tabs.xml along with the blank index.html file which is considered good Joomla coding practice.
 
@@ -210,8 +201,7 @@ Tabs.xml
 
 You can make plugins that include multiple hooks or you can make separate plugins. What is appropriate will depend on the application.
 
-Setting and getting custom field values from within hooks
----
+## Setting and getting custom field values from within hooks
 
 To get a custom field ID given the custom field name and custom group name, you can use the following code:
 

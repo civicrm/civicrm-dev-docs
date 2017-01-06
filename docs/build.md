@@ -1,7 +1,7 @@
-*Build.md*
+# Building CiviCRM
 
 TODO:
 
- * Nightlies vs gitify vs civibuild
- * gitify
- * civibuild (https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md)
+-   Nightlies vs gitify vs civibuild
+-   gitify
+-   civibuild (https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md)
