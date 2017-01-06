@@ -11,7 +11,7 @@ with the supported actions and parameters:
 | <code>Activity</code>    | An phone call, meeting,<br /> or email message. that <br /> has occurred (or will <br /> occur) at a specific <br /> date and time|<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>activity\_type\_id</code> <br /> <code>source\_contact\_id</code> <br /> <code>assignee\_contact\_id</code>    |
 | <code>Address</code>     | A street-address related <br /> to a contact. |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_id</code>,  <br /> <code>street\_address</code> <br /> <code>city</code>  <br /> <code>state\_province\_id</code> <br /> <code>country\_id</code>     |
 
-(*For full, up-to-date details about specific entities and parameters, use the 
+(*For full, up-to-date details about specific entities and parameters, use the
 [API Explorer].*)
 
 [API Explorer]: /api/general/#api-explorer
@@ -64,8 +64,8 @@ This is the most common way to call the API.
 ```php
 try {
   $contacts = civicrm_api3('contact', 'get', array(
-    'first_name'  =>  'Alice',
-    'last_name'   =>  'Roberts',
+    'first_name' => 'Alice',
+    'last_name' => 'Roberts',
   ));
 }
 catch (CiviCRM_API3_Exception $e) {
@@ -79,7 +79,7 @@ for usability:
 
 -   The function `civicrm_api3()` is easier to remember.
 -   The `version => 3` parameter is not required.
--   Errors are reported as PHP exceptions. You may catch the exceptions or 
+-   Errors are reported as PHP exceptions. You may catch the exceptions or
     (by default) allow them to bubble up.
 
 *Note*: If you're writing a Drupal module, a Joomla extension, a WordPress
@@ -97,15 +97,16 @@ This class be used locally or remotely to invoke APIs, as in:
 require_once 'your/civicrm/folder/api/class.api.php';
 $api = new civicrm_api3();
 $apiParams = array(
-   'first_name'   =>  'Alice',
-   'last_name'    =>  'Roberts'
+  'first_name' => 'Alice',
+  'last_name' => 'Roberts'
 );
 if ($api->Contact->Get($apiParams)) {
-   //each key of the result array is an attribute of the api
-    echo "\n contacts found ".$api->count;
-   'contact_type'=>'Individual','return'=>'sort_name,current_employer')) {
-} else {
-    echo $api->errorMsg();
+  //each key of the result array is an attribute of the api
+  echo "\n contacts found ".$api->count;
+  'contact_type'=>'Individual','return'=>'sort_name,current_employer')) {
+}
+else {
+  echo $api->errorMsg();
 }
 ```
 
@@ -163,7 +164,7 @@ For more details, see [AJAX Interface].
 
 [AJAX Interface]: https://wiki.civicrm.org/confluence/display/CRMDOC/AJAX+Interface
 
-The AJAX interface is automatically available for web-pages generated through 
+The AJAX interface is automatically available for web-pages generated through
 CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions,
 and custom CiviCRM templates).
 
@@ -173,7 +174,7 @@ The AJAX interface could be made available to other parts of the same website
 from php. Please note that the AJAX interface is subject to
 [API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security)
 and
-[Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). 
+[Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy).
 To use it from an external site or application, see REST interface documentation.
 
 ## Smarty
@@ -183,7 +184,7 @@ To use it from an external site or application, see REST interface documentation
 Found {$myContactList.count} item(s).
 ```
 
-The smarty call is to add extra information, therefore *create* or *delete* 
+The smarty call is to add extra information, therefore *create* or *delete*
 actions don't make sense in this case.
 
 For more details, see

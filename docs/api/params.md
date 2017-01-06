@@ -25,15 +25,22 @@ or by ID.
 Example without sequential:
 
 ```php
-$result= civicrm_api('UFMatch','Get', array('version' =>3, 'uf_id' => $user->uid);
-$contactid=$contact['values'][$result['id']]['contact_id'] );
+$result = civicrm_api('UFMatch', 'Get', array(
+  'version' => 3,
+  'uf_id' => $user->uid,
+));
+$contactid = $contact['values'][$result['id']]['contact_id'];
 ```
 
 Example with sequential:
 
 ```php
-$result= civicrm_api('UFMatch','Get', array('version' =>3, 'uf_id' => $user->uid, 'sequential' => 1);
-$contactid=$result['values'][0]['contact_id'] );
+$result = civicrm_api('UFMatch', 'Get', array(
+  'version' => 3,
+  'uf_id' => $user->uid,
+  'sequential' => 1,
+));
+$contactid = $result['values'][0]['contact_id'];
 ```
 
 Note that a single record is returned in this example - whenever a single
@@ -53,7 +60,7 @@ The maximum number of records to return
 Example:
 
 ```php
-civicrm_api('UFMatch','Get', array(
+civicrm_api('UFMatch', 'Get', array(
   'version' => 3,
   'uf_id' => $user->uid,
   'options' => array(
@@ -75,7 +82,7 @@ The numerical offset of the first result record
 Example:
 
 ```php
-civicrm_api('UFMatch','Get', array(
+civicrm_api('UFMatch', 'Get', array(
   'version' => 3,
   'uf_id' => $user->uid,
   'options' => array(
@@ -205,24 +212,24 @@ To set a custom field, or find entities with custom fields of a
 particular value, you typically use a parameter like this:
 
 ```php
-$param['custom_N'] => 'value';
+$params['custom_N'] = 'value';
 ```
 
 To return custom data for an entity, you typically pass a param like the
 following:
 
 ```php
-$param['return.custom_N'] => 1;
+$params['return.custom_N'] = 1;
 ```
 
 *or (depending on which API entity you are querying)*
 ```php
-$param['return'] => 'custom_N';
+$params['return'] = 'custom_N';
 ```
 
 *or*
 ```php
-$param['return'] => 'custom_N,custom_O,custom_P';
+$params['return'] = 'custom_N,custom_O,custom_P';
 ```
 
 For setting custom date fields, (ie CustomValue create), date format is
