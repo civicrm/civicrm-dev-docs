@@ -30,9 +30,16 @@ platforms.
 
 ## Hyperlinks
 
--   A basic hyperlink
+-   A basic hyperlink (in a sentence)
 
         Try [CiviCRM](https://civicrm.org) for your database.
+
+-   An internal hyperlink on mkdocs (4 different ways that all work)
+
+        [extensions](/extensions/basics)
+        [extensions](/extensions/basics.md)
+        [extensions](extensions/basics)
+        [extensions](extensions/basics.md)
 
 -   With long URLs, the following syntax is better.
 
