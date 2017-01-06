@@ -23,7 +23,7 @@ See [api/v3/examples] within the core source code for a plethora of examples
 Note that there are a few supported syntaxes:
 
 ```php
-civicrm_api('Contact', 'Create', array(
+civicrm_api('Contact', 'create', array(
   'version' => 3,
   'contact_type' => 'Individual',
   'display_name' => 'BA Baracus',
@@ -34,7 +34,7 @@ civicrm_api('Contact', 'Create', array(
 is the same as
 
 ```php
-civicrm_api('Contact', 'Create', array(
+civicrm_api('Contact', 'create', array(
   'version' => 3,
   'contact_type' => 'Individual',
   'display_name' => 'BA Baracus',
@@ -46,7 +46,7 @@ If you have 2 websites to create you can pass them as ids after the `.`
 or an array
 
 ```php
-civicrm_api('Contact', 'Create', array(
+civicrm_api('Contact', 'create', array(
   'version' => 3,
   'contact_type' => 'Individual',
   'display_name' => 'BA Baracus',
@@ -58,7 +58,7 @@ civicrm_api('Contact', 'Create', array(
 or
 
 ```php
-civicrm_api('Contact', 'Create', array(
+civicrm_api('Contact', 'create', array(
   'version' => 3,
   'contact_type' => 'Individual',
   'display_name' => 'BA Baracus',

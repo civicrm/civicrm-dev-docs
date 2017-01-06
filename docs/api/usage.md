@@ -63,7 +63,7 @@ This is the most common way to call the API.
 
 ```php
 try {
-  $contacts = civicrm_api3('contact', 'get', array(
+  $contacts = civicrm_api3('Contact', 'get', array(
     'first_name' => 'Alice',
     'last_name' => 'Roberts',
   ));
