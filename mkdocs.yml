@@ -25,6 +25,7 @@ pages:
    - All Available Hooks: hooks-db.md
 - Writing Extensions:
   - Basics: extensions/basics.md
+  - Confluence+Source: extensions/createamoduleextension.md
   # - civix: extensions/civix.md
   # - Anatomy of Files: extensions/files.md
   # - Using hooks: extensions/using-hooks.md
