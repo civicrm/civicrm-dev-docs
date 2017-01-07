@@ -148,11 +148,49 @@ Below are our preferred spellings of CiviCRM-specific words:
     -   In other guides - refers to the
         [core team](https://civicrm.org/teams/core-team)
 
+### Gender neutrality
+
+When describing people in examples, avoid using pronouns that assign specific
+genders to them.
+
+Example of gendered language to avoid:
+
+> *When a supporter wishes to fundraise on behalf of an organization, **he** can
+> create a fundraising page **himself**, called a Personal Campaign Page, and
+> then solicit donations from **his** friends and family. After a donation
+> arrives, CiviCRM can even send **him** a notification email.*
+
+Option 1 - fix by using [singular they] *(which is
+[rapidly](https://www.washingtonpost.com/news/wonk/wp/2016/01/08/donald-trump-may-win-this-years-word-of-the-year/)
+[gaining](http://www.americandialect.org/2015-word-of-the-year-is-singular-they)
+[popularity](http://www.npr.org/2016/01/13/462906419/everyone-uses-singular-they-whether-they-realize-it-or-not)
+)*:
+
+> *When a supporter wishes to fundraise on behalf of an organization, **they**
+> can create a fundraising page **themself**, called a Personal Campaign Page,
+> and then solicit donations from **their** friends and family. After a donation
+> arrives, CiviCRM can even send **them** a notification email.*
+
+Option 2 - fix by avoiding pronouns entirely:
+
+> *A supporter wishing to fundraise on behalf of an organization can
+> autonomously create a fundraising page, called a Personal Campaign Page, and
+> then solicit donations from friends and family. After a donation arrives,
+> CiviCRM can even send **the supporter** a notification email.*
+
+Avoid fixing gendered language by replacing "he" with phrases such as:
+"he/she", "he or she", "she", or "s/he". Such replacements (a) become more
+awkward when sentences include multiple pronouns, (b) do not intuitively offer
+a consistent choice among them, and (c) fail to acknowledge that some people
+identify with genders outside of a binary framework.
+
+[singular they]: https://en.wikipedia.org/wiki/Singular_they
+
 ### Tone and vocabulary
 
 **For the *User* and *Administrator* Guides only:** We try and limit the
 content to tasks that the user can perform from the front end. This means that
-we don't go into details steps about installation or system administration
+we don't go into detailed steps about installation or system administration
 tasks.  We do however let people know that there are system administrator tasks
 out there (setting up an SSL certificate, configuring CiviMail etc.) and point
 them in the right direction when they want to know about those tasks.
