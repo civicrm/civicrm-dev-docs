@@ -102,47 +102,6 @@ domain.
 http://example.org/civicrm/mailing/queue&reset=1
 ```
 
-## The Best Practices/Workflows/Tasks/Use Cases section
-
-*Audience*: Someone who is new to CiviCRM, potentially new to the
-non-profit sector, and not able to code their way out of a problem (i.e.,
-they likely have no coding skills at all).
-
-*Purpose*: To provide users with a quick introduction to CiviCRM's
-features from the perspective of job responsibilities, so potential
-clients can get a feel for how CiviCRM will help them fulfill their
-roles. And someone new to the non-profit sector can get a better sense of
-how exactly, CiviCRM can help them grow and sustain relationships. Step
-by step guides to common processes will also hopefully motivate people
-that they can learn this new, complicated system.
-
-*Section Focus*: Process required to complete one task. Tasks can
-include set up event registration, enter an offline donation, send a
-newsletter, etc. If each section can be read independent of any other,
-then readers can find exactly what they want based on how much time they
-have and what they need to learn for their job. Sections can probably
-satisfy these goals in 200 words or less.
-
-*Series*: Each task or section can be part of a series on fundraising,
-event planning, membership management, etc.
-
-*Expertise Level*: We probably want to start with beginning tasks.
-Advanced tasks that require extra coding, complicated combinations of
-modules, or burdensome data entry procedures for more personal
-acknowledgment letters (I'm thinking of the soft credit field) might be
-able to wait.
-
-*Relationship to CiviCRM User and Administrator Guide*: Process oriented
-sections end with a heading "Where to Learn More" and links to sections
-in the User and Administrator Guide that explain more thoroughly how to
-implement in CiviCRM the process just described.
-
-*Example*: In case anyone feels that having them in printable PDF form
-would make it easy to share and impress potential decision makers that
-this is right product for their organization. [Quick Start Guide to
-Fundraising - Offline
-Donations.pdf](/confluence/download/attachments/65307021/Quick%20Start%20Guide%20to%20Fundraising%20-%20Offline%20Donations.pdf?version=1&modificationDate=1333845371000&api=v2)
-
 ## Language
 
 ### Spelling and punctuation
