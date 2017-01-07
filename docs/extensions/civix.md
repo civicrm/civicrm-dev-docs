@@ -1,5 +1,10 @@
 # Civix
 
+>> Note: This page started
+>>[here in the wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
+>> We have not yet transferred all of the script snipets, so you may wish to
+>> peruse this page as well.
+
 The [`civix`](https://github.com/totten/civix/) command-line tool is the
 community-endorsed method for building your CiviCRM extensions.
 
@@ -28,7 +33,6 @@ To generate a skeletal extension module, we will use `civix generate:module`
 and pass in the name for our extension. See [here](./basics/#extension-names)
 for details of naming conventions.
 
-### Generate skeleton
 Start with:
 
 ```bash
@@ -52,17 +56,12 @@ configuration. If this fails or is
 otherwise incorrect, then you may pass explicit values with `--author`
 and `--email`.
 
-### Update "info.xml"
-
-The default ***info.xml*** file contains some examples and placeholders
-which you need to fix. You can edit most of these fields intuitively.
-If you need detailed specifications, see
-[Extension
+You can now update your ***info.xml***. This file initially contains some
+examples and placeholders which you need to fix. You can edit most of these
+fields intuitively.  If you need detailed specifications, see [Extension
 Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference).
 
-### Enable the extension
-
-Now that you have created your extension, you can activate by navigating
+Now that you have created your extension, you need to activate it by navigating
 to:
 
 **Administer** » **System Settings** » **Manage Extensions**
@@ -100,22 +99,18 @@ This creates three files:
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
     this file, see
-    [http://www.smarty.net/docsv2/en/](http://www.smarty.net/docsv2/en/)
-    .
+    [the smarty guide](http://www.smarty.net/docsv2/en/).
 
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as passing data from the controller to the view.
 
-***`check!`***[](fixme!)
-
+>> ![check](../img/check.png)
 After adding or modifying a route in the XML file, you must reset
 CiviCRMs "menu cache". This can be done in a web browser by visiting
 "/civicrm/menu/rebuild?reset=1" or by running
-`drush                           cc civicrm` if using Drupal & Drush.
+`drush cc civicrm` if using Drupal & Drush.
 
-***`check!`***[](fixme!)
-
-**Edit In Place**\
+**Edit In Place**
 
 If the data on the page is read and updated through the API, then you
 may want to consider using the [in-place
@@ -126,7 +121,7 @@ editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 form, one must create a PHP controller class, create a Smarty template
 file, and create a routing rule. You can create the appropriate files by
-calling "civix [generate:form](http://generateform)"
+calling "civix generate:form"
 
 **Using "civix generate:form"**
 
@@ -143,20 +138,16 @@ This creates three files:
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
     this file, see
-    [http://www.smarty.net/docsv2/en/](http://www.smarty.net/docsv2/en/)
-    .
+    [the smarty guide](http://www.smarty.net/docsv2/en/).
 
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as adding a <SELECT\> element to the form.
 
-***`check!`***[](fixme!)
-
-After adding or modifying a route in the XML file, you must reset
+>> ![check](../img/check.png) After adding or modifying a route in the XML file, you must reset
 CiviCRMs "menu cache". This can be done in a web browser by visiting
 "/civicrm/menu/rebuild?reset=1"
 
-***`forbidden!`***[](fixme!)
-
+>> ![danger](../img/danger.png)
 The form system is not well documented and may undergo significant
 revision after the CiviCRM 4.x series. In general, migrating basic pages
 will be easier than migrating basic forms, so you may want to consider
@@ -195,19 +186,17 @@ you can execute the upgrades through the web interface by visiting the
 "Manage Extensions" screen. This screen will display an alert with an
 action-link to perform the upgrades.
 
-***`information!`***[](fixme!)
-
+>> ![information](../img/info.png)
 The "upgrader" class is a wrapper for
 [hook\_civicrm\_upgrade](/confluence/display/CRMDOC43/Hook+Reference)
 which aims to be easy-to-use for developers with Drupal experience. If
 you need to organize the upgrade logic differently, then consider
 providing your own implementation of hook\_civicrm\_upgrade.
 
-***`forbidden!`***[](fixme!)
-
-Only use the upgrade system to manage new SQL tables. Do not manipulate
-core schema. (To discuss schema changes for the core system, go on IRC
-or the forums.)
+>> ![danger](../img/danger.png)
+Only use the upgrade system to manage new SQL
+tables. Do not manipulate core schema. (To discuss schema changes for the
+core system, go on IRC or the forums.)
 
 If you need to create triggers on core SQL tables, use
 [hook\_civicrm\_triggerInfo](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference).
@@ -247,7 +236,7 @@ them for use with the extension. Steps:
     "CustomGroup" or "civicrm\_custom\_group") – you will need this in a
     minute.
 -   Verify that civix is connected to your instance of CiviCRM by
-    running "civix [civicrm:ping](http://civicrmping)". (If the ping is
+    running "civix civicrm:ping". (If the ping is
     unsuccessful, re-read the civix README.md and do the
     post-installation configuration.)
 -   Create an XML file with "civix
@@ -255,19 +244,16 @@ them for use with the extension. Steps:
     specify the custom-data group ID. (In the example below, it assumes
     ID 7.)
 -   Create an upgrader file with "civix
-    [generate:upgrader](http://generateupgrader)" – this will load the
+    generate:upgrader" – this will load the
     XML file during installation. (Example below.)
 
 **Using "civix generate:custom-xml"**
 
-Most of the CiviHR modules rely on the first approach:\
- \
+Most of the CiviHR modules rely on the first approach (e.g.:
+[/hrqual/CRM/HRQual/Upgrader/Base.php\#L244](https://github.com/civicrm/civihr/blob/master/hrqual/CRM/HRQual/Upgrader/Base.php#L244) and
+[/hrqual/xml/auto\_install.xml](https://github.com/civicrm/civihr/blob/master/hrqual/xml/auto_install.xml)).
 
-[https://github.com/civicrm/civihr/blob/master/hrqual/CRM/HRQual/Upgrader/Base.php\#L244](https://github.com/civicrm/civihr/blob/master/hrqual/CRM/HRQual/Upgrader/Base.php#L244)\
-
-[https://github.com/civicrm/civihr/blob/master/hrqual/xml/auto\_install.xml](https://github.com/civicrm/civihr/blob/master/hrqual/xml/auto_install.xml)
-
-#### \
+####
  If extending an entity of a specific subtype (e.g. Activities of type 'Volunteer')
 
 Unfortunately, the automatic export doesn't work too well when the
@@ -277,22 +263,22 @@ Relationships with type "Emergency Contact". Internally, Civi uses
 "relationship type id\#s", but those aren't portable. As a quick
 work-around, I used Smarty:
 
-For example:\
+For example:
 
-[https://github.com/civicrm/civihr/blob/master/hremerg/CRM/HREmerg/Upgrader.php\#L14](https://github.com/civicrm/civihr/blob/master/hremerg/CRM/HREmerg/Upgrader.php#L14)\
+[/hremerg/CRM/HREmerg/Upgrader.php\#L14](https://github.com/civicrm/civihr/blob/master/hremerg/CRM/HREmerg/Upgrader.php#L14)
 
-[https://github.com/civicrm/civihr/blob/master/hremerg/templates/hremerg-customdata.xml.tpl\#L11](https://github.com/civicrm/civihr/blob/master/hremerg/templates/hremerg-customdata.xml.tpl#L11)\
- \
+[/hremerg/templates/hremerg-customdata.xml.tpl\#L11](https://github.com/civicrm/civihr/blob/master/hremerg/templates/hremerg-customdata.xml.tpl#L11)
+
  To create this, I started by using "civix
-[generate:custom-data](http://generatecustom-data)" and then:\
- \
+[generate:custom-data](http://generatecustom-data)" and then:
+
  1. Rename the xml/auto\_install.xml to
 templates/hremerg-customdata.xml.tpl
 
-\2. In the .tpl file, change the value of
+2. In the .tpl file, change the value of
 <extends\_entity\_column\_value\>. Instead of a hard-coded type id\#,
-use a variable.\
- 3. Add logic in the upgrader to create the relationship type\
+use a variable.
+ 3. Add logic in the upgrader to create the relationship type
  4. Add logic in the upgrader to evaluate the Smarty template
 
 ### Add a hook function
@@ -307,7 +293,7 @@ Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference).
 
 To implement a hook, you must add a function to the module's main .php
 file. (This file was created earlier by the
-"[generate:module](http://generatemodule)" command.) The function name
+"generate:module" command.) The function name
 is taken by combining the module's short-name with the hook's name.
 (This is just like Drupal's hook convention.)
 
@@ -318,8 +304,7 @@ add the following code:
 
 **Implementing "hook\_civicrm\_post" in "myextension"**
 
-***`information!`***[](fixme!)
-
+>> ![information](../img/info.png)
 When you first created the skeletal project, several hook functions were
 auto-generated in *myextension.php*. These functions are usually about
 one line long – they simply delegate the work to another function. For
@@ -339,7 +324,7 @@ Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference)
 
 CiviReport enables developers to define new business reports using
 customizable SQL logic and form layouts. Use
-"[generate:report](http://generatereport)" to get started:
+"generate:report" to get started:
 
 **Using "civix generate:report"**
 
@@ -358,9 +343,7 @@ This creates three files:
     the report's HTML template. (Note: This usually delegates
     responsibility to a core template and does not need to be edited.)
 
-***`check!`***[](fixme!)
-
-**Copy an Existing Report**\
+**Copy an Existing Report**
 
 The reports included in CiviCRM are
 [open-source](http://civicrm.org/licensing), and (pursuant to the AGPL
@@ -374,7 +357,7 @@ report based on an existing report:
 -   Determine the class-name of the original report. (For example, the
     activity report is in the class "*CRM\_Report\_Form\_Activity*".)
 -   Return to your module directory and run the
-    "[generate:report](http://generatereport)" command, e.g.
+    "generate:report" command, e.g.
 
 **Using "generate:report --copy"**
 
@@ -382,7 +365,7 @@ report based on an existing report:
 
 CiviCRM enables developers to define new search forms using customizable
 SQL logic and form layouts. Use
-"[generate:search](http://generatesearch)" to get started:
+"generate:search" to get started:
 
 **Using "civix generate:search"**
 
@@ -396,9 +379,7 @@ This creates two files:
 -   ***CRM/Myextension/******Form/Search/MySearch.php*** contains the
     form-builder and query-builder for the custom search.
 
-***`check!`***[](fixme!)
-
-**Copy an Existing Search**\
+**Copy an Existing Search**
 
 The custom search classes included in CiviCRM are
 [open-source](http://civicrm.org/licensing), and (pursuant to the AGPL
@@ -413,7 +394,7 @@ make a new search based on an existing search:
     zipcode search is in the class
     "*CRM\_Contact\_Form\_Search\_Custom\_ZipCodeRange*".)
 -   Return to your module directory and run the
-    "[generate:search](http://generatesearch)" command, e.g.
+    "generate:search" command, e.g.
 
 **Using "generate:search --copy"**
 
@@ -422,8 +403,7 @@ on whether the original search screen defines its own Smarty template.
 
 ### Add an API function
 
-The [CiviCRM
-API](http://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference)
+The [CiviCRM API](../api/general)
 provides a way to expose functions for use by other developers – API
 functions can be useful for implementing AJAX interfaces (using the
 cj().crmAPI() helper), and they can also be called via REST, PHP,
@@ -507,8 +487,6 @@ is useful to run the test case within an active, clean CiviCRM
 environment. The CiviCRM/Civix testing tools will automate this – as
 long as you follow a few basic conventions. The following steps will
 create and run a test in your extension.
-
-***`check!`***[](fixme!)
 
 Before preparing unit-tests with extensions, you must first:
 
