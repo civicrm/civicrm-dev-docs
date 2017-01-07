@@ -1,18 +1,18 @@
 # Documentation style guide
 
 All CiviCRM guides *(like this Developer Guide)* are intended to provide
-high-quality "finished" documentation about CiviCRM. This Style Guide page
-documents the standards we wish to uphold to ensure all guides maintain this
-high level of quality.
+high-quality "finished" [documentation] (documentation.md)
+about CiviCRM. This Style Guide page documents the standards we wish to
+uphold to ensure all guides maintain this high level of quality.
 
 ## Parts, chapters, sections
 
-As with any text book or manual, we divide our guides into "parts", "chapters",
-and "sections". In mkdocs, these blocks translate as follows:
+Similar to most text books and manuals, we divide our guides into "parts",
+"chapters", and "sections". In mkdocs, these blocks translate as follows:
 
--   "part" -- folder
--   "chapter" -- file (in markdown), also one web page with a given URL
--   "section" -- heading within the page
+-   "part" - folder
+-   "chapter" - file (in markdown), also one web page with a given URL
+-   "section" - heading within the page
 
 Keep the page hierarchy to this depth (i.e. do not put folders within other
 folders).
@@ -24,35 +24,17 @@ Don't use terms like "previous chapter", etc. because we may re-arrange
 sections and we don't want or need to encourage people to read the book
 from front to back.
 
-## Tone and vocabulary
+### Headings
 
-### Talking about technical stuff
+The first heading in a chapter should be Heading 1. All others should be
+in H2 and H3, only where necessary.  If you find yourself wanting to use
+H4, consider if it's truly necessary and whether the chapter should
+instead be refactored.
 
-We try and limit the content of the user and administrator guide to
-things that you can do with the user interface of CiviCRM.
-
-This means that we don't go into details steps about installation or
-system administration tasks.  We do however let people know that there
-are system administrator tasks out there (setting up an SSL certificate,
-configuring CiviMail etc.) and point them in the right direction when
-they want to know about those tasks.
-
-### Referring to different users, contacts etc.
-
-People who interact via the front end should be called end users /
-contacts.
-
-People who administer CiviCRM on a day to day basis can be called users
-or, when you want to differentiate between end users and staff of an
-organisation, you can say end users and site admins.
-
-More techincal people are called hosting providers or system
-administrators
-
-We should avoid using the word CiviCRM core team.  Instead we can say
-"CiviCRM" if we want to talk about something standard or official or
-"the CiviCRM community" when we want to talk about the wider ecosystem
-of users, developers, etc.
+Part titles and subheadings should be in sentence case (first word
+capitalized), not headline case (each word capitalized). Chapter
+headings (the big ones like Email, Contributions, etc) should be IN ALL
+CAPS.
 
 ## Formatting conventions
 
@@ -62,7 +44,7 @@ Menu selections, buttons, tabs (basically, things that the reader is
 being told to click) should be in bold.
 
 -   Navigate to **Administer > CiviEvent > Event Types** to review the
-    default list of event types, shown in the following screenshot.
+    default list of event types.
 -   Modify event type labels by clicking **Edit** on any row.
 -   Click **Add Event Type** to create a new category for your events.
 
@@ -70,47 +52,20 @@ Elements of the system and interface should be capitalized (e.g., the
 Events component, the Template Title field).
 
 It is also sometimes helpful for clarity when discussing concepts to use
-capitalization to distinguish between a specific activity within Civi
+capitalization to distinguish between a specific activity within CiviCRM
 and a generic activity (e.g., the Send Email activity versus sending an
 email). However, sometimes it is too cumbersome or just plain weird to
-capitalize every instance of a term even if it refers to a specific Civi
+capitalize every instance of a term even if it refers to a specific CiviCRM
 thing or technical definition (e.g., scheduled reminders, plain text).
 Use your best judgment as to what serves the reader; trying to enforce
-consistency in this arena will slow us down/drive us crazy.
+consistency in this arena will slow us down or drive us crazy.
 
 Quotes should be avoided as much as possible; however, do use them when
 they seem necessary for clarity (e.g., if you are talking about setting
 or field labels that are long phrases).
 
-You can divide the CiviCRM interface into CiviCRM admin/administration
-pages and CiviCRM public/front-end pages.
-
-### Referring to other sections and to other sources of information
-
-An example of an internal reference as written in markdown is: Read more
-about [defining memberships](../membership/defining-memberships).
-
-Sample links to specific CiviCRM URL paths should use example.org as the
-domain: [http://example.org/civicrm/mailing/queue&reset=1](http://example.org/civicrm/mailing/queue&reset=1)
-
-As appropriate, use version-independent links when referencing wiki.
-Version specific wiki page will have the version after CRMDOC, such
-as [http://wiki.civicrm.org/confluence/display/CRMDOC43/CiviMail+Installation](http://wiki.civicrm.org/confluence/display/CRMDOC43/CiviMail+Installation).
-Same link without the version number, such as
-[http://wiki.civicrm.org/confluence/display/CRMDOC/CiviMail+Installation](http://wiki.civicrm.org/confluence/display/CRMDOC/CiviMail+Installation) will
-always redirect to the most recent wiki version of the page.
-
-### Headings
-
-The first heading in a section should be Heading 1. All others should be
-in H2 and H3, only where necessary.  If you find yourself wanting to use
-H4, consider if it's truly necessary and whether the section should
-instead be refactored.
-
-Section titles and subheadings should be in sentence case (first word
-capitalized), not headline case (each word capitalized). Chapter
-headings (the big ones like Email, Contributions, etc) should be IN ALL
-CAPS.
+You can divide the CiviCRM interface into administration pages and
+public-facing pages.
 
 ### Bullets and numbered lists
 
@@ -138,16 +93,25 @@ descriptive names for images.
 
 Alternative Text  (ALT Tags) should be included for every image.
 
+### URLs
+
+Sample links to specific CiviCRM URL paths should use `example.org` as the
+domain.
+
+```text
+http://example.org/civicrm/mailing/queue&reset=1
+```
+
 ## The Best Practices/Workflows/Tasks/Use Cases section
 
 *Audience*: Someone who is new to CiviCRM, potentially new to the
-nonprofit sector, and not able to code their way out of a problem (i.e.,
+non-profit sector, and not able to code their way out of a problem (i.e.,
 they likely have no coding skills at all).
 
 *Purpose*: To provide users with a quick introduction to CiviCRM's
 features from the perspective of job responsibilities, so potential
 clients can get a feel for how CiviCRM will help them fulfill their
-roles. And someone new to the nonprofit sector can get a better sense of
+roles. And someone new to the non-profit sector can get a better sense of
 how exactly, CiviCRM can help them grow and sustain relationships. Step
 by step guides to common processes will also hopefully motivate people
 that they can learn this new, complicated system.
@@ -179,20 +143,60 @@ this is right product for their organization. [Quick Start Guide to
 Fundraising - Offline
 Donations.pdf](/confluence/download/attachments/65307021/Quick%20Start%20Guide%20to%20Fundraising%20-%20Offline%20Donations.pdf?version=1&modificationDate=1333845371000&api=v2)
 
-## Spelling and punctuation
+## Language
+
+### Spelling and punctuation
 
 Both U.K. and U.S. English spellings are acceptable; we actually welcome
-inconsistency around this. CiviCRM is an international project, so it's
+inconsistency around this. CiviCRM is an international project, so its
 mixing it up is a benefit.
 
 Double quotes are preferred over single quotes.
 
-### Frequently used terms
+Avoid abbreviations. For example, write "organisation" instead of "org".
 
--   "Autoresponder" *(not auto-responder)*
--   "Deduplicate", "dedupe" *(not "de-duplicate" or "de-dupe")*
--   "Dropdown", "dropdown menu" *(not "drop-down")*
--   "Meetup" (noun)
--   "Set up" (verb), "set-up" (noun)
--   "Unsubscribe" *(not "un-subscribe")*
+Below are our preferred spellings of CiviCRM-specific words:
+
+-   "autoresponder" *(not auto-responder)*
+-   "CiviCRM" *(not "Civi")*
+-   "deduplicate", "dedupe" *(not "de-duplicate" or "de-dupe")*
+-   "dropdown", "dropdown menu" *(not "drop-down")*
+-   "meetup" (noun)
+-   "non-profit" *(not "nonprofit")*
+-   "set up" (verb), "set-up" (noun)
+-   "unsubscribe" *(not "un-subscribe")*
+
+### Terminology
+
+-   **contact** - a contact record within CiviCRM
+-   **organisation/organization** - a non-profit (or other community group,
+    etc) who is (or could be) using CiviCRM
+-   **user** - a person who interacts with CiviCRM via the front end
+-   **site admin** - a staff member (of an organisation) who regularly
+    administers CiviCRM from the front end. (By definition these people are
+    also "users".)
+-   **system administrator** - a technical person who administers CiviCRM from
+    the back end
+-   **hosting provider**
+    -   In the User Guide - synonymous with *"system administrator"*
+    -   In other guides - a person or company that owns and/or maintains the
+        server upon which CiviCRM runs
+-   **developer** - a computer programmer who writes code to improve or extend
+    the functionality, stability, or security of CiviCRM
+-   **core team**
+    -   In the User Guide - *should be avoided. Use "CiviCRM" or "the CiviCRM
+        community".*
+    -   In other guides - refers to the
+        [core team](https://civicrm.org/teams/core-team)
+
+### Tone and vocabulary
+
+**For the *User* and *Administrator* Guides only:** We try and limit the
+content to tasks that the user can perform from the front end. This means that
+we don't go into details steps about installation or system administration
+tasks.  We do however let people know that there are system administrator tasks
+out there (setting up an SSL certificate, configuring CiviMail etc.) and point
+them in the right direction when they want to know about those tasks.
+
+
 
