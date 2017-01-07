@@ -1,7 +1,5 @@
 # Create a Module Extension
 
-![image](/confluence/images/icons/emoticons/information.png)
-
 **Pre-Requisites**\
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming
@@ -25,41 +23,6 @@
     by the www-data user. You will need to make this file readable by
     your development user account for civix to work.
 
-**Table of Contents**
-
--   [Generate a skeletal
-    extension](#CreateaModuleExtension-Generateaskeletalextension)
--   [Update "info.xml"](#CreateaModuleExtension-Update"info.xml")
--   [Enable the extension](#CreateaModuleExtension-Enabletheextension)
--   [Add features](#CreateaModuleExtension-Addfeatures)
-
--   [Add a basic web page](#CreateaModuleExtension-Addabasicwebpage)
--   [Add a basic web form](#CreateaModuleExtension-Addabasicwebform)
--   [Add a database upgrader / Installer /
-    uninstaller](#CreateaModuleExtension-Addadatabaseupgrader/Installer/uninstaller)
--   [Add a case type (CiviCRM
-    v4.4+)](#CreateaModuleExtension-Addacasetype(CiviCRMv4.4+))
--   [Add custom fields (CiviCRM
-    v4.4+)](#CreateaModuleExtension-Addcustomfields(CiviCRMv4.4+))
--   [Add a hook function](#CreateaModuleExtension-Addahookfunction)
--   [Add a resource file](#CreateaModuleExtension-Addaresourcefile)
--   [Add a report](#CreateaModuleExtension-Addareport)
--   [Add a custom search](#CreateaModuleExtension-Addacustomsearch)
--   [Add an API function](#CreateaModuleExtension-AddanAPIfunction)
--   [Add a new entity](#CreateaModuleExtension-Addanewentity)
--   [Add a unit-test class](#CreateaModuleExtension-Addaunit-testclass)
-
--   [Frequently asked
-    questions](#CreateaModuleExtension-Frequentlyaskedquestions)
-
--   [How does one add an ajax/web-service
-    callback?](#CreateaModuleExtension-Howdoesoneaddanajax/web-servicecallback?)
--   [How does one add a standalone PHP
-    script?](#CreateaModuleExtension-HowdoesoneaddastandalonePHPscript?)
--   [How does one add a cron
-    job?](#CreateaModuleExtension-Howdoesoneaddacronjob?)
-
--   [Troubleshooting](#CreateaModuleExtension-Troubleshooting)
 
 # Generate a skeletal extension
 
@@ -689,108 +652,3 @@ Settings =\> Scheduled Jobs".
     folder (e.g. com.example.myextension) before running one of the
     other \`generate:\` commands.
 
-A few questions:
-
-1.  My developer used PHP to create SQL for the install, as well as a
-    .sql file with a few statements.
-    CRM\_Myextension\_Upgrader\_Base::onInstall only seems to execute
-    files like /sql/REV\#\_install.sql. Can we change this so some PHP
-    calling protocol is also possible? Or is one expected to put install
-    code into an CRM\_Myextension\_Upgrader::upgrade\_NNNN function?
-2.  Is there a required or recommended practice on how to name
-    'upgrades'? I like 4200 as the first upgrade to 4.2.
-3.  A MySQL / upgradability best practice question: if one wants to add
-    additional enums to a core enum, what is the best practice?
-    Currently we are just running:\
-     ALTER TABLE \`civicrm\_mailing\_bounce\_type\` CHANGE \`name\`
-    \`name\` ENUM( 'AOL', 'Away', 'DNS', 'Host', 'Inactive', 'Invalid',
-    'Loop', 'Quota', 'Relay', 'Spam', 'Syntax', 'Unknown', 'Mandrill
-    Hard', 'Mandrill Soft', 'Mandrill Spam', 'Mandrill Reject' )
-    CHARACTER SET utf8 COLLATE utf8\_unicode\_ci NOT NULL COMMENT 'Type
-    of bounce';\
-     This isn't the greatest. While one can get the list of enums (kind
-    of) by using a query against INFORMATION\_SCHEMA, it returns the
-    field definition in a form like "enum('first','second')", which
-    would have to be parsed and then used in an ALTER statement like the
-    one above. Is that what we should be doing, in order to avoid core
-    and extensions stepping on each other as enums are changed? If so,
-    this approach would need to be done in core upgrades for all enum
-    fields as well.\
-
-1.  Agree that you should be able to use both PHP and SQL. Currently,
-    you can do the PHP by either tweaking the hook\_civicrm\_install or
-    by overloading the onInstall() method. But this probably isn't best
-    – so maybe it would be good to include empty
-    install()/uninstall()/enable()/disable() functions in the upgrader
-    class. That way everything can be seen/managed in the one file
-    (which better approximates the coding conventions from Drupal.
-2.  I really don't know the best convention. In the examples, I just
-    pantomimed Drupal. But the truth is probably that the DB-numbering
-    issue ties into other release practices – e.g. Does one support
-    several Civi releases – or only the newest? Does one maintain a
-    single build/branch for multiple Civi releases -- or separate
-    builds/branches for each.
-3.  It's a bad idea for extensions to manipulate core schema. This will
-    very likely break things in future releases. It's better to either
-    create new tables or coordinate schema changes in the core system.
-    For this particular example, it seems like there should be a
-    discussion with about why new bounce-types are required and how they
-    fit with reports/etc -- and then assess the options of either (a)
-    adding more options to the enum in core or (b) changing the enum to
-    an OptionGroup.
-
-I realize this page was written some time so my apologies for coming to
-the party a little late; I used the older version of Civix for
-boilerplating some extensions and just recently reconfigured my
-development environment with a new install of Civix on an Ubuntu virtual
-machine.
-
-My question is about the Database Upgrader part of civix (**civix
-[generate:upgrader](http://generateupgrader)**). When we use this
-instruction it will stub out the code to run the installer and
-uninstaller SQL files but it doesn't actually create the empty SQL files
-and the installer/uninstaller hooks are commented out. I think the
-previous versions produced the empty SQL files and did not comment out
-the hooks. Is that correct?
-
-Further on the subject, is the correct course of action for the
-developer to open up CRM/module\_name/Upgrader.php, uncomment the
-install and uninstall hooks and then create the myinstall.sql and
-myuninstall.sql files as necessary?
-
-Oh, one last question regarding database table naming... What is the
-preferred practice for naming conventions? CiviCRM's database schema has
-triggers that run on civicrm tables that have in the past thwarted the
-use of custom tables prefixed with civicrm.
-
--   I tried to verify whether previous versions of
-    "[generate:upgrader](http://generateupgrader)" automatically created
-    the SQL files. Running "git log
-    src/CRM/CivixBundle/Command/AddUpgraderCommand.php" doesn't show any
-    evidence that they did.
--   The command "[generate:custom-data](http://generatecustom-data)"
-    does automatically create a file – but it's an XML file
-    (xml/auto\_install.xml).
--   There are two ways to run some SQL as part of upgrader:
-    -   Create a file whose name matches "sql/\*\_install.sql". The
-        upgrader will automatically find/execute these files during
-        initial installation.
-    -   As you say, one can open-up CRM/module\_name/Upgrader.php -- and
-        then uncomment or add new lines. This is useful if you want to
-        control the sequencing (e.g. run some PHP code; then run some
-        SQL code; then run some more PHP code), and it's useful for
-        upgrades.
-
--   For CiviHR, the naming convention was "civicrm\_hrfoo" (e.g.
-    "civicrm\_hrjob"). It may be notable that we also use
-    [https://github.com/civicrm/civihr/blob/589b1f2c4036854b08a6c7b8154e68f534c18b82/hrjob/hrjob.php\#L237](https://github.com/civicrm/civihr/blob/589b1f2c4036854b08a6c7b8154e68f534c18b82/hrjob/hrjob.php#L237)
-    . If there are issues with using tables that follow that convention,
-    then we should file bugs accordingly. (IIRC, there may be a
-    race-condition in terms of installing extensions with custom tables
-    and activating detailed logging.)
-
-I'm not seeing generate:custom-data with the current version of civix.
-Was it removed or part of an unreleased version of civix?
-
-My bad. The command is "generate:custom-xml". (It was called
-"generate:custom-data" in an unreleased draft.)
