@@ -32,9 +32,7 @@ H4, consider if it's truly necessary and whether the chapter should
 instead be refactored.
 
 Part titles and subheadings should be in sentence case (first word
-capitalized), not headline case (each word capitalized). Chapter
-headings (the big ones like Email, Contributions, etc) should be IN ALL
-CAPS.
+capitalized), not headline case (each word capitalized).
 
 ## Formatting conventions
 
