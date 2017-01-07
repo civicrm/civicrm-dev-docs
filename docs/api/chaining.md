@@ -23,48 +23,53 @@ See [api/v3/examples] within the core source code for a plethora of examples
 Note that there are a few supported syntaxes:
 
 ```php
-civicrm('Contact', 'Create', array(
-    'version' => 3,
-    'contact_type' => 'Individual',
-    'display_name' => 'BA Baracus',
-    'api.website.create' => array('url' => 'example.com'));
+civicrm_api('Contact', 'create', array(
+  'version' => 3,
+  'contact_type' => 'Individual',
+  'display_name' => 'BA Baracus',
+  'api.website.create' => array('url' => 'example.com'),
+));
 ```
 
 is the same as
 
 ```php
-civicrm('Contact', 'Create', array(
-    'version' => 3,
-    'contact_type' => 'Individual',
-    'display_name' => 'BA Baracus',
-    'api.website' => array('url' => 'example.com'));
+civicrm_api('Contact', 'create', array(
+  'version' => 3,
+  'contact_type' => 'Individual',
+  'display_name' => 'BA Baracus',
+  'api.website' => array('url' => 'example.com'),
+));
 ```
 
 If you have 2 websites to create you can pass them as ids after the `.`
 or an array
 
 ```php
-civicrm('Contact', 'Create', array(
-    'version' => 3,
-    'contact_type' => 'Individual',
-    'display_name' => 'BA Baracus',
-    'api.website.create'    => array('url' => 'example.com',),
-    'api.website.create.2'  => array('url' => 'example.org', ));
+civicrm_api('Contact', 'create', array(
+  'version' => 3,
+  'contact_type' => 'Individual',
+  'display_name' => 'BA Baracus',
+  'api.website.create' => array('url' => 'example.com'),
+  'api.website.create.2' => array('url' => 'example.org'),
+));
 ```
 
-OR
+or
 
 ```php
-civicrm('Contact', 'Create', array(
-    'version' => 3, 
-    'contact_type' => 'Individual', 
-    'display_name' => 'BA Baracus', 
-    'api.website.create' => array(
-        array('url' => 'example.com', ), 
-        array('url' => 'example.org', )));
+civicrm_api('Contact', 'create', array(
+  'version' => 3,
+  'contact_type' => 'Individual',
+  'display_name' => 'BA Baracus',
+  'api.website.create' => array(
+    array('url' => 'example.com'),
+    array('url' => 'example.org'),
+  ),
+));
 ```
 
-the format you use on the way in will dictate the format on the way out.
+The format you use on the way in will dictate the format on the way out.
 
 Currently this supports any entity and it will convert to `entity_id` -
 i.e. a PledgePayment inside a contribution will receive the `contribution_id`
