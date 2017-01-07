@@ -14,6 +14,14 @@ This section covers how to write extensions. See the [extension life cycle
 page](/extend-stages) for background on the publishing and review process for
 [published extensions](https://civicrm.org/extensions).
 
+## Extension Names
+
+All extension names follow the same convention as Java package names – they
+look like reversed domain names. (e.g.  `com.example.myextension`). For
+module-extensions, the last word in the module name will be the module's
+*short-name*. The short-name *must* be unique. It is possible to pick a
+different short-name, but that requires extra work.
+
 ## Pre-Requisites
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming

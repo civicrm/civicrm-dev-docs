@@ -1,64 +1,80 @@
+# Civix
 
-# Generate a skeletal extension
+The [`civix`](https://github.com/totten/civix/) command-line tool is the
+community-endorsed method for building your CiviCRM extensions.
 
-To generate a skeletal extension module, we will use "civix
-[generate:module](http://generatemodule)" and pass in the name for our
-extension. All extension names follow the same convention as Java
-package names – they look like reversed domain names. (e.g.
-"com.example.myextension").
+Follow the installation instructions in the
+[GitHub repository](https://github.com/totten/civix/).
 
-For module-extensions, the last word in the module name will be the
-module's *short-name*. The short-name *must* be unique. It is possible
-to pick a different short-name, but that requires extra work (which is
-outside the scope of this document).
+In order to verify that all your configuration is correct ping CiviCRM from
+within your extensions directory with:
 
-**Using "civix generate:module"**
+      civix civicrm:ping
 
-This creates three files:
+This command should reply with "Ping successful".
 
--   ***info.xml*** is a manifest that describes your extension – the
-    name, license, version number, etc. You should edit most information
-    in this file.
--   ***myextension.php*** stores source code for all your hooks. It
-    includes a few default hook implementations which will make
-    development easier. You can add and remove hooks as you wish. (Note:
-    This file name is different in each module – it is based the
-    module's *short-name*.)
--   ***myextension.civix.php*** contains auto-generated helper
-    functions. These deal with common problems like registering your
-    module in the template include-path. civix may automatically
-    overwrite this file, so you generally should not edit it.
+It is also useful to examine the output of the `civix help` command to read
+about what `civix` can do for you.
 
-In addition, it creates some empty directories. These directories are
-reminiscent of the directory structure in CiviCRM core:
+Help is available on individual commands, e.g.:
 
--   ***CRM/Myextension/*** stores PHP class files; classes in this
-    folder should be prefixed with "CRM\_Myextension\_"
--   ***templates/*** stores Smarty templates
--   ***xml/*** stores XML configuration files (such a URL routes)
--   ***build/*** stores exportable .zip files
+```bash
+civix help civicrm:ping
+```
+
+## Generating a skeletal extension
+
+To generate a skeletal extension module, we will use `civix generate:module`
+and pass in the name for our extension. See [here](./basics/#extension-names)
+for details of naming conventions.
+
+### Generate skeleton
+Start with:
+
+```bash
+cd $YOUR_EXTENSIONS_DIR
+civix generate:module --help
+```
+
+Then use a command like this:
+
+```bash
+civix generate:module com.example.myextension --license=AGPL-3.0
+```
+
+This command will report that it has created three files, following the
+[standard extension structure](./files).
 
 The command attempts to autodetect authorship information (your name and
-email address) by reading the git configuration. If this fails or is
-otherwise incorrect, then you may pass explicit values with **--author**
-and **--email**.
+email address) by reading your
+[`git`](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+configuration. If this fails or is
+otherwise incorrect, then you may pass explicit values with `--author`
+and `--email`.
 
-# Update "info.xml"
+### Update "info.xml"
 
 The default ***info.xml*** file contains some examples and placeholders
-which should be fixed. Most of these fields can be edited intuitively.
-If you need detailed specifications, see [Extension
+which you need to fix. You can edit most of these fields intuitively.
+If you need detailed specifications, see
+[Extension
 Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference).
 
-# Enable the extension
+### Enable the extension
 
-Now that you've created your extension, you can activate by navigating
-to "**Administer****»** **System Settings** **»** **Manage Extensions**"
-or "**» Administer » Customize Data and Screens » Manage Extensions.**"
+Now that you have created your extension, you can activate by navigating
+to:
+
+**Administer** » **System Settings** » **Manage Extensions**
+
+or
+
+**Administer » Customize Data and Screens » Manage Extensions.**
+
 For more detailed instructions, see
 [Extensions](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
 
-# Add features
+## Add features
 
 There are many different features that you can add to a module-extension
 at your discretion. A few possibilities:
@@ -68,7 +84,7 @@ at your discretion. A few possibilities:
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 page, one must create a PHP controller class, create a Smarty template
 file, and create a routing rule. You can create the appropriate files by
-calling "civix [generate:page](http://generatepage)"
+calling "civix generate:page"
 
 **Using "civix generate:page"**
 
@@ -90,14 +106,14 @@ This creates three files:
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as passing data from the controller to the view.
 
-![image](/confluence/images/icons/emoticons/check.png)
+***`check!`***[](fixme!)
 
 After adding or modifying a route in the XML file, you must reset
 CiviCRMs "menu cache". This can be done in a web browser by visiting
 "/civicrm/menu/rebuild?reset=1" or by running
 `drush                           cc civicrm` if using Drupal & Drush.
 
-![image](/confluence/images/icons/emoticons/check.png)
+***`check!`***[](fixme!)
 
 **Edit In Place**\
 
@@ -133,13 +149,13 @@ This creates three files:
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as adding a <SELECT\> element to the form.
 
-![image](/confluence/images/icons/emoticons/check.png)
+***`check!`***[](fixme!)
 
 After adding or modifying a route in the XML file, you must reset
 CiviCRMs "menu cache". This can be done in a web browser by visiting
 "/civicrm/menu/rebuild?reset=1"
 
-![image](/confluence/images/icons/emoticons/forbidden.png)
+***`forbidden!`***[](fixme!)
 
 The form system is not well documented and may undergo significant
 revision after the CiviCRM 4.x series. In general, migrating basic pages
@@ -179,7 +195,7 @@ you can execute the upgrades through the web interface by visiting the
 "Manage Extensions" screen. This screen will display an alert with an
 action-link to perform the upgrades.
 
-![image](/confluence/images/icons/emoticons/information.png)
+***`information!`***[](fixme!)
 
 The "upgrader" class is a wrapper for
 [hook\_civicrm\_upgrade](/confluence/display/CRMDOC43/Hook+Reference)
@@ -187,7 +203,7 @@ which aims to be easy-to-use for developers with Drupal experience. If
 you need to organize the upgrade logic differently, then consider
 providing your own implementation of hook\_civicrm\_upgrade.
 
-![image](/confluence/images/icons/emoticons/forbidden.png)
+***`forbidden!`***[](fixme!)
 
 Only use the upgrade system to manage new SQL tables. Do not manipulate
 core schema. (To discuss schema changes for the core system, go on IRC
@@ -302,7 +318,7 @@ add the following code:
 
 **Implementing "hook\_civicrm\_post" in "myextension"**
 
-![image](/confluence/images/icons/emoticons/information.png)
+***`information!`***[](fixme!)
 
 When you first created the skeletal project, several hook functions were
 auto-generated in *myextension.php*. These functions are usually about
@@ -342,7 +358,7 @@ This creates three files:
     the report's HTML template. (Note: This usually delegates
     responsibility to a core template and does not need to be edited.)
 
-![image](/confluence/images/icons/emoticons/check.png)
+***`check!`***[](fixme!)
 
 **Copy an Existing Report**\
 
@@ -380,7 +396,7 @@ This creates two files:
 -   ***CRM/Myextension/******Form/Search/MySearch.php*** contains the
     form-builder and query-builder for the custom search.
 
-![image](/confluence/images/icons/emoticons/check.png)
+***`check!`***[](fixme!)
 
 **Copy an Existing Search**\
 
@@ -417,7 +433,7 @@ name (such as "Create" or "MyAction").
 
 **Using "civix generate:api"**
 
-![image](/confluence/images/icons/emoticons/warning.png)
+***`warning!`***[](fixme!)
 
 Action names should be lowercase. The javascript helpers CRM.api() and
 CRM.api3() force actions to be lowercase. This issues does not present
@@ -492,7 +508,7 @@ environment. The CiviCRM/Civix testing tools will automate this – as
 long as you follow a few basic conventions. The following steps will
 create and run a test in your extension.
 
-![image](/confluence/images/icons/emoticons/check.png)
+***`check!`***[](fixme!)
 
 Before preparing unit-tests with extensions, you must first:
 
