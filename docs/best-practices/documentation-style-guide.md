@@ -14,8 +14,16 @@ Similar to most text books and manuals, we divide our guides into "parts",
 -   "chapter" - file (in markdown), also one web page with a given URL
 -   "section" - heading within the page
 
-Keep the page hierarchy to this depth (i.e. do not put folders within other
-folders).
+In the navigation menu: (as stored in `mkdocs.yml`)
+
+-   Keep the page hierarchy to this depth (i.e. do not put folders within other
+    folders).
+-   Each chapter name should be short enough to fit nicely in the menu,
+    but also long enough to stand on its own to a reasonable extent.
+    The titles set here are used in the navigation menu *and* the page title
+    that displays in the browser tab. The guide will be more usable if the
+    reader sees two tabs titled "Using Hooks" and "API Usage" instead of
+    "Usage" and "Usage".
 
 Each chapter should start with a paragraph that explains what will be
 covered in the chapter.
@@ -31,8 +39,10 @@ in H2 and H3, only where necessary.  If you find yourself wanting to use
 H4, consider if it's truly necessary and whether the chapter should
 instead be refactored.
 
-Part titles and subheadings should be in sentence case (first word
-capitalized), not headline case (each word capitalized).
+### Capitalization
+
+Titles for parts, chapters, and sections should all be in sentence case
+(first word capitalized), not headline case (each word capitalized).
 
 ## Formatting conventions
 
