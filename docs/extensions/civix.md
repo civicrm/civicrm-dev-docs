@@ -443,7 +443,7 @@ SQL logic and form layouts. Use this command to get started:
 civix help generate:search
 ```
 
-Then you could generate your basic search code with:
+Then you could generate your basic search code for a MySearch class with:
 
 ```bash
 civix generate:search MySearch
@@ -464,9 +464,9 @@ If one of the existing searches is close to
 meeting your needs you may copy it instead and then customise the
 PHP, SQL and templates.
 
-To make a new search based on an existing search determine the class-name of
+To make a new search based on an existing search first determine the name of
 the original search class within the `civicrm/CRM/Contact/Form/Search/Custom`
-within the CiviCRM source tree. Then run the "generate:search" command from
+directory of CiviCRM source tree. Then run the "generate:search" command from
 within your module directory.
 
 For example, the zipcode search is in the class
@@ -482,29 +482,38 @@ on whether the original search screen defines its own Smarty template.
 ### Add an API function
 
 The [CiviCRM API](../api/general)
-provides a way to expose functions for use by other developers – API
-functions can be useful for implementing AJAX interfaces (using the
+provides a way to expose functions for use by other developers. API
+functions allow implementing AJAX interfaces (using the
 cj().crmAPI() helper), and they can also be called via REST, PHP,
 Smarty, Drush CLI, and more. Each API requires a two-part name: an
 entity name (such as "Contact", "Event", or "MyEntity") and an action
 name (such as "Create" or "MyAction").
 
+Get started by accessing the `civix` help:
+
 ```bash
-civix generate:api
+civix help generate:api
 ```
 
->> ![danger](../img/danger.png)
-Action names must be lowercase. The javascript helpers CRM.api() and
-CRM.api3() force actions to be lowercase. This issues does not present
+>> ![information](../img/info.png)
+Action names must be lowercase. The javascript helpers `CRM.api()` and
+`CRM.api3()` force actions to be lowercase. This issues does not present
 itself in the API Explorer or when the api action is called via PHP,
-REST, or SMARTY
+REST, or SMARTY.
+
+You can make your API code with a command in this pattern:
+
+```bash
+civix generate:api NewEntity NewAction
+```
 
 This creates one file:
 
--   `api/v3/NewEntity/NewAction.php` provides the API function. Note
+-   `api/v3/NewEntity/NewAction.php` provides the API function.
     that the parameters and return values must be processed in a
     particular way (as demonstrated by the auto-generated file).
 
+<!-- fixme - clarify is this 4.3 and later? -->
 For use with CiviCRM 4.3, you can also add the "–schedule" option (e.g.
 "–schedule Hourly"). This will create another file:
 
@@ -513,15 +522,17 @@ For use with CiviCRM 4.3, you can also add the "–schedule" option (e.g.
 
 ### Add a new entity
 
-You may have a need to create a new entity that doesn't exist in
-CiviCRM. For this, you can use the command civix generate:entity - which
-as of this writing is considered "experimental and incomplete". This
-documentation will guide you through filling in the blanks.
+>> ![danger](../img/danger.png)
+This functionality is considered "experimental and incomplete".
+
+You may have a need to create a new entity that does not exist in
+CiviCRM. For this, you can use the command `civix generate:entity`
 
 -   Pick a name for your entity. In some places, CiviCRM expects a
-    FirstLetterCapitalizedName, in others, an underscore\_name. Be
-    absolutely consistent in your naming, because CiviCRM expects to be
-    able to translate between those two naming conventions.
+    *FirstLetterCapitalizedName*, in others, an *underscore\_name*. Be
+    absolutely consistent in your naming, because CiviCRM needs to
+    translate between those two naming conventions.
+
 -   Run `civix generate:entity <name of entity>` (entity name should be
     FirstLetterCapitalized here). This creates a skeletal file for your
     XML schema, your BAO, and your API. It does NOT create a skeletal
@@ -529,10 +540,10 @@ documentation will guide you through filling in the blanks.
 -   Edit the XML schema in the "xml" folder to match the fields you
     want. Minimal documentation is available
     [here](https://wiki.civicrm.org/confluence/display/CRMDOC/Database+Reference),
-    but you're better off looking at the [existing XML
+    but you are better off looking at the [existing XML
     schemata](https://github.com/civicrm/civicrm-core/tree/master/xml/schema).
 -   Create a DAO file. For now, civix does not handle this. You can
-    create this by hand; alternatively, use [this
+    create this by hand. Alternatively, use [this
     technique](http://civicrm.stackexchange.com/a/3536/12). Copy your
     XML schema into a development copy of CiviCRM. Edit Schema.xml to
     include your XML file, then from the xml folder, run
@@ -540,46 +551,49 @@ documentation will guide you through filling in the blanks.
     `<civiroot>/bin/setup.sh -g` instead). This will generate a DAO file
     for you in the CiviCRM core code; copy it into the
     CRM/<Entityname\>/DAO folder of your extension.
--   At this time, civix also does not generate the SQL to create and
-    drop your table(s). You can create these by hand; alternatively, if
+-   Currently, `civix` does not generate the SQL to create and
+    drop your table(s). You can create these by hand, or, if
     you used the `<civiroot>/bin/setup.sh -g` technique to create your
     DAO, SQL will have been generated for you in
     `<civiroot>/sql/civicrm.mysql`. Once you have the SQL statements for
-    creating and dropping your SQL tables, you can name them
+    creating and dropping your SQL tables, create
     `auto_install.sql` and `auto_uninstall.sql`
-    respectively and drop them in your "sql" folder. They will be run
+    respectively in your 'sql/' folder. CiviCRM will run them
     automatically on install if you generated an upgrader. Note that
     using `auto_install.sql` and `auto_uninstall.sql`
     is not best practice if you have multiple statements in each file,
-    since you can't error check each statement separately.
--   Run `civix generate:upgrader` from within your extension. [More
-    details are
-    here](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension#CreateaModuleExtension-Addadatabaseupgrader/Installer/uninstaller).
+    since you cannot error check each statement separately.
+    <!-- fixme update and clarify -->
+-   Run `civix generate:upgrader` from within your extension.
 -   Define your entity using
     [hook\_civicrm\_entityTypes](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes).
 
 ### Add a unit-test class
 
-Unit-testing is an invaluable to way to maintain quality-control over
+Unit-testing is essential to maintain quality-control over
 your extension. When developing a test case for a CiviCRM extension, it
 is useful to run the test case within an active, clean CiviCRM
-environment. The CiviCRM/Civix testing tools will automate this – as
-long as you follow a few basic conventions. The following steps will
-create and run a test in your extension.
+environment. The combined CiviCRM `civix` testing tools will automate this as
+long as you follow a few basic conventions.
 
-Before preparing unit-tests with extensions, you must first:
+The following steps will create and run a test in your extension.
 
--   Configure the test system for core CiviCRM. See [Setting up your
-    personal testing sandbox
-    HOWTO](/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO).
--   Ensure that the extension is enabled on the linked CiviCRM site
+>> ![information](../img/info.png)
+Before preparing unit-tests with extensions, you must first
+[configure you personal testing sandbox](/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO) and enable your extension on the sandbox.
 
-First, create a skeletal test-class. The class name should be placed in
-your extension's namespace (*CRM\_Myextension*) and should end with the
-word *Test*.
+Explore the full options with:
 
 ```bash
-civix generate:test
+civix help generate:test
+```
+
+To create a skeletal test-class choose a class name in
+your extension's namespace (*CRM\_Myextension*) that ends with the
+word *Test*:
+
+```bash
+civix generate:test CRM_Myextension_MyTest
 ```
 
 This creates a new directory and a new PHP file:
@@ -592,17 +606,31 @@ This creates a new directory and a new PHP file:
 To make sure you can run the test civix needs to know where the CiviCRM
 base install is:
 
-To run this test-class, change to your extension folder and call "civix
-test":
-
-```bash
-civix test
-```
-
-The skeletal test class doesn't do anything useful. For more details on
+The skeletal test class does not do anything useful. For more details on
 how to write a test class:
 
 -   Read [PHP Unit Manual: Writing Tests for
     PHPUnit.](https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html)
 -   Review the example code in
     [org.civicrm.exampletests](https://github.com/totten/org.civicrm.exampletests)
+
+>> ![danger](../img/danger.png)
+The following instructions are deprecated. Updated instructions coming soon.
+
+```bash
+# Check if civix can connect to the civi api
+civix civicrm:ping
+# Look at your current config
+civix config:get
+# Tell civix where to read the civicrm.settings.php
+# EG. For Drupal
+civix config:set civicrm_api3_conf_path /your/path/to/sites/default
+```
+
+To run this test-class, change to your extension folder and call "civix
+test":
+
+```bash
+civix test CRM_Myextension_MyTest
+```
+
