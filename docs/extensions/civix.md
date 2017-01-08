@@ -22,6 +22,8 @@ civix civicrm:ping
 ```
 
 This command should reply with "Ping successful".
+If the ping is unsuccessful, re-read the civix README.md and do the
+post-installation configuration.
 
 It is also useful to examine the output of the `civix help` command to read
 about what `civix` can do for you.
@@ -61,7 +63,7 @@ configuration. If this fails or is
 otherwise incorrect, then you may pass explicit values with `--author`
 and `--email`.
 
-You can now update your ***info.xml***. This file initially contains some
+You can now update your `info.xml`. This file initially contains some
 examples and placeholders which you need to fix. You can edit most of these
 fields intuitively.  If you need detailed specifications, see [Extension
 Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference).
@@ -105,13 +107,13 @@ civix generate:page MyPage civicrm/my-page
 
 This creates three files:
 
--   ***xml/Menu/myextension.xml*** defines request-routing rules and
+-   `xml/Menu/myextension.xml` defines request-routing rules and
     associates the controller ("CRM\_Myextension\_Page\_Greeter") with
     the web path ("civicrm/my-page")
--   ***CRM/Myextension/Page/MyPage.php*** is the controller which
+-   `CRM/Myextension/Page/MyPage.php` is the controller which
     coordinates any parsing, validation, business-logic, or database
     operations.
--   ***templates/CRM/Myextension/Page/MyPage.tpl*** is loaded
+-   `templates/CRM/Myextension/Page/MyPage.tpl` is loaded
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
     this file, see
@@ -156,14 +158,14 @@ civix generate:form FavoriteColor civicrm/favcolor
 
 This creates three files:
 
--   ***xml/Menu/myextension.xml*** defines request-routing rules and
+-   `xml/Menu/myextension.xml` defines request-routing rules and
     associates the controller ("CRM\_Myextension\_Form\_FavoriteColor")
     with the web path ("civicrm/favcolor")
--   ***CRM/Myextension/Form/FavoriteColor.php*** is the controller which
+-   `CRM/Myextension/Form/FavoriteColor.php` is the controller which
     coordinates any parsing, validation, business-logic, or database
     operations. For more details on how this class works, see [QuickForm
     Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/QuickForm+Reference).
--   ***templates/CRM/Myextension/Form/FavoriteColor.tpl*** is loaded
+-   `templates/CRM/Myextension/Form/FavoriteColor.tpl` is loaded
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
     this file, see
@@ -194,13 +196,13 @@ civix generate:upgrader
 
 This creates two files and one directory:
 
--   ***CRM/Myextension/Upgrader.php*** stores a series of upgrade
+-   `CRM/Myextension/Upgrader.php` stores a series of upgrade
     functions based on a function naming pattern similar to
     Drupal's
     [hook\_update\_N](http://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_update_N/7).
     After examining the file's comments for example upgrade functions
     you can then write your own.
--   ***CRM/Myextension/Upgrader/Base.php*** contains helper functions
+-   `CRM/Myextension/Upgrader/Base.php` contains helper functions
     and adapters which make it easier to write the upgrader. This file
     may be overwritten from time-to-time to provide new helpers or
     adapters.
@@ -239,7 +241,7 @@ command:
 civix help generate:case-type
 ```
 
-This reports that civix expects a <Label> argurment and and optional name:
+This reports that civix expects a <Label> argurment and an optional name:
 
 ```bash
 civix generate:case-type "Volunteer Training" Training
@@ -247,210 +249,234 @@ civix generate:case-type "Volunteer Training" Training
 
 This creates two files:
 
--   ***xml/case/Training.xml*** defines the roles, activity types, and
+-   `xml/case/Training.xml` defines the roles, activity types, and
     timelines associated with the new case type. For more in depth
     discussion of CiviCase XML, see [CiviCase
     Configuration](/confluence/display/CRMDOC/CiviCase+Configuration).
--   ***alltypes.civix.php***(which may already exist) defines
+-   `alltypes.civix.php`(which may already exist) defines
     implementations of various hooks (notably hook\_civicrm\_caseTypes).
 
 ### Add custom fields
 *(from CiviCRM v4.4+)*
 
-If your extension needs to instantiate one or more sets of custom data
-fields at installation, use these steps. Note that there are two
-qualitatively different examples for reference based on whether the
-custom data set extends an entity vs. a specific subtype of that entity.
+Your extension can create one or more sets of custom
+fields at installation. There are two
+methods depending on whether the custom data set extends an entity
+(e.g. "Individual" – without any specific subtype)
+or exends a specific subtype of an entity.
+(e.g. Activities of type 'Volunteer')
 
-#### If extending a base entity (e.g. "Individual" – without any specific subtype):
+#### Extending a base entity
 
-We will create a custom fields using the web interface and then export
-them for use with the extension. Steps:
+This is the simplest scenario.
+Start by creating a custom fields using the web interface and then export
+them for use with the extension:
+
+>> ![information](../img/info.png)
+Before you begin verify that civix is connected to your instance of CiviCRM by running `civix civicrm:ping`.
 
 -   On your development instance of CiviCRM, create the new custom
-    fields using the web interface.
--   Note the unique ID of the custom data group (aka "Custom Fieldset",
-    "CustomGroup" or "civicrm\_custom\_group") – you will need this in a
-    minute.
--   Verify that civix is connected to your instance of CiviCRM by
-    running "civix civicrm:ping". (If the ping is
-    unsuccessful, re-read the civix README.md and do the
-    post-installation configuration.)
--   Create an XML file with "civix
-    [generate:custom-xml](http://generatecustom-xml)" – and be sure to
-    specify the custom-data group ID. (In the example below, it assumes
-    ID 7.)
--   Create an upgrader file with "civix
-    generate:upgrader" – this will load the
-    XML file during installation. (Example below.)
+    fields using the web interface. Note the unique ID of the custom data
+    group (also known as the "Custom Fieldset", "CustomGroup" or
+    "civicrm\_custom\_group")
+-   Create an XML file with `civix generate:custom-xml`
+    specifying the custom-data group ID.
+-   Create an upgrader file with `civix generate:upgrader` to
+    load the XML file during installation.
+
+Check the full range of options with the `civix` help command:
 
 ```bash
-civix generate:custom-xml
+civix help generate:custom-xml
 ```
 
+So to created your XML for a custom data group ID of 7:
 
-Most of the CiviHR modules rely on the first approach (e.g.:
-[/hrqual/CRM/HRQual/Upgrader/Base.php\#L244](https://github.com/civicrm/civihr/blob/master/hrqual/CRM/HRQual/Upgrader/Base.php#L244) and
-[/hrqual/xml/auto\_install.xml](https://github.com/civicrm/civihr/blob/master/hrqual/xml/auto_install.xml)).
+```bash
+civix generate:custom-xml --data=7
+```
 
-####
- If extending an entity of a specific subtype (e.g. Activities of type 'Volunteer')
+Most of the [CiviHR](https://github.com/civicrm/civihr/tree/master) modules rely on the first approach (e.g.:
+[Upgrader/Base.php](https://github.com/civicrm/civihr/blob/master/hrqual/CRM/HRQual/Upgrader/Base.php#L244) and
+[auto\_install.xml](https://github.com/civicrm/civihr/blob/master/hrqual/xml/auto_install.xml)).
 
-Unfortunately, the automatic export doesn't work too well when the
-custom-data group extends a specific subtype -- e.g. the "HR Emergency
-Contact" ext needs to create a custom-data group that describes
+#### Extending an subtype
+
+<!-- This section still is not really clear to me.
+Is this really about sub-types in an OO sense?? or subtypes in as a base
+entity of a particular type as defined by its properties?
+-->
+
+The automatic export does not work too well when the
+custom-data group extends a specific subtype. The
+"HR Emergency Contact" extension provides and example that creates
+a custom-data group that describes
 Relationships with type "Emergency Contact". Internally, Civi uses
-"relationship type id\#s", but those aren't portable. As a quick
-work-around, I used Smarty:
+"relationship type IDs", but those are not portable. As a quick
+work-around, this extension uses Smarty:
+([HREmerg/Upgrader.php](https://github.com/civicrm/civihr/blob/master/hremerg/CRM/HREmerg/Upgrader.php#L14)
+and
+[hremerg-customdata.xml.tpl](https://github.com/civicrm/civihr/blob/master/hremerg/templates/hremerg-customdata.xml.tpl#L11)).
 
-For example:
+To create this extension, the author used `civix generate:custom-data` and
+then:
 
-[/hremerg/CRM/HREmerg/Upgrader.php\#L14](https://github.com/civicrm/civihr/blob/master/hremerg/CRM/HREmerg/Upgrader.php#L14)
-
-[/hremerg/templates/hremerg-customdata.xml.tpl\#L11](https://github.com/civicrm/civihr/blob/master/hremerg/templates/hremerg-customdata.xml.tpl#L11)
-
- To create this, I started by using "civix
-[generate:custom-data](http://generatecustom-data)" and then:
-
- 1. Rename the xml/auto\_install.xml to
-templates/hremerg-customdata.xml.tpl
-
-2. In the .tpl file, change the value of
-<extends\_entity\_column\_value\>. Instead of a hard-coded type id\#,
-use a variable.
-3. Add logic in the upgrader to create the relationship type
-4. Add logic in the upgrader to evaluate the Smarty template
+1. Renamed the `xml/auto\_install.xml` to
+ `templates/hremerg-customdata.xml.tpl`
+2. Changed the value of `<extends\_entity\_column\_value\>` in the
+  `.tpl file` using  a variable instead of a hard-coded type ID.
+3. Added logic in the upgrader to create the relationship type
+4. Added logic in the upgrader to evaluate the Smarty template
 
 ### Add a hook function
 
-CiviCRM hook functions allow module-extensions to run extra logic as
-part of the normal CiviCRM processing – for example,
-***hook\_civicrm\_buildForm*** allows a module to run logic whenever a
-web-form is displayed, and ***hook\_civicrm\_post*** allows a module to
-run logic after any entity is saved. For detailed documentation about
-available hooks, see [Hook
-Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference).
+CiviCRM
+[hook functions](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
+allow extensions to run extra logic as
+part of the normal CiviCRM processing. For example,
+`hook\_civicrm\_buildForm()` allows a module to run logic whenever a
+web-form is displayed, and `hook\_civicrm\_post()` allows a module to
+run logic after any entity is saved.
 
-To implement a hook, you must add a function to the module's main .php
-file. (This file was created earlier by the
-"generate:module" command.) The function name
-is taken by combining the module's short-name with the hook's name.
-(This is just like Drupal's hook convention.)
+Hook function names follow the Drupal convention of being
+the module's short-name concatenated to the hook name. This strict but simple
+naming convention is what allows the CiviCRM core to locate your hook
+functions and call them at the appropriate times.
+For example, if our module's main file is
+`myextension.php` and we want to use `hook\_civicrm\_post()`
+to write to a log file every time a contribution is saved, then our function must be called `myextension_civicrm_post()`:
 
-For example, suppose our module's main .php file is
-***myextension.php*** and that we want to use ***hook\_civicrm\_post***
-to write to a log file every time a contribution is saved. Then we would
-add the following code:
+To implement a hook, add a function to the module's main `.php`
+file created earlier with `civix generate:module`:
 
-**Implementing "hook\_civicrm\_post" in "myextension"**
+```php
+/**
+ * Implementation of hook_civicrm_post
+ */
+function myextension_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+  switch ($objectName) {
+    case 'Contribution':
+      $file = '/tmp/contributions.log';
+      $message = strtr("Performed \"@op\" at @time on contribution #@id\n", array(
+        '@op' => $op,
+        '@time' => date('Y-m-d H:i:s'),
+        '@id' => $objectId,
+      ));
+      file_put_contents($file, $message, FILE_APPEND);
+      break;
+    default:
+      // nothing to do
+  }
+}
+```
 
 >> ![information](../img/info.png)
 When you first created the skeletal project, several hook functions were
-auto-generated in *myextension.php*. These functions are usually about
+auto-generated in `myextension.php`. These functions are usually about
 one line long – they simply delegate the work to another function. For
-example *myextension\_civicrm\_config()* delegates work to
-*\_myextension\_civix\_civicrm\_config()*. You should feel free to add
-more code to *myextension\_civicrm\_config()*, but you should preserve
-the call to **\_myextension**\_civix\_**civicrm*\_config().*
+example `myextension\_civicrm\_config()` delegates work to
+`\_myextension\_civix\_civicrm\_config()`. You should feel free to add
+more code to `myextension\_civicrm\_config()`, but you should preserve
+the call to `\_myextension\_civix\_civicrm\_config()`. <!-- fixme! why?? -->
 
 ### Add a resource file
 
-To include static resources – such as stylesheets, Javascript files, or
-images – you should place the files in your extension directory. To load
+To include static resources such as stylesheets, Javascript files, or
+images place them in your extension directory. To load
 the files at runtime, see the examples in the [Resource
 Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference).
 
 ### Add a report
 
 CiviReport enables developers to define new business reports using
-customizable SQL logic and form layouts. Use
-"generate:report" to get started:
+customizable SQL logic and form layouts.
+If another existing report is close to your needs you may copy and modify it.
+
+To to see the available report generation options acitivate the `civix` help:
 
 ```bash
-civix generate:report
+civix generate:report --help
 ```
 
+To create a new report specify the report PHP class name and the CiviCRM component, for example:
+
+```bash
+civix generate:report MyReport CiviContribute
+```
 
 This creates three files:
 
--   ***CRM/Myextension/Form/Report/MyReport.mgd.php*** stores metadata
-    about the report. The format of the file is based on
+-   `CRM/Myextension/Form/Report/MyReport.mgd.php` stores metadata
+    about the report in a format based on
     [hook\_civicrm\_managed](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
     and the
     [API](http://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference).
--   ***CRM/Myextension/******Form/Report/MyReport.php*** contains the
+-   `CRM/Myextension/Form/Report/MyReport.php` contains the
     form-builder and query-builder for the report. For details about its
     structure, see the [CiviReport
     Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/CiviReport+Reference).
--   ***templates/CRM/Myextension/Form/Report/MyReport.tpl*** contains
-    the report's HTML template. (Note: This usually delegates
-    responsibility to a core template and does not need to be edited.)
+-   `templates/CRM/Myextension/Form/Report/MyReport.tpl` contains
+    the report's HTML template. This template usually delegates
+    responsibility to a core template and does not need to be edited.
 
-**Copy an Existing Report**
+If one of the existing reports is close to meeting
+your needs, but requires further PHP or SQL customization, you may
+simply make a new report based on that report.
+To copy a report, find the class-name of the original report within the
+`civicrm/CRM/Report/Form/` directory in the CiviCRM repository.
+Then run the `civix generate:report` command using the copy option
+from with your extension directory.
 
-The reports included in CiviCRM are
-[open-source](http://civicrm.org/licensing), and (pursuant to the AGPL
-license) you have the right to derive new reports from existing reports.
-This can be useful if one of the existing reports is close to meeting
-your needs but requires further PHP/SQL customization. To make a new
-report based on an existing report:
-
--   Navigate to the "*civicrm/CRM/Report/Form/"* within your CiviCRM
-    source tree
--   Determine the class-name of the original report. (For example, the
-    activity report is in the class "*CRM\_Report\_Form\_Activity*".)
--   Return to your module directory and run the
-    "generate:report" command, e.g.
+For example, this command will copy the activity report in the class
+`CRM\_Report\_Form\_Activity` to a new report within your extension:
 
 ```bash
-generate:report --copy
+civix generate:report --copy CRM_Report_Form_Activity MyActivity Contact
 ```
-
 
 ### Add a custom search
 
 CiviCRM enables developers to define new search forms using customizable
-SQL logic and form layouts. Use
-"generate:search" to get started:
+SQL logic and form layouts. Use this command to get started:
 
 ```bash
-civix generate:search
+civix help generate:search
 ```
 
+Then you could generate your basic search code with:
 
-This creates two files:
+```bash
+civix generate:search MySearch
+```
 
--   ***CRM/Myextension/Form/Search/MySearch.mgd.php*** stores metadata
+This command will create two files:
+
+-   `CRM/Myextension/Form/Search/MySearch.mgd.php` stores metadata
     about the custom search. The format of the file is based on
     [hook\_civicrm\_managed](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
     and the
     [API](http://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference).
--   ***CRM/Myextension/******Form/Search/MySearch.php*** contains the
+-   `CRM/Myextension/Form/Search/MySearch.php` contains the
     form-builder and query-builder for the custom search.
 
-**Copy an Existing Search**
 
-The custom search classes included in CiviCRM are
-[open-source](http://civicrm.org/licensing), and (pursuant to the AGPL
-license) you have the right to derive new searches from existing
-searches. This can be useful if one of the existing searches is close to
-meeting your needs but requires further PHP/SQL/TPL customization. To
-make a new search based on an existing search:
+If one of the existing searches is close to
+meeting your needs you may copy it instead and then customise the
+PHP, SQL and templates.
 
--   Navigate to the "*civicrm/CRM/Contact/Form/Search/Custom"* within
-    your CiviCRM source tree
--   Determine the class-name of the original search. (For example, the
-    zipcode search is in the class
-    "*CRM\_Contact\_Form\_Search\_Custom\_ZipCodeRange*".)
--   Return to your module directory and run the
-    "generate:search" command, e.g.
+To make a new search based on an existing search determine the class-name of
+the original search class within the `civicrm/CRM/Contact/Form/Search/Custom`
+within the CiviCRM source tree. Then run the "generate:search" command from
+within your module directory.
+
+For example, the zipcode search is in the class
+`CRM\_Contact\_Form\_Search\_Custom\_ZipCodeRange`, so you can copy it with:
 
 ```bash
-generate:search --copy
+civix generate:search --copy CRM_Contact_Form_Search_Custom_ZipCodeRange MySearch
 ```
 
-
-The "copy" option will sometimes create two or three files – depending
+The "copy" option will create either two or three files depending
 on whether the original search screen defines its own Smarty template.
 
 ### Add an API function
@@ -475,14 +501,14 @@ REST, or SMARTY
 
 This creates one file:
 
--   ***api/v3/NewEntity/NewAction.php*** provides the API function. Note
+-   `api/v3/NewEntity/NewAction.php` provides the API function. Note
     that the parameters and return values must be processed in a
     particular way (as demonstrated by the auto-generated file).
 
 For use with CiviCRM 4.3, you can also add the "–schedule" option (e.g.
 "–schedule Hourly"). This will create another file:
 
--   ***api/v3/NewEntity/NewAction.mgd.php*** provides the scheduling
+-   `api/v3/NewEntity/NewAction.mgd.php` provides the scheduling
     record that will appear in the CiviCRM's job-manager.
 
 ### Add a new entity
@@ -558,8 +584,8 @@ civix generate:test
 
 This creates a new directory and a new PHP file:
 
--   ***tests/phpunit*** is the base directory for all test classes.
--   ***tests/phpunit/CRM/Myextension/MyTest.php*** is the actual test
+-   `tests/phpunit` is the base directory for all test classes.
+-   `tests/phpunit/CRM/Myextension/MyTest.php` is the actual test
     class. It should be written according to the conventions of
     [PHPUnit](http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html).
 
