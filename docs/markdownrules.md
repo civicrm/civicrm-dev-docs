@@ -280,7 +280,43 @@ mkdocs**:
 -   More list items
 ````
 
+## Admonitions
 
+### Types
+
+!!! note
+    I am a "note" admonition.
+
+!!! tip
+    I am a "tip" admonition.
+
+!!! warning
+    I am a "warning" admonition.
+
+!!! danger
+    I am a "danger" admonition.
+
+Other types
+
+-   "hint", "important" (visually identical to "tip")
+-   "attention", "caution" (visually identical to "warning")
+-   "error" (visually identical to "danger")
+
+### Syntax
+
+Simple example:
+
+```md
+!!! note
+    This feature is only available as of CiviCRM 4.5.
+```
+
+Add a custom title (make sure to quote the title):
+
+```md
+!!! danger "Don't try this at home!"
+    Stand back. I'm about to try science!
+```
 
 ## Images
 
