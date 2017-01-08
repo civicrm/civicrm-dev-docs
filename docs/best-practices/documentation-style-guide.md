@@ -14,10 +14,10 @@ Similar to most text books and manuals, we divide our guides into "parts",
 -   "chapter" - file (in markdown), also one web page with a given URL
 -   "section" - heading within the page
 
-In the navigation menu: (as stored in `mkdocs.yml`)
+In the navigation menu (as stored in `mkdocs.yml`):
 
--   Keep the page hierarchy to this depth (i.e. do not put folders within other
-    folders).
+-   Keep the page hierarchy to the depth described above
+    (i.e. do not put folders within other folders).
 -   Each chapter name should be short enough to fit nicely in the menu,
     but also long enough to stand on its own to a reasonable extent.
     The titles set here are used in the navigation menu *and* the page title
@@ -28,9 +28,13 @@ In the navigation menu: (as stored in `mkdocs.yml`)
 Each chapter should start with a paragraph that explains what will be
 covered in the chapter.
 
-Don't use terms like "previous chapter", etc. because we may re-arrange
-sections and we don't want or need to encourage people to read the book
-from front to back.
+Effort should be given to arrange all content within a guide so that skills and
+concepts which build upon one another are presented sequentially.
+Although guides should not require start-to-finish reading, providing the
+option (when possible) is helpful to some readers.
+
+Don't use terms like "previous chapter", etc. because we may add or re-arrange
+chapters in the future. Instead, use a hyperlink to the chapter.
 
 ### Headings
 
