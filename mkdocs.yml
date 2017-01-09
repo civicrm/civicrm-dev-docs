@@ -27,18 +27,18 @@ pages:
    - All Available Hooks: hooks-db.md
 - Writing Extensions:
   - Basics: extensions/basics.md
-# - civix: extensions/civix.md
-# - Anatomy of Files: extensions/files.md
-# - Using hooks: extensions/using-hooks.md
-# - Customizing Screens: extensions/customize-screens.md
-# - Creating Pages: Forms/extensions/create-page.md
-# - Storing Configuration: extensions/config.md
-# - Storing Data: extensions/storing-data.md
-# - Setting Permissions: extensions/permissions.md
-# - Custom API Functions: extensions/custom-api.md
-# - Custom Reports: extensions/custom-reports.md
-# - Custom Searches: extensions/custom-searches.md
-# - Payment Processors: extensions/payment-processor.md
+  # - civix: extensions/civix.md
+  # - Anatomy of Files: extensions/files.md
+  # - Using hooks: extensions/using-hooks.md
+  # - Customizing Screens: extensions/customize-screens.md
+  # - Creating Pages: Forms/extensions/create-page.md
+  # - Storing Configuration: extensions/config.md
+  # - Storing Data: extensions/storing-data.md
+  # - Setting Permissions: extensions/permissions.md
+  # - Custom API Functions: extensions/custom-api.md
+  # - Custom Reports: extensions/custom-reports.md
+  # - Custom Searches: extensions/custom-searches.md
+  # - Payment Processors: extensions/payment-processor.md
 - Miscellaneous:
    - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md

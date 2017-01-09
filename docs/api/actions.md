@@ -23,7 +23,7 @@ Search for records and return the first or only match. (Note: This
 returns the record in a simplified format which is easy to use)
 
 ## getvalue
-Does a `getsingle` and returns a single value - you need to also set 
+Does a `getsingle` and returns a single value - you need to also set
 `$param['return'] => 'fieldname'`.
 
 ## getcount
@@ -49,18 +49,18 @@ Used for autocomplete lookups by the
 Returns the options for a specified field e.g.
 ```php
 civicrm_api3(
-  'contact',
-  'getoptions', 
+  'Contact',
+  'getoptions',
   array('field' => 'gender_id')
-  ); 
+);
 ```
 
 returns
 
 ```php
 array(
-  1 => 'Female', 
-  2 => 'Male', 
+  1 => 'Female',
+  2 => 'Male',
   3 => 'Transgender'
 )
 ```
@@ -71,7 +71,7 @@ Replace an old set of records with a new or modified set of records.
 (For example, replace the set of "Phone" numbers with a different set of
 "Phone" numbers.).
 
-Warning - REPLACE includes an implicit delete - use with care & test well 
+Warning - REPLACE includes an implicit delete - use with care & test well
 before using in productions
 
 ## <del>setvalue</del>
