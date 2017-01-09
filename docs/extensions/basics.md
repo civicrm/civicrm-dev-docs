@@ -52,9 +52,7 @@ different short-name, but that requires extra work.
 If you haven't already, you need to configure a local directory to store
 extensions.
 For instructions, see
-[Extensions](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions)
-You may also want to review the
-[Extension Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference) page for technical details.
+[Extensions](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
 
 ### 0. Decide
 Writing an extension is a great way to implement a new feature – but it may be
@@ -77,6 +75,10 @@ Civix is a command-line tool which generates code for some common development
 tasks.
 
 >> See [https://github.com/totten/civix/](https://github.com/totten/civix/)
+
+>> For more information on the boilerplate civix generates for you, in
+   particular the extension manifest file (info.xml), see the [Extension
+   Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference).
 
 ### 2. Develop
 To get started with development, one should usually follow the steps in
