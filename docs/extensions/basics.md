@@ -70,9 +70,9 @@ plugins. If you're considering another way, look at the
 to help decide.
 
 ### 1. Install civix
-Some tasks in the process of writing an extension require boiler-plate code. To
+Some tasks in the process of writing an extension require boilerplate code. To
 reduce the amount of work required to find, understand, and adapt the
-boiler-plate code, one should install the CiviCRM extension builder, civix.
+boilerplate code, one should install the CiviCRM extension builder, civix.
 Civix is a command-line tool which generates code for some common development
 tasks.
 
