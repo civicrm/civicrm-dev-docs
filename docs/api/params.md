@@ -25,22 +25,22 @@ or by ID.
 Example without sequential:
 
 ```php
-$result = civicrm_api('UFMatch', 'Get', array(
+$result = civicrm_api('UFMatch', 'get', array(
   'version' => 3,
   'uf_id' => $user->uid,
 ));
-$contactid = $contact['values'][$result['id']]['contact_id'];
+$contactId = $result['values'][$result['id']]['contact_id'];
 ```
 
 Example with sequential:
 
 ```php
-$result = civicrm_api('UFMatch', 'Get', array(
+$result = civicrm_api('UFMatch', 'get', array(
   'version' => 3,
   'uf_id' => $user->uid,
   'sequential' => 1,
 ));
-$contactid = $result['values'][0]['contact_id'];
+$contactId = $result['values'][0]['contact_id'];
 ```
 
 Note that a single record is returned in this example - whenever a single
@@ -60,7 +60,7 @@ The maximum number of records to return
 Example:
 
 ```php
-civicrm_api('UFMatch', 'Get', array(
+civicrm_api('UFMatch', 'get', array(
   'version' => 3,
   'uf_id' => $user->uid,
   'options' => array(
@@ -82,7 +82,7 @@ The numerical offset of the first result record
 Example:
 
 ```php
-civicrm_api('UFMatch', 'Get', array(
+civicrm_api('UFMatch', 'get', array(
   'version' => 3,
   'uf_id' => $user->uid,
   'options' => array(
@@ -157,7 +157,7 @@ field.
 Example:
 
 ```php
-civicrm_api('contact', 'create', array(
+civicrm_api('Contact', 'create', array(
   'version' => 3,
   'contact_type' => 'Individual',
   'first_name' => 'Jeffrey',
@@ -189,7 +189,7 @@ field.
 Example:
 
 ```php
-civicrm_api('contact', 'create', array(
+civicrm_api('Contact', 'create', array(
   'version' => 3,
   'contact_type' => 'Individual',
   'first_name' => 'Jeffrey',
