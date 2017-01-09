@@ -45,15 +45,6 @@ different short-name, but that requires extra work.
     by the www-data user. You will need to make this file readable by
     your development user account for civix to work.
 
-## General overview
-
-[]( fixme paragraph this section into above notes )
-
-If you haven't already, you need to configure a local directory to store
-extensions.
-For instructions, see
-[Extensions](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
-
 ### 0. Decide
 Writing an extension is a great way to implement a new feature – but it may be
 unnecessary if someone else has already implemented that feature. If you're not
