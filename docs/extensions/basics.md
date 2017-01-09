@@ -82,7 +82,18 @@ conventions closely resemble those of CiviCRM Core and of CiviCRM-Drupal
 modules. Module extensions are fully supported in CiviCRM 4.2+.
 
 ### 3. Publish
-The CiviCRM Extensions Directory provides a way to publicize your extension –
-and it even provides easy, in-app distribution.
+The CiviCRM ecosystem is built on the belief that non-profit organizations can
+serve themselves best by collaborating in development of their data-management
+applications. As staff, volunteers, and consultants for non-profit organizations,
+we can share our new enhancements and extensions -- and build a richer whole for
+the entire ecosystem.
 
-See: [Publish](http://wiki.civicrm.org/confluence/display/CRMDOC/Publish+an+Extension),
+Extension authors may make their extensions available to the larger CiviCRM
+community by publishing them in the [Extensions Directory](https://civicrm.org/extensions).
+>> See: [Publish](http://wiki.civicrm.org/confluence/display/CRMDOC/Publish+an+Extension)
+
+Extensions which undergo a [formal review](extend-stages#formal-review) may be
+distributed in-app. Approved extensions can be [installed
+directly](https://docs.civicrm.org/user/en/master/introduction/extensions/#installing-extensions)
+into CiviCRM via the user interface, lowering the barrier to entry for many users.
+>> See: [Eligibility for Automated Distribution](https://wiki.civicrm.org/confluence/display/CRMDOC/Publish+an+Extension#PublishanExtension-EligibilityforAutomatedDistribution)
