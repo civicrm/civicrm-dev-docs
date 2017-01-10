@@ -12,6 +12,7 @@ pages:
 - Basics:
   - Developer Community: basics/community.md
   - Requirements: requirements.md
+  - Planning your project: basics/planning.md
   - Build: build.md
   - Customize: customize.md
   - Extend: extend.md
