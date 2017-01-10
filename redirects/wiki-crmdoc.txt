@@ -2,3 +2,4 @@ Documentation+Infrastructure+Canary develop
 The+developer+community basics/community
 Create+an+Extension extensions/basics
 Before+you+start basics/planning
+Recommendations basics/planning

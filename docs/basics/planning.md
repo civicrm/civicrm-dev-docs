@@ -57,3 +57,37 @@ selected for future releases.  MIH work is carried out by the core team
 or trusted consultants.  You can see a list of current MIH online at
 [http://civicrm.org/mih](http://civicrm.org/mih).  If you think your
 project would make a good MIH, discuss it with the core team.
+
+
+# Recommendations
+
+
+
+-   Use Git and Github for revision control.  The official CiviCRM
+    repositories are housed on Github.  If you use Github you will find
+    it easy to access the latest source-code, to submit pull requests
+    for any patches you create and to collaborate with many other
+    CiviCRM developers who also use Github.  See [Contributing to
+    CiviCRM using
+    GitHub](/confluence/display/CRMDOC/Contributing+to+CiviCRM+using+GitHub)
+    for more details.\
+     \
+-   Whenever possible package the feature you are developing as a native
+    extension created using Civix, the CiviCRM extension builder.  A
+    native extension is easy to install on all you own sites and easy to
+    share with the CiviCRM community.  Civix is a command-line tool
+    which generates the boilerplate code required for some common
+    development tasks. Instructions for installing Civix can be found at
+    [https://github.com/totten/civix/](https://github.com/totten/civix/).\
+     \
+-   Use the CiviCRM API to access and manage CiviCRM data in any patch,
+    native extension, CMS module, or external program that you
+    develop.   The API will function as expected with every new release
+    and backwards compatibility of the API is maintained for several
+    versions of CiviCRM.  See [Using the
+    API](/confluence/display/CRMDOC/Using+the+API).\
+     \
+-   Follow the CiviCRM [Coding
+    Standards](/confluence/display/CRMDOC/Coding+Standards). If everyone
+    follows the coding standards then all development work will be
+    easier as the structure will be more uniform.
