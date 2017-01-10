@@ -32,9 +32,16 @@ platforms.
 
 ## Hyperlinks
 
--   A basic hyperlink
+-   A basic hyperlink (in a sentence)
 
         Try [CiviCRM](https://civicrm.org) for your database.
+
+-   An internal hyperlink on mkdocs (4 different ways that all work)
+
+        [extensions](/extensions/basics)
+        [extensions](/extensions/basics.md)
+        [extensions](extensions/basics)
+        [extensions](extensions/basics.md)
 
 -   With long URLs, the following syntax is better.
 
@@ -85,7 +92,10 @@ This is a second.
 #### Heading 4
 ```
 
-Alternate syntax (only works for h1 and h2):
+The above syntax is [called](http://pandoc.org/MANUAL.html#headers)
+"ATX style headers" in markdown terminology, and is preferred my most.
+An alternate syntax called "setext style headers" works for h1 and h2 as
+follows:
 
 ```md
 Heading 1
@@ -272,7 +282,43 @@ mkdocs**:
 -   More list items
 ````
 
+## Admonitions
 
+### Types
+
+!!! note
+    I am a "note" admonition.
+
+!!! tip
+    I am a "tip" admonition.
+
+!!! warning
+    I am a "warning" admonition.
+
+!!! danger
+    I am a "danger" admonition.
+
+Other types
+
+-   "hint", "important" (visually identical to "tip")
+-   "attention", "caution" (visually identical to "warning")
+-   "error" (visually identical to "danger")
+
+### Syntax
+
+Simple example:
+
+```md
+!!! note
+    This feature is only available as of CiviCRM 4.5.
+```
+
+Add a custom title (make sure to quote the title):
+
+```md
+!!! danger "Don't try this at home!"
+    Stand back. I'm about to try science!
+```
 
 ## Images
 
