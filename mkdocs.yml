@@ -25,8 +25,10 @@ pages:
    - All Available Hooks: hooks-db.md
 - Writing Extensions:
   - Basics: extensions/basics.md
-  # - civix: extensions/civix.md
-  # - Anatomy of Files: extensions/files.md
+  - Using civix: extensions/civix.md
+  - Anatomy of Files: extensions/files.md
+  - Advanced Patterns: extensions/advanced.md
+  - Troubleshooting: extensions/troubleshooting.md
   # - Using hooks: extensions/using-hooks.md
   # - Customizing Screens: extensions/customize-screens.md
   # - Creating Pages: Forms/extensions/create-page.md
