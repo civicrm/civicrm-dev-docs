@@ -3,23 +3,30 @@
 ## Learn how to *use* CiviCRM
 
 Before diving into CiviCRM development, it's worth mentioning that a solid
-understanding of CiviCRM from the *user's* perspective is very important.
-To that end, please see the
+understanding of CiviCRM from the *user's* perspective can really help. You
+pick up the standard user interface patterns that you can re-use in your work,
+and you might even realise that the UI already provides the functionality you
+wish to develop. To that end, please see the
 [User Guide](https://docs.civicrm.org/user/en/stable/).
 
 
 ## Learn these developer skills
 
-Becoming a proficient CiviCRM developer requires skills in many different
-technologies, some of which are contained within the CiviCRM project
-(e.g. civix, buildkit) and thus covered in detail within this guide. But
-other technologies such as PHP, and Git (which are not CiviCRM-specific) are
-outside the scope of this guide. As such, this guide assumes that readers
+Below we've outlined the major technologies that CiviCRM is built with.
+You don't need to be a pro at everything listed here to get started, but it's
+useful to understand at least of couple of them well, and have a basic
+understanding of how they fit together to create CiviCRM.
+
+Technologies which are contained within the CiviCRM project
+(e.g. civix, buildkit) are covered in detail within this guide, but
+other technologies (such as PHP and Git, which are not CiviCRM-specific) are
+outside its scope. As such, this guide assumes that readers
 arrive with a baseline understanding of these developer skills. This page lists
 these prerequisite skills, along with pointers to usher the reader towards
 appropriate resources for closing skills gaps, wherever necessary.
-You don't need to be a pro at everything listed here to get started, but it's
-worth focusing more effort towards the top of this list first.
+Items listed towards the top of this list are, generally-speaking, more
+important skills for CiviCRM development, but the specific skills needed to
+accomplishing a particular development goal, certainly vary.
 
 -   **PHP** - the main programming language in which CiviCRM is written
     -   [Language reference](http://php.net/manual/en/langref.php)
