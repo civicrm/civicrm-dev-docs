@@ -13,32 +13,32 @@ generally quickest to to make a local clone of the CiviCRM from GitHub.
 ## Namespaces
 Classes in CiviCRM must be placed in one of two folders:
 
-***CRM*** (e.g.: `CRM_Core_Invoke`)
+***`CRM`*** (e.g.: `CRM_Core_Invoke`)
 classes use PEAR-style class-naming conventions that were common up until
 PHP 5.2. Class names include underscores and MUST NOT use the PHP
 "[namespace](http://php.net/namespace)"
-directive. Use "CRM" style when creating classes that plug into existing "CRM"
+directive. Use `CRM` style when creating classes that plug into existing `CRM`
 subsystems such
 as payment processors (CRM_Core_Payment) and reports (CRM_Report).
 
-***Civi*** (for example `\Civi\API\Kernel`
+***`Civi`*** (e.g.: `\Civi\API\Kernel`)
 "Civi" classes use PHP 5.3 namespaces. They MUST use the
 "[namespace](http://php.net/namespace)" directive.
 Namespaces are designated with "\".
 
-    !!! notice
+!!! note
     At time of writing (May 2014, before Civi 4.5), some classes may not load
-    properly if they are in "Civi" – for example, the payment system will only load
-    payment-processor classes in "CRM_Core_Payment". If you encounter problems like
-    this, please submit an issue and/or patch.
+    properly if they are in `Civi` – for example, the payment system will only load
+    payment-processor classes in `CRM_Core_Payment`. If you encounter problems like
+    this, please submit an issue or patch.
 
-    !!! tip
-    The "Civi" namespace uses composer's PSR-0 autoloader. This autoloader does not
+!!! tip
+    The `Civi` namespace uses composer's PSR-0 autoloader. This autoloader does not
     support custom PHP overrides.
-    Use "Civi" when creating new object-oriented subsystems (like \Civi\API).
+    Use `Civi` when creating new object-oriented subsystems (like `\Civi\API`).
 
 ## Business logic
-Most of the business logic of CiviCRM, is found in the CRM directory ('CIVICRM_ROOT/CRM').
+Most of the business logic of CiviCRM, is found in the CRM directory (`CIVICRM_ROOT/CRM`).
 This logic is the part of CiviCRM that
 defines what it does and how it behaves
 (e.g. that allows people to register on events)
@@ -142,13 +142,14 @@ BAO folder too.
 
 Looking in `CiviCRM/xml/Schema/Pledge` we see 4 files:
 
-files.xml
-Pledge.xml
-PledgePayment.xml
-PledgeBlock.xml
-files.xml is just a list of the other files. Each of the others represents a
+- files.xml
+- Pledge.xml
+- PledgePayment.xml
+- PledgeBlock.xml
+
+The files.xml is just a list of the other files. Each of the others represents a
 table in the Database. The XML files describe the database and are used to
-build both the DAO files and the new database sql generation script.
+build both the DAO files and the new database SQL generation script.
 
 The XML describes fields, foreign keys and indexes, an example of a field definition is:
 
