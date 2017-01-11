@@ -14,7 +14,40 @@ This section covers how to write extensions. See the [extension life cycle
 page](/extend-stages) for background on the publishing and review process for
 [published extensions](https://civicrm.org/extensions).
 
+## Extension Names
+
+All extension names follow the same convention as Java package names – they
+look like reversed domain names. (e.g.  `com.example.myextension`). For
+module-extensions, the last word in the module name will be the module's
+*short-name*. The short-name *must* be unique. It is possible to pick a
+different short-name, but that requires extra work.
+
+## Pre-Requisites
+
+-   Have basic knowledge of PHP, Unix, and object-oriented programming
+-   Install ***civix v14.01*** or newer. For instructions, see
+    [https://github.com/totten/civix/](https://github.com/totten/civix/)
+    . This wiki page assumes that "civix" is installed and registered in
+    the PATH.
+-   Configure an extensions directory. For instructions, see
+    [Extensions](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
+    This wiki page assumes the directory is "/var/www/extensions", but
+    you should adapt as appropriate.
+     Your extensions directory must be under the CMS root directory so
+    that civix can find and bootstrap the CMS. Otherwise, it will fail
+    with an error like "Sorry, could not locate bootstrap.inc" on most
+    operations.
+-   The user account you use to develop the module must have permission
+    to read all CMS files, including configuration files, and write to
+    the extensions directory.
+     For example, Debian's drupal7 package saves database configuration
+    to /etc/drupal/7/sites/default/dbconfig.php, which is only readable
+    by the www-data user. You will need to make this file readable by
+    your development user account for civix to work.
+
 ## General overview
+
+[]( fixme paragraph this section into above notes )
 
 If you haven't already, you need to configure a local directory to store
 extensions.
