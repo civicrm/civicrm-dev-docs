@@ -44,9 +44,12 @@ pages:
   # - Custom Reports: extensions/custom-reports.md
   # - Custom Searches: extensions/custom-searches.md
   # - Payment Processors: extensions/payment-processor.md
+- Core code:
+  - Hacking the core: core/hacking.md
+  - Architecture: core/architecture.md
 - Miscellaneous:
    - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md
-   - hookref-old: hookref-old.md
+   # - hookref-old: hookref-old.md
 - Deprecated:
    - Building CiviCRM from source: develop-deprecated.md

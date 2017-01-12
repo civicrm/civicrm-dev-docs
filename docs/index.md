@@ -1,5 +1,15 @@
 # CiviCRM Developer Guide
 
+!!! warning "Notice"
+    This guide is not yet complete.
+    As of early 2017 we are actively working to migrate content in from the
+    [wiki]. Read more about this [migration process][migration], including how
+    to help out!
+
+[wiki]: http://wiki.civicrm.org/confluence/display/CRMDOC/Develop
+[migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
+
+
 [CiviCRM](https://civicrm.org) is an open-source application. The code can be
 poked, prodded, twisted, and hacked. It can be customized, extended, and
 collaboratively developed. This documentation tells you how to do that.
@@ -23,12 +33,4 @@ for use by people that are familiar with CiviCRM development.
     for specific details on editing this documentation (and others using
     mkdocs). You can also learn how to read these docs off-line!
 
-## Migration of content is in progress
-
-As of early 2017 we are actively working to migrate content from the [wiki] to
-this guide. Read more about this [migration process][migration], including how
-to help out!
-
-[wiki]: http://wiki.civicrm.org/confluence/display/CRMDOC/Develop
-[migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
 
