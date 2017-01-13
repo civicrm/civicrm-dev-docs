@@ -91,19 +91,21 @@ before using the API.  See the examples in [Bootstrap Reference].
 ## PHP (class.api.php)
 
 CiviCRM v3.4 introduced an object-oriented API client, `class.api.php`.
-This class be used locally or remotely to invoke APIs, as in:
+This class can be used locally or remotely to invoke APIs, as in:
 
 ```php
 require_once 'your/civicrm/folder/api/class.api.php';
-$api = new civicrm_api3();
+$api = new civicrm_api3(array(
+  // Specify location of "civicrm.settings.php".
+  'conf_path' => 'your/sites/default',
+));
 $apiParams = array(
   'first_name' => 'Alice',
-  'last_name' => 'Roberts'
+  'last_name' => 'Roberts',
 );
 if ($api->Contact->Get($apiParams)) {
   //each key of the result array is an attribute of the api
   echo "\n contacts found ".$api->count;
-  'contact_type'=>'Individual','return'=>'sort_name,current_employer')) {
 }
 else {
   echo $api->errorMsg();
@@ -111,8 +113,11 @@ else {
 ```
 
 If you call the API in the object oriented fashion, you do not have to
-specify 'version' as a parameter
+specify 'version' as a parameter.
 
+The object-oriented client can connect to a local or remote CiviCRM
+instance. For details about connection parameters, see the docblock in
+[class.api.php](https://github.com/civicrm/civicrm-core/blob/master/api/class.api.php).
 
 ## REST
 
