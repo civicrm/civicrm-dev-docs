@@ -1,5 +1,6 @@
 Documentation+Infrastructure+Canary develop
 The+developer+community basics/community
 Create+an+Extension extensions/basics
-The+codebase core/architecture.md
+The+codebase core/architecture
 Debugging+for+developers dev-tools/debugging
+
