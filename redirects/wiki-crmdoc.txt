@@ -3,5 +3,4 @@ The+developer+community basics/community
 Create+an+Extension extensions/basics
 Before+you+start basics/planning
 Recommendations basics/planning
-The+codebase core/architecture.md
-
+The+codebase core/architecture

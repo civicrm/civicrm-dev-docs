@@ -11,6 +11,7 @@ pages:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md
+  - Prerequisite skills: basics/skills.md
   - Requirements: requirements.md
   - Planning your project: basics/planning.md
   - Build: build.md
