@@ -19,8 +19,10 @@ We are using [mkdocs](http://www.mkdocs.org) to produce guides, and currently
 have the following two:
 
 -   [User Guide](https://docs.civicrm.org/user/en/stable/)
--   [Developer Guide](https://docs.civicrm.org/dev/en/master/) *(which you are
-    reading now!)*
+    ([repository](https://github.com/civicrm/civicrm-docs))
+-   [Developer Guide](https://docs.civicrm.org/dev/en/master/)
+    ([repository](https://github.com/civicrm/civicrm-dev-docs))
+    *(which you are reading now!)*
 
 The content for each of these guides is written in [markdown], stored in text
 files, and hosted on GitHub.
@@ -32,7 +34,8 @@ However, for a better editing experience we highly recommend installing
 `mkdocs` as follows.
 
 1.  Obtain the source files for the guide you want to edit
-    1.  Find the repository on GitHub (see bottom left of screen)
+    1.  Find the repository on GitHub (see "repository" links above, or the "GitHub" link on the bottom left
+        of screen of the documentation you are reading)
     1.  Fork and clone locally.
 1.  Install mkdocs on your machine.
     1.  For Ubuntu

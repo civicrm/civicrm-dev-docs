@@ -3,10 +3,15 @@ repo_url: https://github.com/civicrm/civicrm-dev-docs
 site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
 theme: readthedocs
+extra_javascript:
+  - js/custom.js
+markdown_extensions:
+  - markdown.extensions.admonition
 pages:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md
+  - Prerequisite skills: basics/skills.md
   - Requirements: requirements.md
   - Build: build.md
   - Customize: customize.md
@@ -25,8 +30,10 @@ pages:
    - All Available Hooks: hooks-db.md
 - Writing Extensions:
   - Basics: extensions/basics.md
-  # - civix: extensions/civix.md
-  # - Anatomy of Files: extensions/files.md
+  - Using civix: extensions/civix.md
+  - Anatomy of Files: extensions/files.md
+  - Advanced Patterns: extensions/advanced.md
+  - Troubleshooting: extensions/troubleshooting.md
   # - Using hooks: extensions/using-hooks.md
   # - Customizing Screens: extensions/customize-screens.md
   # - Creating Pages: Forms/extensions/create-page.md
@@ -39,9 +46,12 @@ pages:
   # - Payment Processors: extensions/payment-processor.md
 - Best Practices:
   - Documentation Style Guide: best-practices/documentation-style-guide.md
+- Core code:
+  - Hacking the core: core/hacking.md
+  - Architecture: core/architecture.md
 - Miscellaneous:
    - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md
-   - hookref-old: hookref-old.md
+   # - hookref-old: hookref-old.md
 - Deprecated:
    - Building CiviCRM from source: develop-deprecated.md
