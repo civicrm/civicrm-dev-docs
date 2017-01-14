@@ -173,26 +173,34 @@ CiviCRM debugging.
 
 ### Installing XDebug
 
-Debian / Ubuntu Linux
+#### Debian / Ubuntu Linux
 
 ```bash
 sudo apt-get install php5-xdebug
 ```
 
-Red Hat / CentOS Linux
+#### Red Hat / CentOS Linux
 
 ```bash
 sudo yum install php-pecl* php-devel php-pear
 sudo pecl install Xdebug
 ```
 
-Mac OS X
+#### Mac OS X, general
+
+Specific installation steps will vary, due to the diversity of PHP installation sources (e.g. Apple's built-in PHP, brew, MAMP, XAMPP, AMPP, Vagrant, Bitnami, and MacPorts). The best way to install XDebug is to identify your specific PHP runtime and then search Google for "mamp xdebug" or "macports xdebug" as needed.
+
+#### Mac OS X, with PHP from MacPorts
 
 ```bash
 sudo port install php5-xdebug
 ```
 
-For other platforms and more details see [XDebug's installation instructions](http://xdebug.org/docs/install).
+#### Other platforms
+
+For more details see
+[XDebug's installation instructions](http://xdebug.org/docs/install).
+
 
 ### Setting up PHP to talk to XDebug
 
