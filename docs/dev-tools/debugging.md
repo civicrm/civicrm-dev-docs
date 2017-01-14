@@ -1,131 +1,53 @@
-# Debugging for developers
-
-!!! warning
-    This is a work in progress.  Orange text needs updating.
+# Debugging
 
 When your code isn't doing what you want it to do, it's time to debug.
 There are lots of options for debugging and there is lots you can do
 without setting up a sophisticated debugging environment.  This chapter
 contains some simple debugging tips and tricks to get you started and
 also instructions on setting up XDebug, which is the recommended
-debugging tool for CiviCRM when you have bugs which you are finding it
-really hard to squish.
-
-## UI options
-
-These tools are activated by adding parameters to the URL that makes up
-the page, e.g. `&backtrace=1`. Go to **Administer > System Settings >
-Debugging and Error Handling** to enable these options, and find out
-more about them.
-
-#### **Enable Debugging**
+debugging tool for CiviCRM when you have bugs which are really hard to squish.
 
 !!! danger "Security Alert"
-   Debug should **NOT** be enabled for production sites as it can result in system configuration and authentication information being exposed to unauthorized visitors.
+    None of these debugging should be performed on production sites, as they can expose system configuration and authentication information being to unauthorized visitors.
 
-CiviCRM has a debug mode which can be enabled to give you quick access
-to a couple of useful diagnostic tools, including access to all the
-smarty variables that make up a page. It also provides shortcut methods
-to empty the file based cache and session variables.
-
-Available debug commands are listed in the info box below.
-
-**Debug URLs**
-Debug output is triggered by adding specific name-value pairs to the CiviCRM query string **when Enable Debugging is set to Yes**:
-
--   Smarty Debug Window - Loads all variables available to the current page template into a pop-up window. To trigger, add `&smartyDebug=1` to any CiviCRM URL query string. Make sure you have pop-up blocking disabled in your browser for the CiviCRM site URL.
--   Session Reset - Resets all values in your client session. To trigger, add `&sessionReset=2`
--   Directory Cleanup - Empties template cache and/or temporary upload file folders.
-   -   To empty template cache `civicrm/templates_c` folder), add `&directoryCleanup=1`
-   -   To remove temporary upload files (`civicrm/upload` folder), add `&directoryCleanup=2`
-   -   To cleanup both, add `&directoryCleanup=3`
--   Stack Trace - To display a stack trace listing at the top of a page, add `&backtrace=1`
--   Display Current Session - Displays the current users session variables in the browser, `&sessionDebug=1`
+The debugging methods presented here are ordered with the easiest ones first, but you may find the more challenging methods near the end to be more rewarding.
 
 
-**Forcing debug output**
 
-Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected.  An example of this is looking at the Contact Summary page using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs.  To do this, after you have overridden the correct .tpl file, simply add  `{debug}` to any part of the file and the Smarty Debug Window will display all variables in the same scope as the `{debug}` statement.
+## Changing settings in the UI
 
-#### Display Backtrace
+CiviCRM has a debug mode which can be enabled via the UI to give you quick
+access to a couple of useful diagnostic tools, including all the
+Smarty variables that make up a page. It also provides shortcut methods
+to empty the file-based cache and session variables.
 
-!!! danger "Security Alert"
-   Backtrace should **NOT** be enabled for production sites as it can result in information being exposed to unauthorized visitors.
+To use debugging via the UI, first go to **Administer > System Settings > Debugging and Error Handling** to enable these options, and find out more about them.
 
+### Using URL parameters
 
-The backtrace can be enabled independently of debugging. If this option
-is selected, a backtrace will be displayed even if debugging is
-disabled.
+After enabling debugging, append any of the following name-value pairs to the URL for the page you visit.
 
-A backtrace is a list of all the functions that were run in the
-execution of the page, and the php files that contain these functions.
-It can be really useful in understanding the path that was taken through
-code, what gets executed where, etc.
+-   `&smartyDebug=1` opens the Smarty Debug Window which loads all variables available to the current page template into a pop-up window *(make sure you have pop-up blocking disabled)*.
+-   `&sessionReset=2` resets all values in your client session.
+-   `&directoryCleanup=1` empties template cache in `civicrm/templates_c`.
+-   `&directoryCleanup=2` removes temporary upload files in `civicrm/upload`.
+-   `&directoryCleanup=3` performs both of the above actions.
+-   `&backtrace=1` displays a stack trace listing at the top of a page.
+-   `&sessionDebug=1` displays the current users session variables in the browser.
 
-Set this to Yes if you want to display a backtrace listing when a fatal
-error is encountered. This feature should **NOT** be enabled for
-production sites.
+!!! tip "Caveats"
+    - Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected.  An example of this is looking at the Contact Summary page, when using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs. To do this you will need to debug via code, as explained below.
+    - If the page you are debugging does not already have a key-value parameter before debugging, you will need to begin the first parameter with a question mark instead of a ampersand.
 
-You can also force the backtrace to be printed at any point in the code
-by adding a call to `CRM_Core_Error::backtrace();`
+### Displaying a backtrace
 
-## Statements to insert into you code
+The backtrace can be enabled independently of debugging. If this option is selected, a backtrace will be displayed even if debugging is disabled.
 
-**Forcing debug output**
-
-Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected.  An example of this is looking at the Contact Summary page using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs.  To do this, after you have overridden the correct `.tpl` file, simply add  `{debug}` to any part of the file and the Smarty Debug Window will display all variables in the same scope as the `{debug}` statement.
-
-You can also force the backtrace to be printed at any point in the code
-by adding a call to `CRM_Core_Error::backtrace();`
+A backtrace is a list of all the functions that were run in the execution of the page, and the PHP files that contain these functions. It can be really useful in understanding the path that was taken through code, what gets executed where, etc.
 
 
-### Settings which modify CiviCRM behavior for debugging
 
-The following values can be added to your site's settings file
-`civicrm.settings.php` to assist in debugging:
-
-**Output all email to disk files OR discard**
-
-`define('CIVICRM\_MAIL\_LOG', 1);`
-
-This setting causes all outbound CiviCRM email to be written to files on your server's disk drive (Send Email to Contacts, Contribution and Event receipts, CiviMail mail ...). No real emails are sent. Emails are written to the `files/civicrm/ConfigAndLog/mail` (Drupal) or `media/civicrm/ConfigAndLog` directory (Joomla) by default.
-
-`define('CIVICRM_MAIL_LOG', '/dev/null');`
-
-This setting causes all outbound emails to be discarded. No email is sent and emails are NOT written to disk.
-
-**Output all sql queries run by CiviCRM to a `CiviCRM.*.log` file**
-
-Log files are located in the `files/civicrm/ConfigAndLog/` directory by default.
-
-`define( 'CIVICRM_DEBUG_LOG_QUERY', 1 );`
-
-`define( 'CIVICRM_DEBUG_LOG_QUERY', 'backtrace' );`
-
-This setting will include a backtrace of the php functions that led to this query.
-
-`define('CIVICRM_DAO_DEBUG', 1);`
-
-Writes out various data layer queries to your browser screen.
-
-In many cases enabling MySQL query logging can be more effective.
-
-#### Printing PHP variables
-
-`CRM_Core_Error::debug($name, $variable = null, $log = true, $html= true);`
-
-can be called to print any variable. It is a wrapper around
-`print_r($variable);` which does some clever stuff, but
-`print_r($variable);` is often all you need.
-
-Following your `print_r();` with and `exit;` to stop the script execution
-at that point is often useful or necessary.
-
-The `var_dump()` function gives similar output to `print_r()` but also
-gives you information regarding data types and lengths, which can be
-really useful during debugging.
-
-## Log files
+## Viewing log files
 
 CiviCRM's log files are stored in the `civicrm/ConfigAndLog` directory
 (below the `files` directory in Drupal sites, and below the `media`
@@ -134,33 +56,94 @@ in Wordpress). Most runtime errors are logged here, as well as data that
 you explicitly write to log using the `CRM_Core_Error::debug log=true`
 parameter.
 
+
+
+## Changing file-based settings
+
+The following values can be added to your site's settings file `civicrm.settings.php` to assist in debugging:
+
+- `define('CIVICRM_MAIL_LOG', 1);` causes all outbound CiviCRM email to be written to a log file. No real emails are sent.
+
+- `define('CIVICRM_MAIL_LOG', '/dev/null');` causes all outbound emails to be discarded. No email is sent and emails are not written to disk.
+
+- `define( 'CIVICRM_DEBUG_LOG_QUERY', 1 );` outputs all SQL queries to a log file.
+
+- `define( 'CIVICRM_DEBUG_LOG_QUERY', 'backtrace' );` will include a backtrace of the PHP functions that led to the query.
+
+- `define('CIVICRM_DAO_DEBUG', 1);` writes out various data layer queries to your browser screen.
+
+!!! tip
+    When any sort of "logging stuff to a file" is enabled by one of the above settings, check the following directories for the resulting file:
+
+    - Drupal: `files/civicrm/ConfigAndLog/`
+    - Joomla: `media/civicrm/ConfigAndLog/`
+
+
+## Viewing a query log from MySQL
+
+Outside of CiviCRM, the MySQL database software has features to enable the logging of all queries it receives.
+
+*TODO: how do we enable?*
+
+
+
+## Changing source code
+
+### In Smarty template files
+
+Add  `{debug}` to any part of the `.tpl` file and the Smarty Debug Window (described above) will display all variables in the same scope as the `{debug}` statement.
+
+### Printing PHP variables
+
+Show the contents of a variable:
+
+```php
+print_r($variable);
+```
+
+Show the contents of a variable, also with information regarding data types and lengths:
+
+```php
+var_dump($variable);
+```
+
+Another way to show the contents of a variable:
+
+```php
+CRM_Core_Error::debug($name, $variable = null, $log = true, $html= true);
+```
+
+Stop the script execution at that point.
+
+```php
+exit;
+```
+
+Print a backtrace:
+
+```php
+CRM_Core_Error::backtrace();
+```
+
+
+
 ## Clearing the cache
 
-Using Drupal, you can clear all caches with the following **drush**
-command :
+Clearing the cache is not a debugging technique, specifically. But sometimes it helps, and so is mentioned here for the sake of completeness.
+
+Using Drupal, you can clear all caches with the following `drush` command :
 
 -   `drush cc civicrm`
 -   `drush civicrm-cache-clear` *(older versions only)*
 
 Alternatively, you can call the following two methods:
 
--   `CRM_Core_Config::clearDBCache();`
--   `CRM_Core_Config::cleanup();`
+-   `CRM_Core_Config::clearDBCache();` clears the database cache
+-   `CRM_Core_Config::cleanup();` clears the file cache
 
-which clear the database and file cache respectively.
 
-## Check the queries fired by Dataobject
 
-    define( 'CIVICRM_DAO_DEBUG', 1 );
-
-## Setting up a debugger and front end
-
-## XDebug
-
-XDebug is our main recommendation for developers that want to go
-into hardcore debugging. Readers familiar with what a debugger is and
-how it works should feel free to skip ahead to the "Setting Up XDebug"
-section.
+## Running a debugger program
 
 ### What is a debugger?
 
@@ -184,32 +167,34 @@ instance on a separate server, you need a debugger that can communicate
 with you over the network. Luckily such a clever creature already
 exists: XDebug.
 
-### Setting Up XDebug
-
 XDebug isn't the only PHP debugger, but it's the one we recommend for
 CiviCRM debugging.
 
-The instructions for downloading and installing XDebug are here:
-[http://xdebug.org/docs/install](http://xdebug.org/docs/install)
 
-Those instructions are a bit complex, however. There is a far simpler
-way to install it if you happen to be running one of the operating
-systems listed here.
+### Installing XDebug
 
-#### Debian / Ubuntu Linux
+Debian / Ubuntu Linux
 
-    sudo apt-get install php5-xdebug
+```bash
+sudo apt-get install php5-xdebug
+```
 
-#### Red Hat / CentOS Linux
+Red Hat / CentOS Linux
 
-    sudo yum install php-pecl* php-devel php-pear
-    sudo pecl install Xdebug
+```bash
+sudo yum install php-pecl* php-devel php-pear
+sudo pecl install Xdebug
+```
 
-#### Mac OS X
+Mac OS X
 
-    sudo port install php5-xdebug
+```bash
+sudo port install php5-xdebug
+```
 
-#### Next Step for All Operating System
+For other platforms and more details see [XDebug's installation instructions](http://xdebug.org/docs/install).
+
+### Setting up PHP to talk to XDebug
 
 Tell XDebug to start automatically (don't do this on a production
 server!) by adding the following two lines to your `php.ini` file (your
@@ -217,9 +202,10 @@ server!) by adding the following two lines to your `php.ini` file (your
 your server.  Calling the `phpinfo()` function is probably the  easiest
 way to tell you where this file is in your case.
 
-    xdebug.remote_enable = On
-    xdebug.remote_autostart = 1
-
+```php
+xdebug.remote_enable = On
+xdebug.remote_autostart = 1
+```
 
 Once XDebug is installed and enabled in your PHP configuration, you'll
 need to restart your web server.
@@ -229,16 +215,16 @@ need to restart your web server.
 After you have XDebug running on your PHP web server, you need to
 install a front-end to actually see what it is telling you about your
 code. There are a few different options available depending on what
-operating system you use:
+operating system you use.
 
-#### All Operating Systems
+#### NetBeans
 
-NetBeans is a heavyweight Java IDE (Integrated Development Environment).
-It offers lots of features, but isn't exactly small or fast. However, it
-is very good at interactive debugging with XDebug. And since it's
-written in  Java, it should run on any operating system you want to run
-it on. You can find it at
-[http://www.netbeans.org/](http://www.netbeans.org/)
+[NetBeans](http://www.netbeans.org/) is a cross platform heavyweight Java IDE
+(Integrated Development Environment).
+It offers lots of features, but isn't exactly small
+or fast. However, it is very good at interactive debugging with XDebug. And
+since it's written in  Java, it should run on any operating system you want
+to run it on.
 
 After installing NetBeans, open your local CiviCRM installation in
 NetBeans and click the Debug button on the toolbar. It will fire up your
@@ -246,13 +232,11 @@ web browser and start the debugger on CiviCRM. You may went to set a
 breakpoint in `CRM/Core/Invoke.php` to make the debugger pause there. For
 more information, see the NetBeans debugging documentation.
 
-#### Mac OS X
+#### MacGDBp
 
-A much lighter-weight option for Mac users is a program called MacGDBp.
-You can download it here:
-[http://www.bluestatic.org/software/macgdbp/](http://www.bluestatic.org/software/macgdbp/)
-
-After installing MacGDBp, launch it and make sure it says "Connecting"
+[MacGDBp](http://www.bluestatic.org/software/macgdbp/)
+is a lighter-weight option, only available for OS X. After installing MacGDBp,
+launch it and make sure it says "Connecting"
 at the bottom in the status bar. If it doesn't, click the green "On"
 button in the upper-right corner to enable it. The next time you access
 CiviCRM, the web browser will appear to hang. If you click on MacGDBp,
