@@ -34,6 +34,7 @@ After enabling debugging, append any of the following name-value pairs to the UR
 -   `&directoryCleanup=3` performs both of the above actions.
 -   `&backtrace=1` displays a stack trace listing at the top of a page.
 -   `&sessionDebug=1` displays the current users session variables in the browser.
+-   `&angularDebug=1` displays live variable updates on certain Angular-based pages
 
 !!! tip "Caveats"
     - Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected.  An example of this is looking at the Contact Summary page, when using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs. To do this you will need to debug via code, as explained below.
@@ -66,11 +67,13 @@ The following values can be added to your site's settings file `civicrm.settings
 
 - `define('CIVICRM_MAIL_LOG', '/dev/null');` causes all outbound emails to be discarded. No email is sent and emails are not written to disk.
 
-- `define( 'CIVICRM_DEBUG_LOG_QUERY', 1 );` outputs all SQL queries to a log file.
+- `define('CIVICRM_DEBUG_LOG_QUERY', 1);` outputs all SQL queries to a log file.
 
-- `define( 'CIVICRM_DEBUG_LOG_QUERY', 'backtrace' );` will include a backtrace of the PHP functions that led to the query.
+- `define('CIVICRM_DEBUG_LOG_QUERY', 'backtrace');` will include a backtrace of the PHP functions that led to the query.
 
 - `define('CIVICRM_DAO_DEBUG', 1);` writes out various data layer queries to your browser screen.
+
+- `define('CIVICRM_CONTAINER_CACHE', 'never');` causes Civi to rebuild the [container](http://symfony.com/doc/current/service_container.html) from the latest data on every page-load
 
 !!! tip
     When any sort of "logging stuff to a file" is enabled by one of the above settings, check the following directories for the resulting file:
@@ -125,19 +128,31 @@ Print a backtrace:
 CRM_Core_Error::backtrace();
 ```
 
+### In AngularJS HTML templates
 
+```html
+<div crm-ui-debug="myData"></div>
+```
+
+Then, be sure to add the parameter `angularDebug=1` to the URL.
 
 ## Clearing the cache
 
 Clearing the cache is not a debugging technique, specifically. But sometimes it helps, and so is mentioned here for the sake of completeness.
 
-Using Drupal, you can clear all caches with the following `drush` command :
+Using a web browser, either:
 
--   `drush cc civicrm`
--   `drush civicrm-cache-clear` *(older versions only)*
+-   Navigate directly to `civicrm/clearcache`
+-   Navigate to "Administer => System Settings => Cleanup Caches"
 
-Alternatively, you can call the following two methods:
+Using the command line, you can clear all caches with one of these commands:
 
+-   `cv flush` (requires [`cv`](https://github.com/civicrm/cv))
+-   `drush cc civicrm` (requires [`drush`](https://github.com/drush-ops/drush))
+
+Alternatively, you can call the following methods in PHP code:
+
+-   `civicrm_api3('System', 'flush', array());` clears many different caches
 -   `CRM_Core_Config::clearDBCache();` clears the database cache
 -   `CRM_Core_Config::cleanup();` clears the file cache
 
@@ -173,34 +188,24 @@ CiviCRM debugging.
 
 ### Installing XDebug
 
-#### Debian / Ubuntu Linux
+#### Debian / Ubuntu Linux (System Packages)
 
 ```bash
 sudo apt-get install php5-xdebug
 ```
 
-#### Red Hat / CentOS Linux
+#### Red Hat / CentOS Linux (System Packages)
 
 ```bash
 sudo yum install php-pecl* php-devel php-pear
 sudo pecl install Xdebug
 ```
 
-#### Mac OS X, general
+#### Mac OS X, Windows, and others
 
-Specific installation steps will vary, due to the diversity of PHP installation sources (e.g. Apple's built-in PHP, brew, MAMP, XAMPP, AMPP, Vagrant, Bitnami, and MacPorts). The best way to install XDebug is to identify your specific PHP runtime and then search Google for "mamp xdebug" or "macports xdebug" as needed.
+Generic instructions are provided with [XDebug's documentation](http://xdebug.org/docs/install).
 
-#### Mac OS X, with PHP from MacPorts
-
-```bash
-sudo port install php5-xdebug
-```
-
-#### Other platforms
-
-For more details see
-[XDebug's installation instructions](http://xdebug.org/docs/install).
-
+Specific installation steps vary due to the diversity of PHP installation sources -- Apple's built-in PHP, brew, MAMP, XAMPP, AMPP, WAMP, Vagrant, Bitnami, and MacPorts are all a bit different. The best way to install XDebug is to identify your specific PHP runtime and then search Google, e.g. ["mamp xdebug"](https://www.google.com/#q=mamp+xdebug) or ["macports xdebug"](https://www.google.com/#q=macports+xdebug).
 
 ### Setting up PHP to talk to XDebug
 
