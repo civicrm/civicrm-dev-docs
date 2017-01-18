@@ -44,6 +44,8 @@ pages:
   # - Custom Reports: extensions/custom-reports.md
   # - Custom Searches: extensions/custom-searches.md
   # - Payment Processors: extensions/payment-processor.md
+- Best Practices:
+  - Documentation Style Guide: best-practices/documentation-style-guide.md
 - Core code:
   - Hacking the core: core/hacking.md
   - Architecture: core/architecture.md

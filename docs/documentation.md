@@ -64,5 +64,4 @@ However, for a better editing experience we highly recommend installing
 1.  When you are happy with your edits, use git to commit and push your changes.
     Then submit a  pull request on GitHub.
 
-
 [Markdown]: markdownrules.md
