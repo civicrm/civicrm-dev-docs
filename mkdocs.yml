@@ -20,6 +20,8 @@ pages:
   - Develop: develop.md
   - Testing: testing.md
   - Writing Documentation: documentation.md
+- Development Environment:
+  - Debugging: dev-tools/debugging.md
 - APIv3:
   - API Intro: api/general.md
   - API Usage: api/usage.md

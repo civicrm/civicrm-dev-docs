@@ -4,3 +4,5 @@ Create+an+Extension extensions/basics
 Before+you+start basics/planning
 Recommendations basics/planning
 The+codebase core/architecture
+Debugging+for+developers dev-tools/debugging
+
