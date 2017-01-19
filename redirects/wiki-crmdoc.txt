@@ -1,6 +1,7 @@
 Documentation+Infrastructure+Canary develop
 The+developer+community basics/community
 Create+an+Extension extensions/basics
+Publish+an+Extension extensions/publish
 Before+you+start basics/planning
 Recommendations basics/planning
 The+codebase core/architecture
