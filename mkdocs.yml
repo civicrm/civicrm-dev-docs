@@ -47,6 +47,7 @@ pages:
   # - Custom Reports: extensions/custom-reports.md
   # - Custom Searches: extensions/custom-searches.md
   # - Payment Processors: extensions/payment-processor.md
+  - Publish: extensions/publish.md
 - Best Practices:
   - Documentation Style Guide: best-practices/documentation-style-guide.md
 - Core code:
