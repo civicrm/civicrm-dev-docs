@@ -88,10 +88,10 @@ the entire ecosystem.
 
 Extension authors may make their extensions available to the larger CiviCRM
 community by publishing them in the [Extensions Directory](https://civicrm.org/extensions).
->> See: [Publish](http://wiki.civicrm.org/confluence/display/CRMDOC/Publish+an+Extension)
+>> See: [Publish](extensions/publish)
 
 Extensions which undergo a [formal review](extend-stages#formal-review) may be
 distributed in-app. Approved extensions can be [installed
 directly](https://docs.civicrm.org/user/en/master/introduction/extensions/#installing-extensions)
 into CiviCRM via the user interface, lowering the barrier to entry for many users.
->> See: [Eligibility for Automated Distribution](https://wiki.civicrm.org/confluence/display/CRMDOC/Publish+an+Extension#PublishanExtension-EligibilityforAutomatedDistribution)
+>> See: [Automated Distribution](extensions/publish#automated-distribution)
