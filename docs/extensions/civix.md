@@ -1,10 +1,10 @@
 # Civix
 
->> ![information](../img/info.png)
-Note: This page started
-[here in the wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
-We have not yet transferred all of the script snipets, so you may wish to
-peruse this page as well.
+!!! caution "Notice: page undergoing migration"
+    This page started
+    [here in the wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
+    We have not yet transferred all of the script snipets, so you may wish to
+    peruse this page as well.
 
 ## Introduction
 
@@ -122,11 +122,11 @@ This creates three files:
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as passing data from the controller to the view.
 
->> ![information](../img/info.png)
-After adding or modifying a route in the XML file, you must reset
-CiviCRMs "menu cache". Do this in a web browser by visiting
-"/civicrm/menu/rebuild?reset=1" or by running
-`drush cc civicrm` if using Drupal & Drush.
+!!! note
+    After adding or modifying a route in the XML file, you must reset
+    CiviCRMs "menu cache". Do this in a web browser by visiting
+    "/civicrm/menu/rebuild?reset=1" or by running
+    `drush cc civicrm` if using Drupal & Drush.
 
 **Edit In Place**
 
@@ -136,13 +136,13 @@ editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
 
 ### Add a basic web form
 
->> ![danger](../img/danger.png)
-The form system is not well documented and may undergo significant
-revision after the CiviCRM 4.x series. In general, migrating basic pages
-will be easier than migrating basic forms, so you may want
-to consider building your data-input interface  using basic pages, the AJAX API,
-and the
-[in-place editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
+!!! caution
+    The form system is not well documented and may undergo significant
+    revision after the CiviCRM 4.x series. In general, migrating basic pages
+    will be easier than migrating basic forms, so you may want
+    to consider building your data-input interface  using basic pages, the AJAX
+    API, and the
+    [in-place editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
 
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 form, you must create a PHP controller class, create a Smarty template
@@ -174,10 +174,10 @@ This creates three files:
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as adding a <SELECT\> element to the form.
 
->> ![information](../img/info.png)
-After adding or modifying a route in the XML file, you must reset
-CiviCRMs "menu cache". This can be done in a web browser by visiting
-"/civicrm/menu/rebuild?reset=1"
+!!! note
+    After adding or modifying a route in the XML file, you must reset
+    CiviCRMs "menu cache". This can be done in a web browser by visiting
+    "/civicrm/menu/rebuild?reset=1"
 
 ### Add a database upgrader, installer and uninstaller
 
@@ -213,16 +213,16 @@ you can execute the upgrades through the web interface by visiting the
 "Manage Extensions" screen. This screen will display an alert with an
 action-link to perform the upgrades.
 
->> ![information](../img/info.png)
-The "upgrader" class is a wrapper for
-[hook\_civicrm\_upgrade](/confluence/display/CRMDOC43/Hook+Reference)
-which aims to be easy-to-use for developers with Drupal experience. If
-you need to organize the upgrade logic differently, then consider
-providing your own implementation of hook\_civicrm\_upgrade.
+!!! note
+    The "upgrader" class is a wrapper for
+    [hook\_civicrm\_upgrade](/confluence/display/CRMDOC43/Hook+Reference)
+    which aims to be easy-to-use for developers with Drupal experience. If
+    you need to organize the upgrade logic differently, then consider
+    providing your own implementation of hook\_civicrm\_upgrade.
 
->> ![danger](../img/danger.png)
-Only use the upgrade system to manage new SQL
-tables. Do not manipulate core schema.
+!!! caution
+    Only use the upgrade system to manage new SQL
+    tables. Do not manipulate core schema.
 
 If you need to create triggers on core SQL tables, use
 [hook\_civicrm\_triggerInfo](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference).
@@ -272,8 +272,9 @@ This is the simplest scenario.
 Start by creating a custom fields using the web interface and then export
 them for use with the extension:
 
->> ![information](../img/info.png)
-Before you begin verify that civix is connected to your instance of CiviCRM by running `civix civicrm:ping`.
+!!! note
+    Before you begin verify that civix is connected to your instance of
+    fCiviCRM by running `civix civicrm:ping`.
 
 -   On your development instance of CiviCRM, create the new custom
     fields using the web interface. Note the unique ID of the custom data
@@ -370,14 +371,14 @@ function myextension_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 }
 ```
 
->> ![information](../img/info.png)
-When you first created the skeletal project, several hook functions were
-auto-generated in `myextension.php`. These functions are usually about
-one line long – they simply delegate the work to another function. For
-example `myextension\_civicrm\_config()` delegates work to
-`\_myextension\_civix\_civicrm\_config()`. You should feel free to add
-more code to `myextension\_civicrm\_config()`, but you should preserve
-the call to `\_myextension\_civix\_civicrm\_config()`. <!-- fixme! why?? -->
+!!! note
+    When you first created the skeletal project, several hook functions were
+    auto-generated in `myextension.php`. These functions are usually about
+    one line long – they simply delegate the work to another function. For
+    example `myextension\_civicrm\_config()` delegates work to
+    `\_myextension\_civix\_civicrm\_config()`. You should feel free to add
+    more code to `myextension\_civicrm\_config()`, but you should preserve
+    the call to `\_myextension\_civix\_civicrm\_config()`. <!-- fixme! why?? -->
 
 ### Add a resource file
 
@@ -495,11 +496,11 @@ Get started by accessing the `civix` help:
 civix help generate:api
 ```
 
->> ![information](../img/info.png)
-Action names must be lowercase. The javascript helpers `CRM.api()` and
-`CRM.api3()` force actions to be lowercase. This issues does not present
-itself in the API Explorer or when the api action is called via PHP,
-REST, or SMARTY.
+!!! note
+    Action names must be lowercase. The javascript helpers `CRM.api()` and
+    `CRM.api3()` force actions to be lowercase. This issues does not present
+    itself in the API Explorer or when the api action is called via PHP,
+    REST, or SMARTY.
 
 You can make your API code with a command in this pattern:
 
@@ -522,8 +523,8 @@ For use with CiviCRM 4.3, you can also add the "–schedule" option (e.g.
 
 ### Add a new entity
 
->> ![danger](../img/danger.png)
-This functionality is considered "experimental and incomplete".
+!!! caution
+    This functionality is considered "experimental and incomplete".
 
 You may have a need to create a new entity that does not exist in
 CiviCRM. For this, you can use the command `civix generate:entity`
@@ -578,9 +579,9 @@ long as you follow a few basic conventions.
 
 The following steps will create and run a test in your extension.
 
->> ![information](../img/info.png)
-Before preparing unit-tests with extensions, you must first
-[configure you personal testing sandbox](/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO) and enable your extension on the sandbox.
+!!! note
+    Before preparing unit-tests with extensions, you must first
+    [configure you personal testing sandbox](/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO) and enable your extension on the sandbox.
 
 Explore the full options with:
 
@@ -614,8 +615,8 @@ how to write a test class:
 -   Review the example code in
     [org.civicrm.exampletests](https://github.com/totten/org.civicrm.exampletests)
 
->> ![danger](../img/danger.png)
-The following instructions are deprecated. Updated instructions coming soon.
+!!! caution
+    The following instructions are deprecated. Updated instructions coming soon.
 
 ```bash
 # Check if civix can connect to the civi api
