@@ -37,7 +37,7 @@ civix help civicrm:ping
 ## Generating a skeletal extension
 
 To generate a skeletal extension module, we will use `civix generate:module`
-and pass in the name for our extension. See [here](./basics/#extension-names)
+and pass in the name for our extension. See [here](/basics/#extension-names)
 for details of naming conventions.
 
 Start with:
@@ -54,7 +54,7 @@ civix generate:module com.example.myextension --license=AGPL-3.0
 ```
 
 This command will report that it has created three files, following the
-[standard extension structure](./files).
+[standard extension structure](/extensions/files).
 
 The command attempts to autodetect authorship information (your name and
 email address) by reading your
@@ -482,7 +482,7 @@ on whether the original search screen defines its own Smarty template.
 
 ### Add an API function
 
-The [CiviCRM API](../api/general)
+The [CiviCRM API](/api/general)
 provides a way to expose functions for use by other developers. API
 functions allow implementing AJAX interfaces (using the
 cj().crmAPI() helper), and they can also be called via REST, PHP,
