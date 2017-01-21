@@ -3,7 +3,7 @@
 !!! caution "Notice: page undergoing migration"
     This page started
     [here in the wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
-    We have not yet transferred all of the script snipets, so you may wish to
+    We have not yet transferred all of the script snippets, so you may wish to
     peruse this page as well.
 
 ## Introduction
@@ -56,7 +56,7 @@ civix generate:module com.example.myextension --license=AGPL-3.0
 This command will report that it has created three files, following the
 [standard extension structure](/extensions/files).
 
-The command attempts to autodetect authorship information (your name and
+The command attempts to auto-detect authorship information (your name and
 email address) by reading your
 [`git`](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
 configuration. If this fails or is
@@ -172,7 +172,7 @@ This creates three files:
     [the smarty guide](http://www.smarty.net/docsv2/en/).
 
 The auto-generated code for the controller and view demonstrate a few
-basic operations, such as adding a <SELECT\> element to the form.
+basic operations, such as adding a `<SELECT\>` element to the form.
 
 !!! note
     After adding or modifying a route in the XML file, you must reset
@@ -188,7 +188,7 @@ comment out the various upgrade and uninstall functions
 to make it work. Generally your install script belongs in an `sql/` folder
 in the root of your extension with a name like 'install'
 
-This `civix` command does not require arguements:
+This `civix` command does not require arguments:
 
 ```bash
 civix generate:upgrader
@@ -241,7 +241,7 @@ command:
 civix help generate:case-type
 ```
 
-This reports that civix expects a <Label> argurment and an optional name:
+This reports that civix expects a `<Label>` argument and an optional name:
 
 ```bash
 civix generate:case-type "Volunteer Training" Training
@@ -263,7 +263,7 @@ Your extension can create one or more sets of custom
 fields at installation. There are two
 methods depending on whether the custom data set extends an entity
 (e.g. "Individual" – without any specific subtype)
-or exends a specific subtype of an entity.
+or extends a specific subtype of an entity.
 (e.g. Activities of type 'Volunteer')
 
 #### Extending a base entity
@@ -274,7 +274,7 @@ them for use with the extension:
 
 !!! note
     Before you begin verify that civix is connected to your instance of
-    fCiviCRM by running `civix civicrm:ping`.
+    CiviCRM by running `civix civicrm:ping`.
 
 -   On your development instance of CiviCRM, create the new custom
     fields using the web interface. Note the unique ID of the custom data
@@ -303,7 +303,7 @@ Most of the [CiviHR](https://github.com/civicrm/civihr/tree/master) modules rely
 
 #### Extending an subtype
 
-<!-- This section still is not really clear to me.
+<!-- This section still is not really clear to me. (Erich Schulz)
 Is this really about sub-types in an OO sense?? or subtypes in as a base
 entity of a particular type as defined by its properties?
 -->
@@ -393,7 +393,7 @@ CiviReport enables developers to define new business reports using
 customizable SQL logic and form layouts.
 If another existing report is close to your needs you may copy and modify it.
 
-To to see the available report generation options acitivate the `civix` help:
+To to see the available report generation options activate the `civix` help:
 
 ```bash
 civix generate:report --help
@@ -551,7 +551,7 @@ CiviCRM. For this, you can use the command `civix generate:entity`
     `php ./GenCode.php` (In CiviCRM 4.7.12+, run
     `<civiroot>/bin/setup.sh -g` instead). This will generate a DAO file
     for you in the CiviCRM core code; copy it into the
-    CRM/<Entityname\>/DAO folder of your extension.
+    `CRM/<Entityname>/DAO` folder of your extension.
 -   Currently, `civix` does not generate the SQL to create and
     drop your table(s). You can create these by hand, or, if
     you used the `<civiroot>/bin/setup.sh -g` technique to create your
