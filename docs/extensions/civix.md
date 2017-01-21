@@ -90,7 +90,7 @@ at your discretion. A few possibilities:
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 page, you must create a PHP controller class, create a Smarty template
 file, and create a routing rule. You can create the appropriate files by
-calling "civix generate:page"
+calling `civix generate:page`
 
 Once again you can review the output of this command to see the available options:
 
@@ -109,7 +109,7 @@ This creates three files:
 
 -   `xml/Menu/myextension.xml` defines request-routing rules and
     associates the controller ("CRM_Myextension_Page_Greeter") with
-    the web path ("civicrm/my-page")
+    the web path `civicrm/my-page`.
 -   `CRM/Myextension/Page/MyPage.php` is the controller which
     coordinates any parsing, validation, business-logic, or database
     operations.
@@ -125,7 +125,7 @@ basic operations, such as passing data from the controller to the view.
 !!! note
     After adding or modifying a route in the XML file, you must reset
     CiviCRMs "menu cache". Do this in a web browser by visiting
-    "/civicrm/menu/rebuild?reset=1" or by running
+    `/civicrm/menu/rebuild?reset=1` or by running
     `drush cc civicrm` if using Drupal & Drush.
 
 **Edit In Place**
@@ -147,7 +147,7 @@ may want to consider using the
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 form, you must create a PHP controller class, create a Smarty template
 file, and create a routing rule. You can create the appropriate files by
-calling "civix generate:form".
+calling `civix generate:form`.
 
 The form generation command has similar arguments to `civix generate:page`,
 requiring a class name and a web route:
@@ -159,8 +159,8 @@ civix generate:form FavoriteColor civicrm/favcolor
 This creates three files:
 
 -   `xml/Menu/myextension.xml` defines request-routing rules and
-    associates the controller ("CRM_Myextension_Form_FavoriteColor")
-    with the web path ("civicrm/favcolor")
+    associates the controller `CRM_Myextension_Form_FavoriteColor`
+    with the web path `civicrm/favcolor`.
 -   `CRM/Myextension/Form/FavoriteColor.php` is the controller which
     coordinates any parsing, validation, business-logic, or database
     operations. For more details on how this class works, see [QuickForm
@@ -177,7 +177,7 @@ basic operations, such as adding a <SELECT\> element to the form.
 !!! note
     After adding or modifying a route in the XML file, you must reset
     CiviCRMs "menu cache". This can be done in a web browser by visiting
-    "/civicrm/menu/rebuild?reset=1"
+    `/civicrm/menu/rebuild?reset=1`
 
 ### Add a database upgrader, installer and uninstaller
 
@@ -467,7 +467,7 @@ PHP, SQL and templates.
 
 To make a new search based on an existing search first determine the name of
 the original search class within the `civicrm/CRM/Contact/Form/Search/Custom`
-directory of CiviCRM source tree. Then run the "generate:search" command from
+directory of CiviCRM source tree. Then run the `generate:search` command from
 within your module directory.
 
 For example, the zipcode search is in the class
@@ -515,8 +515,8 @@ This creates one file:
     particular way (as demonstrated by the auto-generated file).
 
 <!-- fixme - clarify is this 4.3 and later? -->
-For use with CiviCRM 4.3, you can also add the "–schedule" option (e.g.
-"–schedule Hourly"). This will create another file:
+For use with CiviCRM 4.3, you can also add the `–schedule` option (e.g.
+`–schedule Hourly`). This will create another file:
 
 -   `api/v3/NewEntity/NewAction.mgd.php` provides the scheduling
     record that will appear in the CiviCRM's job-manager.
@@ -538,7 +538,7 @@ CiviCRM. For this, you can use the command `civix generate:entity`
     FirstLetterCapitalized here). This creates a skeletal file for your
     XML schema, your BAO, and your API. It does NOT create a skeletal
     SQL file to create your table or DAO files at this time.
--   Edit the XML schema in the "xml" folder to match the fields you
+-   Edit the XML schema in the `xml` folder to match the fields you
     want. Minimal documentation is available
     [here](https://wiki.civicrm.org/confluence/display/CRMDOC/Database+Reference),
     but you are better off looking at the [existing XML
@@ -628,8 +628,7 @@ civix config:get
 civix config:set civicrm_api3_conf_path /your/path/to/sites/default
 ```
 
-To run this test-class, change to your extension folder and call "civix
-test":
+To run this test-class, change to your extension folder and run the following:
 
 ```bash
 civix test CRM_Myextension_MyTest
