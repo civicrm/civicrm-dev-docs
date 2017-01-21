@@ -131,8 +131,8 @@ basic operations, such as passing data from the controller to the view.
 **Edit In Place**
 
 If the data on the page is read and updated through the API, then you
-may want to consider using the [in-place
-editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
+may want to consider using the
+[in-place editing](https://wiki.civicrm.org/confluence/display/CRMDOC/In-Place+Field+Editing) API.
 
 ### Add a basic web form
 
@@ -142,7 +142,7 @@ editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
     will be easier than migrating basic forms, so you may want
     to consider building your data-input interface  using basic pages, the AJAX
     API, and the
-    [in-place editing](/confluence/display/CRMDOC/In-Place+Field+Editing) API.
+    [in-place editing](https://wiki.civicrm.org/confluence/display/CRMDOC/In-Place+Field+Editing) API.
 
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 form, you must create a PHP controller class, create a Smarty template
@@ -215,7 +215,7 @@ action-link to perform the upgrades.
 
 !!! note
     The "upgrader" class is a wrapper for
-    [hook\_civicrm\_upgrade](/confluence/display/CRMDOC43/Hook+Reference)
+    [hook\_civicrm\_upgrade](https://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
     which aims to be easy-to-use for developers with Drupal experience. If
     you need to organize the upgrade logic differently, then consider
     providing your own implementation of hook\_civicrm\_upgrade.
@@ -251,8 +251,8 @@ This creates two files:
 
 -   `xml/case/Training.xml` defines the roles, activity types, and
     timelines associated with the new case type. For more in depth
-    discussion of CiviCase XML, see [CiviCase
-    Configuration](/confluence/display/CRMDOC/CiviCase+Configuration).
+    discussion of CiviCase XML, see
+    [CiviCase Configuration](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCase+Configuration).
 -   `alltypes.civix.php`(which may already exist) defines
     implementations of various hooks (notably hook\_civicrm\_caseTypes).
 
@@ -581,7 +581,7 @@ The following steps will create and run a test in your extension.
 
 !!! note
     Before preparing unit-tests with extensions, you must first
-    [configure you personal testing sandbox](/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO) and enable your extension on the sandbox.
+    [configure you personal testing sandbox](https://wiki.civicrm.org/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO) and enable your extension on the sandbox.
 
 Explore the full options with:
 
