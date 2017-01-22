@@ -105,10 +105,37 @@ Heading 2
 ---------
 ```
 
-***Convention:*** Each page should have one and only one *Heading 1*,
-which should be at the top of the page as a page title. Other headings within
-page content should be level 2 or greater.
+### Heading IDs
 
+Heading IDs allow you to link to specific sections in a page by appending
+the heading ID to the page URL. Most markdown platforms (e.g. MkDocs, GitHub)
+automatically set a heading ID for every heading and do so using the text of
+the heading itself. Sticking with the default is great is most cases, however
+sometimes you want to override it. Some markdown platforms (e.g. MkDocs)
+allow you to set *custom* heading IDs to override the automatically chosen
+value.
+
+Setting a custom ID:
+
+```md
+## How to foo a bar {:#foo}
+```
+
+This is helpful when you think that readers are likely to frequently link
+to this section in the future.
+
+* Custom heading IDs will remain the same (thus preserving incoming links) even
+after the text of the heading is edited.
+* Custom heading IDs create shorter URLs.
+
+Custom heading IDs only work in MkDocs when the following code is used to enable
+the [Attribute Lists](https://pythonhosted.org/Markdown/extensions/attr_list.html)
+extension:
+
+```yml
+markdown_extensions:
+  - markdown.extensions.attr_list
+```
 
 ## Lists
 
@@ -318,6 +345,16 @@ Add a custom title (make sure to quote the title):
 ```md
 !!! danger "Don't try this at home!"
     Stand back. I'm about to try science!
+```
+
+### Enabling
+
+Admonitions only work in MkDocs when the following code is used to enable
+the [Admonition extension](https://pythonhosted.org/Markdown/extensions/admonition.html):
+
+```yml
+markdown_extensions:
+  - markdown.extensions.admonition
 ```
 
 ## Images
