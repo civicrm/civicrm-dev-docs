@@ -1,11 +1,5 @@
 # Civix
 
-!!! caution "Notice: page undergoing migration"
-    This page started
-    [here in the wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension).
-    We have not yet transferred all of the script snippets, so you may wish to
-    peruse this page as well.
-
 ## Introduction
 
 The [`civix`](https://github.com/totten/civix/) command-line tool is the
@@ -172,7 +166,7 @@ This creates three files:
     [the smarty guide](http://www.smarty.net/docsv2/en/).
 
 The auto-generated code for the controller and view demonstrate a few
-basic operations, such as adding a `<SELECT\>` element to the form.
+basic operations, such as adding a `<select>` element to the form.
 
 !!! note
     After adding or modifying a route in the XML file, you must reset
@@ -241,7 +235,7 @@ command:
 civix help generate:case-type
 ```
 
-This reports that civix expects a `<Label>` argument and an optional name:
+This reports that civix expects a label argument and an optional name:
 
 ```bash
 civix generate:case-type "Volunteer Training" Training
@@ -324,7 +318,7 @@ then:
 
 1. Renamed the `xml/auto_install.xml` to
  `templates/hremerg-customdata.xml.tpl`
-2. Changed the value of `<extends_entity_column_value\>` in the
+2. Changed the value of `<extends_entity_column_value>` in the
   `.tpl file` using  a variable instead of a hard-coded type ID.
 3. Added logic in the upgrader to create the relationship type
 4. Added logic in the upgrader to evaluate the Smarty template

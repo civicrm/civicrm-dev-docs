@@ -6,4 +6,5 @@ Before+you+start basics/planning
 Recommendations basics/planning
 The+codebase core/architecture
 Debugging+for+developers dev-tools/debugging
+The+developer+community extensions/civix
 
