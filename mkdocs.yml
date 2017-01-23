@@ -11,13 +11,17 @@ pages:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md
+  - Prerequisite skills: basics/skills.md
   - Requirements: requirements.md
+  - Planning your project: basics/planning.md
   - Build: build.md
   - Customize: customize.md
   - Extend: extend.md
   - Develop: develop.md
   - Testing: testing.md
   - Writing Documentation: documentation.md
+- Development Environment:
+  - Debugging: dev-tools/debugging.md
 - APIv3:
   - API Intro: api/general.md
   - API Usage: api/usage.md
@@ -43,9 +47,15 @@ pages:
   # - Custom Reports: extensions/custom-reports.md
   # - Custom Searches: extensions/custom-searches.md
   # - Payment Processors: extensions/payment-processor.md
+  - Publish: extensions/publish.md
+- Best Practices:
+  - Documentation Style Guide: best-practices/documentation-style-guide.md
+- Core code:
+  - Hacking the core: core/hacking.md
+  - Architecture: core/architecture.md
 - Miscellaneous:
    - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md
-   - hookref-old: hookref-old.md
+   # - hookref-old: hookref-old.md
 - Deprecated:
    - Building CiviCRM from source: develop-deprecated.md
