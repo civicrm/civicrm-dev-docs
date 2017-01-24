@@ -48,19 +48,37 @@ the [#civicrm](https://twitter.com/hashtag/civicrm) hashtag, tell similar
 CiviCRM users and organisations and so on.
 The more feedback you can get the better.
 
-If you get stuck writing your requirements and specification, or would
-like to get more background, have a look at some
-[existing requirements and specifications](https://wiki.civicrm.org/confluence/display/CRM/Requirements+and+specifications)
-from CiviCRM developers.
+!!!tip
+    If you get stuck writing your requirements and specification, or would
+    like to get more background, have a look at some
+    [existing requirements and specifications](https://wiki.civicrm.org/confluence/display/CRM/Requirements+and+specifications)
+    from CiviCRM developers.
 
 ## Recommendations
 
-**Use Git and [GitHub](https://github.com/)** for revision control.
+**Open a free [GitHub](https://github.com/) account** for revision control.
 The official CiviCRM [repositories](https://github.com/civicrm)
-are housed on GitHub.  If you use GitHub you will find
+are housed in `git` repositories on GitHub.  If you use GitHub you will find
 it easy to access the latest source-code, to submit pull requests
 for any patches you create and to collaborate with many other
 CiviCRM developers who also use GitHub.
+
+**Install the [buildkit](https://github.com/civicrm/civicrm-buildkit)**,
+ideally as a [vagrant virtual-machine](https://github.com/civicrm/civicrm-buildkit-vagrant)
+or using one of available `docker` images ([1](https://github.com/progressivetech/docker-civicrm-buildkit),
+[2](https://github.com/ErichBSchulz/dcbk)). The buildkit is not an absolute
+requirement but it is definitely the fastest path to a good development
+experience!
+
+**From the outset, [automate testing](https://wiki.civicrm.org/confluence/display/CRMDOC/Testing)**.
+In the current climate of rapid evolution of not just CiviCRM, but
+also it's myriad of dependancies, automated testing of PHP code with `phpunit`
+and javascript with tools like `karma` and `jasmine` is essential. Start all
+your work by considering how you will provide automated testing for it.
+Starting with the buildkit will make this much simpler for you to set up.
+Getting started with unit-testing may seem daunting and onerous when you start,
+but you will soon come to love the freedom it gives you. If you are
+unsure how to proceed with testing ask the [community](/basics/community).
 
 **Create a native [extension](/extensions/basics)**.
 If you have new functionality to add to CiviCRM, it probably belongs in an
@@ -68,11 +86,14 @@ extension. "Native" extensions will install into all CiviCRM sites
 regardless of the  underlying CMS used (Drupal or Wordpress), making it easy to
 share your extension with the CiviCRM community.
 
-**Use the [API](/api/general)** to access and manage CiviCRM data in any patch,
+**Use the [API](/api/general) and [hooks](/hook)** to access and manage CiviCRM data in any patch,
 native extension, CMS module, or external program that you
 develop. The API will function as expected with every new release
 and backwards compatibility of the API is maintained for several
 versions of CiviCRM.
+
+**Avoid [hacking the core](/core/hacking)** of CiviCRM unless you understand
+the implications.
 
 **Follow the
 [Coding Standards](https://wiki.civicrm.org/confluence/display/CRMDOC/Coding+Standards)**
