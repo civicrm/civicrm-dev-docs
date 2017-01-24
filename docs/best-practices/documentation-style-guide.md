@@ -211,7 +211,7 @@ suggest ways that people can do things. We would like to to avoid language that
 gets proscriptive or feels intimidating from a reader's perspective, and we
 like having a guide that can be consumed by people in different ways.
 
-**For the *User* and *Administrator* Guides only:** We try and limit the
+**For the User Guide only:** We try and limit the
 content to tasks that the user can perform from the front end. This means that
 we don't go into detailed steps about installation or system administration
 tasks.  We do however let people know that there are system administrator tasks
