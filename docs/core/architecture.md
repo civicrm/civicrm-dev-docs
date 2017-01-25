@@ -58,12 +58,59 @@ The DAO has a property for each field (using the actual field name, not the
 unique name).  They also have standard CRUD (create retrieve update delete) type
 functions, etc. <!--fixme why the etc? what else?? -->
 
+The DAO files live in the relevant DAO folder - e.g. CiviCRM/Pledge/DAO and
+there is one file for each of the xml files we looked at earlier. These files
+are built on the fly when CiviCRM is packaged from the XML files which is why
+you won't see them if you checkout CiviCRM from SVN.
+
+The DAO object generated has:
+* A property for each field using the actual field name, not the unique name
+* A links function which retrieves the links to other tables (off the foreign keys)
+* An import function and an export function for ?
+* A fields function which returns an array of fields for that object keyed by the field's unique name. Looking again at the field 'pledge.amount' we see
+* A couple of functions to define the labels for enumerated fields
+
+```php
+  'pledge_amount' => array(
+    'name' => 'amount',
+    'type' => CRM_Utils_Type::T_MONEY,
+    'title' => ts('Total Pledged') ,
+    'required' => true,
+    'import' => true,
+    'where' => 'civicrm_pledge.amount',
+    'headerPattern' => '',
+    'dataPattern' => '',
+    'export' => true,
+    'bao' => 'CRM_Pledge_BAO_Pledge',
+    'table_name' => 'civicrm_pledge',
+    'entity' => 'Pledge',
+  ),
+```
+
+Note that the key is the unique name but the name field is the field's name and the 'where' field shows the mysql description of it. We also see the data type and whether it is available for search or export.
+
+Note that most fields should probably be exportable unless there is a security reason or they are weird & confusing as the search builder is also driven by this setting.
+
+Fields whose option values can be calculated will also have a 'pseudoconstant' section.
+
 ### BAO
-BAO stands for business access object.  BAOs map to DAOs and extend them with
+BAO stands for business access object
+([example](https://github.com/civicrm/civicrm-core/blob/master/CRM/Event/BAO/Event.php)).
+BAOs map to DAOs and extend them with
 the business logic of CiviCRM.  A lot of the meat of CiviCRM is found in the
 BAOs, for example they have the code that creates follow up activities when an
 activity is created, or create activities and populating custom fields when a
 pledge is created.
+
+!!! note
+    BAOs typically have both `add()` and `create()` methods. The `add()` method
+    just creates the database record with the DAO `save()` method whereas 'create()' calls
+    subsidiary functions such as creating activities & populating custom fields.
+    The APIs call 'Create' which then calls 'Add' as well as other associated
+    functions.
+
+
+
 
 ### Form
 In general each form page in CiviCRM maps to a file in one of
@@ -134,11 +181,21 @@ CiviCRM makes use of a lot of 3rd party packages for things like the database,
         shouldn't need to edit these packages directory.
 
 ## Database structure
-The database structure is defined in a series of XML files.  These files are
+
+The database structure is defined in a series of XML files
+[for example](https://github.com/civicrm/civicrm-core/blob/master/xml/schema/SMS/History.xml).
+These files are
 not packaged in the releases but are available in the Github repository. They
 are located in Civicrm/xml/Schema. All the folders within this directory also
 have folders in the main CRM folder which contain a DAO folder and generally a
 BAO folder too.
+
+!!! Info
+    The XML files describe the database and are used to
+    build both the DAO files and the database generation SQL by the
+    [`GenCode` script](https://github.com/civicrm/civicrm-core/blob/master/xml/GenCode.php) and
+    [`CRM_Core_CodeGen_Main` class](https://github.com/civicrm/civicrm-core/blob/master/CRM/Core/CodeGen/Main.php).
+
 
 Looking in `CiviCRM/xml/Schema/Pledge` we see 4 files:
 
@@ -148,8 +205,7 @@ Looking in `CiviCRM/xml/Schema/Pledge` we see 4 files:
 - PledgeBlock.xml
 
 The files.xml is just a list of the other files. Each of the others represents a
-table in the Database. The XML files describe the database and are used to
-build both the DAO files and the new database SQL generation script.
+table in the Database, defining both table-leve and field-level metadata.
 
 The XML describes fields, foreign keys and indexes, an example of a field definition is:
 
@@ -165,3 +221,13 @@ The XML describes fields, foreign keys and indexes, an example of a field defini
     <add>2.1</add>
   </field>
 ```
+
+<!-- fixme:
+The field 'amount' in the table 'pledge' has a unique name to distinquish it from fields in other tables (e.g. contribute) with the same field. This isn't consistent in all tables and I am trying to find out the reason / rules for this. Also, I presume 'import' means the field is exposed for .... imports?.-->
+
+We can see that the above 'pledge_amount' field was added in CiviCRM v2.1.
+
+Occassionally tables are dropped from the core schema so will not have associated DAOs
+(for example the
+[SMS history](https://github.com/totten/civicrm-core/blob/master/xml/schema/SMS/History.xml)
+table was dropped in version 2.0, as indicated by a `<drop>2.0</drop>` field.
