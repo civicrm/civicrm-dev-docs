@@ -103,9 +103,10 @@ This is a second.
 ```
 
 The above syntax is [called](http://pandoc.org/MANUAL.html#headers)
-"ATX style headers" in markdown terminology, and is preferred my most.
+"ATX style headers" in markdown terminology, and is the [preferred](#standards)
+syntax within the CiviCRM community.
 An alternate syntax called "setext style headers" works for h1 and h2 as
-follows:
+follows (but please avoid creating new content with this syntax).
 
 ```md
 Heading 1
