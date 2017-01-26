@@ -107,11 +107,8 @@ activity is created, or create activities and populating custom fields when a
 pledge is created.
 
 !!! note
-    BAOs typically have both `add()` and `create()` methods. The `add()` method
-    just creates the database record with the DAO `save()` method whereas 'create()' calls
-    subsidiary functions such as creating activities & populating custom fields.
-    The APIs call 'Create' which then calls 'Add' as well as other associated
-    functions.
+    Historically some BAOs had both `add()` and `create()` methods. Current practice 
+    is to favour a single `create()` method.
 
 ### Form
 In general each form page in CiviCRM maps to a file in one of
