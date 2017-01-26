@@ -1,9 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-include __DIR__.'/hook-by-category.php';
-
-const WIKI_URL = 'https://wiki.civicrm.org/confluence/display/CRMDOC/';
+include __DIR__.'/hooks-by-category.php';
 
 foreach ($hooks_by_category as $category => $hooks) {
   echo $category . "\n";

@@ -1,5 +1,26 @@
 #!/usr/bin/env php
 <?php
 
-include __DIR__.'/hook-by-category.php';
+include __DIR__.'/hooks-by-category.php';
+
+$wiki_url = 'https://wiki.civicrm.org/confluence/display/CRMDOC';
+$cache_dir = __DIR__.'/wiki_cache';
+
+chdir($cache_dir);
+
+foreach ($hooks_by_category as $category => $hooks) {
+  foreach ($hooks as $hook) {
+    if ( file_exists($hook) ) {
+      echo "SKIPPING: $hook (already cached)\n";
+    }
+    else {
+      echo "DOWNLOADING: $hook\n";
+      system("curl '$wiki_url/$hook' > '$hook'");
+    }
+    echo "\n";
+  }
+}
+
+echo "DONE \n";
+
 

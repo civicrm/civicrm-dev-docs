@@ -129,5 +129,5 @@ $hooks_by_category = [
   ],
   "Report" => [
     "hook_civicrm_alterReportVar",
-  ]
+  ],
 ];
