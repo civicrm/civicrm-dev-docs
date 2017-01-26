@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+include __DIR__ . '/hooks-by-category.php';
+
+$root_dir = dirname(dirname(__DIR__));
+$hooks_dir = "$root_dir/docs/hooks";
+
+foreach ($hooks_by_category as $category => $hooks) {
+  echo "  - $category hooks:" . PHP_EOL;
+  foreach ($hooks as $hook) {
+    echo "    - $hook: hooks/$hook.md" . PHP_EOL;
+  }
+}
