@@ -12,7 +12,7 @@ foreach ($hooks_by_category as $category => $hooks) {
   foreach ($hooks as $hook) {
     $hook_name = $hook['name'];
     if ( file_exists($hook_name) ) {
-      echo "SKIPPING: $hook_name (already cached)" . PHP_EOL;
+      echo "SKIPPING: $hook_name (already cached)";
     }
     else {
       echo "DOWNLOADING: $hook_name" . PHP_EOL;

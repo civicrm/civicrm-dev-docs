@@ -3,10 +3,17 @@
 
 include __DIR__ . '/hooks-by-category.php';
 
+echo "- Hooks:" . PHP_EOL;
 foreach ($hooks_by_category as $category => $hooks) {
   echo "  - $category hooks:" . PHP_EOL;
   foreach ($hooks as $hook) {
     $hook_name = $hook['name'];
-    echo "    - $hook_name: hooks/$hook_name.md" . PHP_EOL;
+    if ( $hook['is_deprecated'] ) {
+      $menu_name = "<del>$hook_name</del>";
+    }
+    else {
+      $menu_name = $hook_name;
+    }
+    echo "    - $menu_name: hooks/$hook_name.md" . PHP_EOL;
   }
 }

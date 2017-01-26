@@ -89,7 +89,7 @@ pages:
   - GUI hooks:
     - hook_civicrm_buildAmount: hooks/hook_civicrm_buildAmount.md
     - hook_civicrm_caseSummary: hooks/hook_civicrm_caseSummary.md
-    - hook_civicrm_customFieldOptions: hooks/hook_civicrm_customFieldOptions.md
+    - <del>hook_civicrm_customFieldOptions</del>: hooks/hook_civicrm_customFieldOptions.md
     - hook_civicrm_dashboard: hooks/hook_civicrm_dashboard.md
     - hook_civicrm_links: hooks/hook_civicrm_links.md
     - hook_civicrm_navigationMenu: hooks/hook_civicrm_navigationMenu.md
@@ -98,7 +98,7 @@ pages:
     - hook_civicrm_searchTasks: hooks/hook_civicrm_searchTasks.md
     - hook_civicrm_summary: hooks/hook_civicrm_summary.md
     - hook_civicrm_summaryActions: hooks/hook_civicrm_summaryActions.md
-    - hook_civicrm_tabs: hooks/hook_civicrm_tabs.md
+    - <del>hook_civicrm_tabs</del>: hooks/hook_civicrm_tabs.md
     - hook_civicrm_xmlMenu: hooks/hook_civicrm_xmlMenu.md
     - hook_civicrm_tabset: hooks/hook_civicrm_tabset.md
     - hook_civicrm_dashboard_defaults: hooks/hook_civicrm_dashboard_defaults.md
@@ -132,7 +132,7 @@ pages:
     - hook_civicrm_apiWrappers: hooks/hook_civicrm_apiWrappers.md
     - hook_civicrm_buildStateProvinceForCountry: hooks/hook_civicrm_buildStateProvinceForCountry.md
     - hook_civicrm_config: hooks/hook_civicrm_config.md
-    - hook_civicrm_contactListQuery: hooks/hook_civicrm_contactListQuery.md
+    - <del>hook_civicrm_contactListQuery</del>: hooks/hook_civicrm_contactListQuery.md
     - hook_civicrm_cron: hooks/hook_civicrm_cron.md
     - hook_civicrm_dupeQuery: hooks/hook_civicrm_dupeQuery.md
     - hook_civicrm_export: hooks/hook_civicrm_export.md
@@ -142,7 +142,7 @@ pages:
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_queryObjects: hooks/hook_civicrm_queryObjects.md
     - hook_civicrm_check: hooks/hook_civicrm_check.md
-    - hook_civicrm_optionValues: hooks/hook_civicrm_optionValues.md
+    - <del>hook_civicrm_optionValues</del>: hooks/hook_civicrm_optionValues.md
     - hook_civicrm_coreResourceList: hooks/hook_civicrm_coreResourceList.md
     - hook_civicrm_angularModules: hooks/hook_civicrm_angularModules.md
     - hook_civicrm_container: hooks/hook_civicrm_container.md
