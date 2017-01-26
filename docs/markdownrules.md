@@ -18,6 +18,16 @@ this book is
 [here](http://www.mkdocs.org/user-guide/writing-your-docs).
 
 
+## CiviCRM markdown code standards {:#standards}
+
+To maintain some consistency and peace of mind for documentation content editors, we've [agreed](https://github.com/civicrm/civicrm-dev-docs/issues/43) to *recommend* the following syntax as markdown code standards. These are not hard rules though.
+
+* **Line length:** write long lines (i.e. one line per paragraph) and set your text editor to view them with a "soft wrap".
+* **Ordered lists:** use `1.` as delimiters.
+* **Unordered lists:** use `*` to delimiters.
+* **Headings:** use hashes like `## Heading 2`.
+
+
 ## Basics
 
 -   `*italics*`
