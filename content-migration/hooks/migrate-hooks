@@ -16,20 +16,21 @@ chdir($hooks_dir);
 
 foreach ($hooks_by_category as $category => $hooks) {
   foreach ($hooks as $hook) {
-    $html = "$cache_dir/$hook";
+    $hook_name = $hook['name'];
+    $html = "$cache_dir/$hook_name";
     if ( file_exists($html) ) {
-      echo "converting $hook ... ";
+      echo "converting $hook_name ... ";
       $conversion_status = 1;
-      system("webpage2md $html > $hook.md", $conversion_status);
+      system("webpage2md $html > $hook_name.md", $conversion_status);
       if( $conversion_status == 0 ) {
         echo "done" . PHP_EOL;
       }
       else {
-        echo "ERROR CONVERTING $hook" . PHP_EOL;
+        echo "ERROR CONVERTING $hook_name" . PHP_EOL;
       }
     }
     else {
-      echo "WARNING: $hook not yet fetched" . PHP_EOL;
+      echo "WARNING: $hook_name not yet fetched" . PHP_EOL;
     }
   }
 }

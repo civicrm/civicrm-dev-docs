@@ -6,6 +6,7 @@ include __DIR__ . '/hooks-by-category.php';
 foreach ($hooks_by_category as $category => $hooks) {
   echo "  - $category hooks:" . PHP_EOL;
   foreach ($hooks as $hook) {
-    echo "    - $hook: hooks/$hook.md" . PHP_EOL;
+    $hook_name = $hook['name'];
+    echo "    - $hook_name: hooks/$hook_name.md" . PHP_EOL;
   }
 }

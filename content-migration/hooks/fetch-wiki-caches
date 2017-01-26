@@ -10,12 +10,13 @@ chdir($cache_dir);
 
 foreach ($hooks_by_category as $category => $hooks) {
   foreach ($hooks as $hook) {
-    if ( file_exists($hook) ) {
-      echo "SKIPPING: $hook (already cached)" . PHP_EOL;
+    $hook_name = $hook['name'];
+    if ( file_exists($hook_name) ) {
+      echo "SKIPPING: $hook_name (already cached)" . PHP_EOL;
     }
     else {
-      echo "DOWNLOADING: $hook" . PHP_EOL;
-      system("curl '$wiki_url/$hook' > '$hook'");
+      echo "DOWNLOADING: $hook_name" . PHP_EOL;
+      system("curl '$wiki_url/$hook_name' > '$hook_name'");
     }
     echo PHP_EOL;
   }
