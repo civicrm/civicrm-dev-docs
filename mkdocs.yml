@@ -58,5 +58,4 @@ pages:
    - Extension Lifecycle: extend-stages.md
    - Markdown: markdownrules.md
    # - hookref-old: hookref-old.md
-- Deprecated:
-   - Building CiviCRM from source: develop-deprecated.md
+
