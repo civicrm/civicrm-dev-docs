@@ -1,7 +1,7 @@
 # Documentation style guide
 
 All CiviCRM guides *(like this Developer Guide)* are intended to provide
-high-quality "finished" [documentation] (documentation.md)
+high-quality "finished" [documentation](/documentation.md)
 about CiviCRM. This Style Guide page documents the standards we wish to
 uphold to ensure all guides maintain this high level of quality.
 
