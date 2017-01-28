@@ -12,22 +12,22 @@ pages:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md    # page-tree = DONE
-  - Prerequisite skills: basics/skills.md       # page-tree = DONE
-  - Planning your project: basics/planning.md   # page-tree = DONE
+  - Prerequisite Skills: basics/skills.md       # page-tree = DONE
+  - Planning Your Project: basics/planning.md   # page-tree = DONE
 - Documentation:
   - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
   - Markdown: markdownrules.md                  # page-tree = NEED_PAGE_MOVE to /documentation/markdown.md
   - Style Guide: best-practices/documentation-style-guide.md  # page-tree = NEED_PAGE_MOVE to /documentation/style-guide.md
 - Setup:
-  # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE
+  # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE  # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
   - Debugging: dev-tools/debugging.md           # page-tree = NEED_PAGE_MOVE to /setup/debugging.md
-- "Development: core":
+- Core Development:
   - When edit core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
-  # How to Contribute: /core/contributing.md    # page-tree = NEED_NEW_PAGE
-  # Codebase & architecture: core/architecture.md # page-tree = DONE
+  # How to Contribute: /core/contributing.md    # page-tree = NEED_NEW_PAGE # summary: General summary of process (git+issues+PRs+Mattermost)
+  - Codebase & Architecture: core/architecture.md # page-tree = DONE
   # Reporting Bugs & Issues: /core/reporting.md # page-tree = NEED_NEW_PAGE
   # Submitting a Patch: /core/patches.md        # page-tree = NEED_NEW_PAGE
-  # Review Process: /core/review.md             # page-tree = NEED_NEW_PAGE
+  # Review Process: /core/review.md             # page-tree = NEED_NEW_PAGE  # summary: Detailed guidance on how to review PRs
   # Verifying a Bug Fix: /core/verifying.md     # page-tree = NEED_NEW_PAGE
 - API:
   - API Intro: api/general.md                   # page-tree = DONE
@@ -37,40 +37,40 @@ pages:
   # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
   - API Chaining: api/chaining.md
   # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
-- "Development: Extensions":
+- Extensions Development:
   - Basics: extensions/basics.md                   # page-tree = DONE
   - civix: extensions/civix.md                     # page-tree = DONE
   - Creating Pages: extensions/create-page.md      # page-tree = DONE
   - Storing Configuration: extensions/config.md    # page-tree = DONE
   - Storing Data: extensions/storing-data.md       # page-tree = DONE
   - Setting Permissions: extensions/permissions.md # page-tree = DONE
-  - Custom API Functions: extensions/custom-api.md # page-tree = DONE
+  - Adding API Functions: extensions/custom-api.md # page-tree = DONE
   - Reports: extensions/custom-reports.md          # page-tree = NEED_PAGE_MOVE to extensions/reports.md
   - Searches: extensions/custom-searches.md        # page-tree = NEED_PAGE_MOVE to extensions/searches.md
   - Payment Processors: extensions/payment-processor.md # page-tree = DONE
-  - Publishing extensions: extensions/publish.md   # page-tree = DONE
+  - Publishing Extensions: extensions/publish.md   # page-tree = DONE
   - Extension Lifecycle: extend-stages.md          # page-tree = NEED_PAGE_MOVE to /extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
-# Reference: Framework:
+# Framework Reference:
   # Bootstrap: /framework/bootstrap.md          # page-tree = NEED_NEW_PAGE
   # Cache: /framework/cache.md                  # page-tree = NEED_NEW_PAGE
   # Components: /framework/components.md        # page-tree = NEED_NEW_PAGE
   # Database: /framework/database.md            # page-tree = NEED_NEW_PAGE
   # Resources: /framework/resources.md          # page-tree = NEED_NEW_PAGE
   # Upgrade: /framework/upgrade.md              # page-tree = NEED_NEW_PAGE
-# Reference: Standards:
+# Code Standards:
   # PHP: /standards/php.md                      # page-tree = NEED_NEW_PAGE
   # Javascript: /standards/js.md                # page-tree = NEED_NEW_PAGE
   # API: /standards/api.md                      # page-tree = NEED_NEW_PAGE
   # Git: /standards/git.md                      # page-tree = NEED_NEW_PAGE
 # Testing:
   # Testing: /testing/testing.md                # page-tree = NEED_NEW_PAGE
-# Reference: Other:
+# Other Reference:
   # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
   # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
   # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
 - Hooks:
-  - How to Use Hooks: hook.md                  # page-tree = NEED_PAGE_MOVE
+  - Using hooks: hook.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
 - MISC TO REORGANIZE OR DELETE:
   - Extension advanced patterns: extensions/advanced.md
   - Customizing Screens: extensions/customize-screens.md
