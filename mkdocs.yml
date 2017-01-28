@@ -40,14 +40,14 @@ pages:
 - Extensions Development:
   - Basics: extensions/basics.md                   # page-tree = DONE
   - civix: extensions/civix.md                     # page-tree = DONE
-  - Creating Pages: extensions/create-page.md      # page-tree = DONE
-  - Storing Configuration: extensions/config.md    # page-tree = DONE
-  - Storing Data: extensions/storing-data.md       # page-tree = DONE
-  - Setting Permissions: extensions/permissions.md # page-tree = DONE
-  - Adding API Functions: extensions/custom-api.md # page-tree = DONE
-  - Reports: extensions/custom-reports.md          # page-tree = NEED_PAGE_MOVE to extensions/reports.md
-  - Searches: extensions/custom-searches.md        # page-tree = NEED_PAGE_MOVE to extensions/searches.md
-  - Payment Processors: extensions/payment-processor.md # page-tree = DONE
+  # Creating Pages: extensions/create-page.md      # page-tree = NEED_NEW_PAGE
+  # Storing Configuration: extensions/config.md    # page-tree = NEED_NEW_PAGE
+  # Storing Data: extensions/storing-data.md       # page-tree = NEED_NEW_PAGE
+  # Setting Permissions: extensions/permissions.md # page-tree = NEED_NEW_PAGE
+  # Adding API Functions: extensions/api.md        # page-tree = NEED_NEW_PAGE
+  # Reports: extensions/reports.md                 # page-tree = NEED_NEW_PAGE
+  # Searches: extensions/searches.md               # page-tree = NEED_NEW_PAGE
+  # Payment Processors: extensions/payment-processors.md # page-tree = NEED_NEW_PAGE
   - Publishing Extensions: extensions/publish.md   # page-tree = DONE
   - Extension Lifecycle: extend-stages.md          # page-tree = NEED_PAGE_MOVE to /extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
