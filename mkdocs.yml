@@ -11,51 +11,74 @@ markdown_extensions:
 pages:
 - Home: index.md
 - Basics:
-  - Developer Community: basics/community.md
-  - Prerequisite skills: basics/skills.md
+  - Developer Community: basics/community.md    # page-tree = DONE
+  - Prerequisite skills: basics/skills.md       # page-tree = DONE
+  - Planning your project: basics/planning.md   # page-tree = DONE
+- Documentation:
+  - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
+  - Markdown: markdownrules.md                  # page-tree = NEED_PAGE_MOVE to /documentation/markdown.md
+  - Style Guide: best-practices/documentation-style-guide.md  # page-tree = NEED_PAGE_MOVE to /documentation/style-guide.md
+- Setup:
+  # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE
+  - Debugging: dev-tools/debugging.md           # page-tree = NEED_PAGE_MOVE to /setup/debugging.md
+- "Development: core":
+  - When edit core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
+  # How to Contribute: /core/contributing.md    # page-tree = NEED_NEW_PAGE
+  # Codebase & architecture: core/architecture.md # page-tree = DONE
+  # Reporting Bugs & Issues: /core/reporting.md # page-tree = NEED_NEW_PAGE
+  # Submitting a Patch: /core/patches.md        # page-tree = NEED_NEW_PAGE
+  # Review Process: /core/review.md             # page-tree = NEED_NEW_PAGE
+  # Verifying a Bug Fix: /core/verifying.md     # page-tree = NEED_NEW_PAGE
+- API:
+  - API Intro: api/general.md                   # page-tree = DONE
+  - API Usage: api/usage.md                     # page-tree = DONE
+  - API Actions: api/actions.md                 # page-tree = DONE
+  - API Parameters: api/params.md               # page-tree = DONE
+  # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
+  - API Chaining: api/chaining.md
+  # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
+- "Development: Extensions":
+  - Basics: extensions/basics.md                   # page-tree = DONE
+  - civix: extensions/civix.md                     # page-tree = DONE
+  - Creating Pages: extensions/create-page.md      # page-tree = DONE
+  - Storing Configuration: extensions/config.md    # page-tree = DONE
+  - Storing Data: extensions/storing-data.md       # page-tree = DONE
+  - Setting Permissions: extensions/permissions.md # page-tree = DONE
+  - Custom API Functions: extensions/custom-api.md # page-tree = DONE
+  - Reports: extensions/custom-reports.md          # page-tree = NEED_PAGE_MOVE to extensions/reports.md
+  - Searches: extensions/custom-searches.md        # page-tree = NEED_PAGE_MOVE to extensions/searches.md
+  - Payment Processors: extensions/payment-processor.md # page-tree = DONE
+  - Publishing extensions: extensions/publish.md   # page-tree = DONE
+  - Extension Lifecycle: extend-stages.md          # page-tree = NEED_PAGE_MOVE to /extensions/lifecycle.md
+  - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
+# Reference: Framework:
+  # Bootstrap: /framework/bootstrap.md          # page-tree = NEED_NEW_PAGE
+  # Cache: /framework/cache.md                  # page-tree = NEED_NEW_PAGE
+  # Components: /framework/components.md        # page-tree = NEED_NEW_PAGE
+  # Database: /framework/database.md            # page-tree = NEED_NEW_PAGE
+  # Resources: /framework/resources.md          # page-tree = NEED_NEW_PAGE
+  # Upgrade: /framework/upgrade.md              # page-tree = NEED_NEW_PAGE
+# Reference: Standards:
+  # PHP: /standards/php.md                      # page-tree = NEED_NEW_PAGE
+  # Javascript: /standards/js.md                # page-tree = NEED_NEW_PAGE
+  # API: /standards/api.md                      # page-tree = NEED_NEW_PAGE
+  # Git: /standards/git.md                      # page-tree = NEED_NEW_PAGE
+# Testing:
+  # Testing: /testing/testing.md                # page-tree = NEED_NEW_PAGE
+# Reference: Other:
+  # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
+  # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
+  # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
+- Hooks:
+  - How to Use Hooks: hook.md                  # page-tree = NEED_PAGE_MOVE
+- MISC TO REORGANIZE OR DELETE:
+  - Extension advanced patterns: extensions/advanced.md
+  - Customizing Screens: extensions/customize-screens.md
+  - Extensions files: extensions/files.md
+  - Some of the hooks: hooks-db.md
   - Requirements: requirements.md
-  - Planning your project: basics/planning.md
   - Build: build.md
   - Customize: customize.md
   - Extend: extend.md
   - Develop: develop.md
-  - Testing: testing.md
-  - Writing Documentation: documentation.md
-- Development Environment:
-  - Debugging: dev-tools/debugging.md
-- APIv3:
-  - API Intro: api/general.md
-  - API Usage: api/usage.md
-  - API Actions: api/actions.md
-  - API Parameters: api/params.md
-  - API Chaining: api/chaining.md
-- Hooks:
-   - How to Use Hooks: hook.md
-   - All Available Hooks: hooks-db.md
-- Writing Extensions:
-  - Basics: extensions/basics.md
-  - Using civix: extensions/civix.md
-  - Anatomy of Files: extensions/files.md
-  - Advanced Patterns: extensions/advanced.md
-  - Troubleshooting: extensions/troubleshooting.md
-  # - Using hooks: extensions/using-hooks.md
-  # - Customizing Screens: extensions/customize-screens.md
-  # - Creating Pages: Forms/extensions/create-page.md
-  # - Storing Configuration: extensions/config.md
-  # - Storing Data: extensions/storing-data.md
-  # - Setting Permissions: extensions/permissions.md
-  # - Custom API Functions: extensions/custom-api.md
-  # - Custom Reports: extensions/custom-reports.md
-  # - Custom Searches: extensions/custom-searches.md
-  # - Payment Processors: extensions/payment-processor.md
-  - Publish: extensions/publish.md
-- Best Practices:
-  - Documentation Style Guide: best-practices/documentation-style-guide.md
-- Core code:
-  - Hacking the core: core/hacking.md
-  - Architecture: core/architecture.md
-- Miscellaneous:
-   - Extension Lifecycle: extend-stages.md
-   - Markdown: markdownrules.md
-   # - hookref-old: hookref-old.md
-
+  - hookref-old: hookref-old.md
