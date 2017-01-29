@@ -52,21 +52,21 @@ pages:
   - Extension Lifecycle: extend-stages.md          # page-tree = NEED_PAGE_MOVE to /extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
   - Advanced patterns: extensions/advanced.md
-# Framework Reference:
+  #### Framework Reference:
   # Bootstrap: /framework/bootstrap.md          # page-tree = NEED_NEW_PAGE
   # Cache: /framework/cache.md                  # page-tree = NEED_NEW_PAGE
   # Components: /framework/components.md        # page-tree = NEED_NEW_PAGE
   # Database: /framework/database.md            # page-tree = NEED_NEW_PAGE
   # Resources: /framework/resources.md          # page-tree = NEED_NEW_PAGE
   # Upgrade: /framework/upgrade.md              # page-tree = NEED_NEW_PAGE
-# Code Standards:
+  #### Code Standards:
   # PHP: /standards/php.md                      # page-tree = NEED_NEW_PAGE
   # Javascript: /standards/js.md                # page-tree = NEED_NEW_PAGE
   # API: /standards/api.md                      # page-tree = NEED_NEW_PAGE
   # Git: /standards/git.md                      # page-tree = NEED_NEW_PAGE
-# Testing:
+  #### Testing:
   # Testing: /testing/testing.md                # page-tree = NEED_NEW_PAGE
-# Other Reference:
+  # Other Reference:
   # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
   # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
   # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
