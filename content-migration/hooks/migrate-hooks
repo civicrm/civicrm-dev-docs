@@ -17,11 +17,13 @@ chdir($hooks_dir);
 foreach ($hooks_by_category as $category => $hooks) {
   foreach ($hooks as $hook) {
     $hook_name = $hook['name'];
+    $hook_file = "$hook_name.md";
     $html = "$cache_dir/$hook_name";
-    if ( file_exists($html) ) {
+    if ( file_exists($html) && !file_exists($hook_file) ) {
       echo "converting $hook_name ... ";
       $conversion_status = 1;
-      system("webpage2md $html > $hook_name.md", $conversion_status);
+      system("webpage2md $html > $hook_file", $conversion_status);
+      // TODO fix links that point to wiki using only a slash
       if( $conversion_status == 0 ) {
         echo "done" . PHP_EOL;
       }
@@ -29,8 +31,11 @@ foreach ($hooks_by_category as $category => $hooks) {
         echo "ERROR CONVERTING $hook_name" . PHP_EOL;
       }
     }
-    else {
+    else if ( !file_exists($html) ) {
       echo "WARNING: $hook_name not yet fetched" . PHP_EOL;
+    }
+    else if ( file_exists($hook_file) ) {
+      echo "ignoring $hook_name (hook file already exists)" . PHP_EOL;
     }
   }
 }
