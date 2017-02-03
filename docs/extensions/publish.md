@@ -104,8 +104,7 @@ administrators can view and install CiviCRM extension releases which meet
 certain criteria. To be eligible for automated distribution:
 
 -   The extension must be published in the Extensions Directory.
--   One of the extension's maintainers must [request an extension review
-    request](https://issues.civicrm.org/jira/secure/CreateIssue!default.jspa?selectedProjectId=10400&issuetype=10000).
+-   One of the extension's maintainers must [request an extension review](https://issues.civicrm.org/jira/secure/CreateIssue!default.jspa?selectedProjectId=10400&issuetype=10000).
 -   The extension manifest must flag the release as "stable."
 -   The extension manifest must include a link to online documentation.
 -   The extension manifest must flag the release as compatible with CiviCRM
