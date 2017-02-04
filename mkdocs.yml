@@ -3,8 +3,6 @@ repo_url: https://github.com/civicrm/civicrm-dev-docs
 site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
 theme: material
-extra_javascript:
-  - js/custom.js
 markdown_extensions:
   - attr_list
   - admonition
