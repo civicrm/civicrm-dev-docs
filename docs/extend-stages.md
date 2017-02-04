@@ -90,7 +90,7 @@ Pre-Paid
 How do we know if an extension is any good?
 
 Self-Assessment
-:   An author makes a claim about the stability of his
+:   An author makes a claim about the stability of their
     work. (This is a low-tech, low-touch process.)
 
 Informal Discussion
@@ -121,7 +121,7 @@ determines access to communal resources on `civicrm.org`. The particulars are
 determined the maturity and stewardship of the project -- with a few basic
 rules of thumb:
 
--   The author always registers his extension on `civicrm.org` by creating an
+-   The author always registers their extension on `civicrm.org` by creating an
     `extension` node.
 -   *Official* extensions are subject to more scrutiny than *Contributed*
     extensions.
@@ -132,7 +132,7 @@ rules of thumb:
 Based on these rules, we can fill out a full table of the workflow:
 
 
-| Maturity	| Stewardship	| Primary Quality Signal	| How does an author get his extension designated as X?	| How does a user download an extension with X designation? |
+| Maturity	| Stewardship	| Primary Quality Signal	| How does an author get their extension designated as X?	| How does a user download an extension with X designation? |
 | ------------- | ------------- | ----------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
 | Experimental	| Contributed	| Self-Assessment	| In `civicrm.org`, the author creates an "extension" node and flags it as "Experimental".	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Experimental	| Official	| Informal Discussion	| As above. *Additionally* The author announces to a high-visibility medium (such as blog or mailing-list). If discussion is persuasive, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
