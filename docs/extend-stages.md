@@ -23,55 +23,94 @@ extensions through the CiviCRM ecosystem.
 
 ## Definitions
 
--   **Project Maturity**: Should we expect this to work for most users? Should
-    we expect to work in 6 months?
-    -   **Experimental**: An experimental project offers zero support,
-        stability, or maintenance. It may be useful for discussion, finding
-        collaborators, or proving a concept.
-    -   **Incubation**: An incubation project offers some degree of support,
-        stability, or maintenance. It's probably in use at multiple
-        organizations. However, the levels are not guaranteed; some gaps and
-        road bumps should be expected. A project may be "Incubation" for days
-        or months or years.
-    -   **Stable**: A stable project has undertaken significant efforts to
-        ensure that it works and continues working in the future. It has a
-        strong quality-signal.
-    -   **Deprecated**: The project is no longer being maintained. It may work
-        today; but it's liable to break tomorrow (unless someone steps up to
-        manage it).
--   **Stewardship**: Who manages a project? Who decides whether the project is
-    experimental? Or maintained? Or unmaintained?
-    -   **Contributed**: This project is managed by an individual or company in
-        the ecosystem. All design, support, and maintenance are at discretion
-        of the original author.
-    -   **Official**: The project is monitored as a community resource.
-        Generally, the original author retains editorial control, but the
-        project receives more strenuous reviews and follows stricter standards
-        with feedback from others in the community.
-    -   **Seeking Maintainer**: This project does not have a person or
-        organization responsible for it. If you think the project is useful,
-        feel free to take responsibility for it.
--   **Support Model**: How do you submit questions and requests about issues?
-    -   **Free**: Submit questions and requests to an open bug-tracker.
-    -   **Negotiated**: Issues may be reported to open bug-tracker. If the
-        author agrees it is critical or data-loss, they may address it.
-        Otherwise, you need to negotiate a contract.
-    -   **Pre-Paid**: The author will not engage in any support discussions
-        unless you have pre-paid for support.
--   **Quality Signals**: How do we know if an extension is any good?
-    -   **Self-Assessment**: An author makes a claim about the stability of his
-        work. (This is a low-tech, low-touch process.)
-    -   **Informal Discussion**: One or more experts give gut reactions. (This
-        is a low-tech, high-touch process.)
-    -   **Formal Review**: One or more experts assesses the quality,
-        maintainability, best-practices, etc. using formal criteria. (This is a
-        low-tech, high-touch process.)
-    -   **Social Metrics**: Data-points (such as #installations or average
-        5-star rating) is collected from many people. (This is a high-tech,
-        low-touch process.)
-    -   **Technical Metrics**: Technical details (such as test-coverage,
-        test-results, style-checks, or cyclomatic complexity) are checked by a
-        bot. (This is a high-tech, low-touch process.)
+### Project Maturity
+
+Should we expect this to work for most users? Should we expect to work in 6
+months?
+
+Experimental
+:   An experimental project offers zero support, stability, or maintenance.
+    It may be useful for discussion, finding collaborators, or proving a
+    concept.
+
+Incubation
+:   An incubation project offers some degree of support,
+    stability, or maintenance. It's probably in use at multiple
+    organizations. However, the levels are not guaranteed; some gaps and
+    road bumps should be expected. A project may be "Incubation" for days
+    or months or years.
+
+Stable
+:   A stable project has undertaken significant efforts to
+    ensure that it works and continues working in the future. It has a
+    strong quality-signal.
+
+Deprecated
+:   The project is no longer being maintained. It may work
+    today; but it's liable to break tomorrow (unless someone steps up to
+    manage it).
+
+### Stewardship
+
+Who manages a project? Who decides whether the project is experimental? Or
+maintained? Or unmaintained?
+
+Contributed
+:   This project is managed by an individual or company in the ecosystem. All
+    design, support, and maintenance are at discretion of the original author.
+
+Official
+:   The project is monitored as a community resource.
+    Generally, the original author retains editorial control, but the
+    project receives more strenuous reviews and follows stricter standards
+    with feedback from others in the community.
+
+Seeking Maintainer
+:   This project does not have a person or organization responsible for it.
+    If you think the project is useful, feel free to take responsibility for it.
+
+### Support Model
+
+How do you submit questions and requests about issues?
+
+Free
+:   Submit questions and requests to an open bug-tracker.
+
+Negotiated
+:   Issues may be reported to open bug-tracker. If the
+    author agrees it is critical or data-loss, they may address it.
+    Otherwise, you need to negotiate a contract.
+
+Pre-Paid
+:   The author will not engage in any support discussions unless you have
+    pre-paid for support.
+
+### Quality Signals
+
+How do we know if an extension is any good?
+
+Self-Assessment
+:   An author makes a claim about the stability of his
+    work. (This is a low-tech, low-touch process.)
+
+Informal Discussion
+:   One or more experts give gut reactions. (This
+    is a low-tech, high-touch process.)
+
+Formal Review
+:   One or more experts assesses the quality,
+    maintainability, best-practices, etc. using formal criteria. (This is a
+    low-tech, high-touch process.)
+
+Social Metrics
+:   Data-points (such as #installations or average
+    5-star rating) is collected from many people. (This is a high-tech,
+    low-touch process.)
+
+Technical Metrics
+:   Technical details (such as test-coverage,
+    test-results, style-checks, or cyclomatic complexity) are checked by a
+    bot. (This is a high-tech, low-touch process.)
 
 ## Workflow
 

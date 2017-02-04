@@ -8,6 +8,7 @@ extra_javascript:
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.attr_list
+  - markdown.extensions.def_list
 pages:
 - Home: index.md
 - Basics:
