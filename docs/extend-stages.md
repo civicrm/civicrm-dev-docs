@@ -159,7 +159,7 @@ subject to more stringent review (more criteria).
 ### Criteria for passing a review
 
 | Category	| Criterion | Required for<br>*contributed*<br>extensions? | Required for<br>*official*<br>extensions? |
-|------ | ----- | ----------------------------- | --------------------- |
+|------ | ----- | :-----------------------------: | :---------------------: |
 | Admin	| License code under AGPLv3+, GPLv2+, LGPLv2+, MIT/X11, or BSD-2c	| **Required**	| **Required** |
 | Admin	| Publish code on github.com 	| **Required**	| **Required** |
 | Admin	| Put the extension name under the "org.civicrm.*" namespace	| No	| *Suggested* |
