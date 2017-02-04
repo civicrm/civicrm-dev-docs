@@ -160,28 +160,28 @@ subject to more stringent review (more criteria).
 
 | Category	| Criterion | Required for<br>*contributed*<br>extensions? | Required for<br>*official*<br>extensions? |
 |------ | ----- | ----------------------------- | --------------------- |
-| Admin	| License code under AGPLv3+, GPLv2+, LGPLv2+, MIT/X11, or BSD-2c	| Required	| Required |
-| Admin	| Publish code on github.com 	| Required	| Required |
-| Admin	| Put the extension name under the "org.civicrm.*" namespace	| Not assessed	| Suggested (Not Required) |
-| Admin	| Bus factor >= 2	| Not assessed	| Suggested (Not Required) |
-| Admin	| Grant project admin access to infra team	| Not assessed	| Suggested (Not Required) |
-| Admin	| Release schedule is aligned with core.	| Not assessed	| Suggested (Not Required)
-| Coding	| All code complies with civicrm-core style guidelines.	| Not assessed	| Required
-| Coding	| Automated tests execute within 3 minutes (or less).	| Not assessed	| Suggested (Not Required)
-| Coding	| All dependencies are at similar stage. (Ex: A stable project should not depend on an experimental project.)	| Not assessed	| Required
-| Coding	| Strings are wrapped in ts()	| Suggested (Not Required)	| Required
-| Coding	| The project does not *override* PHP, TPL, JS, or SQL from civicrm-core.	| Required	| Required
-| Coding	| The project does not *conflict* with other official projects.	| Suggested (Not Required)	| Suggested (Not Required)
-| Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin.	| Required	| Required
-| Distribution	| Have a stable version (1.0+; not alpha or beta)	| Required	| Required
-| Distribution	| Provide a demo site	| Suggested (Not Required)	| Suggested (Not Required)
-| QA	| Works in all CMS's (for CiviCRM Extension)	| Suggested (Not Required)	| Suggested (Not Required)
-| QA	| Include an automated test suite	| Suggested (Not Required)	| Required
-| QA	| Periodically re-validate with newer versions of CiviCRM. Publish updates for compatibility.	| Not assessed	| Required
-| QA	| Subject all patches to peer review	| Not assessed	| Suggested (Not Required)
-| QA	| Subject all patches to automated tests	| Not assessed	| Required
-| Support	| Publish documentation	| Suggested (Not Required)	| Required
-| Support	| Track issues in an open, public issue management system	| Suggested (Not Required)	| Required
+| Admin	| License code under AGPLv3+, GPLv2+, LGPLv2+, MIT/X11, or BSD-2c	| **Required**	| **Required** |
+| Admin	| Publish code on github.com 	| **Required**	| **Required** |
+| Admin	| Put the extension name under the "org.civicrm.*" namespace	| No	| *Suggested* |
+| Admin	| Bus factor >= 2	| No	| *Suggested* |
+| Admin	| Grant project admin access to infra team	| No	| *Suggested* |
+| Admin	| Release schedule is aligned with core.	| No	| *Suggested*
+| Coding	| All code complies with civicrm-core style guidelines.	| No	| **Required**
+| Coding	| Automated tests execute within 3 minutes (or less).	| No	| *Suggested*
+| Coding	| All dependencies are at similar stage. (Ex: A stable project should not depend on an experimental project.)	| No	| **Required**
+| Coding	| Strings are wrapped in ts()	| *Suggested*	| **Required**
+| Coding	| The project does not *override* PHP, TPL, JS, or SQL from civicrm-core.	| **Required**	| **Required**
+| Coding	| The project does not *conflict* with other official projects.	| *Suggested*	| *Suggested*
+| Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin.	| **Required**	| **Required**
+| Distribution	| Have a stable version (1.0+; not alpha or beta)	| **Required**	| **Required**
+| Distribution	| Provide a demo site	| *Suggested*	| *Suggested*
+| QA	| Works in all CMS's (for CiviCRM Extension)	| *Suggested*	| *Suggested*
+| QA	| Include an automated test suite	| *Suggested*	| **Required**
+| QA	| Periodically re-validate with newer versions of CiviCRM. Publish updates for compatibility.	| No	| **Required**
+| QA	| Subject all patches to peer review	| No	| *Suggested*
+| QA	| Subject all patches to automated tests	| No	| **Required**
+| Support	| Publish documentation	| *Suggested*	| **Required**
+| Support	| Track issues in an open, public issue management system	| *Suggested*	| **Required**
 
 ## Benefits
 
