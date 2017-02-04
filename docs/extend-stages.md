@@ -160,28 +160,28 @@ subject to more stringent review (more criteria).
 
 | Category	| Criterion | Required for<br>*contributed*<br>extensions? | Required for<br>*official*<br>extensions? |
 |------ | ----- | :-----------------------------: | :---------------------: |
-| Admin	| License code under AGPLv3+, GPLv2+, LGPLv2+, MIT/X11, or BSD-2c	| **Required**	| **Required** |
-| Admin	| Publish code on github.com 	| **Required**	| **Required** |
-| Admin	| Put the extension name under the "org.civicrm.*" namespace	| No	| *Suggested* |
+| Admin	| Code is licensed under AGPLv3+, GPLv2+, LGPLv2+, MIT/X11, or BSD-2c	| **Required**	| **Required** |
+| Admin	| Code is published on github.com 	| **Required**	| **Required** |
+| Admin	| Extension name uses "org.civicrm.*" namespace	| No	| *Suggested* |
 | Admin	| Bus factor >= 2	| No	| *Suggested* |
-| Admin	| Grant project admin access to infra team	| No	| *Suggested* |
-| Admin	| Release schedule is aligned with core.	| No	| *Suggested*
-| Coding	| All code complies with civicrm-core style guidelines.	| No	| **Required**
-| Coding	| Automated tests execute within 3 minutes (or less).	| No	| *Suggested*
-| Coding	| All dependencies are at similar stage. (Ex: A stable project should not depend on an experimental project.)	| No	| **Required**
-| Coding	| Strings are wrapped in ts()	| *Suggested*	| **Required**
-| Coding	| The project does not *override* PHP, TPL, JS, or SQL from civicrm-core.	| **Required**	| **Required**
-| Coding	| The project does not *conflict* with other official projects.	| *Suggested*	| *Suggested*
-| Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin.	| **Required**	| **Required**
-| Distribution	| Have a stable version (1.0+; not alpha or beta)	| **Required**	| **Required**
-| Distribution	| Provide a demo site	| *Suggested*	| *Suggested*
-| QA	| Works in all CMS's (for CiviCRM Extension)	| *Suggested*	| *Suggested*
-| QA	| Include an automated test suite	| *Suggested*	| **Required**
-| QA	| Periodically re-validate with newer versions of CiviCRM. Publish updates for compatibility.	| No	| **Required**
-| QA	| Subject all patches to peer review	| No	| *Suggested*
-| QA	| Subject all patches to automated tests	| No	| **Required**
-| Support	| Publish documentation	| *Suggested*	| **Required**
-| Support	| Track issues in an open, public issue management system	| *Suggested*	| **Required**
+| Admin	| Access to project is granted to infra team	| No	| *Suggested* |
+| Admin	| Release schedule is aligned with core	| No	| *Suggested*
+| Coding	| All code complies with civicrm-core style guidelines	| No	| **Required**
+| Coding	| Automated tests execute within 3 minutes (or less)	| No	| *Suggested*
+| Coding	| All dependencies are at similar stage (Ex: A stable project should not depend on an experimental project)	| No	| **Required**
+| Coding	| All strings are wrapped in ts()	| *Suggested*	| **Required**
+| Coding	| The project does not *override* `PHP`, `TPL`, `JS`, or `SQL` from civicrm-core	| **Required**	| **Required**
+| Coding	| The project does not *conflict* with other official projects	| *Suggested*	| *Suggested*
+| Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin	| **Required**	| **Required**
+| Distribution	| The project has a stable version (1.0+; not alpha or beta)	| **Required**	| **Required**
+| Distribution	| A demo site is provided	| *Suggested*	| *Suggested*
+| QA	| The project functions in all CMS's (for CiviCRM Extension)	| *Suggested*	| *Suggested*
+| QA	| An automated test suite is included	| *Suggested*	| **Required**
+| QA	| Project is periodically re-validated with newer versions of CiviCRM and compatibility updates are published	| No	| **Required**
+| QA	| All patches are subjected to peer review	| No	| *Suggested*
+| QA	| All patches are subjected automated tests	| No	| **Required**
+| Support	| Documentation is published	| *Suggested*	| **Required**
+| Support	| Issues are tracked in an open, public issue management system	| *Suggested*	| **Required**
 
 ## Benefits
 
