@@ -8,7 +8,7 @@ extra_javascript:
 markdown_extensions:
   - attr_list
   - admonition
-  - codehilite
+  - codehilite(guess_lang=false)
   - toc(permalink=true)
   - pymdownx.superfences
   - pymdownx.inlinehilite
