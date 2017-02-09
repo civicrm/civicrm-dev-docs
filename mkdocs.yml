@@ -74,7 +74,7 @@ pages:
   # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
   # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
   # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
-- MISC TO REORGANIZE OR DELETE:
+- Content to reorganize:
   - Extensions files: extensions/files.md
   - Requirements: requirements.md
   - Develop: develop.md
