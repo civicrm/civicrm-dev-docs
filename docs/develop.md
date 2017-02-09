@@ -27,8 +27,3 @@ shell scripts, Drush & Drush make, or composer). The repositories are:
 The recommended method is to use
 [CiviCRM Buildkit](https://github.com/civicrm/civicrm-buildkit/) to build a
 CiviCRM codebase to develop with.
-
-## Deprecated instructions
-
-Previous methods for obtaining a CiviCRM source build are documented at
-[Deprecated Developer Processes](develop-deprecated.md).
