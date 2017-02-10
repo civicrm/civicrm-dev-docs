@@ -12,7 +12,7 @@ non-profit organizations, we can share our new enhancements and extensions
 &mdash; and build a richer whole for the entire ecosystem.
 
 Of course, this sharing arrangement means that many members of the community
-have a split roles. For example:
+have split roles. For example:
 
 -   **Consumers** want to quickly browse the available
     extensions, pick the ones which look best, and install them. They
