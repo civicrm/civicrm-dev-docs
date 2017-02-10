@@ -21,10 +21,6 @@ pages:
   - Planning Your Project: basics/planning.md   # page-tree = DONE
   # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE  # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
   - Debugging: dev-tools/debugging.md           # page-tree = NEED_PAGE_MOVE to /setup/debugging.md
-- Documentation:
-  - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
-  - Markdown: markdownrules.md                  # page-tree = NEED_PAGE_MOVE to /documentation/markdown.md
-  - Style Guide: best-practices/documentation-style-guide.md  # page-tree = NEED_PAGE_MOVE to /documentation/style-guide.md
 - Core Development:
   - When to edit core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
   # How to Contribute: /core/contributing.md    # page-tree = NEED_NEW_PAGE # summary: General summary of process (git+issues+PRs+Mattermost)
@@ -193,6 +189,10 @@ pages:
   - CiviRules hooks:
     - hook_civirules_alter_trigger_data: hooks/hook_civirules_alter_trigger_data.md
     - hook_civirules_logger: hooks/hook_civirules_logger.md
+- Documentation:
+  - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
+  - Markdown: markdownrules.md                  # page-tree = NEED_PAGE_MOVE to /documentation/markdown.md
+  - Style Guide: best-practices/documentation-style-guide.md  # page-tree = NEED_PAGE_MOVE to /documentation/style-guide.md
 - Content to reorganize:
   - Extensions files: extensions/files.md
   - Requirements: requirements.md
