@@ -12,7 +12,7 @@ the form and use it to alter the fees).
 ## Definition
 
 ```php
-hook_civicrm_membershipTypeValues( &$form, &$membershipTypeValues ) {
+hook_civicrm_membershipTypeValues(&$form, &$membershipTypeValues)
 ```
 
 ## Parameters
@@ -25,7 +25,7 @@ hook_civicrm_membershipTypeValues( &$form, &$membershipTypeValues ) {
 Give a 50% discount to some memberships in the sample data
 
 ```php
-function civitest_civicrm_membershipTypeValues( &$form, &$membershipTypeValues ) {
+function civitest_civicrm_membershipTypeValues(&$form, &$membershipTypeValues) {
   $membershipTypeValues[1]['name'] = 'General (50% discount)';
   $membershipTypeValues[1]['minimum_fee'] = '50.00';
 

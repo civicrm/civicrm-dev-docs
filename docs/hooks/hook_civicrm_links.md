@@ -30,21 +30,29 @@ hook_civicrm_links($op, $objectName, $objectId, &$links, &$mask, &$values)
 -   array `$links` - the links to modify in place
 
     each item in the array may have:
+
     -   `name`: the link text
+
     -   `url`: the link URL base path (like `civicrm/contact/view`, and
         fillable from `$values`)
+
     -   `qs`: the link URL query parameters to be used by sprintf() with
         $values (like `reset=1&cid=%%id%%` when `$values['id']` is the
         contact ID)
+
     -   `title` (optional): the text that appears when hovering over the
         link
+
     -   `extra` (optional): additional attributes for the `<a>` tag
         (fillable from `$values`)
+
     -   `bit` (optional): a binary number that will be fitered by $mask
         (sending nothing as `$links['bit']` means the link will always
         display)
+
     -   `ref` (optional, recommended): a CSS class to apply to the `<a>`
         tag.
+
     -   `class` (optional): Any other CSS classes to apply to the `<a>`
         tag (e.g. no-popup).
 
@@ -60,7 +68,7 @@ hook_civicrm_links($op, $objectName, $objectId, &$links, &$mask, &$values)
 ## Examples
 
 ```php
-function MODULENAME_civicrm_links( $op, $objectName, $objectId, &$links, &$mask, &$values ) {
+function MODULENAME_civicrm_links($op, $objectName, $objectId, &$links, &$mask, &$values) {
   $myLinks = array();
   switch ($objectName) {
     case 'Contact':
@@ -89,11 +97,12 @@ function MODULENAME_civicrm_links( $op, $objectName, $objectId, &$links, &$mask,
 
         case 'create.new.shorcuts':
           // add link to create new profile
-           $links[] = array(
-            'url'   => '/civicrm/admin/uf/group?action=add&reset=1',
-            'name' => ts('New Profile'), // old extensions using 'title' will still work
-           );
-           break;
+          $links[] = array(
+            'url' => '/civicrm/admin/uf/group?action=add&reset=1',
+            'name' => ts('New Profile'),
+             // old extensions using 'title' will still work
+          );
+          break;
       }
   }
   return $myLinks;
@@ -104,7 +113,7 @@ Adding contextual links to the rows of a contact's Events tab and Find
 Participants search result
 
 ```php
-function mymodule_civicrm_links( $op, $objectName, $objectId, &$links, &$mask, &$values ) {
+function mymodule_civicrm_links($op, $objectName, $objectId, &$links, &$mask, &$values) {
   //create a Send Invoice link with the context of the participant's order ID (a custom participant field)
   switch ($objectName) {
     case 'Participant':
@@ -129,11 +138,11 @@ function mymodule_civicrm_links( $op, $objectName, $objectId, &$links, &$mask, &
           }
 
           $links[] = array(
-              'name' => ts('Send Invoice'),
-              'title' => ts('Send Invoice'),
-              'url' => 'civicrm/activity/email/add',
-              'qs' => "action=add&reset=1&cid=$cid&selectedChild=activity&atype=3&order_id=$order_id"
-            );
+            'name' => ts('Send Invoice'),
+            'title' => ts('Send Invoice'),
+            'url' => 'civicrm/activity/email/add',
+            'qs' => "action=add&reset=1&cid=$cid&selectedChild=activity&atype=3&order_id=$order_id",
+          );
           break;
       }
   }
