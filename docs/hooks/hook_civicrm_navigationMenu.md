@@ -8,119 +8,122 @@ for any parent.
 
 ## Definition
 
-     hook_civicrm_navigationMenu( &$params )
+```php
+hook_civicrm_navigationMenu(&$params)
+```
 
 ## Parameters
 
--   $params the navigation menu array
+-   `$params` the navigation menu array
 
-Attributes of the menu :
+    Attributes of the menu :
 
-    1. label : Navigation Title
+    -   string `label`: navigation title
 
-    2. Name : Internal Name
+    -   string `name`: internal name
 
-    3. url : url in case of custom navigation link
+    -   string `url`: URL in case of custom navigation link
 
-    4. permission : comma separated Permissions for menu item
+    -   string `permission`: comma separated permissions for menu item
 
-    5. operator : Permission Operator ( AND/OR)
+    -   string `operator`: permission operator (`AND` or `OR`)
 
-    6. seperator : 0 or null = No Separator, 1 = Separator after this
-menu item, 2 = Separator before this menu item.
+    -   int `separator`: whether to insert a Separator
 
-    7. parentID : Parent navigation item, used for grouping
+        -   `0` or `NULL` = No Separator,
+        -   `1` = Separator after this menu item,
+        -   `2` = Separator before this menu item.
 
-    8. navID : ID of the menu
+    -   int `parentID`: parent navigation item, used for grouping
 
-    9. active : is active ?
+    -   int`navID`: ID of the menu
 
-## Example
+    -   bool `active`: whether the item is active
 
-    function _getMenuKeyMax($menuArray) {
-      $max = array(max(array_keys($menuArray)));
-      foreach($menuArray as $v) {
-        if (!empty($v['child'])) {
-          $max[] = _getMenuKeyMax($v['child']);
-        }
-      }
-      return max($max);
+## Examples
+
+```php
+function _getMenuKeyMax($menuArray) {
+  $max = array(max(array_keys($menuArray)));
+  foreach($menuArray as $v) {
+    if (!empty($v['child'])) {
+      $max[] = _getMenuKeyMax($v['child']);
     }
+  }
+  return max($max);
+}
 
-    function civicrm_civicrm_navigationMenu( &$params ) {
+function civicrm_civicrm_navigationMenu(&$params) {
 
-        //  Get the maximum key of $params
-        $maxKey = getMenuKeyMax($params);
+  //  Get the maximum key of $params
+  $maxKey = getMenuKeyMax($params);
 
-        $params[$maxKey+1] = array (
-                           'attributes' => array (
-                                                  'label'      => 'Custom Menu Entry',
-                                                  'name'       => 'Custom Menu Entry',
-                                                  'url'        => null,
-                                                  'permission' => null,
-                                                  'operator'   => null,
-                                                  'separator'  => null,
-                                                  'parentID'   => null,
-                                                  'navID'      => $maxKey+1,
-                                                  'active'     => 1
-                                                  ),
-                           'child' =>  array (
-                                              '1' => array (
-           'attributes' => array (
-                                  'label'      => 'Custom Child Menu',
-                                  'name'       => 'Custom Child Menu',
-                                  'url'        => 'http://www.testlink.com',
-                                  'permission' => 'access CiviContribute',
-                                  'operator'   => null,
-                                  'separator'  => 1,
-                                  'parentID'   => $maxKey+1,
-                                  'navID'      => 1,
-                                  'active'     => 1
-                                   ),
-           'child' => null
-           ) ) );
-    }
+  $params[$maxKey+1] = array(
+    'attributes' => array(
+      'label'      => 'Custom Menu Entry',
+      'name'       => 'Custom Menu Entry',
+      'url'        => null,
+      'permission' => null,
+      'operator'   => null,
+      'separator'  => null,
+      'parentID'   => null,
+      'navID'      => $maxKey + 1,
+      'active'     => 1
+    ),
+    'child' => array(
+      '1' => array(
+        'attributes' => array(
+          'label'      => 'Custom Child Menu',
+          'name'       => 'Custom Child Menu',
+          'url'        => 'http://www.testlink.com',
+          'permission' => 'access CiviContribute',
+          'operator'   => NULL,
+          'separator'  => 1,
+          'parentID'   => $maxKey + 1,
+          'navID'      => 1,
+          'active'     => 1
+        ),
+        'child' => NULL,
+      ),
+    ),
+  );
+}
+```
 
-## Example: to add your menu item to an existing menu
+To add your menu item to an existing menu
 
-    function donortrends_civicrm_navigationMenu(&$params) {
+```php
+function donortrends_civicrm_navigationMenu(&$params) {
 
-      // Check that our item doesn't already exist
-      $menu_item_search = array('url' => 'civicrm/trends');
-      $menu_items = array();
-      CRM_Core_BAO_Navigation::retrieve($menu_item_search, $menu_items);
+  // Check that our item doesn't already exist
+  $menu_item_search = array('url' => 'civicrm/trends');
+  $menu_items = array();
+  CRM_Core_BAO_Navigation::retrieve($menu_item_search, $menu_items);
 
-      if ( ! empty($menu_items) ) {
-        return;
-      }
+  if ( ! empty($menu_items) ) {
+    return;
+  }
 
-      $navId = CRM_Core_DAO::singleValueQuery("SELECT max(id) FROM civicrm_navigation");
-      if (is_integer($navId)) {
-        $navId++;
-      }
-      // Find the Report menu
-      $reportID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Reports', 'id', 'name');
-          $params[$reportID]['child'][$navId] = array (
-            'attributes' => array (
-              'label' => ts('Donor Trends',array('domain' => 'org.eff.donortrends')),
-              'name' => 'Donor Trends',
-              'url' => 'civicrm/trends',
-              'permission' => 'access CiviReport,access CiviContribute',
-              'operator' => 'OR',
-              'separator' => 1,
-              'parentID' => $reportID,
-              'navID' => $navId,
-              'active' => 1
-        )
-      );
-    }
+  $navId = CRM_Core_DAO::singleValueQuery("SELECT max(id) FROM civicrm_navigation");
+  if (is_integer($navId)) {
+    $navId++;
+  }
+  // Find the Report menu
+  $reportID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Reports', 'id', 'name');
+  $params[$reportID]['child'][$navId] = array(
+    'attributes' => array (
+      'label' => ts('Donor Trends',array('domain' => 'org.eff.donortrends')),
+      'name' => 'Donor Trends',
+      'url' => 'civicrm/trends',
+      'permission' => 'access CiviReport,access CiviContribute',
+      'operator' => 'OR',
+      'separator' => 1,
+      'parentID' => $reportID,
+      'navID' => $navId,
+      'active' => 1
+    ),
+  );
+}
+```
 
-
-
-
-
-Both of these examples were a bit dangerous - they each provide a way to
-find the next available id, but the first one fails because it's not
-finding the child menu id numbers, and the second one fails because it's
-not taking into account the id's that other extensions might have added.
-I've just added a little recursive function to the first one to fix it.
+The second example is a bit dangerous because it isn't taking into account the IDs that other extensions might have added.
