@@ -74,11 +74,6 @@ pages:
   # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
   # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
   # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
-- Content to reorganize:
-  - Extensions files: extensions/files.md
-  - Requirements: requirements.md
-  - Develop: develop.md
-  - hookref-old: hookref-old.md
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
   - Batch hooks:
@@ -198,3 +193,8 @@ pages:
   - CiviRules hooks:
     - hook_civirules_alter_trigger_data: hooks/hook_civirules_alter_trigger_data.md
     - hook_civirules_logger: hooks/hook_civirules_logger.md
+- Content to reorganize:
+  - Extensions files: extensions/files.md
+  - Requirements: requirements.md
+  - Develop: develop.md
+  - hookref-old: hookref-old.md
