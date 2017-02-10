@@ -1,25 +1,31 @@
 # Extension Life cycle
 
+This document describes the process of publishing extensions within the CiviCRM
+ecosystem.
+
+## Background
+
 The CiviCRM ecosystem is built on the belief that non-profit
 organizations can serve themselves best by collaborating in development of their
 data-management applications.  As staff, volunteers, and consultants for
-non-profit organizations, we can share our new enhancements and extensions --
-and build a richer whole for the entire ecosystem.
+non-profit organizations, we can share our new enhancements and extensions
+&mdash; and build a richer whole for the entire ecosystem.
 
 Of course, this sharing arrangement means that many members of the community
-have a split role, e.g.
+have split roles. For example:
 
--   Sometimes, we are consumers. We want to quickly browse the available
-    extensions, pick the ones which look best, and install them. We
-    expect these to just work -- both now and going forward (with future
-    upgrades).
--   Sometimes, we are developers.  We enjoy building great functionality, and we
-    want to invite people to use our products, but we need to juggle the
+-   **Consumers** want to quickly browse the available
+    extensions, pick the ones which look best, and install them. They
+    expect the extensions to just work &mdash; both now and going forward (with
+    future upgrades).
+-   **Developers** enjoy building great functionality, and
+    want to invite people to use their products, but need to juggle the
     publishing tasks (like testing and maintenance releases) with the goals
-    and resources provided by our bosses and clients.
+    and resources provided by their bosses and clients.
 
-The purpose of this document is to describe the process of publishing
-extensions through the CiviCRM ecosystem.
+With our extension life cycle processes, we seek to build an ecosystem that
+meets the needs of both consumers and developers, while acknowledging that many
+people often play both roles.
 
 ## Definitions
 
