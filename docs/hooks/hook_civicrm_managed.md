@@ -13,40 +13,50 @@ Installation](http://civicrm.org/blogs/totten/api-and-art-installation).
 
 ## Definition
 
-    hook_civicrm_managed(&$entities)
+```php
+hook_civicrm_managed(&$entities)
+```
 
 ## Parameters
 
--   array $entities - the list of entity declarations; each declaration
-    is an array with these following keys:\
-    -   'module': string; for module-extensions, this is the
-        fully-qualifed name (e.g. "*com.example.mymodule*"); for Drupal
-        modules, the name is prefixed by "drupal" (e.g.
-        *"drupal.mymodule*")
-    -   'name': string, a symbolic name which can be used to track this
+-   array `$entities` - the list of entity declarations; each declaration
+    is an array with these following keys:
+
+    -   string `module` - for module-extensions, this is the
+        fully-qualifed name (e.g. `com.example.mymodule`); for Drupal
+        modules, the name is prefixed by `drupal` (e.g.
+        `drupal.mymodule`)
+
+    -   string `name` - a symbolic name which can be used to track this
         entity (*Note: Each module creates its own namespace*)
-    -   'entity': string, an entity-type supported by the [CiviCRM
+
+    -   string `entity` - an entity-type supported by the [CiviCRM
         API](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference) (*Note: this
         currently must be an entity which supports the 'is_active'
         property*)
-    -   'params': array, the entity data as supported by the [CiviCRM
+
+    -   array `params` - the entity data as supported by the [CiviCRM
         API](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference)
-    -   'update' (**v4.5+**): string, a policy which describes when to
+
+    -   string `update` - a policy which describes when to
         update records
-        -   'always' (**default**): always update the managed-entity
-            record; changes in $entities will override any local
+
+        -   `always` (**default**): always update the managed-entity
+            record; changes in `$entities` will override any local
             changes (eg by the site-admin)
-        -   'never': never update the managed-entity record; changes
+        -   `never`: never update the managed-entity record; changes
             made locally (eg by the site-admin) will override changes in
-            $entities
-    -   'cleanup' (**v4.5+**): string, a policy which describes whether
-        to cleanup the record when it becomes orphaned (ie when
-        $entities no longer references the record)\
-        -   'always' (**default**): always delete orphaned records
-        -   'never': never delete orphaned records
-        -   'unused': only delete orphaned records if there are no other
+            `$entities`
+
+    -   string `cleanup` - a policy which describes whether
+        to cleanup the record when it becomes orphaned (i.e. when
+        $entities no longer references the record)
+
+        -   `always` (**default**): always delete orphaned records
+        -   `never`: never delete orphaned records
+        -   `unused`: only delete orphaned records if there are no other
             references to it in the DB. (This is determined by calling
-            the API's "getrefcount" action.)
+            the API's `getrefcount` action.)
 
 ## Returns
 
@@ -54,21 +64,23 @@ Installation](http://civicrm.org/blogs/totten/api-and-art-installation).
 
 ## Example
 
-    /**
-     * Declare a report-template which should be activated whenever this module is enabled
-     */
-    function modulename_civicrm_managed(&$entities) {
-      $entities[] = array(
-        'module' => 'com.example.modulename',
-        'name' => 'myreport',
-        'entity' => 'ReportTemplate',
-        'params' => array(
-          'version' => 3,
-          'label' => 'Example Report',
-          'description' => 'Longish description of the example report',
-          'class_name' => 'CRM_Modulename_Report_Form_Sybunt',
-          'report_url' => 'mymodule/mysbunt',
-          'component' => 'CiviContribute',
-        ),
-      );
-    }
+```php
+/**
+ * Declare a report-template which should be activated whenever this module is enabled
+ */
+function modulename_civicrm_managed(&$entities) {
+  $entities[] = array(
+    'module' => 'com.example.modulename',
+    'name' => 'myreport',
+    'entity' => 'ReportTemplate',
+    'params' => array(
+      'version' => 3,
+      'label' => 'Example Report',
+      'description' => 'Longish description of the example report',
+      'class_name' => 'CRM_Modulename_Report_Form_Sybunt',
+      'report_url' => 'mymodule/mysbunt',
+      'component' => 'CiviContribute',
+    ),
+  );
+}
+```
