@@ -7,25 +7,31 @@ other groups as needed.
 
 ## Definition
 
-    hook_civicrm_mailingGroups( &$form, &$groups, &$mailings )
+```php
+hook_civicrm_mailingGroups(&$form, &$groups, &$mailings)
+```
 
 ## Parameters
 
--   $form - the form object for which groups / mailings being displayed
--   $groups - the list of groups being included / excluded
--   $mailings - the list of mailings being included / excluded
+-   object `$form` - the form object for which groups / mailings being displayed
+
+-   array `$groups` - the list of groups being included / excluded
+
+-   array `$mailings` - the list of mailings being included / excluded
 
 ## Returns
 
--   null - the return value is ignored
+-   `NULL` - the return value is ignored
 
 ## Example
 
-    function civitest_civicrm_mailingGroups( &$form, &$groups, &$mailings ) {
+```php
+function civitest_civicrm_mailingGroups( &$form, &$groups, &$mailings ) {
 
-        // unset group id 4
-        unset( $groups[4] );
+  // unset group id 4
+  unset( $groups[4] );
 
-        // add a fictitious mailing
-        $mailings[1] = 'This mailing does not exist';
-    }
+  // add a fictitious mailing
+  $mailings[1] = 'This mailing does not exist';
+}
+```
