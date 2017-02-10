@@ -33,14 +33,6 @@ pages:
   # Submitting a Patch: /core/patches.md        # page-tree = NEED_NEW_PAGE
   # Review Process: /core/review.md             # page-tree = NEED_NEW_PAGE  # summary: Detailed guidance on how to review PRs
   # Verifying a Bug Fix: /core/verifying.md     # page-tree = NEED_NEW_PAGE
-- API:
-  - API Intro: api/general.md                   # page-tree = DONE
-  - API Usage: api/usage.md                     # page-tree = DONE
-  - API Actions: api/actions.md                 # page-tree = DONE
-  - API Parameters: api/params.md               # page-tree = DONE
-  # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
-  - API Chaining: api/chaining.md
-  # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
 - Extensions Development:
   - Basics: extensions/basics.md                   # page-tree = DONE
   - civix: extensions/civix.md                     # page-tree = DONE
@@ -74,6 +66,14 @@ pages:
   # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
   # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
   # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
+- API:
+  - API Intro: api/general.md                   # page-tree = DONE
+  - API Usage: api/usage.md                     # page-tree = DONE
+  - API Actions: api/actions.md                 # page-tree = DONE
+  - API Parameters: api/params.md               # page-tree = DONE
+  # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
+  - API Chaining: api/chaining.md
+  # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
   - Batch hooks:
