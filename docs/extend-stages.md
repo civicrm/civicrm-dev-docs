@@ -18,7 +18,7 @@ have a split roles. For example:
     extensions, pick the ones which look best, and install them. They
     expect the extensions to just work &mdash; both now and going forward (with
     future upgrades).
--   **developers** enjoy building great functionality, and
+-   **Developers** enjoy building great functionality, and
     want to invite people to use their products, but need to juggle the
     publishing tasks (like testing and maintenance releases) with the goals
     and resources provided by their bosses and clients.
