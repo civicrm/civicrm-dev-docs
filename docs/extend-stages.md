@@ -3,7 +3,7 @@
 This document describes the process of publishing extensions within the CiviCRM
 ecosystem.
 
-## Consumer vs. developer roles
+## Background
 
 The CiviCRM ecosystem is built on the belief that non-profit
 organizations can serve themselves best by collaborating in development of their
