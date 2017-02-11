@@ -71,8 +71,10 @@ The generated DAO object has:
 * A property for each field using the actual field name, not the unique name
 * A `links()` method which retrieves the links to other tables (off the foreign keys)
 * An `import()` method and an `export()` method for ?
-* A `fields()` method which returns an array of fields for that object keyed by the field's unique name. Looking at the field 'pledge.amount' we see
+* A `fields()` method which returns an array of fields for that object keyed by the field's unique name. 
 * A couple of functions to define the labels for enumerated fields
+
+Looking at the field 'pledge.amount' we see
 
 ```php
   'pledge_amount' => array(
@@ -101,7 +103,7 @@ Fields whose option values can be calculated will also have a `pseudoconstant` s
 BAO stands for business access object
 ([example](https://github.com/civicrm/civicrm-core/blob/master/CRM/Event/BAO/Event.php)).
 BAOs map to DAOs and extend them with
-the business logic of CiviCRM.  A lot of the meat of CiviCRM is found in the
+the business logic of CiviCRM.  The core logic of CiviCRM belongs in the
 BAOs, for example they have the code that creates follow up activities when an
 activity is created, or create activities and populating custom fields when a
 pledge is created.
@@ -119,6 +121,10 @@ the form (`buildForm`), validate the form (`formRule`) and carry out tasks once 
 form is submitted (`postProcess`).  Forms can diplay information from the BAO
 to users and then call the BAO on submission. Generaly each form has an
 associated template (see below) which defines the form's html.
+
+!!! Note
+    Logic in forms should support friendly user-interfaces but core application logic belongs in the BAO layer. 
+    Moving logic to BAO layer facilitates unit testing and developing modernised front-end applications in the future.
 
 !!! tip
     Perhaps the best way to get to grips with the Forms is by experience and
