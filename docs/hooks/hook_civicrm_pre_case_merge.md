@@ -28,8 +28,8 @@ Added in CIviCRM 4.5
 ## Example
 
 See for an example the documentation of the
-[hook_civicrm_post_case_merge](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_post_case_merge)
+[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge)
 
 ## See also
 
-[hook_civicrm_post_case_merge](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_post_case_merge)
+[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge)

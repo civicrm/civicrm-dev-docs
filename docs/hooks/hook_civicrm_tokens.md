@@ -4,7 +4,7 @@
 
 This hook is called to allow custom tokens to be defined. Their values
 will need to be supplied by
-[hook_civicrm_tokenValues](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_tokenValues).\
+[hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues).\
   See [this
 article](http://civicrm.org/blogs/colemanw/create-your-own-tokens-fun-and-profit)
 for usage examples.

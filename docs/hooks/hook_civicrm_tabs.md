@@ -5,7 +5,7 @@
 !!! warning "Deprecation Notice"
     This hook has been deprecated in 4.7.
 
-    For a substitute, see [hook_civicrm_tabset](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_tabset)
+    For a substitute, see [hook_civicrm_tabset](/hooks/hook_civicrm_tabset)
 
 
 This hook is called when composing the tabs to display when viewing a

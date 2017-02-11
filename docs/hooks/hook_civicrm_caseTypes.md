@@ -5,7 +5,7 @@
 This hook defines available CiviCRM case types.
 
 Note that this hook is actually an adapter
-for [hook_civicrm_managed](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed)
+for [hook_civicrm_managed](/hooks/hook_civicrm_managed)
 , so any case Type defined inside this hook will be automatically
 inserted, updated, deactivated, and deleted in tandem with enabling,
 disabling, and uninstalling the module. For more background, see [API
