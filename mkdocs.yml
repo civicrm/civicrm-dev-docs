@@ -27,8 +27,8 @@ pages:
   # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE  # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
   - Debugging: dev-tools/debugging.md           # page-tree = NEED_PAGE_MOVE to /setup/debugging.md
 - Core Development:
-  - When to edit core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
-  # How to Contribute: /core/contributing.md    # page-tree = NEED_NEW_PAGE # summary: General summary of process (git+issues+PRs+Mattermost)
+  - When to Edit Core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
+  - How to Contribute: /core/contributing.md    # page-tree = DONE
   - Codebase & Architecture: core/architecture.md # page-tree = DONE
   # Reporting Bugs & Issues: /core/reporting.md # page-tree = NEED_NEW_PAGE
   # Submitting a Patch: /core/patches.md        # page-tree = NEED_NEW_PAGE
