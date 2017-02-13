@@ -14,7 +14,7 @@ This page describes the documentation systems within CiviCRM and how to contribu
 
 ## Guide books in MkDocs
 
-We are using [MkDocs](http://www.mkdocs.org) to produce guides, and have the following:
+We are using [MkDocs](http://www.mkdocs.org) to produce books, and have the following:
 
 | Book | English | French
 | ---- | ------- | ------ |
@@ -36,7 +36,7 @@ We are using [MkDocs](http://www.mkdocs.org) to produce guides, and have the fol
 [u-r-fr]: https://github.com/civicrm-french/civicrm-user-guide
 [d-r]: https://github.com/civicrm/civicrm-dev-docs
 
-The content for each of these guides is written in [markdown](/markdownrules.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to **docs.civicrm.org** using our custom [documentation infrastructure](https://github.com/civicrm/civicrm-docs).
+The content for each of these books is written in [markdown](/markdownrules.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to **docs.civicrm.org** using our custom [documentation infrastructure](https://github.com/civicrm/civicrm-docs).
 
 ### Languages
 
@@ -62,7 +62,7 @@ We welcome contributions, small and large, to documentation!
 Before diving into editing, you may find helpful information within the following resources:
 
 - [Markdown syntax](/markdownrules.md) - necessary (but simple) syntax to format content
-- Markdown coding standards - *[coming soon](https://github.com/civicrm/civicrm-dev-docs/issues/43)*
+- [Markdown code standards](/markdownrules.md#standards) - recommendations for markdown syntax to use
 - [Style guide](/best-practices/documentation-style-guide.md) - to maintain consistent language and formatting
 - [Documentation chat room](https://chat.civicrm.org/civicrm/channels/documentation) - live discussion, fast (most of the time) answers to your questions
 - [Documentation mailing list](https://lists.civicrm.org/lists/info/civicrm-docs) - low traffic, mostly used for informational updates regarding documentation projects
@@ -70,37 +70,43 @@ Before diving into editing, you may find helpful information within the followin
 
 ### Submitting issues
 
-The simplest way to help out is to *describe* a change that you think *should* be made by writing a new issue in the issue queue for the guide book you are reading. Then someone will see your issue and act on it, hopefully fast. Each guide book has its own issue queue. First find the GitHub repository for the book (listed in the above table), then when viewing on GitHub, click on "Issues". You will need an account on GitHub to submit a new issue, but creating one is quick and free.
+The simplest way to help out is to *describe* a change that you think *should* be made by writing a new issue in the issue queue for the book you are reading. Then someone will see your issue and act on it, hopefully fast. Each book has its own issue queue. First find the GitHub repository for the book (listed in the above table), then when viewing on GitHub, click on "Issues". You will need an account on GitHub to submit a new issue, but creating one is quick and free.
 
 ### Editing through GitHub
 
-A slightly more helpful way to plug in is to suggest specific changes by making the changes within the text editor on GitHub. To do this, you would go to the repository, find the markdown file for the page you'd like to change (look at the page's URL in your browser to help figure out where the file is within the repository), then click on the pencil icon at the top right of the page on GitHub. When you make a change, you are essentially forking (i.e. copying) the entire guide into your personal account on GitHub, changing that fork and then requesting to merge your fork into the main guide.
+A slightly more helpful way to contribute is to suggest specific changes by making the changes within the text editor on GitHub. To do this, you would go to the repository, find the markdown file for the page you'd like to change (look at the page's URL in your browser to help figure out where the file is within the repository), then click on the pencil icon at the top right of the page on GitHub. When you make a change, you are essentially forking (i.e. copying) the entire book into your personal account on GitHub, changing that fork and then requesting to merge your fork into the main book.
 
 ### Editing locally with MkDocs
 
-The most advanced way to work on a guide book is to use git to download all the markdown files to your computer, edit them locally, preview the changes with [MkDocs](http://mkdocs.org/), then use git to push those changes to your personal fork, and finally make a "pull request" on the main repository. This approach makes editing very fast and easy, but does require a bit of setup, and some knowledge of how git works.
+The most advanced way to work on a book is to use git to download all the markdown files to your computer, edit them locally, preview the changes with [MkDocs](http://mkdocs.org/), then use git to push those changes to your personal fork, and finally make a "pull request" on the main repository. This approach makes editing very fast and easy, but does require a bit of setup, and some knowledge of how git works.
 
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
     - OS X: `brew install python`
     - Debian/Ubuntu: `sudo apt-get install python-pip python-wheel`
 
-1.  Install MkDocs.
+1.  Install MkDocs, plus the [Material theme](http://squidfunk.github.io/mkdocs-material/) and the [Pygments syntax highlighter](http://pygments.org/).
 
-        sudo pip install mkdocs
+    ```bash
+    sudo pip install mkdocs mkdocs-material pygments
+    ```
 
-1.  Obtain the source files for the guide you want to edit
+1.  Obtain the source files for the book you want to edit
     1.  Find the repository on GitHub *(see "repository" links above, or the "GitHub" link on the bottom left of screen of the documentation you are reading)*
     1.  Fork the repository on GitHub.
     1.  Clone *your fork* of the repository to your computer
+				
+        ```bash
+        git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
+        cd civicrm-dev-docs
+        ```
 
-            git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
-            cd civicrm-dev-docs
-
-1. Launch a local copy of the guide
+1. Launch a local copy of the book
     1. Run:
 
-            mkdocs serve
+        ```bash
+        mkdocs serve
+        ```
 
         -   If you get `[Errno 98] Address already in use` then try using a
             different port with `mkdocs serve -a localhost:8001`
