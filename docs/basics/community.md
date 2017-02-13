@@ -14,7 +14,7 @@ collaborate:
     -   [Developer Guide](https://docs.civicrm.org/dev/en/master/)
         *(that you're reading now!)*
 -   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall.
--   [StackExchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
+-   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [Jira](https://issues.civicrm.org/jira) - Issue tracking
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
 -   [Discussion Mailing Lists](https://lists.civicrm.org/lists/)
@@ -33,4 +33,3 @@ collaborate:
 The developer community is full of friendly people, eager to welcome newcomers.
 Mattermost and in-person events are great starting points if you're looking to
 get involved!
-
