@@ -1,6 +1,6 @@
 # How to contribute
 
-This chapter assumes that you have identified a bug or improvement for CiviCRM where the best resolution is to [write and contribute code to core](/docs/core/hacking.md).
+This chapter assumes that you have identified a bug or improvement for CiviCRM where the best resolution is to [write and contribute code to core](/core/hacking.md).
 
 !!! note
 

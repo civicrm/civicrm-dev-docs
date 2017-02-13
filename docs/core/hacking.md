@@ -10,7 +10,7 @@
 
 To help you decide, here are a couple of principles:
 
-- Bug fixes should always be applied to core.  See [Contributing to Core](/docs/core/contributing.md) for details.
+- Bug fixes should always be applied to core.  See [Contributing to Core](/core/contributing.md) for details.
 - Some (but not all) enhancements to existing features may be best applied to
   core, especially if they would be useful to others.
 - New features should generally be packed as Extensions.
