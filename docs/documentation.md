@@ -74,7 +74,15 @@ The simplest way to help out is to *describe* a change that you think *should* b
 
 ### Editing through GitHub
 
-A slightly more helpful way to contribute is to suggest specific changes by making the changes within the text editor on GitHub. To do this, you would go to the repository, find the markdown file for the page you'd like to change (look at the page's URL in your browser to help figure out where the file is within the repository), then click on the pencil icon at the top right of the page on GitHub. When you make a change, you are essentially forking (i.e. copying) the entire book into your personal account on GitHub, changing that fork and then requesting to merge your fork into the main book.
+Suggest specific changes by making the changes within the text editor on GitHub. (You will first need an account on GitHub.)
+
+1. Find the page in the book you wish to edit.
+1. Click on the pencil icon at the top right.
+1. Make changes within the editor on GitHub.
+1. Click "Propose file change" at the bottom.
+1. **Important**: Click "Create pull request" and confirm. (You're not done until you create a pull request.)
+
+After you follow the steps above, someone else will review your changes and hopefully accept them, at which point you'll be notified via email.
 
 ### Editing locally with MkDocs
 
