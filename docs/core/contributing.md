@@ -6,17 +6,6 @@ This chapter assumes that you have identified a bug or improvement for CiviCRM w
 
     This chapter will refer to a number of resources that are explained in greater depth in the [Developer Community](/basics/community.md) chapter.
 
--   Check the latest version
--   Talk over the issue
--   Research existing issues
--   Describe the issue
--   Document the feature
--   Write tests
--   Make changes
--   Open a pull request
--   Maintain your local changes
--   Review some other code
-
 ## Check the latest version
 
 There's no sense in planning any changes to CiviCRM's core code without looking at the most recent release.  Any changes you make will be based upon it, and it may include a fix or attempted resolution that may change your thinking about the issue.
