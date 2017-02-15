@@ -1,4 +1,4 @@
-# Prerequisite skills
+# Useful skills
 
 ## Learn how to *use* CiviCRM
 
