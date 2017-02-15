@@ -28,6 +28,12 @@ and above.
 
 -   null
 
+## Limitations
+
+-   This hook is implemented for forms (eg Add, Edit) but not yet for
+    reports and viewing of objects like Activities on the Contact
+    Summary page as of 4.7.17
+
 ## Examples
 
 The following is an excerpt from [the CiviCRM Multisite
