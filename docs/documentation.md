@@ -25,7 +25,7 @@ We are using [MkDocs](http://www.mkdocs.org) to produce books, and have the foll
 
 
 [u-en-s]: https://docs.civicrm.org/user/en/stable/
-[u-en-l]: https://docs.civicrm.org/dev/en/latest/
+[u-en-l]: https://docs.civicrm.org/user/en/latest/
 [u-en-47]: https://docs.civicrm.org/user/en/4.7/
 [u-en-46]: https://docs.civicrm.org/user/en/4.6/
 [u-fr-l]: https://docs.civicrm.org/user/fr/latest/
