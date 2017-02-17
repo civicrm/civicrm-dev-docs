@@ -150,19 +150,100 @@ Based on these rules, we can fill out a full table of the workflow:
 | Deprecated	| Official	| Informal Discussion	| The author announces intent to deprecate in a high-visibility medium. If discussion is persuasive and no alternative maintainer comes forward, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 
 
-## Formal Review
+## Formal Review Process {:#formal-review}
 
-To designate an extension as *Stable*, someone must conduct a *Formal Review*
-and assess several criteria. As a rule of thumb, *Contributed* extensions are
-subject to a gentler review (fewer criteria), and *Official* extensions are
-subject to more stringent review (more criteria).
+Extensions must pass a *Formal Review* to become designated as *Stable* and made available for automated distribution through CiviCRM's in-app Extension management screen.
+
+The review process assess several criteria, and as a rule of thumb, *Contributed* extensions are subject to a gentler review (fewer criteria), and *Official* extensions are subject to more stringent review (more criteria).
 
 ### Who can review?
 
 * Contributed extensions must be reviewed by at least one peer/contributor.
 * Official extensions must be reviewed by at least one senior member of core team
 
-### Criteria for passing a review
+### Becoming an extensions reviewer
+
+To become an extensions reviewer, please take the following steps:
+
+1. Set up accounts on these sites *(if you need help, reach out through the [community resources](/basics/community))*
+    1.  [civicrm.org](https://civicrm.org/user/)
+    1.  [issues.civicrm.org](https://issues.civicrm.org/jira/login.jsp) - log in using your civicrm.org account
+1.  Contact the [CiviCRM Extension Ecosystem Working
+    Group](https://civicrm.org/working-groups/extension-ecosystem) and
+    ask to become an extension reviewer.  You'll be notified when the
+    necessary administrative steps have been completed.
+
+### Selecting an Extension for Review
+
+1. Choose one of these [unassigned extension review requests](https://issues.civicrm.org/jira/issues/?filter=28711).
+
+    Consider the following criteria while choosing:
+
+    -   Readiness: The issue should contain a link to an extension node on
+        civicrm.org. If no such link is provided, please request one in a
+        comment on the issue, and move on to another issue.
+    -   Age of request: All else being equal, older review requests should
+        be reviewed first.
+    -   Affinity/interest: Reviewers may wish to select an extension which
+        relates to functionality in which they have an interest or with
+        which they're especially familiar. On the other hand, there's no
+        requirement to have any special knowledge of the extension's
+        functionality if one is prepared to invest a little extra effort in
+        the review.
+    -   Neutrality: Reviewers should not have been involved in the
+        development of the extension. Employment or contracting
+        relationships can introduce conflicts of interest. Reviews should be
+        conducted by a neutral third party.
+
+1.  To claim a review, assign the relevant "Extension Review Request"
+    issue to yourself so that others know you're beginning the review.
+    When you are ready to begin the review, update the issue status to
+    "In Progress."
+
+!!! tip
+    You can also browse [*all* extension  review requests](https://issues.civicrm.org/jira/issues/?filter=28710), including assigned ones.
+
+### Conducting a Review
+
+Reviewers should follow these steps to conduct an extension review for
+automated distribution:
+
+1. Review the extension on at least one [supported CMS](https://docs.civicrm.org/user/en/latest/website-integration/choosing-your-cms/). (You don't need to test that it works on every CMS.)
+
+    !!! tip
+        Use [Buildkit](https://github.com/civicrm/civicrm-buildkit) to create the CMS environment on-demand.
+
+
+1. Download and install the most recent release of the extension.
+
+    !!! attention "Important"
+        If you clone the git repository of the extension, be sure to check out the *tag* for the most recent release. (Don't assume that the master branch is ready for review.)
+
+1.  Observe that the extensions meets relevant [criteria](#review-criteria) listed below.
+
+    1.  All criteria marked as "Required" must be met.
+    1.  At least some of the criteria marked as "Suggested" must be met.
+
+1.  Try to make the extension misbehave in any potential edge cases that occur to you. Note any significant failures.
+
+1.  Create a document to show the details of your review. It can be a google doc or `.odt` file or something similar.
+
+    * Copy/paste the [criteria](#review-criteria) table into your review document.
+
+    * Add an additional column to the table for your comments.
+
+    * Summarize all your tests and findings, positive or negative.
+
+    * Attach or link to your review document in the "Extension Review Request" issue that you assigned to yourself.
+
+    * Here is an [example review document](https://issues.civicrm.org/jira/secure/attachment/57472/ExtensionreviewUnsubscribeEmailDataEntryScreenEXT-27.odt) &mdash; *but don't copy-paste from this example document (use the criteria table below for the most up-to-date criteria).*
+
+
+1. Use all of the information gained in the review to decide whether to approve the extension.
+
+
+
+### Criteria for passing a review {:#review-criteria}
 
 | Category	| Criterion | Required for<br>*contributed*<br>extensions? | Required for<br>*official*<br>extensions? |
 |------ | ----- | :-----------------------------: | :---------------------: |
@@ -188,6 +269,43 @@ subject to more stringent review (more criteria).
 | QA	| All patches are subjected automated tests	| No	| **Required**
 | Support	| Documentation is published	| *Suggested*	| **Required**
 | Support	| Issues are tracked in an open, public issue management system	| *Suggested*	| **Required**
+
+### Acting on review results
+
+#### If the extension needs work
+
+If a review indicates that the extension needs further improvement
+before it can be approved, the reviewer should take these steps:
+
+1.  Edit the extension's node on civicrm.org to set the field "Reviewed
+    and ready for automated distribution?" to "Needs work: This
+    Extension Release has been reviewed and needs work from the
+    developer before the review can continue"
+1.  Add a comment to the issue to notify the issue reporter that the
+    extension needs work; specifically mention the issues that prevent
+    approval as well as other items which the developer may want to
+    improve at their discretion.
+
+Continue monitoring the issue for updates from the developer, and respond in a timely way to answer questions or to conduct a follow-up review after changes have been made.
+
+#### If the extension is approved
+
+If a review indicates that the extension should be approved, the
+reviewer should take these steps:
+
+1.  Edit the extension's node on civicrm.org to set the field "Reviewed
+    and ready for automated distribution?" to "Yes: This Extension
+    Release has been reviewed and is ready for automated distribution."
+1.  Add a comment to the issue to notify the issue reporter that the
+    extension has been approved for automated distribution.  Also
+    mention any items which the developer may want to improve, even
+    though they did not prevent the extension from being approved.
+1.  Close the issue.
+1.  Optionally: Mention the extension approval on Twitter or in the
+    extensions channel at chat.civicrm.org.
+1.  Congratulate yourself on your contribution to CiviCRM. Thank you!
+
+
 
 ## Benefits
 
