@@ -200,6 +200,13 @@ awkward when sentences include multiple pronouns, (b) do not intuitively offer
 a consistent choice among them, and (c) fail to acknowledge that some people
 identify with genders outside of a binary framework.
 
+!!! tip
+    Find gendered language in a book with the following command:
+
+    ```
+    grep -E -r --include='*.md' '\b((he)|(him)|(his)|(himself)|(she)|(her)|(hers)|(herself))\b' .
+    ```
+
 [singular they]: https://en.wikipedia.org/wiki/Singular_they
 
 ### Tone and vocabulary
