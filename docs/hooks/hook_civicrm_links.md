@@ -79,6 +79,7 @@ function MODULENAME_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
             'name' => ts('My Module Actions'),
             'url' => 'mymodule/civicrm/actions/%%myObjId%%',
             'title' => 'New Thing',
+            'class' => 'no-popup',
           );
           $values['myObjId'] = $objectId;
           break;
@@ -90,6 +91,7 @@ function MODULENAME_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
             'url' => 'mymodule/civicrm/actions/%%myObjId%%',
             'title' => 'New Thing',
             'qs' => 'reset=1&tid=%%thingId%%',
+            'class' => 'no-popup',
           );
           $values['myObjId'] = $objectId;
           $values['thingId'] = 'mything';
