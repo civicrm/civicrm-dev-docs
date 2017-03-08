@@ -28,7 +28,7 @@ Introduced in CiviCRM 4.4.0.
 ## Wrapper class
 
 The wrapper is an object that contains two methods fromApiInput and
-toApiInput, that allows to modify the params before doing the api call
+toApiOutput, that allows to modify the params before doing the api call
 and the result after. \
  It's quite similar to the pre/post hooks in principle.
 
