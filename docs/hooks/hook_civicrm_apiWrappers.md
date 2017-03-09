@@ -4,12 +4,13 @@
 
 This hook allows you to add (or override/remove: use caution!) methods to be called before and after api calls to modify either the parameters or the result of the call.
 
-The methods must be implemented on an API_Wrapper object which is added to the array passed by-reference. See below for more information on the API_Wrapper class.
+The methods must be implemented on an `API_Wrapper` object which is added to the array passed by-reference. See below for more information on the `API_Wrapper` class.
 
 Introduced in CiviCRM 4.4.0.
 
 ## Definition
 
+```php
     /**
      * Implements hook_civicrm_apiWrappers
      */
@@ -20,22 +21,22 @@ Introduced in CiviCRM 4.4.0.
         $wrappers[] = new CRM_Myextension_APIWrapper();
       }
     }
-
-
+```
 
 ## Wrapper class
 
-The wrapper is an object that contains two methods which are similar to pre and post hooks in principle.
+The wrapper is an object that contains two methods:
 
-fromApiInput() allows for modification of the params before doing the api call.
+ * `fromApiInput()` allows for modification of the params before doing the api call.
 
-toApiInput() allows for modification of the result of the call
+ * `toApiInput()` allows for modification of the result of the call
 
-These methods will be called for every API call unless the hook_civicrm_apiWrappers() implementation conditionally registeres the object. One way to optimize this is to check for the API Entity in hook_civicrm_apiWrappers() and to check for the API action in the wrapper methods.
+These methods will be called for every API call unless the `hook_civicrm_apiWrappers()` implementation conditionally registers the object. One way to optimize this is to check for the API Entity in `hook_civicrm_apiWrappers()` and to check for the API action in the wrapper methods.
 
 To take advantage of CiviCRM's php autoloader, this file should be named
-path/to/myextension/CRM/Myextension/APIWrapper.php
+`path/to/myextension/CRM/Myextension/APIWrapper.php`
 
+```php
     class CRM_Myextension_APIWrapper implements API_Wrapper {
       /**
        * the wrapper contains a method that allows you to alter the parameters of the api request (including the action and the entity)
@@ -58,3 +59,4 @@ path/to/myextension/CRM/Myextension/APIWrapper.php
         return $result;
       }
     }
+```
