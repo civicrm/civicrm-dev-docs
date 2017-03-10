@@ -153,6 +153,8 @@ pages:
     - hook_civicrm_viewProfile: hooks/hook_civicrm_viewProfile.md
   - Report hooks:
     - hook_civicrm_alterReportVar: hooks/hook_civicrm_alterReportVar.md
+  - SMS hooks:
+    - hook_civicrm_inboundSMS: hooks/hook_civicrm_inboundSMS.md
   - Uncategorized hooks:
     - hook_civicrm_alterBadge: hooks/hook_civicrm_alterBadge.md
     - hook_civicrm_alterBarcode: hooks/hook_civicrm_alterBarcode.md
