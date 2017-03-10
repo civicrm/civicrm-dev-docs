@@ -1,4 +1,4 @@
-# How to use hooks
+## Overview
 
 Hooks are a common way to extend systems. Let's say you want to send a 
 message to someone in your organization every time a contact is created. An 
