@@ -96,7 +96,7 @@ The most advanced way to work on a book is to use git to download all the markdo
 1.  Install MkDocs, plus the [Material theme](http://squidfunk.github.io/mkdocs-material/) and the [Pygments syntax highlighter](http://pygments.org/).
 
     ```bash
-    sudo pip install mkdocs mkdocs-material pygments
+    sudo pip install mkdocs mkdocs-material pygments pymdown-extensions
     ```
 
 1.  Obtain the source files for the book you want to edit
