@@ -1,7 +1,8 @@
 ## Using hooks with Drupal
 
-https://www.drupal.org/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules
-https://www.drupal.org/docs/7/creating-custom-modules/telling-drupal-about-your-module
+The Drupal documentation has good information about 
+[hooks in general](https://www.drupal.org/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules)
+and [configuration to enable hooks for your module](https://www.drupal.org/docs/7/creating-custom-modules/telling-drupal-about-your-module)
 
 In order to start using hooks with a Drupal-based CiviCRM installation, you or
 your administrator needs to do the following:

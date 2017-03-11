@@ -71,11 +71,11 @@ pages:
   # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
   - API Chaining: api/chaining.md
   # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
+- Setup:
+  - Hooks with Joomla: hooks/enabling-hooks/joomla.md
+  - Hooks with Drupal: hooks/enabling-hooks/drupal.md
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
-  - Enabling Hooks:
-    - CiviCRM with Drupal: hooks/enabling-hooks/drupal.md
-    - CiviCRM with Joomla: hooks/enabling-hooks/joomla.md
   - Batch hooks:
     - hook_civicrm_batchItems: hooks/hook_civicrm_batchItems.md
     - hook_civicrm_batchQuery: hooks/hook_civicrm_batchQuery.md
