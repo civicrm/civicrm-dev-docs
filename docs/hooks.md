@@ -37,7 +37,7 @@ The two parts that you'll be changing are:
 
 1. ==EXTENSION-NAME==: Depending on your installation this can change. In 
 [Drupal][drupal] it will be the name of your extension. In 
-[Joomla](hooks/enabling-hooks/joomla) it will be "joomla".
+[Joomla][joomla] it will be "joomla".
 2. ==HOOK-NAME==: This is the name of the event you want to hook into, for 
 example `validateForm`. You'll need to check the reference for a full list of 
 hooks that are available.
@@ -219,5 +219,5 @@ function myextension_civicrm_tokenValues(&$details, $contactIDs, $jobID, $tokens
 }
 ```
 
-[drupal]: hooks/enabling-hooks/drupal
-[joomla]: hooks/enabling-hooks/joomla
+[drupal]: hooks/setup/drupal
+[joomla]: hooks/setup/joomla
