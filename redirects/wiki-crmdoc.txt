@@ -110,4 +110,5 @@ hook_civicrm_searchProfile hooks/hook_civicrm_searchProfile
 hook_civicrm_validateProfile hooks/hook_civicrm_validateProfile
 hook_civicrm_viewProfile hooks/hook_civicrm_viewProfile
 hook_civicrm_alterReportVar hooks/hook_civicrm_alterReportVar
-
+Hook+Reference hooks
+Hooks hooks

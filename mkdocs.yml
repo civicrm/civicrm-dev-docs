@@ -73,6 +73,9 @@ pages:
   # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
+  - Setup:
+    - Hooks with Joomla: hooks/setup/joomla.md
+    - Hooks with Drupal: hooks/setup/drupal.md
   - Batch hooks:
     - hook_civicrm_batchItems: hooks/hook_civicrm_batchItems.md
     - hook_civicrm_batchQuery: hooks/hook_civicrm_batchQuery.md
