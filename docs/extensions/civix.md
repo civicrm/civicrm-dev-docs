@@ -8,7 +8,7 @@ community-endorsed method for building your CiviCRM extensions.
 Follow the installation instructions in the
 [GitHub repository](https://github.com/totten/civix/).
 
-After fulfilling the [Pre-Requisites](/extensions/basics/#pre-requisites), you can verify that all your configuration is correct using ping CiviCRM from
+After fulfilling the [Pre-Requisites](/extensions/basics/#pre-requisites), you can verify that all your configuration is correct by running the following command from
 within your extensions directory with:
 
 ```bash
