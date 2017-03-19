@@ -90,6 +90,22 @@ A good debugger is indispensable here. See the
     certain hooks. Keep this in mind when upgrading, and make sure you
     check the release notes before upgrading. 
 
+## Organizing Your Hooks
+
+You may find that some of your hooks target a lot of different cases. Such 
+hooks can quickly get out of control, and maintaining them can be a nightmare.
+
+You might find it helpful when implementing a hook to delegate certain 
+operations to different functions instead of lumping it all in together in 
+the main hook.
+
+If you're using [Civix](/extensions/civix/) to create your extension it will 
+automatically generate wrapper code for your hook. 
+
+For more information you can checkout the README in this 
+[zip file][wrapper-zip] for setting up an example Drupal module that 
+illustrates this technique.
+
 ## Examples of using hooks
 
 In all of these examples, you'll put the code we provide into your
@@ -101,6 +117,24 @@ Because the majority of users currently use CiviCRM with Drupal we'll assume
 you're using Drupal for the rest of the example. But don't worry Joomla! users, 
 the concept is the same and just requires some tweaks to get it working. Have a
 look at the [Joomla help][joomla] for more instructions.
+
+### Setting Text on a Form
+
+To implement `hook_civicrm_buildForm` from within the "myextension" extension 
+you would add the following function to your main .php or .module file (or a 
+file always included by that script):
+                
+```php
+<?php
+
+function myextension_civicrm_buildForm($formName, &$form) {
+  // note that form was passed by reference
+  $form->assign('intro_text', ts('hello world'));
+ }
+```
+
+As long as the extension is enabled, this function will be called every time 
+CiviCRM builds a form.
 
 ### Sending an Email Message When an Individuals Was Edited
 
@@ -221,3 +255,4 @@ function myextension_civicrm_tokenValues(&$details, $contactIDs, $jobID, $tokens
 
 [drupal]: hooks/setup/drupal
 [joomla]: hooks/setup/joomla
+[wrapper-zip]: http://wiki.civicrm.org/confluence/download/attachments/86213379/callhooks.zip?version=1&modificationDate=1372586243000&api=v2

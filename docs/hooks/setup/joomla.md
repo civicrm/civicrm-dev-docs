@@ -1,21 +1,19 @@
-## Using hooks with Joomla!
+If you're starting out with CiviCRM and Joomla! you might want to 
+check the [Joomla guide for creating a plugin](http://docs.joomla.org/Plugin).
 
-Hooks may be implemented in Joomla in two ways, depending on the version of
-CiviCRM and Joomla you are using. For sites running Joomla 1.5 with CiviCRM up
-to and including version 3.4, you implement hooks with a single civicrmHooks.php
-in your php override directory. Sites running Joomla 1.6+ and CiviCRM 4+ may
-implement with either that single hooks file, or by creating a Joomla plugin.
-In general, implementing through a plugin is preferred as you can benefit from
-the native access control within the plugin structure, include code that
-responds to other Joomla events, organize your hook implementations into
-multiple plugins which may be enabled/disabled as desired, and roughly follow
-the event-observer pattern intended by Joomla plugins.
+Once created plugins may be packaged and installed with the Joomla installer
+or the files can be placed in the appropriate folder and installed with the 
+discover method.
 
-As you implement hooks in Joomla, be sure to check the CiviCRM wiki for the
-most up-to-date information:
+You can implement your hooks using a single hooks file, or by creating a Joomla
+plugin. In general, implementing through a plugin is preferred as you can 
+benefit from the native access control within the plugin structure, include 
+code that responds to other Joomla events, organize your hook 
+implementations into multiple plugins which may be enabled/disabled as 
+desired, and roughly follow the event-observer pattern intended by Joomla 
+plugins.
 
--   [http://tiny.booki.cc/?hooks-in-joomla](http://tiny.booki.cc/?hooks-in-joomla)
--   [http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification\#CiviCRMhookspecification-Proceduresforimplementinghooks%28forJoomla%29](http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-Proceduresforimplementinghooks%28forJoomla%29)
+## Single File Implementation
 
 To implement hooks with a single file, you will do the following:
 
@@ -44,6 +42,8 @@ function joomla_civicrm_buildForm( $formName, &$form ) {
     //your custom code
 }
 ```
+
+## Plugin Implementation
 
 If you are implementing hooks with a Joomla plugin, you will create a standard,
 installable plugin package. At a minimum, a plugin extension will consist of an
@@ -77,3 +77,88 @@ article](http://civicrm.org/blogs/mcsmom/hooks-and-joomla)
 
 Note the reference in the comments to a sample plugin which you can download
 and modify.
+
+## Sample Joomla Plugin With Hooks
+
+This is a simple example of a plugin for Joomla that implements CiviCRM 
+hooks. It consists of two file tabs.php and tabs.xml along with the blank 
+index.html file which is considered good Joomla coding practice.
+
+Note: Somewhere around Joomla 2.5.20 the JPlugin class was moved to cms
+.plugin.plugin from joomla.plugin.plugin (see the jimport call in Tab.php 
+below). If you have not remained current with the latest Joomla revision, 
+you may need to reference the correct location. If you find your plugins 
+fail after updating to the latest release, be sure to check and fix that 
+reference (it will often fail silently).
+
+Tabs.php
+```
+<?php
+/**
+ * @version
+ * @package     Civicrm
+ * @subpackage  Joomla Plugin
+ * @copyright   Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+ 
+// No direct access
+defined('_JEXEC') or die;
+ 
+jimport('cms.plugin.plugin');
+class plgCivicrmTabs extends JPlugin
+{
+ 
+/**
+ * Example Civicrm Plugin
+ *
+ * @package     Civicrm
+ * @subpackage  Joomla plugins
+ * @since       1.5
+ */
+    public function civicrm_tabs(&$tabs, $contactID)
+    {
+ 
+    // unset the contribition tab, i.e. remove it from the page
+    unset( $tabs[1] );
+ 
+    // let's add a new "contribution" tab with a different name and put it last
+    // this is just a demo, in the real world, you would create a url which would
+    // return an html snippet etc.
+    $url = CRM_Utils_System::url( 'civicrm/contact/view/contribution',
+                                  "reset=1&snippet=1&force=1&cid=$contactID" );
+    $tabs[] = array( 'id'    => 'mySupercoolTab',
+                     'url'   => $url,
+                     'title' => 'Contribution Tab Renamed',
+                     'weight' => 300 );
+    }
+}
+
+```
+
+Tabs.xml
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="1.6" type="plugin" group="civicrm">
+    <name>plg_civcrm_tabs</name>
+    <author>Joomla! Project</author>
+    <creationDate>November 2005</creationDate>
+    <copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>1.6.0</version>
+    <description>PLG_CIVICRM_TABS_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="tabs">tabs.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <config>
+    </config>
+    </extension>
+
+```
+
+You can make plugins that include multiple hooks or you can make separate 
+plugins. What is appropriate will depend on the application.

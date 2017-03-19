@@ -323,10 +323,53 @@ then:
 3. Added logic in the upgrader to create the relationship type
 4. Added logic in the upgrader to evaluate the Smarty template
 
+#### Accessing Custom Fields
+
+For setting and getting custom field values in hooks, you need to know the field
+ID of the custom field(s) you want to work with. You'll then access these 
+fields as "custom_<ID>". So if you have a field holding a custom value whose 
+ID in the civicrm_custom_field table is 34, you'll use "custom_34" to access it.
+
+To get a custom field ID given the custom field name and custom group name, 
+you can use the following code:
+
+```php
+require_once 'CRM/Core/BAO/CustomField.php';
+$customFieldID = CRM_Core_BAO_CustomField::getCustomFieldID($field, $group);
+```
+
+Once you have the ID(s), you'll want to use the setValues and getValues 
+functions in the CRM/Core/BAO/CustomValueTable.php file. Here are a couple 
+of examples of their use:
+
+Setting values:
+
+```php
+require_once 'CRM/Core/BAO/CustomValueTable.php';
+$params = array('entityID' => $contribution_id, 'custom_34' => 'new val');
+CRM_Core_BAO_CustomValueTable::setValues($params);
+```
+
+Getting values:
+
+```php
+$params = array( 'entityID' => 1327, 'custom_13' => 1, 'custom_43' => 1);
+require_once 'CRM/Core/BAO/CustomValueTable.php';
+$values = CRM_Core_BAO_CustomValueTable::getValues($params);
+```
+
+!!! caution
+    Note that custom field values may not always be available when you 
+    might expect.
+    For instance, you can't retrieve custom field values in the 'create' 
+    operation in the _pre and _post hooks, because the custom field values 
+    haven't been stored yet. However, you can retrieve values in the 'edit' 
+    operation.
+
 ### Add a hook function
 
 CiviCRM
-[hook functions](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
+[hook functions](/hooks/)
 allow extensions to run extra logic as
 part of the normal CiviCRM processing. For example,
 `hook_civicrm_buildForm()` allows a module to run logic whenever a
