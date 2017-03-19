@@ -2,6 +2,7 @@
 
 So you've written an [extension](/extensions/basics). Awesome! Now you want to add some documentation to help people use it. Great! Maybe you even want some docs for other *developers* working on it too. Very good. This page will help you set up your own documentation *book* (just like this Developer Guide) for your extension.
 
+<!-- (commented out until we can get the CiviVolunteer book up)
 !!! summary "Example"
     For a fully-featured working example of extensions documentation, look at CiviVolunteer.
 
@@ -10,7 +11,7 @@ So you've written an [extension](/extensions/basics). Awesome! Now you want to a
         * [`/docs/`](https://github.com/civicrm/org.civicrm.volunteer/tree/master/docs) within the project repo (to store all the content in markdown files)
         * [`/mkdocs.yml`](https://github.com/civicrm/org.civicrm.volunteer/blob/master/mkdocs.yml) within the project repo (to specify book structure)
         * [`/books/volunteer.yml`](https://github.com/civicrm/civicrm-docs/blob/master/books/volunteer.yml) within the `civicrm-docs` repo (to specify how the book is to be published)
-
+-->
 
 ## Overview
 
