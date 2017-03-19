@@ -262,6 +262,7 @@ automated distribution:
 | Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin	| **Required**	| **Required**
 | Distribution	| The project has a stable version (1.0+; not alpha or beta)	| **Required**	| **Required**
 | Distribution	| A demo site is provided	| *Suggested*	| *Suggested*
+| QA	| The project declares, on the in-app extension management screen, the nature of any changes it makes to existing data or functionality.	| **Required**	| **Required**
 | QA	| The project functions in all CMS's (for CiviCRM Extension)	| *Suggested*	| *Suggested*
 | QA	| An automated test suite is included	| *Suggested*	| **Required**
 | QA	| Project is periodically re-validated with newer versions of CiviCRM and compatibility updates are published	| No	| **Required**
