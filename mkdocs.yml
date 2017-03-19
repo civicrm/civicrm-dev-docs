@@ -195,6 +195,7 @@ pages:
     - hook_civirules_logger: hooks/hook_civirules_logger.md
 - Documentation:
   - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
+  - Documenting Extensions: documentation/extensions.md
   - Markdown: markdownrules.md                  # page-tree = NEED_PAGE_MOVE to /documentation/markdown.md
   - Style Guide: best-practices/documentation-style-guide.md  # page-tree = NEED_PAGE_MOVE to /documentation/style-guide.md
 - Content to reorganize:
