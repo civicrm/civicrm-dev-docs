@@ -20,7 +20,7 @@ Basically how this works is:
 1. You use the git repo for your extension to store its documentation.
 * You store the content in [markdown](/markdownrules) files within a `docs` directory in your project.
 * You use git branches just like you normally would, with that `docs` directory sitting there in every branch.
-* You put one file at the root level of your poject, `mkdocs.yml` to configure some of the high-level details of your book.
+* You put one file at the root level of your project, `mkdocs.yml` to configure some of the high-level details of your book.
 * You use MkDocs locally to preview your book.
 * When you're ready, you make a pull request on our [publishing system](https://github.com/civicrm/civicrm-docs) to add the necessary configuration for your book, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
 * You configure GitHub to tell our publishing system when to publish updates to your book.
@@ -55,10 +55,38 @@ markdown_extensions:
 Replace values on the first two lines with your own. Leave everything else as-is (for now).
 
 
-## Add content
+## Decide what to do with your README file {:#readme}
+
+The README file at the root of your repository is great for keeping some simple documentation that people will see when they visit your repo. But non-technical users can become confused when seeking docs landing on GitHub.
+
+When creating a docs book, you have two options for how to deal with your README file:
+
+### Mirror README to a single-page book {#:readme-mirrored}
+
+With this option, you basically keep documentation content in the README file, and create an MkDocs book directly from that file. The content remains on GitHub when people visit your repo, and it also gets published on docs.civicrm.org &mdash; and you only have to edit it in one place. The downside is that you have to fit everything into one page.
+
+1. Make sure you're using [markdown](/markdownrules) formatting within the README file, and make sure the file is named `README.md`.
+1. Create an MkDocs index file which is a symbolic link to your README file:
+
+    ```
+    cd <project-root>
+    mkdir docs
+    cd docs
+    ln -s -T ../README.md index.md
+    ```
+
+### Use a multi-page book and a separate README file {:#readme-separate}
+
+With this option you have a very small README file and a separate MkDocs book which can have multiple pages.
 
 1. Add a `docs` directory at the root of your project.
-2. Within that, add a `index.md` page, and put some [markdown](/markdownrules) content in it.
+1. Within that, add a new file `index.md` to use for your content.
+1. Keep your README file, but don't store documentation in it. Just have it explain the bare bones of your project and *link* to your documentation (once it's published on docs.civicrm.org.)
+
+
+## Add content
+
+Add some [markdown](/markdownrules) content in `docs/index.md`.
 
 Now you should be able to run `mkdocs serve` from within your project directory to start previewing your content. See [instructions here](/documentation/#editing-locally-with-mkdocs) to get MkDocs set up.
 
@@ -79,6 +107,7 @@ Once your book is in good shape it's time to get it up on [docs.civicrm.org](htt
 
     ```
     name: Foo Bar
+	description: Provides a baz for every contact's bat
     languages:
       en:
         repo: 'https://github.com/username/org.civicrm.foobar'
@@ -96,7 +125,7 @@ Once your book is in good shape it's time to get it up on [docs.civicrm.org](htt
 
 At some point (hopefully soon!) someone will merge your PR and get the necessary config for your book up on the server. Then it can be published.
 
-## Manually publishing your book {:#manual-publishing}
+## Manually publish your book {:#manual-publishing}
 
 Once your book's config is up, you can go to the following URL to ask the publishing system to publish (or re-publish) your book:
 
@@ -106,7 +135,7 @@ Once your book's config is up, you can go to the following URL to ask the publis
 
 Publishing your book manually is fine at first, but once you update the book later, you might wish to avoid this extra step. This is why we have automatic publishing...
 
-## Automatic publishing
+## Set up automatic publishing {:#automatic-publishing}
 
 *(Currently only possible if your repo is on GitHub.)*
 
@@ -120,3 +149,18 @@ When you set up automatic publishing, GitHub will tell the publishing system whe
 1. Set **Which events would you like to trigger this webhook?** to 'Let me select individual events' and select 'Pull request' and 'Push' (since these are the only events that should trigger an update)
 
 Now when you make changes to your docs, those changes will be published automatically *and* you'll receive an email notification from the publishing system informing you of the status (including any errors) of the publishing process.
+
+## Make your documentation descoverable {:descoverable}
+
+Hey, you're not done yet! Don't forget to to add links to your new book in all the places where your users might look. This includes this following:
+
+* The listing for your extension in the civicrm.org [extensions directory](https://civicrm.org/extensions)
+* Your README file
+* Your extension's `info.xml` file like this:
+    ```
+    <urls>
+        <url desc="Documentation">http://docs.civicrm.org/foobar/en/latest</url>
+    </urls>
+    ```
+* Other places from within your extension's UI, as necessary
+* Anywhere else that you previously had documentation (e.g. CiviCRM wiki, dedicated site, etc.)
