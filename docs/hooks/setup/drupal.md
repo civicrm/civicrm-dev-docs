@@ -1,8 +1,7 @@
-## Using hooks with Drupal
-
-The Drupal documentation has good information about 
-[hooks in general](https://www.drupal.org/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules)
-and [configuration to enable hooks for your module](https://www.drupal.org/docs/7/creating-custom-modules/telling-drupal-about-your-module)
+The Drupal documentation has great information about 
+[hooks in general][drupal-hooks], 
+[configuration to enable hooks for your module][hooks-config], 
+and [this guide][hooks-intro] on starting out with hooks.
 
 In order to start using hooks with a Drupal-based CiviCRM installation, you or
 your administrator needs to do the following:
@@ -32,23 +31,16 @@ Additionally, if you are using Drupal and add a new hook to an existing module,
 you will need to clear the cache for the hook to start operating. One way of
 doing this is by visiting the page Admin > Build > Modules.
 
-Note that if you use certain Drupal functions from within CiviCRM, you could
-break whatever form you're working with! To prevent very hard-to-troubleshoot
-errors, do the following (at least for `user_save()` with Drupal 6, possibly
-others):
+## Inspecting Hooks
 
-```php
-$config = CRM_Core_Config::singleton();
-```
+The documentation about hooks can be somewhat abstract, and it sometimes
+helps to see interactively how the hooks run.
 
-```php
-$config->inCiviCRM = TRUE;
-```
+-   If you use Drupal, then you can inspect some hooks by installing
+    these two Drupal modules:
+    -   [devel](http://drupal.org/project/devel)
+    -   [civicrm\_developer](https://github.com/eileenmcnaughton/civicrm_developer)
 
-```php
-$user = user_save('',array(..));
-```
-
-```php
-$config->inCiviCRM = FALSE;
-```
+[drupal-hooks]: https://www.drupal.org/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules
+[hooks-config]: https://www.drupal.org/docs/7/creating-custom-modules/telling-drupal-about-your-module
+[hooks-intro]: https://www.drupal.org/docs/7/creating-custom-modules/writing-comments-and-implementing-your-first-hook
