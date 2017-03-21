@@ -69,7 +69,7 @@ pages:
   - API Actions: api/actions.md                 # page-tree = DONE
   - API Parameters: api/params.md               # page-tree = DONE
   # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
-  - API Chaining: api/chaining.md
+  - API CiviChaining: api/chaining.md
   # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
