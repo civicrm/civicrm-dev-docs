@@ -10,7 +10,7 @@ be returned when you do a get.
 See [api/v3/examples] within the core source code for a plethora of examples
 (from unit tests) that use API CiviChaining. To start, look at these examples:
 
--   [APIedArray.php]
+-   [APIChainedArray.php]
 -   [APIChainedArrayFormats.php]
 -   [APIChainedArrayValuesFromSiblingFunction.php]
 
