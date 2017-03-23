@@ -73,13 +73,13 @@ pages:
   # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
   # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
 - API:
-  - API Intro: api/general.md                   # page-tree = DONE
-  - API Usage: api/usage.md                     # page-tree = DONE
-  - API Actions: api/actions.md                 # page-tree = DONE
-  - API Parameters: api/params.md               # page-tree = DONE
-  # API Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
-  - API CiviChaining: api/chaining.md
-  # API Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
+  - APIv3 Intro: api/general.md                   # page-tree = DONE
+  - APIv3 Usage: api/usage.md                     # page-tree = DONE
+  - APIv3 Actions: api/actions.md                 # page-tree = DONE
+  - APIv3 Parameters: api/params.md               # page-tree = DONE
+  # APIv3 Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
+  - APIv3 Chaining: api/chaining.md
+  # APIv3 Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
   - Setup:
