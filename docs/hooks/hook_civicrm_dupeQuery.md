@@ -59,7 +59,7 @@ duplicate search process.
       if( $obj->noRules || $type != 'table')
           return;
 
-      if ( $obj->name=='My Dedupe Rule Group Name' ) {
+      if ( $obj->title === 'My Dedupe Rule Group Name' ) {
 
           //first unset existing queries
           $query = array();
