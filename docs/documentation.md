@@ -1,6 +1,6 @@
 # Writing Documentation
 
-To *read* documentation, go to [CiviCRM.org/documentation](https://civicrm.org/documentation) for the most high-level list of all active documentation.
+To *read* documentation, go to [docs.civicrm.org](https://docs.civicrm.org) for the most high-level list of all active documentation.
 
 This page describes the documentation systems within CiviCRM and how to contribute.
 
