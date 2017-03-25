@@ -14,33 +14,11 @@ This page describes the documentation systems within CiviCRM and how to contribu
 
 ## Guide books in MkDocs
 
-We are using [MkDocs](http://www.mkdocs.org) to produce books, and have the following:
-
-| Book | English | French
-| ---- | ------- | ------ |
-| User Guide | **[latest][u-en-l]**,<br>[stable][u-en-s],<br>[4.7][u-en-47], [4.6][u-en-46]<br><br>*[repository][u-r-en]* | **[latest][u-fr-l]**, [stable][u-fr-s]<br><br>*[repository][u-r-fr]* |
-| Administrator Guide *([planned](https://github.com/civicrm/civicrm-docs/issues/17))* | | |
-| Developer Guide | **[latest][d-l]**<br><br>*[repository][d-r]* | |
-| Extension Guides *(planned)* | | |
-
-
-[u-en-s]: https://docs.civicrm.org/user/en/stable/
-[u-en-l]: https://docs.civicrm.org/user/en/latest/
-[u-en-47]: https://docs.civicrm.org/user/en/4.7/
-[u-en-46]: https://docs.civicrm.org/user/en/4.6/
-[u-fr-l]: https://docs.civicrm.org/user/fr/latest/
-[u-fr-s]: https://docs.civicrm.org/user/fr/stable/
-[d-l]: https://docs.civicrm.org/dev/en/latest/
-
-[u-r-en]: https://github.com/civicrm/civicrm-docs
-[u-r-fr]: https://github.com/civicrm-french/civicrm-user-guide
-[d-r]: https://github.com/civicrm/civicrm-dev-docs
-
-The content for each of these books is written in [markdown](/markdownrules.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to **docs.civicrm.org** using our custom [documentation infrastructure](https://github.com/civicrm/civicrm-docs).
+We are using [MkDocs](http://www.mkdocs.org) to produce books. The content for each of these books is written in [markdown](/markdownrules.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
 
 ### Languages
 
-As shown above, a book can have multiple languages, and we use separate repositories for different languages.
+A book can have multiple languages, and we use separate repositories for different languages.
 
 ### Versions
 
@@ -127,8 +105,4 @@ The most advanced way to work on a book is to use git to download all the markdo
 
 1.  When you are happy with your edits, use git to commit and push your changes up to your fork.    Then submit a  pull request on GitHub.
 
-
-## Documenting your extension
-
-TODO
 

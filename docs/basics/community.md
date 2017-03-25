@@ -9,10 +9,7 @@ collaborate:
     -   [Events](https://civicrm.org/events) -
         meetups, conferences, camps, sprints, webinars
     -   [Job Board](https://civicrm.org/jobs) - Post and find paid work
--   [Documentation](https://civicrm.org/documentation) including:
-    -   [User Guide](https://docs.civicrm.org/user/en/stable/)
-    -   [Developer Guide](https://docs.civicrm.org/dev/en/master/)
-        *(that you're reading now!)*
+-   [Documentation](https://docs.civicrm.org)
 -   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall.
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [Jira](https://issues.civicrm.org/jira) - Issue tracking
