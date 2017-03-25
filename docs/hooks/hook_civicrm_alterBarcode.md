@@ -7,7 +7,7 @@ Available in 4.4+.
 
 ## Definition
 
-     hook_civicrm_alterBarcode( &$data, $type='barcode' $context='name_badge' );
+     hook_civicrm_alterBarcode( &$data, $type='barcode', $context='name_badge' );
 
 ## Parameters
 
