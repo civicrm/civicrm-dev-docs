@@ -20,52 +20,31 @@ CiviCRM, using the API explorer and the API parameter list.
 
 ## API explorer
 
-The API explorer gives you the possibility to actually
-try out the API in action and is available at
+The API explorer is a powerful GUI tool for building and executing API calls.
 
-```text
-http://[CIVICRM\_URL]/civicrm/api/explorer
-```
+To access the API explorer:
+
+1. Go to any CiviCRM site
+    * This can even be the [demo site](http://dmaster.demo.civicrm.org/).
+1. Within the CivCRM menu, go to **Support > Developer > API Explorer** or go to the URL `/civicrm/api`.
+
+!!! warning
+    The API explorer actually executes real API calls. It can modify data! So if you execute a `Contact` `delete` call, it will really delete the contact. As such, any experimenting is best done within a test site.
 
 You can select the entity you want to
 use, for example `Contact` and the action you want to perform, for
-example `Get`. Again, be careful as the API explorer will actually
-perform your actions! So if you delete a contact to check what API
-call to use, it will really delete the contact. The API explorer
+example `Get`. The API explorer
 will show you the specific code necessary to execute the API call you
 have been testing.
 
-Try out the [API explorer on the demo site], *after you login as demo/demo*.
+## API parameter documentation
 
-[API explorer on the demo site]: http://drupal.sandbox.civicrm.org/civicrm/api/explorer
-
-
-## API parameter list
-
-The API parameter list shows all available entities which
-can be manipulated by the API and is available at:
-
-```text
-http://[CIVICRM_URL]/civicrm/api/doc
-```
-
-You will first get a list of all the API entities.
-If you click on an entity you will get a list of parameters that are
-available for that specific entity, with the type of the parameter.
-This can be very useful if you want to check what you can retrieve
-with the API and what parameters you can use to refine your get
+From the API explorer, you can click on the **Code Docs** tab to find documentation for each API entity/action. You will first get a list of all the API entities. If you click on an entity you will get a list of parameters that are available for that specific entity, with the type of the parameter. This can be very useful if you want to check what you can retrieve with the API and what parameters you can use to refine your get
 action or complete your create or update action.
 
+## API examples
 
-## API Examples
-
-CiviCRM ships with API examples included in the distribution. You can
-find the examples specific to your installed version at:
-
-`<civicrm_root>/api/v3/examples`
-
-[Explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples)
-
+From the API explorer, you can click on the **Examples** tab to find examples of API calls which are based on automated tests within the source code. You can also [explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples).
 
 ## Changelog
 
