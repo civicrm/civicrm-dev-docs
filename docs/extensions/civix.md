@@ -111,7 +111,7 @@ This creates three files:
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
     this file, see
-    [the smarty guide](http://www.smarty.net/docsv2/en/).
+    [the smarty guide](http://www.smarty.net/docs/en/).
 
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as passing data from the controller to the view.
@@ -163,7 +163,7 @@ This creates three files:
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
     this file, see
-    [the smarty guide](http://www.smarty.net/docsv2/en/).
+    [the smarty guide](http://www.smarty.net/docs/en/).
 
 The auto-generated code for the controller and view demonstrate a few
 basic operations, such as adding a `<select>` element to the form.
