@@ -53,8 +53,8 @@ array(
 )
 ```
 
-(**Note**: A few specialized actions like `getsingle` or `getvalue` may
-return success in a different format.)
+!!! note
+    A few specialized actions like `getsingle` or `getvalue` may return success in a different format.
 
 
 ## PHP (civicrm_api3)
