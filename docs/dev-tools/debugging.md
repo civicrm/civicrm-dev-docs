@@ -94,7 +94,6 @@ The relevant settings are:
     general_log_file=/tmp/mysql.log
     # Enable/disable the query log
     general_log=1
-    # oops, a typo
 
 ## Changing source code
 
