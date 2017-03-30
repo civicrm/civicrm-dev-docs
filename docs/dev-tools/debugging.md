@@ -94,6 +94,21 @@ The relevant settings are:
     general_log_file=/tmp/mysql.log
     # Enable/disable the query log
     general_log=1
+    
+You can enable the query log at runtime via SQL, provided the path to the logfile is configured.
+
+    SET GLOBAL general_log = 'ON';
+    SET GLOBAL general_log = 'OFF';
+    
+And you can inspect the query log settings also:
+
+    mysql> show variables like '%general%';
+    +------------------+---------------------------------+
+    | Variable_name    | Value                           |
+    +------------------+---------------------------------+
+    | general_log      | OFF                             |
+    | general_log_file | /usr/local/var/mysql/strike.log |
+    +------------------+---------------------------------+
 
 ## Changing source code
 
