@@ -78,10 +78,10 @@ The most advanced way to work on a book is to use git to download all the markdo
     ```
 
 1.  Obtain the source files for the book you want to edit
-    1.  Find the repository on GitHub *(see "repository" links above, or the "GitHub" link on the bottom left of screen of the documentation you are reading)*
+    1.  Find the repository on GitHub &mdash; *Most books will have a link to this repo at the top right of every page (with a GitHub icon)*
     1.  Fork the repository on GitHub.
     1.  Clone *your fork* of the repository to your computer
-				
+
         ```bash
         git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
         cd civicrm-dev-docs
