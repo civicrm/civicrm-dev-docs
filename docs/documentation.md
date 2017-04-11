@@ -106,3 +106,34 @@ The most advanced way to work on a book is to use git to download all the markdo
 1.  When you are happy with your edits, use git to commit and push your changes up to your fork.    Then submit a  pull request on GitHub.
 
 
+## Content attribution guidelines {:#attribution}
+
+All CiviCRM documentation content is licensed [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). This means that if you want to copy content out of our docs and use it elsewhere, you're welcome to do so as long as your give attribution to the author. 
+
+### How to obtain author information for content within our books {:#attributing-exports}
+
+This is relevant when you want to copy content *out of* our documentation books.
+
+1. Find the GitHub repository for the book that contains the content you'd like to use. (There will usually be a link to this repository at the top right of ever page.)
+2. Navigate to the corresponding markdown file within GitHub (it will match the URL path of the published content).
+3. Click on "Blame" to see detailed information about content authors, line, by line.
+
+### How to displaying attributing for content migrated *into* our books {:#attributing-imports}
+
+The [CiviCRM wiki](https://wiki.civicrm.org/confluence/dashboard.action) and [Stack Exchange](http://civicrm.stackexchange.com/) also use the CC BY-SA 3.0 license, which is convenient because content is regularly migrated into our MkDocs books from these sources. But to comply with the license, we must attribute the original content authors
+
+When migrating content into our docs books which requires attribution, display this attribution at the bottom of the page as follows:
+
+```
+## Credits
+
+Some content from this page was migrated from other sources
+and contributed by the following authors: 
+
+* Mickey Mouse
+* Lisa Simpson
+* Big Bird
+```
+
+Commit messages should also reference the URL of the original content.
+
