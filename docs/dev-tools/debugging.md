@@ -84,11 +84,31 @@ The following values can be added to your site's settings file `civicrm.settings
 
 ## Viewing a query log from MySQL
 
-Outside of CiviCRM, the MySQL database software has features to enable the logging of all queries it receives.
+Outside of CiviCRM, the MySQL general query log allows MySQL to log all queries. This is a performance killer, so avoid using it in production!
 
-*TODO: how do we enable?*
+* [MySQL reference: General Query Log](https://dev.mysql.com/doc/refman/en/query-log.html)
 
+The relevant settings are:
 
+    # Location of the query log
+    general_log_file=/tmp/mysql.log
+    # Enable/disable the query log
+    general_log=1
+    
+You can enable the query log at runtime via SQL, provided the path to the logfile is configured.
+
+    SET GLOBAL general_log = 'ON';
+    SET GLOBAL general_log = 'OFF';
+    
+And you can inspect the query log settings also:
+
+    mysql> show variables like '%general%';
+    +------------------+---------------------------------+
+    | Variable_name    | Value                           |
+    +------------------+---------------------------------+
+    | general_log      | OFF                             |
+    | general_log_file | /usr/local/var/mysql/strike.log |
+    +------------------+---------------------------------+
 
 ## Changing source code
 

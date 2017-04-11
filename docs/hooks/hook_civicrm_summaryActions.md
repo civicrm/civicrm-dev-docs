@@ -52,3 +52,16 @@ Summary Page.
         'href' => '/casework/recording_form
       );
     }
+
+**Add an item to the third column of action list**
+
+   function mymodulename_civicrm_summaryActions(&$actions, $contactID)
+   {
+     $actions['otherActions']['casework'] = array(
+       'title' => 'Record casework',
+       'weight' => 999,
+       'ref' => 'record-casework',
+       'key' => 'casework',
+       'href' => '/casework/recording_form
+       );
+    }
