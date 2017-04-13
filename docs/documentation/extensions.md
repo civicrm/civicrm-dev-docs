@@ -150,7 +150,7 @@ When you set up automatic publishing, GitHub will tell the publishing system whe
 
 Now when you make changes to your docs, those changes will be published automatically *and* you'll receive an email notification from the publishing system informing you of the status (including any errors) of the publishing process.
 
-## Make your documentation descoverable {:descoverable}
+## Make your documentation discoverable {:descoverable}
 
 Hey, you're not done yet! Don't forget to to add links to your new book in all the places where your users might look. This includes this following:
 
