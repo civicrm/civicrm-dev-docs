@@ -62,7 +62,7 @@ Suggest specific changes by making the changes within the text editor on GitHub.
 
 After you follow the steps above, someone else will review your changes and hopefully accept them, at which point you'll be notified via email.
 
-### Editing locally with MkDocs
+### Editing locally with MkDocs {:#mkdocs}
 
 The most advanced way to work on a book is to use git to download all the markdown files to your computer, edit them locally, preview the changes with [MkDocs](http://mkdocs.org/), then use git to push those changes to your personal fork, and finally make a "pull request" on the main repository. This approach makes editing very fast and easy, but does require a bit of setup, and some knowledge of how git works.
 
@@ -105,6 +105,18 @@ The most advanced way to work on a book is to use git to download all the markdo
 
 1.  When you are happy with your edits, use git to commit and push your changes up to your fork.    Then submit a  pull request on GitHub.
 
+
+### Adding a new page {:#new-page}
+
+1. Make sure you are already set up to [edit locally with MkDocs](#mkdocs)
+1. Decide where it should go in the menu. (Ask for advice in the [documentation channel](https://chat.civicrm.org/civicrm/channels/documentation) if you're unsure.)
+1. Add a menu location for the new page by adding a new line appropriately in `mkdocs.yml`.
+    * Follow the pattern you see on other lines of this file to specify a title and a file location.
+    * When setting the title, keep in mind that the same title will display in the menu and in the reader's browser tab title, so choose a title that's short but that also stands on its own to some extent.
+    * Specify a location for the markdown file for your new page which follows the folder structure of the menu location you decided on.
+1. Add a new markdown file in the location specified by your new menu item and begin add content to it.
+1. If you're copying existing content from other sources (e.g. wiki, StackExchange, etc.) then follow the [instructions for providing attribution](#attributing-imports)
+1. If you're migrating one whole wiki pae, follow [instructions for redirecting a wiki page to MkDocs](https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide#ContentmigrationfromwikitoDeveloperGuide-HowtoredirectonewikipagetotheDevGuide).
 
 ## Content attribution guidelines {:#attribution}
 
