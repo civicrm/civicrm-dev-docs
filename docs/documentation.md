@@ -116,7 +116,7 @@ The most advanced way to work on a book is to use git to download all the markdo
     * Specify a location for the markdown file for your new page which follows the folder structure of the menu location you decided on.
 1. Add a new markdown file in the location specified by your new menu item and begin add content to it.
 1. If you're copying existing content from other sources (e.g. wiki, StackExchange, etc.) then follow the [instructions for providing attribution](#attributing-imports)
-1. If you're migrating one whole wiki pae, follow [instructions for redirecting a wiki page to MkDocs](https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide#ContentmigrationfromwikitoDeveloperGuide-HowtoredirectonewikipagetotheDevGuide).
+1. If you're migrating one whole wiki page, follow [instructions for redirecting a wiki page to MkDocs](https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide#ContentmigrationfromwikitoDeveloperGuide-HowtoredirectonewikipagetotheDevGuide).
 
 ## Content attribution guidelines {:#attribution}
 
