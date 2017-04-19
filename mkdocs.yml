@@ -54,11 +54,12 @@ pages:
   - Extension Lifecycle: extend-stages.md          # page-tree = NEED_PAGE_MOVE to /extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
   - Advanced patterns: extensions/advanced.md
-  #### Framework Reference:
+- Framework Reference:
   # Bootstrap: /framework/bootstrap.md          # page-tree = NEED_NEW_PAGE
   # Cache: /framework/cache.md                  # page-tree = NEED_NEW_PAGE
   # Components: /framework/components.md        # page-tree = NEED_NEW_PAGE
   # Database: /framework/database.md            # page-tree = NEED_NEW_PAGE
+  - Schema definition: framework/schema-definition.md
   # Resources: /framework/resources.md          # page-tree = NEED_NEW_PAGE
   # Upgrade: /framework/upgrade.md              # page-tree = NEED_NEW_PAGE
   #### Code Standards:
