@@ -29,6 +29,7 @@ pages:
   - Developer Community: basics/community.md    # page-tree = DONE
   - Useful Skills: basics/skills.md       # page-tree = DONE
   - Planning Your Project: basics/planning.md   # page-tree = DONE
+  - File System: basics/filesystem.md
   # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE  # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
   - Debugging: dev-tools/debugging.md           # page-tree = NEED_PAGE_MOVE to /setup/debugging.md
 - Core Development:

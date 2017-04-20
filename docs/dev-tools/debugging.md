@@ -50,11 +50,10 @@ A backtrace is a list of all the functions that were run in the execution of the
 
 ## Viewing log files
 
-CiviCRM's log files are stored in the `civicrm/ConfigAndLog` directory
-(below the `files` directory in Drupal sites, and below the `media`
-directory in Joomla sites and under `wp-content/plugins/files/` directory
-in Wordpress). Most runtime errors are logged here, as well as data that
-you explicitly write to log using the `CRM_Core_Error::debug log=true`
+CiviCRM's log files are stored in the `ConfigAndLog` directory within CiviCRM's
+local file storage (see [the File System documentation](../basics/filesystem.md)
+for details on your CMS).  Most runtime errors are logged here, as well as data
+that you explicitly write to log using the `CRM_Core_Error::debug log=true`
 parameter.
 
 
@@ -76,10 +75,10 @@ The following values can be added to your site's settings file `civicrm.settings
 - `define('CIVICRM_CONTAINER_CACHE', 'never');` causes Civi to rebuild the [container](http://symfony.com/doc/current/service_container.html) from the latest data on every page-load
 
 !!! tip
-    When any sort of "logging stuff to a file" is enabled by one of the above settings, check the following directories for the resulting file:
-
-    - Drupal: `files/civicrm/ConfigAndLog/`
-    - Joomla: `media/civicrm/ConfigAndLog/`
+    When any sort of "logging stuff to a file" is enabled by one of the
+    above settings, check the `ConfigAndLog` directory within the local files
+    directory to find the log.  (See [the File System
+    documentation](../basics/filesystem.md) for the location in your CMS.)
 
 
 ## Viewing a query log from MySQL
@@ -94,12 +93,12 @@ The relevant settings are:
     general_log_file=/tmp/mysql.log
     # Enable/disable the query log
     general_log=1
-    
+
 You can enable the query log at runtime via SQL, provided the path to the logfile is configured.
 
     SET GLOBAL general_log = 'ON';
     SET GLOBAL general_log = 'OFF';
-    
+
 And you can inspect the query log settings also:
 
     mysql> show variables like '%general%';
