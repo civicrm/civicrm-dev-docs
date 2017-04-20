@@ -156,7 +156,7 @@ Tags acceptable within `<table>` / `<field>` / `<pseudoconstant>`
 | Tag | Contains | Example | Acceptable<br>Instances | Purpose |
 | -- | -- | -- | -- | -- |
 | `<optionGroupName>` | text | `campaign_type` | 1 | The option group name from `civicrm_option_group.name` |
-
+| `<keyColumn>` | text | `name` | 0 or 1 | The column in `civicrm_option_value` which contains values that match *this* field. If this tag is omitted, the `value` column will be used. |
 
 ### Using an arbitrary table
 
