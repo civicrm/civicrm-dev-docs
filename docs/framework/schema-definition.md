@@ -95,7 +95,7 @@ Tags acceptable within `<table>` / `<field>`
 | `<headerPattern>` | regex |  | 0 or 1 | *Not yet documented* |
 | `<dataPattern>` | regex |  | 0 or 1 | *Not yet documented* |
 | `<required>` | `true`/`false` |  | 0 or 1 | When `false`, MySQL will allow this field to be set to `NULL` |
-| `<localizable>` | `true`/`false` |  | 0 or 1 | *Not yet documented* |
+| `<localizable>` | `true`/`false` |  | 0 or 1 | If `true`, in a multilingual site the field will have separate per-language fields |
 | `<import>` | `true`/`false` |  | 0 or 1 | When `true`, this field will be available for use when importing data |
 | `<export>` | `true`/`false` |  | 0 or 1 | When `true`, users will be able to include this field in data exports |
 | `<rule>` | text |  | 0 or 1 | *Not yet documented* |
@@ -103,7 +103,7 @@ Tags acceptable within `<table>` / `<field>`
 | `<values>` |  |  | 0 or 1 | (deprecated) List of values for `enum` type. Now we use the option values table instead. |
 | `<collate>` | text | `utf8_bin` | 0 or 1 | Only needs to be set if you want something other than `utf8_unicode_ci` |
 | `<html>` | [tags](#table-field-html) |  | 0 or 1 | Settings for the form element to use for this field |
-| `<pseudoconstant>` | [tags](#table-field-pseudoconstant) |  | 0 or 1 | *Not yet documented* |
+| `<pseudoconstant>` | [tags](#table-field-pseudoconstant) |  | 0 or 1 | See [notes below](#table-field-pseudoconstant) |
 
 `<type>` should be one of the following values which correspond to [MySQL data types](https://dev.mysql.com/doc/refman/en/data-types.html)
 
@@ -145,17 +145,45 @@ Tags acceptable within `<table>` / `<field>` / `<html>`
 
 ## `<table>` / `<field>` / `<pseudoconstant>` {:#table-field-pseudoconstant}
 
+Pseudoconstant settings tells the code how to determine the valid options for the field value and must be specified by using *one* of the following *three* methodologies:
+
+### Using the `civicrm_option_value` table
+
+With this methodology, the acceptable field values are taken from rows in the `civicrm_option_value` for a given *option group*.
+
 Tags acceptable within `<table>` / `<field>` / `<pseudoconstant>`
 
 | Tag | Contains | Example | Acceptable<br>Instances | Purpose |
 | -- | -- | -- | -- | -- |
-| `<table>` | text | `civicrm_campaign` | 0 or 1 | *Not yet documented* |
-| `<optionGroupName>` | text | `campaign_type` | 0 or 1 | *Not yet documented* |
-| `<keyColumn>` | text | `id` | 0 or 1 | *Not yet documented* |
-| `<labelColumn>` | text | `full_name` | 0 or 1 | *Not yet documented* |
-| `<nameColumn>` | text | `iso_code` | 0 or 1 | *Not yet documented* |
-| `<condition>` | SQL | `parent_id IS NULL` | 0 or 1 | *Not yet documented* |
-| `<callback>` | function reference | `CRM_Core_SelectValues::eventDate` | 0 or 1 | *Not yet documented* |
+| `<optionGroupName>` | text | `campaign_type` | 1 | The option group name from `civicrm_option_group.name` |
+
+
+### Using an arbitrary table
+
+With this methodology, the acceptable field values are taken from `<keyColumn>` in `<table>`, with some extra settings that make it different from your typical foreign key.
+
+Tags acceptable within `<table>` / `<field>` / `<pseudoconstant>`
+
+| Tag | Contains | Example | Acceptable<br>Instances | Purpose |
+| -- | -- | -- | -- | -- |
+| `<table>` | text | `civicrm_campaign` | 1 | The name of the referenced table containing the values |
+| `<keyColumn>` | text | `id` | 1 | The column in the referenced table which contains values that match *this* field |
+| `<labelColumn>` | text | `full_name` | 1 | The column in the referenced table which contains a human-readable variant of the value |
+| `<nameColumn>` | text | `iso_code` | 0 or 1 | Optionally, the column in the referenced table which contains a machine-readable name of the value. |
+| `<condition>` | SQL | `parent_id IS NULL` | 0 or 1 | Extra SQL to add in a `WHERE` clause that will further limit the possible options |
+
+!!! note "`<nameColumn>`"
+    In some cases, `<keyColumn>` will reference a column containing integers and `<nameColumn>` will reference a column containing values like `"Individual"`. Setting `<nameColumn>` in these cases allows us to use specify `"Individual"` when making API calls.
+
+### Using a callback function
+
+With this methodology, the acceptable field values are taken from a PHP callback function.
+
+Tags acceptable within `<table>` / `<field>` / `<pseudoconstant>`
+
+| Tag | Contains | Example | Acceptable<br>Instances | Purpose |
+| -- | -- | -- | -- | -- |
+| `<callback>` | text | `CRM_Core_SelectValues::eventDate` | 1 | Static reference to a function in the codebase |
 
 ## `<table>` / `<index>` {:#table-index}
 
