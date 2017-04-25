@@ -22,15 +22,19 @@ features.
 ### Drupal and Backdrop
 
 The CiviCRM module is typically found in the `sites/all/modules/civicrm`
-directory.  As with any module, it is possible to have CiviCRM run from the
-`modules` directory within some other subdirectory of `sites` (for site-specific
-use), a subdirectory of either of these locations, or within the root `modules`
-directory (which is *not advisable*).
+directory.  As with any Drupal module, it is possible to put CiviCRM in
+several alternative folders, such as:
 
-The `sites/all/modules/civicrm/drupal` directory corresponds to the
-[civicrm-drupal](https://github.com/civicrm/civicrm-drupal/) repository.  It
-contains `civicrm.module`, the actual module file, along with the role sync
-modules, blocks, and drush and views integration.
+ * `sites/example.com/modules/civicrm`
+ * `sites/default/modules/civicrm`
+ * `sites/all/modules/civicrm` (most common)
+ * `modules/civicrm`
+
+Within the `civicrm` folder, there will be a
+[`drupal/`]((https://github.com/civicrm/civicrm-drupal/) or
+[`backdrop/`](https://github.com/civicrm/civicrm-backdrop/) subfolder which
+contains the `civicrm.module` along with the role sync modules, blocks, and
+drush and views integration.
 
 ### Joomla
 
@@ -63,7 +67,8 @@ overwritten during upgrades.
 
 CiviCRM stores its files in a folder named `civicrm` within the site-specific
 files directory.  This is commonly `sites/default/files/civicrm`, though it
-could be `sites/example.org/files/civicrm` if such a folder exists.
+could be `files/civicrm`, `sites/example.org/files/civicrm`, or another
+folder determined by the system administrator.
 
 ### Joomla
 
@@ -84,6 +89,8 @@ CiviCRM's database connection, base URL, site key, CMS, and file paths are defin
 The `civicrm.settings.php` file will be a sibling of Drupal's `settings.php`,
 commonly at `sites/default/civicrm.settings.php`, or
 `sites/example.org/civicrm.settings.php` in multi-site.
+
+In Backdrop, the `civicrm.settings.php` is often located in the site root.
 
 ### Joomla
 
