@@ -1,11 +1,9 @@
 # File system
 
-The file structure of the content management systems that CiviCRM operates in
-differs among the different content management systems it installs within, but
-the general concepts are the same.  One directory contains the CiviCRM
-**codebase** (including CMS-specific code to integrate with the website),
-another directory contains **local files** that are site-specific, and the site
-will have a CiviCRM **settings file**.
+CiviCRM installs within a content-management system (CMS), and each CMS has a
+different file structure. Never-the-less, the general concepts are the same:
+one directory contains the CiviCRM **codebase**, another directory
+contains **local data files**, and a third contains the CiviCRM **settings file**.
 
 ## Codebase
 
@@ -54,7 +52,7 @@ to the [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/)
 repository, containing the plugin file as well as WP-CLI integration.  The
 common CiviCRM codebase is found at `wp-content/plugins/civicrm/civicrm`.
 
-## Local files
+## Local data files
 
 CiviCRM also needs a files directory for storing a variety of site-specific
 files, including uploaded files, logs, and the template cache.  This directory
