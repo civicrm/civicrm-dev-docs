@@ -56,6 +56,29 @@ to the [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/)
 repository, containing the plugin file as well as WP-CLI integration.  The
 common CiviCRM codebase is found at `wp-content/plugins/civicrm/civicrm`.
 
+### Tip: Programmatic lookup
+
+If you are writing an extension or integration that needs to reference the
+codebase of an existing installation, use a command to lookup the correct
+value.  In `bash`, call the [`cv`](https://github.com/civicrm/cv)
+command-line tool:
+
+```
+$ cv path -d '[civicrm.root]'
+$ cv path -d '[civicrm.root]/README.md'
+$ cv url -d '[civicrm.root]'
+$ cv url -d '[civicrm.root]/README.md'
+```
+
+Or in PHP, use `Civi::paths()`:
+
+```php
+echo Civi::paths()->getPath("[civicrm.root]/.");
+echo Civi::paths()->getPath("[civicrm.root]/README.md");
+echo Civi::paths()->getUrl("[civicrm.root]/.");
+echo Civi::paths()->getUrl("[civicrm.root]/README.md");
+```
+
 ## Local data files
 
 CiviCRM also needs a files directory for storing a variety of site-specific
@@ -79,6 +102,47 @@ The CiviCRM local files are within the `media/civicrm` directory.
 Newly-installed CiviCRM sites on WordPress have their local files at
 `wp-content/uploads/civicrm`.  Many older sites use the previous default:
 `wp-content/plugins/files/civicrm`.
+
+### Tip: Programmatic lookup
+
+If you are writing an extension or integration that needs to reference the
+data files of an existing installation, use a command to lookup the correct
+value.  In `bash`, call the [`cv`](https://github.com/civicrm/cv)
+command-line tool:
+
+```
+$ cv path -d'[civicrm.files]'
+$ cv path -d'[civicrm.files]/upload'
+$ cv url -d'[civicrm.files]'
+$ cv url -d'[civicrm.files]/upload'
+```
+
+Or in PHP, use `Civi::paths()`:
+
+```php
+echo Civi::paths()->getPath("[civicrm.files]/.");
+echo Civi::paths()->getPath("[civicrm.files]/upload");
+echo Civi::paths()->getUrl("[civicrm.files]/.");
+echo Civi::paths()->getUrl("[civicrm.files]/upload");
+```
+
+Additionally, some items -- such as the log folder or cache folder -- are
+configurable. The most correct way to find these is to read a config
+variable. In `bash`:
+
+```
+$ cv path -c configAndLogDir
+$ cv path -c templateCompileDir
+$ cv path -c templateCompileDir/en_US
+```
+
+Or in PHP:
+
+```
+echo CRM_Core_Config::singleton()->configAndLogDir;
+echo CRM_Core_Config::singleton()->templateCompileDir;
+echo CRM_Core_Config::singleton()->templateCompileDir . '/en_US';
+```
 
 ## Settings file
 
@@ -113,3 +177,20 @@ put the settings file within the CiviCRM plugin folder at
 dangerous when upgrading: it is important in this case to keep the `civicrm`
 folder until the upgrade is complete and the site is verified to be working
 properly.
+
+
+### Tip: Programmatic lookup
+
+If you are writing an extension or integration that needs to reference the
+settings of an existing installation, use the constant
+`CIVICRM_SETTINGS_PATH` to locate `civicrm.settings.php`. In `bash`:
+
+```
+$ cv ev 'echo CIVICRM_SETTINGS_PATH;'
+```
+
+Or in PHP:
+
+```php
+echo CIVICRM_SETTINGS_PATH;
+```
