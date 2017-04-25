@@ -1,11 +1,9 @@
 # File system
 
-The file structure of the content management systems that CiviCRM operates in
-differs among the different content management systems it installs within, but
-the general concepts are the same.  One directory contains the CiviCRM
-**codebase** (including CMS-specific code to integrate with the website),
-another directory contains **local files** that are site-specific, and the site
-will have a CiviCRM **settings file**.
+CiviCRM installs within a content-management system (CMS), and each CMS has a
+different file structure. Never-the-less, the general concepts are the same:
+one directory contains the CiviCRM **codebase**, another directory
+contains **local data files**, and a third contains the CiviCRM **settings file**.
 
 ## Codebase
 
@@ -24,15 +22,19 @@ features.
 ### Drupal and Backdrop
 
 The CiviCRM module is typically found in the `sites/all/modules/civicrm`
-directory.  As with any module, it is possible to have CiviCRM run from the
-`modules` directory within some other subdirectory of `sites` (for site-specific
-use), a subdirectory of either of these locations, or within the root `modules`
-directory (which is *not advisable*).
+directory.  As with any Drupal module, it is possible to put CiviCRM in
+several alternative folders, such as:
 
-The `sites/all/modules/civicrm/drupal` directory corresponds to the
-[civicrm-drupal](https://github.com/civicrm/civicrm-drupal/) repository.  It
-contains `civicrm.module`, the actual module file, along with the role sync
-modules, blocks, and drush and views integration.
+ * `sites/example.com/modules/civicrm`
+ * `sites/default/modules/civicrm`
+ * `sites/all/modules/civicrm` (most common)
+ * `modules/civicrm`
+
+Within the `civicrm` folder, there will be a
+[`drupal/`]((https://github.com/civicrm/civicrm-drupal/) or
+[`backdrop/`](https://github.com/civicrm/civicrm-backdrop/) subfolder which
+contains the `civicrm.module` along with the role sync modules, blocks, and
+drush and views integration.
 
 ### Joomla
 
@@ -54,7 +56,30 @@ to the [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/)
 repository, containing the plugin file as well as WP-CLI integration.  The
 common CiviCRM codebase is found at `wp-content/plugins/civicrm/civicrm`.
 
-## Local files
+### Tip: Programmatic lookup
+
+If you are writing an extension or integration that needs to reference the
+codebase of an existing installation, use a command to lookup the correct
+value.  In `bash`, call the [`cv`](https://github.com/civicrm/cv)
+command-line tool:
+
+```
+$ cv path -d '[civicrm.root]'
+$ cv path -d '[civicrm.root]/README.md'
+$ cv url -d '[civicrm.root]'
+$ cv url -d '[civicrm.root]/README.md'
+```
+
+Or in PHP, use `Civi::paths()`:
+
+```php
+echo Civi::paths()->getPath("[civicrm.root]/.");
+echo Civi::paths()->getPath("[civicrm.root]/README.md");
+echo Civi::paths()->getUrl("[civicrm.root]/.");
+echo Civi::paths()->getUrl("[civicrm.root]/README.md");
+```
+
+## Local data files
 
 CiviCRM also needs a files directory for storing a variety of site-specific
 files, including uploaded files, logs, and the template cache.  This directory
@@ -65,7 +90,8 @@ overwritten during upgrades.
 
 CiviCRM stores its files in a folder named `civicrm` within the site-specific
 files directory.  This is commonly `sites/default/files/civicrm`, though it
-could be `sites/example.org/files/civicrm` if such a folder exists.
+could be `files/civicrm`, `sites/example.org/files/civicrm`, or another
+folder determined by the system administrator.
 
 ### Joomla
 
@@ -77,6 +103,47 @@ Newly-installed CiviCRM sites on WordPress have their local files at
 `wp-content/uploads/civicrm`.  Many older sites use the previous default:
 `wp-content/plugins/files/civicrm`.
 
+### Tip: Programmatic lookup
+
+If you are writing an extension or integration that needs to reference the
+data files of an existing installation, use a command to lookup the correct
+value.  In `bash`, call the [`cv`](https://github.com/civicrm/cv)
+command-line tool:
+
+```
+$ cv path -d'[civicrm.files]'
+$ cv path -d'[civicrm.files]/upload'
+$ cv url -d'[civicrm.files]'
+$ cv url -d'[civicrm.files]/upload'
+```
+
+Or in PHP, use `Civi::paths()`:
+
+```php
+echo Civi::paths()->getPath("[civicrm.files]/.");
+echo Civi::paths()->getPath("[civicrm.files]/upload");
+echo Civi::paths()->getUrl("[civicrm.files]/.");
+echo Civi::paths()->getUrl("[civicrm.files]/upload");
+```
+
+Additionally, some items -- such as the log folder or cache folder -- are
+configurable. The most correct way to find these is to read a config
+variable. In `bash`:
+
+```
+$ cv path -c configAndLogDir
+$ cv path -c templateCompileDir
+$ cv path -c templateCompileDir/en_US
+```
+
+Or in PHP:
+
+```
+echo CRM_Core_Config::singleton()->configAndLogDir;
+echo CRM_Core_Config::singleton()->templateCompileDir;
+echo CRM_Core_Config::singleton()->templateCompileDir . '/en_US';
+```
+
 ## Settings file
 
 CiviCRM's database connection, base URL, site key, CMS, and file paths are defined in `civicrm.settings.php`.
@@ -86,6 +153,8 @@ CiviCRM's database connection, base URL, site key, CMS, and file paths are defin
 The `civicrm.settings.php` file will be a sibling of Drupal's `settings.php`,
 commonly at `sites/default/civicrm.settings.php`, or
 `sites/example.org/civicrm.settings.php` in multi-site.
+
+In Backdrop, the `civicrm.settings.php` is often located in the site root.
 
 ### Joomla
 
@@ -108,3 +177,20 @@ put the settings file within the CiviCRM plugin folder at
 dangerous when upgrading: it is important in this case to keep the `civicrm`
 folder until the upgrade is complete and the site is verified to be working
 properly.
+
+
+### Tip: Programmatic lookup
+
+If you are writing an extension or integration that needs to reference the
+settings of an existing installation, use the constant
+`CIVICRM_SETTINGS_PATH` to locate `civicrm.settings.php`. In `bash`:
+
+```
+$ cv ev 'echo CIVICRM_SETTINGS_PATH;'
+```
+
+Or in PHP:
+
+```php
+echo CIVICRM_SETTINGS_PATH;
+```
