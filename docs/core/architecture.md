@@ -57,7 +57,7 @@ The CiviCRM **data access objects** (DAOs) are PHP classes that
 ([e.g. `CRM/Pledge/DAO`](https://github.com/civicrm/civicrm-core/tree/master/CRM/Pledge/DAO))
 expose the contents
 of the database.  The release script generates each DAO automatically based
-on the matching XML file in the [data schema](#database-structure).  DAO objects tend to be instantiated in BAO classes.
+on the matching XML file in the [data schema](/framework/schema-definition).  DAO objects tend to be instantiated in BAO classes.
 
 The DAO classes all extend the core
 [DAO base class](https://github.com/civicrm/civicrm-core/blob/master/CRM/Core/DAO.php)
