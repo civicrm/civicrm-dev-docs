@@ -103,10 +103,10 @@ Once your book is in good shape it's time to get it up on [docs.civicrm.org](htt
 1. For the file name, use something like `foobar.yml`, where "foobar" is your extension's **short name**. This is the name that will be used in the URL for your docs.
 1. Copy paste the following content into the file editor:
 
-    ```
+    ```yaml
     name: Foo Bar
-	description: Provides a baz for every contact's bat
-    languages:
+    description: Provides a baz for every contact's bat
+    langs:
       en:
         repo: 'https://github.com/username/org.civicrm.foobar'
     ```
