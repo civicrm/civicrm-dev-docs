@@ -28,7 +28,7 @@ Help is available on individual commands, e.g.:
 civix help civicrm:ping
 ```
 
-## Generating a skeletal extension
+## Generating a skeletal extension {:#generate-module}
 
 To generate a skeletal extension module, we will use `civix generate:module`
 and pass in the name for our extension. See [here](/extensions/basics/#extension-names)
@@ -79,7 +79,7 @@ For more detailed instructions, see
 There are many different features that you can add to a module-extension
 at your discretion. A few possibilities:
 
-### Add a basic web page
+### Add a basic web page {:#generate-page}
 
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 page, you must create a PHP controller class, create a Smarty template
@@ -128,7 +128,7 @@ If the data on the page is read and updated through the API, then you
 may want to consider using the
 [in-place editing](https://wiki.civicrm.org/confluence/display/CRMDOC/In-Place+Field+Editing) API.
 
-### Add a basic web form
+### Add a basic web form {:#generate-form}
 
 !!! caution
     The form system is not well documented and may undergo significant
@@ -173,7 +173,7 @@ basic operations, such as adding a `<select>` element to the form.
     CiviCRMs "menu cache". This can be done in a web browser by visiting
     `/civicrm/menu/rebuild?reset=1`
 
-### Add a new entity
+### Add a new entity {:#generate-entity}
 
 !!! caution
     This functionality is considered "experimental and incomplete".
@@ -184,14 +184,20 @@ to create a new entity. For this, you can use the command `civix generate:entity
 1. Pick a name for your entity.
     * In some places, CiviCRM expects a *CamelCaseName*, in others, an *snake_case_name*. Be absolutely consistent in your naming, because CiviCRM needs to translate between those two naming conventions.
     * Also consider that all entity names (including yours) should be unique across all core entities as well as all extension entities (for all installed extensions). Thus in many cases it's best to prefix your entity name with the short name of your extension.
+
 1. Run `civix generate:entity <NameOfEntity>` (use CamelCase here). This creates a skeletal file for your XML schema, your BAO, and your API. It does NOT create a skeletal SQL file to create your table or DAO files at this time.
+
 1. Edit the [XML schema definitions](/framework/schema-definition) in the `xml` folder to define your desired fields.
+
 1. Create a DAO file. For now, civix does not handle this. You can create this by hand. Alternatively, use [this technique](http://civicrm.stackexchange.com/a/3536/12). Copy your XML schema into a development copy of CiviCRM. Edit Schema.xml to include your XML file, then from the xml folder, run `php ./GenCode.php` (In CiviCRM 4.7.12+, run `<civiroot>/bin/setup.sh -g` instead). This will generate a DAO file for you in the CiviCRM core code; copy it into the `CRM/<Entityname>/DAO` folder of your extension.
+
 1. Currently, `civix` does not generate the SQL to create and drop your table(s). You can create these by hand, or, if you used the `<civiroot>/bin/setup.sh -g` technique to create your DAO, SQL will have been generated for you in `<civiroot>/sql/civicrm.mysql`. Once you have the SQL statements for creating and dropping your SQL tables, create `auto_install.sql` and `auto_uninstall.sql` respectively in your 'sql/' folder. CiviCRM will run them automatically on install if you generated an upgrader. Note that using `auto_install.sql` and `auto_uninstall.sql` is not best practice if you have multiple statements in each file, since you cannot error check each statement separately. <!-- fixme update and clarify -->
+
 1. Run `civix generate:upgrader` from within your extension.
+
 1. Define your entity using [hook_civicrm_entityTypes](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes).
 
-### Add a database upgrader, installer and uninstaller
+### Add a database upgrader, installer and uninstaller {:#generate-upgrader}
 
 If your module requires creating or maintaining SQL tables, then you
 should create a class for managing database upgrades. The upgrader adds
@@ -240,7 +246,8 @@ If you need to create triggers on core SQL tables, use
 [hook_civicrm_triggerInfo](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference).
 This allows your triggers to coexist with triggers from other modules.
 
-### Add a case type
+### Add a case type {:#generate-case-type}
+
 *(from CiviCRM v4.4+)*
 
 If you want to develop a custom case-type for CiviCase, then you can
@@ -269,6 +276,7 @@ This creates two files:
     implementations of various hooks (notably hook_civicrm_caseTypes).
 
 ### Add custom fields
+
 *(from CiviCRM v4.4+)*
 
 Your extension can create one or more sets of custom
@@ -442,7 +450,7 @@ images place them in your extension directory. To load
 the files at runtime, see the examples in the [Resource
 Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference).
 
-### Add a report
+### Add a report {:#generate-report}
 
 CiviReport enables developers to define new business reports using
 customizable SQL logic and form layouts.
@@ -490,7 +498,7 @@ For example, this command will copy the activity report in the class
 civix generate:report --copy CRM_Report_Form_Activity MyActivity Contact
 ```
 
-### Add a custom search
+### Add a custom search {:#generate-search}
 
 CiviCRM enables developers to define new search forms using customizable
 SQL logic and form layouts. Use this command to get started:
@@ -535,7 +543,7 @@ civix generate:search --copy CRM_Contact_Form_Search_Custom_ZipCodeRange MySearc
 The "copy" option will create either two or three files depending
 on whether the original search screen defines its own Smarty template.
 
-### Add an API function
+### Add an API function {:#generate-api}
 
 The [CiviCRM API](/api/general)
 provides a way to expose functions for use by other developers. API
@@ -576,7 +584,7 @@ For use with CiviCRM 4.3, you can also add the `–schedule` option (e.g.
 -   `api/v3/NewEntity/NewAction.mgd.php` provides the scheduling
     record that will appear in the CiviCRM's job-manager.
 
-### Add a unit-test class
+### Add a unit-test class {:#generate-test}
 
 Unit-testing is essential to maintain quality-control over
 your extension. When developing a test case for a CiviCRM extension, it
