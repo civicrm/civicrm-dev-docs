@@ -11,21 +11,20 @@ data-management applications.  As staff, volunteers, and consultants for
 non-profit organizations, we can share our new enhancements and extensions
 &mdash; and build a richer whole for the entire ecosystem.
 
-Of course, this sharing arrangement means that many members of the community
-have split roles. For example:
+Of course, this collaboration means that we're all engaged in some give-and-take. 
+We alternate between two roles:
 
--   **Consumers** want to quickly browse the available
-    extensions, pick the ones which look best, and install them. They
-    expect the extensions to just work &mdash; both now and going forward (with
+-   **Consumers**: Sometimes we're the receivers. We want to quickly browse the available
+    extensions, pick the ones which look best, and install them. We
+    expect the extensions to work &mdash; both now and going forward (with
     future upgrades).
--   **Developers** enjoy building great functionality, and
-    want to invite people to use their products, but need to juggle the
+-   **Developers**: Sometimes we're the providers. We enjoy building great functionality, and
+    want to invite people to use our products, but need to juggle the
     publishing tasks (like testing and maintenance releases) with the goals
-    and resources provided by their bosses and clients.
+    and resources provided by our bosses and clients.
 
-With our extension life cycle processes, we seek to build an ecosystem that
-meets the needs of both consumers and developers, while acknowledging that many
-people often play both roles.
+With the extension life-cycle described here, we seek to build an ecosystem that
+balances the needs of both consumers and developers.
 
 ## Definitions
 
