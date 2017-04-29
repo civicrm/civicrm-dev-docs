@@ -540,7 +540,7 @@ SQL logic and form layouts. Use this command to get started:
 civix help generate:search
 ```
 
-Then you could generate your basic search code for a MySearch class with:
+Then you could generate your basic search code for a `MySearch` class with:
 
 ```bash
 civix generate:search MySearch
@@ -556,6 +556,7 @@ This command will create two files:
 -   `CRM/Myextension/Form/Search/MySearch.php` contains the
     form-builder and query-builder for the custom search.
 
+#### Copying an existing search
 
 If one of the existing searches is close to
 meeting your needs you may copy it instead and then customise the
@@ -575,6 +576,19 @@ civix generate:search --copy CRM_Contact_Form_Search_Custom_ZipCodeRange MySearc
 
 The "copy" option will create either two or three files depending
 on whether the original search screen defines its own Smarty template.
+
+#### Using your search
+
+1. Disable and re-enable your extension.
+
+1. Go to **Search > Custom Searches...** and find your new custom search listed at the bottom.
+
+#### Building your custom search
+
+Now you have a working custom search, but how do you make it *do* something *custom*?
+
+See this (somewhat outdated) [wiki page](https://wiki.civicrm.org/confluence/display/CRMDOC46/Create+a+Custom-Search+Extension) for more information.
+
 
 ### Add an API function {:#generate-api}
 
