@@ -6,7 +6,7 @@ This hook is called to allow custom tokens to be defined. Their values
 will need to be supplied by
 [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues).\
   See [this
-article](http://civicrm.org/blogs/colemanw/create-your-own-tokens-fun-and-profit)
+article](https://civicrm.org/blog/colemanw/create-your-own-tokens-for-fun-and-profit)
 for usage examples.
 
 ## Definition
