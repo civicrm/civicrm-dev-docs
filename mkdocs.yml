@@ -25,6 +25,7 @@ pages:
 - Core Development:
   - When to Edit Core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
   - How to Contribute: core/contributing.md    # page-tree = DONE
+  - Reviewing PR's: core/pr-review.md
   - Codebase & Architecture: core/architecture.md # page-tree = DONE
   # Reporting Bugs & Issues: /core/reporting.md # page-tree = NEED_NEW_PAGE
   # Submitting a Patch: /core/patches.md        # page-tree = NEED_NEW_PAGE
