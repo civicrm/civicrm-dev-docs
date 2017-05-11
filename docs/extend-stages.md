@@ -256,7 +256,8 @@ automated distribution:
 | Coding	| Automated tests execute within 3 minutes (or less)	| No	| *Suggested*
 | Coding	| All dependencies are at similar stage (Ex: A stable project should not depend on an experimental project)	| No	| **Required**
 | Coding	| All strings are wrapped in ts()	| *Suggested*	| **Required**
-| Coding	| The project does not *override* `PHP`, `TPL`, `JS`, or `SQL` from civicrm-core	| **Required**	| **Required**
+| Coding	| The project does not *override* `PHP` or `TPL` files from civicrm-core	| **Required**	| **Required**
+| Coding	| The project does not modify the `SQL` schema of a standard civicrm-core table	| **Required**	| **Required**
 | Coding	| The project does not *conflict* with other official projects	| *Suggested*	| *Suggested*
 | Distribution	| The project is packaged as a CiviCRM Extension, Drupal Module, Backdrop Module, Joomla Extension, or WordPress plugin	| **Required**	| **Required**
 | Distribution	| The project has a stable version (1.0+; not alpha or beta)	| **Required**	| **Required**
