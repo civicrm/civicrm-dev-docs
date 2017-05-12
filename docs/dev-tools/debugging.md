@@ -8,7 +8,7 @@ also instructions on setting up XDebug, which is the recommended
 debugging tool for CiviCRM when you have bugs which are really hard to squish.
 
 !!! danger "Security Alert"
-    None of these debugging should be performed on production sites, as they can expose system configuration and authentication information being to unauthorized visitors.
+    None of these debugging methods should be performed on production sites, as they can expose system configuration and authentication information to unauthorized visitors.
 
 The debugging methods presented here are ordered with the easiest ones first, but you may find the more challenging methods near the end to be more rewarding.
 
@@ -34,7 +34,7 @@ After enabling debugging, append any of the following name-value pairs to the UR
 -   `&directoryCleanup=3` performs both of the above actions.
 -   `&backtrace=1` displays a stack trace listing at the top of a page.
 -   `&sessionDebug=1` displays the current users session variables in the browser.
--   `&angularDebug=1` displays live variable updates on certain Angular-based pages
+-   `&angularDebug=1` displays live variable updates on certain Angular-based pages.
 
 !!! tip "Caveats"
     - Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected.  An example of this is looking at the Contact Summary page, when using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs. To do this you will need to debug via code, as explained below.
@@ -72,7 +72,7 @@ The following values can be added to your site's settings file `civicrm.settings
 
 - `define('CIVICRM_DAO_DEBUG', 1);` writes out various data layer queries to your browser screen.
 
-- `define('CIVICRM_CONTAINER_CACHE', 'never');` causes Civi to rebuild the [container](http://symfony.com/doc/current/service_container.html) from the latest data on every page-load
+- `define('CIVICRM_CONTAINER_CACHE', 'never');` causes Civi to rebuild the [container](http://symfony.com/doc/current/service_container.html) from the latest data on every page-load.
 
 !!! tip
     When any sort of "logging stuff to a file" is enabled by one of the
@@ -277,3 +277,74 @@ From there you can step through the code to the part you're interested
 in. But it's probably a better idea to set a breakpoint in the part of
 the code you're interested in stopping at. See the MacGDBp documentation
 for more information.
+
+## Error 500, white screen (WSoD),  "Internal Server Error" errors
+
+If CiviCRM shows a blank white page or page with "Error 500" with no other messages on screen, follow the steps in this section to diagnose and fix. A white screen (WSoD or "white screen of death") indicates that PHP is configured not to display errors, and has hit an error which it can't recover from. The result is an empty page. 
+
+Your next step is not to fix the error, but to first give yourself enough information to identify the source of the error. (Diagnose, then treat.)
+
+**Viewing errors in logfiles**
+
+The webserver can be configured to display errors to screen, but it also logs errors to files on disk. These files vary depending on your hosting environment, so you might consult your webhost's documentation to locate them. You might look for errors in some of these locations depending on webserver/php config:
+
+-   `/var/log/nginx/*err*log` NginX webserver error logs
+-   `/var/log/apache2/*err*log` Apache webserver & mod_php error logs
+-   `/var/log/*php*log` PHP-FPM & PHP-CGI error logs
+-   `/var/log/php5/*log` PHP-FPM & PHP-CGI error logs
+-   `/path/to/site/err*log` Some hosting environments
+
+And a **CiviCRM specific debug log** file - location varies depending on hosting environment *and* CMS, refer to [this wiki page](https://wiki.civicrm.org/confluence/display/CRMDOC/Debugging+for+developers#Debuggingfordevelopers-Logfiles) for location -
+
+    path/to/site/path/to/civicrm/files/ConfigAndLog/CiviCRM*log
+
+*(The `*`s above represent a wildcard, not an actual filename. Eg the last entry might be public_html/error_log on Bluehost.)*
+
+!!! Tip
+    Buildkit uses [amp](https://github.com/amp-cli/amp) to install sites which means you have to look in `~/.amp`. Log files are in `~/.amp/log` and separated by site.
+
+Once you've located these files, you can download them to view, or you can use tools like `tail` or `less +F` to follow the files. I prefer to follow logfiles because you can watch the error appear each time.
+
+**Displaying errors to screen**
+
+You may prefer to display errors to screen. This is probably disabled on your site because it's a security risk to some degree - an attacker can see more information when errors are visible, so the default configuration is often to restrict visibility to people with server access (via the logfiles above).
+
+To enable error display, either:
+
+**Configure your PHP to display errors for your site** via `php.ini` / `.htaccess` (see [How can I get PHP errors to display](http://stackoverflow.com/questions/1053424/how-do-i-get-php-errors-to-display)), OR 
+
+**Add PHP code to enable error display** (you can add it in `civicrm.settings.php` or the top of the `index.php` of your host CMS).
+
+    <?php
+      error_reporting(E_ALL);
+      ini_set('display_errors', TRUE);
+      ini_set('display_startup_errors', TRUE);
+
+**Making sense of what you see**
+
+Once you've taken one of the above approaches, try reproducing the actions which led to a white screen. If all's gone well, you should see an error now (on screen, or in your terminal / SSH session).
+
+This is where you can start debugging meaningfully. There's a good chance you're exhausting server resources (timeouts, memory exhaustion) or hitting some coding error, but once you have the relevant error message at hand you'll be much better equipped to track down the source of the problem affecting your site.
+
+**Further reading**
+
+ * [Stack Overflow: How do I get PHP errors to display?](http://stackoverflow.com/questions/1053424/how-do-i-get-php-errors-to-display)
+ * https://civicrm.stackexchange.com/questions/376/where-should-one-look-for-logs-when-debugging-a-new-problem
+ * [Drupal.org: Blank pages or White Screen of Death](https://www.drupal.org/node/158043)
+ * [Joomla SE: What is an efficient way to troubleshoot a White Screen of Death](https://joomla.stackexchange.com/questions/299/what-is-an-efficient-way-to-troubleshoot-a-white-screen-of-death)
+ * [CiviCRM wiki: Debugging for developers](https://wiki.civicrm.org/confluence/display/CRMDOC/Debugging+for+developers#Debuggingfordevelopers-Logfiles)
+
+**Notes**
+
+If this is the first time you've looked, there may be other errors visible which don't relate to the problem at hand. You may still need to discern what the actual problem is ...
+
+If you're not familiar with UNIX, this may seem like a lot of effort. It's a lot less effort than *guessing* your way through a problem though!
+
+
+## Credits
+
+Some content from this page was migrated from other sources
+and contributed by the following authors: 
+
+* Chris Burgess
+* Sean Madsen
