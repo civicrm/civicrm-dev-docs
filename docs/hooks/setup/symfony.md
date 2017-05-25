@@ -27,7 +27,7 @@ In this case, we have a CiviCRM extension or Drupal module named `example`.
 During the system initialization, we lookup the `EventDispatcher`, call
 `addListener()`, and listen for `hook_civicrm_alterContent`.
 
-```
+```php
 function example_civicrm_config(&$config) {
   if (!isset(Civi::$statics[__FUNCTION__])) { return; }
   Civi::$statics[__FUNCTION__] = 1;
@@ -38,7 +38,7 @@ function example_civicrm_config(&$config) {
 }
 ```
 
-> Note: In some environments, `hook_civicrm_config` runs multiple times. The flag
+> __Note__: In some environments, `hook_civicrm_config` runs multiple times. The flag
 > `Civi::$statics[__FUNCTION__]` prevents duplicate listeners.
 
 ## Example: `Container::findDefinition()`
