@@ -29,7 +29,7 @@ During the system initialization, we lookup the `EventDispatcher`, call
 
 ```php
 function example_civicrm_config(&$config) {
-  if (!isset(Civi::$statics[__FUNCTION__])) { return; }
+  if (isset(Civi::$statics[__FUNCTION__])) { return; }
   Civi::$statics[__FUNCTION__] = 1;
 
   Civi::dispatcher()->addListener('hook_civicrm_alterContent', function($event) {
