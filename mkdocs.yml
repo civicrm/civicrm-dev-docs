@@ -86,6 +86,7 @@ pages:
 - Hooks:
   - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
   - Setup:
+    - Hooks with Symfony: hooks/setup/symfony.md
     - Hooks with Joomla: hooks/setup/joomla.md
     - Hooks with Drupal: hooks/setup/drupal.md
     - Hooks with Wordpress: hooks/setup/wordpress.md
