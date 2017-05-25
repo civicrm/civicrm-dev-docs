@@ -57,6 +57,11 @@ function _example_say_hello($event) {
 }
 ```
 
+> __Note__: The "definition" will be written to a cache file.  Consequently,
+> the callback function must be a string (function-name) or an array
+> (class-name, function-name).  Using an anonymous `function(){}` block
+> could cause problems with the cache file.
+
 <!--
   TODO: an example using a container-service and tag.  See "Registering Event Listeners
   in the Service Container" from http://symfony.com/doc/2.7/components/event_dispatcher.html
