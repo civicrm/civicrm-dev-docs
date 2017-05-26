@@ -32,14 +32,17 @@ function example_civicrm_config(&$config) {
   if (isset(Civi::$statics[__FUNCTION__])) { return; }
   Civi::$statics[__FUNCTION__] = 1;
 
-  Civi::dispatcher()->addListener('hook_civicrm_alterContent', function($event) {
-    $event->content = 'hello ' . $event->content;
-  });
+  Civi::dispatcher()->addListener('hook_civicrm_alterContent', '_example_say_hello');
+}
+
+function _example_say_hello($event) {
+  $event->content = 'hello ' . $event->content;
 }
 ```
 
-> __Note__: In some environments, `hook_civicrm_config` runs multiple times. The flag
-> `Civi::$statics[__FUNCTION__]` prevents duplicate listeners.
+!!! note
+    In some environments, `hook_civicrm_config` runs multiple times. The flag
+    `Civi::$statics[__FUNCTION__]` prevents duplicate listeners.
 
 ## Example: `Container::findDefinition()`
 
@@ -57,32 +60,51 @@ function _example_say_hello($event) {
 }
 ```
 
-> __Note__: The "definition" will be written to a cache file.  Consequently,
-> the callback function must be a string (function-name) or an array
-> (class-name, function-name).  Using an anonymous `function(){}` block
-> could cause problems with the cache file.
-
 <!--
   TODO: an example using a container-service and tag.  See "Registering Event Listeners
   in the Service Container" from http://symfony.com/doc/2.7/components/event_dispatcher.html
 -->
 
-## Event Names
+## Events
 
-The Symfony `EventDispatcher` was originally introduced in CiviCRM v4.5.0 for
-handling *private/internal* events.  It was expanded in v4.7.19 to handle
-*public/external* events.
+CiviCRM broadcasts many different events through the `EventDispatcher`. These
+events fall into two categories:
 
-Both use the same dispatcher and PHP functions.  However, they follow different
-naming conventions.  Compare:
+ * __External Events/Hooks__ (v4.7.19+): These have a prefix `hook_civicrm_*`. They extend
+   the class [`GenericHookEvent`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Core/Event/GenericHookEvent.php)
+   (which, in turn, extends  [`Event`](http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/Event.html)).
+   Hooks are simulcast across `EventDispatcher` as well as CMS-specific event systems.
+ * __Internal Events__ (v4.5.0+): These have a prefix `civi.*`. They extend
+   the class  [`Event`](http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/Event.html).
+
+The dispatch process is largely the same for private and public events. However,
+you can recognize these events by their naming convention. Compare:
 
 ```php
-// Listen to a public-facing hook. Note the prefix, "hook_civicrm_*".
+// Listen to a hook. Note the prefix, "hook_civicrm_*".
 Civi::dispatcher()->addListener('hook_civicrm_alterContent', $callback, $priority);
 
 // Listen to an internal event. Note the prefix, "civi.*".
 Civi::dispatcher()->addListener('civi.api.resolve', $callback, $priority);
 ```
+
+## Methods
+
+The `EventDispatcher` has several different methods for registering a listener. Our examples
+have focused on the simplest one, `addListener()`, but you can find documentation for
+other methods (`addSubscriber()`, `addListenerService()`, and `addSubscriberService()`)
+in the Symfony documentation.
+
+!!! tip
+    When calling `addListener()`, you can pass any [PHP callable](http://php.net/manual/en/language.types.callable.php).
+    _However_, in practice, the safest bet is to pass a string (function-name) or array
+    (class-name, function-name). Other formats may not work with the
+    [container-cache](http://symfony.com/doc/2.7/components/dependency_injection/compilation.html).
+
+!!! seealso
+    * [Symfony EventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher.html)
+    * [Symfony ContainerAwareEventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher/container_aware_dispatcher.html)
+
 
 ## History
 
