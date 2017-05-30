@@ -1,9 +1,10 @@
 ## Overview
 
-The [__Symfony EventDispatcher__](http://symfony.com/components/EventDispatcher) is a
-common event system used by many PHP applications and frameworks.  For
-example, Symfony SE, Drupal 8, Magento, Laravel, CiviCRM, and many others
-support `EventDispatcher`.
+The [__Symfony EventDispatcher__](http://symfony.com/components/EventDispatcher) is an
+event library used by several PHP applications and frameworks.  For example,
+Symfony SE, Drupal 8, Magento, Laravel, CiviCRM, and many others support
+`EventDispatcher`.  It provides a common mechanism for dispatching and listening
+to events.
 
 In CiviCRM v4.7.19+, you can use Symfony `EventDispatcher` with hooks.
 
@@ -76,9 +77,9 @@ events fall into two categories:
    Hooks are simulcast across `EventDispatcher` as well as CMS-specific event systems.
  * __Internal Events__ (v4.5.0+): These have a prefix `civi.*`. They extend
    the class  [`Event`](http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/Event.html).
+   They are *only* broadcast via `EventDispatcher` (**not** CMS-specific event systems).
 
-The dispatch process is largely the same for private and public events. However,
-you can recognize these events by their naming convention. Compare:
+You can recognize these events by their naming convention. Compare:
 
 ```php
 // Listen to a hook. Note the prefix, "hook_civicrm_*".
@@ -91,20 +92,18 @@ Civi::dispatcher()->addListener('civi.api.resolve', $callback, $priority);
 ## Methods
 
 The `EventDispatcher` has several different methods for registering a listener. Our examples
-have focused on the simplest one, `addListener()`, but you can find documentation for
+have focused on the simplest one, `addListener()`, but you can find discussion of the
 other methods (`addSubscriber()`, `addListenerService()`, and `addSubscriberService()`)
-in the Symfony documentation.
+in the Symfony documentation:
+
+ * [Symfony EventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher.html)
+ * [Symfony ContainerAwareEventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher/container_aware_dispatcher.html)
 
 !!! tip
     When calling `addListener()`, you can pass any [PHP callable](http://php.net/manual/en/language.types.callable.php).
     _However_, in practice, the safest bet is to pass a string (function-name) or array
     (class-name, function-name). Other formats may not work with the
     [container-cache](http://symfony.com/doc/2.7/components/dependency_injection/compilation.html).
-
-!!! seealso
-    * [Symfony EventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher.html)
-    * [Symfony ContainerAwareEventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher/container_aware_dispatcher.html)
-
 
 ## History
 
