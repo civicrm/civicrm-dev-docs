@@ -41,7 +41,13 @@ function _example_say_hello($event) {
 }
 ```
 
-!!! note
+!!! tip "Using the `$event` object"
+    Hook parameters are passed as an object, `$event`.
+    For example, [`hook_civicrm_alterContent`](/hooks/hook_civicrm_alterContent/)
+    has the parameters `(&$content, $context, $tplName, &$object)`.
+    You can access the data as `$event->content`, `$event->context`, `$event->tplName`, and `$event->object`.
+
+!!! tip "Using `hook_civicrm_config`"
     In some environments, `hook_civicrm_config` runs multiple times. The flag
     `Civi::$statics[__FUNCTION__]` prevents duplicate listeners.
 
@@ -91,17 +97,17 @@ Civi::dispatcher()->addListener('civi.api.resolve', $callback, $priority);
 
 ## Methods
 
-The `EventDispatcher` has several different methods for registering a listener. Our examples
-have focused on the simplest one, `addListener()`, but you can find discussion of the
-other methods (`addSubscriber()`, `addListenerService()`, and `addSubscriberService()`)
-in the Symfony documentation:
+The `EventDispatcher` has several different methods for registering a
+listener.  Our examples have focused on the simplest one, `addListener()`,
+but the Symfony documentation describes other methods (`addSubscriber()`,
+`addListenerService()`, and `addSubscriberService()`).  See also:
 
  * [Symfony EventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher.html)
  * [Symfony ContainerAwareEventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher/container_aware_dispatcher.html)
 
-!!! tip
-    When calling `addListener()`, you can pass any [PHP callable](http://php.net/manual/en/language.types.callable.php).
-    _However_, in practice, the safest bet is to pass a string (function-name) or array
+!!! tip "Using `addListener()`"
+    When calling `addListener()`, you _can_ pass any [PHP callable](http://php.net/manual/en/language.types.callable.php).
+    However, _in practice_, the safest bet is to pass a string (function-name) or array
     (class-name, function-name). Other formats may not work with the
     [container-cache](http://symfony.com/doc/2.7/components/dependency_injection/compilation.html).
 
@@ -121,8 +127,7 @@ in the Symfony documentation:
    you may not be able to listen for these hooks.
  * _Opaque CMS listeners_: Most hooks are dispatched through `EventDispatcher` as well as the traditional
    hook systems for Drupal modules, Joomla plugins, WordPress plugins, and/or CiviCRM extensions.
-   This is accomplished by daisy-chaining: first, the event goes `EventDispatcher`; there, a
-   listener called `delegateToUF()` passes the event down to the other systems. If you inspect
-   `EventDispatcher`, there will be one step (`\Civi\Core\CiviEventDispatcher::delegateToUF()`)
+   This is accomplished by _daisy-chaining_: first, the event is dispatched with `EventDispatcher`; then, the
+   listener `CiviEventDispatcher::delegateToUF()` passes the event down to the other systems.
+   If you inspect `EventDispatcher`, there will be one listener (`delegateToUF()`)
    which represents _all_ CMS-based listeners.
-
