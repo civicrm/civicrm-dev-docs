@@ -6,11 +6,11 @@ This hook is called processing a valid profile form submission (e.g. for "civicr
 
 ## Definition
 
-    processProfile($name)
+    processProfile($profileName)
 
 ## Parameters
 
--   $name - the (machine readable) name of the profile.
+-   $profileName - the (machine readable) name of the profile.
 
 !!! Tip
     In SQL, this corresponds to the "name" column of table "civicrm_uf_group"

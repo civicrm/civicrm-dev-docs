@@ -7,11 +7,11 @@ profile).
 
 ## Definition
 
-    searchProfile($name)
+    searchProfile($profileName)
 
 ## Parameters
 
--   $name - the (machine readable) name of the profile.
+-   $profileName - the (machine readable) name of the profile.
 
 ## Returns
 

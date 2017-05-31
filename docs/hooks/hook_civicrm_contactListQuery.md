@@ -18,7 +18,7 @@ the list of contacts to display.
 
 ## Definition
 
-    hook_civicrm_contactListQuery( &$query, $name, $context, $id )
+    hook_civicrm_contactListQuery( &$query, $queryText, $context, $id )
 
 ## Parameters
 
@@ -29,7 +29,7 @@ the list of contacts to display.
     -   the contact 'data' to display in the autocomplete dropdown
         (usually contact.sort_name - aliased as 'data')
     -   the contact IDs
--   $name - the name string to execute the query against (this is the
+-   $queryText - the name string to execute the query against (this is the
     value being typed in by the user)
 -   $context - the context in which this ajax call is being made (for
     example: 'customfield', 'caseview')
@@ -56,7 +56,7 @@ This example limits contacts in my contact reference field lookup
             $query = "
     SELECT c.sort_name as data, c.id
     FROM civicrm_contact c, civicrm_group_contact cg
-    WHERE c.sort_name LIKE '$name%'
+    WHERE c.sort_name LIKE '$queryText%'
     AND   cg.group_id IN ( 5 )
     AND   cg.contact_id = c.id
     AND   cg.status = 'Added'
