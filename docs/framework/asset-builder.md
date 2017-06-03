@@ -1,0 +1,137 @@
+# Asset Builder
+
+The `AssetBuilder` manages semi-dynamic assets, such as generated JS/CSS
+files. Semi-dynamic assets are simultaneously:
+
+ * __Dynamic__: They vary depending on the current system configuration.
+   You cannot lock-in a correct version of the asset because each
+   installation may need a slightly different version.
+ * __Static__: Within a given site, the asset is not likely to change.
+   It could even be served directly by the web-server (without the overhead
+   of PHP/CMS/Civi bootstrap)
+
+!!! note "Example: Batch loading Angular HTML"
+    When visiting the AngularJS base page `civicrm/a`, one needs to load a
+    mix of many small HTML files.  It's ideal to aggregate them into one
+    bigger file and reduce the number of round-trip HTTP requests.
+
+    This asset is _dynamic_ because extensions can add or modify HTML files.
+    Two different sites would have different HTML files (depending on the
+    mix of extensions).  Yet, within a particular site/configuration, the
+    content is _static_ because the HTML doesn't actually change at runtime.
+
+The `AssetBuilder` addresses this use-case with *lazy* building.  Assets are not
+distributed as part of `git` or `tar.gz`.  Rather, the first time you try to
+use an asset, it fires off a hook to build the asset.  The content is stored
+in a cache file.
+
+!!! tip "Tip: Caching and development"
+    If you are developing or patching assets, then the caching behavior may
+    get distracting. To bypass the cache, enable **debug mode**.
+
+## Usage: Simple asset
+
+There are generally two aspects to using `AssetBuilder` -- creating a URL
+for the asset, and defining the content of the asset.
+
+For example, suppose we wanted to define a static file named
+`api-fields.json` which lists all the fields of all the API entities.
+
+```php
+// Get the URL to `api-fields.json`.
+$url = \Civi::service('asset_builder')->getUrl('api-fields.json');
+
+// Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
+function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
+  if ($asset !== 'api-fields.json') return;
+
+  $entities = civicrm_api3('Entity', 'get', array());
+  $fields = array();
+  foreach ($entities['values'] as $entity) {
+    $fields[$entity] = civicrm_api3($entity, 'getfields');
+  }
+
+  $mimeType = 'application/json';
+  $content = json_encode($fields);
+}
+```
+
+!!! note "What does `getUrl(...)` do?"
+
+    In normal/production mode, `getUrl(...)` checks to see if the asset
+    already exists.  If necessary, it fires the hook and saves the asset to
+    disk.  Finally, it returns the direct URL for the asset -- which allows
+    the user to fetch it quickly (without extra PHP/CMS/Civi bootstrapping).
+
+    In debug mode, `getUrl(...)` returns the URL of a PHP script.  The PHP
+    script will build the asset every time it's requested.
+
+## Usage: Parameterized asset
+
+What should you do if you need to create a series of similar assets, based on slightly
+different permutations or configurations? Add parameters (aka `$params`).
+
+For example, we might want a copy of `api-fields.json` which only includes a
+handful of chosen entities.  Simply pass the chosen entities into
+`getUrl()`, then update the definition to use `$params['entities']`, as in:
+
+```php
+// Get the URL to `api-fields.json`. This variant only includes
+// a few contact-related entities.
+$contactEntitiesUrl = \Civi::service('asset_builder')
+  ->getUrl('api-fields.json', array(
+    'entities' => array('Contact', 'Phone', 'Email', 'Address'),
+  )
+);
+
+// Get the URL to `api-fields.json`. This variant only includes
+// a few case-related entities.
+$caseEntitiesUrl = \Civi::service('asset_builder')
+  ->getUrl('api-fields.json', array(
+    'entities' => array('Case', 'Activity', 'Relationship'),
+  )
+);
+
+// Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
+function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
+  if ($asset !== 'api-fields.json') return;
+
+  $fields = array();
+  foreach ($params['entities'] as $entity) {
+    $fields[$entity] = civicrm_api3($entity, 'getfields');
+  }
+
+  $mimeType = 'application/json';
+  $content = json_encode($fields);
+}
+```
+
+!!! note "Note: Parmaters and caching"
+    Each combination of ($asset,$params) will be cached separately.
+
+!!! tip "Tip: Economize parameter size"
+    In debug mode, all parameters are passed as part of the URL. `AssetBuilder`
+    will try to compress them, but fundamentally: long `$params` will produce
+    long URLs.
+
+## Other considerations
+
+!!! note "Compare: How does AssetBuilder differ from [Assetic](https://github.com/kriswallsmith/assetic)?"
+    Both are written in PHP, but they address differet parts of the process:
+
+     * `AssetBuilder` provides URL-routing, caching, and parameterization.
+       Its strength is defining the *lifecycle* of a dynamic asset.
+     * `Assetic` provides a library of generators and filters.  Its strength
+       is defining the *content* of an asset.
+
+    You could use them together -- e.g.  in `hook_civicrm_buildAsset`,
+    declare a new asset and use `Assetic` to build its content.
+
+!!! caution "Caution: Assimilate non-confidential data"
+    The current implementation does not take aggressive measures to keep
+    assets confidential. For example, an asset built from public JS files
+    is fine, but an asset built from permissioned data (contact-records
+    or activity-records) could be problematic.
+
+    It may be possible to fix this by computing URL digests differently, but
+    (at time of writing) we don't have a need/use-case.
