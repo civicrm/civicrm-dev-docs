@@ -58,7 +58,7 @@ __Service Files__
 
    * `ang/{mymodule}/{FooBar}.js` - The declaration and logic for a service named `mymoduleFooBar`.
 
-!!! tip "Use tilde (`~`) to load HTML templates"
+!!! tip "Tip: Use tilde (`~`) to load HTML templates"
     When writing code for Angular, you might use an expression like
     `{templateUrl: 'https://example.org/FooBar.html'}`.  However,
     constructing a full URL that works in every Civi deployment would be
