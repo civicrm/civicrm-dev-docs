@@ -37,42 +37,40 @@ Write ang/aboutme.css
     is not required -- the option `--am` can specify a different name.  This
     can be useful if you want to organize your code into multiple modules.
 
+!!! note "Note: `ang/` folder"
+    By convention, AngularJS source code is stored in the `ang/` folder, and
+    each item is named after its module.  The convention is discussed in
+    more detail in [AngularJS: File Names](/framework/angular/files.md)
 
-The first file, `ang/aboutme.ang.php`, configures the file-loader:
+The first file, `ang/aboutme.ang.php`, provides metadata for the PHP-based
+file-loader, e.g.
 
 ```php
 return array(
-  'requires' => array('crmUi', 'crmUtil', 'ngRoute'),
-  'js' => array(
-    'ang/aboutme.js',
-    'ang/aboutme/*.js',
-    'ang/aboutme/*/*.js',
-  ),
-  'css' => array ('ang/aboutme.css'),
+  'requires' => array('ngRoute', 'crmUi', 'crmUtil'),
+  'js' => array('ang/aboutme.js', 'ang/aboutme/*.js', 'ang/aboutme/*/*.js'),
+  'css' => array('ang/aboutme.css'),
   'partials' => array('ang/aboutme'),
   'settings' => array(),
 );
 ```
 
-And the second file, `ang/aboutme.js`, declares the Angular module's dependencies.
+The second file, `ang/aboutme.js`, provides metadata for the JS-based
+Angular runtime, e.g.
 
 ```js
   angular.module('aboutme', [
-    'crmUi', 'crmUtil', 'ngRoute'
+    'ngRoute', 'crmUi', 'crmUtil'
   ]);
 ```
 
-!!! tip "Tip: angular.module() and angular.crmDepends()"
+!!! tip "Tip: angular.module() and CRM.angRequires()"
     The list of dependencies is declared once in PHP and once in JS.  To
-    remove this duplication, change `angular.module('aboutme',...)` to
-    `angular.crmDepends('aboutme');`
+    remove this duplication, replace the array `['ngRoute', 'crmUi', 'crmUtil']`
+    with a function call `CRM.angRequires('aboutme')`.
 
-!!! note "Note: `ang/` folder"
-    By convention, AngularJS source code is stored in the `ang/` folder.
-    The convention is discussed in more detail in [AngularJS: File
-    Names](/framework/angular/files.md)
 
-## Add an Angular route, etal
+## Add an Angular-based page
 
 Now let's add a new Angular-based page.  This page will require a `route`
 with a `controller` and an HTML template.  The command `civix
