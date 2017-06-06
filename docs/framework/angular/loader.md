@@ -1,6 +1,6 @@
 # AngularJS: Loader
 
-What happens when a user visits a CiviCR-Angular page? For example, let's
+What happens when a user visits a CiviCRM-Angular page? For example, let's
 consider this URL:
 
  * `https://example.org/civicrm/a/#/caseType`
@@ -9,8 +9,8 @@ Broadly speaking, two things happen:
 
  1. (Server-side) CiviCRM processes the request for `civicrm/a`. It
     displays a web-page with all your Angular modules -- such as
-    `crmAttachment`, `crmCaseType`, `crmUi`, and so on.
- 2. (Client-side) AngularJS processes the request.  It finds that the
+    `ngRoute`, `crmAttachment`, `crmCaseType`, `crmUi`, and so on.
+ 2. (Client-side) AngularJS processes the HTML/JS/CSS.  It finds that the
     module `crmCaseType` includes a route for `#/caseType` and loads the
     appropriate HTML template.
 
@@ -19,7 +19,7 @@ The client-side behavior is well-defined by Angular
 server-side in greater depth because that is unique to the CiviCRM-Angular
 integration.
 
-!!! caution "Discusses new/experimental interfaces"
+!!! caution "Caution: Discusses new/experimental interfaces"
 
     Some elements of this document have been around since CiviCRM v4.6
     and should remain well-supported. Other elements are new circa v4.7.21

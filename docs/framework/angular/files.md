@@ -4,8 +4,8 @@ As a developer working with CiviCRM-Angular, you write *Angular modules* --
 these modules are composed of various JS/CSS/HTML files which define the
 *services*, *directives*, *controllers*, and *HTML partials*.
 
-For sake of predictability, these files follow a naming convention.  All
-major Angular files are placed in the `ang/` folder.
+For sake of predictability, these files are placed in the `ang/` folder, and
+they follow a naming convention.
 
 !!! note "How does this work with `civix`?"
     When you generate Angular code via `civix`, the files are
