@@ -1,7 +1,7 @@
 # Asset Builder
 
-The `AssetBuilder` manages semi-dynamic assets, such as generated JS/CSS
-files. Semi-dynamic assets are simultaneously:
+The `AssetBuilder` manages lazily-generated assets, such as aggregated
+JS/CSS files.  Lazy assets are simultaneously:
 
  * __Dynamic__: They vary depending on the current system configuration.
    You cannot lock-in a correct version of the asset because each
@@ -12,18 +12,19 @@ files. Semi-dynamic assets are simultaneously:
 
 !!! note "Example: Batch loading Angular HTML"
     When visiting the AngularJS base page `civicrm/a`, one needs to load a
-    mix of many small HTML files.  It's ideal to aggregate them into one
+    mix of many small HTML templates.  It's ideal to aggregate them into one
     bigger file and reduce the number of round-trip HTTP requests.
 
-    This asset is _dynamic_ because extensions can add or modify HTML files.
-    Two different sites would have different HTML files (depending on the
-    mix of extensions).  Yet, within a particular site/configuration, the
-    content is _static_ because the HTML doesn't actually change at runtime.
+    This asset is _dynamic_ because extensions can add or modify HTML
+    templates.  Two different sites would have different HTML templates
+    (depending on the mix of extensions).  Yet, within a particular
+    site/configuration, the content is _static_ because the HTML doesn't
+    actually change at runtime.
 
-The `AssetBuilder` addresses this use-case with *lazy* building.  Assets are not
-distributed as part of `git` or `tar.gz`.  Rather, the first time you try to
-use an asset, it fires off a hook to build the asset.  The content is stored
-in a cache file.
+The `AssetBuilder` addresses this use-case with *lazy* building.  Assets are
+not distributed as part of `git` or `tar.gz`.  Rather, the first time you
+use an asset, it fires off a hook which builds the content.  The content is
+stored in a cache file.
 
 !!! tip "Tip: Caching and development"
     If you are developing or patching assets, then the caching behavior may
@@ -40,6 +41,8 @@ For example, suppose we wanted to define a static file named
 ```php
 // Get the URL to `api-fields.json`.
 $url = \Civi::service('asset_builder')->getUrl('api-fields.json');
+
+...
 
 // Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
 function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
@@ -92,6 +95,8 @@ $caseEntitiesUrl = \Civi::service('asset_builder')
   )
 );
 
+...
+
 // Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
 function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
   if ($asset !== 'api-fields.json') return;
@@ -120,14 +125,14 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
     Both are written in PHP, but they address differet parts of the process:
 
      * `AssetBuilder` provides URL-routing, caching, and parameterization.
-       Its strength is defining the *lifecycle* of a dynamic asset.
+       Its strength is defining a *lazy lifecycle* for the assets.
      * `Assetic` provides a library of generators and filters.  Its strength
        is defining the *content* of an asset.
 
     You could use them together -- e.g.  in `hook_civicrm_buildAsset`,
     declare a new asset and use `Assetic` to build its content.
 
-!!! caution "Caution: Assimilate non-confidential data"
+!!! caution "Caution: Confidentiality and lazy assets"
     The current implementation does not take aggressive measures to keep
     assets confidential. For example, an asset built from public JS files
     is fine, but an asset built from permissioned data (contact-records
