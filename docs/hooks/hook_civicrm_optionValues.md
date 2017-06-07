@@ -12,13 +12,13 @@ hook to add/remove options from the option group.
 ## Definition
 
 ```php
-hook_civicrm_optionValues(&$options, $name)
+hook_civicrm_optionValues(&$options, $groupName)
 ```
 
 ## Parameters
 
 -   array `$options` - the current set of options
--   string `$name` - the name of the option group
+-   string `$groupName` - the name of the option group
 
 ## Returns
 

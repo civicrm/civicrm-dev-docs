@@ -6,11 +6,11 @@ This hook is called while validating a profile form submission.
 
 ## Definition
 
-    validateProfile($name)
+    validateProfile($profileName)
 
 ## Parameters
 
--   $name - the (machine readable) name of the profile.
+-   $profileName - the (machine readable) name of the profile.
 
 ## Returns
 

@@ -624,8 +624,7 @@ This creates one file:
     that the parameters and return values must be processed in a
     particular way (as demonstrated by the auto-generated file).
 
-<!-- fixme - clarify is this 4.3 and later? -->
-For use with CiviCRM 4.3, you can also add the `–schedule` option (e.g.
+For use with CiviCRM 4.3 and later, you can also add the `–schedule` option (e.g.
 `–schedule Hourly`). This will create another file:
 
 -   `api/v3/NewEntity/NewAction.mgd.php` provides the scheduling

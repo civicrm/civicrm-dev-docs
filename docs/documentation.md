@@ -2,7 +2,7 @@
 
 To *read* documentation, go to [docs.civicrm.org](https://docs.civicrm.org) for the most high-level list of all active documentation.
 
-This page describes the documentation systems within CiviCRM and how to contribute.
+This page describes the details of the documentation systems within CiviCRM and how to contribute. We also have a more [basic overview] (https://docs.civicrm.org/user/en/latest/the-civicrm-community/contributing-to-this-manual/) on how to contribute to this guide or the user guide. 
 
 !!! note "Note: the wiki is not covered here"
     The [wiki] has historically been CiviCRM's documentation system but is currently being phased out. As of early 2017, documentation is still somewhat split between the wiki the the guide books described below, but we are working to eventually consolidate *all* documentation into guide books. A [migration process][migration] is currently underway for this Developer Guide, and a process will [likely](https://github.com/civicrm/civicrm-docs/issues/17) follow for a dedicated Administrator Guide, as well as [extension guides](https://github.com/civicrm/civicrm-docs/issues/14).
@@ -16,9 +16,6 @@ This page describes the documentation systems within CiviCRM and how to contribu
 
 We are using [MkDocs](http://www.mkdocs.org) to produce books. The content for each of these books is written in [markdown](/markdownrules.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
 
-### Languages
-
-A book can have multiple languages, and we use separate repositories for different languages.
 
 ### Versions
 
@@ -30,6 +27,9 @@ If you're improving current documentation, please edit the `master` branch, whic
 
 In rarer cases, if you have an edit that pertains to a specific version, (e.g. documentation about a feature in an *older* version of CiviCRM, which does not require documentation in the latest version), then please edit the branch corresponding to that version.
 
+### Languages
+
+A book can have multiple languages, and we use separate repositories for different languages. For example, you can click *See all X editions* and find the repositories for additional languages.  
 
 ## Contributing to documentation
 
@@ -48,21 +48,13 @@ Before diving into editing, you may find helpful information within the followin
 
 ### Submitting issues
 
-The simplest way to help out is to *describe* a change that you think *should* be made by writing a new issue in the issue queue for the book you are reading. Then someone will see your issue and act on it, hopefully fast. Each book has its own issue queue. First find the GitHub repository for the book (listed in the above table), then when viewing on GitHub, click on "Issues". You will need an account on GitHub to submit a new issue, but creating one is quick and free.
+The simplest way to help out is to *describe* a change that you think *should* be made by writing a new issue in the issue queue for the GitHub book you are reading. Then someone will see your issue and act on it, hopefully fast. Each book has its own issue queue. First find the GitHub repository for the book (listed in the above table), then when viewing on GitHub, click on "Issues". You will need an account on GitHub to submit a new issue, but creating one is quick and free.
 
 ### Editing through GitHub
 
-Suggest specific changes by making the changes within the text editor on GitHub. (You will first need an account on GitHub.)
+Please see the documentation for editing with Git in the [CiviCRM user guide](https://docs.civicrm.org/user/en/stable/the-civicrm-community/contributing-to-this-manual/#single_changes).   
 
-1. Find the page in the book you wish to edit.
-1. Click on the pencil icon at the top right.
-1. Make changes within the editor on GitHub.
-1. Click "Propose file change" at the bottom.
-1. **Important**: Click "Create pull request" and confirm. (You're not done until you create a pull request.)
-
-After you follow the steps above, someone else will review your changes and hopefully accept them, at which point you'll be notified via email.
-
-### Editing locally with MkDocs {:#mkdocs}
+### Testing locally with MkDocs {:#mkdocs}
 
 The most advanced way to work on a book is to use git to download all the markdown files to your computer, edit them locally, preview the changes with [MkDocs](http://mkdocs.org/), then use git to push those changes to your personal fork, and finally make a "pull request" on the main repository. This approach makes editing very fast and easy, but does require a bit of setup, and some knowledge of how git works.
 
@@ -78,10 +70,10 @@ The most advanced way to work on a book is to use git to download all the markdo
     ```
 
 1.  Obtain the source files for the book you want to edit
-    1.  Find the repository on GitHub &mdash; *Most books will have a link to this repo at the top right of every page (with a GitHub icon)*
+    1.  Find the repository on GitHub *(see "repository" links above, or the "GitHub" link on the bottom left of screen of the documentation you are reading)*
     1.  Fork the repository on GitHub.
     1.  Clone *your fork* of the repository to your computer
-
+				
         ```bash
         git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
         cd civicrm-dev-docs

@@ -6,11 +6,11 @@ This hook is called while preparing a profile form.
 
 ## Definition
 
-    buildProfile($name)
+    buildProfile($profileName)
 
 ## Parameters
 
--   $name - the (machine readable) name of the profile.
+-   $profileName - the (machine readable) name of the profile.
 
 ## Returns
 
@@ -21,9 +21,9 @@ immediately obvious how I can use this. I could do something like this:
 
 
 
-    function myext_civicrm_buildProfile($name) {
+    function myext_civicrm_buildProfile($profileName) {
 
-      if ($name === 'MyTargetedProfile) {
+      if ($profileName === 'MyTargetedProfile) {
 
         CRM_Core_Resources::singleton()->addScriptFile('org.example.myext', 'some/fancy.js', 100);
 

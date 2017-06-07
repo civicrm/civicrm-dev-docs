@@ -9,7 +9,7 @@ unconditionally).
 
 !!! Note
     If a given entity/action permissions are unset, the default
-    "access CiviCRM" permission is enforced.
+    "administer CiviCRM" permission is enforced.
 
 
 ## Definition
@@ -39,6 +39,10 @@ hook_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissions)
 
 ## Example
 
+The `alterAPIPermissions` function is prefixed with the full extension name, all lowercase,
+followed by `_civicrm_alterAPIPermissions`. For an extension "CiviTest" the hook
+would be placed in the `civitest.php` file and might look like:
+
 ```php
 function civitest_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissions)
 {
@@ -61,9 +65,9 @@ function civitest_civicrm_alterAPIPermissions($entity, $action, &$params, &$perm
 }
 ```
 
-When developing an extension with custom API, this code is placed
-directly in the API php file that you have created. In this case the
-extension would be named CiviTest. The API function for the GET would be
-`function civicrm_api3_civi_test_get();`. The `alterAPIPermissions`
-function is prefixed with the full extension name, all lowercase,
-followed by `_civicrm_alterAPIPermissions`.
+The API function for the "get" action for the new custom API entity called "Foo" would be
+`function civicrm_api3_foo_get();`.
+
+
+
+
