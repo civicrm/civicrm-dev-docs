@@ -1,1 +1,0 @@
-docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-mkdocs serve --dirtyreload -a 0.0.0.0:8000

@@ -68,7 +68,11 @@ The most advanced way to work on a book is to use git to download all the markdo
         cd civicrm-dev-docs
         ```
         
-1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run the script `./docker-mkdocs-serve` and skip to the "view the book" step below.
+1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run the following command and then skip to the "view the book" step below.
+
+    ```
+    docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+    ```
 
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
