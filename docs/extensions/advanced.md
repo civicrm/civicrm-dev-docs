@@ -1,8 +1,7 @@
 # Advanced patterns
 
-[]( FIXME remove this banner after review)
->> NOTE: Some of these instruction maybe deprecated and superceded by better
->> approaches.
+!!! caution 
+    Some of these instruction maybe deprecated and superceded by better approaches.
 
 ## Web Services
 
