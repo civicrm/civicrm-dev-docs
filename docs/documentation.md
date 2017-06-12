@@ -29,7 +29,7 @@ In rarer cases, if you have an edit that pertains to a specific version, (e.g. d
 
 ### Languages
 
-A book can have multiple languages, and we use separate repositories for different languages. For example, you can click *See all X editions* and find the repositories for additional languages.  
+A book can have multiple languages, and we use separate repositories for different languages. For example, you can click *See all X editions* and find the repositories for additional languages.
 
 ## Contributing to documentation
 
@@ -52,11 +52,27 @@ The simplest way to help out is to *describe* a change that you think *should* b
 
 ### Editing through GitHub
 
-Please see the documentation for editing with Git in the [CiviCRM user guide](https://docs.civicrm.org/user/en/stable/the-civicrm-community/contributing-to-this-manual/#single_changes).   
+Please see the documentation for editing with Git in the [CiviCRM user guide](https://docs.civicrm.org/user/en/stable/the-civicrm-community/contributing-to-this-manual/#single_changes).
 
 ### Testing locally with MkDocs {:#mkdocs}
 
 The most advanced way to work on a book is to use git to download all the markdown files to your computer, edit them locally, preview the changes with [MkDocs](http://mkdocs.org/), then use git to push those changes to your personal fork, and finally make a "pull request" on the main repository. This approach makes editing very fast and easy, but does require a bit of setup, and some knowledge of how git works.
+
+1.  Obtain the source files for the book you want to edit
+    1.  Find the repository on GitHub *(see "repository" links above, or the "GitHub" link on the bottom left of screen of the documentation you are reading)*
+    1.  Fork the repository on GitHub.
+    1.  Clone *your fork* of the repository to your computer
+				
+        ```bash
+        git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
+        cd civicrm-dev-docs
+        ```
+        
+1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run the following command and then skip to the "view the book" step below.
+
+    ```
+    docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+    ```
 
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
@@ -69,17 +85,7 @@ The most advanced way to work on a book is to use git to download all the markdo
     sudo pip install mkdocs mkdocs-material pygments pymdown-extensions
     ```
 
-1.  Obtain the source files for the book you want to edit
-    1.  Find the repository on GitHub *(see "repository" links above, or the "GitHub" link on the bottom left of screen of the documentation you are reading)*
-    1.  Fork the repository on GitHub.
-    1.  Clone *your fork* of the repository to your computer
-				
-        ```bash
-        git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
-        cd civicrm-dev-docs
-        ```
-
-1. Launch a local copy of the book
+1. Serve a local copy of the book with MkDocs
     1. Run:
 
         ```bash
@@ -89,7 +95,7 @@ The most advanced way to work on a book is to use git to download all the markdo
         -   If you get `[Errno 98] Address already in use` then try using a
             different port with `mkdocs serve -a localhost:8001`
 
-    1. View through your browser at `http://localhost:8000`.
+1. View the book locally your browser at `http://localhost:8000`.
 
 1.  Edit the [markdown](/markdownrules.md) with an editor of your choice. As you
     save your changes `mkdocs` will automatically reprocess the page and
