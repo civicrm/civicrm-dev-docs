@@ -22,7 +22,7 @@ pages:
   # Submitting a Patch: /core/patches.md
   # Verifying a Bug Fix: /core/verifying.md
 - Extensions Development:
-  - Basics: extensions/basics.md
+  - Basics: extensions/index.md
   - civix: extensions/civix.md
   # Creating Pages: extensions/create-page.md
   # Storing Configuration: extensions/config.md
@@ -56,7 +56,7 @@ pages:
   # CiviReport: /reference/civireport.md
   # Payment Processing: /reference/payment.md
 - API:
-  - APIv3 Intro: api/general.md
+  - APIv3 Intro: api/index.md
   - APIv3 Usage: api/usage.md
   - APIv3 Actions: api/actions.md
   - APIv3 Parameters: api/params.md
@@ -64,7 +64,7 @@ pages:
   - APIv3 Chaining: api/chaining.md
   # APIv3 Changes: api/changes.md
 - Hooks:
-  - Using hooks: hooks.md
+  - Using hooks: hooks/index.md
   - Setup:
     - Hooks with Symfony: hooks/setup/symfony.md
     - Hooks with Joomla: hooks/setup/joomla.md
@@ -187,7 +187,7 @@ pages:
     - hook_civirules_alter_trigger_data: hooks/hook_civirules_alter_trigger_data.md
     - hook_civirules_logger: hooks/hook_civirules_logger.md
 - Documentation:
-  - Writing Documentation: documentation.md
+  - Writing Documentation: documentation/index.md
   - Documenting Extensions: documentation/extensions.md
   - Markdown: documentation/markdown.md
   - Style Guide: documentation/style-guide.md

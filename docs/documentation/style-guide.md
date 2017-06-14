@@ -36,6 +36,10 @@ option (when possible) is helpful to some readers.
 Don't use terms like "previous chapter", etc. because we may add or re-arrange
 chapters in the future. Instead, use a hyperlink to the chapter.
 
+### Hackable URLs
+
+When you organize several markdown files into one folder, it's good practice to include an `index.md` file within the folder and list this index file *first* in the list of pages within the folder in `mkdocs.yml`. This creates a "general" page which follows the same URL structure as the other pages in the folder but allows readers to hack the URL more easily. 
+
 ### Headings
 
 The first heading in a chapter should be Heading 1. All others should be
