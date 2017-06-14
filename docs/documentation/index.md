@@ -116,6 +116,26 @@ The most advanced way to work on a book is to use git to download all the markdo
 1. If you're copying existing content from other sources (e.g. wiki, StackExchange, etc.) then follow the [instructions for providing attribution](#attributing-imports)
 1. If you're migrating one whole wiki page, follow [instructions for redirecting a wiki page to MkDocs](https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide#ContentmigrationfromwikitoDeveloperGuide-HowtoredirectonewikipagetotheDevGuide).
 
+### Moving pages
+
+If you'd like to move a page, take the following steps:
+
+(Before-hand) if you have changes to page *content*, then make those in a *separate* git commit.
+
+1. Move the file.
+1. Update `mkdocs.yml` with the new path to the page.
+1. Add a redirect rule to `redirects/internal.txt`.
+    * Format is `old/page/path new/page/path`
+    * Use the part of the path *after* the `docs` directory.
+    * Don't use leading or trailing slashes
+    * Don't use a `.md` extension
+    * List the old path first and the new one second
+    * Separate the paths with a space
+1. Run `mkdocs serve` and see if it gives you any warnings about broken hyperlinks. If it does, go fix those.
+
+!!! note
+    Page redirection *won't work locally* (when previewing with `mkdocs serve`), but it *will* work once the book is published on docs.civicrm.org. The redirection is implemented as part of our [docs-publisher](https://lab.civicrm.org/documentation/docs-publisher) app.
+
 ## Content attribution guidelines {:#attribution}
 
 All CiviCRM documentation content is licensed [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). This means that if you want to copy content out of our docs and use it elsewhere, you're welcome to do so as long as your give attribution to the author. 
