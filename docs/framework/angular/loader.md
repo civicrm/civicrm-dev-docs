@@ -66,7 +66,7 @@ For a full list, try passing --user=[username].
     $ cv ang:module:list --user=admin
     ```
 
-Under-the-hood, this library of modules is defined via
+Under-the-hood, this library of modules is built via
 [hook_civicrm_angularModules](/hooks/hook_civicrm_angularModules.md), e.g.
 
 ```php
@@ -117,7 +117,11 @@ and loads them on the page. This will include:
     `array('civicrm/a')`.  In other words, if you don't specify otherwise,
     all modules are loaded on `civicrm/a`.
 
-## Custom base-pages
+!!! note "How does `load()` output the `<script>` tag(s)?"
+    `load()` uses [CRM_Core_Resources](https://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference)
+    to register JS/CSS files.
+
+## Other base-pages
 
 Loading all Angular modules on one page poses a trade-off.  On one hand, it
 warms up the caches and enables quick transitions between screens.  On the
@@ -175,7 +179,8 @@ $ cv url 'civicrm/caseadmin/#/caseType'
 
 !!! caution "Embedding Angular in other contexts"
 
-    The `AngularLoader` does not require a standalone page -- for
-    example, you might inject Angular onto a pre-existing, non-Angular page
-    by using `hook_civicrm_pageRun` and `AngularLoader`.  Some extensions do
-    this -- though it remains to be seen whether this is *wise*.
+    In the example, we created a new, standalone page.  But you can use
+    `AngularLoader` in other ways -- eg, you might listen for
+    `hook_civicrm_pageRun` and embed Angular onto a pre-existing,
+    non-Angular page.  Some extensions do this -- though it remains to be
+    seen whether this is *wise*.
