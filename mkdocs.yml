@@ -192,7 +192,7 @@ pages:
   - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
   - Documenting Extensions: documentation/extensions.md
   - Markdown: documentation/markdown.md
-  - Style Guide: best-practices/documentation-style-guide.md  # page-tree = NEED_PAGE_MOVE to /documentation/style-guide.md
+  - Style Guide: documentation/style-guide.md
 - Content to reorganize:
   - Extensions files: extensions/files.md
   - Requirements: requirements.md
