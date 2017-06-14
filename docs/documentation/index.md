@@ -14,7 +14,7 @@ This page describes the details of the documentation systems within CiviCRM and 
 
 ## Guide books in MkDocs
 
-We are using [MkDocs](http://www.mkdocs.org) to produce books. The content for each of these books is written in [markdown](/markdownrules.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
+We are using [MkDocs](http://www.mkdocs.org) to produce books. The content for each of these books is written in [markdown](/documentation/markdown.md), stored in text files, and hosted in a repository on GitHub. Then, the books are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
 
 
 ### Versions
@@ -39,9 +39,9 @@ We welcome contributions, small and large, to documentation!
 
 Before diving into editing, you may find helpful information within the following resources:
 
-- [Markdown syntax](/markdownrules.md) - necessary (but simple) syntax to format content
-- [Markdown code standards](/markdownrules.md#standards) - recommendations for markdown syntax to use
-- [Style guide](/best-practices/documentation-style-guide.md) - to maintain consistent language and formatting
+- [Markdown syntax](/documentation/markdown.md) - necessary (but simple) syntax to format content
+- [Markdown code standards](/documentation/markdown.md#standards) - recommendations for markdown syntax to use
+- [Style guide](/documentation/style-guide.md) - to maintain consistent language and formatting
 - [Documentation chat room](https://chat.civicrm.org/civicrm/channels/documentation) - live discussion, fast (most of the time) answers to your questions
 - [Documentation mailing list](https://lists.civicrm.org/lists/info/civicrm-docs) - low traffic, mostly used for informational updates regarding documentation projects
 
@@ -97,7 +97,7 @@ The most advanced way to work on a book is to use git to download all the markdo
 
 1. View the book locally your browser at `http://localhost:8000`.
 
-1.  Edit the [markdown](/markdownrules.md) with an editor of your choice. As you
+1.  Edit the [markdown](/documentation/markdown.md) with an editor of your choice. As you
     save your changes `mkdocs` will automatically reprocess the page and
     refresh your browser.
 
