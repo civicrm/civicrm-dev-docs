@@ -66,15 +66,18 @@ Angular runtime, e.g.
 
 !!! tip "Tip: angular.module() and CRM.angRequires()"
     The list of dependencies is declared once in PHP and once in JS.  To
-    remove this duplication, replace the array `['ngRoute', 'crmUi', 'crmUtil']`
-    with a function call `CRM.angRequires('aboutme')`.
+    remove this duplication, call `CRM.angRequires(...)`, as in:
+
+    ```js
+    angular.module('aboutme', CRM.angRequires('aboutme'));
+    ```
 
 
 ## Add an Angular-based page
 
 Now let's add a new Angular-based page.  This page will require a `route`
-with a `controller` and an HTML template.  The command `civix
-generate:angular-page` will create each of these:
+with a `controller` and an HTML template.  The command
+`civix generate:angular-page` will create each of these:
 
 ```
 $ civix generate:angular-page EditCtrl about/me
