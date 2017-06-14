@@ -34,7 +34,7 @@ pages:
   # Searches: extensions/searches.md               # page-tree = NEED_NEW_PAGE
   # Payment Processors: extensions/payment-processors.md # page-tree = NEED_NEW_PAGE
   - Publishing Extensions: extensions/publish.md   # page-tree = DONE
-  - Extension Lifecycle: extend-stages.md          # page-tree = NEED_PAGE_MOVE to /extensions/lifecycle.md
+  - Extension Lifecycle: extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
   - Advanced patterns: extensions/advanced.md
 - Framework Reference:

@@ -1,1 +1,2 @@
 dev-tools/debugging basics/debugging
+extend-stages extensions/lifecycle
