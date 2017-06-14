@@ -7,65 +7,64 @@ theme: material
 pages:
 - Home: index.md
 - Basics:
-  - Developer Community: basics/community.md    # page-tree = DONE
-  - Useful Skills: basics/skills.md       # page-tree = DONE
-  - Planning Your Project: basics/planning.md   # page-tree = DONE
+  - Developer Community: basics/community.md
+  - Useful Skills: basics/skills.md
+  - Planning Your Project: basics/planning.md
   - File System: basics/filesystem.md
-  # buildkit: /setup/buildkit.md                # page-tree = NEED_NEW_PAGE  # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
+  # buildkit: /setup/buildkit.md   # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
   - Debugging: basics/debugging.md
 - Core Development:
-  - When to Edit Core: core/hacking.md             # page-tree = NEED_PAGE_MOVE to /core/deciding.md
-  - How to Contribute: core/contributing.md    # page-tree = DONE
+  - When to Edit Core: core/hacking.md
+  - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
-  - Codebase & Architecture: core/architecture.md # page-tree = DONE
-  # Reporting Bugs & Issues: /core/reporting.md # page-tree = NEED_NEW_PAGE
-  # Submitting a Patch: /core/patches.md        # page-tree = NEED_NEW_PAGE
-  # Review Process: /core/review.md             # page-tree = NEED_NEW_PAGE  # summary: Detailed guidance on how to review PRs
-  # Verifying a Bug Fix: /core/verifying.md     # page-tree = NEED_NEW_PAGE
+  - Codebase & Architecture: core/architecture.md
+  # Reporting Bugs & Issues: /core/reporting.md
+  # Submitting a Patch: /core/patches.md
+  # Verifying a Bug Fix: /core/verifying.md
 - Extensions Development:
-  - Basics: extensions/basics.md                   # page-tree = DONE
-  - civix: extensions/civix.md                     # page-tree = DONE
-  # Creating Pages: extensions/create-page.md      # page-tree = NEED_NEW_PAGE
-  # Storing Configuration: extensions/config.md    # page-tree = NEED_NEW_PAGE
-  # Storing Data: extensions/storing-data.md       # page-tree = NEED_NEW_PAGE
-  # Setting Permissions: extensions/permissions.md # page-tree = NEED_NEW_PAGE
-  # Adding API Functions: extensions/api.md        # page-tree = NEED_NEW_PAGE
-  # Reports: extensions/reports.md                 # page-tree = NEED_NEW_PAGE
-  # Searches: extensions/searches.md               # page-tree = NEED_NEW_PAGE
-  # Payment Processors: extensions/payment-processors.md # page-tree = NEED_NEW_PAGE
-  - Publishing Extensions: extensions/publish.md   # page-tree = DONE
+  - Basics: extensions/basics.md
+  - civix: extensions/civix.md
+  # Creating Pages: extensions/create-page.md
+  # Storing Configuration: extensions/config.md
+  # Storing Data: extensions/storing-data.md
+  # Setting Permissions: extensions/permissions.md
+  # Adding API Functions: extensions/api.md
+  # Reports: extensions/reports.md
+  # Searches: extensions/searches.md
+  # Payment Processors: extensions/payment-processors.md
+  - Publishing Extensions: extensions/publish.md
   - Extension Lifecycle: extensions/lifecycle.md
-  - Troubleshooting: extensions/troubleshooting.md # page-tree = DONE
+  - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
 - Framework Reference:
-  # Bootstrap: /framework/bootstrap.md          # page-tree = NEED_NEW_PAGE
-  # Cache: /framework/cache.md                  # page-tree = NEED_NEW_PAGE
-  # Components: /framework/components.md        # page-tree = NEED_NEW_PAGE
-  # Database: /framework/database.md            # page-tree = NEED_NEW_PAGE
+  # Bootstrap: /framework/bootstrap.md
+  # Cache: /framework/cache.md
+  # Components: /framework/components.md
+  # Database: /framework/database.md
   - Schema definition: framework/schema-definition.md
-  # Resources: /framework/resources.md          # page-tree = NEED_NEW_PAGE
-  # Upgrade: /framework/upgrade.md              # page-tree = NEED_NEW_PAGE
+  # Resources: /framework/resources.md
+  # Upgrade: /framework/upgrade.md
   #### Code Standards:
-  # PHP: /standards/php.md                      # page-tree = NEED_NEW_PAGE
-  # Javascript: /standards/js.md                # page-tree = NEED_NEW_PAGE
-  # API: /standards/api.md                      # page-tree = NEED_NEW_PAGE
-  # Git: /standards/git.md                      # page-tree = NEED_NEW_PAGE
+  # PHP: /standards/php.md
+  # Javascript: /standards/js.md
+  # API: /standards/api.md
+  # Git: /standards/git.md
   #### Testing:
-  # Testing: /testing/testing.md                # page-tree = NEED_NEW_PAGE
+  # Testing: /testing/testing.md
   # Other Reference:
-  # CiviMail: /reference/civimail.md            # page-tree = NEED_NEW_PAGE
-  # CiviReport: /reference/civireport.md        # page-tree = NEED_NEW_PAGE
-  # Payment Processing: /reference/payment.md   # page-tree = NEED_NEW_PAGE
+  # CiviMail: /reference/civimail.md
+  # CiviReport: /reference/civireport.md
+  # Payment Processing: /reference/payment.md
 - API:
-  - APIv3 Intro: api/general.md                   # page-tree = DONE
-  - APIv3 Usage: api/usage.md                     # page-tree = DONE
-  - APIv3 Actions: api/actions.md                 # page-tree = DONE
-  - APIv3 Parameters: api/params.md               # page-tree = DONE
-  # APIv3 Permissions: api/permissions.md         # page-tree = NEED_NEW_PAGE
+  - APIv3 Intro: api/general.md
+  - APIv3 Usage: api/usage.md
+  - APIv3 Actions: api/actions.md
+  - APIv3 Parameters: api/params.md
+  # APIv3 Permissions: api/permissions.md
   - APIv3 Chaining: api/chaining.md
-  # APIv3 Changes: api/changes.md                 # page-tree = NEED_NEW_PAGE
+  # APIv3 Changes: api/changes.md
 - Hooks:
-  - Using hooks: hooks.md                        # page-tree = NEED_PAGE_MOVE to /hooks/usage.md
+  - Using hooks: hooks.md
   - Setup:
     - Hooks with Symfony: hooks/setup/symfony.md
     - Hooks with Joomla: hooks/setup/joomla.md
@@ -184,12 +183,11 @@ pages:
     - hook_civicrm_tokens: hooks/hook_civicrm_tokens.md
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
-  # Extension hooks go here, in alphabetical order
   - CiviRules hooks:
     - hook_civirules_alter_trigger_data: hooks/hook_civirules_alter_trigger_data.md
     - hook_civirules_logger: hooks/hook_civirules_logger.md
 - Documentation:
-  - Writing Documentation: documentation.md     # page-tree = NEED_PAGE_MOVE to /documentation/writing.md
+  - Writing Documentation: documentation.md
   - Documenting Extensions: documentation/extensions.md
   - Markdown: documentation/markdown.md
   - Style Guide: documentation/style-guide.md
