@@ -61,6 +61,7 @@ pages:
   - APIv3 Actions: api/actions.md
   - APIv3 Parameters: api/params.md
   # APIv3 Permissions: api/permissions.md
+  - APIv3 Joins: api/joins.md
   - APIv3 Chaining: api/chaining.md
   # APIv3 Changes: api/changes.md
 - Hooks:
