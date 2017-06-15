@@ -113,3 +113,4 @@ hook_civicrm_alterReportVar hooks/hook_civicrm_alterReportVar
 Hook+Reference hooks
 Hooks hooks
 Extension+Review extensions/lifecycle/#formal-review
+Call+the+CiviCRM+API+from+a+custom+template api/usage/#smarty
