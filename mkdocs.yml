@@ -183,9 +183,6 @@ pages:
     - hook_civicrm_tokens: hooks/hook_civicrm_tokens.md
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
-  - CiviRules hooks:
-    - hook_civirules_alter_trigger_data: hooks/hook_civirules_alter_trigger_data.md
-    - hook_civirules_logger: hooks/hook_civirules_logger.md
 - Documentation:
   - Writing Documentation: documentation/index.md
   - Documenting Extensions: documentation/extensions.md
