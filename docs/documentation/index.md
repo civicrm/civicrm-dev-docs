@@ -68,12 +68,25 @@ The most advanced way to work on a book is to use git to download all the markdo
         cd civicrm-dev-docs
         ```
         
-1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run the following command and then skip to the "view the book" step below.
+1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "view the book" step below.
+	1. For folks who have a full Docker for Windows / Mac / Linux environment, run this command:
 
-    ```
-    docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
-    ```
-
+		```
+		docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+		```
+		
+		and skip to the "view the book" step below.
+		
+	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  Follow these steps:
+		1.  Check that GitHub folder is in the path:  ```c:\Users\<username>\Documents\...```.  If it is, all is good; if not, move it there, and edit your GitHub configuration to reflect the changed location.
+		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM Box), and check that it is functioning properly (Hello-world container works). 
+		1.  Run this command:
+		
+		```
+		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+		```
+		and skip to the "view the book" step below.
+	
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
     - OS X: `brew install python`
