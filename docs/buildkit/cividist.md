@@ -1,6 +1,6 @@
 ## CiviDist
 
-`cividist` generates a website with tarballs built from the official git repos ([civicrm-core.git](https://github.com/civicrm/civicrm-core.git), [civicrm-packages.git](https://github.com/civicrm/civicrm-packages.git), etc). It manages the CiviCRM nightly builds (http://dist.civicrm.org).
+`cividist` generates a website with tarballs built from the official git repos ([civicrm-core.git](https://github.com/civicrm/civicrm-core.git), [civicrm-packages.git](https://github.com/civicrm/civicrm-packages.git), etc). It manages the CiviCRM [nightly builds](http://dist.civicrm.org).
 
 If you wish to run `cividist` with your own repos, you will need to do the some initial setup and then periodically build new tarballs.
 
@@ -14,9 +14,8 @@ civibuild create dist --url http://dist.localhost
 
 ## Setup: Register your forks
 
-Note: If you use forks, you should do so consistently across all repos (even if you don't
-have any customizations on one repo or another). The goal is to consistently name the `remote`s
-and `branch`es across all repos.
+!!! note
+    If you use forks, you should do so consistently across all repos (even if you don't have any customizations on one repo or another). The goal is to consistently name the `remote`s and `branch`es across all repos.
 
 ```
 cd build/dist/src

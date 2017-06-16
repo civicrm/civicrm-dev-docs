@@ -2,20 +2,42 @@
 
 ## CiviCRM-specific tools
 
-All of these tools come bundled within [buildkit](/TODO).
+All of these tools come bundled within [buildkit](/buildkit).
 
-* [civibuild](/buildkit/civibuild.md) - Build a complete source tree (with CMS+Civi+addons), provision httpd/sql, etc.
-* [cv](https://github.com/civicrm/cv) - Execute custom PHP in Civi
-* [civix](https://github.com/totten/civix) - Generate skeletal code for CiviCRM extensions.
-* [civistrings](https://github.com/civicrm/civistrings) - Scan code for translatable strings (*.pot).
-* [cividist](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/cividist.md) - Generate tarballs from a series of git branches/tags
-* gitify - Convert a CiviCRM installation to a git repo.
-* civilint - Check the syntax of uncommitted files using `phpcs`, `jshint`, etc.
-* civihydra - Create a series test sites for several CMSs. (Extends `civibuild`.)
-* [civicrm-upgrade-test](https://github.com/civicrm/civicrm-upgrade-test) - Scripts and data files for testing upgrades.
-* [coder 2.x (Civi)](https://github.com/civicrm/coder) - Configure phpcs for Civi code style. Derived from [coder 2.x](https://www.drupal.org/project/coder). (The [Civi coding standard](http://wiki.civicrm.org/confluence/display/CRMDOC/PHP+Code+and+Inline+Documentation) derives from the [Drupal coding standard](https://www.drupal.org/coding-standards) with variations for class/function/variable naming.)
+* `civibuild` - Build a complete source tree (with CMS+Civi+addons), provision httpd/sql, etc.
+    * *[documentation](/buildkit/civibuild.md)*
+    * *[repository](https://github.com/civicrm/civicrm-buildkit)*
+* `cv` - command is a utility for interacting with a CiviCRM installation
+    * *documentation: run `cv list`*
+    * *[repository](https://github.com/civicrm/cv)*
+* `civix` - Generate skeletal code for CiviCRM extensions
+    * *[documentation](/extensions/civix)*
+    * *[repository](https://github.com/totten/civix)*
+* `civistrings` - Scan code for translatable strings (*.pot)
+    * *documentation: run `civistrings --help`*
+    * *[repository](https://github.com/civicrm/civistrings)*
+* `cividist` - Generate tarballs from a series of git branches/tags
+    * *[documentation](/buildkit/cividist)*
+    * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/cividist)*
+* `gitify` - Convert a CiviCRM installation to a git repo
+    * *documentation: run `gitify` with no arguments*
+    * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/gitify)*
+* `civilint` - Check the syntax of uncommitted files using `phpcs`, `jshint`, etc.
+    * *documentation: run `civilint` with no arguments*
+    * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/civilint)*
+* `civihydra` - Create a series test sites for several CMSs (extends `civibuild`)
+    * *documentation: run `civihydra` with no arguments*
+    * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/civihydra)*
+* `civicrm-upgrade-test` - Scripts and data files for testing upgrades
+    * *[documentation& repository](https://github.com/civicrm/civicrm-upgrade-test)*
+* Coder - Configure phpcs for CiviCRM's [coding standards](http://wiki.civicrm.org/confluence/display/CRMDOC/PHP+Code+and+Inline+Documentation)
+    * *[documentation & repository](https://github.com/civicrm/coder)*
+    * *(Derived from [Drupal's coder project](https://www.drupal.org/project/coder))*
 
-## Other Tools
+
+## External tools installed with buildkit
+
+These tools are not specific to CiviCRM, but you'll get them anyway when you install [buildkit](/buildkit)
 
 * Dependency management
     * [composer](http://getcomposer.org/) - Manage dependencies for PHP code.
@@ -36,7 +58,9 @@ All of these tools come bundled within [buildkit](/TODO).
     * [paratest](https://github.com/brianium/paratest) - Parallelized version of PHPUnit.
     * [phpunit](http://phpunit.de/) - Unit testing for PHP (with Selenium and DB add-ons).
 
-## Text editors
+## Other useful tools
+
+### Text editors
 
 If you already have a text editor you love, then stick to that. If you're new and need some recommendations, here are some of the most popular text editors among CiviCRM developers:
 

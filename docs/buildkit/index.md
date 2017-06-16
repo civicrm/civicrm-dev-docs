@@ -20,6 +20,7 @@ curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildki
 ```
 
 Note:
+
  * When executing the above command, you should *not* run as `root`. However, you *should*
 have `sudo` permissions.
  * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
@@ -32,7 +33,7 @@ have `sudo` permissions.
 
 ### Docker
 
-See https://github.com/ErichBSchulz/dcbk
+If you have [Docker](https://www.docker.com/) running, you can [use this Docker image](https://github.com/ErichBSchulz/dcbk) to run buildkit.
 
 
 
@@ -40,14 +41,14 @@ See https://github.com/ErichBSchulz/dcbk
 
 You may install buildkit in other environments. The main pre-requisites are:
 
- * Linux or OS X
- * Git
- * PHP 5.3+ (Extensions: `bcmath curl gd gettext imap intl imagick json mbstring mcrypt openssl pdo_mysql phar posix soap zip`)
- * NodeJS (v5 recommended)
- * NPM
- * Recommended (_for [amp](https://github.com/totten/amp) and [civibuild](/buildkit/civibuild.md)_)
-   * Apache 2.2 or 2.4 (Modules: `mod_rewrite`. On SUSE, possibly `mod_access_compat`. This list may not be exhaustive.)
-   * MySQL 5.1+ (client and server)
+* Linux or OS X
+* Git
+* PHP 5.3+ (Extensions: `bcmath curl gd gettext imap intl imagick json mbstring mcrypt openssl pdo_mysql phar posix soap zip`)
+* NodeJS (v5 recommended)
+* NPM
+* Recommended (_for [amp](https://github.com/totten/amp) and [civibuild](/buildkit/civibuild.md)_)
+    * Apache 2.2 or 2.4 (Modules: `mod_rewrite`. On SUSE, possibly `mod_access_compat`. This list may not be exhaustive.)
+    * MySQL 5.1+ (client and server)
 
 All pre-requisites must support command-line access using the standard command
 names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments,
@@ -86,18 +87,18 @@ Buildkit includes many CLI commands in the `bin/` folder.
 You may execute the commands directly (e.g.  `./bin/civix` or `/path/to/buildkit/bin/civix`).  However, this would
 become very cumbersome.  Instead, you should configure the shell's `PATH` to recognize these commands automatically.
 
-> Tip: Throughout this document, we will provide examples which assume that buildkit was downloaded to
-> `/path/to/buildkit`.  Be sure to adjust the examples to match your system.
+!!! tip
+    Throughout this document, we will provide examples which assume that buildkit was downloaded to `/path/to/buildkit`. Be sure to adjust the examples to match your system.
 
 ### Persistently add buildkit to `PATH` (typical)
 
 If you want to ensure that the buildkit CLI tools are always available, then:
 
- 1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or
+1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or
 `~/.profile`.
- 2. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`
- 3. Close and reopen the terminal.
- 4. Enter the command `which civibuild`. This should display a full-path. If nothing appears, then retry the steps.
+1. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`
+1. Close and reopen the terminal.
+1. Enter the command `which civibuild`. This should display a full-path. If nothing appears, then retry the steps.
 
 ### Temporarily switch shell configuration (advanced)
 
@@ -140,7 +141,7 @@ rapidly between unit-testing and manual testing (because any manual DB changes
 are lost).
 
 v14.06 addresses this by provisioning a third database for testing.  This
-requires some changes -- eg creating the database, saving the metadata (eg
+requires some changes &mdash; eg creating the database, saving the metadata (eg
 "build/drupal-demo.sh"), and updating configs files (eg
 "build/drupal-demo/sites/all/modules/civicrm/tests/phpunit/CiviTest/civicrm.settings.dist.php").
 You can fix all of this by reinstalling the build (which will recreate all
