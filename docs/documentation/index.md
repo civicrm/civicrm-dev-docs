@@ -2,7 +2,7 @@
 
 To *read* documentation, go to [docs.civicrm.org](https://docs.civicrm.org) for the most high-level list of all active documentation.
 
-This page describes the details of the documentation systems within CiviCRM and how to contribute. We also have a more [basic overview] (https://docs.civicrm.org/user/en/latest/the-civicrm-community/contributing-to-this-manual/) on how to contribute to this guide or the user guide. 
+This page describes the details of the documentation systems within CiviCRM and how to contribute. We also have a more [basic overview](https://docs.civicrm.org/user/en/latest/the-civicrm-community/contributing-to-this-manual/) on how to contribute to this guide or the user guide. 
 
 !!! note "Note: the wiki is not covered here"
     The [wiki] has historically been CiviCRM's documentation system but is currently being phased out. As of early 2017, documentation is still somewhat split between the wiki the the guide books described below, but we are working to eventually consolidate *all* documentation into guide books. A [migration process][migration] is currently underway for this Developer Guide, and a process will [likely](https://github.com/civicrm/civicrm-docs/issues/17) follow for a dedicated Administrator Guide, as well as [extension guides](https://github.com/civicrm/civicrm-docs/issues/14).
