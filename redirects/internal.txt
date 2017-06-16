@@ -1,4 +1,4 @@
-dev-tools/debugging basics/debugging
+dev-tools/debugging tools/debugging
 extend-stages extensions/lifecycle
 markdownrules documentation/markdown
 best-practices/documentation-style-guide documentation/style-guide

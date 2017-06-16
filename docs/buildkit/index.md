@@ -1,0 +1,153 @@
+# Buildkit
+
+[Buildkit](https://github.com/civicrm/civicrm-buildkit) is a collection of ~20 tools for developing and testing CiviCRM, the most important of which is [civibuild](/buildkit/civibuild.md).
+
+Many of these tools are commonly used by web developers, so you may have already installed a few. Even so, it's generally easier to [install](/buildkit/setup) the full collection &mdash; installing each individually takes a lot of work.
+
+This is the same collection of tools which manages the test/demo/release infrastructure for civicrm.org.
+
+
+## Installation
+
+### Ubuntu
+
+If you have a new installation of Ubuntu 12.04 or 14.04, then you can download
+everything -- buildkit and the system requirements -- with one command. This
+command will install buildkit to `~/buildkit`:
+
+```bash
+curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
+```
+
+Note:
+ * When executing the above command, you should *not* run as `root`. However, you *should*
+have `sudo` permissions.
+ * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
+ * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
+
+### Vagrant
+
+[Full Download: Vagrantbox](https://github.com/civicrm/civicrm-buildkit-vagrant) - Download a prepared virtual-machine with all system dependencies (mysql, etc). This is ideal if you work on Windows or OS X.
+
+
+### Docker
+
+See https://github.com/ErichBSchulz/dcbk
+
+
+
+### Other platforms
+
+You may install buildkit in other environments. The main pre-requisites are:
+
+ * Linux or OS X
+ * Git
+ * PHP 5.3+ (Extensions: `bcmath curl gd gettext imap intl imagick json mbstring mcrypt openssl pdo_mysql phar posix soap zip`)
+ * NodeJS (v5 recommended)
+ * NPM
+ * Recommended (_for [amp](https://github.com/totten/amp) and [civibuild](/buildkit/civibuild.md)_)
+   * Apache 2.2 or 2.4 (Modules: `mod_rewrite`. On SUSE, possibly `mod_access_compat`. This list may not be exhaustive.)
+   * MySQL 5.1+ (client and server)
+
+All pre-requisites must support command-line access using the standard command
+names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments,
+you may need to enable these commands by configuring `PATH` -- this is especially
+true for MAMP, XAMPP, and other downloaded packages.
+(See, e.g., [Setup Command-Line PHP](http://wiki.civicrm.org/confluence/display/CRMDOC/Setup+Command-Line+PHP).)
+
+Once the pre-requisites are met, download buildkit to `~/buildkit`:
+
+```bash
+git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
+cd ~/buildkit
+./bin/civi-download-tools
+```
+
+### Troubleshooting
+
+* Nodejs version too old or npm update does not work
+
+Download the latest version from nodejs.org and follow to their instructions
+
+* Nodejs problems
+
+It might be handy to run
+
+```bash
+npm update
+npm install fs-extra
+```
+
+
+## Configuring buildkit after installation
+
+Buildkit includes many CLI commands in the `bin/` folder.
+
+You may execute the commands directly (e.g.  `./bin/civix` or `/path/to/buildkit/bin/civix`).  However, this would
+become very cumbersome.  Instead, you should configure the shell's `PATH` to recognize these commands automatically.
+
+> Tip: Throughout this document, we will provide examples which assume that buildkit was downloaded to
+> `/path/to/buildkit`.  Be sure to adjust the examples to match your system.
+
+### Persistently add buildkit to `PATH` (typical)
+
+If you want to ensure that the buildkit CLI tools are always available, then:
+
+ 1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or
+`~/.profile`.
+ 2. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`
+ 3. Close and reopen the terminal.
+ 4. Enter the command `which civibuild`. This should display a full-path. If nothing appears, then retry the steps.
+
+### Temporarily switch shell configuration (advanced)
+
+Buildkit includes specific versions of some fairly popular tools (such as `drush`, `phpunit`, and `wp-cli`), and it's
+possible that you have already installed other versions of these tools.
+
+By design, buildkit can coexist with other tools, but you must manually manage the `PATH`.
+Whenever you wish to use buildkit, manually run a command like, e.g.:
+
+```bash
+export PATH=/path/to/buildkit/bin:$PATH
+```
+
+To restore your normal `PATH`, simply close the terminal and open a new one.
+
+Each time you open a new terminal while working on Civi development, you would need to re-run the `export` command.
+
+
+
+## Upgrading buildkit
+
+New versions of buildkit are likely to include new versions of tools. The
+new tools will download automatically when you first run "civibuild".
+If you prefer to download explicitly, then re-run "civi-download-tools".
+
+The configurations and tools in buildkit are periodically updated. To get the latest, simply run:
+
+```bash
+cd ~/buildkit
+git pull
+./bin/civi-download-tools
+```
+
+### v14.05.0 => v14.06.0
+
+In version v14.05 (and earlier), each build included two databases: one CMS
+database and one Civi database.  If you ran unit-tests in v14.05, the tests
+would reset the Civi database -- which was problematic if you like to alternate
+rapidly between unit-testing and manual testing (because any manual DB changes
+are lost).
+
+v14.06 addresses this by provisioning a third database for testing.  This
+requires some changes -- eg creating the database, saving the metadata (eg
+"build/drupal-demo.sh"), and updating configs files (eg
+"build/drupal-demo/sites/all/modules/civicrm/tests/phpunit/CiviTest/civicrm.settings.dist.php").
+You can fix all of this by reinstalling the build (which will recreate all
+databases and config files).  If the build is named "drupal-demo", then simply
+run:
+
+```bash
+civibuild reinstall drupal-demo
+```
+
