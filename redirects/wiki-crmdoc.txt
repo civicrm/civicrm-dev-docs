@@ -115,3 +115,17 @@ Hooks hooks
 Extension+Review extensions/lifecycle/#formal-review
 Call+the+CiviCRM+API+from+a+custom+template api/usage/#smarty
 Using+the+API api
+Hook+examples hooks
+Database+hooks hooks
+Extension+lifecycle+hooks hooks
+Form+hooks hooks
+GUI+hooks hooks
+Mail+hooks hooks
+Permission+hooks hooks
+Uncategorized+hooks hooks
+Case+hooks hooks
+Batch+hooks hooks
+Entity+Hooks hooks
+CiviRules+hooks hooks
+Profile+Hooks hooks
+Report+Hooks hooks
