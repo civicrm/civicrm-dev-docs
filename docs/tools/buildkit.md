@@ -80,7 +80,7 @@ npm install fs-extra
 ```
 
 
-## Configuring buildkit after installation
+## Configuring buildkit after installation {:#configuring}
 
 !!! note "Not needed for Vagrant/Docker installations"
     If you set up buildkit using Vagrant or Docker, then you don't need to perform the configuration steps listed here.
@@ -120,7 +120,7 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 
 
 
-## Upgrading buildkit
+## Upgrading buildkit {:#upgrading}
 
 New versions of buildkit are likely to include new versions of tools. The
 new tools will download automatically when you first run `civibuild`.

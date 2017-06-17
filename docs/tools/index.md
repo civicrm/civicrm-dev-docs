@@ -1,8 +1,12 @@
 # Development tools
 
-## CiviCRM-specific tools
+## Tools included with buildkit {:#with-buildkit}
 
-All of these tools come bundled within [buildkit](/buildkit).
+When you install [buildkit](/buildkit) you'll get all these tools.
+
+*This list of tools is also maintained [in the buildkit readme file](https://github.com/civicrm/civicrm-buildkit/blob/master/README.md).*
+
+### CiviCRM-specific tools {:#civicrm-specific}
 
 * `civibuild` - Build a complete source tree (with CMS+Civi+addons), provision httpd/sql, etc.
     * *[documentation](/tools/civibuild.md)*
@@ -35,11 +39,9 @@ All of these tools come bundled within [buildkit](/buildkit).
     * *(Derived from [Drupal's coder project](https://www.drupal.org/project/coder))*
 
 
-## External tools installed with buildkit
+### External tools installed with buildkit {:#external}
 
-These tools are not specific to CiviCRM, so you may already have some of them installed on your system.
-
-If you install [buildkit](/buildkit) you'll get all these tools at once, in addition to the CiviCRM-specific tools listed above.
+These tools are not specific to CiviCRM, so you may already have some of them installed on your system. If you install [buildkit](/buildkit) you'll get all these tools at once, in addition to the CiviCRM-specific tools listed above.
 
 * Dependency management
     * [composer](http://getcomposer.org/) - Manage dependencies for PHP code.
@@ -60,7 +62,14 @@ If you install [buildkit](/buildkit) you'll get all these tools at once, in addi
     * [paratest](https://github.com/brianium/paratest) - Parallelized version of PHPUnit.
     * [phpunit](http://phpunit.de/) - Unit testing for PHP (with Selenium and DB add-ons).
 
-## Other useful tools
+## Other useful tools {:#other}
+
+### Miscellaneous {:#misc}
+
+* [git](https://git-scm.com/) - version control system
+* [psysh](http://psysh.org/) - a reply-echo-print-loop for PHP (like `php -a`, but better)
+* [MySQL Workbench](https://www.mysql.com/products/workbench/) - A graphical interface to your local (or remote) MySQL server
+* [MkDocs](http://www.mkdocs.org) - for [editing documentation](/documentation)
 
 ### Text editors
 
@@ -71,3 +80,4 @@ If you already have a text editor you love, then stick to that. If you're new an
 * [Sublime](https://www.sublimetext.com/)
 * [Atom](https://atom.io/)
 * [vim](http://www.vim.org/)
+

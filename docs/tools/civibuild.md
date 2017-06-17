@@ -21,7 +21,7 @@ these.  Unfortunately, such tools generally require extra work for a Civi
 developer environment.  Civibuild works with these tools and and fills
 in missing parts.
 
-## Your First Build
+## Your First Build {:#start}
 
 !!! tip
     Login as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart Apache or edit `/etc/hosts`.
@@ -148,7 +148,7 @@ These aliases exactly match the demo sites deployed under civicrm.org (e.g.
 
 If you have a working civibuild site and you'd like to upgrade CiviCRM to the latest version, follow these steps:
 
-### Begin in the civicrm directory within your site {:#upgrade-begin}
+### Begin in the civicrm directory within your site {:#upgrade-site-begin}
 
 ```
 cd ~/buildkit/build/dmaster/sites/all/modules/civicrm/
@@ -157,7 +157,7 @@ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm/
 !!! note
     The path to this directory will vary depending on where you installed buildkit and what CMS you site uses.
 
-### Check the status of all git repos {:#upgrade-git-scan}
+### Check the status of all git repos {:#upgrade-site-git-scan}
 
 There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan), (installed with [buildkit](/tools/buildkit)).
 
@@ -169,7 +169,7 @@ git scan status
     If you see a message like *"Fast-forwards are not possible"* or *"Modifications have not been committed"*, then you'll need to clean up these git repositories before proceeding.
 
 
-### Update the git repos
+### Update the git repos {:#upgrade-site-git-scan-up}
 
 To update to the latest version of a particular branch, use `git scan up` which will perform a standard "fast-forward merge" (`git pull --ff-only`) across all the repos:
 
@@ -186,7 +186,7 @@ Alternatively, if you'd like to hop to a specific tag, you can use `givi` (a too
 givi checkout 4.7.17
 ```
 
-### Update the generated code, config files, databases
+### Update the generated code, config files, databases {:#upgrade-site-update}
 
 Reinstalling will recreate/overwrite all generated-code, config-files, and database content. Any data you put into your site (e.g. test contacts, etc) will be lost.
 
@@ -202,7 +202,7 @@ drush civicrm-upgrade-db
 ```
 
 
-## Downgrading a site you installed with civibuild
+## Downgrading a site you installed with civibuild {:#downgrade-site}
 
 If you are [reviewing a pull request](/core/pr-review) you may wish to *downgrade* a civibuild site in order to begin replicating the issue and testing the fix. Currently this is **not possible** with civibuild, so instead you will need to do a [rebuild](#rebuild) with the the `--civi-ver` argument to specify your target version of CiviCRM.
 
@@ -260,7 +260,7 @@ There are four variations on rebuilding. In order of fastest (least thorough) to
   </tbody>
 </table>
 
-## civicrm.settings.php; settings.php; wp-config.php
+## civicrm.settings.php; settings.php; wp-config.php {:#settings}
 
 There are a few CiviCRM settings which are commonly configured on a per-server
 or per-workstation basis. For example, civicrm.org's demo server has ~10
@@ -285,7 +285,7 @@ A parallel structure exists for the CMS settings files. See also:
 * `/app/drupal.settings.d/README.txt`
 * `/app/wp-config.d/README.txt`
 
-## Development/Testing of `civibuild`
+## Development/Testing of `civibuild` {:#development}
 
 The tests for `civibuild` are stored in `tests/phpunit`.  These are
 integration tests which create and destroy real builds on the local system.
@@ -299,7 +299,7 @@ To run them:
         * `OFFLINE=1` - Try to avoid unnecessary network traffic
 
 
-## Experimental: Multiple demo/training sites
+## Experimental: Multiple demo/training sites {:#demo-training}
 
 When creating a batch of identical sites for training or demonstrations,
 one may want to create a single source-code-build with several
