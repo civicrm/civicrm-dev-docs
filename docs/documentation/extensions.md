@@ -1,15 +1,15 @@
 # How to document your extension
 
-So you've written an [extension](/extensions/basics). Awesome! Now you want to add some documentation to help people use it. Great! Maybe you even want some docs for other *developers* working on it too. Very good. This page will help you set up your own documentation *book* (just like this Developer Guide) for your extension.
+So you've written an [extension](/extensions/basics). Awesome! Now you want to add some documentation to help people use it. Great! Maybe you even want some docs for other *developers* working on it too. Very good. This page will help you set up your own documentation *guide* (just like this Developer Guide) for your extension.
 
 !!! summary "Example"
     For a fully-featured working example of extensions documentation, look at CiviVolunteer.
 
-    * Read the published [CiviVolunteer book](https://docs.civicrm.org/volunteer/en/latest/)
+    * Read the published [CiviVolunteer guide](https://docs.civicrm.org/volunteer/en/latest/)
     * Inspect the following source code to see how it's made:
         * [/docs/](https://github.com/civicrm/org.civicrm.volunteer/tree/master/docs) within the project repo (to store all the content in markdown files)
-        * [/mkdocs.yml](https://github.com/civicrm/org.civicrm.volunteer/blob/master/mkdocs.yml) within the project repo (to specify book structure)
-        * [/books/volunteer.yml](https://github.com/civicrm/civicrm-docs/blob/master/books/volunteer.yml) within the `civicrm-docs` repo (to specify how the book is to be published)
+        * [/mkdocs.yml](https://github.com/civicrm/org.civicrm.volunteer/blob/master/mkdocs.yml) within the project repo (to specify guide structure)
+        * [/books/volunteer.yml](https://github.com/civicrm/civicrm-docs/blob/master/books/volunteer.yml) within the `civicrm-docs` repo (to specify how the guide is to be published)
 
 ## Overview
 
@@ -19,11 +19,11 @@ Basically how this works is:
 * You store the content in [markdown](/markdownrules) files within a `docs` directory in your project.
 * You use git branches just like you normally would, with that `docs` directory sitting there in every branch.
 * You put one file at the root level of your project, `mkdocs.yml` to configure some of the high-level details of your book.
-* You use MkDocs locally to preview your book.
-* When you're ready, you make a pull request on our [publishing system](https://github.com/civicrm/civicrm-docs) to add the necessary configuration for your book, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
-* You configure GitHub to tell our publishing system when to publish updates to your book.
+* You use MkDocs locally to preview your guide.
+* When you're ready, you make a pull request on our [publishing system](https://github.com/civicrm/civicrm-docs) to add the necessary configuration for your guide, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
+* You configure GitHub to tell our publishing system when to publish updates to your guide.
 
-Follow along in the steps below to get a book up and running for your extension.
+Follow along in the steps below to get a guide up and running for your extension.
 
 ## Set up `mkdocs.yml` {:#config}
 
@@ -57,11 +57,11 @@ Replace values on the first two lines with your own. Leave everything else as-is
 
 The README file at the root of your repository is great for keeping some simple documentation that people will see when they visit your repo. But non-technical users can become confused when seeking docs landing on GitHub.
 
-When creating a docs book, you have two options for how to deal with your README file:
+When creating a docs guide, you have two options for how to deal with your README file:
 
-### Mirror README to a single-page book {#:readme-mirrored}
+### Mirror README to a single-page guide {#:readme-mirrored}
 
-With this option, you basically keep documentation content in the README file, and create an MkDocs book directly from that file. The content remains on GitHub when people visit your repo, and it also gets published on docs.civicrm.org &mdash; and you only have to edit it in one place. The downside is that you have to fit everything into one page.
+With this option, you basically keep documentation content in the README file, and create an MkDocs guide directly from that file. The content remains on GitHub when people visit your repo, and it also gets published on docs.civicrm.org &mdash; and you only have to edit it in one place. The downside is that you have to fit everything into one page.
 
 1. Make sure you're using [markdown](/markdownrules) formatting within the README file, and make sure the file is named `README.md`.
 1. Create an MkDocs index file which is a symbolic link to your README file:
@@ -73,9 +73,9 @@ With this option, you basically keep documentation content in the README file, a
     ln -s -T ../README.md index.md
     ```
 
-### Use a multi-page book and a separate README file {:#readme-separate}
+### Use a multi-page guide and a separate README file {:#readme-separate}
 
-With this option you have a very small README file and a separate MkDocs book which can have multiple pages.
+With this option you have a very small README file and a separate MkDocs guide which can have multiple pages.
 
 1. Add a `docs` directory at the root of your project.
 1. Within that, add a new file `index.md` to use for your content.
@@ -94,12 +94,12 @@ You can add more pages by creating more markdown files and specifying these file
     We have [markdown code standards](/markdownrules/#standards) and a documentation [style guide](/best-practices/documentation-style-guide/). Adherence to these rules within your extensions docs is recommended but not required.
 
 
-## Submit your book to our publishing system {:#submit}
+## Submit your guide to our publishing system {:#submit}
 
-Once your book is in good shape it's time to get it up on [docs.civicrm.org](https://docs.civicrm.org).
+Once your guide is in good shape it's time to get it up on [docs.civicrm.org](https://docs.civicrm.org).
 
 1. Go to the [books configuration within our publishing system](https://github.com/civicrm/civicrm-docs/tree/master/books)
-1. Click **Create new file** to begin adding a config file for *your* book.
+1. Click **Create new file** to begin adding a config file for *your* guide.
 1. For the file name, use something like `foobar.yml`, where "foobar" is your extension's **short name**. This is the name that will be used in the URL for your docs.
 1. Copy paste the following content into the file editor:
 
@@ -111,33 +111,33 @@ Once your book is in good shape it's time to get it up on [docs.civicrm.org](htt
         repo: 'https://github.com/username/org.civicrm.foobar'
     ```
 
-    * There are lots of other settings you can put here if you want to have multiple languages or versions. Look at `user.yml` as an example of a book (the User Guide) which takes advantage of all the possible settings.
+    * There are lots of other settings you can put here if you want to have multiple languages or versions. Look at `user.yml` as an example of a guide (the User Guide) which takes advantage of all the possible settings.
     * But if you want to keep it simple and just have one English edition which points to the `master` branch of your repo, then stick with the above settings.
 
 1. Adjust `name` and `repo` to your own values
 
-    * The `name` you set here will be shown in the list of all books on [docs.civicrm.org](https://docs.civicrm.org) as well as at the top of every page of your book. Use whatever **long name** you've chosen for your extension, such as "Foo Bar", or "CiviFoobar". (*Don't* use a fully qualified name like "org.civicrm.foobar" because that wouldn't look so nice to visitors.)
+    * The `name` you set here will be shown in the list of all guides on [docs.civicrm.org](https://docs.civicrm.org) as well as at the top of every page of your guide. Use whatever **long name** you've chosen for your extension, such as "Foo Bar", or "CiviFoobar". (*Don't* use a fully qualified name like "org.civicrm.foobar" because that wouldn't look so nice to visitors.)
 
 1. Click **Propose new file**.
 1. On the next screen, click **Create pull request**. (You're not done until you create a pull request!)
 
-At some point (hopefully soon!) someone will merge your PR and get the necessary config for your book up on the server. Then it can be published.
+At some point (hopefully soon!) someone will merge your PR and get the necessary config for your guide up on the server. Then it can be published.
 
-## Manually publish your book {:#manual-publishing}
+## Manually publish your guide {:#manual-publishing}
 
-Once your book's config is up, you can go to the following URL to ask the publishing system to publish (or re-publish) your book:
+Once your guide's config is up, you can go to the following URL to ask the publishing system to publish (or re-publish) your guide:
 
     https://docs.civicrm.org/admin/publish/foobar
 
-(where `foobar` is the short name you used for your book)
+(where `foobar` is the short name you used for your guide)
 
-Publishing your book manually is fine at first, but once you update the book later, you might wish to avoid this extra step. This is why we have automatic publishing...
+Publishing your guide manually is fine at first, but once you update the guide later, you might wish to avoid this extra step. This is why we have automatic publishing...
 
 ## Set up automatic publishing {:#automatic-publishing}
 
 *(Currently only possible if your repo is on GitHub.)*
 
-When you set up automatic publishing, GitHub will tell the publishing system when content within your repo has changed, and the publishing system will re-publish your book as necessary.
+When you set up automatic publishing, GitHub will tell the publishing system when content within your repo has changed, and the publishing system will re-publish your guide as necessary.
 
 1. Go to your repo on GitHub.
 1. Go to the **Settings** tab at the far right.
@@ -150,7 +150,7 @@ Now when you make changes to your docs, those changes will be published automati
 
 ## Make your documentation discoverable {:descoverable}
 
-Hey, you're not done yet! Don't forget to to add links to your new book in all the places where your users might look. This includes this following:
+Hey, you're not done yet! Don't forget to to add links to your new guide in all the places where your users might look. This includes this following:
 
 * The listing for your extension in the civicrm.org [extensions directory](https://civicrm.org/extensions)
 * Your README file
