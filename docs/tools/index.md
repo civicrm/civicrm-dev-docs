@@ -37,7 +37,9 @@ All of these tools come bundled within [buildkit](/buildkit).
 
 ## External tools installed with buildkit
 
-These tools are not specific to CiviCRM, but you'll get them anyway when you install [buildkit](/buildkit)
+These tools are not specific to CiviCRM, so you may already have some of them installed on your system.
+
+If you install [buildkit](/buildkit) you'll get all these tools at once, in addition to the CiviCRM-specific tools listed above.
 
 * Dependency management
     * [composer](http://getcomposer.org/) - Manage dependencies for PHP code.

@@ -82,6 +82,9 @@ npm install fs-extra
 
 ## Configuring buildkit after installation
 
+!!! note "Not needed for Vagrant/Docker installations"
+    If you set up buildkit using Vagrant or Docker, then you don't need to perform the configuration steps listed here.
+
 Buildkit includes many CLI commands in the `bin/` folder.
 
 You may execute the commands directly (e.g.  `./bin/civix` or `/path/to/buildkit/bin/civix`).  However, this would
@@ -89,8 +92,6 @@ become very cumbersome.  Instead, you should configure the shell's `PATH` to rec
 
 !!! tip
     Throughout this document, we will provide examples which assume that buildkit was downloaded to `/path/to/buildkit`. Be sure to adjust the examples to match your system.
-
-### Persistently add buildkit to `PATH` (typical)
 
 If you want to ensure that the buildkit CLI tools are always available, then:
 
@@ -100,29 +101,30 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 1. Close and reopen the terminal.
 1. Enter the command `which civibuild`. This should display a full-path. If nothing appears, then retry the steps.
 
-### Temporarily switch shell configuration (advanced)
 
-Buildkit includes specific versions of some fairly popular tools (such as `drush`, `phpunit`, and `wp-cli`), and it's
-possible that you have already installed other versions of these tools.
+!!! note
 
-By design, buildkit can coexist with other tools, but you must manually manage the `PATH`.
-Whenever you wish to use buildkit, manually run a command like, e.g.:
+    Buildkit includes specific versions of some fairly popular tools (such as `drush`, `phpunit`, and `wp-cli`), and it's possible that you have already installed other versions of these tools.
 
-```bash
-export PATH=/path/to/buildkit/bin:$PATH
-```
+    By design, buildkit can coexist with other tools, but you must manually manage the `PATH`.
 
-To restore your normal `PATH`, simply close the terminal and open a new one.
+    Whenever you wish to use buildkit, manually run a command like, e.g.:
 
-Each time you open a new terminal while working on Civi development, you would need to re-run the `export` command.
+    ```bash
+    export PATH=/path/to/buildkit/bin:$PATH
+    ```
+
+    To restore your normal `PATH`, simply close the terminal and open a new one.
+
+    Each time you open a new terminal while working on Civi development, you would need to re-run the `export` command.
 
 
 
 ## Upgrading buildkit
 
 New versions of buildkit are likely to include new versions of tools. The
-new tools will download automatically when you first run "civibuild".
-If you prefer to download explicitly, then re-run "civi-download-tools".
+new tools will download automatically when you first run `civibuild`.
+If you prefer to download explicitly, then re-run `civi-download-tools`.
 
 The configurations and tools in buildkit are periodically updated. To get the latest, simply run:
 
@@ -132,23 +134,6 @@ git pull
 ./bin/civi-download-tools
 ```
 
-### v14.05.0 => v14.06.0
+See the [buildkit changelog](https://github.com/civicrm/civicrm-buildkit/blob/master/CHANGELOG.md) for info about specific changes to buildkit.
 
-In version v14.05 (and earlier), each build included two databases: one CMS
-database and one Civi database.  If you ran unit-tests in v14.05, the tests
-would reset the Civi database -- which was problematic if you like to alternate
-rapidly between unit-testing and manual testing (because any manual DB changes
-are lost).
-
-v14.06 addresses this by provisioning a third database for testing.  This
-requires some changes &mdash; eg creating the database, saving the metadata (eg
-"build/drupal-demo.sh"), and updating configs files (eg
-"build/drupal-demo/sites/all/modules/civicrm/tests/phpunit/CiviTest/civicrm.settings.dist.php").
-You can fix all of this by reinstalling the build (which will recreate all
-databases and config files).  If the build is named "drupal-demo", then simply
-run:
-
-```bash
-civibuild reinstall drupal-demo
-```
 
