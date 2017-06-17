@@ -5,7 +5,7 @@
 All of these tools come bundled within [buildkit](/buildkit).
 
 * `civibuild` - Build a complete source tree (with CMS+Civi+addons), provision httpd/sql, etc.
-    * *[documentation](/buildkit/civibuild.md)*
+    * *[documentation](/tools/civibuild.md)*
     * *[repository](https://github.com/civicrm/civicrm-buildkit)*
 * `cv` - command is a utility for interacting with a CiviCRM installation
     * *documentation: run `cv list`*

@@ -1,6 +1,6 @@
 # Buildkit
 
-[Buildkit](https://github.com/civicrm/civicrm-buildkit) is a collection of ~20 tools for developing and testing CiviCRM, the most important of which is [civibuild](/buildkit/civibuild.md).
+[Buildkit](https://github.com/civicrm/civicrm-buildkit) is a collection of ~20 tools for developing and testing CiviCRM, the most important of which is [civibuild](/tools/civibuild.md).
 
 Many of these tools are commonly used by web developers, so you may have already installed a few. Even so, it's generally easier to [install](/buildkit/setup) the full collection &mdash; installing each individually takes a lot of work.
 
@@ -46,7 +46,7 @@ You may install buildkit in other environments. The main pre-requisites are:
 * PHP 5.3+ (Extensions: `bcmath curl gd gettext imap intl imagick json mbstring mcrypt openssl pdo_mysql phar posix soap zip`)
 * NodeJS (v5 recommended)
 * NPM
-* Recommended (_for [amp](https://github.com/totten/amp) and [civibuild](/buildkit/civibuild.md)_)
+* Recommended (_for [amp](https://github.com/totten/amp) and [civibuild](/tools/civibuild.md)_)
     * Apache 2.2 or 2.4 (Modules: `mod_rewrite`. On SUSE, possibly `mod_access_compat`. This list may not be exhaustive.)
     * MySQL 5.1+ (client and server)
 

@@ -13,12 +13,12 @@ pages:
   - File System: basics/filesystem.md
 - Development tools:
   - Development tools: tools/index.md
+  - Buildkit: tools/buildkit.md
+  - civibuild: tools/civibuild.md
+  - cividist: tools/cividist.md
+  - GitHub: tools/github.md
   - PhpStorm: tools/phpstorm.md
   - Debugging: tools/debugging.md
-- Buildkit:
-  - Buildkit: buildkit/index.md
-  - civibuild: buildkit/civibuild.md
-  - cividist: buildkit/cividist.md
 - Core Development:
   - When to Edit Core: core/hacking.md
   - How to Contribute: core/contributing.md
