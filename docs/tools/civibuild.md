@@ -143,7 +143,71 @@ $ civibuild create wpmaster --url http://wpmaster.localhost
 These aliases exactly match the demo sites deployed under civicrm.org (e.g.
 "wp45" produces the demo site "wp45.demo.civicrm.org").
 
-## Rebuilds
+
+## Upgrading a site you installed with civibuild {:#upgrade-site}
+
+If you have a working civibuild site and you'd like to upgrade CiviCRM to the latest version, follow these steps:
+
+### Begin in the civicrm directory within your site {:#upgrade-begin}
+
+```
+cd ~/buildkit/build/dmaster/sites/all/modules/civicrm/
+```
+
+!!! note
+    The path to this directory will vary depending on where you installed buildkit and what CMS you site uses.
+
+### Check the status of all git repos {:#upgrade-git-scan}
+
+There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan), (installed with [buildkit](/tools/buildkit)).
+
+```
+git scan status
+```
+
+!!! fail "Check for errors"
+    If you see a message like *"Fast-forwards are not possible"* or *"Modifications have not been committed"*, then you'll need to clean up these git repositories before proceeding.
+
+
+### Update the git repos
+
+To update to the latest version of a particular branch, use `git scan up` which will perform a standard "fast-forward merge" (`git pull --ff-only`) across all the repos:
+
+```
+git scan up
+```
+
+!!! tip
+    If you didn't cleanup earlier, then "fast-forward" may not be possible. It takes some judgment to decide what to do &mdash; e.g. a "merge" versus "rebase". Rather than risk a wrong decision, `git scan` will skip these repos and display warnings instead.)
+
+Alternatively, if you'd like to hop to a specific tag, you can use `givi` (a tool included with [buildkit](/tools/buildkit/)), but keep in mind that if you hop to a *previous* tag with code that expects a different database scheme, there will be no way to run database downgrades.
+
+```
+givi checkout 4.7.17
+```
+
+### Update the generated code, config files, databases
+
+Reinstalling will recreate/overwrite all generated-code, config-files, and database content. Any data you put into your site (e.g. test contacts, etc) will be lost.
+
+```
+civibuild reinstall dmaster
+```
+
+Alternatively, if you care about the content in the database, then don't do a reinstall. Instead, update the generated-code and perform a DB upgrade:
+
+```
+./bin/setup.sh -Dg
+drush civicrm-upgrade-db
+```
+
+
+## Downgrading a site you installed with civibuild
+
+If you are [reviewing a pull request](/core/pr-review) you may wish to *downgrade* a civibuild site in order to begin replicating the issue and testing the fix. Currently this is **not possible** with civibuild, so instead you will need to do a [rebuild](#rebuild) with the the `--civi-ver` argument to specify your target version of CiviCRM.
+
+
+## Rebuilds {:#rebuild}
 
 If you're interested in working on the build types or build process, then the workflow will consist of alternating two basic steps: (1) editing build scripts and (2) rebuilding. Rebuilds may take a few minutes, so it's helpful to choose the fastest type of rebuild that will meet your needs.
 
@@ -263,3 +327,13 @@ $ for num in $(seq -w 1 20) ; do
   civibuild create training/${num} --url http://demo${num}.example.org --admin-pass s3cr3t
 done
 ```
+
+
+
+## Credits
+
+Some content on this page was migrated from other sources, including:
+
+
+* "Upgrading a site" from [Tim Otten's StackExchange answer](https://civicrm.stackexchange.com/questions/17717/how-do-i-upgrade-civicrm-on-a-local-site-that-i-installed-with-buildkit-civibuil/17721#17721)
+
