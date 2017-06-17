@@ -11,8 +11,14 @@ pages:
   - Useful Skills: basics/skills.md
   - Planning Your Project: basics/planning.md
   - File System: basics/filesystem.md
-  # buildkit: /setup/buildkit.md   # summary: See Github README for download instructions. Alternatively, follow links and install particular tools as-needed.
-  - Debugging: basics/debugging.md
+- Development tools:
+  - Development tools: tools/index.md
+  - PhpStorm: tools/phpstorm.md
+  - Debugging: tools/debugging.md
+- Buildkit:
+  - Buildkit: buildkit/index.md
+  - civibuild: buildkit/civibuild.md
+  - cividist: buildkit/cividist.md
 - Core Development:
   - When to Edit Core: core/hacking.md
   - How to Contribute: core/contributing.md
