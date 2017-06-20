@@ -44,11 +44,11 @@ pages:
   - Advanced patterns: extensions/advanced.md
 - Framework Reference:
   - AngularJS:
-    - Overview: framework/angular.md
-    - Quick Start: framework/angular/quickstart.md
-    - File Names: framework/angular/files.md
-    - Loader: framework/angular/loader.md
-    - Change Sets:  framework/angular/modify.md
+    - "AngularJS: Intro": framework/angular/index.md
+    - "AngularJS: Quick Start": framework/angular/quickstart.md
+    - "AngularJS: File Names": framework/angular/files.md
+    - "AngularJS: Loader": framework/angular/loader.md
+    - "AngularJS: Change Sets":  framework/angular/modify.md
   - Asset Builder: framework/asset-builder.md
   # Bootstrap: /framework/bootstrap.md
   # Cache: /framework/cache.md

@@ -96,7 +96,7 @@ user's first-name and last-name.
     By default, CiviCRM aggregates AngularJS files and caches them.  You can
     flush this cache manually (`cv flush`).  However, it may be easier to
     disable some of the aggregation/caching features by [enabling debug
-    mode](/dev-tools/debugging.md).
+    mode](/tools/debugging.md).
 
 ## Open the page
 
