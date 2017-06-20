@@ -98,4 +98,4 @@ the discussion if you have a beginner-level understanding of both.
  * [Quick Start](quickstart.md): How to create a new screen in the CiviCRM-Angular UI
  * [File Names](files.md): How AngularJS files are named in `civicrm-core` and `civix`
  * [Loader](loader.md): How to find and load JS/CSS files for CiviCRM-Angular
- * [Modifications](modify.md): How a third-party can modify the content of a CiviCRM-Angular UI
+ * [Changesets](changeset.md): How a third-party can modify the content of a CiviCRM-Angular UI

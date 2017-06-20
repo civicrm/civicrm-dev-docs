@@ -1,9 +1,13 @@
-# AngularJS: Change Sets
+# AngularJS: Changesets
+
+!!! caution "Work in progress"
+
+    This documentation is still a work in progress.
 
 The [Quick Start](quickstart.md) and [Loader](loader.md) provide examples of
 creating *new* screens.  But what if you need to alter an *existing* screen?
-CiviCRM allows third-parties to define *change sets* which programmatically
-manipulate Angular content (before sending it to the client).
+CiviCRM allows third-parties to define *changesets* which programmatically
+manipulate Angular content before sending it to the client.
 
 ## Background
 
@@ -33,4 +37,8 @@ function mailwords_civicrm_alterAngular(\Civi\Angular\Manager $angular) {
 }
 ```
 
-cv ang:html:show
+```
+cv ang:html:list
+cv ang:html:show <file>
+cv ang:html:show <file> --diff
+```
