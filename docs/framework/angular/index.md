@@ -91,11 +91,3 @@ data.  This uses the CiviCRM API.  Key concepts in CiviCRM API include
 In the remainder of this document, we'll try to avoid in-depth discussion
 about the internals of AngularJS 1.x or APIv3.  You should be able to follow
 the discussion if you have a beginner-level understanding of both.
-
-
-## Additional pages
-
- * [Quick Start](quickstart.md): How to create a new screen in the CiviCRM-Angular UI
- * [File Names](files.md): How AngularJS files are named in `civicrm-core` and `civix`
- * [Loader](loader.md): How to find and load JS/CSS files for CiviCRM-Angular
- * [Changesets](changeset.md): How a third-party can modify the content of a CiviCRM-Angular UI
