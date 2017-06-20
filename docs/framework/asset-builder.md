@@ -1,13 +1,17 @@
 # Asset Builder
 
 The `AssetBuilder` manages lazily-generated assets, such as aggregated
-JS/CSS files.  Lazy assets are simultaneously:
+JS/CSS files.  The first time you request a lazy asset, the `AssetBuilder`
+fires a hook which builds the content.  The content is stored in a cache
+file, and subsequent requests use the cache file.
+
+Lazy assets are simultaneously dynamic and static:
 
  * __Dynamic__: They vary depending on the current system configuration.
-   You cannot lock-in a correct version of the asset because each
-   installation may need a slightly different version.
- * __Static__: Within a given site, the asset is not likely to change.
-   It could even be served directly by the web-server (without the overhead
+   You cannot lock-in a singular version of the asset because each
+   deployment may need a slightly different version.
+ * __Static__: Within a given deployment, the asset is not likely to change.
+   It can even be served directly by the web-server (without the overhead
    of PHP/CMS/Civi bootstrap)
 
 !!! note "Example: Batch loading Angular HTML"
@@ -16,19 +20,16 @@ JS/CSS files.  Lazy assets are simultaneously:
     bigger file and reduce the number of round-trip HTTP requests.
 
     This asset is _dynamic_ because extensions can add or modify HTML
-    templates.  Two different sites would have different HTML templates
-    (depending on the mix of extensions).  Yet, within a particular
-    site/configuration, the content is _static_ because the HTML doesn't
+    templates.  Two different deployments would have different HTML
+    templates (depending on the mix of extensions).  Yet, within a
+    particular deployment, the content is _static_ because the HTML doesn't
     actually change at runtime.
-
-The `AssetBuilder` addresses this use-case with *lazy* building.  Assets are
-not distributed as part of `git` or `tar.gz`.  Rather, the first time you
-use an asset, it fires off a hook which builds the content.  The content is
-stored in a cache file.
 
 !!! tip "Tip: Caching and development"
     If you are developing or patching assets, then the caching behavior may
-    get distracting. To bypass the cache, enable **debug mode**.
+    get distracting. To bypass the cache, navigate to
+    __Administer > System Settings > Debugging__ and enable debugging.
+
 
 ## Usage: Simple asset
 
@@ -112,12 +113,12 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 ```
 
 !!! note "Note: Parmaters and caching"
-    Each combination of ($asset,$params) will be cached separately.
+    Each combination of (`$asset`,`$params`) will be cached separately.
 
-!!! tip "Tip: Economize parameter size"
-    In debug mode, all parameters are passed as part of the URL. `AssetBuilder`
-    will try to compress them, but fundamentally: long `$params` will produce
-    long URLs.
+!!! tip "Tip: Economize on parameters"
+    In debug mode, all parameters are passed as part of the URL.
+    `AssetBuilder` will try to compress them, but it can only do so much.
+    Fundamentally, long `$params` will produce long URLs.
 
 ## Other considerations
 
