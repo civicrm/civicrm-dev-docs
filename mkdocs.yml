@@ -48,7 +48,7 @@ pages:
     - Quick Start: framework/angular/quickstart.md
     - File Names: framework/angular/files.md
     - Loader: framework/angular/loader.md
-    - Modifications:  framework/angular/modify.md
+    - Change Sets:  framework/angular/modify.md
   - Asset Builder: framework/asset-builder.md
   # Bootstrap: /framework/bootstrap.md
   # Cache: /framework/cache.md
