@@ -16,12 +16,23 @@ available in CiviCRM 4.6+.
 
 ## Parameters
 
--   &$angularModules - an array containing a list of all Angular
-    modules.
+ * `&$angularModules` - an array containing a list of all Angular modules. Each item is keyed by the Angular module name.
+
+Each item `angularModules`  may include these properties:
+
+ * `ext` (`string`): The name of the CiviCRM extension which has the source-code.
+ * `js` (`array`): List of Javascript files. May use the wildcard (`*`). Relative to the extension.
+ * `css` (`array`): List of CSS files. May use the wildcard (`*`). Relative to the extension.
+ * `partials` (`array`): List of HTML folders. Relative to the extension.
+ * `requires` (`array`): List of AngularJS modules required by this module. Default: `array()`. (`v4.7.21+`)
+ * `basePages` (`array`): Uncondtionally load this module onto the given Angular pages. (`v4.7.21+`)
+   * If omitted, the default is `array('civicrm/a')`. This provides backward compatibility with behavior since `v4.6+`.
+   * For a utility that should only be loaded on-demand, use `array()`.
+   * For a utility that should be loaded in all pages use, `array('*')`.
 
 ## Returns
 
--   null
+ * `null`
 
 ## Example
 
@@ -32,6 +43,8 @@ available in CiviCRM 4.6+.
       );
       $angularModules['myBigAngularModule'] = array(
         'ext' => 'org.example.mymod',
+        'requires' => array('ngRoute', 'crmUi'),
+        'basePages' => array('civicrm/a'),
         'js' => array('js/part1.js', 'js/part2.js'),
         'css' => array('css/myAngularModule.css'),
         'partials' => array('partials/myBigAngularModule'),

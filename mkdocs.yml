@@ -43,6 +43,13 @@ pages:
   - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
 - Framework Reference:
+  - AngularJS:
+    - "AngularJS: Intro": framework/angular/index.md
+    - "AngularJS: Quick Start": framework/angular/quickstart.md
+    - "AngularJS: File Names": framework/angular/files.md
+    - "AngularJS: Loader": framework/angular/loader.md
+    - "AngularJS: Changesets":  framework/angular/changeset.md
+  - Asset Builder: framework/asset-builder.md
   # Bootstrap: /framework/bootstrap.md
   # Cache: /framework/cache.md
   # Components: /framework/components.md
@@ -168,6 +175,7 @@ pages:
     - hook_civicrm_alterSettingsMetaData: hooks/hook_civicrm_alterSettingsMetaData.md
     - hook_civicrm_angularModules: hooks/hook_civicrm_angularModules.md
     - hook_civicrm_apiWrappers: hooks/hook_civicrm_apiWrappers.md
+    - hook_civicrm_buildAsset: hooks/hook_civicrm_buildAsset.md
     - hook_civicrm_buildStateProvinceForCountry: hooks/hook_civicrm_buildStateProvinceForCountry.md
     - hook_civicrm_check: hooks/hook_civicrm_check.md
     - hook_civicrm_config: hooks/hook_civicrm_config.md
