@@ -49,9 +49,9 @@ accomplishing a particular development goal, certainly vary.
 -   **jQuery** - a javascript library that makes manipulating elements on a web
     page easy
     -   [jQuery documentation](http://api.jquery.com/)
--   **angularJS** - a front-end javascript/html library providing a client-side framework
+-   **AngularJS** - a front-end javascript/html library providing a client-side framework
     for creating one-page MVC (model-view-controller) and MVVM (model-view-viewmodel) apps
-    -   [angularJS documentation](https://angular.io/docs/ts/latest/)
+    -   [angularJS documentation](https://docs.angularjs.org/)
 -   **HTML** - the markup used so transmit page content to a web browser.
     -   [HTML tutorial](http://www.w3schools.com/html/default.asp)
 -   **Smarty** - a "template engine" which allows developers to write an HTML
