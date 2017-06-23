@@ -54,6 +54,19 @@ The more feedback you can get the better.
     [existing requirements and specifications](https://wiki.civicrm.org/confluence/display/CRM/Requirements+and+specifications)
     from CiviCRM developers.
 
+## Bugs
+
+Before starting work on a bug your first step should be to check 
+[JIRA](https://issues.civicrm.org/), the issue tracking system for CiviCRM
+for any open issues before creating one yourself or working on a pull request.
+
+In order to reproduce the bug you can reproduce the issue in the appropriate
+[CiviCRM Sandbox](https://civicrm.org/sandboxes). Enabling debugging can help
+to get more details.
+
+Make sure to check [the contribution guidelines](https://github.com/civicrm/civicrm-core/blob/master/.github/CONTRIBUTING.md)
+for more information on how to create your PR.
+
 ## Recommendations
 
 **Open a free [GitHub](https://github.com/) account** for revision control.
