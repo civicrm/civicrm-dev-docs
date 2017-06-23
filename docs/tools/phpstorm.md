@@ -23,14 +23,6 @@ Create the 'CiviCRM' code styling preference:
 
 That's it. You can now use this code style on all future CiviCRM-related projects. If you are only developing for CiviCRM, you can also copy this style to the 'Default' style.
 
-
-## Running CiviCRM's automated tests from within PhpStorm
-
-TODO: write this section, drawing on some content here:
-
-https://wiki.civicrm.org/confluence/display/CRMDOC/Tests+in+phpstorm
-
-
 ## XDebug integration
 
 TODO
