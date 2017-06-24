@@ -44,7 +44,7 @@ pages:
   - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
 - Testing:
-  - Setup: testing/setup.md
+  - Testing Setup: testing/setup.md
   - PHPStorm: testing/phpstorm.md
   - "PHPUnit Tests": testing/phpunit-tests.md
   - "Javascript Tests": testing/javascript-tests.md
