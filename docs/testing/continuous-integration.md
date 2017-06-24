@@ -36,5 +36,4 @@ codebase.
 Code-style is not checked on this build, but all upgrade and web tests are run.
 
 [jenkins-test-results]: https://test.civicrm.org/
-[civilint]: dev-tools/civilint.md
 [testing-readme]: https://github.com/civicrm/civicrm-core/blob/master/tests/README.md

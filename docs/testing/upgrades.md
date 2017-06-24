@@ -11,5 +11,5 @@ Upgrade tests are run daily on the Jenkins [continuous integration][ci] server.
 If you are working on a core upgrade you can save some time and check out this
 handy [test-helper] to run upgraders from specific versions.
 
-[ci]: continuous-integration.md
+[ci]: /testing/continuous-integration
 [test-helper]: https://github.com/civicrm/civicrm-buildkit/blob/master/doc/daily-coding.md#upgrade-tests

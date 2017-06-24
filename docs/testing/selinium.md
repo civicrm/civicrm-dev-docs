@@ -40,4 +40,4 @@ cd tools
 - [Selenium documentation](http://seleniumhq.org/docs/)
 - [Selenium reference](http://release.seleniumhq.org/selenium-core/1.0.1/reference.html)
 
-[buildkit]: ../tools/buildkit.md
+[buildkit]: /tools/buildkit

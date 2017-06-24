@@ -91,5 +91,5 @@ rollback automatically at the end of the test.
     or change the database schema please be aware you may need to manually reset
     it.
 
-[buildkit]: ../tools/buildkit.md
+[buildkit]: /tools/buildkit
 [civi-test-class]: https://github.com/civicrm/org.civicrm.testapalooza/blob/master/civi-test.md
