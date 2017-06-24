@@ -45,7 +45,6 @@ pages:
   - Advanced patterns: extensions/advanced.md
 - Testing:
   - Testing Setup: testing/setup.md
-  - PHPStorm: testing/phpstorm.md
   - "PHPUnit Tests": testing/phpunit-tests.md
   - "Javascript Tests": testing/javascript-tests.md
   - "Selinium Tests": testing/selinium-tests.md
