@@ -5,6 +5,6 @@ You can download [CiviCRM buildkit](/tools/buildkit) which includes all the test
 From there you can create a test site using [civibuild](/tools/civibuild).
 
 !!! info
-    When writing new tests or making any changes make sure you run [civilint]
+    When writing new tests or making any changes make sure you run [civilint](/tools/civilint)
     to ensure your changes match our coding style.
 
