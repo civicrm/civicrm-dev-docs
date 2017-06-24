@@ -82,7 +82,7 @@ it is very helpful to look inside those objects (especially `$objectRef`) to
 make sure you're getting what you expect.
 
 A good debugger is indispensable here. See the 
-[page on debugging](/dev-tools/debugging/) for more information on setting up
+[page on debugging](/tools/debugging.md) for more information on setting up
  a debugger for your development environment.
 
 !!! warning

@@ -592,7 +592,7 @@ See this (somewhat outdated) [wiki page](https://wiki.civicrm.org/confluence/dis
 
 ### Add an API function {:#generate-api}
 
-The [CiviCRM API](/api/general)
+The [CiviCRM API](/api/index.md)
 provides a way to expose functions for use by other developers. API
 functions allow implementing AJAX interfaces (using the
 cj().crmAPI() helper), and they can also be called via REST, PHP,
