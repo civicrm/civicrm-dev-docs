@@ -19,7 +19,6 @@ Create a civicrm.settings.test.php in the same directory as your
 `civicrm.settings.php` using this template:
 
 ```php
-<?php
 define('CIVICRM_DSN', 'mysql://<USER>:<PASSWORD>@127.0.0.1:3306/<TEST_DB_NAME>?new_link=true');
 require_once 'civicrm.settings.php';
 ```
