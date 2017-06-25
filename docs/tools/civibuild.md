@@ -54,7 +54,7 @@ The command will print out URLs and credentials for accessing the website.
 $ civibuild create dmaster --url http://dmaster.localhost --admin-pass s3cr3t
 ```
 
-Once you have a working build of `dmaster`, you can continue working with `civibuild` to create different builds (as described below) or [learn more about other day-to-day development tasks](/buildkit/tutorials.md).
+Once you have a working build of `dmaster`, you can continue working with `civibuild` to create different builds as described below.
 
 ## Build Types
 

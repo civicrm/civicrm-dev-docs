@@ -2,7 +2,7 @@
 
 ## Tools included with buildkit {:#with-buildkit}
 
-When you install [buildkit](/buildkit.md) you'll get all these tools.
+When you install [buildkit](/tools/buildkit.md) you'll get all these tools.
 
 *This list of tools is also maintained [in the buildkit readme file](https://github.com/civicrm/civicrm-buildkit/blob/master/README.md).*
 
@@ -21,7 +21,7 @@ When you install [buildkit](/buildkit.md) you'll get all these tools.
     * *documentation: run `civistrings --help`*
     * *[repository](https://github.com/civicrm/civistrings)*
 * `cividist` - Generate tarballs from a series of git branches/tags
-    * *[documentation](/buildkit/cividist.md)*
+    * *[documentation](/tools/cividist.md)*
     * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/cividist)*
 * `gitify` - Convert a CiviCRM installation to a git repo
     * *documentation: run `gitify` with no arguments*
@@ -41,7 +41,7 @@ When you install [buildkit](/buildkit.md) you'll get all these tools.
 
 ### External tools installed with buildkit {:#external}
 
-These tools are not specific to CiviCRM, so you may already have some of them installed on your system. If you install [buildkit](/buildkit.md) you'll get all these tools at once, in addition to the CiviCRM-specific tools listed above.
+These tools are not specific to CiviCRM, so you may already have some of them installed on your system. If you install [buildkit](/tools/buildkit.md) you'll get all these tools at once, in addition to the CiviCRM-specific tools listed above.
 
 * Dependency management
     * [composer](http://getcomposer.org/) - Manage dependencies for PHP code.
@@ -69,7 +69,7 @@ These tools are not specific to CiviCRM, so you may already have some of them in
 * [git](https://git-scm.com/) - version control system
 * [psysh](http://psysh.org/) - a reply-echo-print-loop for PHP (like `php -a`, but better)
 * [MySQL Workbench](https://www.mysql.com/products/workbench/) - A graphical interface to your local (or remote) MySQL server
-* [MkDocs](http://www.mkdocs.org) - for [editing documentation](/documentation.md)
+* [MkDocs](http://www.mkdocs.org) - for [editing documentation](/documentation/index.md)
 
 ### Text editors
 

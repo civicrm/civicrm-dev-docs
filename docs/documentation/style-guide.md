@@ -111,7 +111,7 @@ Alternative Text  (ALT Tags) should be included for every image.
 
 ### Machine-readable symbols
 
-Machine-readable symbols (e.g. files names, classes, functions, variables, database tables, database columns, commands, etc.) should be formatted either with inline monospace or preformatted code blocks (also in monospace). See the [markdown syntax](/markdownrules.md#code) to use for such formatting.
+Machine-readable symbols (e.g. files names, classes, functions, variables, database tables, database columns, commands, etc.) should be formatted either with inline monospace or preformatted code blocks (also in monospace). See the [markdown syntax](/documentation/markdown.md#code) to use for such formatting.
 
 ### URLs
 

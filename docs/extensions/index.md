@@ -90,7 +90,7 @@ Extension authors may make their extensions available to the larger CiviCRM
 community by publishing them in the [Extensions Directory](https://civicrm.org/extensions).
 >> See: [Publish](/extensions/publish.md)
 
-Extensions which undergo a [formal review](/extend-stages.md#formal-review) may be
+Extensions which undergo a [formal review](/extensions/lifecycle.md#formal-review) may be
 distributed in-app. Approved extensions can be [installed
 directly](https://docs.civicrm.org/user/en/master/introduction/extensions/#installing-extensions)
 into CiviCRM via the user interface, lowering the barrier to entry for many users.

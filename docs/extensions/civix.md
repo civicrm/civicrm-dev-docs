@@ -8,7 +8,7 @@ community-endorsed method for building your CiviCRM extensions.
 Follow the installation instructions in the
 [GitHub repository](https://github.com/totten/civix/).
 
-After fulfilling the [Pre-Requisites](/extensions/basics.md#pre-requisites), you can verify that all your configuration is correct by running the following command from
+After fulfilling the [Pre-Requisites](/extensions/index.md#pre-requisites), you can verify that all your configuration is correct by running the following command from
 within your extensions directory with:
 
 ```bash
@@ -31,7 +31,7 @@ civix help civicrm:ping
 ## Generating a skeletal extension {:#generate-module}
 
 To generate a skeletal extension module, we will use `civix generate:module`
-and pass in the name for our extension. See [here](/extensions/basics.md#extension-names)
+and pass in the name for our extension. See [here](/extensions/index.md#extension-names)
 for details of naming conventions.
 
 Start with:
@@ -428,7 +428,7 @@ $values = CRM_Core_BAO_CustomValueTable::getValues($params);
 ### Add a hook function
 
 CiviCRM
-[hook functions](/hooks.md)
+[hook functions](/hooks/index.md)
 allow extensions to run extra logic as
 part of the normal CiviCRM processing. For example,
 `hook_civicrm_buildForm()` allows a module to run logic whenever a
