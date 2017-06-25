@@ -29,7 +29,7 @@ for use by people that are familiar with CiviCRM development.
 
 -   This documentation is made with mkdocs and
     [stored in GitHub](https://github.com/civicrm/civicrm-dev-docs)
--   See the "[Writing Documentation](documentation/index.md)" section in this guide
+-   See the "[Writing Documentation](/documentation/index.md)" section in this guide
     for specific details on editing this documentation (and others using
     mkdocs). You can also learn how to read these docs off-line!
 

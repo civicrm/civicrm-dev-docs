@@ -51,7 +51,7 @@ A backtrace is a list of all the functions that were run in the execution of the
 ## Viewing log files
 
 CiviCRM's log files are stored in the `ConfigAndLog` directory within CiviCRM's
-local file storage (see [the File System documentation](../basics/filesystem.md)
+local file storage (see [the File System documentation](/basics/filesystem.md)
 for details on your CMS).  Most runtime errors are logged here, as well as data
 that you explicitly write to log using the `CRM_Core_Error::debug log=true`
 parameter.

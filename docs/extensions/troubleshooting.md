@@ -1,7 +1,7 @@
 # Troubleshooting
 
 If you are struggling, the best thing to do is reach out to the
-[CiviCRM community](../basics/community).
+[CiviCRM community](/basics/community.md).
 
 If you cannot find the answer in this guide or by searching in the
 [CiviCRM StackExchange site](http://civicrm.stackexchange.com/)
