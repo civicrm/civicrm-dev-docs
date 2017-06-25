@@ -31,7 +31,7 @@ several alternative folders, such as:
  * `modules/civicrm`
 
 Within the `civicrm` folder, there will be a
-[`drupal/`]((https://github.com/civicrm/civicrm-drupal/) or
+[`drupal/`](https://github.com/civicrm/civicrm-drupal/) or
 [`backdrop/`](https://github.com/civicrm/civicrm-backdrop/) subfolder which
 contains the `civicrm.module` along with the role sync modules, blocks, and
 drush and views integration.

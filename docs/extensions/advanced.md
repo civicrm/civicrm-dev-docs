@@ -18,12 +18,10 @@ There are three options to create an ajax or web-service callback:
     your data to *$this-\>ajaxResponse* array and the rest will happen
     automatically. If not, you can directly call
     CRM\_Core\_Page\_AJAX::returnJsonResponse() at the bottom of the run
-    function. See [Ajax Pages and
-    Forms](/confluence/display/CRMDOC/Ajax+Pages+and+Forms)
+    function. See [Ajax Pages and Forms](https://wiki.civicrm.org/confluence/display/CRMDOC/Ajax+Pages+and+Forms)
     documentation.
 -   **Using the API:** Add an API function using `civix`.
-    The API function can be called with the API's [AJAX
-    Interface](http://wiki.civicrm.org/confluence/display/CRMDOC/AJAX+Interface).
+    The API function can be called with the API's [AJAX Interface](http://wiki.civicrm.org/confluence/display/CRMDOC/AJAX+Interface).
     This automatically handles issues like encoding and decoding the
     request/response.
 

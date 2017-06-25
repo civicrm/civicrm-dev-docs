@@ -14,7 +14,7 @@ writers encounter.
 
 ## Extension not doing anything
 
-[]( ###### arguably this list should be removed altogether?? #### )
+<!-- TODO: arguably this list should be removed altogether?? -->
 
 Q: I've created the files and edited them but I don't see the expected
 changes.

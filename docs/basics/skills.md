@@ -72,8 +72,8 @@ accomplishing a particular development goal, certainly vary.
     developers and CiviCRM actually borrows many development practices from
     the project, so learning Drupal is a good place to start if you are unsure.
     -   [Drupal documentation](https://www.drupal.org/docs/)
-    -   [Wordpress documentation]()
-    -   [Joomla documentation]()
+    -   [Wordpress documentation](https://codex.wordpress.org/Main_Page)
+    -   [Joomla documentation](https://docs.joomla.org/)
 -   **SQL / MySQL** - "SQL" is a standardized language used by many different
     kinds of databases to manipulate data in the database. "MySQL" is one kind
     of database which CiviCRM uses to store all its data. The query syntax
