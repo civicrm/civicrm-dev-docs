@@ -5,7 +5,7 @@
 This hook is called to get all the values for the tokens registered. Use
 it to overwrite or reformat existing token values, or supply the values
 for custom tokens you have defined in
-[hook_civicrm_tokens](/hooks/hook_civicrm_tokens).\
+[hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md).\
  See [this
 article](https://civicrm.org/blog/colemanw/create-your-own-tokens-for-fun-and-profit) for
 usage examples.

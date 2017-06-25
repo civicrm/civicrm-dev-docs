@@ -164,7 +164,7 @@ The review process assess several criteria, and as a rule of thumb, *Contributed
 
 To become an extensions reviewer, please take the following steps:
 
-1. Set up accounts on these sites *(if you need help, reach out through the [community resources](/basics/community))*
+1. Set up accounts on these sites *(if you need help, reach out through the [community resources](/basics/community.md))*
     1.  [civicrm.org](https://civicrm.org/user/)
     1.  [issues.civicrm.org](https://issues.civicrm.org/jira/login.jsp) - log in using your civicrm.org account
 1.  Contact the [CiviCRM Extension Ecosystem Working

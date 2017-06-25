@@ -78,7 +78,7 @@ your work by considering how you will provide automated testing for it.
 Starting with the buildkit will make this much simpler for you to set up.
 Getting started with unit-testing may seem daunting and onerous when you start,
 but you will soon come to love the freedom it gives you. If you are
-unsure how to proceed with testing ask the [community](/basics/community).
+unsure how to proceed with testing ask the [community](/basics/community.md).
 
 **Create a native [extension](/extensions/index.md)**.
 If you have new functionality to add to CiviCRM, it probably belongs in an

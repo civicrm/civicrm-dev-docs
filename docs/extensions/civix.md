@@ -8,7 +8,7 @@ community-endorsed method for building your CiviCRM extensions.
 Follow the installation instructions in the
 [GitHub repository](https://github.com/totten/civix/).
 
-After fulfilling the [Pre-Requisites](/extensions/basics/#pre-requisites), you can verify that all your configuration is correct by running the following command from
+After fulfilling the [Pre-Requisites](/extensions/basics.md#pre-requisites), you can verify that all your configuration is correct by running the following command from
 within your extensions directory with:
 
 ```bash
@@ -31,7 +31,7 @@ civix help civicrm:ping
 ## Generating a skeletal extension {:#generate-module}
 
 To generate a skeletal extension module, we will use `civix generate:module`
-and pass in the name for our extension. See [here](/extensions/basics/#extension-names)
+and pass in the name for our extension. See [here](/extensions/basics.md#extension-names)
 for details of naming conventions.
 
 Start with:
@@ -48,7 +48,7 @@ civix generate:module com.example.myextension --license=AGPL-3.0
 ```
 
 This command will report that it has created three files, following the
-[standard extension structure](/extensions/files).
+[standard extension structure](/extensions/files.md).
 
 The command attempts to auto-detect authorship information (your name and
 email address) by reading your
@@ -191,9 +191,9 @@ to create a new entity. For this, you can use the command `civix generate:entity
 
 1. Run `civix generate:entity MyEntity` (use CamelCase here). This creates a skeletal file for your XML schema, your BAO, and your API. It does NOT create a skeletal SQL file to create your table or DAO files at this time.
 
-1. Edit the [XML schema definitions](/framework/schema-definition) in the `xml` folder to define your desired fields.
+1. Edit the [XML schema definitions](/framework/schema-definition.md) in the `xml` folder to define your desired fields.
 
-1. Generate a [DAO file](/core/architecture/#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
+1. Generate a [DAO file](/core/architecture.md#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
 
     1. Begin with a development installation of CiviCRM core (e.g. as installed with buildkit) which has a clean git status. We will henceforth refer to the CiviCRM root directory within this installation as `<civiroot>`. This core installation can actually be any installation, not necessarily the one you're using to develop your extension. We're basically just temporarily hijacking its environment to generate DAO and SQL.
 
@@ -428,7 +428,7 @@ $values = CRM_Core_BAO_CustomValueTable::getValues($params);
 ### Add a hook function
 
 CiviCRM
-[hook functions](/hooks/)
+[hook functions](/hooks.md)
 allow extensions to run extra logic as
 part of the normal CiviCRM processing. For example,
 `hook_civicrm_buildForm()` allows a module to run logic whenever a

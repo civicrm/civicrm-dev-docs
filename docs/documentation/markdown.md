@@ -62,7 +62,7 @@ Try [CiviCRM](https://civicrm.org) for your database.
 An internal hyperlink on mkdocs. Both of the following syntaxes work because the `.md` is optional. *Make sure to use an absolute path and precede the path with a slash, as shown below.*
 
 ```
-[extensions](/extensions/basics)
+[extensions](/extensions/basics.md)
 [extensions](/extensions/basics.md)
 ```
 

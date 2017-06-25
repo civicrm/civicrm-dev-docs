@@ -43,7 +43,7 @@ function _example_say_hello($event) {
 
 !!! tip "Using the `$event` object"
     Hook parameters are passed as an object, `$event`.
-    For example, [`hook_civicrm_alterContent`](/hooks/hook_civicrm_alterContent/)
+    For example, [`hook_civicrm_alterContent`](/hooks/hook_civicrm_alterContent.md)
     has the parameters `(&$content, $context, $tplName, &$object)`.
     You can access the data as `$event->content`, `$event->context`, `$event->tplName`, and `$event->object`.
 

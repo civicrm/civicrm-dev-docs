@@ -7,7 +7,7 @@ addresses, you may want to return the name of the associated contact from the
 Contact entity.
 
 The CiviCRM API supports two methods of returning data from associated entities;
-API Joins and [API Chaining](/api/chaining).  API joins provide higher
+API Joins and [API Chaining](/api/chaining.md).  API joins provide higher
 performance by making a single SQL query with a
 [SQL join](https://dev.mysql.com/doc/refman/5.7/en/join.html), and are
 generally preferable to API chaining where available.
@@ -43,15 +43,15 @@ $result = civicrm_api3('Event', 'get', array(
 ));
 ```
 !!! tip
-    Joins are available only with the [get](/api/actions/#getfields),
-    [getsingle](/api/actions/#getsingle), and [getcount](/api/actions/#getcount)
+    Joins are available only with the [get](/api/actions.md#getfields),
+    [getsingle](/api/actions.md#getsingle), and [getcount](/api/actions.md#getcount)
     actions.
 
 ## Identifying fields eligible for a join
 
-It is possible to join an entity to any other entity if the [xml](/core/architecture/#xml)
+It is possible to join an entity to any other entity if the [xml](/core/architecture.md#xml)
 schema identifies a [foreign key](https://en.wikipedia.org/wiki/Foreign_key) or
-a pseudoconstant.  The [getfields](/api/actions/#getfields) action identifies
+a pseudoconstant.  The [getfields](/api/actions.md#getfields) action identifies
 fields that are eligible for an API join.
 
 !!! warning

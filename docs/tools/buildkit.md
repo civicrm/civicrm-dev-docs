@@ -2,7 +2,7 @@
 
 [Buildkit](https://github.com/civicrm/civicrm-buildkit) is a collection of ~20 tools for developing and testing CiviCRM, the most important of which is [civibuild](/tools/civibuild.md).
 
-Many of these tools are commonly used by web developers, so you may have already installed a few. Even so, it's generally easier to [install](/buildkit/setup) the full collection &mdash; installing each individually takes a lot of work.
+Many of these tools are commonly used by web developers, so you may have already installed a few. Even so, it's generally easier to [install](/buildkit/setup.md) the full collection &mdash; installing each individually takes a lot of work.
 
 This is the same collection of tools which manages the test/demo/release infrastructure for civicrm.org.
 

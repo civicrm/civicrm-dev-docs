@@ -3,7 +3,7 @@
 ## Description
 
 !!! warning "Deprecated"
-    This hook is deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions). Use that instead for modifying all option lists, not limited to custom fields.
+    This hook is deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md). Use that instead for modifying all option lists, not limited to custom fields.
 
 
 ## Definition
