@@ -30,7 +30,6 @@ To maintain some consistency and peace of mind for documentation content editors
 * **Ordered lists:** use `1.` as delimiters.
 * **Unordered lists:** use `*` to delimiters.
 * **Headings:** use hashes like `## Heading 2`.
-* **Internal hyperlinks:**
 
 
 ## Basic inline formatting
