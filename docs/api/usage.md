@@ -12,9 +12,7 @@ with the supported actions and parameters:
 | <code>Address</code>     | A street-address related <br /> to a contact. |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_id</code>,  <br /> <code>street\_address</code> <br /> <code>city</code>  <br /> <code>state\_province\_id</code> <br /> <code>country\_id</code>     |
 
 (*For full, up-to-date details about specific entities and parameters, use the
-[API Explorer].*)
-
-[API Explorer]: /api/general/#api-explorer
+[API Explorer](/api/index.md#api-explorer).*)
 
 The API is available in many different environments (such as PHP, REST, and
 Javascript), and the notation differs slightly in each environment.
@@ -150,7 +148,7 @@ http://www.example.com/civicrm/ajax/rest
 ```
 
 Obviously you should substitute your site in! You can explore the syntax
-and options available using the [API Explorer].
+and options available using the [API Explorer](/api/index.md#api-explorer).
 
 Please note that the REST interface is subject to
 [API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security).

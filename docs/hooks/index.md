@@ -36,9 +36,9 @@ The names of all the hook functions follow a pattern:
 The two parts that you'll be changing are:
 
 1. ==EXTENSION-NAME==: Depending on your installation this can change. In 
-[Drupal][drupal] it will be the name of your extension. In 
-[Joomla][joomla] it will be "joomla".
-2. ==HOOK-NAME==: This is the name of the event you want to hook into, for 
+[Drupal](/hooks/setup/drupal.md) it will be the name of your extension. In
+[Joomla](/hooks/setup/joomla.md) it will be "joomla".
+2. ==HOOK-NAME==: This is the name of the event you want to hook into, for
 example `validateForm`. You'll need to check the reference for a full list of 
 hooks that are available.
 
@@ -116,7 +116,7 @@ location on your server to see the new code take effect.
 Because the majority of users currently use CiviCRM with Drupal we'll assume 
 you're using Drupal for the rest of the example. But don't worry Joomla! users, 
 the concept is the same and just requires some tweaks to get it working. Have a
-look at the [Joomla help][joomla] for more instructions.
+look at the [Joomla help](/hooks/setup/joomla.md) for more instructions.
 
 ### Setting Text on a Form
 
@@ -253,6 +253,5 @@ function myextension_civicrm_tokenValues(&$details, $contactIDs, $jobID, $tokens
 }
 ```
 
-[drupal]: hooks/setup/drupal
-[joomla]: hooks/setup/joomla
+
 [wrapper-zip]: http://wiki.civicrm.org/confluence/download/attachments/86213379/callhooks.zip?version=1&modificationDate=1372586243000&api=v2

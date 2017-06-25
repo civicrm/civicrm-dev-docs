@@ -1,15 +1,12 @@
 # API Parameters
 
 There are many parameters accepted by the CiviCRM API. Most parameters
-depend on the entity – for current details in your see the [API Explorer]
-and the [API examples]. However, some parameters are particularly dynamic or
+depend on the entity – for current details in your see the [API Explorer](/api/index.md#api-explorer)
+and the [API examples](/api/index.md#api-examples). However, some parameters are particularly dynamic or
 generic; these may not be explained well by the auto-generated
 documentation. The format for passing options as parameters using the
-REST interface is explained at [REST
-interface\#optionsparameters](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface#RESTinterface-optionsparameters).
+REST interface is explained at [REST interface](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface#RESTinterface-optionsparameters).
 
-[API Explorer]: /api/general/#api-explorer
-[API examples]: /api/general/#api-examples
 
 ## sequential
 
