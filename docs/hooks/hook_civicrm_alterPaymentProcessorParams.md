@@ -2,17 +2,16 @@
 
 ## Summary
 
+This hook allows you to modify parameters passed to the payment processor.
+
+## Notes
+
 This hook is called during the processing of a contribution after the
-payment processor has control, but just before the CiviCRM processor
-specific code starts a transaction with the back-end payments server
-(e.g., PayPal, Authorized.net, or Moneris). It allows you to modify the
-parameters passed to the back end so that you can pass custom
-parameters, or use features of your back-end that CiviCRM does not
-"know" about.
+payment processor has control, but before the CiviCRM processor-specific code starts a transaction with the back-end payment server (e.g. Authorize.net).
+
+With this hook, you can pass custom parameters, or use features of your back-end that CiviCRM does not "know" about.
 
 ## Definition
-
-     Code Block
 
      hook_civicrm_alterPaymentProcessorParams($paymentObj,&$rawParams, &$cookedParams);
 

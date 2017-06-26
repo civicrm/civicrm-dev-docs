@@ -2,11 +2,15 @@
 
 ## Summary
 
-This hook is called after a search is done. This allows the developer to
-modify the headers and/or the values that are displayed as part of this
-search. The BIGGEST drawback with this hook is that you may need to
+This hook is called after a search is done, allowing you to
+modify the headers and/or the values that are displayed as part of the
+search.
+
+## Notes
+
+The *biggest* drawback with this hook is that you may need to
 modify the result template to include your fields. The result files are
-CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl. However, if
+`CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl`. However, if
 you use the same number of columns, you can overwrite the existing
 columns with the values that you want displayed. This is a HACK, but
 avoids template modification.

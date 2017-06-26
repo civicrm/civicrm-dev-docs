@@ -4,6 +4,8 @@
 
 This hook fires when an unhandled exception (fatal error) occurs.
 
+## Notes
+
 A use case is to show an alternative page to donors rather than a fatal
 error screen if a fatal error occurs during a donation.
 

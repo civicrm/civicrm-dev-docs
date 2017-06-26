@@ -3,8 +3,10 @@
 ## Summary
 
 This hook is called when the list of core js/css resources is about to
-be processed. Implementing this hook gives you the opportunity to modify
+be processed, giving you the opportunity to modify
 the list prior to the resources being added, or add your own.
+
+## Notes
 
 Added in v4.6.6.
 

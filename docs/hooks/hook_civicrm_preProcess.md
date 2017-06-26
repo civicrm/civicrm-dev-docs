@@ -2,20 +2,18 @@
 
 ## Summary
 
-Use if you need to modify the behavior of a form before the
-buildQuickForm call.
+This hook can be used to modify the behavior of a form before the
+`buildQuickForm` call.
+
+
+## Notes
 
 There are some known issues with exception
 handling: [https://issues.civicrm.org/jira/browse/CRM-15683](https://issues.civicrm.org/jira/browse/CRM-15683).
 
 ## Definition
 
-
-
-  ------------------------------------------------------------
-  `hook_civicrm_preProcess($formName, &$form)`{.java .plain}
-  ------------------------------------------------------------
-
+    hook_civicrm_preProcess($formName, &$form)
 
 
 ## Parameters

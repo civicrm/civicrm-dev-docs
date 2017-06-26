@@ -2,8 +2,11 @@
 
 ## Summary
 
-This hook is called to determine the reference-count for a record. For
-example, when counting references to the activity type "Phone Call", one
+This hook is called to determine the reference-count for a record.
+
+## Notes
+
+For example, when counting references to the activity type "Phone Call", one
 would want a tally that includes:
 
 -   The number of activity records which use "Phone Call"

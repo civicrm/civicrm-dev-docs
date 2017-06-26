@@ -2,12 +2,15 @@
 
 ## Summary
 
-This hook is an opportunity to modify action links in CiviCRM.  These
-include the actions at the end of a search result row, the Create New
+This hook allows you to modify action links including:
+the actions at the end of a search result row, the Create New
 dropdown, and the Actions dropdown at the top of a contact record.
 
-Note: remember to use the string processing functions of your host
-framework ( `ts()` for CiviCRM extensions, `t()` for Drupal modules, etc).
+
+## Notes
+
+!!! tip
+    Remember to use the string processing functions of your host framework ( `ts()` for CiviCRM extensions, `t()` for Drupal modules, etc).
 
 ## Definition
 

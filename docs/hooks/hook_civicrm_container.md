@@ -2,14 +2,13 @@
 
 ## Summary
 
-This hook modifies the CiviCRM container - add new services, parameters,
+This hook modifies the CiviCRM container allowing you to add new services, parameters,
 extensions, etc.
 
-Tip: The container configuration will be compiled/cached. The default
-cache behavior is aggressive. When you first implement the hook, be sure
-to flush the cache. Additionally, you should relax caching during
-development. In civicrm.settings.php, set
-define('CIVICRM_CONTAINER_CACHE', 'auto').
+## Notes
+
+!!! tip
+    The container configuration will be compiled/cached. The default cache behavior is aggressive. When you first implement the hook, be sure to flush the cache. Additionally, you should relax caching during development. In `civicrm.settings.php`, set `define('CIVICRM_CONTAINER_CACHE', 'auto')`.
 
 ## Availability
 

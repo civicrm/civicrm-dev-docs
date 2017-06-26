@@ -2,8 +2,7 @@
 
 ## Summary
 
-This hook is called at the successful completion of a bulk mailing
-(CiviMail).
+This hook is called at the successful completion of a bulk mailing done through CiviMail.
 
 ## Definition
 

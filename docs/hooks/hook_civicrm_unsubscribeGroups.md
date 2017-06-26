@@ -2,8 +2,10 @@
 
 ## Summary
 
-This hook is called when CiviCRM recieves a request to unsubscribe a
-user from a mailing
+This hook is called when CiviCRM receives a request to unsubscribe a
+user from a mailing.
+
+## Availability
 
 Introduced in CiviCRM v4.2
 

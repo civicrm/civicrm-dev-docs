@@ -3,7 +3,7 @@
 ## Summary
 
 This hook is invoked after all the content of a CiviCRM form or page is
-generated. It allows for direct manipulation of the generated content.
+generated and allows for direct manipulation of the generated content.
 
 ## Definition
 

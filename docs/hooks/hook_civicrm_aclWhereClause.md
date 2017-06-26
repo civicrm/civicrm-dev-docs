@@ -5,13 +5,15 @@
 This hook is called when composing the ACL where clause to restrict
 visibility of contacts to the logged in user.
 
-Note that this hook is called only when filling up the
-civicrm_acl_contact_cache table, and not every time a contact SELECT
-query is performed. Those will join onto the
-civicrm_acl_contact_cache table.
+## Notes
 
-*NB: This hook will not be called at all if the logged in user has
-access to the "edit all contacts" permission.*
+This hook is called only when filling up the
+`civicrm_acl_contact_cache` table, and not every time a contact `SELECT`
+query is performed. Those will join onto the
+`civicrm_acl_contact_cache` table.
+
+!!! caution "Caveat"
+    It will not be called at all if the logged in user has access to the "edit all contacts" permission.
 
 ## Definition
 

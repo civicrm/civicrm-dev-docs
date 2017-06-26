@@ -2,8 +2,9 @@
 
 ## Summary
 
-This hook is called to retrieve the display name of a contact. You can
-use this hook to return a custom display name.
+This hook is called to retrieve the display name of a contact, allowing you to return a custom display name.
+
+## Notes
 
 Probably you won't need this hook but in some case it might be useful.
 For example you want to show who is a manager of an organisation but you

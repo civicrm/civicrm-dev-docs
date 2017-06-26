@@ -2,11 +2,15 @@
 
 ## Summary
 
-This hook is called to allow custom tokens to be defined. Their values
+This hook is called to allow custom tokens to be defined.
+
+## Notes
+
+The token values
 will need to be supplied by
-[hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md).\
-  See [this
-article](https://civicrm.org/blog/colemanw/create-your-own-tokens-for-fun-and-profit)
+[hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md).
+
+See [this article](https://civicrm.org/blog/colemanw/create-your-own-tokens-for-fun-and-profit)
 for usage examples.
 
 ## Definition

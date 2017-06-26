@@ -2,9 +2,11 @@
 
 ## Summary
 
-This hook is called just after a case merge happens. A case merge is
-when two cases are merged or when a case is reassigned to another
-client.
+This hook is called after a case merge happens.
+
+## Notes
+
+A case merge is when two cases are merged or when a case is reassigned to another client.
 
 Added in CIviCRM 4.5
 

@@ -3,7 +3,7 @@
 ## Summary
 
 This hook is called when building the amount structure for a
-Contribution or Event Page. It allows you to modify the set of radio
+Contribution or Event Page, allowing you to modify the set of radio
 buttons representing amounts for contribution levels and event
 registration fees.
 

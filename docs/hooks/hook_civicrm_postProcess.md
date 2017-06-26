@@ -2,9 +2,12 @@
 
 ## Summary
 
-This hook is invoked when a CiviCRM form is submitted. If the module has
-injected\
- any form elements, this hook should save the values in the database.
+This hook is invoked when a CiviCRM form is submitted.
+
+## Notes
+
+If the module has injected any form elements, this hook should save the
+values in the database.
 
 This hook is not called when using the API, only when using the regular
 forms. If you want to have an action that is triggered no matter if it's

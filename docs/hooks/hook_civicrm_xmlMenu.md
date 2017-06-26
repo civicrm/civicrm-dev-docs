@@ -3,15 +3,19 @@
 ## Summary
 
 This hook is called when building CiviCRM's menu structure, which is
-used to render urls in CiviCRM. This hook should be used when you want
+used to render urls in CiviCRM.
+
+## Notes
+
+This hook should be used when you want
 to register your custom module url's in CiviCRM. You will need to visit
-<your_site>/civicrm/menu/rebuild?reset=1 to pick up your additions.
+`/civicrm/menu/rebuild?reset=1` to pick up your additions.
 
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
     -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
-    -    [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
+    -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
     -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
 
 

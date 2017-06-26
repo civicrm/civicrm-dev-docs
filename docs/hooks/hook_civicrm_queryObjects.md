@@ -2,9 +2,7 @@
 
 ## Summary
 
-This hook is called while building the core search query,\
- so hook implementers can provide their own query objects which
-alters/extends core search.
+This hook is called while building the core search query, allowing you to provide your own query objects which alter or extend the core search.
 
 ## Definition
 

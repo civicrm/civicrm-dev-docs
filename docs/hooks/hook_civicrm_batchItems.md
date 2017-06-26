@@ -3,7 +3,11 @@
 ## Summary
 
 This hook is called when a CSV batch export file is about to be
-generated. Notice that this hook will be called in per batch bases, e.g.
+generated.
+
+## Notes
+
+Notice that this hook will be called in per batch bases, e.g.
 if 3 batches are going to be exported in the same CSV then this hook
 will be called three times regarding each batch.
 

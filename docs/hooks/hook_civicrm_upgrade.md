@@ -3,8 +3,11 @@
 ## Summary
 
 This hook is called when an administrator visits the "Manage Extensions"
-screen to determine if there are any pending upgrades. As of version
-4.7, it is also called periodically by [CiviCRM's system status
+screen to determine if there are any pending upgrades.
+
+## Notes
+
+As of version 4.7, it is also called periodically by [CiviCRM's system status
 utility](https://docs.civicrm.org/user/en/stable/initial-set-up/civicrm-system-status/).
 
 If there are upgrades, and if the administrator chooses to execute them,

@@ -2,11 +2,12 @@
 
 ## Summary
 
+Deprecated in favor of [hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md).
+
+## Notes
+
 !!! warning "Deprecation Notice"
     This hook is called in very few places in version 4.5+ because most contact reference fields have been migrated to go through the api instead of constructing an ad-hoc query. It will be removed in a future version.
-
-    For a substitute, see [hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md).
-
 
 Use this hook to populate the list of contacts returned by Contact
 Reference custom fields. By default, Contact Reference fields will

@@ -2,8 +2,12 @@
 
 ## Summary
 
-This hook is called soon after the CRM_Core_Config object has ben
-initialized. You can use this hook to modify the config object and hence
+This hook is called soon after the `CRM_Core_Config` object has been
+initialized.
+
+## Notes
+
+You can use this hook to modify the config object and hence
 behavior of CiviCRM dynamically.
 
 ## Definition

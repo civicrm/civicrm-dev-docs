@@ -5,6 +5,8 @@
 This hook provides a way to override the default privacy behavior for
 notes.
 
+## Notes
+
 If a user has the "View All Notes" permission, this hook is bypassed.
 
 See also [this blog

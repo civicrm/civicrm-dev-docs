@@ -3,8 +3,12 @@
 ## Summary
 
 This hook is called by the Email Processor when deciding to which
-contact an activity will be attached. You can tell it to use a different
-contact and/or whether it should create contacts.
+contact and activity will be attached.
+
+## Notes
+
+You can use this hook to choose a different
+contact or decide whether it should create contacts.
 
 ## Definition
 

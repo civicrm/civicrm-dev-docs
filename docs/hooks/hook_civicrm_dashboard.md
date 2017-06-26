@@ -2,7 +2,7 @@
 
 ## Summary
 
-This hook is called when rendering the dashboard page. This hook can be
+This hook is called when rendering the dashboard page and can be
 used to add content to the dashboard page.
 
 ## Definition

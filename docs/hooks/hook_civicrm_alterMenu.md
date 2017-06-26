@@ -2,24 +2,23 @@
 
 ## Summary
 
-This hook is called when building CiviCRM's list of HTTP routes. This
-hook should be used when you want to register custom paths or URLS. You
-will need to visit <your_site>/civicrm/menu/rebuild?reset=1 to pick
-up your additions.
+This hook is called when building CiviCRM's list of HTTP routes and should be used when you want to register custom paths or URLS.
 
-Added in CiviCRM 4.7.11.
+## Notes
 
-
+You will need to visit `/civicrm/menu/rebuild?reset=1` to pick up your additions.
 
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
     -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
-    -    [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
+    -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
     -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
 
 
+## Availability
 
+Added in CiviCRM 4.7.11.
 
 
 ## Definition

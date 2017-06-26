@@ -3,8 +3,7 @@
 ## Summary
 
 This hook is called to display the list of actions allowed after doing a
-search. This allows the module developer to inject additional actions or
-to remove existing actions.
+search, allowing you to inject additional actions or to remove existing actions.
 
 ## Definition
 

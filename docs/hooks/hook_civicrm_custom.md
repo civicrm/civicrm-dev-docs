@@ -2,7 +2,7 @@
 
 ## Summary
 
-This hook is called AFTER the db write on a custom table
+This hook is called *after* the database write on a custom table.
 
 ## Definition
 

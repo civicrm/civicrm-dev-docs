@@ -4,8 +4,9 @@
 
 This hook fires whenever a record in a case changes.
 
-See also the documentation for [CiviCase
-Util](https://wiki.civicrm.org/confluence/display/HR/CiviCase+Util).
+## Notes
+
+See also the documentation for [CiviCase Util](https://wiki.civicrm.org/confluence/display/HR/CiviCase+Util).
 
 ## Availability
 
