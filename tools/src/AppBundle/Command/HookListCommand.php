@@ -36,16 +36,16 @@ class HookListCommand extends Command {
     $categories = Book::pages()['Hooks'];
 
     // Remove pages which are not about specific hooks
-    $categories = array_map(function ($pages) {
+    foreach ($categories as $category_name => &$pages) {
       if (is_array($pages)) {
-        return array_filter($pages, function ($page_url) {
+        $pages = array_filter($pages, function ($page_url) {
           return preg_match('/hook_civicrm_/', $page_url);
         });
       }
       else {
-        return FALSE;
+        $pages = FALSE;
       }
-    }, $categories);
+    }
 
     // Remove empty categories
     $categories = array_filter($categories);
@@ -68,15 +68,52 @@ class HookListCommand extends Command {
     ));
     file_put_contents(__DIR__ . '/../../../../docs/hooks/list.md', $content);
   }
-  
-  protected function loadHookSummaries() {
-    foreach ($this->categories as $category => $hooks) {
 
+  /**
+   * Load hook summary data into $this->categories for all hooks
+   */
+  protected function loadHookSummaries() {
+    foreach ($this->categories as $category => &$hooks) {
+      foreach ($hooks as $hook_name => &$value) {
+        $value = array(
+          'name' => $hook_name,
+          'url' => $value,
+          'summary' => self::lookupHookSummary($value),
+        );
+      }
     }
   }
 
-  protected function loadHookSummary($hookUrl) {
+  /**
+   * Look up a hook summary in the markdown file for the hook and return it as
+   * a string.
+   *
+   * It will grab all the content beneath the "Summary" H2 element and will
+   * stop when it gets to the next heading
+   *
+   * @param string $hookUrl
+   *   The URL for the hook as given in mkdocs.yml
+   *   e.g. "hooks/hook_civicrm_links.md"
+   *
+   * @return string
+   *   Short prose written to describe the hook. Won't contain any newlines.
+   */
+  protected static function lookupHookSummary($hookUrl) {
+    // Load markdown file for the hook
+    $hook = __DIR__ . '/../../../../docs/' . $hookUrl;
+    $page = file_get_contents($hook);
 
+    // Grab summary from within the page
+    $matches = array();
+    $pattern = '/(?<=^## Summary).*(?=^#)/Usim';
+    preg_match($pattern, $page, $matches);
+    $summary = !empty($matches[0]) ? $matches[0] : '';
+
+    // Clean summary
+    $summary = preg_replace('/\s+/', ' ', trim($summary));
+    $summary = preg_replace('/This hook( is)?( was)? /', '', $summary);
+
+    return $summary;
   }
 
 }
