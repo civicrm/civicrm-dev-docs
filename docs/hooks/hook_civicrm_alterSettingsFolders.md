@@ -1,6 +1,6 @@
 # hook_civicrm_alterSettingsFolders
 
-## Description
+## Summary
 
 The [Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/Settings+Reference) subsystem
 provides metadata about many of CiviCRM's internal settings by scanning

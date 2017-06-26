@@ -1,6 +1,6 @@
 # hook_civicrm_postInstall
 
-## Description
+## Summary
 
 This hook is called immediately after an extension is installed.
 

@@ -1,6 +1,6 @@
 # hook_civicrm_cron
 
-## Description
+## Summary
 
 This hook is called everytime the CiviCRM scheduler is polled. The
 timing and frequency with which this is called will vary depending on

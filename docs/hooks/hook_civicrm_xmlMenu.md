@@ -1,6 +1,6 @@
 # hook_civicrm_xmlMenu
 
-## Description
+## Summary
 
 This hook is called when building CiviCRM's menu structure, which is
 used to render urls in CiviCRM. This hook should be used when you want

@@ -1,6 +1,6 @@
 # hook_civicrm_aclWhereClause
 
-## Description
+## Summary
 
 This hook is called when composing the ACL where clause to restrict
 visibility of contacts to the logged in user.

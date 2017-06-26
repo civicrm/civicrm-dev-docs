@@ -1,6 +1,6 @@
 # hook_civicrm_preProcess
 
-## Description
+## Summary
 
 Use if you need to modify the behavior of a form before the
 buildQuickForm call.

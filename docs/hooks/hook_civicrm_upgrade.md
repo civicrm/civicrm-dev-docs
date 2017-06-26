@@ -1,6 +1,6 @@
 # hook_civicrm_upgrade
 
-## Description
+## Summary
 
 This hook is called when an administrator visits the "Manage Extensions"
 screen to determine if there are any pending upgrades. As of version

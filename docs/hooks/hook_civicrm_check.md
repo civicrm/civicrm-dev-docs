@@ -1,6 +1,6 @@
 # hook_civicrm_check
 
-## Description
+## Summary
 
 This hook is called by CiviCRM's "System Check" api
 (CRM_Utils_Check::checkAll).  This runs on a regular basis (currently

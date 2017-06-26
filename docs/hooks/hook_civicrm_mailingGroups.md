@@ -1,6 +1,6 @@
 # hook_civicrm_mailingGroups
 
-## Description
+## Summary
 
 This hook is called when composing a mailing. You can include / exclude
 other groups as needed.

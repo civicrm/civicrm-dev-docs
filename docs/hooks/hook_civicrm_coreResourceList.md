@@ -1,6 +1,6 @@
 # hook_civicrm_coreResourceList
 
-## Description
+## Summary
 
 This hook is called when the list of core js/css resources is about to
 be processed. Implementing this hook gives you the opportunity to modify

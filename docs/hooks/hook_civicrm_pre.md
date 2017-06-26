@@ -1,6 +1,6 @@
 # hook_civicrm_pre
 
-## Description
+## Summary
 
 This hook is called before a db write on some core objects. This hook
 does not allow the abort of the operation, use a form hook instead.

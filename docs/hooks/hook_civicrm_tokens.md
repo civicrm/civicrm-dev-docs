@@ -1,6 +1,6 @@
 # hook_civicrm_tokens
 
-## Description
+## Summary
 
 This hook is called to allow custom tokens to be defined. Their values
 will need to be supplied by

@@ -1,6 +1,6 @@
 # hook_civicrm_buildAmount
 
-## Description
+## Summary
 
 This hook is called when building the amount structure for a
 Contribution or Event Page. It allows you to modify the set of radio

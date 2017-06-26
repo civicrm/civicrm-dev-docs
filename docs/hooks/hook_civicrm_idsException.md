@@ -1,6 +1,6 @@
 # hook_civicrm_idsException
 
-## Description
+## Summary
 
 This hook allows you to modify the list of form or page paths where
 submitted data should not be sent through PHPIDS, the intrusion

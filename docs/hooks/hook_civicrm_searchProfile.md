@@ -1,6 +1,6 @@
 # hook_civicrm_searchProfile
 
-## Description
+## Summary
 
 This hook is called while preparing a list of contacts (based on a
 profile).

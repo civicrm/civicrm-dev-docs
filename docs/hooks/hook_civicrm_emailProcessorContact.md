@@ -1,6 +1,6 @@
 # hook_civicrm_emailProcessorContact
 
-## Description
+## Summary
 
 This hook is called by the Email Processor when deciding to which
 contact an activity will be attached. You can tell it to use a different

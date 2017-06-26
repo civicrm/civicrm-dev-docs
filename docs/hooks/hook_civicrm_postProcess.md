@@ -1,6 +1,6 @@
 # hook_civicrm_postProcess
 
-## Description
+## Summary
 
 This hook is invoked when a CiviCRM form is submitted. If the module has
 injected\

@@ -1,6 +1,6 @@
 # hook_civicrm_permission_check
 
-## Description
+## Summary
 
 This hook is called to allow to dynamically alter permissions based on
 conditions or external criteria. See

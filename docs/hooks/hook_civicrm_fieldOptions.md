@@ -1,6 +1,6 @@
 # hook_civicrm_fieldOptions
 
-## Description
+## Summary
 
 Dynamically modify the option list for any core or custom field in
 CiviCRM.

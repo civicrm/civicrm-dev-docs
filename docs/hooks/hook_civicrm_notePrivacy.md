@@ -1,6 +1,6 @@
 # hook_civicrm_notePrivacy
 
-## Description
+## Summary
 
 This hook provides a way to override the default privacy behavior for
 notes.

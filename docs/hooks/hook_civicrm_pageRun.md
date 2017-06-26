@@ -1,6 +1,6 @@
 # hook_civicrm_pageRun
 
-## Description
+## Summary
 
 This hook is called before a CiviCRM page is rendered.
 

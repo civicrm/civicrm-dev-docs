@@ -1,6 +1,6 @@
 # hook_civicrm_tokenValues
 
-## Description
+## Summary
 
 This hook is called to get all the values for the tokens registered. Use
 it to overwrite or reformat existing token values, or supply the values

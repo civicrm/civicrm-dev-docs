@@ -1,6 +1,6 @@
 # hook_civicrm_unsubscribeGroups
 
-## Description
+## Summary
 
 This hook is called when CiviCRM recieves a request to unsubscribe a
 user from a mailing

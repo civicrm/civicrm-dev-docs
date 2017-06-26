@@ -1,6 +1,6 @@
 # hook_civicrm_import
 
-## Description
+## Summary
 
 This hook is called after contacts have been imported into the system,
 and before the temp import table has been destroyed. It can be used to

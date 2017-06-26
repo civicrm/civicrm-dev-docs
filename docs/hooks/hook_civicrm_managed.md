@@ -1,6 +1,6 @@
 # hook_civicrm_managed
 
-## Description
+## Summary
 
 This hook allows a module to declare a list of 'managed' entities using
 the [CiviCRM API](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference) - a managed

@@ -1,6 +1,6 @@
 # hook_civicrm_navigationMenu
 
-## Description
+## Summary
 
 This hook is called after the menus are rebuild. You can use this hook
 to add new menu, add children to new menu and get the list of menu items

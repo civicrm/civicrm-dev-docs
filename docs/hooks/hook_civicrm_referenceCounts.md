@@ -1,6 +1,6 @@
 # hook_civicrm_referenceCounts
 
-## Description
+## Summary
 
 This hook is called to determine the reference-count for a record. For
 example, when counting references to the activity type "Phone Call", one

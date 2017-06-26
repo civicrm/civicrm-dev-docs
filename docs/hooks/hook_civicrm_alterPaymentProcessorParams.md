@@ -1,6 +1,6 @@
 # hook_civicrm_alterPaymentProcessorParams
 
-## Description
+## Summary
 
 This hook is called during the processing of a contribution after the
 payment processor has control, but just before the CiviCRM processor

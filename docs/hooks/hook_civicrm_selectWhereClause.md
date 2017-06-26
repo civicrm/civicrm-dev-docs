@@ -1,6 +1,6 @@
 # hook_civicrm_selectWhereClause
 
-## Description
+## Summary
 
 This hook is called when executing a SELECT query. The hook is called
 once for each entity in the query, allowing you to add (or remove)

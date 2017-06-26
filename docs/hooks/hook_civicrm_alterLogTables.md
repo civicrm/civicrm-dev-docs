@@ -1,6 +1,6 @@
 # hook_civicrm_alterLogTables
 
-## Description
+## Summary
 
 This hook allows you to amend the specification of the log tables to be
 created when logging is turned on. You can adjust the specified tables

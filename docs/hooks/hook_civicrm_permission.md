@@ -1,6 +1,6 @@
 # hook_civicrm_permission
 
-## Description
+## Summary
 
 This hook is called to allow custom permissions to be defined.
 

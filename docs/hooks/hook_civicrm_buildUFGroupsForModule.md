@@ -1,6 +1,6 @@
 # hook_civicrm_buildUFGroupsForModule
 
-## Description
+## Summary
 
 This hook is called when ufgroups (profiles) are being built for a
 module.

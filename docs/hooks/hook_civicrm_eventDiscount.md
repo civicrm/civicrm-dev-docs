@@ -1,6 +1,6 @@
 # hook_civicrm_eventDiscount
 
-## Description
+## Summary
 
 This hook allows you to apply a customized discount to an event
 registration.

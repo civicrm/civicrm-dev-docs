@@ -1,6 +1,6 @@
 # hook_civicrm_custom
 
-## Description
+## Summary
 
 This hook is called AFTER the db write on a custom table
 

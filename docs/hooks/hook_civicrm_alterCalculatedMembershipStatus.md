@@ -1,6 +1,6 @@
 # hook_civicrm_alterCalculatedMembershipStatus
 
-## Description
+## Summary
 
 This hook is called when calculating the membership status - e.g on a
 form or in the cron job that rolls over statuses

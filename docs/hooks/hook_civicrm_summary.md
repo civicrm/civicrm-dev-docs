@@ -1,6 +1,6 @@
 # hook_civicrm_summary
 
-## Description
+## Summary
 
 This hook is called when contact summary is rendered and you can add on
 top, below or replace summary with your own html content.

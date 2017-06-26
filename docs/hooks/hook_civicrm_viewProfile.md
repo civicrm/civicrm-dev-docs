@@ -1,6 +1,6 @@
 # hook_civicrm_viewProfile
 
-## Description
+## Summary
 
 This hook is called while preparing a read-only profile screen.
 

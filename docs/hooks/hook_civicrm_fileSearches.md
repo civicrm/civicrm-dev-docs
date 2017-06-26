@@ -1,6 +1,6 @@
 # hook_civicrm_fileSearches
 
-## Description
+## Summary
 
 Add a reference to a file search service (e.g. Solr).
 

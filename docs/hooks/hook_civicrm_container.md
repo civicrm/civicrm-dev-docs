@@ -1,6 +1,6 @@
 # hook_civicrm_container
 
-## Description
+## Summary
 
 This hook modifies the CiviCRM container - add new services, parameters,
 extensions, etc.

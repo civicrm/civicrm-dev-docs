@@ -1,6 +1,6 @@
 # hook_civicrm_trigger_info
 
-## Description
+## Summary
 
 Define MYSQL Triggers. Using the hooks causes them not to clash with
 core or other extension triggers. They are compiled into one trigger

@@ -1,6 +1,6 @@
 # hook_civicrm_enable
 
-## Description
+## Summary
 
 This hook is called when an extension is re-enabled. To be specific,
 when its status changes from ***disabled*** to ***enabled.*****It is**

@@ -1,6 +1,6 @@
 # hook_civicrm_angularModules
 
-## Description
+## Summary
 
 EXPERIMENTAL: This hook generates a list of Angular modules. It allows
 one to register additional Angular modules.

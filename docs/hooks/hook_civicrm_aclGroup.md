@@ -1,6 +1,6 @@
 # hook_civicrm_aclGroup
 
-## Description
+## Summary
 
 This hook is called when composing the ACL to restrict access to civicrm
 entities (civicrm groups, profiles and events). NOTE: In order to use

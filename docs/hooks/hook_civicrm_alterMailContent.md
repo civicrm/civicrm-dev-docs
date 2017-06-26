@@ -1,6 +1,6 @@
 # hook_civicrm_alterMailContent
 
-## Description
+## Summary
 
 This hook is called after getting the content of the mail and before
 tokenizing it.

@@ -1,6 +1,6 @@
 # hook_civicrm_contact_get_displayname
 
-## Description
+## Summary
 
 This hook is called to retrieve the display name of a contact. You can
 use this hook to return a custom display name.

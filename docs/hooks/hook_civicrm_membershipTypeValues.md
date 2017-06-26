@@ -1,6 +1,6 @@
 # hook_civicrm_membershipTypeValues
 
-## Description
+## Summary
 
 This hook is called when composing the array of membership types and
 their costs during a membership registration (new or renewal). Note the

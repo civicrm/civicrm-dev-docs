@@ -1,6 +1,6 @@
 # hook_civicrm_alterTemplateFile
 
-## Description
+## Summary
 
 This hook is invoked while selecting the tpl file to use to render the
 page

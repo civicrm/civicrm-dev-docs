@@ -1,6 +1,6 @@
 # hook_civicrm_alterMenu
 
-## Description
+## Summary
 
 This hook is called when building CiviCRM's list of HTTP routes. This
 hook should be used when you want to register custom paths or URLS. You

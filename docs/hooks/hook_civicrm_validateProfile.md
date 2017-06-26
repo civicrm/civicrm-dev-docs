@@ -1,6 +1,6 @@
 # hook_civicrm_validateProfile
 
-## Description
+## Summary
 
 This hook is called while validating a profile form submission.
 

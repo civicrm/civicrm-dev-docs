@@ -1,6 +1,6 @@
 # hook_civicrm_caseChange
 
-## Description
+## Summary
 
 This hook fires whenever a record in a case changes.
 

@@ -1,6 +1,6 @@
 # hook_civicrm_postEmailSend
 
-## Description
+## Summary
 
 This hook is called when an email has been successfully sent by CiviCRM,
 but not on an error.

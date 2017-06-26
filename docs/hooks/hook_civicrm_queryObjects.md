@@ -1,6 +1,6 @@
 # hook_civicrm_queryObjects
 
-## Description
+## Summary
 
 This hook is called while building the core search query,\
  so hook implementers can provide their own query objects which

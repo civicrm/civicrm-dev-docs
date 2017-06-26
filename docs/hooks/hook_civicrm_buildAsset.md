@@ -1,6 +1,6 @@
 # hook_civicrm_buildAsset
 
-## Description
+## Summary
 
 This hook fires whenever the system builds a semi-dynamic asset.  For more
 discussion, see [AssetBuilder](/framework/asset-builder.md).

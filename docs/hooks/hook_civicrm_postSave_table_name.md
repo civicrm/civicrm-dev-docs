@@ -1,6 +1,6 @@
 # hook_civicrm_postSave_table_name
 
-## Description
+## Summary
 
 This hook is called after writing to a database table that has an
 associated DAO. This includes core tables but not custom tables or log

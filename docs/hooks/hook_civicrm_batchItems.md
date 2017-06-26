@@ -1,6 +1,6 @@
 # hook_civicrm_batchItems
 
-## Description
+## Summary
 
 This hook is called when a CSV batch export file is about to be
 generated. Notice that this hook will be called in per batch bases, e.g.

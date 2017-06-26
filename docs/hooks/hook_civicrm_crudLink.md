@@ -1,6 +1,6 @@
 # hook_civicrm_crudLink
 
-## Description
+## Summary
 
 Generate a default CRUD URL for an entity.
 

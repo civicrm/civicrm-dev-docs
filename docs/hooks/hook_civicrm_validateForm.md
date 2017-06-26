@@ -1,6 +1,6 @@
 # hook_civicrm_validateForm
 
-## Description
+## Summary
 
 Validation of forms. This hook was introduced in v4.2
 

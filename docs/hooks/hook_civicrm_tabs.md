@@ -1,6 +1,6 @@
 # hook_civicrm_tabs
 
-## Description
+## Summary
 
 !!! warning "Deprecation Notice"
     This hook has been deprecated in 4.7.

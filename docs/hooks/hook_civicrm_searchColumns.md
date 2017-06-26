@@ -1,6 +1,6 @@
 # hook_civicrm_searchColumns
 
-## Description
+## Summary
 
 This hook is called after a search is done. This allows the developer to
 modify the headers and/or the values that are displayed as part of this

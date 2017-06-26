@@ -1,6 +1,6 @@
 # hook_civicrm_unhandledException
 
-## Description
+## Summary
 
 This hook fires when an unhandled exception (fatal error) occurs.
 

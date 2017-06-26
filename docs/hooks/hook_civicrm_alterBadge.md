@@ -1,6 +1,6 @@
 # hook_civicrm_alterBadge
 
-## Description
+## Summary
 
 This hook allows one to modify the content and format of the name
 badges. Available in 4.5+.

@@ -1,6 +1,6 @@
 # hook_civicrm_apiWrappers
 
-## Description
+## Summary
 
 This hook allows you to add (or override/remove: use caution!) methods to be called before and after api calls to modify either the parameters or the result of the call.
 

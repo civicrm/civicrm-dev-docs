@@ -1,6 +1,6 @@
 # hook_civicrm_emailProcessor
 
-## Description
+## Summary
 
 This hook is called AFTER EACH email has been processed by the script
 bin/EmailProcessor.php

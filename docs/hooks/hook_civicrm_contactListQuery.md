@@ -1,6 +1,6 @@
 # hook_civicrm_contactListQuery
 
-## Description
+## Summary
 
 !!! warning "Deprecation Notice"
     This hook is called in very few places in version 4.5+ because most contact reference fields have been migrated to go through the api instead of constructing an ad-hoc query. It will be removed in a future version.

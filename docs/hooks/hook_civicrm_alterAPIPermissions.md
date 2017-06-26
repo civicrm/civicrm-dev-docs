@@ -1,6 +1,6 @@
 # hook_civicrm_alterAPIPermissions
 
-## Description
+## Summary
 
 This hook is called when API 3 permissions are checked and can alter the
 `$permissions` structure from `CRM/Core/DAO/permissions.php` (as well as

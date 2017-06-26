@@ -1,6 +1,6 @@
 # hook_civicrm_caseTypes
 
-## Description
+## Summary
 
 This hook defines available CiviCRM case types.
 

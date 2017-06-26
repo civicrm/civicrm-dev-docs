@@ -1,6 +1,6 @@
 # hook_civicrm_links
 
-## Description
+## Summary
 
 This hook is an opportunity to modify action links in CiviCRM.  These
 include the actions at the end of a search result row, the Create New

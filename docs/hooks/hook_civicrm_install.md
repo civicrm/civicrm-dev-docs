@@ -1,6 +1,6 @@
 # hook_civicrm_install
 
-## Description
+## Summary
 
 This hook is called when an extension is installed. To be specific, when
 its status changes from ***uninstalled*** to ***enabled**.* **It is NOT

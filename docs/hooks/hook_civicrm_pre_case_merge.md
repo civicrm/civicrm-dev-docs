@@ -1,6 +1,6 @@
 # hook_civicrm_pre_case_merge
 
-## Description
+## Summary
 
 This hook is called just before a case merge happens. A case merge is
 when two cases are merged or when a case is reassigned to another

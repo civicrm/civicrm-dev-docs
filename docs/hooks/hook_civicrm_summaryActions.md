@@ -1,6 +1,6 @@
 # hook_civicrm_summaryActions
 
-## Description
+## Summary
 
 This hook allows User to customize context menu Actions on Contact
 Summary Page.

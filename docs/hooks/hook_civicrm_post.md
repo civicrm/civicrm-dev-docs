@@ -1,6 +1,6 @@
 # hook_civicrm_post
 
-## Description
+## Summary
 
 This hook is called after a db write on some core objects.
 

@@ -1,6 +1,6 @@
 # hook_civicrm_alterContent
 
-## Description
+## Summary
 
 This hook is invoked after all the content of a CiviCRM form or page is
 generated. It allows for direct manipulation of the generated content.
