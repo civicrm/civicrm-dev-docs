@@ -9,7 +9,7 @@ use Twig_Environment;
 use Twig_Loader_Filesystem;
 use AppBundle\Utils\Book;
 
-class HookListCommand extends Command {
+class HooksListCommand extends Command {
 
   /*
    * Data about all hooks, sorted by category
@@ -18,7 +18,7 @@ class HookListCommand extends Command {
 
   protected function configure() {
     $this
-      ->setName('generate:hook-list')
+      ->setName('generate:hooks-list')
       ->setDescription('Generates a summary listing page of all hooks');
   }
 
@@ -60,7 +60,7 @@ class HookListCommand extends Command {
     $loader = new Twig_Loader_Filesystem(__DIR__ . '/../Resources/views');
     $twig = new Twig_Environment($loader);
     $content = htmlspecialchars_decode($twig->render(
-      "hook_list.md.twig",
+      "hooks_list.md.twig",
       array(
         'categories' => $this->categories,
         'command' => './bin/tools ' . $this->getName()
