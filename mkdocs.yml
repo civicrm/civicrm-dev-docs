@@ -79,6 +79,7 @@ pages:
   # APIv3 Changes: api/changes.md
 - Hooks:
   - Using hooks: hooks/index.md
+  - All hooks: hooks/list.md
   - Setup:
     - Hooks with Symfony: hooks/setup/symfony.md
     - Hooks with Joomla: hooks/setup/joomla.md
