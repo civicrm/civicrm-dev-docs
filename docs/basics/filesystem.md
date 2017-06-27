@@ -79,6 +79,55 @@ echo Civi::paths()->getUrl("[civicrm.root]/.");
 echo Civi::paths()->getUrl("[civicrm.root]/README.md");
 ```
 
+## Codebase: Dependencies
+
+The CiviCRM codebase includes some third-party libraries. These are pulled
+into three folders:
+
+ * __`vendor`__ is collection of PHP libraries which are automatically downloaded
+   by [`composer`](http://getcomposer.org/) based on the `composer.json` configuration.
+ * __`bower_components`__ is a collection of JS/CSS libraries which are automatically
+   downloaded by [`bower`](https://bower.io/) based on the `bower.json` configuration. 
+ * __`packages`__ is a manually curated collection of library files.
+   It's maintained in [`civicrm-packages.git`](https://github.com/civicrm/civicrm-packages/).
+
+!!! note "When adding a new dependency to core, use `composer.json` or `bower.json`."
+
+### Tip: Programmatic lookup
+
+Traditionally, one would use the root folder of `civicrm-core` to determine the path
+or URL of a library, as in:
+
+```php
+global $civicrm_root;
+echo "$civircm_root/packages/IDS/default_filter.xml";
+```
+
+This arrangement works, but it assumes that all three folders are immediate
+descendents of the `civicrm-core` folder -- which may not hold in the
+future.
+
+In CiviCRM v4.7.21+, one should use `Civi::paths()` to lookup the path or
+URL for a library:
+
+```php
+echo Civi::paths()->getPath('[civicrm.vendor]/dompdf/dompdf/README.md');
+echo Civi::paths()->getUrl('[civicrm.vendor]/dompdf/dompdf/README.md');
+
+echo Civi::paths()->getPath('[civicrm.bower]/jquery/dist/jquery.min.js');
+echo Civi::paths()->getUrl('[civicrm.bower]/jquery/dist/jquery.min.js');
+
+echo Civi::paths()->getPath('[civicrm.packages]/IDS/default_filter.xml');
+echo Civi::paths()->getUrl('[civicrm.packages]/IDS/default_filter.xml');
+```
+
+Additionally, to register JS/CSS resources in `Civi::resources()`, you can use
+a shorthand with the path variables, as in:
+
+```php
+echo Civi::resources()->addScriptFile('civicrm.bower', 'jquery/dist/jquery.min.js');
+```
+
 ## Local data files
 
 CiviCRM also needs a files directory for storing a variety of site-specific
