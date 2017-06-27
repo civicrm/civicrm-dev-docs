@@ -1,8 +1,8 @@
 # hook_civicrm_caseSummary
 
-## Description
+## Summary
 
-This hook is called when the manage case screen is displayed. It allows
+This hook is called when the manage case screen is displayed, and it allows
 the injection of label/value pairs which are rendered inside divs
 underneath the existing summary table.
 

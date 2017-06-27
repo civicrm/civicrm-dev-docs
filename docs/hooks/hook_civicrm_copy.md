@@ -1,9 +1,9 @@
 # hook_civicrm_copy
 
-## Description
+## Summary
 
 This hook is called after a CiviCRM object (Event, ContributionPage,
-Profile) has been copied
+Profile) has been copied.
 
 ## Definition
 

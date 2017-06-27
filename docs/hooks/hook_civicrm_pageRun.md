@@ -1,14 +1,17 @@
 # hook_civicrm_pageRun
 
-## Description
+## Summary
 
 This hook is called before a CiviCRM page is rendered.
 
-Note that this does **not** execute on every CiviCRM *page* in the
+
+## Notes
+
+This does **not** execute on every CiviCRM *page* in the
 general sense. CiviCRM's pages are classified as either 'Forms' or
 'Pages', and this only runs on pages classified as 'Pages'. If you are
 not sure if a particular page is a Page, test it by adding some
-temporary debug code to /CRM/Utils/Hook.php
+temporary debug code to `/CRM/Utils/Hook.php`
 
 ## Definition
 

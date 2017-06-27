@@ -1,6 +1,6 @@
 # hook_civicrm_alterMailParams
 
-## Description
+## Summary
 
 This hook is called when an email is about to be sent by CiviCRM.
 

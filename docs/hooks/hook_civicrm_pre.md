@@ -1,9 +1,12 @@
 # hook_civicrm_pre
 
-## Description
+## Summary
 
-This hook is called before a db write on some core objects. This hook
-does not allow the abort of the operation, use a form hook instead.
+This hook is called before a db write on some core objects.
+
+## Notes
+
+This hook does not allow the abort of the operation, use a form hook instead.
 
 We suspect the pre hook will be useful for developers building more
 complex applications and need to perform operations before CiviCRM takes

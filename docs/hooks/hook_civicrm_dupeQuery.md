@@ -1,10 +1,12 @@
 # hook_civicrm_dupeQuery
 
-## Description
+## Summary
 
 This hook is called during the dedupe lookup process, and can be used to
 alter the parameters and queries used to determine if two contacts are
 duplicates.
+
+## Notes
 
 The dedupe mechanism is triggered in four places:
 

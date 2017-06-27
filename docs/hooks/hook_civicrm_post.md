@@ -1,8 +1,10 @@
 # hook_civicrm_post
 
-## Description
+## Summary
 
 This hook is called after a db write on some core objects.
+
+## Notes
 
 pre and post hooks are useful for developers building more complex
 applications and need to perform operations before CiviCRM takes action.

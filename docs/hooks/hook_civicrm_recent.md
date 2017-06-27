@@ -1,6 +1,6 @@
 # hook_civicrm_recent
 
-## Description
+## Summary
 
 This hook is called before storing recently viewed items.
 

@@ -1,6 +1,6 @@
 # hook_civicrm_tabset
 
-## Description
+## Summary
 
 This hook is called when composing the tabs interface used for contacts,
 contributions and events.

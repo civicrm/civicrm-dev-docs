@@ -149,6 +149,21 @@ If you'd like to move a page, take the following steps:
 !!! note
     Page redirection *won't work locally* (when previewing with `mkdocs serve`), but it *will* work once the guide is published on docs.civicrm.org. The redirection is implemented as part of our [docs-publisher](https://lab.civicrm.org/documentation/docs-publisher) app.
 
+
+## Auto-generated documentation {:#auto-gen}
+
+Some guides may have auto-generated content, which is summarized here.
+
+### In the Developer Guide {:#auto-gen-dev}
+
+This Developer Guide has an automatically-generated [list of all hooks](/hooks/list.md). To re-create this list, run the following command from the root level of the repository:
+
+```
+./bin/tools generate:hooks-list
+```
+
+Our editing workflow currently requires someone to manually run this command after and commit its changes whenever hooks files are edited.
+
 ## Content attribution guidelines {:#attribution}
 
 All CiviCRM documentation content is licensed [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). This means that if you want to copy content out of our docs and use it elsewhere, you're welcome to do so as long as your give attribution to the author. 

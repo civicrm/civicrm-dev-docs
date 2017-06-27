@@ -1,9 +1,11 @@
 # hook_civicrm_buildUFGroupsForModule
 
-## Description
+## Summary
 
 This hook is called when ufgroups (profiles) are being built for a
 module.
+
+## Notes
 
 The most common use case for this hook is to edit which profiles are
 visible on the Contact Dashboard or (Drupal) user registration page

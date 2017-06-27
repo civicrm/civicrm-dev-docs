@@ -1,9 +1,9 @@
 # hook_civicrm_merge
 
-## Description
+## Summary
 
 This hook allows modification of the data used to perform merging of
-duplicates. This can be useful if your custom module has added its own
+duplicates. It can be useful if your custom module has added its own
 tables related to CiviCRM contacts.
 
 ## Availability

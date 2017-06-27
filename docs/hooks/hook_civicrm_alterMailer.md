@@ -1,9 +1,11 @@
 # hook_civicrm_alterMailer
 
-## Description
+## Summary
 
 This hook is called when CiviCRM prepares an email driver class to
 handle outbound message delivery.
+
+## Availability
 
 Introduced in CiviCRM v4.4.
 

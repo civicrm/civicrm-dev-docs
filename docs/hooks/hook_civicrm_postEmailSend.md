@@ -1,11 +1,14 @@
 # hook_civicrm_postEmailSend
 
-## Description
+## Summary
 
 This hook is called when an email has been successfully sent by CiviCRM,
 but not on an error.
 
-NB: This is only triggered by activity emails, not bulk mailings.
+
+## Notes
+
+This is only triggered by activity emails, not bulk mailings.
 
 ## Definition
 

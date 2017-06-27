@@ -1,10 +1,13 @@
 # hook_civicrm_managed
 
-## Description
+## Summary
 
-This hook allows a module to declare a list of 'managed' entities using
-the [CiviCRM API](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference) - a managed
-entity will be automatically inserted, updated, deactivated, and deleted
+This hook allows a module to declare a list of managed entities using
+the API.
+
+## Notes
+
+A managed entity will be automatically inserted, updated, deactivated, and deleted
 in tandem with enabling, disabling, and uninstalling the module. The
 hook is called periodically during cache-clear operations.
 

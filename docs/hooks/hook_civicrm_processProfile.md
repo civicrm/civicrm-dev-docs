@@ -1,8 +1,8 @@
 # hook_civicrm_processProfile
 
-## Description
+## Summary
 
-This hook is called processing a valid profile form submission (e.g. for "civicrm/profile/create" or "civicrm/profile/edit").
+This hook is called when processing a valid profile form submission (e.g. for "civicrm/profile/create" or "civicrm/profile/edit").
 
 ## Definition
 

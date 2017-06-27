@@ -1,8 +1,11 @@
 # hook_civicrm_alterBarcode
 
-## Description
+## Summary
 
-This hook allows one to modify the content that is encoded in barcode.
+This hook allows you to modify the content that is encoded in barcode.
+
+## Availability
+
 Available in 4.4+.
 
 ## Definition

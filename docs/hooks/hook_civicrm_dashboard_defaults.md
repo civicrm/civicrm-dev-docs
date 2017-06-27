@@ -1,10 +1,9 @@
 # hook_civicrm_dashboard_defaults
 
-## Description
+## Summary
 
-~~~~ {.diff-line-pre}
-This hook is called while a contact views their dashboard for the first time. It can be used to enable or disable the set of default dashlets that appear on Contact dashboard the first time they login..
-~~~~
+This hook is called while a contact views their dashboard for the first time and can be used to enable or disable the set of default dashlets.
+
 
 ## Definition
 

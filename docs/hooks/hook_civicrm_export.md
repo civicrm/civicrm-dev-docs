@@ -1,6 +1,6 @@
 # hook_civicrm_export
 
-## Description
+## Summary
 
 This hook allows to manipulate or change the output of CSV during
 export.

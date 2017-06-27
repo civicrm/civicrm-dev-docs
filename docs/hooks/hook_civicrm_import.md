@@ -1,9 +1,13 @@
 # hook_civicrm_import
 
-## Description
+## Summary
 
 This hook is called after contacts have been imported into the system,
-and before the temp import table has been destroyed. It can be used to
+and before the temp import table has been destroyed.
+
+## Notes
+
+This hook can be used to
 take custom action on the imported records or handle special columns in
 the import file. It currently is only applicable to contact import, but
 in future versions may extend to other objects.

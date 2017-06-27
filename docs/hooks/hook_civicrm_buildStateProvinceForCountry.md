@@ -1,6 +1,6 @@
 # hook_civicrm_buildStateProvinceForCountry
 
-## Description
+## Summary
 
 This hook is called during the ajax callback that is used to build the
 options that display in the State/Province select widget for a specific

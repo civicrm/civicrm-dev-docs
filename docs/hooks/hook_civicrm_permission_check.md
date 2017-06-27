@@ -1,9 +1,13 @@
 # hook_civicrm_permission_check
 
-## Description
+## Summary
 
-This hook is called to allow to dynamically alter permissions based on
-conditions or external criteria. See
+This hook is called to dynamically alter permissions based on
+conditions or external criteria.
+
+## Notes
+
+See
 [https://issues.civicrm.org/jira/browse/CRM-19256](https://issues.civicrm.org/jira/browse/CRM-19256)
 for some use cases.
 

@@ -1,6 +1,6 @@
 # hook_civicrm_buildProfile
 
-## Description
+## Summary
 
 This hook is called while preparing a profile form.
 

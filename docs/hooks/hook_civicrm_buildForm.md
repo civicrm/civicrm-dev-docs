@@ -1,10 +1,10 @@
 # hook_civicrm_buildForm
 
-## Description
+## Summary
 
-This hook is invoked when building a CiviCRM form. This hook should also
-be used to set the default values of a form element, to change form
-elements attributes, or even to add new fields to a form.
+This hook is invoked when building a form. It can be used to set
+the default values of a form element, to change form
+elements attributes, and to add new fields to a form.
 
 ## Definition
 

@@ -1,22 +1,25 @@
 # hook_civicrm_alterCalculatedMembershipStatus
 
-## Description
+## Summary
 
-This hook is called when calculating the membership status - e.g on a
-form or in the cron job that rolls over statuses
+This hook is called when calculating the membership status.
+
+## Notes
+
+Examples of when this hook is called include:
+
+  * on a form
+  * in the cron job that rolls over statuses
 
 ## Definition
 
-`hook_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $arguments, $membership) {`{.java
-.plain}
+    hook_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $arguments, $membership)
 
 ## Parameters
 
    * $membershipStatus the calculated membership status array
-
    * $arguments arguments used in the calculation
-
-   *  $membership the membership array from the calling function
+   * $membership the membership array from the calling function
 
 ## Added
 

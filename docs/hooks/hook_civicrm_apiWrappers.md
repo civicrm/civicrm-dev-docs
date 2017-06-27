@@ -1,26 +1,31 @@
 # hook_civicrm_apiWrappers
 
-## Description
+## Summary
 
-This hook allows you to add (or override/remove: use caution!) methods to be called before and after api calls to modify either the parameters or the result of the call.
+This hook allows you to add, override, or remove methods to be called before and after api calls &mdash; and to modify either the parameters or the result of the call.
+
+## Notes
 
 The methods must be implemented on an `API_Wrapper` object which is added to the array passed by-reference. See below for more information on the `API_Wrapper` class.
 
 Introduced in CiviCRM 4.4.0.
 
+!!! caution ""
+    Use caution when overriding or removing methods.
+
 ## Definition
 
 ```php
-    /**
-     * Implements hook_civicrm_apiWrappers
-     */
-    function myextension_civicrm_apiWrappers(&$wrappers, $apiRequest) {
-      //&apiWrappers is an array of wrappers, you can add your(s) with the hook.
-      // You can use the apiRequest to decide if you want to add the wrapper (eg. only wrap api.Contact.create)
-      if ($apiRequest['entity'] == 'Contact' && $apiRequest['action'] == 'create') {
-        $wrappers[] = new CRM_Myextension_APIWrapper();
-      }
-    }
+/**
+  * Implements hook_civicrm_apiWrappers
+  */
+function myextension_civicrm_apiWrappers(&$wrappers, $apiRequest) {
+  //&apiWrappers is an array of wrappers, you can add your(s) with the hook.
+  // You can use the apiRequest to decide if you want to add the wrapper (eg. only wrap api.Contact.create)
+  if ($apiRequest['entity'] == 'Contact' && $apiRequest['action'] == 'create') {
+    $wrappers[] = new CRM_Myextension_APIWrapper();
+  }
+}
 ```
 
 ## Wrapper class

@@ -1,11 +1,14 @@
 # hook_civicrm_idsException
 
-## Description
+## Summary
 
 This hook allows you to modify the list of form or page paths where
 submitted data should not be sent through PHPIDS, the intrusion
-detection system (IDS).  *Note: this is one of two ways to bypass the
-IDS.  The other is a CMS-level permission "skip IDS check".*
+detection system (IDS).
+
+## Notes
+
+This is one of two ways to bypass the IDS. The other is a CMS-level permission "skip IDS check".
 
 ## Definition
 
