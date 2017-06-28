@@ -8,22 +8,12 @@ provider extension, but not matched or processed by CiviSMS.
 ## Definition
 
 ```
-hook_civicrm_inboundSMS(&$from, &$fromContactID = NULL, &$to, &$toContactID = NULL, &$body, &$trackID)
+hook_civicrm_inboundSMS(&$message)
 ```
 
 ## Parameters
 
-* string `$from` - the phone number the message is from, as set by SMS provider
-
-* int `$fromContactID` - can be set to override default matching
-
-* string `$to` - the optional phone number the message is to, as set by SMS provider
-
-* int `$toContactID` -  can be set to override default matching
-
-* string `$body` - the body text of the message
-
-* string `$trackID` - The tracking ID of the message
+* CRM_SMS_Message Object `$message` - The SMS Message
 
 ## Added
 
@@ -39,9 +29,9 @@ Alter the incoming SMS From number to match how phone numbers are stored in the 
 
 ```php
 <?php
-function myextension_civicrm_inboundSMS(&$from, &$fromContactID = NULL, &$to, &$toContactID = NULL, &$body, &$trackID) {
+function myextension_civicrm_inboundSMS(&$message) {
   // Alter the sender phone number to match the format used in database
-  $from = str_replace('+614', '04', $from);
+  $from = str_replace('+614', '04', $message->from);
 }
 ```
 
@@ -49,10 +39,10 @@ Automatically add contacts to a group if the message contains 'SUBSCRIBE'
 
 ```php
 <?php
-function myextension_civicrm_inboundSMS(&$from, &$fromContactID = NULL, &$to, &$toContactID = NULL, &$body, &$trackID) {
+function myextension_civicrm_inboundSMS(&$message) {
   // Add contact to group if message contains keyword
-  if (stripos($body, 'SUBSCRIBE') !== false) {
-    $escapedFrom = CRM_Utils_Type::escape($from, 'String');
+  if (stripos($message->body, 'SUBSCRIBE') !== false) {
+    $escapedFrom = CRM_Utils_Type::escape($message->from, 'String');
     $fromContactID = CRM_Core_DAO::singleValueQuery('SELECT contact_id FROM civicrm_phone JOIN civicrm_contact ON civicrm_contact.id = civicrm_phone.contact_id WHERE !civicrm_contact.is_deleted AND phone LIKE "%' . $escapedFrom . '"');
     if ($fromContactID) {
       CRM_Contact_BAO_GroupContact::AddContactsToGroup(
@@ -67,10 +57,10 @@ Send an automatic response to incoming messages
 
 ```php
 <?php
-function myextension_civicrm_inboundSMS(&$from, &$fromContactID = NULL, &$to, &$toContactID = NULL, &$body, &$trackID) {
+function myextension_civicrm_inboundSMS(&$message) {
   // Send an automatic response
   $provider = CRM_SMS_Provider::singleton(array('provider_id' => 1));
-  $provider->send($from, array('To' => $from), 'Thank you for your message', NULL, NULL);
+  $provider->send($message->from, array('To' => $message->from), 'Thank you for your message', NULL, NULL);
 }
 ```
 
@@ -78,9 +68,10 @@ Implement custom logic to match the message to the sender
 
 ```php
 <?php
-function myextension_civicrm_inboundSMS(&$from, &$fromContactID = NULL, &$to, &$toContactID = NULL, &$body, &$trackID) {
+function myextension_civicrm_inboundSMS(&$message) {
   // Implement custom matching logic
   // If there are multiple contacts with the phone number, preference the one that has been sent an SMS most recently
+  $escapedFrom = CRM_Utils_Type::escape($message->from, 'String');
   $fromContactID = CRM_Core_DAO::singleValueQuery("
     SELECT civicrm_contact.id FROM civicrm_phone
     JOIN civicrm_contact ON civicrm_contact.id = civicrm_phone.contact_id
