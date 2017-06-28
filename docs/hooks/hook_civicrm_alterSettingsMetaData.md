@@ -1,8 +1,16 @@
 # hook_civicrm_alterSettingsMetaData
 
-hook_civicrm_alterSettingsMetaData($settingsMetadata, $domainID,
-$profile);
+## Summary
 
+This hook is called when Settings have been loaded from the xml. 
+It is an opportunity for hooks to alter the data.
 
+## Definition
 
-This describes available settings
+    alterSettingsMetaData(&$settingsMetaData, $domainID, $profile)
+
+## Parameters
+
+-   @param array $settingsMetaData Settings Metadata.
+-   @param int $domainID
+-   @param mixed $profile
