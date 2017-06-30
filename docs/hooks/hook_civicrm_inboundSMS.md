@@ -31,7 +31,7 @@ Alter the incoming SMS From number to match how phone numbers are stored in the 
 <?php
 function myextension_civicrm_inboundSMS(&$message) {
   // Alter the sender phone number to match the format used in database
-  $from = str_replace('+614', '04', $message->from);
+  $message->from = str_replace('+614', '04', $message->from);
 }
 ```
 
@@ -43,10 +43,10 @@ function myextension_civicrm_inboundSMS(&$message) {
   // Add contact to group if message contains keyword
   if (stripos($message->body, 'SUBSCRIBE') !== false) {
     $escapedFrom = CRM_Utils_Type::escape($message->from, 'String');
-    $fromContactID = CRM_Core_DAO::singleValueQuery('SELECT contact_id FROM civicrm_phone JOIN civicrm_contact ON civicrm_contact.id = civicrm_phone.contact_id WHERE !civicrm_contact.is_deleted AND phone LIKE "%' . $escapedFrom . '"');
-    if ($fromContactID) {
+    $message->fromContactID = CRM_Core_DAO::singleValueQuery('SELECT contact_id FROM civicrm_phone JOIN civicrm_contact ON civicrm_contact.id = civicrm_phone.contact_id WHERE !civicrm_contact.is_deleted AND phone LIKE "%' . $escapedFrom . '"');
+    if ($message->fromContactID) {
       CRM_Contact_BAO_GroupContact::AddContactsToGroup(
-        array($fromContactID), 5, 'SMS', 'Added'
+        array($message->fromContactID), 5, 'SMS', 'Added'
       );
     }
   }
@@ -72,7 +72,7 @@ function myextension_civicrm_inboundSMS(&$message) {
   // Implement custom matching logic
   // If there are multiple contacts with the phone number, preference the one that has been sent an SMS most recently
   $escapedFrom = CRM_Utils_Type::escape($message->from, 'String');
-  $fromContactID = CRM_Core_DAO::singleValueQuery("
+  $message->fromContactID = CRM_Core_DAO::singleValueQuery("
     SELECT civicrm_contact.id FROM civicrm_phone
     JOIN civicrm_contact ON civicrm_contact.id = civicrm_phone.contact_id
     LEFT JOIN civicrm_activity_contact ON civicrm_activity_contact.contact_id = civicrm_contact.id
