@@ -1,34 +1,30 @@
 # hook_civicrm_inboundSMS
 
-## Description
+## Summary
 
 This hook is called when an inbound SMS has been received, processed by the
 provider extension, but not matched or processed by CiviSMS.
 
+## Availability
+
+4.7.21+
+
 ## Definition
 
-```
+```php
 hook_civicrm_inboundSMS(&$message)
 ```
 
 ## Parameters
 
-* CRM_SMS_Message Object `$message` - The SMS Message
+* `CRM_SMS_Message` Object `$message` - The SMS Message
 
-## Added
-
-4.7
-
-## Notes
-
-Using this hook you can
 
 ## Examples
 
 Alter the incoming SMS From number to match how phone numbers are stored in the database
 
 ```php
-<?php
 function myextension_civicrm_inboundSMS(&$message) {
   // Alter the sender phone number to match the format used in database
   $message->from = str_replace('+614', '04', $message->from);
@@ -38,7 +34,6 @@ function myextension_civicrm_inboundSMS(&$message) {
 Automatically add contacts to a group if the message contains 'SUBSCRIBE'
 
 ```php
-<?php
 function myextension_civicrm_inboundSMS(&$message) {
   // Add contact to group if message contains keyword
   if (stripos($message->body, 'SUBSCRIBE') !== false) {
@@ -56,7 +51,6 @@ function myextension_civicrm_inboundSMS(&$message) {
 Send an automatic response to incoming messages
 
 ```php
-<?php
 function myextension_civicrm_inboundSMS(&$message) {
   // Send an automatic response
   $provider = CRM_SMS_Provider::singleton(array('provider_id' => 1));
@@ -67,7 +61,6 @@ function myextension_civicrm_inboundSMS(&$message) {
 Implement custom logic to match the message to the sender
 
 ```php
-<?php
 function myextension_civicrm_inboundSMS(&$message) {
   // Implement custom matching logic
   // If there are multiple contacts with the phone number, preference the one that has been sent an SMS most recently
