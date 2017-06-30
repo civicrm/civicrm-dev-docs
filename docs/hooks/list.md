@@ -113,6 +113,10 @@ This is an overview list of all available hooks, listed by category.
 
 * **[hook_civicrm_alterReportVar](/hooks/hook_civicrm_alterReportVar.md)** - used to add or modify display columns and filters.
 
+## SMS hooks
+
+* **[hook_civicrm_inboundSMS](/hooks/hook_civicrm_inboundSMS.md)** - called when an inbound SMS has been received, processed by the provider extension, but not matched or processed by CiviSMS.
+
 ## Uncategorized hooks
 
 * **[hook_civicrm_alterBadge](/hooks/hook_civicrm_alterBadge.md)** - allows you to modify the content and format of name badges.
