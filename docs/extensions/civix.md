@@ -195,7 +195,14 @@ to create a new entity. For this, you can use the command `civix generate:entity
 
 1. Generate a [DAO file](/core/architecture.md#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
 
-    1. Begin with a development installation of CiviCRM core (e.g. as installed with buildkit) which has a clean git status. We will henceforth refer to the CiviCRM root directory within this installation as `<civiroot>`. This core installation can actually be any installation, not necessarily the one you're using to develop your extension. We're basically just temporarily hijacking its environment to generate DAO and SQL.
+    1. Begin with a *development* installation of CiviCRM core.
+
+        !!! caution
+            A "development installation" is not a normal installation. To obtain a *development* installation, you must install CiviCRM with the [`civibuild` command](/tools/civibuild.md) included within [buildkit](/tools/buildkit.md).
+
+        * Ensure that this CiviCRM installation has a clean git status.
+        * We will henceforth refer to the CiviCRM root directory within this installation as `<civiroot>`.
+        * This core installation can actually be any installation, not necessarily the one you're using to develop your extension. We're basically just temporarily hijacking its environment to generate DAO and SQL.
 
     1. Copy your custom XML schema file (e.g. `MyEntity.xml`) into `<civiroot>/xml/schema/`.
 
