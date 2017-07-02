@@ -129,3 +129,5 @@ Entity+Hooks hooks
 CiviRules+hooks hooks
 Profile+Hooks hooks
 Report+Hooks hooks
+Tests+in+phpstorm tools/phpstorm/#testing
+Testing testing/setup
