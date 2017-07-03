@@ -9,6 +9,11 @@ This hook is called to allow custom permissions to be defined.
 Available starting in 4.3, with permission descriptions supported
 starting in 4.6.
 
+Before 4.7.21, extension permissions did not work properly in Joomla (see
+[CRM-12059](https://issues.civicrm.org/jira/browse/CRM-12059)). CiviCRM
+would recognize the permission but not give site administrators any way
+to grant it to users.
+
 ## Definition
 
     hook_civicrm_permission(&$permissions)
@@ -58,11 +63,6 @@ permissions, such as "create new item".
 
 Like in Drupal 6's hook_perm, there is no automatic namespacing for
 permissions, so one should adopt unique permission names.
-
-Extension permissions do not currently work properly in Joomla (see
-[CRM-12059](https://issues.civicrm.org/jira/browse/CRM-12059)).  CiviCRM
-will recognize the permission, but you will have no way to grant it to
-users.
 
 ## Example
 
