@@ -13,8 +13,7 @@ starting in 4.6.
 
     hook_civicrm_permission(&$permissions)
 
-## \
- Parameters {#hook_civicrm_permission-Parameters}
+## Parameters
 
 -   $permissions: reference to an associative array of custom
     permissions that are implemented by extensions, modules and other
@@ -28,9 +27,6 @@ starting in 4.6.
             $prefix = ts('CiviCRM Grant Program') . ': '; // name of extension or module
             $permissions['edit grant programs'] = $prefix . ts('edit grant programs');
             $permissions['delete in Grant Program'] = $prefix . ts('delete grant program');
-
-        \
-         \
 
     -   A multidimensional array in the format "permission string =>
         array(label, description)".  Compatible with CiviCRM 4.6+.  The
