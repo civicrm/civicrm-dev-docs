@@ -83,31 +83,68 @@ The following values can be added to your site's settings file `civicrm.settings
 
 ## Viewing a query log from MySQL
 
-Outside of CiviCRM, the MySQL general query log allows MySQL to log all queries. This is a performance killer, so avoid using it in production!
+Outside of CiviCRM, the [MySQL General Query Log](https://dev.mysql.com/doc/refman/en/query-log.html) log allows MySQL to log all queries. This is a performance killer, so avoid using it in production!
 
-* [MySQL reference: General Query Log](https://dev.mysql.com/doc/refman/en/query-log.html)
+1. Inspect your current settings
 
-The relevant settings are:
+    ```sql
+    SHOW VARIABLES
+    WHERE variable_name IN (
+      'general_log',
+      'general_log_file',
+      'log_output'
+      );
+    ```
 
-    # Location of the query log
-    general_log_file=/tmp/mysql.log
-    # Enable/disable the query log
-    general_log=1
+    ```text
+    +------------------+------------------------------+
+    | Variable_name    | Value                        |
+    +------------------+------------------------------+
+    | general_log      | OFF                          |
+    | general_log_file | /var/lib/mysql/localhost.log |
+    | log_output       | FILE                         |
+    +------------------+------------------------------+
+    ```
 
-You can enable the query log at runtime via SQL, provided the path to the logfile is configured.
+    You should see `general_log` set to `OFF` by default.
 
+1. Turn on logging.
+
+    ```sql
     SET GLOBAL general_log = 'ON';
+    ```
+
+    * To **log to a file**, leave `log_output` = `FILE`, as it is probably already set.
+
+    * To **log to a table** (which can sometimes be easier to sift through), execute the following. Note that you need to leave `'TABLE'` as a string literal here
+
+        ```sql
+        SET GLOBAL log_output = 'TABLE';
+        ```
+
+1. Do something with CiviCRM that produces MySQL queries.
+
+1. View the log.
+
+    * If logging to a file, then find (or change) the location of the log file with the `general_log_file` variable.
+
+    * If logging to a table run:
+
+        ```sql
+        SELECT * FROM mysql.general_log
+        ```
+
+1. (If logging to a table) clear the log. (It can be helpful to do this before performing an action that you'd like to inspect).
+
+    ```sql
+    TRUNCATE TABLE mysql.general_log;
+    ```
+
+1. When you're finished, turn *off* logging.
+
+    ```sql
     SET GLOBAL general_log = 'OFF';
-
-And you can inspect the query log settings also:
-
-    mysql> show variables like '%general%';
-    +------------------+---------------------------------+
-    | Variable_name    | Value                           |
-    +------------------+---------------------------------+
-    | general_log      | OFF                             |
-    | general_log_file | /usr/local/var/mysql/strike.log |
-    +------------------+---------------------------------+
+    ```
 
 ## Changing source code
 
@@ -280,7 +317,7 @@ for more information.
 
 ## Error 500, white screen (WSoD),  "Internal Server Error" errors
 
-If CiviCRM shows a blank white page or page with "Error 500" with no other messages on screen, follow the steps in this section to diagnose and fix. A white screen (WSoD or "white screen of death") indicates that PHP is configured not to display errors, and has hit an error which it can't recover from. The result is an empty page. 
+If CiviCRM shows a blank white page or page with "Error 500" with no other messages on screen, follow the steps in this section to diagnose and fix. A white screen (WSoD or "white screen of death") indicates that PHP is configured not to display errors, and has hit an error which it can't recover from. The result is an empty page.
 
 Your next step is not to fix the error, but to first give yourself enough information to identify the source of the error. (Diagnose, then treat.)
 
@@ -311,7 +348,7 @@ You may prefer to display errors to screen. This is probably disabled on your si
 
 To enable error display, either:
 
-**Configure your PHP to display errors for your site** via `php.ini` / `.htaccess` (see [How can I get PHP errors to display](http://stackoverflow.com/questions/1053424/how-do-i-get-php-errors-to-display)), OR 
+**Configure your PHP to display errors for your site** via `php.ini` / `.htaccess` (see [How can I get PHP errors to display](http://stackoverflow.com/questions/1053424/how-do-i-get-php-errors-to-display)), OR
 
 **Add PHP code to enable error display** (you can add it in `civicrm.settings.php` or the top of the `index.php` of your host CMS).
 
@@ -344,7 +381,7 @@ If you're not familiar with UNIX, this may seem like a lot of effort. It's a lot
 ## Credits
 
 Some content from this page was migrated from other sources
-and contributed by the following authors: 
+and contributed by the following authors:
 
 * Chris Burgess
 * Sean Madsen
