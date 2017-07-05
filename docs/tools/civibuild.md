@@ -290,15 +290,9 @@ Each CMS includes a settings file that is analogous to
 `civicrm.settings.php`. These follow a parallel structure -- which
 means that you can put extra config files in:
 
- * `/etc/backdrop.settings.d/*.php` (Backdrop)
- * `/etc/drupal.settings.d/*.php` (Drupal)
- * `/etc/wp-config.d/*.php` (WordPress)
-
-For further documentation, see
-
-* [`/app/backdrop.settings.d/README.txt`](https://github.com/civicrm/civicrm-buildkit/blob/master/app/backdrop.settings.d/README.txt) (Backdrop)
-* [`/app/drupal.settings.d/README.txt`](https://github.com/civicrm/civicrm-buildkit/blob/master/app/drupal.settings.d/README.txt) (Drupal)
-* [`/app/wp-config.d/README.txt`](https://github.com/civicrm/civicrm-buildkit/blob/master/app/wp-config.d/README.txt) (WordPress)
+ * [backdrop.settings.d](https://github.com/civicrm/civicrm-buildkit/blob/master/app/backdrop.settings.d/README.txt) (Backdrop)
+ * [drupal.settings.d](https://github.com/civicrm/civicrm-buildkit/blob/master/app/drupal.settings.d/README.txt) (Drupal)
+ * [wp-config.d](https://github.com/civicrm/civicrm-buildkit/blob/master/app/wp-config.d/README.txt) (WordPress)
 
 ### civibuild.conf {:#settings-civibuild}
 
