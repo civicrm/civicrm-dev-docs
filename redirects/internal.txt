@@ -4,3 +4,4 @@ markdownrules documentation/markdown
 best-practices/documentation-style-guide documentation/style-guide
 extensions/basics extensions
 api/general api
+hooks/hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
