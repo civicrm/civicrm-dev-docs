@@ -155,11 +155,11 @@ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm/
 ```
 
 !!! note
-    The path to this directory will vary depending on where you installed buildkit and what CMS you site uses.
+    The path to this directory will vary depending on where you installed buildkit and what CMS your site uses.
 
 ### Check the status of all git repos {:#upgrade-site-git-scan}
 
-There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan), (installed with [buildkit](/tools/buildkit.md)).
+There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan) (installed with [buildkit](/tools/buildkit.md)).
 
 ```
 git scan status
