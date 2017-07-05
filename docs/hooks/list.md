@@ -32,7 +32,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_post](/hooks/hook_civicrm_post.md)** - called after a db write on some core objects.
 * **[hook_civicrm_postSave_table_name](/hooks/hook_civicrm_postSave_table_name.md)** - called after writing to a database table that has an associated DAO, including core tables but not custom tables or log tables.
 * **[hook_civicrm_pre](/hooks/hook_civicrm_pre.md)** - called before a db write on some core objects.
-* **[hook_civicrm_trigger_info](/hooks/hook_civicrm_trigger_info.md)** - allows you to define MySQL triggers.
+* **[hook_civicrm_triggerInfo](/hooks/hook_civicrm_triggerInfo.md)** - allows you to define MySQL triggers.
 * **[hook_civicrm_referenceCounts](/hooks/hook_civicrm_referenceCounts.md)** - called to determine the reference-count for a record.
 
 ## Entity hooks

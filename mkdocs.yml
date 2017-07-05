@@ -107,7 +107,7 @@ pages:
     - hook_civicrm_post: hooks/hook_civicrm_post.md
     - hook_civicrm_postSave_table_name: hooks/hook_civicrm_postSave_table_name.md
     - hook_civicrm_pre: hooks/hook_civicrm_pre.md
-    - hook_civicrm_trigger_info: hooks/hook_civicrm_trigger_info.md
+    - hook_civicrm_triggerInfo: hooks/hook_civicrm_triggerInfo.md
     - hook_civicrm_referenceCounts: hooks/hook_civicrm_referenceCounts.md
   - Entity hooks:
     - hook_civicrm_entityTypes: hooks/hook_civicrm_entityTypes.md
