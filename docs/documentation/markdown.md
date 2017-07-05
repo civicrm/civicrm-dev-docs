@@ -26,10 +26,41 @@ The remainder of this page will focus on the markdown syntax which can be used w
 
 To maintain some consistency and peace of mind for documentation content editors, we've [agreed](https://github.com/civicrm/civicrm-dev-docs/issues/43) to *recommend* the following syntax as markdown code standards. These are not hard rules though.
 
+### General code standards {:#general-standards}
+
 * **Line length:** write long lines (i.e. one line per paragraph) and set your text editor to view them with a "soft wrap".
 * **Ordered lists:** use `1.` as delimiters.
 * **Unordered lists:** use `*` to delimiters.
 * **Headings:** use hashes like `## Heading 2`.
+
+### Internal URL standards {:#internal-url-standards}
+
+!!! note
+    These standards only apply to *internal* hyperlinks and images (which should be internal anyway). There are no markdown standards for external links (which point outside of the current guide).
+
+Valid examples:
+
+1. `[Buildkit](/tools/buildkit.md)`
+1. `[the API](/api/index.md)`
+1. `[extension review process](/extensions/lifefycle.md#formal-review)`
+1. `[section within this page](#that-section)`
+1. `![awesome alt text](/images/awesome-screenshot.png)`
+
+
+Rules:
+
+* Use absolute URLs which begin with a forward slash. (The root directory is the `docs` folder.)
+    * Exception: when you are linking to a section within the current page, use only the fragment which corresponds to that heading (beginning with `#`, as in example 4 above.). (Also consider [specifying a custom heading ID](#custom-heading-ids) to prevent broken links if the heading is later renamed.)
+* Append `.md` when linking to a page.
+* If you are linking to a page which is named `index.md`, then include `index.md` in the URL (even though your link will technically still work if you don't).
+* If you're linking to a section within a page (other than the current one), then do it as shown in example 3 above (even though some some other variants will also work).
+* Do not use syntax like `[Link Text][url]` which defines the URL in a separate part of the document (even though it will technically work).
+
+Reasons for these internal URL standards:
+
+* Following the rules above helps us avoid broken links.
+* MkDocs will detect broken links when building books, but only if the links are absolute and end with `.md`.
+* Using consistent syntax helps us to more easily find-and-replace links when moving pages.
 
 
 ## Basic inline formatting
@@ -47,9 +78,15 @@ Alternate syntax: Underscores for `_italics_` and `__bold__` also work on most
 platforms.
 
 
-## Hyperlinks
+## Internal hyperlinks
 
-### External hyperlinks
+See the [internal URL standards](#internal-url-standards) above for examples of internal hyperlinks.
+
+!!! warning
+    Several different syntax variants will produce functionally identical hyperlinks, but it's important you follow our [standards](#internal-url-standards) so that we can avoid broken links when re-organizing pages in the future.
+
+
+## External hyperlinks
 
 A basic external hyperlink in a sentence:
 
@@ -57,18 +94,9 @@ A basic external hyperlink in a sentence:
 Try [CiviCRM](https://civicrm.org) for your database.
 ```
 
-### Internal hyperlinks
-
-An internal hyperlink on mkdocs. Both of the following syntaxes work because the `.md` is optional. *Make sure to use an absolute path and precede the path with a slash, as shown below.*
-
-```
-[extensions](/extensions/basics.md)
-[extensions](/extensions/basics.md)
-```
-
 ### Named hyperlinks
 
-If you're using a one link in many place throughout a page, you can define the URL in one place as follows
+If you're using a one external link in many places throughout a page, you can define the URL in one place as follows
 
 ```
 See [CRM-1234] for more details.
@@ -80,13 +108,17 @@ My favorite issue is [CRM-1234].
 
 (The third line can be placed anywhere in the file.)
 
-### Named hyperlinks with custom text
+You can also use custom text for a named hyperlink, as shown below:
 
 ```
 After learning [how to foo a bar][foobar], then you can party!
 
 [foobar]: https://example.com/foobar
 ```
+
+!!! caution "For external links only"
+    Per our [standards](#internal-url-standards), named hyperlinks should only be used for *external* links
+
 
 
 ## Line breaks and whitespace
@@ -395,14 +427,6 @@ point and with alt text in place of the link text.
 
 ```
 ![Alt text](/directory/image.png)
-```
-
-or
-
-```
-![Alt text][id]
-
-[id]: /directory/image.png
 ```
 
 
