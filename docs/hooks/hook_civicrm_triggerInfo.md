@@ -1,4 +1,4 @@
-# hook_civicrm_trigger_info
+# hook_civicrm_triggerInfo
 
 ## Summary
 
