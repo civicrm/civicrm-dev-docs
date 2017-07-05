@@ -306,13 +306,14 @@ If you frequently call `civibuild`, you may find that the argument list
 becomes fairly long (e.g.  `--url http://example.localhost --admin-user
 myadmin --admin-pass mypass --demo-user mydemo --demo-pass mypass ...`).
 
-To set default values for these parameters, create the file `civibuild.conf`:
+To set default values for these parameters, create and edit the file `civibuild.conf`:
 
 ```
 cp app/civibuild.conf.tmpl app/civibuild.conf
+vi app/civibuild.conf
 ```
 
-This file includes documentation and examples.
+The template includes documentation and examples.
 
 ## Development/Testing of `civibuild` {:#development}
 
