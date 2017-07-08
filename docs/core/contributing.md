@@ -136,6 +136,6 @@ Alternatively, you can use a custom PHP or template override directory.  While t
 
 ## Review some other code
 
-CiviCRM works through the generosity of its users and the organizations that employ them.  Now that you have a pull request open (and some experience working with the CiviCRM codebase), why not take some time to review another pull request?  
+CiviCRM works through the generosity of its users and the organizations that employ them.  Now that you have a pull request open (and some experience working with the CiviCRM codebase), why not take some time to [review another pull request](/core/pr-review.md)?  
 
 Pick one from the list of open pull requests, review the corresponding Jira ticket, merge the changes into your development copy of CiviCRM, and see how it works.  Share your thoughts on the pull request.  You'll notice that the time you spend reviewing others' code and interacting with the rest of the community will serve you well: you'll be a better CiviCRM developer, and you'll have a better product.
