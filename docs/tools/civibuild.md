@@ -155,11 +155,11 @@ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm/
 ```
 
 !!! note
-    The path to this directory will vary depending on where you installed buildkit and what CMS you site uses.
+    The path to this directory will vary depending on where you installed buildkit and what CMS your site uses.
 
 ### Check the status of all git repos {:#upgrade-site-git-scan}
 
-There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan), (installed with [buildkit](/tools/buildkit.md)).
+There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan) (installed with [buildkit](/tools/buildkit.md)).
 
 ```
 git scan status
@@ -260,7 +260,9 @@ There are four variations on rebuilding. In order of fastest (least thorough) to
   </tbody>
 </table>
 
-## civicrm.settings.php; settings.php; wp-config.php {:#settings}
+## Settings {:#settings}
+
+### civicrm.settings.php {:#settings-civicrm}
 
 There are a few CiviCRM settings which are commonly configured on a per-server
 or per-workstation basis. For example, civicrm.org's demo server has ~10
@@ -272,18 +274,40 @@ extensions. As discussed in
 this setting (and many others) can be configured in civicrm.settings.php.
 
 The `civicrm.settings.php` is created automatically as part of the build. One
-could edit the file directly, but that means editing civicrm.settings.php
+could edit the file directly, but that means editing `civicrm.settings.php`
 after every (re)build. The easiest way to customize the settings is to put
 extra `.php` files in `/etc/civicrm.settings.d` &mdash; these files will be loaded
 on every site that runs on this server (regardless of how many sites you
 create or how many times you rebuild them).
 
-For more details on how `civicrm.settings.d` works, see `/app/civicrm.settings.d/README.txt` within your buildkit installation.
+For more details on how `civicrm.settings.d` works, see
+[`/app/civicrm.settings.d/README.txt`](https://github.com/civicrm/civicrm-buildkit/blob/master/app/civicrm.settings.d/README.txt)
+within your buildkit installation.
 
-A parallel structure exists for the CMS settings files. See also:
+### settings.php; wp-config.php {:#settings-cms}
 
-* `/app/drupal.settings.d/README.txt`
-* `/app/wp-config.d/README.txt`
+Each CMS includes a settings file that is analogous to
+`civicrm.settings.php`. These follow a parallel structure -- which
+means that you can put extra config files in:
+
+ * [backdrop.settings.d](https://github.com/civicrm/civicrm-buildkit/blob/master/app/backdrop.settings.d/README.txt) (Backdrop)
+ * [drupal.settings.d](https://github.com/civicrm/civicrm-buildkit/blob/master/app/drupal.settings.d/README.txt) (Drupal)
+ * [wp-config.d](https://github.com/civicrm/civicrm-buildkit/blob/master/app/wp-config.d/README.txt) (WordPress)
+
+### civibuild.conf {:#settings-civibuild}
+
+If you frequently call `civibuild`, you may find that the argument list
+becomes fairly long (e.g.  `--url http://example.localhost --admin-user
+myadmin --admin-pass mypass --demo-user mydemo --demo-pass mypass ...`).
+
+To set default values for these parameters, create and edit the file `civibuild.conf`:
+
+```
+cp app/civibuild.conf.tmpl app/civibuild.conf
+vi app/civibuild.conf
+```
+
+The template includes documentation and examples.
 
 ## Development/Testing of `civibuild` {:#development}
 
