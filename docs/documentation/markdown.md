@@ -201,12 +201,17 @@ to this section in the future.
 
 ### Unordered lists
 
-```
+```text
+Here is my paragraph (with a blank line after).
+
 * My first item is here.
 * My second item is here and a
   bit longer than the first.
 * Then, a third.
 ```
+
+!!! note
+    If you don't **include a blank line before your first list item**, then the list will become part of the previous element (paragraph, heading, etc).
 
 Alternate syntax:
 
