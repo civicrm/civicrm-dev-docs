@@ -80,6 +80,9 @@ The following values can be added to your site's settings file `civicrm.settings
     directory to find the log.  (See [the File System
     documentation](../basics/filesystem.md) for the location in your CMS.)
 
+!!! tip
+    If you're developing within a site built with [civibuild](/tools/civibuild.md), then you can to apply settings to *all your local sites* by using the [civicrm.settings.d folders](/tools/civibuild.md#settings-civicrm).
+
 
 ## Viewing a query log from MySQL
 
