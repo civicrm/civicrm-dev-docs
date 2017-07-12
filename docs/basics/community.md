@@ -1,7 +1,8 @@
 # CiviCRM Developer Community
 
-Developers from around the globe use the following systems to communicate and
-collaborate:
+## Collaboration tools
+
+Developers from around the globe use the following systems to communicate and collaborate:
 
 -   [CiviCRM.org](https://civicrm.org)
     -   [Extensions](https://civicrm.org/extensions) publishing
@@ -14,14 +15,42 @@ collaborate:
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [Jira](https://issues.civicrm.org/jira) - Issue tracking
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
--   [Discussion Mailing Lists](https://lists.civicrm.org/lists/)
--   [Newsletters](https://civicrm.org/civicrm/mailing/subscribe)
--   Falling out of use
-    -   [Wiki] - still used for specs & recipes, *but documentation
+-   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for community-based project management.
+
+!!! tip "Before you begin"
+
+    Register for the accounts below. *All accounts require e-mail verification.*
+
+    1.  [CiviCRM.org](https://civicrm.org/user/register) - Be prepared to give your name and organizational affiliation, and explain your role in the community.
+        *Account requests must be approved by an administrator before you will be granted access.* This process may take some time.
+
+        The following communities provide a single sign-on once your CiviCRM.org account is approved.
+
+         -   Jira
+         -   GitLab
+         -   CiviCRM Wiki - *account can also be requested via the infrastructure channel on Mattermost*
+
+    2.  [Mattermost](https://chat.civicrm.org/signup_email) - Create an account and join a team on this open-source version of Slack.
+
+    3.  [Stack Exchange](https://civicrm.stackexchange.com/users/signup?ssrc=head&returnurl=https%3a%2f%2fcivicrm.stackexchange.com%2f) - Read the user guide after joining. Write your own Q&A and vote on others'.
+
+    4.  [GitHub](https://github.com/join?source=header) - Find repositories under CiviCRM's group after confirming your account.
+
+## Discussion communities
+
+Optional lists you may also want to register for:
+
+1.  [CiviCRM Groups](https://lists.civicrm.org/lists/firstpasswd/)  (listservs)
+
+2.  [Newsletters](https://civicrm.org/civicrm/mailing/subscribe) (after your CiviCRM account is active)
+
+## Falling out of use
+
+-   [Wiki] - still used for specs & recipes, *but documentation
         [is moving][migration] to the guides listed above*
-    -   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
+-   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
         *but now mostly replaced by Mattermost*
-    -   [Forum](https://forum.civicrm.org/) - *now mostly replaced by
+-   [Forum](https://forum.civicrm.org/) - *now mostly replaced by
         StackExchange*
 
 [wiki]: https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation
