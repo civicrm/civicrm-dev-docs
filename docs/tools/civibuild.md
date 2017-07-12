@@ -262,7 +262,29 @@ There are four variations on rebuilding. In order of fastest (least thorough) to
 
 ## Settings {:#settings}
 
-### civicrm.settings.php {:#settings-civicrm}
+### civicrm.settings.d folders {:#settings-civicrm}
+
+Civibuild provides a mechanism to quickly add settings to *all sites* which you've built with civibuild.
+
+For example, you can create a file `/etc/civicrm.settings.d/300-debug.php` with the following content to enable debugging and backtraces for all civibuild sites (useful for local development).
+
+```php
+<?php
+$GLOBALS['civicrm_setting']['domain']['debug_enabled'] = 1;
+$GLOBALS['civicrm_setting']['domain']['backtrace'] = 1;
+```
+
+Any settings which you would typically put in your site's `civicrm.settings.php` file can go into a php file (you choose the file name) in a `civicrm.settings.d` folder. Further, there are multiple `civicrm.settings.d` folders. Settings files from these directories will be loaded in the following order:
+
+1. `$PRJDIR/app/civicrm.settings.d/`
+1. `$PRJDIR/app/config/$TYPE/civicrm.settings.d/`
+1. `/etc/civicrm.settings.d/`
+1. `$SITE_DIR/civicrm.settings.d/`
+
+If a settings file has the *same name* as one which has already been loaded, it will be skipped.
+
+The `$PRJDIR/app/civicrm.settings.d/` also contains some [example configuration files](https://github.com/civicrm/civicrm-buildkit/tree/master/app/civicrm.settings.d). For more advanced logic, one can look at the global `$civibuild` variable or at any of the standard CiviCRM configuration directives. 
+
 
 There are a few CiviCRM settings which are commonly configured on a per-server
 or per-workstation basis. For example, civicrm.org's demo server has ~10
@@ -280,9 +302,8 @@ extra `.php` files in `/etc/civicrm.settings.d` &mdash; these files will be load
 on every site that runs on this server (regardless of how many sites you
 create or how many times you rebuild them).
 
-For more details on how `civicrm.settings.d` works, see
-[`/app/civicrm.settings.d/README.txt`](https://github.com/civicrm/civicrm-buildkit/blob/master/app/civicrm.settings.d/README.txt)
-within your buildkit installation.
+
+
 
 ### settings.php; wp-config.php {:#settings-cms}
 
@@ -360,4 +381,3 @@ Some content on this page was migrated from other sources, including:
 
 
 * "Upgrading a site" from [Tim Otten's StackExchange answer](https://civicrm.stackexchange.com/questions/17717/how-do-i-upgrade-civicrm-on-a-local-site-that-i-installed-with-buildkit-civibuil/17721#17721)
-
