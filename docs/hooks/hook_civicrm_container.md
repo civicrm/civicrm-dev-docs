@@ -16,7 +16,7 @@ This hook is available in CiviCRM 4.7+.
 
 ## Definition
 
-    container(\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    hook_civicrm_container(\Symfony\Component\DependencyInjection\ContainerBuilder $container)
 
 ## Parameters
 
