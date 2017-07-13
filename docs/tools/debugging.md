@@ -196,10 +196,11 @@ Then, be sure to add the parameter `angularDebug=1` to the URL.
 
 Clearing the cache is not a debugging technique, specifically. But sometimes it helps, and so is mentioned here for the sake of completeness.
 
-Using a web browser, either:
+Using a web browser:
 
 -   Navigate directly to `civicrm/clearcache`
--   Navigate to "Administer => System Settings => Cleanup Caches"
+
+<!-- FIXME: This page is misleading:  Navigate to "Administer => System Settings => Cleanup Caches" -->
 
 Using the command line, you can clear all caches with one of these commands:
 
@@ -209,8 +210,8 @@ Using the command line, you can clear all caches with one of these commands:
 Alternatively, you can call the following methods in PHP code:
 
 -   `civicrm_api3('System', 'flush', array());` clears many different caches
--   `CRM_Core_Config::clearDBCache();` clears the database cache
--   `CRM_Core_Config::cleanup();` clears the file cache
+-   `CRM_Core_Config::clearDBCache();` clears *only* the database cache
+-   `CRM_Core_Config::cleanup();` clears *only* the file cache
 
 
 
