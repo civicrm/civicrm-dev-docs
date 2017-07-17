@@ -1,4 +1,4 @@
-# SQL Coding Standars
+# SQL Coding Standards
 
 When writing SQL developers should ensure all variables are passed into SQL safely and securely.
 
