@@ -60,9 +60,3 @@ The CiviCRM Coding Standard for PHP Code and Inline Documentation applies to all
 1. `tools/`
 1. `joomla/`
 1. `WordPress/`
-
-## Tools
-
-If a developer creates a test site with buildkit they can use the CiviLint tool to check the code standards. See [Civilint Documentation](/tools/civilint.md).
-
-You can also Set up your IDE to lint your code as well. See instructions on [setting up your IDE](https://wiki.civicrm.org/confluence/display/CRMDOC/IDE+Settings+to+Meet+Coding+Standards).

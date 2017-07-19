@@ -203,8 +203,9 @@ pages:
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
 - Code Standards:
-  - PHP: standards/php.md
-  - SQL: standards/sql.md
+  - Code Standards: standards/index.md
+  - PHP Standards: standards/php.md
+  - SQL Standards: standards/sql.md
   # Javascript: standards/js.md
   # API: standards/api.md
   # Git: standards/git.md
