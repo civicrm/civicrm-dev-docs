@@ -9,18 +9,18 @@ So you've written an [extension](/extensions/index.md). Awesome! Now you want to
     * Inspect the following source code to see how it's made:
         * [/docs/](https://github.com/civicrm/org.civicrm.volunteer/tree/master/docs) within the project repo (to store all the content in markdown files)
         * [/mkdocs.yml](https://github.com/civicrm/org.civicrm.volunteer/blob/master/mkdocs.yml) within the project repo (to specify guide structure)
-        * [/books/volunteer.yml](https://github.com/civicrm/civicrm-docs/blob/master/books/volunteer.yml) within the `civicrm-docs` repo (to specify how the guide is to be published)
+        * [/books/volunteer.yml](https://lab.civicrm.org/documentation/docs-publisher/blob/master/books/volunteer.yml) within the `civicrm-docs` repo (to specify how the guide is to be published)
 
 ## Overview
 
-Basically how this works is:
+Here are the basic steps (and each one is explained in more detail later on this page.)
 
 1. You use the git repo for your extension to store its documentation.
 * You store the content in [markdown](/documentation/markdown.md) files within a `docs` directory in your project.
 * You use git branches just like you normally would, with that `docs` directory sitting there in every branch.
 * You put one file at the root level of your project, `mkdocs.yml` to configure some of the high-level details of your book.
 * You use MkDocs locally to preview your guide.
-* When you're ready, you make a pull request on our [publishing system](https://github.com/civicrm/civicrm-docs) to add the necessary configuration for your guide, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
+* When you're ready, you make a pull request on our [publishing system](https://lab.civicrm.org/documentation/docs-publisher) to add the necessary configuration for your guide, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
 * You configure GitHub to tell our publishing system when to publish updates to your guide.
 
 Follow along in the steps below to get a guide up and running for your extension.
@@ -98,10 +98,12 @@ You can add more pages by creating more markdown files and specifying these file
 
 Once your guide is in good shape it's time to get it up on [docs.civicrm.org](https://docs.civicrm.org).
 
-1. Go to the [books configuration within our publishing system](https://github.com/civicrm/civicrm-docs/tree/master/books)
-1. Click **Create new file** to begin adding a config file for *your* guide.
+1. Go to the [repository for our publishing system](https://lab.civicrm.org/documentation/docs-publisher/)
+1. Click **Fork**, and if necessary choose your user as the destination of the fork.
+1. Within your fork, navigate to the `book` directory. 
+1. Click on the `+` button to add a new file to that directory within your fork.
 1. For the file name, use something like `foobar.yml`, where "foobar" is your extension's **short name**. This is the name that will be used in the URL for your docs.
-1. Copy paste the following content into the file editor:
+1. Copy paste the following content into the file editor (note that the leading whitespace is important for lines in this file since it communicates structure in yaml):
 
     ```yaml
     name: Foo Bar
@@ -118,10 +120,15 @@ Once your guide is in good shape it's time to get it up on [docs.civicrm.org](ht
 
     * The `name` you set here will be shown in the list of all guides on [docs.civicrm.org](https://docs.civicrm.org) as well as at the top of every page of your guide. Use whatever **long name** you've chosen for your extension, such as "Foo Bar", or "CiviFoobar". (*Don't* use a fully qualified name like "org.civicrm.foobar" because that wouldn't look so nice to visitors.)
 
-1. Click **Propose new file**.
-1. On the next screen, click **Create pull request**. (You're not done until you create a pull request!)
+1. For the commit message, write something like "Add new Foobar Guide".
+1. Click **Commit changes**.
+1. Click **Merge requests** > **New merge request**.
+    * Set the source branch to your fork and `master`.
+    * Set the target branch to the upstream repository and `master`.
+    * Click **Compare branches and continue**.
+    * Click **Submit merge request**.
 
-At some point (hopefully soon!) someone will merge your PR and get the necessary config for your guide up on the server. Then it can be published.
+At some point (hopefully soon!) someone will merge your MR and get the necessary config for your guide up on the server. Then it can be published.
 
 ## Manually publish your guide {:#manual-publishing}
 
