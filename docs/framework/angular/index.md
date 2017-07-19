@@ -8,6 +8,25 @@ administrative screens, and extensions increasingly use AngularJS for
 This documentation aims to explain how AngularJS works within a CiviCRM
 context.
 
+
+## AngularJS versions {:#versions}
+
+* CiviCRM use AngularJS 1.x which has documentation at [docs.**angularjs.org**](https://docs.angularjs.org)
+* In version 2.x (and onwards) the framework is just called "Angular" and is a [significantly  different](https://angular.io/guide/ajs-quick-reference) framework from 1.x. The *Angular* website is *angular.io*, which you should steer clear of while learning *AngularJS*.
+
+
+!!! tip
+
+    To determine the specific version of AngularJS used within your site:
+
+    1. Go to the default Angular *base page* for your site at `http://example.org/civicrm/a`
+    1. Open a browser console
+    1. Evaluate `angular.version` within the console
+
+
+
+
+
 ## Two cultures
 
 CiviCRM is an extensible PHP application (similar to Drupal, Joomla, or
