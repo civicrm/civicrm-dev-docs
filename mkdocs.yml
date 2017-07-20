@@ -65,11 +65,6 @@ pages:
   - Schema definition: framework/schema-definition.md
   # Resources: /framework/resources.md
   # Upgrade: /framework/upgrade.md
-  #### Code Standards:
-  # PHP: /standards/php.md
-  # Javascript: /standards/js.md
-  # API: /standards/api.md
-  # Git: /standards/git.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
   # CiviReport: /reference/civireport.md
@@ -207,6 +202,13 @@ pages:
     - hook_civicrm_tokens: hooks/hook_civicrm_tokens.md
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
+- Code Standards:
+  - Code Standards: standards/index.md
+  - PHP Standards: standards/php.md
+  - SQL Standards: standards/sql.md
+  # Javascript: standards/js.md
+  # API: standards/api.md
+  # Git: standards/git.md
 - Documentation:
   - Writing Documentation: documentation/index.md
   - Documenting Extensions: documentation/extensions.md
