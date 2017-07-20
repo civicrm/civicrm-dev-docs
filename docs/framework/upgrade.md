@@ -1,4 +1,5 @@
 # Upgrade Reference
+
 !!! scope
 This document discusses upgrade conventions used in CiviCRM core code. For extensions and modules which integrate with CiviCRM, upgrade conventions are different. See [Create a Module Extension](https://docs.civicrm.org/dev/en/master/extensions/civix/) for more discussion of the module-focused upgrader.
 
@@ -42,6 +43,7 @@ Each class in the CRM_Upgrade_Incremental_php corresponds to a major release of 
 When wrting upgrade steps in PHP its preferable to use direct sql queries rather than relying on BAOs and DAOs as they may change between versions. Whereas wrting SQL is more riggerious. Further it is preferable to write SQL statements especially if it involves adding or removing columns, indexes from database tables. There are helper functions such as CRM_Core_BAO_SchemaHandler::dropIndexIfExists(), CRM_Upgrade_Form::addColumn(), CRM_Upgrade_Form::dropColumn(). These helper functions don't depend on version specific business logic and also help pretect against hard database fails by checking if what your trying to add or drop exists already. 
 
 ## Tip: Write upgrades in small chunks
+
 When updating sometimes it can be found that upgrades steps speed can vary depending on the size of the database. Sometimes some upgrades steps may take longer than the websever timeout (e.g. Apache, PHP, nginx). To prevent timeouts its wrecomment to write upgrade steps in smaller steps. This also helps in debugging as the failure can be pin pointed to a smaller amount of code. 
 
 For a working example, see CRM_Upgrade_Incremental_php_FourTwo::upgrade_4_2_beta3(). Notice:
@@ -73,14 +75,7 @@ All smarty tags are evaluated before the sql is run. Commonly used smarty variab
 | {$domainID} | Current domain (the one the upgrade is running from). This should not be used in most cases, since usually every domain needs upgrading, not just one. See best practices section. |
 | {localize} | Translate the following text as per the relevant locale |
 | {$multilingual} | Is this a multilingual install? If so you may need to iterate through each one i.e.: | 
-| {$locales} |  
-{if $multilingual}
-  {foreach from=$locales item=locale}
-    SQL goes here per locale
-  {/foreach}
-{else}
-  Single locale SQL here
-{/if} | 
+| {$locales} | {if $multilingual} {foreach from=$locales item=locale} SQL goes here per locale  {/foreach} {else} Single locale SQL here /if} | 
 
 ## Testing 
 
