@@ -23,7 +23,7 @@ Note:
 
  * When executing the above command, you should *not* run as `root`. However, you *should*
 have `sudo` permissions.
- * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
+ * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
  * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
 
 ### Vagrant
@@ -83,7 +83,7 @@ npm install fs-extra
 
 Using buildkit, you can create a CiviCRM environment with the PR applied.
 
-For Example:
+For example:
 
 ```bash
 civibuild create dmaster \
