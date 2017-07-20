@@ -81,5 +81,4 @@ All Smarty tags are evaluated before the sql is run. Commonly used Smarty variab
 
 Testing When testing upgrades, it's important to run the upgrades against several different databases (representing different versions of CiviCRM and different upgrade paths). The tool "civicrm-upgrade-test" can automate this process. For instructions:
 
-* If you are using buildkit you can use the integrated [civibuild upgrade-test](https://github.com/civicrm/civicrm-buildkit/blob/master/README.md#daily-coding-upgrade-testing) command.
 * If using your own processes see [https://github.com/civicrm/civicrm-upgrade-test](https://github.com/civicrm/civicrm-upgrade-test)
