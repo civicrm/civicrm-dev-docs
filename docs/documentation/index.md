@@ -40,7 +40,7 @@ We welcome contributions, small and large, to documentation!
 Before diving into editing, you may find helpful information within the following resources:
 
 - [Markdown syntax](/documentation/markdown.md) - necessary (but simple) syntax to format content
-- [Markdown code standards](/documentation/markdown.md#standards) - recommendations for markdown syntax to use
+- [Markdown coding standards](/documentation/markdown.md#standards) - recommendations for markdown syntax to use
 - [Style guide](/documentation/style-guide.md) - to maintain consistent language and formatting
 - [Documentation chat room](https://chat.civicrm.org/civicrm/channels/documentation) - live discussion, fast (most of the time) answers to your questions
 - [Documentation mailing list](https://lists.civicrm.org/lists/info/civicrm-docs) - low traffic, mostly used for informational updates regarding documentation projects

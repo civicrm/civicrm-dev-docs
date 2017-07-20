@@ -22,11 +22,11 @@ Platform-specific markdown references:
 The remainder of this page will focus on the markdown syntax which can be used within MkDocs books with the Material theme and common markdown extensions.
 
 
-## CiviCRM markdown code standards {:#standards}
+## CiviCRM markdown coding standards {:#standards}
 
-To maintain some consistency and peace of mind for documentation content editors, we've [agreed](https://github.com/civicrm/civicrm-dev-docs/issues/43) to *recommend* the following syntax as markdown code standards. These are not hard rules though.
+To maintain some consistency and peace of mind for documentation content editors, we've [agreed](https://github.com/civicrm/civicrm-dev-docs/issues/43) to *recommend* the following syntax as markdown coding standards. These are not hard rules though.
 
-### General code standards {:#general-standards}
+### General coding standards {:#general-standards}
 
 * **Line length:** write long lines (i.e. one line per paragraph) and set your text editor to view them with a "soft wrap".
 * **Ordered lists:** use `1.` as delimiters.

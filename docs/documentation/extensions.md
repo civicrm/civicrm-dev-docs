@@ -91,7 +91,7 @@ Now you should be able to run `mkdocs serve` from within your project directory 
 You can add more pages by creating more markdown files and specifying these files under `pages` in `mkdocs.yml`.
 
 !!! note
-    We have [markdown code standards](/documentation/markdown.md#standards) and a documentation [style guide](/documentation/style-guide.md). Adherence to these rules within your extensions docs is recommended but not required.
+    We have [markdown coding standards](/documentation/markdown.md#standards) and a documentation [style guide](/documentation/style-guide.md). Adherence to these rules within your extensions docs is recommended but not required.
 
 
 ## Submit your guide to our publishing system {:#submit}
