@@ -1,7 +1,7 @@
 # Upgrade Reference
 
-!!! scope
-This document discusses upgrade conventions used in CiviCRM core code. For extensions and modules which integrate with CiviCRM, upgrade conventions are different. See [Create a Module Extension](https://docs.civicrm.org/dev/en/master/extensions/civix/) for more discussion of the module-focused upgrader.
+!!! note "Scope"
+    This document discusses upgrade conventions used in CiviCRM core code. For extensions and modules which integrate with CiviCRM, upgrade conventions are different. See [Create a Module Extension](https://docs.civicrm.org/dev/en/master/extensions/civix/) for more discussion of the module-focused upgrader.
 
 ## Intoduction
 
@@ -62,8 +62,8 @@ CRM/Upgrade/Incremental/sql stores SQL scripts for upgrading to each point relea
 * Scripts are preprocessed by Smarty which allows for the use of Smarty functions like {ts} and {localize}
 * Scripts are evaluated by PHP and therefore do *Not* support Delimter Notion or inline comments (Comments need to be placed on their own line with two dashes at the front)
 
-!!! SQL Files are required
-Creating a SQL file is required for each incremental release – even if you don't put any content in them. Why? Because the upgrade system constructs a list of incremental releases by scanning the "sql" directory. If an incremental release doesn't appear in the SQL directory, then the upgrader may skip other important steps (such as executing incremental PHP updates).
+!!! note "SQL Files are required"
+    Creating a SQL file is required for each incremental release – even if you don't put any content in them. Why? Because the upgrade system constructs a list of incremental releases by scanning the "sql" directory. If an incremental release doesn't appear in the SQL directory, then the upgrader may skip other important steps (such as executing incremental PHP updates).
 
 ## Tip: Smarty Preprocessing SQL Files
 
