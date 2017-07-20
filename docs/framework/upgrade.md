@@ -3,9 +3,9 @@
 !!! note "Scope"
     This document discusses upgrade conventions used in CiviCRM core code. For extensions and modules which integrate with CiviCRM, upgrade conventions are different. See [Create a Module Extension](https://docs.civicrm.org/dev/en/master/extensions/civix/) for more discussion of the module-focused upgrader.
 
-## Intoduction
+## Introduction
 
-Within CiviCRM Core code the upgrader classes handle making any necessary database changes either through PHP or SQL code, printing out any messsages before or after the upgrade happens. Queing up tasks for each version upgrade. 
+Within CiviCRM Core code the upgrader classes handle making any necessary database changes either through PHP or SQL code, printing out any messages before or after the upgrade happens. Queuing up tasks for each version upgrade.
 
 ## Directory Structure
 
@@ -14,20 +14,20 @@ Within CiviCRM Core code the upgrader classes handle making any necessary databa
 | CRM/Upgrade/Form.php | Upgrade helper functions and infrastructure code. (Note: The name is misleading; today, the class has no responsibility for processing forms.) |
 | CRM/Upgrade/Headless.php | Primary entry point for running upgrades through command line tools e.g. wp-cli, drush |
 | CRM/Upgrade/Page/Upgrade.php | Primary entry point for running upgrades through the User Interface |
-| CRM/Upgrade/Incremental/*.php | One file and one class for each major relase (e.g. 4.7, 4.6), For each minor release (e.g. 4.7.12, 4.6.31) there is one function |
+| CRM/Upgrade/Incremental/*.php | One file and one class for each major release (e.g. 4.7, 4.6), For each minor release (e.g. 4.7.12, 4.6.31) there is one function |
 | CRM/Upgrade/Incremental/*.tpl | One Smarty SQL file for each minor release |
 
 ## Order of Upgrade Steps 
 
 * Incremental upgrades are executed in order of versions
-* Pre upgrade message is generated before doing any upgrades by examining the version in the civicrm-version file
+* Pre-upgrade message is generated before doing any upgrades by examining the version in the civicrm-version file
 * For a given major-version the ```php verifyPreDBState()``` runs before any changes are made
 * For a given minor-version there may be a php function and some SQL code in the .tpl file. If there is a php function for the version it will determine when the SQL is run
 * For a given minor-version the "Post Upgrade" message is generated immediately after calling the php
 
 ## Incremental PHP Files
 
-Incremental PHP-SQL steps are prefered over the Smarty-SQL where possible. This is because it gives us a chance to query the database before running upgrades and makes upgrades are safer
+Incremental PHP-SQL steps are preferred over the Smarty-SQL where possible. This is because it gives us a chance to query the database before running upgrades and makes upgrades are safer
 
 Each class in the CRM_Upgrade_Incremental_php corresponds to a major release of CiviCRM (e.g. 4.1, 4.2, 4.3). The key functions that can be defined are:
 
@@ -40,11 +40,11 @@ Each class in the CRM_Upgrade_Incremental_php corresponds to a major release of 
 
 ## Tips: Prefer simple SQL semantics over API/BAO/DAO
 
-When wrting upgrade steps in PHP its preferable to use direct sql queries rather than relying on BAOs and DAOs as they may change between versions. Whereas wrting SQL is more riggerious. Further it is preferable to write SQL statements especially if it involves adding or removing columns, indexes from database tables. There are helper functions such as CRM_Core_BAO_SchemaHandler::dropIndexIfExists(), CRM_Upgrade_Form::addColumn(), CRM_Upgrade_Form::dropColumn(). These helper functions don't depend on version specific business logic and also help pretect against hard database fails by checking if what your trying to add or drop exists already. 
+When writing upgrade steps in PHP its preferable to use direct sql queries rather than relying on BAOs and DAOs as they may change between versions. Whereas writing SQL is more rigorous. Further it is preferable to write SQL statements especially if it involves adding or removing columns, indexes from database tables. There are helper functions such as CRM_Core_BAO_SchemaHandler::dropIndexIfExists(), CRM_Upgrade_Form::addColumn(), CRM_Upgrade_Form::dropColumn(). These helper functions don't depend on version specific business logic and also help protect against hard database fails by checking if what your trying to add or drop exists already.
 
 ## Tip: Write upgrades in small chunks
 
-When updating sometimes it can be found that upgrades steps speed can vary depending on the size of the database. Sometimes some upgrades steps may take longer than the websever timeout (e.g. Apache, PHP, nginx). To prevent timeouts its wrecomment to write upgrade steps in smaller steps. This also helps in debugging as the failure can be pin pointed to a smaller amount of code. 
+When updating sometimes it can be found that upgrades steps speed can vary depending on the size of the database. Sometimes some upgrades steps may take longer than the websever timeout (e.g. Apache, PHP, nginx). To prevent timeouts it's recommended to write upgrade steps in smaller steps. This also helps in debugging as the failure can be pin pointed to a smaller amount of code.
 
 For a working example, see CRM_Upgrade_Incremental_php_FourTwo::upgrade_4_2_beta3(). Notice:
 
@@ -60,14 +60,14 @@ CRM/Upgrade/Incremental/sql stores SQL scripts for upgrading to each point relea
 
 * The scripts are not executed directly by MySQL
 * Scripts are preprocessed by Smarty which allows for the use of Smarty functions like {ts} and {localize}
-* Scripts are evaluated by PHP and therefore do *Not* support Delimter Notion or inline comments (Comments need to be placed on their own line with two dashes at the front)
+* Scripts are evaluated by PHP and therefore do *Not* support Delimiter Notion or inline comments (Comments need to be placed on their own line with two dashes at the front)
 
 !!! note "SQL Files are required"
     Creating a SQL file is required for each incremental release – even if you don't put any content in them. Why? Because the upgrade system constructs a list of incremental releases by scanning the "sql" directory. If an incremental release doesn't appear in the SQL directory, then the upgrader may skip other important steps (such as executing incremental PHP updates).
 
 ## Tip: Smarty Preprocessing SQL Files
 
-All smarty tags are evaluated before the sql is run. Commonly used smarty variables and functions:
+All Smarty tags are evaluated before the sql is run. Commonly used Smarty variables and functions:
 
 | Tag | Description |
 | -- | -- |
@@ -81,5 +81,5 @@ All smarty tags are evaluated before the sql is run. Commonly used smarty variab
 
 Testing When testing upgrades, it's important to run the upgrades against several different databases (representing different versions of CiviCRM and different upgrade paths). The tool "civicrm-upgrade-test" can automate this process. For instructions:
 
-* If you are using buildkit you can use the intergrated [civibuild upgrade-test](https://github.com/civicrm/civicrm-buildkit/blob/master/README.md#daily-coding-upgrade-testing) command.
+* If you are using buildkit you can use the integrated [civibuild upgrade-test](https://github.com/civicrm/civicrm-buildkit/blob/master/README.md#daily-coding-upgrade-testing) command.
 * If using your own processes see [https://github.com/civicrm/civicrm-upgrade-test](https://github.com/civicrm/civicrm-upgrade-test)
