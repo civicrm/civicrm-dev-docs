@@ -34,29 +34,59 @@ In some circumstances you may find that a complex query is easier to build by di
 ```php
 $name = CRM_Utils_Type::escape('John Smith', 'String');
 $column = CRM_Utils_Type::escape('civicrm_contact.display_name', 'MysqlColumnNameOrAlias');
-$result = CRM_Core_DAO::ExecuteQuery("SELECT FROM civicrm_contact WHERE $column like '%$name%'");
+$result = CRM_Core_DAO::executeQuery("SELECT FROM civicrm_contact WHERE $column like '%$name%'");
 ```
 
 ## `CRM_Utils_SQL_Select`
 
-Since CiviCRM 4.7 version there has been an alternate way of generating sql. You can use `CRM_Utils_SQL_Select` to generate your query. You can then use all the various `CRM_Core_DAO` methods to then run the query e.g. `fetch()` or `fetchAll()`.
-Further information on this method can be found in the [CRM_Utils_SQL_Select class](https://github.com/civicrm/civicrm-core/blob/6db7061/CRM/Utils/SQL/Select.php#L33)
+Since CiviCRM 4.7 version there has been an alternate way of generating SQL -- use `CRM_Utils_SQL_Select`. Compared to plain `CRM_Core_DAO`, it has three advantages:
+
+ * The syntax uses pithy [sigils](https://en.wikipedia.org/wiki/Sigil_(computer_programming)) for escaping strings (`@value`), numbers (`#value`) and literal SQL (`!value`).
+ * The escaping for array-data is transparent (e.g. `field IN (#listOfNumbers)` or `field IN (@listOfStrings)`).
+ * It supports more sophisticated `JOIN`, `GROUP BY`, and `HAVING` clauses.
+ * You can build and combine queries in piecemeal fashion with `fragment()` and `merge()`.
+ * The general style of query-building is fluent.
+
+A typical example might look like this:
 
 ```php
-$columnName = CRM_Utils_Type::escape('cm.membership_status', 'MysqlColumnNameOrAlias');
-$dao = CRM_Utils_Sql_Select::from('civicrm_contact c')
+$dao = CRM_Utils_SQL_Select::from('civicrm_contact c')
   ->join('cm', 'INNER JOIN civicrm_membership cm ON cm.contact_id = c.id')
+  ->where('c.contact_type = @ctype', array(
+    'ctype' => 'Individual',
+  ))
+  ->where('cm.membership_type_id IN (#types)', array(
+    'types' => array(1, 2, 3, 4),
+  ))
   ->where('!column = @value', array(
-    'column' => $columnName,
+    'column' => CRM_Utils_Type::escape('cm.status_id', 'MysqlColumnNameOrAlias'),
     'value' => 15,
   ))
-  ->where('membership_type_id IN (#types)', array('types', array(1,2,3,4)))
   ->execute();
 
 while ($dao->fetch()) { ... }
 ```
 
-You can chain with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
+Equivalently, you may pass all parameters as a separate array:
+
+```php
+$dao = CRM_Utils_SQL_Select::from('civicrm_contact c')
+  ->join('cm', 'INNER JOIN civicrm_membership cm ON cm.contact_id = c.id')
+  ->where('c.contact_type = @ctype')
+  ->where('cm.membership_type_id IN (#types)')
+  ->where('!column = @value')
+  ->param(array(
+    'ctype' => 'Individual',
+    'types' => array(1, 2, 3, 4),
+    'column' => CRM_Utils_Type::escape('cm.status_id', 'MysqlColumnNameOrAlias'),
+    'value' => 15,
+  ))
+  ->execute();
+
+while ($dao->fetch()) { ... }
+```
+
+For convenience, you can chain the `execute()` with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
 
 ```php
 $records = CRM_Utils_SQL_Select::from('mytable')
@@ -64,3 +94,5 @@ $records = CRM_Utils_SQL_Select::from('mytable')
   ->execute()
   ->fetchAll();
 ```
+
+Further information on this method can be found in the [CRM_Utils_SQL_Select class](https://github.com/civicrm/civicrm-core/blob/6db7061/CRM/Utils/SQL/Select.php#L33)
