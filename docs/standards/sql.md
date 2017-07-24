@@ -55,7 +55,9 @@ $dao = CRM_Utils_Sql_Select::from('civicrm_contact c')
 
 while ($dao->fetch()) { ... }
 ```
-You can chain with other DAO functions like ```fetchAll()```, ```fetchValue()``` or ```fetchMap()```.
+
+You can chain with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
+
 ```php
 $records = CRM_Utils_SQL_Select::from('mytable')
   ->select('...')
