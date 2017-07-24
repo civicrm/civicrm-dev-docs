@@ -112,63 +112,60 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 
 Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) uses when it needs to set up a new site. Before you can use `civibuild`, need to configure `amp` by telling it a bit about your system (e.g. what webserver you're using). 
 
-#### Interactive config
+1. Run the interactive configuration tool.
 
-```
-$ amp config
-```
-
-!!! tip "tips"
-    * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart your webserver and edit `/etc/hosts`.
-    * Pay close attention to any instructions given in the output of this command.  They may involve adding a line to your Apache or nginx configuration file.
-    * To check which version of apache you have, run `apachectl -v`
-
-#### Testing amp's configuration {:#amp-test} 
-
-Test that `amp` is correctly configured.
-
-```
-$ amp test
-```
-
-!!! failure "Troubleshooting errors from `amp test`"
+    ```
+    $ amp config
+    ```
     
-    * Try manually adding settings to your webserver, as described below.
-    * Re-run `amp config`.
+    !!! tip "tips"
+        * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart your webserver and edit `/etc/hosts`.
+        * Pay close attention to any instructions given in the output of this command.
+        * To check which version of apache you have, run `apachectl -v`
 
-#### Manually adding settings to your webserver {:#amp-webserver}
+1. Add settings to your webserver.
 
-During one of the steps in the `amp config` process, `amp` will *attempt to* alter the system-wide settings for your local webserver (apache or nginx). On some platforms, `amp` is not able to perform the necessary configuration and you must do it manually by following these steps:
-
-1. Identify the location of your `amp` installation. It is probably a `.amp` folder within your home directory. Make sure to *use the full path* to this directory in the settings below. We will use `<amp-installation>` henceforth to refer to the full path of this directory. 
-
-1. Identify your webserver. (If using Apache, use `apachectl -v` to see which version you have.)
-
-    * For Apache 2.2: 
+    1. Identify the location of your `amp` installation. It is probably a `.amp` folder within your home directory. Make sure to *use the full path* to this directory in the settings below. We will use `<amp-installation>` henceforth to refer to the full path of this directory. 
     
-        Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+    1. Identify your webserver. (If using Apache, use `apachectl -v` to see which version you have.)
     
-        ```
-        Include <amp-installation>/apache.d/*conf
-        ```
-
-    * For Apache 2.4: 
+        * For Apache 2.2: 
+        
+            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+        
+            ```
+            Include <amp-installation>/apache.d/*conf
+            ```
     
-        Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+        * For Apache 2.4: 
+        
+            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+        
+            ```
+            IncludeOptional <amp-installation>/apache.d/*conf
+            ```
     
-        ```
-        IncludeOptional <amp-installation>/apache.d/*conf
-        ```
-
-    * For nginx:
+        * For nginx:
+        
+            Create a new file `/etc/nginx/conf.d/buildkit.conf` with the following contents:
     
-        Create a new file `/etc/nginx/conf.d/buildkit.conf` with the following contents:
+            ```
+            include <amp-installation>/nginx.d/*.conf;
+            ```
+    
+    1. Restart your webserver.
 
-        ```
-        include <amp-installation>/nginx.d/*.conf;
-        ```
+1. Test amp's configuration
 
-1. Restart your webserver.
+    ```
+    $ amp test
+    ```
+    
+    The test is successful if you see `Received expected response` at the end.
+    
+    If the test produces any errors, you might try re-running the above config steps and/or asking for help in the [developer chat room](https://chat.civicrm.org/civicrm/channels/dev).
+
+1. After `amp` is configured, you can move on to running [civibuild](/tools/civibuild.md) to build a local development installation of CiviCRM.
 
 
 ## Troubleshooting {:#troubleshooting}
