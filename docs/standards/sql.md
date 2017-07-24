@@ -34,7 +34,7 @@ In some circumstances you may find that a complex query is easier to build by di
 ```php
 $name = CRM_Utils_Type::escape('John Smith', 'String');
 $column = CRM_Utils_Type::escape('civicrm_contact.display_name', 'MysqlColumnNameOrAlias');
-$result = CRM_Core_DAO::ExecuteQuery("SELECT FROM civicrm_contact WHERE $column like '%$name%'");
+$result = CRM_Core_DAO::executeQuery("SELECT FROM civicrm_contact WHERE $column like '%$name%'");
 ```
 
 ## `CRM_Utils_SQL_Select`
@@ -44,7 +44,7 @@ Further information on this method can be found in the [CRM_Utils_SQL_Select cla
 
 ```php
 $columnName = CRM_Utils_Type::escape('cm.membership_status', 'MysqlColumnNameOrAlias');
-$dao = CRM_Utils_Sql_Select::from('civicrm_contact c')
+$dao = CRM_Utils_SQL_Select::from('civicrm_contact c')
   ->join('cm', 'INNER JOIN civicrm_membership cm ON cm.contact_id = c.id')
   ->where('!column = @value', array(
     'column' => $columnName,
