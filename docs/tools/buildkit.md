@@ -11,7 +11,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ### Ubuntu
 
-If you have a new installation of Ubuntu 12.04 or 14.04, then you can download
+If you have a new installation of Ubuntu 12.04 or later, then you can download
 everything -- buildkit and the system requirements -- with one command. This
 command will install buildkit to `~/buildkit`:
 
@@ -19,12 +19,14 @@ command will install buildkit to `~/buildkit`:
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
 ```
 
-Note:
+!!! note
 
- * When executing the above command, you should *not* run as `root`. However, you *should*
-have `sudo` permissions.
- * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
- * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
+    * When executing the above command, you should *not* run as `root`. However, you *should*
+    have `sudo` permissions.
+    * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
+    * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
+ 
+After running the above command, then proceed to the [post-installation configuration](#config).
 
 ### Vagrant
 
@@ -59,28 +61,13 @@ true for MAMP, XAMPP, and other downloaded packages.
 Once the pre-requisites are met, download buildkit to `~/buildkit`:
 
 ```bash
-git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
-cd ~/buildkit
-./bin/civi-download-tools
-```
-
-### Troubleshooting
-
-* Nodejs version too old or npm update does not work
-
-Download the latest version from nodejs.org and follow to their instructions
-
-* Nodejs problems
-
-It might be handy to run
-
-```bash
-npm update
-npm install fs-extra
+$ git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
+$ cd ~/buildkit
+$ ./bin/civi-download-tools
 ```
 
 
-## Post-install configuration {:#configuring}
+## Post-install configuration {:#config}
 
 ### Configuring your path {:#path}
 
@@ -123,38 +110,81 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 
 ### Configuring `amp` {:#amp-config}
 
-!!! tip
-    Login as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart Apache or edit `/etc/hosts`.
+Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) uses when it needs to set up a new site. Before you can use `civibuild`, need to configure `amp` by telling it a bit about your system (e.g. what webserver you're using). 
 
-The first build requires only a few commands.  However, these are also the
-hardest commands -- you need to provide detailed information about the
-Apache/MySQL/PHP systems, and you may need to try them a few times.
-
-Configure `amp` with details of your Apache/MySQL environment.  Pay close
-attention to the instructions.  They may involve adding a line to your
-Apache configuration file.
+#### Interactive config
 
 ```
 $ amp config
 ```
 
-Test that `amp` has full and correct information about Apache/MySQL.
+!!! tip "tips"
+    * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart Apache or edit `/etc/hosts`.
+    * Pay close attention to any instructions given in the output of this command.  They may involve adding a line to your Apache configuration file.
+    * To check which version of apache you have, run `apachectl -v`
+
+#### Testing amp's configuration {:#amp-test} 
+
+Test that `amp` is correctly configured.
 
 ```
 $ amp test
 ```
 
-!!! note
-    You may need to alternately restart httpd, re-run `amp config`, and/or re-run `amp test` a few times.
+!!! failure "Troubleshooting errors from `amp test`"
+    
+    * Try manually adding settings to your sebserver, as described below.
+    * Re-run `amp config`.
 
-Create a new build using Drupal and the CiviCRM `master` branch.
-The command will print out URLs and credentials for accessing the website.
+#### Manually adding settings to your webserver {:#amp-webserver}
 
-```
-$ civibuild create dmaster --url http://dmaster.localhost --admin-pass s3cr3t
-```
+During one of the steps in the `amp config` process, `amp` will *attempt to* alter the system-wide settings for your local webserver (apache or nginx). On some platforms, `amp` is not able to perform the necessary configuration and you must do it manually by following these steps:
 
-Once you have a working build of `dmaster`, you can continue working with `civibuild` to create different builds as described below.
+1. Identify the location of your `amp` installation. It is probably a `.amp` folder within your home directory. Make sure to *use the full path* to this directory in the settings below. We will use `<amp-installation>` henceforth to refer to the full path of this directory. 
+
+1. Identify your webserver. (If using Apache, use `apachectl -v` to see which version you have.)
+
+    * For Apache 2.2: 
+    
+        Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+    
+        ```
+        Include <amp-installation>/apache.d/*conf
+        ```
+
+    * For Apache 2.4: 
+    
+        Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+    
+        ```
+        IncludeOptional <amp-installation>/apache.d/*conf
+        ```
+
+    * For nginx:
+    
+        Create a new file `/etc/nginx/conf.d/buildkit.conf` with the following contents:
+
+        ```
+        include <amp-installation>/nginx.d/*.conf;
+        ```
+
+1. Restart your webserver.
+
+
+## Troubleshooting {:#troubleshooting}
+
+Nodejs version too old or npm update does not work
+
+: Download the latest version from nodejs.org and follow to their instructions
+
+Nodejs problems
+
+: It might be handy to run
+
+    ```bash
+    npm update
+    npm install fs-extra
+    ```
 
 
 ## Upgrading buildkit {:#upgrading}
