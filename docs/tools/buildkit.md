@@ -119,8 +119,8 @@ $ amp config
 ```
 
 !!! tip "tips"
-    * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart Apache or edit `/etc/hosts`.
-    * Pay close attention to any instructions given in the output of this command.  They may involve adding a line to your Apache configuration file.
+    * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart your webserver and edit `/etc/hosts`.
+    * Pay close attention to any instructions given in the output of this command.  They may involve adding a line to your Apache or nginx configuration file.
     * To check which version of apache you have, run `apachectl -v`
 
 #### Testing amp's configuration {:#amp-test} 
