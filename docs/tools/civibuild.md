@@ -21,41 +21,6 @@ these.  Unfortunately, such tools generally require extra work for a Civi
 developer environment.  Civibuild works with these tools and and fills
 in missing parts.
 
-## Your First Build {:#start}
-
-!!! tip
-    Login as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart Apache or edit `/etc/hosts`.
-
-The first build requires only a few commands.  However, these are also the
-hardest commands -- you need to provide detailed information about the
-Apache/MySQL/PHP systems, and you may need to try them a few times.
-
-Configure `amp` with details of your Apache/MySQL environment.  Pay close
-attention to the instructions.  They may involve adding a line to your
-Apache configuration file.
-
-```
-$ amp config
-```
-
-Test that `amp` has full and correct information about Apache/MySQL.
-
-```
-$ amp test
-```
-
-!!! note
-    You may need to alternately restart httpd, re-run `amp config`, and/or re-run `amp test` a few times.
-
-Create a new build using Drupal and the CiviCRM `master` branch.
-The command will print out URLs and credentials for accessing the website.
-
-```
-$ civibuild create dmaster --url http://dmaster.localhost --admin-pass s3cr3t
-```
-
-Once you have a working build of `dmaster`, you can continue working with `civibuild` to create different builds as described below.
-
 ## Build Types
 
 `civibuild` includes a small library of build scripts for different
