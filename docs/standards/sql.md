@@ -39,8 +39,15 @@ $result = CRM_Core_DAO::executeQuery("SELECT FROM civicrm_contact WHERE $column 
 
 ## `CRM_Utils_SQL_Select`
 
-Since CiviCRM 4.7 version there has been an alternate way of generating sql. You can use `CRM_Utils_SQL_Select` to generate your query. You can then use all the various `CRM_Core_DAO` methods to then run the query e.g. `fetch()` or `fetchAll()`.
-Further information on this method can be found in the [CRM_Utils_SQL_Select class](https://github.com/civicrm/civicrm-core/blob/6db7061/CRM/Utils/SQL/Select.php#L33)
+Since CiviCRM 4.7 version there has been an alternate way of generating SQL -- use `CRM_Utils_SQL_Select`. Compared to plain `CRM_Core_DAO`, it has three advantages:
+
+ * The syntax uses pithy [sigils](https://en.wikipedia.org/wiki/Sigil_(computer_programming)) for escaping strings (`@value`), numbers (`#value`) and literal SQL (`!value`).
+ * The escaping for array-data is transparent (e.g. `field IN (#listOfNumbers)` or `field IN (@listOfStrings)`).
+ * It supports more sophisticated `JOIN`, `GROUP BY`, and `HAVING` clauses.
+ * You can build and combine queries in piecemeal fashion with `fragment()` and `merge()`.
+ * The general style of query-building is fluent.
+
+A typical example might look like this:
 
 ```php
 $columnName = CRM_Utils_Type::escape('cm.membership_status', 'MysqlColumnNameOrAlias');
@@ -56,7 +63,7 @@ $dao = CRM_Utils_SQL_Select::from('civicrm_contact c')
 while ($dao->fetch()) { ... }
 ```
 
-You can chain with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
+For convenience, you can chain with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
 
 ```php
 $records = CRM_Utils_SQL_Select::from('mytable')
@@ -64,3 +71,5 @@ $records = CRM_Utils_SQL_Select::from('mytable')
   ->execute()
   ->fetchAll();
 ```
+
+Further information on this method can be found in the [CRM_Utils_SQL_Select class](https://github.com/civicrm/civicrm-core/blob/6db7061/CRM/Utils/SQL/Select.php#L33)
