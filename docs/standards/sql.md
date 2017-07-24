@@ -12,8 +12,8 @@ $optedOut = 0;        /* un-trusted data */
 
 $query = "
   SELECT id
-  FROM civicrm_contact 
-  WHERE 
+  FROM civicrm_contact
+  WHERE
     display_name like %1 AND
     is_opt_out = %2";
 
@@ -44,13 +44,21 @@ Further information on this method can be found in the [CRM_Utils_SQL_Select cla
 
 ```php
 $columnName = CRM_Utils_Type::escape('cm.membership_status', 'MysqlColumnNameOrAlias');
-$sql = CRM_Utils_Sql_Select::from('civicrm_contact c')
+$dao = CRM_Utils_Sql_Select::from('civicrm_contact c')
   ->join('cm', 'INNER JOIN civicrm_membership cm ON cm.contact_id = c.id')
   ->where('!column = @value', array(
     'column' => $columnName,
     'value' => 15,
   ))
   ->where('membership_type_id IN (#types)', array('types', array(1,2,3,4)))
-  ->toSQL();
-$result = CRM_Core_DAO::executeQuery($sql);
+  ->execute();
+
+while ($dao->fetch()) { ... }
+```
+You can chain with other DAO functions like ```fetchAll()```, ```fetchValue()``` or ```fetchMap()```.
+```php
+$records = CRM_Utils_SQL_Select::from('mytable')
+  ->select('...')
+  ->execute()
+  ->fetchAll();
 ```
