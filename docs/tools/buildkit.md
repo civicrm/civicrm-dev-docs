@@ -133,7 +133,7 @@ $ amp test
 
 !!! failure "Troubleshooting errors from `amp test`"
     
-    * Try manually adding settings to your sebserver, as described below.
+    * Try manually adding settings to your webserver, as described below.
     * Re-run `amp config`.
 
 #### Manually adding settings to your webserver {:#amp-webserver}
