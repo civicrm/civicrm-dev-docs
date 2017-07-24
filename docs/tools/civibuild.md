@@ -274,21 +274,26 @@ vi app/civibuild.conf
 
 The template includes documentation and examples.
 
-## Development/Testing of `civibuild` {:#development}
 
-The tests for `civibuild` are stored in `tests/phpunit`.  These are
-integration tests which create and destroy real builds on the local system.
-To run them:
+## Examples
 
-* Configure `amp` (as above)
-* Ensure that a test site is configured (`civibuild create civibild-test --type empty`)
-* Run `phpunit4` or `env DEBUG=1 OFFLINE=1 phpunit4`
-    * Note that the tests accept some optional environment variables:
-        * `DEBUG=1` - Display command output as it runs
-        * `OFFLINE=1` - Try to avoid unnecessary network traffic
+### Applying a patch
 
+Using buildkit, you can create a CiviCRM environment with the PR applied.
 
-## Experimental: Multiple demo/training sites {:#demo-training}
+For example:
+
+```bash
+civibuild create dmaster \
+  --url http://localhost:8001 \
+  --patch https://github.com/civicrm/civicrm-core/pull/8494 \
+  --admin-pass s3cr3t
+```
+
+This will create a test environment with the Drupal, CiviCRM master branch
+and the patch in PR 8494. 
+
+### Experimental: Multiple demo/training sites {:#demo-training}
 
 When creating a batch of identical sites for training or demonstrations,
 one may want to create a single source-code-build with several
@@ -317,6 +322,18 @@ $ for num in $(seq -w 1 20) ; do
 done
 ```
 
+## Development/Testing of `civibuild` {:#development}
+
+The tests for `civibuild` are stored in `tests/phpunit`.  These are
+integration tests which create and destroy real builds on the local system.
+To run them:
+
+* Configure `amp` (as above)
+* Ensure that a test site is configured (`civibuild create civibild-test --type empty`)
+* Run `phpunit4` or `env DEBUG=1 OFFLINE=1 phpunit4`
+    * Note that the tests accept some optional environment variables:
+        * `DEBUG=1` - Display command output as it runs
+        * `OFFLINE=1` - Try to avoid unnecessary network traffic
 
 
 ## Credits

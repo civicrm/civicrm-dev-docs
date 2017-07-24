@@ -79,22 +79,6 @@ npm update
 npm install fs-extra
 ```
 
-## Applying a patch
-
-Using buildkit, you can create a CiviCRM environment with the PR applied.
-
-For example:
-
-```bash
-civibuild create dmaster \
-  --url http://localhost:8001 \
-  --patch https://github.com/civicrm/civicrm-core/pull/8494 \
-  --admin-pass s3cr3t
-```
-
-This will create a test environment with the Drupal, CiviCRM master branch
-and the patch in PR 8494. More detailed information is in the
-[Civibuild documentation](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md)
 
 ## Post-install configuration {:#configuring}
 
