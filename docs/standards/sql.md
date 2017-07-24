@@ -50,20 +50,43 @@ Since CiviCRM 4.7 version there has been an alternate way of generating SQL -- u
 A typical example might look like this:
 
 ```php
-$columnName = CRM_Utils_Type::escape('cm.membership_status', 'MysqlColumnNameOrAlias');
 $dao = CRM_Utils_SQL_Select::from('civicrm_contact c')
   ->join('cm', 'INNER JOIN civicrm_membership cm ON cm.contact_id = c.id')
+  ->where('c.contact_type = @ctype', array(
+    'ctype' => 'Individual',
+  ))
+  ->where('cm.membership_type_id IN (#types)', array(
+    'types' => array(1, 2, 3, 4),
+  ))
   ->where('!column = @value', array(
-    'column' => $columnName,
+    'column' => CRM_Utils_Type::escape('cm.status_id', 'MysqlColumnNameOrAlias'),
     'value' => 15,
   ))
-  ->where('membership_type_id IN (#types)', array('types', array(1,2,3,4)))
   ->execute();
 
 while ($dao->fetch()) { ... }
 ```
 
-For convenience, you can chain with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
+Equivalently, you may pass all parameters as a separate array:
+
+```php
+$dao = CRM_Utils_SQL_Select::from('civicrm_contact c')
+  ->join('cm', 'INNER JOIN civicrm_membership cm ON cm.contact_id = c.id')
+  ->where('c.contact_type = @ctype')
+  ->where('cm.membership_type_id IN (#types)')
+  ->where('!column = @value')
+  ->param(array(
+    'ctype' => 'Individual',
+    'types' => array(1, 2, 3, 4),
+    'column' => CRM_Utils_Type::escape('cm.status_id', 'MysqlColumnNameOrAlias'),
+    'value' => 15,
+  ))
+  ->execute();
+
+while ($dao->fetch()) { ... }
+```
+
+For convenience, you can chain the `execute()` with other DAO functions like `fetchAll()`, `fetchValue()` or `fetchMap()`.
 
 ```php
 $records = CRM_Utils_SQL_Select::from('mytable')
