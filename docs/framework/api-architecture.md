@@ -6,7 +6,7 @@ It's important to note that only compliant code & usage will be
 supported. Usage documentation is in the [API
 v3](/api/index.md) page.
 
-## API Architecture Standards
+## Standards {:#standards}
 
 -   The ONLY supported way to interact with any code in the API folder
     from outside the api folder is by using the `civicrm_api()` wrapper
@@ -17,7 +17,7 @@ v3](/api/index.md) page.
     standards they may be supported by the creators but not by the
     api team.
 
-## Individual API functions
+## Individual functions
 
 -   All functions MUST have a success test as a minimum (failure tests
     are only required for special features). API functions without tests
@@ -74,7 +74,7 @@ v3](/api/index.md) page.
     }
     ```
     
-## API code comment blocks
+## Code comment blocks {:#docblock}
 
 -   API comment blocks shall include a description of the action & the
     input and output params - per the example
