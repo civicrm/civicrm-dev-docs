@@ -5,12 +5,6 @@
 This hook is called when building CiviCRM's menu structure, which is
 used to render urls in CiviCRM.
 
-## Notes
-
-This hook should be used when you want
-to register your custom module url's in CiviCRM. You will need to visit
-`/civicrm/menu/rebuild?reset=1` to pick up your additions.
-
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
@@ -18,7 +12,9 @@ to register your custom module url's in CiviCRM. You will need to visit
     -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
     -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
 
+!!! tip "Applying changes"
 
+    Menu data is cached. After making a change to the menu data, [clear the system cache](/tools/debugging.md#clearing-the-cache).
 
 ## Definition
 
