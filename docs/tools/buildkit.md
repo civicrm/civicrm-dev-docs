@@ -122,6 +122,10 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
         * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart your webserver and edit `/etc/hosts`.
         * Pay close attention to any instructions given in the output of this command.
         * To check which version of apache you have, run `apachectl -v`
+    
+    !!! caution
+        We strongly recommend using Apache as your webserver because support for nginx is limited. 
+        
 
 1. Add settings to your webserver.
 
