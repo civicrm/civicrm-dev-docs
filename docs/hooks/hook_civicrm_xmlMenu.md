@@ -81,3 +81,45 @@ The administration screen (`civicrm/admin`) includes a generated list of fields.
  * `<icon>`
  * `<adminGroup>`
  * `<weight>`
+
+## XML: IDS
+
+[PHPIDS](https://github.com/PHPIDS/PHPIDS) provides an extra layer of
+security to mitigate the risk of cross-site scripting vulnerabilities, SQL
+injection vulnerabilities, and so on.  In CiviCRM, PHPIDS scans all inputs
+for suspicious data (such as complex Javascriptor SQL code) before allowing
+the page-controller to execute.
+
+However, in some rare occasions, it is expected that the page-controller
+will accept otherwise suspicious data -- for example, a REST endpoint may
+accept JSON which superfically resembles complex XSS Javascript code; or an
+administrative form may allow admins to customize the HTML of a screen.
+When processing these page-requests, PHPIDS may generate false alarms.
+
+In the following example, we provide hints to PHPIDS indicating that the
+page `civicrm/my-form` accepts some inputs (`field_1`, `field_2`, `field_3`,
+and `field_4`) which may ordinarily look suspicious.
+
+```xml
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<menu>
+  <item>
+    <path>civicrm/my-form</path>
+    ...
+    <ids_arguments>
+      <!-- Fields #1 and #2 accept JSON input. These are partially exempt from PHPIDS -- they use less aggressive heuristics. -->
+      <json>field_1</json>
+      <json>field_2</json>
+      <!-- Field #3 accepts HTML input. It is  partially exempt from PHPIDS -- they use less aggressive heuristics. -->
+      <html>field_3</html>
+      <!-- Field #4 accepts anything; it is not protected by PHPIDS heuristics. -->
+      <exception>field_4</exception>
+    </ids_arguments>
+  </item>
+</menu>
+```
+
+!!! tip "Tip: Narrow exceptions are better than blanket exceptions"
+    The `<ids_arguments>` element allows you to define a narrow exception for a specific field on a specific page.
+    [hook_civicrm_idsException](/hooks/hook_civicrm_idsException.md) supports a blanket exemption for the entire page.
+    When possible, it is better to use a narrow exception.
