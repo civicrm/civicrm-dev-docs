@@ -96,57 +96,37 @@ v3](/api/index.md) page.
      */
     ```
     
-## getfields specifications
+## `_spec` functions {:#spec}
 
-The results of the getfields function is a combination of `$dao->get`
-and the _spec functions. Spec functions alter the generic getfields
-output (if any).
+A "`_spec` function" must exist for every API entity/action pair.
 
--   The default wrapper will return unique functions for get functions &
-    table field names for create functions.
--   Spec functions can define new fields by adding them to the $params
-    array (e.g below in function below)
--   Required fields should be marked as 'api.required' (e.g below in
-    function below)
--   Defaults should be marked as `api.default` -e.g
-    -   `$params['is_active']['api.default'] = 1;`
+For example is is the [source](https://github.com/civicrm/civicrm-core/blob/1f4ea7262d865c72e8946481fdbfe18f5159da9e/api/v3/Tag.php#L62) of the `_spec` function for the `tag` entity, with the `create` action:
 
--   Fields which should default to the value of another parameter should
-    be marked using `api.aliases` - e.g
-    
-    -   `$params['id']['api.aliases'] = array('field_id'); // legacy support for field_id`
+```php
+function _civicrm_api3_tag_create_spec(&$params) {
+  $params['used_for']['api.default'] = 'civicrm_contact';
+  $params['name']['api.required'] = 1;
+  $params['id']['api.aliases'] = array('tag');
+}
+```
 
--   Where fields are marked with  `'FKClassName'` then the wrapper layer
-    will be able to return useful infomation if that constraint causes
-    the call to fail. (e.g below in function below)
-    
-    ```
-    /*
-     * Specify Meta data for create. Note that this data is retrievable
-     * via the getfields function and is used for pre-filling defaults
-     * and ensuring mandatory requirements are met.
-     *
-     * @param $params An array of parameters determined by getfields.
-     */
-    function _civicrm_api3_activity_create_spec(&$params) {
-     $params['subject']['api.required'] = 1;
-    
-    $params['assignee_contact_id'] = array(
-     'name' => 'assignee_id',
-     'title' => 'assigned to',
-     'type' => 1,
-     'FKClassName' => 'CRM_Activity_DAO_ActivityAssignment',
-     );
-    
-    $params['target_contact_id'] = array('name' => 'target_id',
-     'title' => 'Activity Target',
-     'type' => 1,
-     'FKClassName' => 'CRM_Activity_DAO_ActivityTarget',
-     );
-    
-    $params['activity_status_id'] = array('name' => 'status_id',
-     'title' => 'Status Id',
-     'type' => 1,
-     );
-    }
-    ```
+If the `_spec` function makes no alterations to `$params`, then each field will behave as defined in the [schema definition](framework/schema-definition/#table-field) for the entity. All of those field-level xml schema tags are also available for use in the API `_spec` function. So for example, you can use `$params['id']['type'] = CRM_Utils_Type::T_INT;` to specify that the `'id'` field must be an integer.
+  
+
+Additionally, the following settings may be applied to each field: 
+
+| Key | Description |
+| -- | -- |
+| `'api.aliases'` | An array of strings which represent alternate names by which this field may be referenced |
+| `'api.default'` | Specifies a default value for the field |
+| `'api.filter'` | ??? |
+| `'api.required'` | Set this to `1` to indicate that the field is required |
+| `'api.return'` | ??? |
+| `'api.unique'` | ??? |
+| `'description'` | A human-readable description of the field which will be displayed in the [API explorer](/api/index.md#api-explorer) |
+| `'options'` | Used to specify an array of values which are considered valid for the field |
+| `'supports_joins'` | ??? |
+| `'FKApiName` | ??? |
+| `'FKClassName'` | Allows the wrapper layer to return useful information if the constraint causes the call to fail. Should be a class name as a string. |
+| `'FKKeyColumn'` | ??? |
+
