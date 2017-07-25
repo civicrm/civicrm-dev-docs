@@ -34,6 +34,10 @@ Added in CiviCRM 4.7.11.
     -   "*access_callback*": (usually omitted)
     -   "*access_arguments*": Description of required permissions. Ex:
         *array(array('access CiviCRM'), 'and')*
+    -   "*ids_arguments*": This array defines any [page-specific PHPIDS exceptions](/hooks/hook_civicrm_xmlMenu.md#xml-ids). It includes any of these three child elements:
+        - "*json*": Array of input fields which may contain JSON data.
+        - "*html*": Array of input fields which may contain HTML data.
+        - "*exception*": Array of input fields which are completely exempted from PHPIDS.
 
 ## Returns
 
