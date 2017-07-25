@@ -60,6 +60,7 @@ pages:
     - "AngularJS: File Names": framework/angular/files.md
     - "AngularJS: Loader": framework/angular/loader.md
     - "AngularJS: Changesets":  framework/angular/changeset.md
+  - "API architecture": framework/api-architecture.md
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
   # Cache: /framework/cache.md
