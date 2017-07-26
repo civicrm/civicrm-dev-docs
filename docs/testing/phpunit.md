@@ -50,6 +50,10 @@ $ cd /path/to/civicrm
 $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/AllTests.php
 ```
 
+!!! note
+    You can also specify tests in an environment variable `PHPUNIT_TESTS` (eg. `env PHPUNIT_TESTS="MyFirstTest::testFoo MySecondTest" phpunit EnvTests`
+    Then run `phpunit4 ./tests/phpunit/EnvTests.php`.
+
 ## Writing Tests
 
 When writing tests you should extend from `\CiviUnitTestCase`.
