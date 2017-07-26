@@ -21,41 +21,6 @@ these.  Unfortunately, such tools generally require extra work for a Civi
 developer environment.  Civibuild works with these tools and and fills
 in missing parts.
 
-## Your First Build {:#start}
-
-!!! tip
-    Login as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart Apache or edit `/etc/hosts`.
-
-The first build requires only a few commands.  However, these are also the
-hardest commands -- you need to provide detailed information about the
-Apache/MySQL/PHP systems, and you may need to try them a few times.
-
-Configure `amp` with details of your Apache/MySQL environment.  Pay close
-attention to the instructions.  They may involve adding a line to your
-Apache configuration file.
-
-```
-$ amp config
-```
-
-Test that `amp` has full and correct information about Apache/MySQL.
-
-```
-$ amp test
-```
-
-!!! note
-    You may need to alternately restart httpd, re-run `amp config`, and/or re-run `amp test` a few times.
-
-Create a new build using Drupal and the CiviCRM `master` branch.
-The command will print out URLs and credentials for accessing the website.
-
-```
-$ civibuild create dmaster --url http://dmaster.localhost --admin-pass s3cr3t
-```
-
-Once you have a working build of `dmaster`, you can continue working with `civibuild` to create different builds as described below.
-
 ## Build Types
 
 `civibuild` includes a small library of build scripts for different
@@ -309,21 +274,26 @@ vi app/civibuild.conf
 
 The template includes documentation and examples.
 
-## Development/Testing of `civibuild` {:#development}
 
-The tests for `civibuild` are stored in `tests/phpunit`.  These are
-integration tests which create and destroy real builds on the local system.
-To run them:
+## Examples
 
-* Configure `amp` (as above)
-* Ensure that a test site is configured (`civibuild create civibild-test --type empty`)
-* Run `phpunit4` or `env DEBUG=1 OFFLINE=1 phpunit4`
-    * Note that the tests accept some optional environment variables:
-        * `DEBUG=1` - Display command output as it runs
-        * `OFFLINE=1` - Try to avoid unnecessary network traffic
+### Applying a patch
 
+Using buildkit, you can create a CiviCRM environment with the PR applied.
 
-## Experimental: Multiple demo/training sites {:#demo-training}
+For example:
+
+```bash
+civibuild create dmaster \
+  --url http://localhost:8001 \
+  --patch https://github.com/civicrm/civicrm-core/pull/8494 \
+  --admin-pass s3cr3t
+```
+
+This will create a test environment with the Drupal, CiviCRM master branch
+and the patch in PR 8494. 
+
+### Experimental: Multiple demo/training sites {:#demo-training}
 
 When creating a batch of identical sites for training or demonstrations,
 one may want to create a single source-code-build with several
@@ -352,6 +322,18 @@ $ for num in $(seq -w 1 20) ; do
 done
 ```
 
+## Development/Testing of `civibuild` {:#development}
+
+The tests for `civibuild` are stored in `tests/phpunit`.  These are
+integration tests which create and destroy real builds on the local system.
+To run them:
+
+* Configure `amp` (as above)
+* Ensure that a test site is configured (`civibuild create civibild-test --type empty`)
+* Run `phpunit4` or `env DEBUG=1 OFFLINE=1 phpunit4`
+    * Note that the tests accept some optional environment variables:
+        * `DEBUG=1` - Display command output as it runs
+        * `OFFLINE=1` - Try to avoid unnecessary network traffic
 
 
 ## Credits

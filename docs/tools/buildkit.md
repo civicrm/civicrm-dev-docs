@@ -11,7 +11,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ### Ubuntu
 
-If you have a new installation of Ubuntu 12.04 or 14.04, then you can download
+If you have a new installation of Ubuntu 12.04 or later, then you can download
 everything -- buildkit and the system requirements -- with one command. This
 command will install buildkit to `~/buildkit`:
 
@@ -19,12 +19,14 @@ command will install buildkit to `~/buildkit`:
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
 ```
 
-Note:
+!!! note
 
- * When executing the above command, you should *not* run as `root`. However, you *should*
-have `sudo` permissions.
- * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
- * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
+    * When executing the above command, you should *not* run as `root`. However, you *should*
+    have `sudo` permissions.
+    * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
+    * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
+ 
+After running the above command, then proceed to the [post-installation configuration](#config).
 
 ### Vagrant
 
@@ -59,44 +61,15 @@ true for MAMP, XAMPP, and other downloaded packages.
 Once the pre-requisites are met, download buildkit to `~/buildkit`:
 
 ```bash
-git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
-cd ~/buildkit
-./bin/civi-download-tools
+$ git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
+$ cd ~/buildkit
+$ ./bin/civi-download-tools
 ```
 
-### Troubleshooting
 
-* Nodejs version too old or npm update does not work
+## Post-install configuration {:#config}
 
-Download the latest version from nodejs.org and follow to their instructions
-
-* Nodejs problems
-
-It might be handy to run
-
-```bash
-npm update
-npm install fs-extra
-```
-
-## Applying a patch
-
-Using buildkit, you can create a CiviCRM environment with the PR applied.
-
-For example:
-
-```bash
-civibuild create dmaster \
-  --url http://localhost:8001 \
-  --patch https://github.com/civicrm/civicrm-core/pull/8494 \
-  --admin-pass s3cr3t
-```
-
-This will create a test environment with the Drupal, CiviCRM master branch
-and the patch in PR 8494. More detailed information is in the
-[Civibuild documentation](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md)
-
-## Configuring buildkit after installation {:#configuring}
+### Configuring your path {:#path}
 
 !!! note "Not needed for Vagrant/Docker installations"
     If you set up buildkit using Vagrant or Docker, then you don't need to perform the configuration steps listed here.
@@ -134,6 +107,85 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 
     Each time you open a new terminal while working on Civi development, you would need to re-run the `export` command.
 
+
+### Configuring `amp` {:#amp-config}
+
+Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) uses when it needs to set up a new site. Before you can use `civibuild`, need to configure `amp` by telling it a bit about your system (e.g. what webserver you're using). 
+
+1. Run the interactive configuration tool.
+
+    ```
+    $ amp config
+    ```
+    
+    !!! tip "tips"
+        * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart your webserver and edit `/etc/hosts`.
+        * Pay close attention to any instructions given in the output of this command.
+        * To check which version of apache you have, run `apachectl -v`
+    
+    !!! caution
+        We strongly recommend using Apache as your webserver because support for nginx is limited. 
+        
+
+1. Add settings to your webserver.
+
+    1. Identify the location of your `amp` installation. It is probably a `.amp` folder within your home directory. Make sure to *use the full path* to this directory in the settings below. We will use `<amp-installation>` henceforth to refer to the full path of this directory. 
+    
+    1. Identify your webserver. (If using Apache, use `apachectl -v` to see which version you have.)
+    
+        * For Apache 2.2: 
+        
+            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+        
+            ```
+            Include <amp-installation>/apache.d/*conf
+            ```
+    
+        * For Apache 2.4: 
+        
+            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+        
+            ```
+            IncludeOptional <amp-installation>/apache.d/*conf
+            ```
+    
+        * For nginx:
+        
+            Create a new file `/etc/nginx/conf.d/buildkit.conf` with the following contents:
+    
+            ```
+            include <amp-installation>/nginx.d/*.conf;
+            ```
+    
+    1. Restart your webserver.
+
+1. Test amp's configuration
+
+    ```
+    $ amp test
+    ```
+    
+    The test is successful if you see `Received expected response` at the end.
+    
+    If the test produces any errors, you might try re-running the above config steps and/or asking for help in the [developer chat room](https://chat.civicrm.org/civicrm/channels/dev).
+
+1. After `amp` is configured, you can move on to running [civibuild](/tools/civibuild.md) to build a local development installation of CiviCRM.
+
+
+## Troubleshooting {:#troubleshooting}
+
+Nodejs version too old or npm update does not work
+
+: Download the latest version from nodejs.org and follow to their instructions
+
+Nodejs problems
+
+: It might be handy to run
+
+    ```bash
+    npm update
+    npm install fs-extra
+    ```
 
 
 ## Upgrading buildkit {:#upgrading}
