@@ -130,27 +130,36 @@ Additionally, the following settings may be applied to each field:
 | `'FKClassName'` | Allows the wrapper layer to return useful information if the constraint causes the call to fail. Should be a class name as a string. |
 | `'FKKeyColumn'` | ??? |
 
-## How to migrate or write an api
+## Tips for writing an API
 
--   **Look at existing apis** in the civicrm/api/v3 directory
+-   **Use [civix generate:api](/extensions/civix.md#generate-api)** if writing a custom API within an extension.
+
+-   **Look at existing apis** in the `civicrm/api/v3` directory
     as examples.  Start with a simple API like the survey api as the
-    basis for your new api.\
-    \
--   **Use _spec functions** to declare any fields or features\
-    \
--   **Name the API, API functions, php file, and php functions. **\
+    basis for your new api.
+    
+-   **Use [`_spec` functions](#spec)** to declare any fields or features
+
+-   **Follow the naming patterns** for the entity, action, function signature, and any calls made to the API.
+
+    - For example:
+        -   PHP call: `civicrm_api('ExampleEntity', 'Create')`
+        -   Ajax call: `/civicrm/ajax/rest?json=1&sequential=1&debug=1&entity=ExampleEntity&action=create`
+        -   PHP file: `civicrm/api/v3/ExampleEntity.php` (or sometimes `civicrm/api/v3/ExampleEntity/Create.php`)
+        -   Function signature:
+            ```php
+            function civicrm_api3_example_entity_create($params) {
+            
+            }
+            ```
+
     -   **There is a simple relationship among the names of all of these
         elements** and if you name your php files and functions
-        correctly and place them in the civicrm/api/v3 directory, the
+        correctly and place them in the `civicrm/api/v3` directory, the
         API and function will automatically appear and work.  If you
         have created the files and functions but they do not appear in
         API explorer, it is most likely because of a mis-match in your
         naming conventions.
-    -   **Example:** The API civicrm_api(ExampleEntity,Action) is going
-        to look for the function civicrm_api3_example_entity_action
-        in civicrm/api/v3/ExampleEntity/Action.php  OR
-        civicrm/api/v3/ExampleEntity.php (the latter is the
-        most common).
     -   **Note the change of case and use of underline characters** in
         filenames vs function names.  In filenames, an upper case letter
         denotes the start of a word, whereas in function names, all
@@ -158,58 +167,9 @@ Additionally, the following settings may be applied to each field:
          To make matters more confusing, case of API names is important
         but case of the action name ('Action' in the example above)
         is (sometimes) ignored.
-    -   **More examples:**\
-        -   PHP call: civicrm_api('LineItem','create')
-        -   Ajax call:
-            /civicrm/ajax/rest?json=1&sequential=1&debug=1&&entity=LineItem&action=create
-        -   PHP file: civicrm/api/v3/LineItem.php
-        -   Function line (within
-            civicrm/api/v3/LineItem.php): function civicrm_api3_line_item_create($params)
-            { . . .\
-            \
-        -   PHP call: civicrm_api('Job','cleanup')
-        -   Ajax
-            call: /civicrm/ajax/rest?json=1&sequential=1&debug=1&&entity=Job&action=cleanup
-        -   PHP file: civicrm/api/v3/Job.php
-        -   Function line (within civicrm/api/v3/Job.php): function
-            civicrm_api3_job_cleanup( $params ) { . . . \
-
--   **Generally you will want to place any custom api/v3 files within
-    your [custom php
-    directory](http://wiki.civicrm.org/confluence/display/CRMDOC41/Directories), under {yourcustomcivicrmphpdirectory}/api/v3.** Files
-    placed there will behave just as though placed in civicrm/api/v3.
-    This prevents your customized files from being deleted or
-    overwritten when you upgrade CiviCRM.
-    -   However, as of 4.2.2 there is a problem with this:  The API
-        Explorer and (more importantly) the Scheduled Job page at
-        Administer/System Settings/Scheduled Jobs, do not recognize API
-        files created and stored in the custom php directory. So you can
-        create the APIs in your customPHP directory, you can execute and
-        run them without problems (for instance, go to
-        URL <http://mywebsite.com/civicrm/ajax/rest?json=1&sequential=1&debug=1&entity=Myapi&action=get> and
-        it works fine) but the API and functions don't show in the API
-        explorer or the Scheduled Jobs page.  This is a serious
-         disadvantage because a common use of API just is to run them as
-        scheduled jobs.
-    -   For now, the way around that problem is to create your API in
-        the custom php directory and then create a symbolic link
-        civicrm/api/v3 with the same name that points to the API file in
-        the custom php directory.  For example:
-        -   API file is here:
-            */home/mysite/www/sites/default/files/civicrm/customphp/api/v3/Myapi.php*
-        -   You need symbolic
-            link */home/mysite/www/sites/all/modules/civicrm/api/v3/Myapi.php*
-            pointing to the API file.
-        -   Create that symbolic link with a Unix command like this:\
-            -   ln
-                -s /home/mysite/www/sites/default/files/civicrm/customphp/api/v3/Myapi.php /home/mysite/www/sites/all/modules/civicrm/api/v3/Myapi.php\
 
 -   **Note that some actions (eg. getfields) are generic** and don't
-    need to be re-defined.\
+    need to be re-defined.
 
--   **Write a test. **\
-    \
--   **Write your comment blocks**\
-    \
--   **Make sure you comply** to [API Architecture
-    Standards](/confluence/display/CRMDOC/API+Architecture+Standards)
+-   **[Write a test](/testing/phpunit.md).**
+-   **Write your [comment blocks](#docblock)**.
