@@ -19,6 +19,8 @@ Create a civicrm.settings.test.php in the same directory as your
 `civicrm.settings.php` using this template:
 
 ```php
+<?php
+define('CIVICRM_UF', 'UnitTests');
 define('CIVICRM_DSN', 'mysql://<USER>:<PASSWORD>@127.0.0.1:3306/<TEST_DB_NAME>?new_link=true');
 require_once 'civicrm.settings.php';
 ```
@@ -30,7 +32,7 @@ export CIVICRM_SETTINGS="/path/to/civicrm.settings.test.php"
 ```
 
 If you want to run unit tests (and not WebTests or E2E tests) set the
-environment variable `CIVICRM_UF` to "UnitTests". This can also be set using the
+environment variable `CIVICRM_UF` to "UnitTests" (eg. in civicrm.settings.test.php above). This can also be set using the
 `env` command to change the environment just for a single command.
 
 !!! warning
