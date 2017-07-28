@@ -14,7 +14,7 @@ with core triggers.
     Once the function is created, visit the following URL to rebuild triggers
     and create to create the new trigger:
 
-    `http://example.com/civicrm/menu/rebuild&reset=1&triggerRebuild=1`
+    `http://example.com/civicrm/menu/rebuild?reset=1&triggerRebuild=1`
 
 
 ## Definition
