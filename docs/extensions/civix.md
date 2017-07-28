@@ -48,7 +48,7 @@ civix generate:module com.example.myextension --license=AGPL-3.0
 ```
 
 This command will report that it has created three files, following the
-[standard extension structure](/extensions/files.md).
+[standard extension structure](/extensions/structure.md).
 
 The command attempts to auto-detect authorship information (your name and
 email address) by reading your

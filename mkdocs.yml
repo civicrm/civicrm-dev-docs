@@ -31,6 +31,7 @@ pages:
 - Extensions Development:
   - Basics: extensions/index.md
   - civix: extensions/civix.md
+  - Extension Structure: extensions/structure.md
   # Creating Pages: extensions/create-page.md
   # Storing Configuration: extensions/config.md
   # Storing Data: extensions/storing-data.md
@@ -215,7 +216,6 @@ pages:
   - Markdown: documentation/markdown.md
   - Style Guide: documentation/style-guide.md
 - Content to reorganize:
-  - Extensions files: extensions/files.md
   - Requirements: requirements.md
   - Develop: develop.md
 
