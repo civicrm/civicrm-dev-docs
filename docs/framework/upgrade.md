@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Within CiviCRM Core code the upgrader classes handle making any necessary database changes either through PHP or SQL code, printing out any messages before or after the upgrade happens. Queuing up tasks for each version upgrade.
+Within CiviCRM Core code the upgrader classes handle making any necessary database changes either through PHP or SQL code, printing out any messages before or after the upgrade happens.
 
 ## Directory Structure
 
