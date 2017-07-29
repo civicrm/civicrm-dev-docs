@@ -5,7 +5,7 @@ This chapter provides a general overview of the codebase organisation.
 !!! tip
     In order to explore the directories inside the CiviCRM repository it is
     generally quickest to to make a local clone of the CiviCRM from GitHub,
-    or better yet install the [buildkit](/requirements.md#buildkit).
+    or better yet install the [buildkit](/basics/requirements.md#buildkit).
 
 !!! tip
     The CiviCRM codebase is object oriented. If you aren't familiar with object

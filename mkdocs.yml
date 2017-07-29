@@ -8,6 +8,7 @@ pages:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md
+  - Requirements: basics/requirements.md
   - Useful Skills: basics/skills.md
   - Planning Your Project: basics/planning.md
   - File System: basics/filesystem.md
@@ -22,6 +23,7 @@ pages:
   - Debugging: tools/debugging.md
 - Core Development:
   - When to Edit Core: core/hacking.md
+  - Developing CiviCRM: core/develop.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
   - Codebase & Architecture: core/architecture.md
@@ -215,9 +217,6 @@ pages:
   - Documenting Extensions: documentation/extensions.md
   - Markdown: documentation/markdown.md
   - Style Guide: documentation/style-guide.md
-- Content to reorganize:
-  - Requirements: requirements.md
-  - Develop: develop.md
 
 
 markdown_extensions:
