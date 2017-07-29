@@ -6,7 +6,7 @@ Bootstrapping CiviCRM means loading the entire CiviCRM configuration files, load
 
 ## When is this needed
 
-If your writing a CiviCRM extension or for CiviCRM Core, this is handled automatically and you do not need to worry about bootstrapping CiviCRM. The only exception is the extern folder. 
+If you are writing a CiviCRM extension or for CiviCRM Core, this is handled automatically and you do not need to worry about bootstrapping CiviCRM. The only exception is the `extern` folder.
 
 If you are writing code for example a Drupal or Backdrop module, Joomla Extension or a Wordpress plugin or any other form of php script, you will need to bootstrap CiviCRM before accessing any of CiviCRM's functionality including CiviCRM's API. If you are an independent php script you should also ensure that the CMS is bootstrapped before bootstrapping CiviCRM. See the documentation of your CMS for details.
 
