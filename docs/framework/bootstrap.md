@@ -22,7 +22,7 @@ If you are writing code for example a Drupal or Backdrop module, Joomla Extensio
   - Settings: Load all the settings from the Database civicrm_setting table
   - Extensions: (if $dsn) - Load all Extensions enabled
   - Container: (if $dsn) Load container configuration (e.g. hook_civicrm_container)
-1. hook_civicrm_config - Notify Extensions that the container has been booted (if $dsn)
+4. hook_civicrm_config - Notify Extensions that the container has been booted (if $dsn)
 
 ## How to Bootstrap CiviCRM
 
