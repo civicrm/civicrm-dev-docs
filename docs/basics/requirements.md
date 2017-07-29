@@ -40,7 +40,4 @@ Many of these tools are commonly used by web developers, so you may have
 already installed a few.  You could install all the tools individually --
 but that takes a lot of work.
 
-[civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit) provides
-a script which downloads the full collection.
-
-The developer docs have mode information on installing and upgrading [buildkit](https://docs.civicrm.org/dev/en/stable/tools/buildkit/).
+[civicrm-buildkit](/tools/buildkit.md) provides a script which downloads the full collection.
