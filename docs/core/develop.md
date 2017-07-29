@@ -17,6 +17,8 @@ shell scripts, Drush & Drush make, or composer). The repositories are:
     Joomla integration modules.
 -   [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/) -
     WordPress integration modules.
+-   [civicrm-backdrop](https://github.com/civicrm/civicrm-backdrop/) -
+    Backdrop integration module.
 -   [civicrm-packages](https://github.com/civicrm/civicrm-packages/) -
     External dependencies required by CiviCRM.
 -   [civicrm-l10n](https://github.com/civicrm/civicrm-l10n/) -

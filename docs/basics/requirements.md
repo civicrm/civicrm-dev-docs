@@ -43,46 +43,4 @@ but that takes a lot of work.
 [civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit) provides
 a script which downloads the full collection.
 
-### Installing buildkit on Ubuntu
-
-If you have a new installation of Ubuntu 12.04 or 14.04, then you can download
-everything -- buildkit and the system requirements (`git`, `php`, `apache`,
-`mysql`, etc) -- with one command.  This command will install buildkit to
-`~/buildkit`:
-
-```bash
-curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
-```
-
-Note:
-
--   When executing the above command, you must ***NOT*** run as `root`.
-    (Doing so will produce incorrect permissions.) Instead, you must have
-    `sudo` permissions.
--   The `--full` option is opinionated; it specifically installs `php`,
-    `apache`, and `mysql` (rather than `hvm`, `nginx`, `lighttpd`, or
-    `percona`). If you try to mix `--full` with alternative systems, then
-    expect conflicts.
-
-
-### Installing buildkit on other systems
-
-If you already installed the requirements (`git`, `php`, etc), then you can
-download buildkit to `~/buildkit` with these commands:
-
-```bash
-git clone https://github.com/civicrm/civicrm-buildkit.git buildkit
-cd buildkit/bin
-./civi-download-tools
-export PATH="$PWD:$PATH"
-```
-
-### Upgrading buildkit
-
-If you have previously downloaded buildkit and want to update it, run:
-
-```bash
-cd buildkit
-git pull
-./bin/civi-download-tools
-```
+The developer docs have mode information on installing and upgrading [buildkit](https://docs.civicrm.org/dev/en/stable/tools/buildkit/).
