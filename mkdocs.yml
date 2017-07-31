@@ -61,7 +61,7 @@ pages:
     - "AngularJS: Loader": framework/angular/loader.md
     - "AngularJS: Changesets":  framework/angular/changeset.md
   - Asset Builder: framework/asset-builder.md
-  # Bootstrap: /framework/bootstrap.md
+  - Bootstrap Process: framework/bootstrap.md
   # Cache: /framework/cache.md
   # Components: /framework/components.md
   # Database: /framework/database.md
