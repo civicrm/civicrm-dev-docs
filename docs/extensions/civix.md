@@ -683,22 +683,5 @@ how to write a test class:
 -   Review the example code in
     [org.civicrm.exampletests](https://github.com/totten/org.civicrm.exampletests)
 
-!!! caution
-    The following instructions are deprecated. Updated instructions coming soon.
-
-```bash
-# Check if civix can connect to the civi api
-civix civicrm:ping
-# Look at your current config
-civix config:get
-# Tell civix where to read the civicrm.settings.php
-# EG. For Drupal
-civix config:set civicrm_api3_conf_path /your/path/to/sites/default
-```
-
-To run this test-class, change to your extension folder and run the following:
-
-```bash
-civix test CRM_Myextension_MyTest
-```
-
+To run the tests see the instructions 
+[for running PHPUnit tests](/testing/phpunit.md#running-tests).
