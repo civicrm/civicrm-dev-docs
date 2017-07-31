@@ -5,6 +5,8 @@
 This hook is called when building CiviCRM's menu structure, which is
 used to render urls in CiviCRM.
 
+## Notes
+
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 

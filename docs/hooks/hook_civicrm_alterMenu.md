@@ -4,6 +4,8 @@
 
 This hook is called when building CiviCRM's list of HTTP routes and should be used when you want to register custom paths or URLS.
 
+## Notes
+
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
