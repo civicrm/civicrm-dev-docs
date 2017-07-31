@@ -684,4 +684,4 @@ how to write a test class:
     [org.civicrm.exampletests](https://github.com/totten/org.civicrm.exampletests)
 
 To run the tests see the instructions 
-[for running PHPUnit tests](/testing/phpunit/#running-tests).
+[for running PHPUnit tests](/testing/phpunit.md#running-tests).
