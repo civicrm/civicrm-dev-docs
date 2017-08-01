@@ -86,14 +86,15 @@ With this option you have a very small README file and a separate MkDocs guide w
 
 Add some [markdown](/documentation/markdown.md) content in `docs/index.md`.
 
-## Preview your guide
-
-Now you should be able to run `mkdocs serve` from within your project directory to start previewing your content. See [instructions here](/documentation/index.md#mkdocs) to get MkDocs set up.
-
 You can add more pages by creating more markdown files and specifying these files under `pages` in `mkdocs.yml`.
 
 !!! note
     We have [markdown coding standards](/documentation/markdown.md#standards) and a documentation [style guide](/documentation/style-guide.md). Adherence to these rules within your extensions docs is recommended but not required.
+
+
+## Preview your guide
+
+Now you should be able to run `mkdocs serve` from within your project directory to start previewing your content. See [instructions here](/documentation/index.md#mkdocs) to get MkDocs set up.
 
 
 ## Submit your guide to our publishing system {:#submit}
