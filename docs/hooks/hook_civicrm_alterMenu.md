@@ -39,7 +39,7 @@ Added in CiviCRM 4.7.11.
     -   "*ids_arguments*": This array defines any [page-specific PHPIDS exceptions](/hooks/hook_civicrm_xmlMenu.md#xml-ids). It includes any of these three child elements:
         - "*json*": Array of input fields which may contain JSON data.
         - "*html*": Array of input fields which may contain HTML data.
-        - "*exception*": Array of input fields which are completely exempted from PHPIDS.
+        - "*exceptions*": Array of input fields which are completely exempted from PHPIDS.
 
 ## Returns
 
