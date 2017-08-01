@@ -7,11 +7,11 @@ search, allowing you to inject additional actions or to remove existing actions.
 
 ## Definition
 
-    hook_civicrm_searchTasks( $objectName, &$tasks )
+    hook_civicrm_searchTasks( $objectType, &$tasks )
 
 ## Parameters
 
--   $objectName - the object for this search - activity, campaign,
+-   $objectType - the object for this search - activity, campaign,
     case, contact, contribution, event, grant, membership, and pledge
     are supported.
 -   $tasks - the current set of tasks for that custom field. You can
