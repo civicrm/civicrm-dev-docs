@@ -24,8 +24,11 @@ Create the 'CiviCRM' code styling preference:
 That's it. You can now use this code style on all future CiviCRM-related projects. If you are only developing for CiviCRM, you can also copy this style to the 'Default' style.
 
 ## XDebug integration
+You need to configure XDebug on the webserver, phpstorm on the development machine and a debugger helper in the browser.
 
-TODO
+To configure XDebug and PHPStorm see: https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
+
+For browser helpers see: https://confluence.jetbrains.com/display/PhpStorm/Browser+Debugging+Extensions
 
 ## Running automated tests from within PhpStorm {:#testing}
 
