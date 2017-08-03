@@ -43,7 +43,7 @@ function myextension_civicrm_coreResourceList(&$list, $region) {
   // Note that if the file we want to add is outside civicrm directory
   // (e.g. in an extension) we can't just append it to the list.
   // But we can add it directly, which is what happens to items in this list anyway.
-  Civi::resources()->addStyleFile('myextension', 'css/my_style.css', 0, $region);
+  Civi::resources()->addStyleFile('org.civicrm.myextension', 'css/my_style.css', 0, $region);
 
   // Add a setting - in this example we override the CKEditor config file location
   $myCKEConfFile = Civi::resources()->getUrl('org.foo.myextension', 'js/my-ckeditor-config.js')
