@@ -24,9 +24,9 @@ Note: due to legacy code written before these standards were adopted, CiviCRM st
 
 Javascript code should only really be found in three main locations
 
-1 Inline scripts should be included in smarty .tpl template files. This should only be done where its limited to a specific page or form. Inline js must be enclosed in smarty {literal} tags
-2. For any Javascript that acts as untility functions e.g. AJAX or any helper Javascript should go in the js/ folder of civicrm-core repo
-3. For all angular javascript code that should go in an ang/ folder
+ 1. Inline scripts should be included in smarty .tpl template files. This should only be done where its limited to a specific page or form. Inline js must be enclosed in smarty `{literal}` tags.
+ 2. For any Javascript that acts as utility function, the files should go in the `js/` folder of the `civicrm-core` repo.
+ 3. AngularJS code that should go in the `ang/` folder.
 
 ### Progressive Enhancement
 
