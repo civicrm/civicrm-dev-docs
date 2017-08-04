@@ -18,7 +18,12 @@ Declaring a global variable/function is a bad practice in Javascript unless abso
 CRM.myStuff = {foo: 'bar'}.
 ```
 
-Note: due to legacy code written before these standards were adopted, CiviCRM still has quite a few other global variables and functions. Aside from the 2 listed below, they all need to be removed from the global scope. You can help!
+Note: due to legacy code written before these standards were adopted, CiviCRM still has quite a few other global variables and functions, they all need to be removed from the global scope. You can help!
+
+CiviCRM Provides two Javascript globals:
+
+* `CRM` - Contains all globally needed variables and functions for CiviCRM. Also contains server-side variables and translations.
+* `ts` - Function for translating strings. Signature is identical to its php counterpart.
 
 ### Location
 
@@ -30,30 +35,23 @@ Javascript code should only really be found in three main locations
 
 ### Progressive Enhancement
 
-PE is a philosophy that the basic functionality of a webpage should not depend on javascript and the site should still be usable if the user has disabled js in their browser. CiviCRM has a 2-part policy regarding this:
+Progressive Enhancement (PE) is a philosophy that the basic functionality of a webpage should not depend on javascript and the site should still be usable if the user has disabled js in their browser. CiviCRM has a 2-part policy regarding this:
 
 * Front-facing pages like contribution pages and event signups should adhere to the standards of PE. All front-end pages should be fully functional with js disabled.
-* Back-end pages (which is most of CiviCRM) do not need to be able to run without javascript. When appropriate, a noscript message can be shown to the user e.g. "<noscript>CiviCRM requires javascript. Please enable javascript in your browser and refresh the page.</noscript>"
-
-## Globals
-
-CiviCRM Provides two Javascript globals:
-
-* CRM - Contains all globally needed variables and functions for CiviCRM. Also contains server-side variables and translations.
-* ts - Function for translating strings. Signature is identical to its php counterpart.
+* Back-end pages (which is most of CiviCRM) do not need to be able to run without javascript. When appropriate, a noscript message can be shown to the user e.g. `<noscript>CiviCRM requires javascript. Please enable javascript in your browser and refresh the page.</noscript>`
 
 ## jQuery
 
-CiviCRM includes the latest version of jQuery and a number of jQuery plugins. Because most CMSs also use jQuery, CiviCRM creates its own namespace using the jQuery.noConflict method.
+CiviCRM includes the latest version of jQuery and a number of jQuery plugins. Because most CMSs also use jQuery, CiviCRM creates its own namespace using the `jQuery.noConflict` method.
 
 As a result, under most circumstances there are two versions of jQuery on the page with the following names:
 
-* CRM.$ - the version of jQuery included with CiviCRM.
-* jQuery - the version of jQuery included with the CMS.
+* `CRM.$` - the version of jQuery included with CiviCRM.
+* `jQuery` - the version of jQuery included with the CMS.
 
-If your script is placed anywhere in the document body, you should access CiviCRM's jQuery using CRM.$.
+If your script is placed anywhere in the document body, you should access CiviCRM's jQuery using `CRM.$`.
 
-Exception: CiviCRM reserves a space in the document header where CRM.$ == jQuery (and the CMSs version has been temporarily renamed _jQuery). This allows us to load 3rd party plugins that depend on the name jQuery. You can do so as well by using CRM_Core_Resources. See below.
+Exception: CiviCRM reserves a space in the document header where `CRM.$ == jQuery` (and the CMSs version has been temporarily renamed `_jQuery`). This allows us to load 3rd party plugins that depend on the name jQuery. You can do so as well by using `CRM_Core_Resources`. See below.
 
 Note: Some CMSs do not add jQuery to the page, in which case the global jQuery would not exist (except within the header as noted above). Don't rely on it.
 
@@ -74,7 +72,7 @@ You can also use CRM_Core_Resources to add in inline scripts such as the followi
 CRM_Core_Resources::singleton()->addScript('alert("hello");');
 ```
 
-You can also specify other regions of the page to place the script in (the most common reason for this is because jQuery plugins must be added to the "html-header" region). See [Resource Reference](https://wiki.civicrm.org/confluence/display/CRMDOC43/Resource+Reference) for more details.
+You can also specify other regions of the page to place the script in (the most common reason for this is because jQuery plugins must be added to the "html-header" region). See [Resource Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference) for more details.
 
 ## Using CiviCRM Javascript in non CiviCRM pages
 
@@ -100,8 +98,8 @@ CRM.$(function($) {
   // your code here
 });
 ```
-Remember that CRM.$ is our alias of jQuery. So the first line is shorthand notation for CRM.$('document').ready(function($) {
-The function receives jQuery as it's param, so now we have access to jQuery as the familiar $ for use in our code.
+Remember that `CRM.$` is our alias of jQuery. So the first line is shorthand notation for `CRM.$('document').ready(function($) {`
+The function receives jQuery as it's param, so now we have access to jQuery as the familiar `$` for use in our code.
 
 If your code needs to work across multiple versions of CiviCRM, where jQuery was the older cj as well as the current CRM.$ you can use:
 
@@ -136,29 +134,25 @@ CRM.alert(CRM.vars.myNamespace.foo); // Alerts "bar"
 
 ## Localization
 
-As with PHP coding, any string that will be displayed to the user should be wrapped in ts() to translate the string. e.g. ts('hello')
+As with PHP coding, any string that will be displayed to the user should be wrapped in `ts()` to translate the string. e.g. `ts('hello')`
 
-When your script file is being added to the page by CRM_Core_Resources it will be automatically scanned for all strings enclosed in ts() and their translations will be added as client-side variables. The javascript ts() function will use these localized strings. It can also perform variable substitution. See example below.
+When your script file is being added to the page by `CRM_Core_Resources` it will be automatically scanned for all strings enclosed in `ts()` and their translations will be added as client-side variables. The javascript `ts()` function will use these localized strings. It can also perform variable substitution. See example below.
 
 !!!Note
 
-Because translated strings are added to the client-side by CRM_Core_Resources addScriptFile method, they will not be automatically added if you include your js on the page any other way. The ts() function will still work and perform variable substitution, but the localized string will not be available. There are 3 solutions to this problem depending on your context:
+Because translated strings are added to the client-side by `CRM_Core_Resources::addScriptFile` method, they will not be automatically added if you include your js on the page any other way. The `ts()` function will still work and perform variable substitution, but the localized string will not be available. There are 3 solutions to this problem depending on your context:
 
-1. If this is an inline script in a smarty template, use the {ts} function (see legacy issues below for an example). Note that {ts} cannot handle client-side variable substitution, only server-side template variables.
-2. If this is an inline script in a php file, use the php ts() function to do your translation and concatenate the result into your script. Or, if you need client-side variable substitution use the 3rd solution:
-3. If this is a javascript file being added to the page in a nonstandard way (or is one of the above two scenarios but you need client-side variable substitution), you could manually add any needed strings using the CRM_Core_Resources addString method
+1. If this is an inline script in a smarty template, use the `{ts}` function (see legacy issues below for an example). Note that `{ts}` cannot handle client-side variable substitution, only server-side template variables.
+2. If this is an inline script in a php file, use the php `ts()` function to do your translation and concatenate the result into your script. Or, if you need client-side variable substitution use the 3rd solution:
+3. If this is a javascript file being added to the page in a nonstandard way (or is one of the above two scenarios but you need client-side variable substitution), you could manually add any needed strings using the `CRM_Core_Resources::addString` method
 
 ## UI Elements
 
 CiviCRM ships with a number of UI widgets and plugins to create standardized "look and feel" More information can be found in [UI Elements Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/UI+Elements+Reference).
 
-## Quality Control
+## Test Tools
 
-CiviCRM has a number of mechanisms that it uses to ensure quality of javascript that is submitted to core.
-
-### JSHint
-
-CiviCRM uses JSHint as part of the style checking process whenever a Pull Request is submitted against the civicrm-core repo. It ensures that all Javascript submitted meets CiviCRM's current Javascript stndard.
+CiviCRM has uses a couple of main tools to test Javascript Code when a pull request is made against code. This happens along side the [code style checks](/standard/javascript#coding-standards) which are as mentioned above against JsHint
 
 ### Qunit
 
@@ -166,7 +160,7 @@ CiviCRM has a small set up of Qunit which is an automated testing system. It's g
 
 ### Karma
 
-For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request.
+For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request. More information on karma can be found in the [Javascript testing](/testing/javascript/) section of this guide
 
 ## Javascript in Markup
 
