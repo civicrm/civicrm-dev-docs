@@ -6,11 +6,12 @@ CiviCRM maintains a number of standard practices which help ensure that CiviCRM 
 
 ## Escape on Input v Escape on Output.
 
-Escaping on input means that developers ensure that every single input from their Interface(s) are properly escaped before passing them into the database. This has a major issue for an application like CiviCRM because there are too many various interfaces to try and do proper escape on Input. There is also a risk that when you escape on input you can dramatically change the value and strip out some data through the escaping process.  Where as escaping on output means you have to cover all your various interfaces, ensure that all of them properly and safely account for the possibility that there maybe unsafe data in your database and sanitise it for safe viewing. 
+Escaping on input means that developers ensure that every single input from their Interface(s) are properly escaped before passing them into the database. This has a major issue for an application like CiviCRM because there are too many various interfaces to try and do proper escape on Input. There is also a risk that when you escape on input you can dramatically change the value and strip out some data through the escaping process.  Where as escaping on output means you have to cover all your various interfaces, ensure that all of them properly and safely account for the possibility that there maybe unsafe data in your database and sanitise it for safe viewing / usage in for example HTML or Angular templating. 
 
 CiviCRM has long been confused and staggered in regards to whether to escape on output or escape on input. CiviCRM are slowly moving towards escaping on output for most purposes however there is still a need for escaping on input when dealing with writing queries against the database.. At present the simplest way to escape on output is to use inbuilt escape functions within our templating engine Smarty.
 
-e.g. ```
+e.g. 
+```
 <li class="crm-recently-viewed" ><a  href="{$item.url}" title="{$item.title|escape:'html'}">
 ```
 This will ensure that the variable title within the item key when generating a list of recently viewed items won't have any Cross Site Scripting as it will be escaped for use within HTML. For more infomration on the types of escaping you can do with Smarty see the [Smarty Documentation](https://www.smarty.net/docsv2/en/language.modifier.escape)
@@ -45,4 +46,4 @@ Developers should ensure that whenever they pass variables into SQL statements t
 
 ## References
 
- - Escape on Input v Escape on output [Stack exchange](https://security.stackexchange.com/questions/95325/input-sanitization-vs-output-sanitization) [Stack Overflow)[https://stackoverflow.com/questions/11253532/html-xss-escape-on-input-vs-output].
+ - Escape on Input v Escape on output [Stack exchange](https://security.stackexchange.com/questions/95325/input-sanitization-vs-output-sanitization) [Stack Overflow](https://stackoverflow.com/questions/11253532/html-xss-escape-on-input-vs-output).
