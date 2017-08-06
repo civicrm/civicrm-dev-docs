@@ -99,3 +99,42 @@ column values and therefore appear to be sorting incorrectly.
                 $values[$id]['contribution_type'] = $values[$id]['total'];
             }
         }
+
+### **Example to add new column header at desired place**
+
+    function civitest_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
+
+      if ($objectName == 'contribution') {
+
+        // if you want to place your new column say 'Balance Due' after 'Total Amount'
+        foreach ($columnHeaders as $index => $column) {
+
+          // search for the machine name of 'Total Amount' column
+          if (!empty($column['field_name']) && $column['field_name'] == 'total_amount') {
+
+            // if you want to insert after 'total_amount' header then
+            //  increase the weight by N (here 4)
+            $weight = $column['weight'] + 4;
+            $columnHeaders[] = array(
+              'name' => ts('Balance Due'),
+              'field_name' => 'balance_due',
+              'weight' => $weight,
+              );
+
+              // set the values for 'Balance Due' column
+              foreach ($values as $key => $value) {
+                $balanceDue = CRM_Core_BAO_FinancialTrxn::getPartialPaymentWithType(
+                  $value['contribution_id'],
+                  'contribution',
+                  FALSE,
+                  $value['total_amount']
+                );
+                $values[$key]['balance_due'] = sprintf("<b>%s</b>", CRM_Utils_Money::format($balanceDue));
+              }
+              break;
+            }
+
+          } // end of foreach
+        }
+
+      }
