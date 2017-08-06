@@ -302,24 +302,6 @@ Civibuild will check the following `civicrm.settings.d` folders.
     
 The `$PRJDIR/app/civicrm.settings.d/` also contains some [example configuration files](https://github.com/civicrm/civicrm-buildkit/tree/master/app/civicrm.settings.d). For more advanced logic, one can look at the global `$civibuild` variable or at any of the standard CiviCRM configuration directives. 
 
-There are a few CiviCRM settings which are commonly configured on a per-server
-or per-workstation basis. For example, civicrm.org's demo server has ~10
-sites running different builds (Drupal/WordPress/CiviHR),
-and visitors should not be allowed to download new extensions on any of those
-sites. However, on the training server, trainees should be allowed to download
-extensions. As discussed in
-[Override CiviCRM Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/Override+CiviCRM+Settings),
-this setting (and many others) can be configured in civicrm.settings.php.
-
-The `civicrm.settings.php` is created automatically as part of the build. One
-could edit the file directly, but that means editing `civicrm.settings.php`
-after every (re)build. The easiest way to customize the settings is to put
-extra `.php` files in `/etc/civicrm.settings.d` &mdash; these files will be loaded
-on every site that runs on this server (regardless of how many sites you
-create or how many times you rebuild them).
-
-
-
 
 ### settings.php; wp-config.php {:#settings-cms}
 
