@@ -274,17 +274,33 @@ $GLOBALS['civicrm_setting']['domain']['debug_enabled'] = 1;
 $GLOBALS['civicrm_setting']['domain']['backtrace'] = 1;
 ```
 
-Any settings which you would typically put in your site's `civicrm.settings.php` file can go into a php file (you choose the file name) in a `civicrm.settings.d` folder. Further, there are multiple `civicrm.settings.d` folders. Settings files from these directories will be loaded in the following order:
+Any settings which you would typically put in your site's `civicrm.settings.php` file can go into a php file (you choose the file name) in a `civicrm.settings.d` folder. 
 
-1. `$PRJDIR/app/civicrm.settings.d/`
-1. `$PRJDIR/app/config/$TYPE/civicrm.settings.d/`
-1. `/etc/civicrm.settings.d/`
-1. `$SITE_DIR/civicrm.settings.d/`
+Civibuild will check the following `civicrm.settings.d` folders.
 
-If a settings file has the *same name* as one which has already been loaded, it will be skipped.
+| Folder | Purpose |
+| -- | -- |
+| `$PRJDIR/app/civicrm.settings.d/` | General defaults provided by upstream buildkit for all civibuild sites |
+| `$PRJDIR/app/config/$TYPE/civicrm.settings.d/` | General defaults provided by upstream buildkit for specific types of sites |
+| `/etc/civicrm.settings.d/` | Overrides provided by the sysadmin for the local server |
+| `$SITE_DIR/civicrm.settings.d/` | Overrides provided for a specific site/build |
 
+!!! note "Load order"
+
+    For concrete example, suppose we have these files:
+    
+     * `$PRJDIR/app/civicrm.settings.d/200-two.php`
+     * `$PRJDIR/app/civicrm.settings.d/300-three.php`
+     * `/etc/civicrm.settings.d/100-one.php`
+     * `/etc/civicrm.settings.d/300-three.php`
+    
+    Then we would execute/load in this order:
+    
+     * `100-one.php` (specifically `/etc/civicrm.settings.d/100-one.php`; this is the only version of `100-one.php`)
+     * `200-two.php` (specifically `$PRJDIR/app/civicrm.settings.d/200-two.php`; this is the only version of `200-two.php`)
+     * `300-three.php` (specifically `/etc/civicrm.settings.d/300-three.php`; the system configuration in `/etc` overrides the stock code in `$PRJDIR/app/civicrm.settings.d`)
+    
 The `$PRJDIR/app/civicrm.settings.d/` also contains some [example configuration files](https://github.com/civicrm/civicrm-buildkit/tree/master/app/civicrm.settings.d). For more advanced logic, one can look at the global `$civibuild` variable or at any of the standard CiviCRM configuration directives. 
-
 
 There are a few CiviCRM settings which are commonly configured on a per-server
 or per-workstation basis. For example, civicrm.org's demo server has ~10
