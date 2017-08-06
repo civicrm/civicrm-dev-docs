@@ -227,27 +227,46 @@ There are four variations on rebuilding. In order of fastest (least thorough) to
 
 ## Settings {:#settings}
 
-### civicrm.settings.php {:#settings-civicrm}
+### civicrm.settings.d folders {:#settings-civicrm}
 
-There are a few CiviCRM settings which are commonly configured on a per-server
-or per-workstation basis. For example, civicrm.org's demo server has ~10
-sites running different builds (Drupal/WordPress/CiviHR),
-and visitors should not be allowed to download new extensions on any of those
-sites. However, on the training server, trainees should be allowed to download
-extensions. As discussed in
-[Override CiviCRM Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/Override+CiviCRM+Settings),
-this setting (and many others) can be configured in civicrm.settings.php.
+Civibuild provides a mechanism to quickly add settings to *all sites* which you've built with civibuild.
 
-The `civicrm.settings.php` is created automatically as part of the build. One
-could edit the file directly, but that means editing `civicrm.settings.php`
-after every (re)build. The easiest way to customize the settings is to put
-extra `.php` files in `/etc/civicrm.settings.d` &mdash; these files will be loaded
-on every site that runs on this server (regardless of how many sites you
-create or how many times you rebuild them).
+For example, you can create a file `/etc/civicrm.settings.d/300-debug.php` with the following content to enable debugging and backtraces for all civibuild sites (useful for local development).
 
-For more details on how `civicrm.settings.d` works, see
-[`/app/civicrm.settings.d/README.txt`](https://github.com/civicrm/civicrm-buildkit/blob/master/app/civicrm.settings.d/README.txt)
-within your buildkit installation.
+```php
+<?php
+$GLOBALS['civicrm_setting']['domain']['debug_enabled'] = 1;
+$GLOBALS['civicrm_setting']['domain']['backtrace'] = 1;
+```
+
+Any settings which you would typically put in your site's `civicrm.settings.php` file can go into a php file (you choose the file name) in a `civicrm.settings.d` folder. 
+
+Civibuild will check the following `civicrm.settings.d` folders.
+
+| Folder | Purpose |
+| -- | -- |
+| `$PRJDIR/app/civicrm.settings.d/` | General defaults provided by upstream buildkit for all civibuild sites |
+| `$PRJDIR/app/config/$TYPE/civicrm.settings.d/` | General defaults provided by upstream buildkit for specific types of sites |
+| `/etc/civicrm.settings.d/` | Overrides provided by the sysadmin for the local server |
+| `$SITE_DIR/civicrm.settings.d/` | Overrides provided for a specific site/build |
+
+!!! note "Load order"
+
+    For concrete example, suppose we have these files:
+    
+     * `$PRJDIR/app/civicrm.settings.d/200-two.php`
+     * `$PRJDIR/app/civicrm.settings.d/300-three.php`
+     * `/etc/civicrm.settings.d/100-one.php`
+     * `/etc/civicrm.settings.d/300-three.php`
+    
+    Then we would execute/load in this order:
+    
+     * `100-one.php` (specifically `/etc/civicrm.settings.d/100-one.php`; this is the only version of `100-one.php`)
+     * `200-two.php` (specifically `$PRJDIR/app/civicrm.settings.d/200-two.php`; this is the only version of `200-two.php`)
+     * `300-three.php` (specifically `/etc/civicrm.settings.d/300-three.php`; the system configuration in `/etc` overrides the stock code in `$PRJDIR/app/civicrm.settings.d`)
+    
+The `$PRJDIR/app/civicrm.settings.d/` also contains some [example configuration files](https://github.com/civicrm/civicrm-buildkit/tree/master/app/civicrm.settings.d). For more advanced logic, one can look at the global `$civibuild` variable or at any of the standard CiviCRM configuration directives. 
+
 
 ### settings.php; wp-config.php {:#settings-cms}
 
@@ -342,4 +361,3 @@ Some content on this page was migrated from other sources, including:
 
 
 * "Upgrading a site" from [Tim Otten's StackExchange answer](https://civicrm.stackexchange.com/questions/17717/how-do-i-upgrade-civicrm-on-a-local-site-that-i-installed-with-buildkit-civibuil/17721#17721)
-
