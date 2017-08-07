@@ -636,6 +636,9 @@ For use with CiviCRM 4.3 and later, you can also add the `–schedule` option (e
 
 -   `api/v3/NewEntity/NewAction.mgd.php` provides the scheduling
     record that will appear in the CiviCRM's job-manager.
+    
+!!! tip
+    Read more about the [API architecture](/framework/api-architecture.md) for help writing your custom API.
 
 ### Add a unit-test class {:#generate-test}
 
