@@ -8,8 +8,11 @@ v3](/api/index.md) page.
 
 ## Standards {:#standards}
 
--   The ONLY supported way to interact with any code in the API folder
-    from outside the api folder is by using the `civicrm_api()` wrapper (or preferably the `civicrm_api3()` wrapper).
+-   Interacting with code in the `api` folder *from outside the `api` folder* is only supported through the following means:
+    * PHP: by using the `civicrm_api()` wrapper (or preferably the `civicrm_api3()` wrapper)
+    * JavaScript: by using `CRM.api()` (or preferably `CRM.api3()`);
+    * Smarty: by using the [Smarty interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface)
+    * REST: by using the [REST interface](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface)
 -   Functionality delivered by the API is only supported if it is
     1.  Advertised via the 'getfields function' OR (preferably AND)
     2.  Verified by a test
