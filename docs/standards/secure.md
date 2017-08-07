@@ -6,27 +6,27 @@ CiviCRM maintains a number of standard practices which help ensure that CiviCRM 
 
 ## Escape on Input v Escape on Output.
 
-Escaping on input means that developers ensure that every single input from their Interface(s) are properly escaped before passing them into the database. This has a major issue for an application like CiviCRM because there are too many various interfaces to try and do proper escape on Input. There is also a risk that when you escape on input you can dramatically change the value and strip out some data through the escaping process.  Where as escaping on output means you have to cover all your various interfaces, ensure that all of them properly and safely account for the possibility that there maybe unsafe data in your database and sanitise it for safe viewing / usage in for example HTML or Angular templating. 
+Escaping on input means that developers ensure that every single input from their Interface(s) are properly escaped before passing them into the database. This has a major issue for an application like CiviCRM because there are too many various interfaces to try and do proper escape on Input. There is also a risk that when you escape on input you can dramatically change the value and strip out some data through the escaping process.  Where as escaping on output means you have to cover all your various interfaces, ensure that all of them properly and safely account for the possibility that there maybe unsafe data in your database and sanitise it for safe viewing / usage in for example HTML or AngularJS templating. 
 
-CiviCRM has long been confused and staggered in regards to whether to escape on output or escape on input. CiviCRM are slowly moving towards escaping on output for most purposes however there is still a need for escaping on input when dealing with writing queries against the database.. At present the simplest way to escape on output is to use inbuilt escape functions within our templating engine Smarty.
+CiviCRM has long been confused and staggered in regards to whether to escape on output or escape on input. CiviCRM are slowly moving towards escaping on output for most purposes however there is still a need for escaping on input when dealing with writing queries against the database. At present the simplest way to escape on output is to use inbuilt escape functions within our templating engine Smarty. For example:
 
-e.g. 
 ```
-<li class="crm-recently-viewed" ><a  href="{$item.url}" title="{$item.title|escape:'html'}">
+<a  href="{$item.url}" title="{$item.title|escape:'html'}">
 ```
-This will ensure that the variable title within the item key when generating a list of recently viewed items won't have any Cross Site Scripting as it will be escaped for use within HTML. For more infomration on the types of escaping you can do with Smarty see the [Smarty Documentation](https://www.smarty.net/docsv2/en/language.modifier.escape)
 
-However sometimes to escape on output you need to ensure that because of the complex nature of the variable that the variable is properly escaped when passed to smarty e.g. When building a json encoded blob of data for use in an contribution form it was necessary to escape before passing onto the Smarty Template.
+This will ensure that the variable title within the item key when generating a list of recently viewed items won't have any Cross Site Scripting as it will be escaped for use within HTML. For more information on the types of escaping you can do with Smarty see the [Smarty Documentation](https://www.smarty.net/docsv2/en/language.modifier.escape)
+
+However sometimes to escape on output you need to ensure that because of the complex nature of the variable that the variable is properly escaped when passed to Smarty. For example, when building a json encoded blob of data for use in an contribution form it was necessary to escape before passing onto the Smarty Template.
 
 ```php
 $form->assign('submittedOnBehalfInfo', json_encode(str_replace('"', '\"', $form->_submitValues['onbehalf']), JSON_HEX_APOS));
 ```
 
-For Angular templates, Developers should consult the Angular [$sanitize documentation](https://docs.angularjs.org/api/ngSanitize/service/$sanitize)
+For AngularJS templates, developers should consult the AngularJS [$sanitize documentation](https://docs.angularjs.org/api/ngSanitize/service/$sanitize).
 
 ## Handling Request variables
 
-Through the CiviCRM code base you will find that there are a number of times where CiviCRM takes variables passed to it through the URL e.g. ?cid=xxx or ?id=xx. CiviCRM has put in place some inbuilt functions that help to ensure that no dangerous values are able to be passed through
+Through the CiviCRM code base you will find that there are a number of times where CiviCRM takes variables passed to it through the URL e.g. `?cid=1234` or `?id=1234`. CiviCRM has put in place some inbuilt functions that help to ensure that no dangerous values are able to be passed through.
 
 ```php
 $cid = CRM_Utils_Request::retrieve('cid', 'Positive', $this);
@@ -38,7 +38,7 @@ if (!preg_match(':^[a-zA-Z0-9\-_/]+$:', $angPage)) {
 $backUrl = CRM_Utils_System::url('civicrm/a/#/' . $angPage);
 ```
 
-What you will notice above is that one of the key things there is the usuage of `CRM_Utils_Request::retrieve` This function takes in whatever request variables have been passed to the page or form etc, gets the key requested out of it, then ensures that it meets a specific type of value. The Types permissiable can be found in [CRM_Utils_Type::validate](https://github.com/civicrm/civicrm-core/blob/60050425316acb3726305d1c34908074cde124c7/CRM/Utils/Type.php#L378). 
+What you will notice above is that one of the key things there is the usage of `CRM_Utils_Request::retrieve` This function takes in whatever request variables have been passed to the page or form etc, gets the key requested out of it, then ensures that it meets a specific type of value. The acceptable types can be found in [CRM_Utils_Type::validate](https://github.com/civicrm/civicrm-core/blob/60050425316acb3726305d1c34908074cde124c7/CRM/Utils/Type.php#L378). 
 
 ## Passing variables into SQL
 
