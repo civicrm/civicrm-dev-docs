@@ -1,8 +1,7 @@
 # API architecture
 
-
 The term 'API' refers to that code accessible by the api wrapper. To be accessed by the wrapper 
-the code must be in a directory that equates to $path/api and the core api functions are
+the code must be in a directory that equates to `$path/api` and the core api functions are
 the top level api folder.
 
 Usage documentation is in the [APIv3](/api/index.md) page.
