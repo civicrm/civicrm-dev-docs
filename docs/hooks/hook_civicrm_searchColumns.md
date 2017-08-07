@@ -8,12 +8,14 @@ search.
 
 ## Notes
 
-The *biggest* drawback with this hook is that you may need to
-modify the result template to include your fields. The result files are
-`CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl`. However, if
-you use the same number of columns, you can overwrite the existing
-columns with the values that you want displayed. This is a HACK, but
-avoids template modification.
+Depending on your version of CiviCRM & the search you are overriding you may need
+to hack the template file to be able to show the columns. As of writing the latest
+4.7 did not require it due to [this patch](https://github.com/aydun/civicrm-core/commit/4fb5fcf3b17af6c9f5bf49ecc69902c5b0b78c24). If you are wishing to update
+another search results you should contribute a similar patch to core for those
+results before proceeding.
+
+The result files are
+`CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl`. 
 
 Sorting: as shown in the examples, if you are replacing columns with
 different values then you should unset the 'sort' parameter.  Leaving it
