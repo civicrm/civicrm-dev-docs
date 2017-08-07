@@ -12,7 +12,7 @@ Example to tell JSHint Tell jsHint about any globals in use:
 /*global CRM, ts */
 ```
 
-### globals
+### Globals
 
 Declaring a global variable/function is a bad practice in Javascript unless absolutely necessary. Your code should never create globals. In the rare cases that you need to declare variables or functions outside the local scope of your closure, create a namespace within the CRM object
 
