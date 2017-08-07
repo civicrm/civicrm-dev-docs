@@ -231,7 +231,6 @@ pages:
   - SQL Standards: standards/sql.md
   - Javascript Reference: standards/javascript.md
   - Secure Coding: standards/secure.md
-  # Javascript: standards/js.md
   # API: standards/api.md
   # Git: standards/git.md
 - Documentation:
