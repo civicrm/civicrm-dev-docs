@@ -1,10 +1,10 @@
 # API architecture
 
+The term 'API' refers to that code accessible by the api wrapper. To be accessed by the wrapper 
+the code must be in a directory that equates to `$path/api` and the core api functions are
+the top level api folder.
 
-The term 'API' refers to that code stored in the top level api folder.
-It's important to note that only compliant code & usage will be
-supported. Usage documentation is in the [API
-v3](/api/index.md) page.
+Usage documentation is in the [APIv3](/api/index.md) page.
 
 ## Standards {:#standards}
 
@@ -13,12 +13,6 @@ v3](/api/index.md) page.
     * JavaScript: by using `CRM.api()` (or preferably `CRM.api3()`);
     * Smarty: by using the [Smarty interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface)
     * REST: by using the [REST interface](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface)
--   Functionality delivered by the API is only supported if it is
-    1.  Advertised via the 'getfields function' OR (preferably AND)
-    2.  Verified by a test
--   Where functions sit on the api but don't conform to the api
-    standards they may be supported by the creators but not by the
-    api team.
 
 ## Individual functions
 
