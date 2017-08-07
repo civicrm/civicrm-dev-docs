@@ -22,10 +22,6 @@ v3](/api/index.md) page.
 
 ## Individual functions
 
--   All functions MUST have a success test as a minimum (failure tests
-    are only required for special features). API functions without tests
-    are not supported & are, in fact, not considered to be part of
-    the API.
 -   There are a number of (fairly new) helper functions you should use
     in the test - please check [Writing a PHPUnit testcase
     HOWTO](/testing/setup.md)
