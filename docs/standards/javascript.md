@@ -4,21 +4,24 @@
 
 ### Coding standards
 
-Javascript code should follow the same standards as CiviCRM's [PHP coding standards](https://docs.civicrm.org/dev/en/master/standards/php/). You can use inline tools like [JSHint](http://jshint.com/) to help with the linting of javascript files. If you have buildkit installed JSHint is included as part of [CiviLint](https://docs.civicrm.org/dev/en/master/tools/civilint/). Adding hints to your code will enable jshint to check the standards: e.g.
+Javascript code should follow the same standards as CiviCRM's [PHP coding standards](/standards/php.md). You can use inline tools like [JSHint](http://jshint.com/) to help with the linting of javascript files. If you have buildkit installed JSHint is included as part of [CiviLint](/tools/civilint.md). Adding hints to your code will enable jshint to check the standards: e.g.
 
 Example to tell JSHint Tell jsHint about any globals in use:
+
 ```javascript
 /*global CRM, ts */
 ```
+
 ### globals
 
 Declaring a global variable/function is a bad practice in Javascript unless absolutely necessary. Your code should never create globals. In the rare cases that you need to declare variables or functions outside the local scope of your closure, create a namespace within the CRM object
 
 ```javascript
-CRM.myStuff = {foo: 'bar'}.
+CRM.myStuff = {foo: 'bar'};
 ```
 
-Note: due to legacy code written before these standards were adopted, CiviCRM still has quite a few other global variables and functions, they all need to be removed from the global scope. You can help!
+!!! note 
+    Due to legacy code written before these standards were adopted, CiviCRM still has quite a few other global variables and functions, they all need to be removed from the global scope. You can help!
 
 CiviCRM Provides two Javascript globals:
 
@@ -29,9 +32,9 @@ CiviCRM Provides two Javascript globals:
 
 Javascript code should only really be found in three main locations
 
- 1. Inline scripts should be included in smarty .tpl template files. This should only be done where its limited to a specific page or form. Inline js must be enclosed in smarty `{literal}` tags.
- 2. For any Javascript that acts as utility function, the files should go in the `js/` folder of the `civicrm-core` repo.
- 3. AngularJS code that should go in the `ang/` folder.
+1. Inline scripts should be included in smarty .tpl template files. This should only be done where its limited to a specific page or form. Inline js must be enclosed in smarty `{literal}` tags.
+2. For any Javascript that acts as utility function, the files should go in the `js/` folder of the `civicrm-core` repo.
+3. AngularJS code that should go in the `ang/` folder.
 
 ### Progressive Enhancement
 
@@ -108,13 +111,15 @@ If your code needs to work across multiple versions of CiviCRM, where jQuery was
   // your code here
 })(CRM.$ || cj)
 ```
+
 For more examples you can take a look at a [gist](https://gist.github.com/totten/9591b10d4bc09c78108d) from Tim Otten on javascript alternatives For more information on javascript closures, [here is some further reading](http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth).
 
 ## Accessing CiviCRM API from JS
 
 If the current user has sufficient permissions (usually "Access CiviCRM") then your script can call the api and accomplish almost anything in CiviCRM. The syntax is:
+
 ```javascript
-CRM.api('entity', 'action', {params}, {success: function}).
+CRM.api('entity', 'action', {params}, {success: function});
 ```
 For more details, see [AJAX API](http://wiki.civicrm.org/confluence/display/CRMDOC43/AJAX+Interface) docs.
 
@@ -134,17 +139,17 @@ CRM.alert(CRM.vars.myNamespace.foo); // Alerts "bar"
 
 ## Localization
 
-As with PHP coding, any string that will be displayed to the user should be wrapped in `ts()` to translate the string. e.g. `ts('hello')`
+As with PHP coding, any string that will be displayed to the user should be wrapped in `ts()` to translate the string. e.g. `ts('hello')`.
 
 When your script file is being added to the page by `CRM_Core_Resources` it will be automatically scanned for all strings enclosed in `ts()` and their translations will be added as client-side variables. The javascript `ts()` function will use these localized strings. It can also perform variable substitution. See example below.
 
-!!!Note
+!!! note
 
-Because translated strings are added to the client-side by `CRM_Core_Resources::addScriptFile` method, they will not be automatically added if you include your js on the page any other way. The `ts()` function will still work and perform variable substitution, but the localized string will not be available. There are 3 solutions to this problem depending on your context:
-
-1. If this is an inline script in a smarty template, use the `{ts}` function (see legacy issues below for an example). Note that `{ts}` cannot handle client-side variable substitution, only server-side template variables.
-2. If this is an inline script in a php file, use the php `ts()` function to do your translation and concatenate the result into your script. Or, if you need client-side variable substitution use the 3rd solution:
-3. If this is a javascript file being added to the page in a nonstandard way (or is one of the above two scenarios but you need client-side variable substitution), you could manually add any needed strings using the `CRM_Core_Resources::addString` method
+    Because translated strings are added to the client-side by `CRM_Core_Resources::addScriptFile` method, they will not be automatically added if you include your js on the page any other way. The `ts()` function will still work and perform variable substitution, but the localized string will not be available. There are 3 solutions to this problem depending on your context:
+    
+    1. If this is an inline script in a smarty template, use the `{ts}` function (see legacy issues below for an example). Note that `{ts}` cannot handle client-side variable substitution, only server-side template variables.
+    2. If this is an inline script in a php file, use the php `ts()` function to do your translation and concatenate the result into your script. Or, if you need client-side variable substitution use the 3rd solution:
+    3. If this is a javascript file being added to the page in a nonstandard way (or is one of the above two scenarios but you need client-side variable substitution), you could manually add any needed strings using the `CRM_Core_Resources::addString` method
 
 ## UI Elements
 
@@ -167,7 +172,6 @@ For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated so
 Putting javascript code directly into html tags is deprecated. We are migrating our existing code away from this practice.
 
 ```html
-
 <a href="#" onclick="someGlobalFunction(); return false;">Click Here</a>
 <script type="text/javascript">
   function someGlobalFunction() {
@@ -177,21 +181,23 @@ Putting javascript code directly into html tags is deprecated. We are migrating 
 ```
 
 The above example has several disadvantages:
+
 - It relies on a global function.
 - It doesn't allow for separation of concerns between the presentation layer (html) and the business logic (js code).
 
 ```js
-
 CRM.$(function($) {
   $('a.my-selector').on('click', function() {
     // code goes here
   });
 });
 ```
-Note: sometimes you want to add a handler to an element that does not exist yet in the markup (or might be replaced), like each row in a datatable. For that use the delegation provided by jQuery's "on" method and attach the handler to some outer container that is going to be there more permanently.
+
+!!! note
+    Sometimes you want to add a handler to an element that does not exist yet in the markup (or might be replaced), like each row in a datatable. For that use the delegation provided by jQuery's "on" method and attach the handler to some outer container that is going to be there more permanently.
 
 ## ClientSide MVC
 
 In the past, PHP-based webapps like CiviCRM have treated javascript as little more than an extension of css. But increasingly they are realizing the potential of Javascript to handle business logic. Javascript can be used to create robust, responsive, user-friendly webapps. But with this complexity comes the need for structure. While CiviCRM has not officially adopted a clientside MVC framework, version 4.3 includes a new UI for editing profiles which was built using Underscore, Backbone and Marionette. And 4.5 includes a new case-configuration interface built on Angular. In 4.6 CiviMail User Interface was re-written in Angular.
 
-More detail can be found in the [Angular reference documents](https://docs.civicrm.org/dev/en/stable/framework/angular/)
+More detail can be found in the [Angular reference documents](/framework/angular/index.md)
