@@ -4,7 +4,59 @@
 
 CiviCRM maintains a number of standard practices which help ensure that CiviCRM is as secure as possible. This chapter will aim to help give developers guidance on the best way to write code for CiviCRM core and Extensions etc in a secure way. 
 
-## Escape on Input v Escape on Output.
+## Inputs and outputs
+
+Like any large application, CiviCRM has many inputs and many outputs &mdash; and for adequate security, it must ensure that all data which flows from untrusted inputs to sensitive outputs receives *sanitizing* at some point along the way to protect against attacks.
+
+![Inputs vs outputs diagram](/img/security-inputs-and-outputs.svg)
+
+### Bad example
+
+Consider the following PHP code:
+
+```php
+$contactId = $_GET['cid']; // Untrusted input
+$sql = "
+ SELECT display_name
+ FROM civicrm_contact
+ WHERE id = $contactID;
+";
+$query = CRM_Core_DAO::executeQuery($query); // Sensitive output
+```
+
+This is bad because because a user can send the following string for the `cid` parameter:
+
+```text
+0 UNION SELECT api_key FROM civicrm_contact WHERE id = 4
+```
+
+With this attack, the response page would display the API key (for any contact the attacker chooses) anywhere the page would normally display the contact's name. This is an information disclosure vulnerability.
+
+!!! note
+    You might think that an input like ``0; DROP TABLE `civicrm_contact` `` would present an [even more serious a vulnerability](https://xkcd.com/327/), but fortunately CiviCRM does not allow [query stacking](http://www.sqlinjection.net/stacked-queries/) which means `executeQuery()` can only execute one query at a time.
+
+### A improvement using sanitizing
+
+In order to fix this security vulnerability, we need to sanitize either (or both!) the input or output as follows:
+
+```php
+$contactId = CRM_Utils_Request::retrieve(
+  'cid',
+  'Positive' // <-- Input sanitizing
+);
+$sql = "
+  SELECT display_name
+  FROM civicrm_contact
+  WHERE contact_id = %1;
+";
+$displayName = CRM_Core_DAO::executeQuery($query, array(
+  1 => array($contactId, 'Integer'), // <-- Output sanitizing
+));
+```
+
+Now, users will only be able to send integers in, and CiviCRM will only be able to send integers out. This is obviously a simplified example, but it illustrates the concepts of inputs, outputs, and sanitizing.
+
+## Escape on Input v Escape on Output
 
 Escaping on input means that developers ensure that every single input from their Interface(s) are properly escaped before passing them into the database. This has a major issue for an application like CiviCRM because there are too many various interfaces to try and do proper escape on Input. There is also a risk that when you escape on input you can dramatically change the value and strip out some data through the escaping process.  Where as escaping on output means you have to cover all your various interfaces, ensure that all of them properly and safely account for the possibility that there maybe unsafe data in your database and sanitise it for safe viewing / usage in for example HTML or AngularJS templating. 
 
