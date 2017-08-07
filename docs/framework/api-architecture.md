@@ -6,13 +6,11 @@ the top level api folder.
 
 Usage documentation is in the [APIv3](/api/index.md) page.
 
-## Standards {:#standards}
+## Interacting with the api
 
--   Interacting with code in the `api` folder *from outside the `api` folder* is only supported through the following means:
-    * PHP: by using the `civicrm_api()` wrapper (or preferably the `civicrm_api3()` wrapper)
-    * JavaScript: by using `CRM.api()` (or preferably `CRM.api3()`);
-    * Smarty: by using the [Smarty interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface)
-    * REST: by using the [REST interface](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface)
+-   Direct interaction with code in the `api` folder *from outside the `api` folder* is 
+not supported and may break on upgrades. Only the methods described in [APIv3](/api/index.md)
+are supported for accessing the api functions
 
 ## Individual functions
 
