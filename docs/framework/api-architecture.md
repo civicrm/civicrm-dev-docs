@@ -6,7 +6,7 @@ the top level api folder.
 
 Usage documentation is in the [APIv3](/api/index.md) page.
 
-## Interacting with the api {:#standards}
+## Interacting with the api
 
 -   Direct interaction with code in the `api` folder *from outside the `api` folder* is 
 not supported and may break on upgrades. Only the methods described in [APIv3](/api/index.md)
