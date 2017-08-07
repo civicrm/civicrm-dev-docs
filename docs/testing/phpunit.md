@@ -9,30 +9,22 @@ These tests are written with PHPUnit. The PHP tests are grouped into suites
 These tests required the latest supported version of PHPUnit. This is included
 with [buildkit](/tools/buildkit.md).
 
-It is possible that using the wrong configuration for tests will cause your main
-local database to be used for testing, and will leave it unusable afterwards.
+!!!warning 
+    It is possible that using the wrong configuration for tests will cause your main
+    local database to be used for testing, and will leave it unusable afterwards.
 
-To make sure this doesn't happen set up your local environment to point to the
-test database before running your tests.
-
-Create a civicrm.settings.test.php in the same directory as your
-`civicrm.settings.php` using this template:
-
-```php
-<?php
-define('CIVICRM_UF', 'UnitTests');
-define('CIVICRM_DSN', 'mysql://<USER>:<PASSWORD>@127.0.0.1:3306/<TEST_DB_NAME>?new_link=true');
-require_once 'civicrm.settings.php';
-```
-
-Finally tell CiviCRM where to find your settings file.
+To check that everything is configured correctly:
 
 ```bash
-export CIVICRM_SETTINGS="/path/to/civicrm.settings.test.php"
+$ cd /path/to/civicrm
+$ cv vars:show
 ```
 
+Check that `CIVI_DB_DSN` and `TEST_DB_DSN` is configured.  If you installed 
+using buildkit this should all be configured for you.
+
 If you want to run unit tests (and not WebTests or E2E tests) set the
-environment variable `CIVICRM_UF` to "UnitTests" (eg. in civicrm.settings.test.php above). This can also be set using the
+environment variable `CIVICRM_UF` to "UnitTests" (eg. in `civicrm.settings.test.php` above). This can also be set using the
 `env` command to change the environment just for a single command.
 
 !!! warning
@@ -50,13 +42,24 @@ $ cd /path/to/civicrm
 $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/AllTests.php
 ```
 
+or to run an individual test you could run: 
+
+```
+$ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/api/v3/CaseTest.php --filter testCaseCreate
+```
+
 !!! note
     You can also specify tests in an environment variable `PHPUNIT_TESTS` (eg. `env PHPUNIT_TESTS="MyFirstTest::testFoo MySecondTest" phpunit EnvTests`
     Then run `phpunit4 ./tests/phpunit/EnvTests.php`.
 
 ## Writing Tests
 
-When writing tests you should extend from `\CiviUnitTestCase`.
+When writing Core tests you should extend from `\CiviUnitTestCase`.
+
+But for extensions you should extend directly from `\PHPUnit_Framework_TestCase`.
+
+!!! note
+    Once we move to a PHP5.4 minimum requirement we can break up CiviUnitTestCase.php into `traits` so the helper functions are more accessible to extensions.  Currently you have to copy them into your extensions test environment (eg. `callAPISuccess`).
 
 Test methods naming should follow the pattern:
 
