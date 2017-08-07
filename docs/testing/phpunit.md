@@ -14,15 +14,17 @@ with [buildkit](/tools/buildkit.md).
     local database to be used for testing, and will leave it unusable afterwards.
 
 To check that everything is configured correctly:
+
 ```bash
 $ cd /path/to/civicrm
 $ cv vars:show
 ```
-Check that ```CIVI_DB_DSN``` and ```TEST_DB_DSN``` is configured.  If you installed 
+
+Check that `CIVI_DB_DSN` and `TEST_DB_DSN` is configured.  If you installed 
 using buildkit this should all be configured for you.
 
 If you want to run unit tests (and not WebTests or E2E tests) set the
-environment variable `CIVICRM_UF` to "UnitTests" (eg. in civicrm.settings.test.php above). This can also be set using the
+environment variable `CIVICRM_UF` to "UnitTests" (eg. in `civicrm.settings.test.php` above). This can also be set using the
 `env` command to change the environment just for a single command.
 
 !!! warning
@@ -39,7 +41,9 @@ test if necessary.
 $ cd /path/to/civicrm
 $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/AllTests.php
 ```
+
 or to run an individual test you could run: 
+
 ```
 $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/api/v3/CaseTest.php --filter testCaseCreate
 ```
