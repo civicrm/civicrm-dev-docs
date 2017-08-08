@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The *resources* subsystem supports loading Javascript code, CSS code, or image data. Most resources are static files bundled with CiviCRM. However, resources can also be external scripts, inline code-fragments, or dynamically-generated files. As of CiviCRM 4.2, the class `CRM_Core_Resources` manages these resources. This API works for both CiviCRM core as well as extensions.
+The *resources* subsystem supports loading Javascript code, CSS code, or image data. Most resources are static files bundled with CiviCRM. However, resources can also be external scripts, inline code-fragments, or dynamically-generated files. As of CiviCRM 4.2, the class `CRM_Core_Resources` manages these resources. This API works for both CiviCRM core and extensions.
 
 !!! note "Resources and Regions"
     The HTML output for any CiviCRM page is divided into regions, such as the `html-header` or `page-footer`. When you add a resource, it must be added to some region. See also: [Region Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Region+Reference)
