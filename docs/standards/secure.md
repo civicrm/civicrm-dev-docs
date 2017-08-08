@@ -136,6 +136,7 @@ CiviCRM's strategy is as follows:
     1. SQL: validate and encode
     1. Shell: validate and encode
 
+## In AngularJS
 
 For AngularJS templates, developers should consult the AngularJS [$sanitize documentation](https://docs.angularjs.org/api/ngSanitize/service/$sanitize).
 
