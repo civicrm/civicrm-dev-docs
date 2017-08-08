@@ -13,7 +13,7 @@ The *resources* subsystem supports loading Javascript code, CSS code, or image d
     The following examples assume that you wish to use resources provided by the extension `com.example.foo`. To use resources from your own extension, substitute appropriately. To use files provided by CiviCRM core, use the placeholder `civicrm`.
 
 !!! note "Resources and CMS Plugins"
-    If you are working outside CiviCRM Core or native extensions, you can still use `CRM_Core_Resources`, but you will need to ensure that CiviCRM is bootsrapped. See also: [Bootstraping guide](/framework/bootstrap/).
+    If you are working outside CiviCRM Core or native extensions, you can still use `CRM_Core_Resources`, but you will need to ensure that CiviCRM is bootsrapped. See also: [Bootstraping guide](/framework/bootstrap.md).
 
 ## Javascript
 
@@ -35,12 +35,13 @@ If you need to export runtime data for use with JavaScript, then you can registe
 // On the server:
 CRM_Core_Resources::singleton()->addVars('myNamespace', array('foo' => 'bar'));
 ```
+
 ```javascript
 // In your js file:
 CRM.alert(CRM.vars.myNamespace.foo); // Alerts "bar"
 ```
 
-More infomation can be found in the [Javascript reference](/standards/javascript).
+More infomation can be found in the [Javascript reference](/standards/javascript.md).
 
 ## CSS StyleSheets
 
@@ -63,27 +64,29 @@ PHP | Get an extension's base URL | `CRM_Core_Resources::singleton()->getUrl('co
 Smarty | Get an image URL | `{crmResURL ext=com.example.foo file=bar.png}` |
 Smarty | Get an extension's base URL | `crmResURL ext=com.example.foo }` |
 
-!!!note
-`{crmResURL}` vs `{crmURL}`
-`{crmResURL}` sounds similar to another Smarty tag, `{crmURL}`, but they are functionally distinct: `{crmURL}` constructs the URL of a dynamic web page, adjusting the path and query parameters of the URL based on the CMS. By contrast, `{crmResURL}` constructs the URL of a static resource file; because the file is static, one may link directly without using the CMS or manipulating query parameters.
+!!! note "Note about `{crmResURL}` vs `{crmURL}`"
+    `{crmResURL}` sounds similar to another Smarty tag, `{crmURL}`, but they are functionally distinct: `{crmURL}` constructs the URL of a dynamic web page, adjusting the path and query parameters of the URL based on the CMS. By contrast, `{crmResURL}` constructs the URL of a static resource file; because the file is static, one may link directly without using the CMS or manipulating query parameters.
 
 ## Advanced Options
 
 When including Javascript files or CSS files in the HTML HEAD, the exact placement of the `<SCRIPT>` and `<STYLE>` tags can be significant. There are two options for manipulating placement:
+
 * Region: By default, codes are injected inside the HTML `<HEAD>`. To delay execution of code until later in the transfer of a page, you may want to place the tag further down in the BODY. You can specify the region as one of:
-  - "page-header"
-  - "page-body"
-  - "page-footer" (default)
-  - "html-header" (should always be used for jQuery plugins that refer to jQuery as `jQuery` and not `cj`)
+    * "page-header"
+    * "page-body"
+    * "page-footer" (default)
+    * "html-header" (should always be used for jQuery plugins that refer to jQuery as `jQuery` and not `cj`)
 * Weight: Within a given region, tags are sorted by a numerical weight (ascending order). The default weight is '0'
 
-For PHP APIs (addScriptFile(), addScriptUrl(), etc), the $weight and $region are optional function arguments which you may tack onto the end of each function call:
+For PHP APIs (`addScriptFile()`, `addScriptUrl()`, etc), the `$weight` and `$region` are optional function arguments which you may tack onto the end of each function call:
 
 ```php
 CRM_Core_Resources::singleton()->addScriptFile('com.example.foo', 'jquery.bar.js', 10, 'html-header');
 CRM_Core_Resources::singleton()->addScriptUrl('http://example.com/bar.css', 10, 'page-header');
 ```
-For Smarty APIs ({crmScript} and {crmStyle}), the optional weight and region parameters may also be added:
+
+For Smarty APIs (`{crmScript}` and `{crmStyle}`), the optional weight and region parameters may also be added:
+
 ```
 {crmScript ext=com.example.foo file=bar.js weight=10 region=page-footer}
 {crmStyle url="http://example.com/bar.css" weight=10 region=page-footer}
