@@ -1,4 +1,4 @@
-# Secure Coding Standards
+# Secure Coding
 
 ## Introduction
 
@@ -136,30 +136,4 @@ CiviCRM's strategy is as follows:
     1. SQL: validate and encode
     1. Shell: validate and encode
 
-## In AngularJS
 
-For AngularJS templates, developers should consult the AngularJS [$sanitize documentation](https://docs.angularjs.org/api/ngSanitize/service/$sanitize).
-
-## Handling Request variables
-
-Through the CiviCRM code base you will find that there are a number of times where CiviCRM takes variables passed to it through the URL e.g. `?cid=1234` or `?id=1234`. CiviCRM has put in place some inbuilt functions that help to ensure that no dangerous values are able to be passed through.
-
-```php
-$cid = CRM_Utils_Request::retrieve('cid', 'Positive', $this);
-$id = CRM_Utils_Request::retrieve('id', 'Positive', $this, FALSE, NULL, 'GET');
-$angPage = CRM_Utils_Request::retrieve('angPage', 'String', $this);
-if (!preg_match(':^[a-zA-Z0-9\-_/]+$:', $angPage)) {
-  CRM_Core_Error::fatal('Malformed return URL');
-}
-$backUrl = CRM_Utils_System::url('civicrm/a/#/' . $angPage);
-```
-
-What you will notice above is that one of the key things there is the usage of `CRM_Utils_Request::retrieve` This function takes in whatever request variables have been passed to the page or form etc, gets the key requested out of it, then ensures that it meets a specific type of value. The acceptable types can be found in [CRM_Utils_Type::validate](https://github.com/civicrm/civicrm-core/blob/60050425316acb3726305d1c34908074cde124c7/CRM/Utils/Type.php#L378). 
-
-## Passing variables into SQL
-
-Developers should ensure that whenever they pass variables into SQL statements that they do it in the proper standard. More information can be found in the [SQL Coding Standards](/standards/sql/).
-
-## References
-
- - Escape on Input v Escape on output [Stack exchange](https://security.stackexchange.com/questions/95325/input-sanitization-vs-output-sanitization) [Stack Overflow](https://stackoverflow.com/questions/11253532/html-xss-escape-on-input-vs-output).

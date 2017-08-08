@@ -84,11 +84,13 @@ pages:
   # CiviMail: /reference/civimail.md
   # CiviReport: /reference/civireport.md
   # Payment Processing: /reference/payment.md
-- Secure Coding:
-  - Introduction: secure/index.md
-  - Acess Control: secure/access.md
-  - Permissions: secure/permissions.md
-  - Reporting a Security Vulnerability: secure/reporting.md
+- Security:
+  - Secure Coding: security/index.md
+  - Securing Inputs: security/inputs.md
+  - Securing Outputs: security/outputs.md
+  - Acess Control: security/access.md
+  - Permissions: security/permissions.md
+  - Reporting a Security Vulnerability: security/reporting.md
 - API:
   - APIv3 Intro: api/index.md
   - APIv3 Usage: api/usage.md
@@ -228,9 +230,7 @@ pages:
 - Coding Standards:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
-  - SQL Standards: standards/sql.md
   - Javascript Reference: standards/javascript.md
-  - Secure Coding: standards/secure.md
   # API: standards/api.md
   # Git: standards/git.md
 - Documentation:
