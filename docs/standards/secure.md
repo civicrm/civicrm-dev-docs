@@ -89,9 +89,26 @@ By *encoding* the data (for HTML), we change `Foo Bar <foo@example.org>` to `Foo
 In rare cases such as user-editable rich text fields, CiviCRM cannot use validation or encoding to protect against attacks because the same characters used in attacks are also necessary for presentation. For these cases, CiviCRM uses a 3rd-party library called [HTML Purifier](http://htmlpurifier.org/) which employs sophisticated techniques to [remove XSS](http://htmlpurifier.org/live/smoketests/xssAttacks.php) from HTML strings.
 
 
-## Escape on Input v Escape on Output
+## Sanitize input or output? {:#input-vs-output}
 
-Escaping on input means that developers ensure that every single input from their Interface(s) are properly escaped before passing them into the database. This has a major issue for an application like CiviCRM because there are too many various interfaces to try and do proper escape on Input. There is also a risk that when you escape on input you can dramatically change the value and strip out some data through the escaping process.  Where as escaping on output means you have to cover all your various interfaces, ensure that all of them properly and safely account for the possibility that there maybe unsafe data in your database and sanitise it for safe viewing / usage in for example HTML or AngularJS templating. 
+Now that we understand sanitization, as well as inputs and outputs, the question arises: *at what point in my code should I sanitize?*
+
+### In an ideal world
+
+Ideally developers should:
+
+* Provide **validation for inputs** which are as strict as possible.
+* Provide **encoding for outputs** whenever possible (which is most of the time).
+* Provide purification for outputs in rare cases when encoding is not possible (e.g. rich text).
+
+### In a misguided world
+
+A common (and well meaning) mistake is to *encode inputs* instead of *encoding outputs*. For example, we might choose to store a string like `"Foo Bar" <foo@example.org>` in the database as `"Foo Bar" &lt;foo@example.org&gt;` because we know that, later on, our application will display it within an HTML page. This approach is bad because different outputs (e.g. HTML, SQL, shell) require different of encoding schemes. During input we have no reliable way of knowing which outputs the data will reach.
+
+### The current state of CiviCRM 
+
+Unfortunately (at least as of 2017) CiviCRM exists in a somewhat uncomfortable limbo between the ideal world and the misguided world. In some places, CiviCRM sanitizes inputs with a partial encoding for HTML output, and then does not encode the output. In other places, (e.g. data sent to MySQL) CiviCRM encodes outputs. In 2012 developers [identified the need to improve this situation](https://issues.civicrm.org/jira/browse/CRM-11532), but unfortunately it's not an easy task because shifting strategies has implications across the entire codebase. This doesn't mean CiviCRM is rife with security vulnerabilities &mdash; it just means that CiviCRM has not been *consistent* about how it approaches security. Developers should keep this in mind and strive towards the "ideal world" when writing new code.
+
 
 CiviCRM has long been confused and staggered in regards to whether to escape on output or escape on input. CiviCRM are slowly moving towards escaping on output for most purposes however there is still a need for escaping on input when dealing with writing queries against the database. At present the simplest way to escape on output is to use inbuilt escape functions within our templating engine Smarty. For example:
 
