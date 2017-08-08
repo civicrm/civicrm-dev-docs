@@ -97,7 +97,7 @@ Now that we understand the difference between inputs and outputs, as well as the
 
 ### In an ideal world {:#ideal}
 
-Ideally developers should do the following.
+Within the larger community of developers (outside of CiviCRM), the current [best-practices say](https://security.stackexchange.com/a/95330/32455) that developer should do the following
 
 * For inputs:
     * **Validate data inputs** as strictly as possible.

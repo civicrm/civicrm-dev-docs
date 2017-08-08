@@ -2,24 +2,51 @@
 
 ## HTML/Smarty {:#html}
 
-### Between tags {:#between-tags}
+Untrusted data placed in HTML must be [encoded](/security/index.md#encoding) for HTML output at some point. The PHP function [htmlentities()](http://php.net/manual/en/function.htmlentities.php) does this, and the Smarty variable modifier [escape](https://www.smarty.net/docsv2/en/language.modifier.escape) behaves similarly.
 
-When placing data between tags, no output encoding is necessary. For example:
+### Between tags {:#db-between-tags}
+
+#### Database data between tags {:#db-between-tags}
+
+Data which comes out of MySQL has already been [partially encoded for HTML output](/security/inputs.md#input-encoding). This means that when you place this data between HTML tags, you don't need to perform any output encoding. For example:
 
 ```html
 <div>{$displayName}</div>
+```
+
+#### Direct user input between tags {:#inputs-between-tags}
+
+Here we have a bit of a grey area where CiviCRM does not have a consistent approach. If untrusted inputs are placed into HTML before being saved to the database, you need to ensure to perform HTML output encoding *at some point*.
+
+You can perform the output encoding in PHP as follows:
+
+```php
+$userInput = htmlentities($userInput);
+```
+
+Or you can perform the output encoding in Smarty as follows:
+
+```html
+<div>{$userInput|escape}</div>
 ``` 
 
-### In attributes {:#in-attributes}
+!!! tip
+    Be wary of using user input in *error messages*. This is a common scenario wherein untrusted user input can end up in HTML with no HTML output encoding.
 
-When placing data within attributes, use Smarty's [escape](https://www.smarty.net/docsv2/en/language.modifier.escape) variable modifier to encode HTML entities.
+### HTML attributes {:#in-attributes}
+
+When placing data within attributes, always use Smarty's [escape](https://www.smarty.net/docsv2/en/language.modifier.escape) variable modifier to encode HTML entities.
 
 ```html
 <a href="#" title="{$displayName|escape}">Foo</a>
 ```
 
 !!! note
-    HTML output encoding *is* necessary for attribute data (but *not* necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
+    HTML output encoding *is always* necessary for attribute data (but *not* always necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
+    
+## Javascript {:#in-javascript}
+
+TODO
 
 ## AngularJS templates {:#angularjs}
 

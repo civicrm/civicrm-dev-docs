@@ -31,10 +31,12 @@ if (!preg_match(':^[a-zA-Z0-9\-_/]+$:', $angPage)) {
 
 ## `POST` parameters
 
-TODO
+When accepting `POST` parameters through forms, it's important to validate the data as 
 
 
 ## When saving to the database
+
+Despite the [current recommended best-practices](/security/index.md#input-vs-output), CiviCRM *does* sanitize some of its *inputs*. This section describes how.
 
 ### Input encoding {:#input-encoding}
 
