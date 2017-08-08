@@ -95,33 +95,46 @@ In rare cases such as user-editable rich text fields, CiviCRM cannot use validat
 
 ## Sanitize input or output? {:#input-vs-output}
 
-Now that we understand sanitization, as well as inputs and outputs, the question arises: *at what point in my code should I sanitize?*
+Now that we understand the difference between inputs and outputs, as well as the different sanitization techniques, the question arises: *at what point in my code should I sanitize? Input, or output?*
 
 ### In an ideal world
 
-Ideally developers should:
+Ideally developers should do the following.
 
-* Provide **validation for inputs** which are as strict as possible.
-* Provide **encoding for outputs** whenever possible (which is most of the time).
-* Provide purification for outputs in rare cases when encoding is not possible (e.g. rich text).
+* For inputs:
+    * **Validate data inputs** as strictly as possible.
+* For outputs:
+    * **Validate data outputs** as strictly as possible.
+    * **Encode data outputs** whenever possible (which is most of the time).
+    * Provide purification for outputs in rare cases when encoding is not possible (e.g. rich text).
 
-### In a misguided world
+!!! failure "In a misguided world"
 
-A common (and well meaning) mistake is to *encode inputs* instead of *encoding outputs*. For example, we might choose to store a string like `"Foo Bar" <foo@example.org>` in the database as `"Foo Bar" &lt;foo@example.org&gt;` because we know that, later on, our application will display it within an HTML page. This approach is bad because different outputs (e.g. HTML, SQL, shell) require different of encoding schemes. During input we have no reliable way of knowing which outputs the data will reach.
+    A common (and well meaning) mistake is to *encode inputs* instead of *encoding outputs*. For example, we might choose to store a string like `"Foo Bar" <foo@example.org>` in the database as `&quot;Foo Bar&quot; &lt;foo@example.org&gt;` because we know that, later on, our application will display it within an HTML page. This approach is bad because different outputs (e.g. HTML, SQL, shell) require different of encoding schemes. During input we have no reliable way of knowing which outputs the data will reach.
 
-### The current state of CiviCRM 
+### CiviCRM's current strategy 
 
-Unfortunately (at least as of 2017) CiviCRM exists in a somewhat uncomfortable limbo between the ideal world and the misguided world. In some places, CiviCRM sanitizes inputs with a partial encoding for HTML output, and then does not encode the output. In other places, (e.g. data sent to MySQL) CiviCRM encodes outputs. In 2012 developers [identified the need to improve this situation](https://issues.civicrm.org/jira/browse/CRM-11532), but unfortunately it's not an easy task because shifting strategies has implications across the entire codebase. This doesn't mean CiviCRM is rife with security vulnerabilities &mdash; it just means that CiviCRM has not been *consistent* about how it approaches security. Developers should keep this in mind and strive towards the "ideal world" when writing new code.
+Unfortunately (at least as of 2017) CiviCRM exists in a somewhat uncomfortable limbo between the ideal world and the misguided world. In some places, CiviCRM sanitizes inputs with a partial encoding for HTML output, and then does not encode HTML the output. In other places, (e.g. in SQL queries) CiviCRM encodes outputs. In 2012 developers [identified the need to improve this situation](https://issues.civicrm.org/jira/browse/CRM-11532), but unfortunately it's not an easy task because shifting strategies has implications across the entire codebase. This doesn't mean CiviCRM is rife with security vulnerabilities &mdash; it just means that CiviCRM has not been *consistent* about how it approaches security.
 
+CiviCRM's strategy is as follows:
 
-CiviCRM has long been confused and staggered in regards to whether to escape on output or escape on input. CiviCRM are slowly moving towards escaping on output for most purposes however there is still a need for escaping on input when dealing with writing queries against the database. At present the simplest way to escape on output is to use inbuilt escape functions within our templating engine Smarty. For example:
-
-```
-<a  href="{$item.url}" title="{$item.title|escape:'html'}">
-```
-
-This will ensure that the variable title within the item key when generating a list of recently viewed items won't have any Cross Site Scripting as it will be escaped for use within HTML. For more information on the types of escaping you can do with Smarty see the [Smarty Documentation](https://www.smarty.net/docsv2/en/language.modifier.escape)
-
+* Inputs:
+    1. Validate inputs when possible
+    1. For rich text: purify inputs with `CRM_Utils_String::purifyHTML`.
+    1. For non-rich text: *encode* inputs with `CRM_Utils_API_HTMLInputCoder::encodeInput()`
+        * Note that this function only encodes `<` and `>`. It does *not* encode quotes.
+* Outputs:
+    1. HTML:
+        * Do *not* perform HTML encoding for data between tags
+        
+            e.g. `<div>{$displayName}</div>`
+            
+        * *Do* perform HTML encoding for data within attributes
+        
+            e.g. `<a href="#" title="{$displayName|escape}">Foo</a>`
+            
+    1. SQL: validate and encode
+    1. Shell: validate and encode
 
 
 For AngularJS templates, developers should consult the AngularJS [$sanitize documentation](https://docs.angularjs.org/api/ngSanitize/service/$sanitize).
