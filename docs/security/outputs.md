@@ -21,9 +21,23 @@ When placing data within attributes, use Smarty's [escape](https://www.smarty.ne
 !!! note
     HTML output encoding *is* necessary for attribute data (but *not* necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
 
-## In AngularJS templates
+## In AngularJS templates {:#angularjs}
 
-TODO
+The [AngularJS Security Guide](https://docs.angularjs.org/guide/security) says:
+    
+> Do not use user input to generate templates dynamically
+
+This means that if you put an `ng-app` element in a Smarty template as shown above, it's very important that you do not use Smarty to put any user input inside the `ng-app` element.
+
+For example, the following Smarty template would be a security risk:
+
+```html
+<div ng-app="crmCaseType">
+  <div ng-view="">{$untrustedData}</div>
+</div>
+```
+
+because if the `$untrustedData` PHP variable contains a string like `{{1+2}}`, then AngularJS will execute `1+2` and open the door to XSS vulnerabilities. 
 
 
 ## SQL {:#sql}
