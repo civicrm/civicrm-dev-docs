@@ -7,7 +7,7 @@ The *resources* subsystem supports loading Javascript code, CSS code, or image d
 !!! note "Resources and Regions"
     The HTML output for any CiviCRM page is divided into regions, such as the `html-header` or `page-footer`. When you add a resource, it must be added to some region. See also: [Region Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Region+Reference)
 
-    Most regions have a fairly consistent operation. However, the HTML `<HEAD>` may have special constraints or interactions with the CMS environment. This is discussed in greater depth in [HTML Header Region](https://wiki.civicrm.org/confluence/display/CRMDOC/HTML+Header+Region).
+    Most regions have a fairly consistent operation. However, the HTML `<head>` may have special constraints or interactions with the CMS environment. This is discussed in greater depth in [HTML Header Region](https://wiki.civicrm.org/confluence/display/CRMDOC/HTML+Header+Region).
 
 !!! note "Resources and Extensions"
     The following examples assume that you wish to use resources provided by the extension `com.example.foo`. To use resources from your own extension, substitute appropriately. To use files provided by CiviCRM core, use the placeholder `civicrm`.
@@ -17,7 +17,7 @@ The *resources* subsystem supports loading Javascript code, CSS code, or image d
 
 ## Javascript
 
-The following examples load Javascript into the page footer. This is the default region, and is a good place to put scripts that are not needed on every page of the website. Note: if you're adding a jQuery Plugin or similar, you will need to add that to the HTML HEAD region.
+The following examples load Javascript into the page footer. This is the default region, and is a good place to put scripts that are not needed on every page of the website. Note: if you're adding a jQuery Plugin or similar, you will need to add that to the HTML `<head>` region.
 
 Language | Example | Example code |
 --- | --- | --- |
@@ -69,9 +69,9 @@ Smarty | Get an extension's base URL | `crmResURL ext=com.example.foo }` |
 
 ## Advanced Options
 
-When including Javascript files or CSS files in the HTML HEAD, the exact placement of the `<SCRIPT>` and `<STYLE>` tags can be significant. There are two options for manipulating placement:
+When including Javascript files or CSS files in the HTML `<head>`, the exact placement of the `<script>` and `<style>` tags can be significant. There are two options for manipulating placement:
 
-* Region: By default, codes are injected inside the HTML `<HEAD>`. To delay execution of code until later in the transfer of a page, you may want to place the tag further down in the BODY. You can specify the region as one of:
+* Region: By default, codes are injected inside the HTML `<head>`. To delay execution of code until later in the transfer of a page, you may want to place the tag further down in the `<body>`. You can specify the region as one of:
     * "page-header"
     * "page-body"
     * "page-footer" (default)
