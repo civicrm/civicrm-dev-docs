@@ -27,17 +27,18 @@ The [AngularJS Security Guide](https://docs.angularjs.org/guide/security) says:
     
 > Do not use user input to generate templates dynamically
 
-This means that if you put an `ng-app` element in a Smarty template as shown above, it's very important that you do not use Smarty to put any user input inside the `ng-app` element.
+This means that if you put an `ng-app` element in a Smarty template, it's very important that you do not use Smarty to put any user input inside the `ng-app` element.
 
 For example, the following Smarty template would be a security risk:
 
 ```html
 <div ng-app="crmCaseType">
-  <div ng-view="">{$untrustedData}</div>
+  <div ng-view=""></div>
+  <div>{$untrustedData}</div>
 </div>
 ```
 
-because if the `$untrustedData` PHP variable contains a string like `{{1+2}}`, then AngularJS will execute `1+2` and open the door to XSS vulnerabilities. 
+This is bad because the `$untrustedData` PHP variable can contain a string like `{{1+2}}` which AngularJS will execute, opening the door to XSS vulnerabilities. 
 
 
 ## SQL {:#sql}
