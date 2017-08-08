@@ -1,20 +1,5 @@
 # Securing your inputs
 
-## When saving to the database
-
-### Input encoding {:#input-encoding}
-
-For almost all inputs which are saved to the database, CiviCRM automatically uses `CRM_Utils_API_HTMLInputCoder::encodeInput()` to apply a *partial* encoding for HTML output. This encoding step happens at a low level for inputs passed through the API or the BAO (except for fields noted in `CRM_Utils_API_HTMLInputCoder::getSkipFields()`). So if you're using the API or the BAO to process your input you don't need to do anything special.
-
-If, for some strange reason, you happen to be writing untrusted data to the database directly with SQL, you should encode this data in a fashion consistent with `CRM_Utils_API_HTMLInputCoder::encodeInput()`.
-
-Note that `CRM_Utils_API_HTMLInputCoder::encodeInput()` only encodes `<` and `>`. It does *not* encode quotes. This has some special implications for how you should [encode your HTML outputs](/security/outputs.md#html).
-
-### Input purification {:#input-purification}
-
-When accepting untrusted data with rich text (uncommon), pass the data through `CRM_Utils_String::purifyHTML` to remove XSS.
-
-
 ## `GET` parameters
 
 If you have a page or a form which reads parameters from the URL (aka `GET` parameters) like `?cid=1234` or `?action=add`, it's important to understand that attackers can somewhat easily deceive *privileged users* into submitting malicious `GET` requests by directing the user to an email or website with content like: 
@@ -48,3 +33,17 @@ if (!preg_match(':^[a-zA-Z0-9\-_/]+$:', $angPage)) {
 
 TODO
 
+
+## When saving to the database
+
+### Input encoding {:#input-encoding}
+
+For almost all inputs which are saved to the database, CiviCRM automatically uses `CRM_Utils_API_HTMLInputCoder::encodeInput()` to apply a *partial* encoding for HTML output. This encoding step happens at a low level for inputs passed through the API or the BAO (except for fields noted in `CRM_Utils_API_HTMLInputCoder::getSkipFields()`). So if you're using the API or the BAO to process your input you don't need to do anything special.
+
+If, for some strange reason, you happen to be writing untrusted data to the database directly with SQL, you should encode this data in a fashion consistent with `CRM_Utils_API_HTMLInputCoder::encodeInput()`.
+
+Note that `CRM_Utils_API_HTMLInputCoder::encodeInput()` only encodes `<` and `>`. It does *not* encode quotes. This has some special implications for how you should [encode your HTML outputs](/security/outputs.md#html).
+
+### Input purification {:#input-purification}
+
+When accepting untrusted data with rich text (uncommon), pass the data through `CRM_Utils_String::purifyHTML` to remove XSS.
