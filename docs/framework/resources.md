@@ -2,16 +2,22 @@
 
 ## Introduction
 
-Resources such as Javascript files or inline scripts or CSS Style directives are added to various Regions on the page. The method of altering or adding content to regions is using the [Regions Manager](https://wiki.civicrm.org/confluence/display/CRMDOC/Region+Reference). This guide focuses on the Resource Manger which is a wrapper around the Region Manager.
+The *resources* subsystem supports loading Javascript code, CSS code, or image data. Most resources are static files bundled with CiviCRM. However, resources can also be external scripts, inline code-fragments, or dynamically-generated files. As of CiviCRM 4.2, the class `CRM_Core_Resources` manages these resources. This API works for both CiviCRM core as well as extensions.
 
-iResources can be static files such as images, stylesheets or JavaScript files, or dynamically generated inline scripts and stylesheet, or JavaScript variables. Some resources require special handling in the HTML header region. As of CiviCRM 4.2, the class `CRM_Core_Resources` is available for linking resources and managing the HTML HEAD – this API works for both CiviCRM core as well as extensions.
+!!! note "Resources and Regions"
+    The HTML output for any CiviCRM page is divided into regions, such as the `html-header` or `page-footer`. When you add a resource, it must be added to some region. See also: [Region Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Region+Reference)
 
-!!!note
-The following examples assume that you wish to use resources provided by the extension "com.example.foo". To use resources from your own extension, substitute appropriately. To use files provided by CiviCRM core, use the placeholder "civicrm". If you are working outside CiviCRM Core or natvie extensions, You can still use the REsource Manager but you will need to ensure that CiviCRM is bootsrapped. See [Bootstraping guide](/framework/bootstrap/) for more information.
+    Most regions have a fairly consistent operation. However, the HTML `<HEAD>` may have special constraints or interactions with the CMS environment. This is discussed in greater depth in [HTML Header Region](https://wiki.civicrm.org/confluence/display/CRMDOC/HTML+Header+Region).
+
+!!! note "Resources and Extensions"
+    The following examples assume that you wish to use resources provided by the extension `com.example.foo`. To use resources from your own extension, substitute appropriately. To use files provided by CiviCRM core, use the placeholder `civicrm`. 
+
+!!! note "Resources and CMS Plugins"
+    If you are working outside CiviCRM Core or native extensions, you can still use `CRM_Core_Resources`, but you will need to ensure that CiviCRM is bootsrapped. See also: [Bootstraping guide](/framework/bootstrap/).
 
 ## Javascript
 
-The following examples Javascript into the page footer. This is the default region, and is a good place to put scripts that are not needed on every page of the website. Note if your adding a jQuery Plugin or similar you will need to add that to the HTML HEAD region. 
+The following examples load Javascript into the page footer. This is the default region, and is a good place to put scripts that are not needed on every page of the website. Note: if you're adding a jQuery Plugin or similar, you will need to add that to the HTML HEAD region. 
 
 Language | Example | Example code |
 --- | --- | --- |
