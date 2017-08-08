@@ -1,26 +1,34 @@
 # Securing your outputs
 
-## In Smarty
+## In HTML/Smarty {:#html}
 
-### Between tags
+### Between tags {:#between-tags}
 
-TODO
+When placing data between tags, no output encoding is necessary. For example:
 
-### In attributes
+```html
+<div>{$displayName}</div>
+``` 
 
-TODO
+### In attributes {:#in-attributes}
 
+When placing data within attributes, use Smarty's [escape](https://www.smarty.net/docsv2/en/language.modifier.escape) variable modifier to encode HTML entities.
+
+```html
+<a href="#" title="{$displayName|escape}">Foo</a>
+```
+
+!!! note
+    HTML output encoding *is* necessary for attribute data (but *not* necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
 
 ## In AngularJS templates
 
 TODO
 
 
-## SQL
+## SQL {:#sql}
 
-When writing SQL, it is very important that developers protect against [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) by ensuring that all variables are passed into SQL safely and securely.
-
-This page describes the inbuilt parameterization tools available for safely executing SQL.
+When writing SQL, it is very important to protect against [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) by ensuring that all variables are passed into SQL with sufficient validation and encoding. CiviCRM has several functions to help with this process, as described below.
 
 ### `CRM_Core_DAO::executeQuery` {:#executeQuery}
 
@@ -122,7 +130,7 @@ TODO
 https://stackoverflow.com/questions/3115559/exploitable-php-functions
 
 
-## Shell commands
+## Shell commands {:#shell}
 
 TODO
 
