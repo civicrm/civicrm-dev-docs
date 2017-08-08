@@ -67,7 +67,7 @@ pages:
   # Components: /framework/components.md
   # Database: /framework/database.md
   - Schema definition: framework/schema-definition.md
-  # Resources: /framework/resources.md
+  - Resources Reference: framework/resources.md
   - Upgrade Reference: framework/upgrade.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
