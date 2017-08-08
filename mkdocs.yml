@@ -88,9 +88,9 @@ pages:
   - Secure Coding: security/index.md
   - Securing Inputs: security/inputs.md
   - Securing Outputs: security/outputs.md
-  - Acess Control: security/access.md
   - Permissions: security/permissions.md
-  - Reporting a Security Vulnerability: security/reporting.md
+  - Access Control: security/access.md
+  - Reporting Vulnerabilities: security/reporting.md
 - API:
   - APIv3 Intro: api/index.md
   - APIv3 Usage: api/usage.md
