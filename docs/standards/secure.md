@@ -118,11 +118,7 @@ CiviCRM has long been confused and staggered in regards to whether to escape on 
 
 This will ensure that the variable title within the item key when generating a list of recently viewed items won't have any Cross Site Scripting as it will be escaped for use within HTML. For more information on the types of escaping you can do with Smarty see the [Smarty Documentation](https://www.smarty.net/docsv2/en/language.modifier.escape)
 
-However sometimes to escape on output you need to ensure that because of the complex nature of the variable that the variable is properly escaped when passed to Smarty. For example, when building a json encoded blob of data for use in an contribution form it was necessary to escape before passing onto the Smarty Template.
 
-```php
-$form->assign('submittedOnBehalfInfo', json_encode(str_replace('"', '\"', $form->_submitValues['onbehalf']), JSON_HEX_APOS));
-```
 
 For AngularJS templates, developers should consult the AngularJS [$sanitize documentation](https://docs.angularjs.org/api/ngSanitize/service/$sanitize).
 
