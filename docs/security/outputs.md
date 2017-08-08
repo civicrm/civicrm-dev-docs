@@ -1,6 +1,6 @@
 # Securing your outputs
 
-## In HTML/Smarty {:#html}
+## HTML/Smarty {:#html}
 
 ### Between tags {:#between-tags}
 
@@ -21,7 +21,7 @@ When placing data within attributes, use Smarty's [escape](https://www.smarty.ne
 !!! note
     HTML output encoding *is* necessary for attribute data (but *not* necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
 
-## In AngularJS templates {:#angularjs}
+## AngularJS templates {:#angularjs}
 
 The [AngularJS Security Guide](https://docs.angularjs.org/guide/security) says:
     
@@ -140,12 +140,21 @@ Further information on this method can be found in the [CRM_Utils_SQL_Select cla
 
 ## PHP
 
-TODO
-
-https://stackoverflow.com/questions/3115559/exploitable-php-functions
+PHP functions like `eval()` and [many others](https://stackoverflow.com/questions/3115559/exploitable-php-functions/3697776#3697776) will convert strings stored in PHP variables into executable PHP code. If untrusted inputs ever make their way into such strings, critical [code injection](https://www.owasp.org/index.php/Code_Injection) vulnerabilities can arise. It's best to avoid these functions entirely &mdash; and fortunately modern PHP developers almost never need to use such functions. In the rare event that you find yourself needing to convert a string to PHP code, you must make certain that untrusted data is strictly validated.
 
 
 ## Shell commands {:#shell}
 
-TODO
+Here are some PHP functions which execute shell commands: 
+
+* `exec()`
+* `passthru()`
+* `system()`
+* `shell_exec()`
+* `popen()`
+* `proc_open()`
+* `pcntl_exec()`
+* ``` `` ``` (backticks) 
+
+Using these functions can be very risky! If you're inclided to use one of these functions, it's best to spend some time looking a way to *not* use one of the functions. If you really can't find a way around it, then make sure to use [escapeshellarg](http://php.net/manual/en/function.escapeshellarg.php) (and in some cases [escapeshellcmd](http://php.net/manual/en/function.escapeshellcmd.php)) to properly encode data sent to the shell.
 
