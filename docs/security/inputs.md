@@ -31,7 +31,7 @@ if (!preg_match(':^[a-zA-Z0-9\-_/]+$:', $angPage)) {
 
 ## `POST` parameters
 
-When accepting `POST` parameters through forms, it's important to validate the data as 
+When accepting `POST` parameters through forms, it's important to validate the data using the form validation tools provided by `CRM_Core_Form`.
 
 
 ## When saving to the database
