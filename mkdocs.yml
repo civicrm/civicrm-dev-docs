@@ -63,7 +63,7 @@ pages:
   - "API architecture": framework/api-architecture.md
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
-  # Cache: /framework/cache.md
+  - Cache Reference: framework/cache.md
   # Components: /framework/components.md
   # Database: /framework/database.md
   - Schema definition: framework/schema-definition.md
