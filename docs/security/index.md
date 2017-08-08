@@ -104,7 +104,7 @@ Ideally developers should do the following.
 * For inputs:
     * **Validate data inputs** as strictly as possible.
 * For outputs:
-    * **Validate data outputs** as strictly as possible.
+    * *Also* **validate data outputs** as strictly as possible (to provide some redundant protection).
     * **Encode data outputs** whenever possible (which is most of the time).
     * Provide purification for outputs in rare cases when encoding is not possible (e.g. rich text).
 
@@ -114,7 +114,7 @@ Ideally developers should do the following.
 
 ### CiviCRM's current strategy 
 
-Unfortunately (at least as of 2017) CiviCRM exists in a somewhat uncomfortable limbo between the ideal world and the misguided world. In some places, CiviCRM sanitizes inputs with a partial encoding for HTML output, and then does not encode HTML the output. In other places, (e.g. in SQL queries) CiviCRM encodes outputs. In 2012 developers [identified the need to improve this situation](https://issues.civicrm.org/jira/browse/CRM-11532), but unfortunately it's not an easy task because shifting strategies has implications across the entire codebase. This doesn't mean CiviCRM is rife with security vulnerabilities &mdash; it just means that CiviCRM has not been *consistent* about how it approaches security.
+Unfortunately (at least as of 2017) CiviCRM exists in a somewhat uncomfortable limbo between the ideal world and the misguided world. In some places, CiviCRM sanitizes inputs with a partial encoding for HTML output, and then does not encode the HTML output. In other places, (e.g. in SQL queries) CiviCRM encodes outputs. In 2012, developers [identified the need to improve this situation](https://issues.civicrm.org/jira/browse/CRM-11532), but unfortunately it's not an easy task because shifting strategies has implications across the entire codebase. This doesn't mean CiviCRM is rife with security vulnerabilities &mdash; it just means that CiviCRM has not been *consistent* about how it approaches security.
 
 CiviCRM's strategy is as follows:
 
