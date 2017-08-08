@@ -44,9 +44,21 @@ When placing data within attributes, always use Smarty's [escape](https://www.sm
 !!! note
     HTML output encoding *is always* necessary for attribute data (but *not* always necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
     
-## Javascript {:#in-javascript}
+### Javascript in Smarty {:#javascript-smarty}
 
-TODO
+If you have a PHP variable that you'd like to use in Javascript, you can assign it to a Javascript variable in a Smarty template as follows
+
+```html
+<div>...</div>
+{literal}
+<script type="text/javascript">
+  var data = {/literal}{$data|@json_encode}{literal};
+</script>
+{/literal}
+<div>...</div>
+```
+
+Notice the use of the `@json_encode` variable modifier. This provides output encoding for JSON which is important to prevent XSS. 
 
 ## AngularJS templates {:#angularjs}
 
