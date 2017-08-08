@@ -63,11 +63,9 @@ Sanitizing (also sometimes generally called "**escaping**") refers the process o
 
 ### Validation
 
-The most primitive way to sanitize untrusted data (as in the example above) is to throw an error when it does not conform to the expected format.
+The most primitive way to sanitize untrusted data (as in the example above) is to throw an error when it does not conform to the expected format. This works well for data of known (and simple) types, but can be much more difficult (and less effective) when used for complex data types.
 
-Validation works well for data *inputs* which are of known (and simple) types, but can be much more difficult (and less effective) when used for *outputs* or complex data types.
-
-Validation can also be used for *outputs*. For example, when sending data to MySQL in a query, it's good practice to validate that integers are actually integers.
+Validation is very important for data *inputs*. Likewise, it's a good idea to use it for *outputs*, too. For example, when sending data to MySQL in a query, it's good practice to validate that integers are actually integers.
 
 ### Encoding (aka "escaping") {:#encoding}
 
