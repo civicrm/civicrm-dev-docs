@@ -48,6 +48,8 @@ on completion of civibuild. You should also be able to find it by running
 - `CIVICRM_UF`: Use "UnitTests" unless you're running WebTests or End-to-end
 tests.
 
+For step by step instructions (with screenshots!) see this [StackExchange answer](https://civicrm.stackexchange.com/questions/16489/how-do-i-run-php-unit-tests-w-xdebug-from-within-phpstorm-on-mac/16497#16497).
+
 ### Adding external libraries
 
 It can be frustrating when writing tests the PHPStorm complains about missing
@@ -63,6 +65,8 @@ After that you just add the directory to your project include paths by
 
 [phpstorm-include-paths]: https://www.jetbrains.com/help/phpstorm/configuring-include-paths.html
 [phpunit]: https://github.com/sebastianbergmann/phpunit
+
+Alternatively: always use buildkit to generate you CiviCRM development environment; it ships with many tools - including phpunit4
 
 
 
