@@ -79,6 +79,55 @@ All Smarty tags are evaluated before the sql is run. Commonly used Smarty variab
 
 ## Testing 
 
-Testing When testing upgrades, it's important to run the upgrades against several different databases (representing different versions of CiviCRM and different upgrade paths). The tool "civicrm-upgrade-test" can automate this process. For instructions:
+When testing upgrades, it's important to run the upgrades against several different databases (representing different versions of CiviCRM and different upgrade paths). The tool "civicrm-upgrade-test" can automate this process. For instructions:
+
+### CiviBuild Upgrade test
+When one makes a schema change, one must also prepare and test an upgrade script. The basic cycle is:
+
+1. Modify the upgrade script (*.mysql or *.php -- eg CRM/Upgrade/Incremental/php/FourFive.php)
+2. Load a DB snapshot from an older version (e.g. CiviCRM 4.3.0)
+3. Execute the upgrade script
+4. Repeat until the upgrade works as expected
+
+You can do these steps manually. Of course, it's a bit tedious to generate and track the DB snapshots while reloading them and rerunning the upgrade logic. If you're particularly impatient/mindless (like me), you can use the command:
+
+civibuild upgrade-test BUILDNAME SQLFILE
+For example:
+```shell
+cd build/drupal-demo/sites/all/modules/civicrm
+vi CRM/Upgrade/Incremental/php/FourFive.php
+civibuild upgrade-test drupal-demo 4.3.0-setupsh.sql.bz2
+## Uhoh, that didn't work! Try again...
+vi CRM/Upgrade/Incremental/php/FourFive.php
+civibuild upgrade-test drupal-demo 4.3.0-setupsh.sql.bz2
+## Hooray! It worked.
+```
+
+The file "4.3.0-setupsh.sql.bz2" is a standard DB snapshot bundled with buildkit -- it contains a database from CiviCRM 4.3.0 with randomly-generated data. The "upgrade-test" command will load "4.3.0-setupsh.sql.bz2", execute a headless upgrade, and write any errors to the log. (See console output for details.)
+
+Of course, it's fairly common to encounter different upgrade issues depending on the original DB -- an upgrade script might work if the original DB is v4.3 but fail for v4.2. It's a good idea to test your upgrade logic against multiple versions:
+
+```shell
+civibuild upgrade-test drupal-demo '4.2.*' '4.3.*' '4.4.*'
+```
+
+All of the tests above use standard DB snapshots with randomly-generated data. If you want to test something more specific, then create your own DB snapshot and use it, eg:
+
+```shell
+## Make your own DB with weird data; save a snapshot
+echo "update civicrm_contact set weird=data" | mysql exampledbname
+mysqldump exampledbname | gzip > /tmp/my-snapshot.sql.gz
+## Write some upgrade logic & try it
+vi CRM/Upgrade/Incremental/php/FourFive.php
+civibuild upgrade-test drupal-demo /tmp/my-snapshot.sql.gz
+## Uhoh, that didn't work! Try again...
+vi CRM/Upgrade/Incremental/php/FourFive.php
+civibuild upgrade-test drupal-demo /tmp/my-snapshot.sql.gz
+## Hooray! It worked.
+```
+If at any point you need to backout and load a "known-working" database, then use the DB created by the original build:
+```shell
+civibuild restore drupal-demo
+```
 
 * If using your own processes see [https://github.com/civicrm/civicrm-upgrade-test](https://github.com/civicrm/civicrm-upgrade-test)
