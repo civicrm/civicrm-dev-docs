@@ -48,7 +48,7 @@ on completion of civibuild. You should also be able to find it by running
 - `CIVICRM_UF`: Use "UnitTests" unless you're running WebTests or End-to-end
 tests.
 
-For step by step instructions and screenshots(!) -> please see: https://civicrm.stackexchange.com/questions/16489/how-do-i-run-php-unit-tests-w-xdebug-from-within-phpstorm-on-mac
+For step by step instructions (with screenshots!) see this [StackExchange answer](https://civicrm.stackexchange.com/questions/16489/how-do-i-run-php-unit-tests-w-xdebug-from-within-phpstorm-on-mac/16497#16497).
 
 ### Adding external libraries
 
