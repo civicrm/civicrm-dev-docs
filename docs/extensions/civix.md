@@ -191,7 +191,7 @@ to create a new entity. For this, you can use the command `civix generate:entity
 
 1. Run `civix generate:entity MyEntity` (use CamelCase here). This creates a skeletal file for your XML schema, your BAO, and your API. It does NOT create a skeletal SQL file to create your table or DAO files at this time.
 
-1. Edit the [XML schema definitions](/framework/schema-definition.md) in the `xml` folder to define your desired fields.
+1. Edit the [XML schema definitions](/framework/database/schema-definition.md) in the `xml` folder to define your desired fields.
 
 1. Generate a [DAO file](/core/architecture.md#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
 
