@@ -1,0 +1,230 @@
+# APIv3 Interfaces
+
+The APIv3 has 3 main interfaces along with the PHP Code that can be used to access the API. 
+
+## AJAX Interface
+
+The AJAX interface is one of the more common interfaces used within CiviCRM Code. The AJAX Interface is most commonly seen when used in Javascript code. You can get example AJAX interface code out of the [API Explorer](/api/index#api-explorer) as needed.
+
+### CRM.api3
+`CRM.api3` is a Javascript method prodiced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of a `CRM.api3` call would be
+```javascript
+CRM.api3('entity', 'action', [params], [statusMessage]);
+```
+If you pass TRUE in as the StatusMessage Param, it will display the default status Message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call e.g use the results from a GET call you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event for example
+```javascript
+CRM.api3('entity_tag', 'create', {contact_id:123, tag_id:42})
+  .done(function(result) {
+    console.log(result);
+  });
+```
+
+Using the CRM.api3 method you can pass multiple requests through at once e.g. 
+
+```javascript
+
+var params = [
+  ['email', 'get', {contact_id: 123}],
+  ['phone', 'get', {phone: '555-5555'}]
+];
+CRM.api3(params).done(function(result) {
+  console.log('email result is:', result[0]);
+  console.log('phone result is:', result[1]);
+});
+```
+
+You can also use Associateve Objects in your API call as follows:
+!!!note
+Note: Javascript does not guarantee the ordering of associative objects. To ensure the api calls execute in a specific order, use the array syntax above. If order doesn't matter, you can use the following:
+```
+var params = {
+  one: ['email', 'getoptions', {field: 'location_type_id'}],
+  two: ['phone', 'getoptions', {field: 'phone_type_id', sequential: 1}],
+  three: ['phone', 'get']
+};
+CRM.api3(params).done(function(result) {
+  console.log('email result is:', result.one);
+  console.log('phone options are:', result.two);
+  console.log('phone get result is:', result.three);
+});
+```
+These requests are different to doing a Chained API call as they are making simultaneous API requests and they are not related or dependant on each other.
+
+### Tests 
+
+Qunit tests for `CRM.api3` can be found at `https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3`
+
+You can run the tests by visiting `http://drupal.sandbox.civicrm.org/civicrm/dev/qunit/civicrm/crm-api3` (or the equivalent path on your own CiviCRM sandbox).
+
+### History
+!!!note
+The recommended AJAX interface changed between CiviCRM 4.2 ("cj().crmAPI(...)") and 4.3 ("CRM.api(...)"). and 4.4 ("CRM.api3()") For details see [API changes](https://wiki.civicrm.org/confluence/display/CRMDOC/API+changes).
+
+### crmAPI (AngularJS)
+
+With the advent of Angular being introduced into the CiviCRM Framework. A service was created `crmApi()` which is a variant of `CRM.api3()` for Angular JS. It should be noted that the results are packaged as "Promises" by angular. the crmAPi property can be manipulatd to mock responses and also the JSON encoder  uses `angular.toJson()` to correctly handle hidden properties. Examples of use are
+
+```javascript
+
+angular.module('myModule').controller('myController', function(crmApi) {
+  crmApi('entity_tag', 'create', {contact_id:123, tag_id:42})
+    .then(function(result){
+      console.log(result);
+    });
+});
+```
+
+## Rest Interface
+
+The Rest Interface exampels can also be found in the API exploer as with the AJAX interface. The Rest interface works very much like the AJAX interface however there is one major diffence. The rest interface requires an `api_key` which is attached to the user that will be performing the action against the system and a `site_key` which is the key stored in `civicrm.settings.php`. There must also be a user account in the relevant content managment system for the user associated with the API Key. The main reason for this is that the rest interface unlike the AJAX interface is designed for being access from an extenral site. The Rest Interface defaults to returning xml data however in your API calls you can request to have it return a JSON formatted version. When calling the REST interface you should do it as a `POST` not as a `GET` request. The only API actions that will work over the GET call would be get actions. 
+
+To use the Rest interface use something along the line of 
+```
+https://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?entity=thething&action=doit&key=your_site_key&api_key=the_user_api_key
+```
+Or if you with to have it return json do the following
+```
+https://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?entity=thething&action=doit&key=your_site_key&api_key=the_user_api_key&json=1
+```
+You can also access the AJAX Interface from the rest function but only as an XHR call through the browser not as a regular page 
+```
+http://www.example.org/civicrm/ajax/rest?entity=contact&action=get&json=1
+```
+More information on the security of the AJAX interface and permissions needed can be Found on the [Permissions Page](/security/permissions) in Security.
+
+Example Outputs from the rest Interface are as follows:
+
+Response on searching for contact
+```xml
+<?xml version="1.0"?>
+<ResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Result>
+<contact_id>1</contact_id>
+<contact_type>Individual</contact_type>
+<sort_name>Doe, John</sort_name>
+<display_name>John G Doe</display_name>
+<do_not_email>0</do_not_email>
+<do_not_phone>0</do_not_phone>
+<do_not_mail>0</do_not_mail>
+<do_not_trade>0</do_not_trade>
+<is_opt_out>0</is_opt_out>
+<home_URL>[http://www.example.com]</home_URL>
+<preferred_mail_format>Both</preferred_mail_format>
+<first_name>John</first_name>
+<middle_name>G</middle_name>
+<last_name>Doe</last_name>
+<is_deceased>0</is_deceased>
+<email_id>2</email_id>
+<email>jdoe@example.com</email>
+<on_hold>0</on_hold>
+</Result>
+...
+<Result>
+<contact_id>N</contact_id>
+<contact_type>Individual</contact_type>
+<sort_name>test@example.org</sort_name>
+<display_name>test@example.org</display_name>
+<do_not_email>0</do_not_email>
+<do_not_phone>0</do_not_phone>
+<do_not_mail>0</do_not_mail>
+<do_not_trade>0</do_not_trade>
+<is_opt_out>0</is_opt_out>
+<preferred_mail_format>Both</preferred_mail_format>
+<is_deceased>0</is_deceased>
+<email_id>4</email_id>
+<email>test@example.org</email>
+<on_hold>0</on_hold>
+</Result>
+</ResultSet>
+```
+
+Response to creating a new contact
+```
+<?xml version="1.0"?>
+<ResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Result>
+<contact_id>4</contact_id>
+<is_error>0</is_error>
+</Result>
+</ResultSet>
+```
+
+### Setting up API Keys
+
+Before being able to use the Rest Interface you will need to have set up the `CIVICRM_SITE_KEY` and the users `API_KEY`. There are three methods of creating API keys for users
+
+#### Manual Method
+
+You can enter the key directly in the database This would be done by the following
+
+```sql
+
+UPDATE civicrm_contact
+SET api_key = "your_key_you_made_up"
+WHERE id = "id_of_the_contact_you_want_to_update"
+```
+
+#### API Key Extension
+
+There is now an [API Key Extension](https://civicrm.org/extensions/api-key) which can help manage API Keys of users. If you have enough permissions after installing the extension you will see an API Key Tab appear on the contact  screens. You can then add / edit / delete API keys as necessary. To delete a key just blank the value
+
+#### Using the API Explorer. 
+
+As per the [Stack Echange Thread](http://civicrm.stackexchange.com/questions/9945/how-do-i-set-up-an-api-key-for-a-user) It is possible to set the users API Key through the exploer. 
+
+### Options Parmaters and Chaining in the rest Interface.
+
+When using options in the REST Interface they need to be in array format. This also applies to chaining of API calls. This will mean that users will need to ensure that the arrays are properly html encoded before sending the request. Examples of using Options and Cahining are below
+
+```
+http://example.org/civicrm/extern/rest.php?entity=GroupContact&action=get&group_id=2&options[limit]=25&options[offset]=50
+```
+```
+http://example.org/civicrm/extern/rest.php?entity=Contact&action=create&group_id=2&api.Email.replace[values][params][email]=joeblow@example.com&api.Email.replace[values][params][on_hold]=1
+```
+
+## Smarty API Interface
+
+When building smarty templates you might find you may want to do lookups from the database for some reason. This maybe to get most recent contribution or other information from a contact's record if you adding templates on. The format of the Smarty API call is very similar to that of the APIv3 calls. 
+
+```
+{crmAPI entity="nameobject" method="namemethod" var="namevariable" extraparam1="aa" extraparam2="bb" sequential="1"}
+```
+
+The format is as follows:
+- entity is the content you want to fetch, eg. "contact", "activity", "contribution"...
+- method is get, getcount, search, search_count (it shouldn't be a method that seeks to modify the entity, only to fetch data) - note that 'search' and 'search_count' are deprecated in API v3.0
+- var is the name of the smarty variable you want to assign the result to (eg the list of contacts)
+- extraparams (optional) all the other parameters (as many as you want) are simply used directly as the "params" to the api. cf. the example below
+- sequential (optional) indicates whether the result array should be indexed sequentially (1,2,3...) or by returned IDs. Although it is optional, the default was '0' in CiviCRM up to version 4.3 and '1' in 4.4 so it is advisable to fix it as desired.
+- return (optional). The convention to define the return attributes (return.sort_name return.country...) doesn't work with smarty and is replaced by return="attribute1,attribute2,attribute3.."
+
+For example if you wanted to display a list of contacts
+
+```
+{crmAPI entity='contact' action="get" var="contacts" sequential="0"}
+<ul>
+{foreach from=$contacts.values item=contact}
+<li id="contact_{$contact.contact_id}">{$contact.sort_name}</li>
+{/foreach}</ul>
+```
+Or if you wanted to display a contacts Activities
+
+```
+{crmAPI entity="activity" action="get" var="activities" contact_id=$contactId sequential="0"}
+{foreach from=$activities.values item=activity}
+<p>Activity { $activity.subject } is { $activity.status_id } </p>
+{/foreach}
+```
+
+You can also use the Smarty `print_r` to help debug e.g. in the case above you could call `{$activities|@print_r}`
+
+### Using it for a javascript variable
+
+Instead of displaying the data directly, you might want to use it to initialise a javascript variable. You can now add it directly to the template wihout needing to use the AJAX interface. Which will produce same result but will take less time and server resources
+
+```
+<script>
+var data={crmAPI entity="contact" action="get" contact_type="Individual" ...};
+</script>
+```
