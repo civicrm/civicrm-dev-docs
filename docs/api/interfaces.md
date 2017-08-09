@@ -139,7 +139,7 @@ Response on searching for contact
 ```
 
 Response to creating a new contact
-```
+```xml
 <?xml version="1.0"?>
 <ResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <Result>
@@ -193,11 +193,11 @@ When building smarty templates you might find you may want to do lookups from th
 
 The format is as follows:
 - entity is the content you want to fetch, eg. "contact", "activity", "contribution"...
-- method is get, getcount, search, search_count (it shouldn't be a method that seeks to modify the entity, only to fetch data) - note that 'search' and 'search_count' are deprecated in API v3.0
+- method is `get`, `getcount`, `search`, `search_count` (it shouldn't be a method that seeks to modify the entity, only to fetch data) - note that `search` and `search_count` are deprecated in API v3.0
 - var is the name of the smarty variable you want to assign the result to (eg the list of contacts)
 - extraparams (optional) all the other parameters (as many as you want) are simply used directly as the "params" to the api. cf. the example below
 - sequential (optional) indicates whether the result array should be indexed sequentially (1,2,3...) or by returned IDs. Although it is optional, the default was '0' in CiviCRM up to version 4.3 and '1' in 4.4 so it is advisable to fix it as desired.
-- return (optional). The convention to define the return attributes (return.sort_name return.country...) doesn't work with smarty and is replaced by return="attribute1,attribute2,attribute3.."
+- return (optional). The convention to define the return attributes (`return.sort_name return.country...`) doesn't work with smarty and is replaced by return="attribute1,attribute2,attribute3.."
 
 For example if you wanted to display a list of contacts
 
