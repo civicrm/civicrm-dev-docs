@@ -20,10 +20,10 @@ are supported for accessing the api functions
 -   API functions should match the relevant BAO names & have the
     functions 'get', 'create' and delete'
 -   All functions should receive $params as an array(not a reference)
--   All functions should return either
-    -   an id indexed array of results via
+-   All functions should either
+    -   return an id indexed array of results via
         the `civicrm_api3_create_success()` function
-    -   an appropriate message via throw new api_Exception
+    -   throw an `API_Exception`. Note that `civicrm_api3_create_error` is deprecated
 -   (REVIEW this in light of feedback from bgm that it is not optimal
     for translation) Do not use `ts()` in error messages (this will be
     added in the exception function if you use api_Exception - but you
