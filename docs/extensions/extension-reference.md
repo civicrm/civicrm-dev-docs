@@ -235,17 +235,6 @@ extensions, see [Create an Extension](/extensions/index.md).
 +--------------------------+--------------------------+--------------------------+
 
 
-## Choose unique key for your extension
-
-Every extension has unique name called an **extension key**. It's built
-using Java-like reverse domain naming to make it easier to identify
-unique extensions.
-
-Extension key examples
-
-* If your website is `circleinteractive.co.uk`, and you've developed a payment processor plugin for Sagepay, your extension key might be: `uk.co.circleinteractive.payment.sagepay`
-* If your website is `civiconsulting.com`, and you're developing a custom search for event registration, your extension key might be: `com.civiconsulting.search.eventregistration`.
-
 ## Custom search specific typeInfo fields
 
 Custom search extensions do not require typeInfo section in the info.xml
