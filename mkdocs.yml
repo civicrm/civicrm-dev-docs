@@ -96,10 +96,11 @@ pages:
   - APIv3 Intro: api/index.md
   - APIv3 Usage: api/usage.md
   - APIv3 Actions: api/actions.md
-  - APIv3 Parameters: api/params.md
+  - APIv3 Options: api/options.md
   # APIv3 Permissions: api/permissions.md
   - APIv3 Joins: api/joins.md
   - APIv3 Chaining: api/chaining.md
+  - APIv3 Custom Data: api/custom-data.md
   - APIv3 Examples: api/examples.md
   - APIv3 Interfaces: api/interfaces.md
   - APIv3 Changes: api/changes.md
