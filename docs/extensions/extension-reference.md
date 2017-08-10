@@ -1,33 +1,28 @@
 # Extension Reference
 
-
-# Introduction
+## Introduction
 
 A ***native CiviCRM extension*** is a feature provided by a third-party
 developer which can be installed on CiviCRM. To support automated
 distribution and installation, an extension must be packaged according
 to a particular specification. This page documents the technical
 structure of an extension. For a proper introduction to developing
-extensions, see [Create an
-Extension](/confluence/display/CRMDOC/Create+an+Extension).
+extensions, see [Create an Extension](/extensions/index.md).
 
-# Changelog
+## Changelog
 
-<div class="table-wrap">
+| CiviCRM Version | Description |
+| -- | -- |
+| 4.5 | `<develStage>` is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
+| 4.2 | Most extensions should be packaged as generic *module* rather than type-specific extensions.
+| 4.2 | `<downloadUrl>` is optional for ordinary development; when using civicrm.org to distribute extensions, the `<downloadUrl>` will be specified when announcing the release on the website
+| 4.2 | `<downloadUrl>` can point to auto-generated zipballs on Github.com
+| 4.2 | Introduce stable support for generic modules.
+| 4.1 | Introduce experimental extension-type for generic modules.
+| 3.3 | Introduce extension-types for payment-processors, report-templates, and custom-searches.
 
-  CiviCRM Version   Description
-  ----------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  4.5               &lt;develStage&gt; is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
-  4.2               Most extensions should be packaged as generic *module* rather than type-specific extensions.
-  4.2               &lt;downloadUrl&gt; is optional for ordinary development; when using civicrm.org to distribute extensions, the &lt;downloadUrl&gt; will be specified when announcing the release on the website
-  4.2               &lt;downloadUrl&gt; can point to auto-generated zipballs on Github.com
-  4.2               Introduce stable support for generic modules.
-  4.1               Introduce experimental extension-type for generic modules*.*
-  3.3               Introduce extension-types for payment-processors, report-templates, and custom-searches.
 
-</div>
-
-# Packaging
+## Packaging
 
 For redistribution, an extension must be packaged as a .zip file which
 meets these requirements:
@@ -36,12 +31,11 @@ meets these requirements:
     folder should match the extension's unique key. (In 4.1 and earlier,
     the matched name was mandatory. In 4.2 and later, the matched name
     is optional.)
--   The folder must include a file named "info.xml" which meets the
+-   The folder must include a file named `info.xml` which meets the
     specification below.
 
-# Tags in info.xml
+## Tags in info.xml
 
-<div class="table-wrap">
 
 +--------------------------+--------------------------+--------------------------+
 | element name             | description              | required?                |
@@ -110,8 +104,8 @@ meets these requirements:
 |                          | the extension.           |                          |
 |                          |                          |                          |
 |                          | EXAMPLE:                 |                          |
-|                          | &lt;file&gt;sagepay&lt;/ |                          |
-|                          | file&gt;.                |                          |
+|                          | <file>sagepay</ |                          |
+|                          | file>.                |                          |
 |                          | Extension zip file and   |                          |
 |                          | extension base directory |                          |
 |                          | contain *sagepay.php*    |                          |
@@ -144,11 +138,11 @@ meets these requirements:
 |                          | be used when the link is |                          |
 |                          | displayed.               |                          |
 +--------------------------+--------------------------+--------------------------+
-| documentation            | **&lt;url**              | **YES**                  |
+| documentation            | **<url**              | **YES**                  |
 |                          | **desc="documentation"&g |                          |
 |                          | t;link                   |                          |
 |                          | to online documentation  |                          |
-|                          | here&lt;/url&gt;**       |                          |
+|                          | here</url>**       |                          |
 +--------------------------+--------------------------+--------------------------+
 | **license**              | the name of the license  | **YES**                  |
 |                          | under which your         |                          |
@@ -211,7 +205,7 @@ meets these requirements:
 |                          | automated release        |                          |
 |                          | management (based on git |                          |
 |                          | tags), the               |                          |
-|                          | &lt;develStage&gt; will  |                          |
+|                          | <develStage> will  |                          |
 |                          | be determined            |                          |
 |                          | automatically by         |                          |
 |                          | searching for "alpha" or |                          |
@@ -224,9 +218,9 @@ meets these requirements:
 |                          | elements - one for each  |                          |
 |                          | supported CiviCRM        |                          |
 |                          | version, e.g.            |                          |
-|                          | &lt;ver&gt;4.2&lt;/ver&g |                          |
-|                          | t;&lt;ver&gt;4.3&lt;/ver |                          |
-|                          | &gt;                     |                          |
+|                          | <ver>4.2</ver&g |                          |
+|                          | t;<ver>4.3</ver |                          |
+|                          | >                     |                          |
 +--------------------------+--------------------------+--------------------------+
 |                          | **ver** - element        | **YES**                  |
 |                          | containing CiviCRM       |                          |
@@ -252,7 +246,6 @@ meets these requirements:
 |                          | details.                 |                          |
 +--------------------------+--------------------------+--------------------------+
 
-</div>
 
 ## Choose unique key for your extension
 
@@ -260,15 +253,10 @@ Every extension has unique name called an **extension key**. It's built
 using Java-like reverse domain naming to make it easier to identify
 unique extensions.
 
+Extension key examples
 
-
-<div class="panelMacro">
-
-+--+
-|  |
-+--+
-
-</div>
+* If your website is `circleinteractive.co.uk`, and you've developed a payment processor plugin for Sagepay, your extension key might be: `uk.co.circleinteractive.payment.sagepay`
+* If your website is `civiconsulting.com`, and you're developing a custom search for event registration, your extension key might be: `com.civiconsulting.search.eventregistration`.
 
 ## Custom search specific typeInfo fields
 
@@ -277,7 +265,6 @@ file.
 
 ## Report template specific typeInfo fields
 
-<div class="table-wrap">
 
 +--------------------------+--------------------------+--------------------------+
 | element name             | description              | required?                |
@@ -287,11 +274,9 @@ file.
 | **reportUrl**            |                          | **YES**                  |
 +--------------------------+--------------------------+--------------------------+
 
-</div>
 
 ## Payment processor specific typeInfo fields
 
-<div class="table-wrap">
 
 +--------------------------+--------------------------+--------------------------+
 | element name             | description              | required?                |
@@ -327,49 +312,42 @@ file.
 | **paymentType**          |                          | **YES**                  |
 +--------------------------+--------------------------+--------------------------+
 
-</div>
 
-# Example XML - type = Module
+## Example XML - type = Module
 
 Module is the preferred extension type for 4.2+. Modules can include
 forms, form and pre/post processing modifications, custom searches,
 payment processors, reports and more. Prior versions of this page
 document the xml for the legacy format
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeContent panelContent">
-
-    <extension key="eu.tttp.exportexcel" type="module">
-      <file>exportexcel</file>
-      <downloadUrl>http://github.com/TechToThePeople/eu.tttp.excel/archive/master.zip</downloadUrl>
-      <name>Export to Excel</name>
-      <description>Excel isn't very good at importing csv files. If you have screamed at your computer with weird characters, long lines of gibberish and hair pulling, this extension is for you.
-     Technically, it isn't excel but an html table with a header that pretends to be excel. Close enough to trick excel to behave like it doesn't hate you too much.
-      </description>
-      <urls>
-        <url desc="Main Extension Page">http://github.com/TechToThePeople/eu.tttp.excel</url>
-        <url desc="Documentation">http://github.com/TechToThePeople/eu.tttp.excel</url>
-        <url desc="Support">http://forum.civicrm.org</url><url desc="Licensing">http://civicrm.org/licensing</url>
-      </urls>
-      <license>AGPL v3</license>
-      <maintainer>
-        <author>xavier dutoit</author>
-        <email>civicrm@tttp.eu</email>
-      </maintainer>
-      <releaseDate>2012-01-08</releaseDate>
-      <version>1.2</version>
-      <develStage>stable</develStage>
-      <compatibility>
-        <ver>4.1</ver>
-        <ver>4.2</ver>
-      </compatibility>
-      <comments>Enable the extension and export, that's it</comments>
-      <civix>
-        <namespace>CRM/Exportexcel</namespace>
-      </civix>
-    </extension>
-
-</div>
-
-</div>
+```xml
+<extension key="eu.tttp.exportexcel" type="module">
+  <file>exportexcel</file>
+  <downloadUrl>http://github.com/TechToThePeople/eu.tttp.excel/archive/master.zip</downloadUrl>
+  <name>Export to Excel</name>
+  <description>Excel isn't very good at importing csv files. If you have screamed at your computer with weird characters, long lines of gibberish and hair pulling, this extension is for you.
+ Technically, it isn't excel but an html table with a header that pretends to be excel. Close enough to trick excel to behave like it doesn't hate you too much.
+  </description>
+  <urls>
+    <url desc="Main Extension Page">http://github.com/TechToThePeople/eu.tttp.excel</url>
+    <url desc="Documentation">http://github.com/TechToThePeople/eu.tttp.excel</url>
+    <url desc="Support">http://forum.civicrm.org</url><url desc="Licensing">http://civicrm.org/licensing</url>
+  </urls>
+  <license>AGPL v3</license>
+  <maintainer>
+    <author>xavier dutoit</author>
+    <email>civicrm@tttp.eu</email>
+  </maintainer>
+  <releaseDate>2012-01-08</releaseDate>
+  <version>1.2</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>4.1</ver>
+    <ver>4.2</ver>
+  </compatibility>
+  <comments>Enable the extension and export, that's it</comments>
+  <civix>
+    <namespace>CRM/Exportexcel</namespace>
+  </civix>
+</extension>
+```
