@@ -1,45 +1,5 @@
 # Extension Reference
 
-<div class="panel"
-style="background-color: #FFFFCE;border-color: #000;border-style: solid;border-width: 1px;">
-
-<div class="panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: #000;background-color: #F7D6C1;">
-
-**Table of Contents**
-
-</div>
-
-<div class="panelContent" style="background-color: #FFFFCE;">
-
-<div>
-
--   [Introduction](#ExtensionReference-Introduction)
--   [Changelog](#ExtensionReference-Changelog)
--   [Packaging](#ExtensionReference-Packaging)
--   [Tags in info.xml](#ExtensionReference-Tagsininfo.xml)
-
-<!-- -->
-
--   [Choose unique key for your
-    extension](#ExtensionReference-Chooseuniquekeyforyourextension)
--   [Custom search specific typeInfo
-    fields](#ExtensionReference-CustomsearchspecifictypeInfofields)
--   [Report template specific typeInfo
-    fields](#ExtensionReference-ReporttemplatespecifictypeInfofields)
--   [Payment processor specific typeInfo
-    fields](#ExtensionReference-PaymentprocessorspecifictypeInfofields)
-
-<!-- -->
-
--   [Example XML - type =
-    Module](#ExtensionReference-ExampleXML-type=Module)
-
-</div>
-
-</div>
-
-</div>
 
 # Introduction
 
