@@ -22,18 +22,6 @@ extensions, see [Create an Extension](/extensions/index.md).
 | 3.3 | Introduce extension-types for payment-processors, report-templates, and custom-searches.
 
 
-## Packaging
-
-For redistribution, an extension must be packaged as a .zip file which
-meets these requirements:
-
--   All content in the .zip must be stored under a single folder. The
-    folder should match the extension's unique key. (In 4.1 and earlier,
-    the matched name was mandatory. In 4.2 and later, the matched name
-    is optional.)
--   The folder must include a file named `info.xml` which meets the
-    specification below.
-
 ## Tags in info.xml
 
 
