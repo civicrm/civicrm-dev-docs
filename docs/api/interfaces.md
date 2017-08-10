@@ -54,7 +54,7 @@ CRM.api3(params).done(function(result) {
 These requests are different to doing a Chained API call as they are making simultaneous API requests and they are not related or dependant on each other.
 
 !!! note
-    Javascript does not guarantee the *ordering* of associative objects. To ensure the api calls execute in a specific order, use the array syntax instead. 
+    Javascript does not guarantee the *ordering* of associative objects. To ensure the API calls execute in a specific order, use the array syntax instead. 
 
 
 ### Tests 
@@ -88,26 +88,26 @@ angular.module('myModule').controller('myController', function(crmApi) {
 
 ## REST Interface {:#rest}
 
-The REST interface examples can also be found in the API Explorer as with the AJAX interface. The rest interface works very much like the AJAX interface however there is one major difference. The REST interface requires an `api_key` which is attached to the user that will be performing the action against the system and a `site_key` which is the key stored in `civicrm.settings.php`. There must also be a user account in the relevant content management system for the user associated with the API Key. The main reason for this is that the rest interface unlike the AJAX interface is designed for being access from an external site. The REST interface defaults to returning XML data however in your API calls you can request to have it return a JSON formatted version. When calling the REST interface you should do it as a `POST` not as a `GET` request. The only API actions that will work over the GET call would be get actions. 
+The REST interface examples can also be found in the API Explorer as with the AJAX interface. The REST interface works very much like the AJAX interface however there is one major difference. The REST interface requires an `api_key` which is attached to the user that will be performing the action against the system and a `site_key` which is the key stored in `civicrm.settings.php`. There must also be a user account in the relevant content management system for the user associated with the API Key. The main reason for this is that the REST interface unlike the AJAX interface is designed for being accessed from an external site. The REST interface defaults to returning XML data however in your API calls you can request to have it return a JSON formatted version. When calling the REST interface you should do it as a `POST` not as a `GET` request. The only API actions that will work over the GET call would be get actions. 
 
 To use the REST interface use something along the line of 
 
 ```
 https://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?entity=thething&action=doit&key=your_site_key&api_key=the_user_api_key
 ```
-Or if you with to have it return json do the following
+Or if you wish to have it return json do the following
 
 ```
 https://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?entity=thething&action=doit&key=your_site_key&api_key=the_user_api_key&json=1
 ```
-You can also access the AJAX Interface from the rest function but only as an XHR call through the browser not as a regular page 
+You can also access the AJAX Interface from the REST function but only as an XHR call through the browser not as a regular page 
 
 ```
 http://www.example.org/civicrm/ajax/rest?entity=contact&action=get&json=1
 ```
-More information on the security of the AJAX interface and permissions needed can be Found on the [Permissions Page](/security/permissions) in Security.
+More information on the security of the AJAX interface and permissions needed can be found on the [Permissions Page](/security/permissions) in Security.
 
-Example Outputs from the rest Interface are as follows:
+Example Outputs from the REST Interface are as follows:
 
 Response on searching for contact
 
@@ -168,11 +168,11 @@ Response to creating a new contact
 
 ### Setting up API Keys {:#keys}
 
-Before being able to use the Rest Interface you will need to have set up the `CIVICRM_SITE_KEY` and the users `API_KEY`. There are three methods of creating API keys for users
+Before being able to use the REST Interface you will need to have set up the `CIVICRM_SITE_KEY` and the users `API_KEY`. There are three methods of creating API keys for users
 
 #### Manual Method
 
-You can enter the key directly in the database This would be done by the following
+You can enter the key directly in the database. This would be done by the following
 
 ```sql
 UPDATE civicrm_contact
@@ -182,15 +182,15 @@ WHERE id = "id_of_the_contact_you_want_to_update"
 
 #### API Key Extension
 
-There is now an [API Key Extension](https://civicrm.org/extensions/api-key) which can help manage API Keys of users. If you have enough permissions after installing the extension you will see an API Key Tab appear on the contact  screens. You can then add / edit / delete API keys as necessary. To delete a key just blank the value
+There is now an [API Key Extension](https://civicrm.org/extensions/api-key) which can help manage API Keys of users. If you have enough permissions after installing the extension you will see an API Key Tab appear on the contact screens. You can then add / edit / delete API keys as necessary. To delete a key just blank the value
 
 #### Using the API Explorer. 
 
-As per the [Stack Echange Thread](http://civicrm.stackexchange.com/questions/9945/how-do-i-set-up-an-api-key-for-a-user) It is possible to set the users API Key through the exploer. 
+As per the [Stack Echange Thread](http://civicrm.stackexchange.com/questions/9945/how-do-i-set-up-an-api-key-for-a-user) It is possible to set the users API Key through the explorer. 
 
-### Options Parameters and Chaining in the rest Interface.
+### Options Parameters and Chaining in the REST Interface.
 
-When using options in the REST Interface they need to be in array format. This also applies to chaining of API calls. This will mean that users will need to ensure that the arrays are properly html encoded before sending the request. Examples of using Options and Cahining are below
+When using options in the REST Interface they need to be in array format. This also applies to chaining of API calls. This will mean that users will need to ensure that the arrays are properly html encoded before sending the request. Examples of using Options and Chaining are below
 
 ```
 http://example.org/civicrm/extern/rest.php?entity=GroupContact&action=get&group_id=2&options[limit]=25&options[offset]=50
@@ -211,7 +211,7 @@ When building smarty templates you might find you may want to do lookups from th
 The format is as follows:
 
 - `entity` - the content you want to fetch, eg. "contact", "activity", "contribution"...
-- `method` - `get`, `getcount`, `search`, `search_count` (it shouldn't be a method that seeks to modify the entity, only to fetch data) - note that `search` and `search_count` are deprecated in API v3.0
+- `method` - `get`, `getcount`, `search`, `search_count` (it shouldn't be a method that seeks to modify the entity, only to fetch data) - note that `search` and `search_count` are deprecated in APIv3
 - `var` - the name of the smarty variable you want to assign the result to (eg the list of contacts)
 - `extraparams` (optional) - all the other parameters (as many as you want) are simply used directly as the "params" to the api. cf. the example below
 - `sequential` (optional) - indicates whether the result array should be indexed sequentially (1,2,3...) or by returned IDs. Although it is optional, the default was '0' in CiviCRM up to version 4.3 and '1' in 4.4 so it is advisable to fix it as desired.
