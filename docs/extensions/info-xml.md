@@ -87,7 +87,7 @@ Elements acceptable within `<civix>`
 ### `<compatibility>` {:#compatibility}
 
 * Containing element: [`<extension>`](#extension)
-* Description: specifies the versions of CiviCRM which which this extension is compatible
+* Description: specifies the versions of CiviCRM with which this extension is compatible
 * Contains: elements
 
 Elements acceptable within `<compatibility>`
