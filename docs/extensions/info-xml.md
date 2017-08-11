@@ -1,4 +1,4 @@
-# Extension Reference
+# info.xml
 
 ## Introduction
 
