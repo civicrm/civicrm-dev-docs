@@ -299,7 +299,7 @@ Elements acceptable within `<urls>`
 
 | Element | Acceptable instances |
 | -- | -- |
-| [`<url>`](#url) | 1 |
+| [`<url>`](#url) | 1+ |
 
 
 ### `<urlSiteDefault>` {:#urlSiteDefault}
