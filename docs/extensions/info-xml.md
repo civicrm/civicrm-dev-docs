@@ -1,330 +1,356 @@
 # info.xml
 
-## Introduction
+Every CiviCRM [extension](/extensions/index.md) must have an `info.xml` file within it to provide information about the extension. This page is a reference for the schema of the `info.xml` file.
 
-A ***native CiviCRM extension*** is a feature provided by a third-party
-developer which can be installed on CiviCRM. To support automated
-distribution and installation, an extension must be packaged according
-to a particular specification. This page documents the technical
-structure of an extension. For a proper introduction to developing
-extensions, see [Create an Extension](/extensions/index.md).
+Typically, you'll begin by running [civix generate:module](/extensions/civix.md#generate-module) and `civix` will create a basic `info.xml` file for you. Use this page to learn how to customize that file.
+
+## Example
+
+Here is an example of a full `info.xml` file from [CiviVolunteer](https://github.com/civicrm/org.civicrm.volunteer/blob/master/info.xml).
+
+```xml
+<?xml version="1.0"?>
+<extension key="org.civicrm.volunteer" type="module">
+  <file>volunteer</file>
+  <name>CiviVolunteer</name>
+  <description>The CiviVolunteer extension provides tools for signing up, managing, and tracking volunteers.</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Ginkgo Street Labs; CiviCRM, LLC; and the CiviCRM community</author>
+    <email>inquire@ginkgostreet.com</email>
+  </maintainer>
+  <releaseDate>2016-12-06</releaseDate>
+  <version>4.6-2.2.1</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>4.6</ver>
+    <ver>4.7</ver>
+  </compatibility>
+  <comments>
+    Developed by Ginkgo Street Labs and CiviCRM, LLC with contributions from the community. Special thanks to Friends of Georgia State Parks &amp; Historic Sites for funding the initial release, and to The Manhattan Neighborhood Network for funding the 1.4 release.
+  </comments>
+  <civix>
+    <namespace>CRM/Volunteer</namespace>
+  </civix>
+  <urls>
+    <url desc="Documentation">https://docs.civicrm.org/volunteer/en/latest</url>
+  </urls>
+</extension>
+```
 
 ## Changelog
 
 | CiviCRM Version | Description |
 | -- | -- |
-| 4.5 | `<develStage>` is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
+| 4.5 | [`<develStage>`](#develStage) is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
 | 4.2 | Most extensions should be packaged as generic *module* rather than type-specific extensions.
-| 4.2 | `<downloadUrl>` is optional for ordinary development; when using civicrm.org to distribute extensions, the `<downloadUrl>` will be specified when announcing the release on the website
-| 4.2 | `<downloadUrl>` can point to auto-generated zipballs on Github.com
+| 4.2 | [`<downloadUrl>`](#downloadUrl) is optional for ordinary development; when using civicrm.org to distribute extensions, the [`<downloadUrl>`](#downloadUrl) will be specified when announcing the release on the website
+| 4.2 | [`<downloadUrl>`](#downloadUrl) can point to auto-generated zipballs on Github.com
 | 4.2 | Introduce stable support for generic modules.
 | 4.1 | Introduce experimental extension-type for generic modules.
 | 3.3 | Introduce extension-types for payment-processors, report-templates, and custom-searches.
 
+## Elements
 
-## Tags in info.xml
+Here we describe all the elements acceptable within the XML file. They are presented in alphabetical order, but note that **the root element must be [`<extension>`](#extension)**, so you might wish to [begin reading about `<extension>` first](#extension).
 
+### `<author>` {:#author}
 
-+--------------------------+--------------------------+--------------------------+
-| element name             | description              | required?                |
-+==========================+==========================+==========================+
-| **extension**            | enclosing element for    | **YES**                  |
-|                          | all the information in   |                          |
-|                          | info.xml - everything    |                          |
-|                          | needs to sit inside of   |                          |
-|                          | it. Attributes are:      |                          |
-|                          |                          |                          |
-|                          | 1.  **key**: unique name |                          |
-|                          |     of the extension     |                          |
-|                          |     (should match the    |                          |
-|                          |     name of directory    |                          |
-|                          |     this extension       |                          |
-|                          |     resides in). See     |                          |
-|                          |     information on       |                          |
-|                          |     choosing the         |                          |
-|                          |     extension key below  |                          |
-|                          |     for                  |                          |
-|                          |     more information.    |                          |
-|                          | 2.  **type**: one of     |                          |
-|                          |     "module", "search",  |                          |
-|                          |     "payment", "report", |                          |
-|                          |     meaning that this    |                          |
-|                          |     extension is -       |                          |
-|                          |     respectively - a     |                          |
-|                          |     custom module,       |                          |
-|                          |     search, payment      |                          |
-|                          |     processor or         |                          |
-|                          |     custom report.       |                          |
-+--------------------------+--------------------------+--------------------------+
-| **downloadUrl**          | the url to the zip file  | **NO\                    |
-|                          | with your extension.     | **                       |
-|                          |                          |                          |
-|                          | *NOTE: Prior to CiviCRM  |                          |
-|                          | 4.2, the downloadUrl was |                          |
-|                          | mandatory in info.xml.   |                          |
-|                          | It needed to point to a  |                          |
-|                          | plain .zip file whose    |                          |
-|                          | content included a base  |                          |
-|                          | folder; and it was       |                          |
-|                          | mandatory for the base   |                          |
-|                          | folder to be named after |                          |
-|                          | the extension.\          |                          |
-|                          | *                        |                          |
-|                          |                          |                          |
-|                          | *NOTE: Beginning with    |                          |
-|                          | CiviCRM 4.2, developers  |                          |
-|                          | should not normally      |                          |
-|                          | include the downloadUrl. |                          |
-|                          | The information will     |                          |
-|                          | only be required when    |                          |
-|                          | submitting a new release |                          |
-|                          | on civicrm.org.\         |                          |
-|                          | *                        |                          |
-+--------------------------+--------------------------+--------------------------+
-| **file**                 | the name of the file to  | **YES**                  |
-|                          | invoke when extension is |                          |
-|                          | executed (not including  |                          |
-|                          | .php file extension).    |                          |
-|                          | This file must be        |                          |
-|                          | present in the root of   |                          |
-|                          | the extension .zip file  |                          |
-|                          | / in base directory of   |                          |
-|                          | the extension.           |                          |
-|                          |                          |                          |
-|                          | EXAMPLE:                 |                          |
-|                          | <file>sagepay</ |                          |
-|                          | file>.                |                          |
-|                          | Extension zip file and   |                          |
-|                          | extension base directory |                          |
-|                          | contain *sagepay.php*    |                          |
-+--------------------------+--------------------------+--------------------------+
-| **name**                 | name of the extension    | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **label**                | label of the extension.  | **NO**                   |
-|                          | For search extensions,   |                          |
-|                          | this tag is used as the  |                          |
-|                          | menu item text on Custom |                          |
-|                          | Searches list.           |                          |
-+--------------------------+--------------------------+--------------------------+
-| **description**          | description of the       | **YES**                  |
-|                          | extension                |                          |
-+--------------------------+--------------------------+--------------------------+
-| **urls**                 | a section containing all | **YES/NO**               |
-|                          | the urls that you think  |                          |
-|                          | are appropriate and      |                          |
-|                          | necessary for users to   |                          |
-|                          | find out more about what |                          |
-|                          | your extension does,     |                          |
-|                          | additional               |                          |
-|                          | documentation, etc. It's |                          |
-|                          | made of multiple **url** |                          |
-|                          | elements                 |                          |
-+--------------------------+--------------------------+--------------------------+
-| general                  | **url** contains links   | **NO**                   |
-|                          | and has one attribute:   |                          |
-|                          | **desc** - the title to  |                          |
-|                          | be used when the link is |                          |
-|                          | displayed.               |                          |
-+--------------------------+--------------------------+--------------------------+
-| documentation            | **<url**              | **YES**                  |
-|                          | **desc="documentation"&g |                          |
-|                          | t;link                   |                          |
-|                          | to online documentation  |                          |
-|                          | here</url>**       |                          |
-+--------------------------+--------------------------+--------------------------+
-| **license**              | the name of the license  | **YES**                  |
-|                          | under which your         |                          |
-|                          | extension is offered.    |                          |
-|                          | For more information on  |                          |
-|                          | what license to choose,  |                          |
-|                          | see [CiviCRM licensing   |                          |
-|                          | page](http://civicrm.org |                          |
-|                          | /licensing){.external-li |                          |
-|                          | nk}.                     |                          |
-|                          | For technical details on |                          |
-|                          | how to identify a        |                          |
-|                          | license, see [SPDX       |                          |
-|                          | License                  |                          |
-|                          | List](http://www.spdx.or |                          |
-|                          | g/licenses/){.external-l |                          |
-|                          | ink}.                    |                          |
-+--------------------------+--------------------------+--------------------------+
-| **maintainer**           | a section describing     | **YES**                  |
-|                          | maintainer information.  |                          |
-|                          | It has two elements:     |                          |
-+--------------------------+--------------------------+--------------------------+
-|                          | **author** - name of the | **YES**                  |
-|                          | person and/or            |                          |
-|                          | organisation maintaining |                          |
-|                          | the extension            |                          |
-+--------------------------+--------------------------+--------------------------+
-|                          | **email** - extension    | **YES**                  |
-|                          | maintainer's email       |                          |
-|                          | address                  |                          |
-+--------------------------+--------------------------+--------------------------+
-| **releaseDate**          | date of release (use     | **YES**                  |
-|                          | *yyyy-mm-dd* format)     |                          |
-+--------------------------+--------------------------+--------------------------+
-| **version**              | version of this          | **YES**                  |
-|                          | extension (used for      |                          |
-|                          | upgrade detection and    |                          |
-|                          | used to sort available   |                          |
-|                          | releases for automated   |                          |
-|                          | distribution)            |                          |
-|                          |                          |                          |
-|                          | Valid version formats    |                          |
-|                          | include:                 |                          |
-|                          |                          |                          |
-|                          |     '1', '1.1', '1.2.3.4 |                          |
-|                          | ', '1.2-3', '1.2.alpha2' |                          |
-|                          | , '1.2.rc2', '2012-01-01 |                          |
-|                          | -1', '2012-01-01', 'r456 |                          |
-|                          | ', 'r5000'               |                          |
-+--------------------------+--------------------------+--------------------------+
-| **develStage**           | development stage - one  | **YES/NO**               |
-|                          | of: "stable", "beta",    |                          |
-|                          | "alpha". By default, the |                          |
-|                          | in-app distribution      |                          |
-|                          | system will only         |                          |
-|                          | publicize "stable"       |                          |
-|                          | releases.                |                          |
-|                          |                          |                          |
-|                          | If using  civicrm.org's  |                          |
-|                          | automated release        |                          |
-|                          | management (based on git |                          |
-|                          | tags), the               |                          |
-|                          | <develStage> will  |                          |
-|                          | be determined            |                          |
-|                          | automatically by         |                          |
-|                          | searching for "alpha" or |                          |
-|                          | "beta" in the version.   |                          |
-+--------------------------+--------------------------+--------------------------+
-| **compatibility**        | section describing       | **YES**                  |
-|                          | CiviCRM version          |                          |
-|                          | compatibility, it's made |                          |
-|                          | of multiple **ver**      |                          |
-|                          | elements - one for each  |                          |
-|                          | supported CiviCRM        |                          |
-|                          | version, e.g.            |                          |
-|                          | <ver>4.2</ver&g |                          |
-|                          | t;<ver>4.3</ver |                          |
-|                          | >                     |                          |
-+--------------------------+--------------------------+--------------------------+
-|                          | **ver** - element        | **YES**                  |
-|                          | containing CiviCRM       |                          |
-|                          | version (two digits with |                          |
-|                          | a dot between them) that |                          |
-|                          | this extension is        |                          |
-|                          | compatible with, the     |                          |
-|                          | allowed values are       |                          |
-|                          | currently: 2.2, 3.0,     |                          |
-|                          | 3.1, 3.2, 3.3, 3.4, 4.0, |                          |
-|                          | 4.1, 4.2, 4.3, 4.4       |                          |
-+--------------------------+--------------------------+--------------------------+
-| **comments**             | additional comments      | **NO**                   |
-+--------------------------+--------------------------+--------------------------+
-| **typeInfo**             | section with type        | **YES/NO**               |
-|                          | specific extension       |                          |
-|                          | information. Each        |                          |
-|                          | extension type has       |                          |
-|                          | different set of fields  |                          |
-|                          | required here - please   |                          |
-|                          | refer to further parts   |                          |
-|                          | of this document for     |                          |
-|                          | details.                 |                          |
-+--------------------------+--------------------------+--------------------------+
+* Containing element: [`<maintainer>`](#maintainer)
+* Description: Name of the person and/or organisation maintaining the extension
+* Contains: text
 
+### `<billingMode>` {:#billingMode}
 
-## Custom search specific typeInfo fields
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
 
-Custom search extensions do not require typeInfo section in the info.xml
-file.
+### `<comments>` {:#comments}
 
-## Report template specific typeInfo fields
+* Containing element: [`<extension>`](#extension)
+* Description: A long description of the extension that will display to the user before installation.
+* Contains: text
 
+### `<compatibility>` {:#compatibility}
 
-+--------------------------+--------------------------+--------------------------+
-| element name             | description              | required?                |
-+==========================+==========================+==========================+
-| **reportUrl**            |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **reportUrl**            |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
+* Containing element: [`<extension>`](#extension)
+* Description: specifies the versions of CiviCRM which which this extension is compatible
+* Contains: elements
 
+Elements acceptable within `<compatibility>`
 
-## Payment processor specific typeInfo fields
+| Element | Acceptable instances | 
+| -- | -- |
+| [`<ver>`](#ver) | 1+ |
+
+### `<description>` {:#description}
+
+* Containing element: [`<extension>`](#extension)
+* Description: A brief (one sentence) human-readable description of what the extension does
+* Contains: text
+
+### `<develStage>` {:#develStage}
+
+* Containing element: [`<extension>`](#extension)
+* Description: development stage
+* Contains: text
+* Acceptable values: `stable`, `beta`, `alpha`
+* Notes: 
+    * If you want your extension to be available for [automated distribution](/extensions/publish.md#automated-distribution), it must be marked as `stable`.
+    * If you use civicrm.org's automated release management (based on git tags), the `<develStage>` value will be determined automatically by searching for "alpha" or "beta" in the version.
+
+### `<downloadUrl>` {:#downloadUrl}
+
+* Containing element: [`<extension>`](#extension)
+* Description: The url to the zip file with your extension.
+* Contains: text
+
+!!! failure "Deprecated"
+    `<downloadUrl>` was deprecated in CiviCRM 4.2
+
+### `<email>` {:#email}
+
+* Containing element: [`<maintainer>`](#maintainer)
+* Description: The maintainer's email address
+* Contains: text
+
+### `<extension>` {:#extension}
+
+* Containing element: None. This is the root element of `info.xml`.
+* Description: Describe one extension
+* Contains: elements
+
+Attributes acceptable for `<extension>`
+
+| Attribute | Description |
+| -- | -- |
+| `key` | The unique name of the extension, e.g. `org.example.myextension`. It should match the name of directory this extension resides in. Read more about [choosing a name](/extensions/index.md#extension-names). |
+| `type` | One of `module`, `search`, `payment`, `report`. |
+
+Elements acceptable within `<extension>`
+
+| Element | Acceptable instances | Acceptable<br>when |
+| -- | -- | -- |
+| [`<compatibility>`](#compatibility) | 1 |  |
+| [`<comments>`](#comments) | 0 or 1 |  |
+| [`<description>`](#description) | 1 |  |
+| [`<develStage>`](#develStage) | 0 or 1 |  |
+| ~~[`<downloadUrl>`](#downloadUrl)~~ | 0 |  |
+| [`<file>`](#file) | 1 |  |
+| [`<label>`](#label) | 0 or 1 | `<extention type="search">` |
+| [`<license>`](#license) | 1 |  |
+| [`<maintainer>`](#maintainer) | 1 |  |
+| [`<name>`](#name)| 1 |  |
+| [`<releaseDate>`](#releaseDate) | 1 |  |
+| [`<typeInfo>`](#typeInfo) | 0 or 1 |  |
+| [`<urls>`](#urls) | 1 |  |
+| [`<version>`](#version) | 1 |  |
+
+### `<file>` {:#file}
+
+* Containing element: [`<extension>`](#extension)
+* Description: The name of the file to invoke when the extension is executed (not including `.php` file extension) This file must be present in the root of the extension `.zip` file / in base directory of the extension
+* Contains: text
+
+### `<isRecur>` {:#isRecur}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<label>` {:#label}
+
+* Containing element: [`<extension>`](#extension)
+* Description: For search extensions, this element is used as the menu item text on Custom Searches list
+* Contains: text
+
+### `<license>` {:#license}
+
+* Containing element: [`<extension>`](#extension)
+* Description: The name of the license under which your extension is offered.
+* Contains: text
+* Example: `AGPL-3.0`
+
+!!! tip
+    For more information on what license to choose, see [CiviCRM licensing page](http://civicrm.org/licensing). For technical details on how to identify a license, see [SPDX License List](http://www.spdx.org/licenses/)
+
+### `<maintainer>` {:#extension-maintainer}
+
+* Containing element: [`<extension>`](#extension)
+* Description: Used to store information about the person (or organization maintaining the extension)
+* Contains: elements
+
+Elements acceptable within `<maintainer>`
+
+| Element | Acceptable instances |
+| -- | -- |
+| [`<author>`](#author) | 1 |
+| [`<email>`](#email) | 1 |
+
+### `<name>` {:#name}
+
+* Containing element: [`<extension>`](#extension)
+* Description: Human-readable name of the extension. It can contain spaces
+* Contains: text
+
+### `<passwordLabel>` {:#passwordLabel}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<paymentType>` {:#paymentType}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<releaseDate>` {:#releaseDate}
+
+* Containing element: [`<extension>`](#extension)
+* Description: The release date of the current version (use `YYYY-MM-DD` format)
+* Contains: text
+
+### `<reportUrl>` {:#reportUrl}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<signatureLabel>` {:#signatureLabel}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<subjectLabel>` {:#subjectLabel}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<typeInfo>` {:#typeInfo}
+
+* Containing element: [`<extension>`](#extension)
+* Description: This is a container tag for other tags which store information that is only relevant to extensions of particular types (e.g. payment processor extensions)
+* Contains: elements
+
+Elements acceptable within `<typeInfo>`
+
+| Element | Acceptable instances | Acceptable<br>when |
+| -- | -- | -- |
+| [`<reportUrl>`](#reportUrl) | 0 or 1 | `<extension type="report">` |
+| [`<userNameLabel>`](#userNameLabel) | 0 or 1 | `<extension type="payment">` |
+| [`<passwordLabel>`](#passwordLabel) | 0 or 1 | `<extension type="payment">` |
+| [`<signatureLabel>`](#signatureLabel) | 0 or 1 | `<extension type="payment">` |
+| [`<subjectLabel>`](#subjectLabel) | 0 or 1 | `<extension type="payment">` |
+| [`<urlSiteDefault>`](#urlSiteDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlApiDefault>`](#urlApiDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlRecurDefault>`](#urlRecurDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlSiteTestDefault>`](#urlSiteTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlApiTestDefault>`](#urlApiTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlRecurTestDefault>`](#urlRecurTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlButtonDefault>`](#urlButtonDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlButtonTestDefault>`](#urlButtonTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<billingMode>`](#billingMode) | 0 or 1 | `<extension type="payment">` |
+| [`<isRecur>`](#isRecur) | 0 or 1 | `<extension type="payment">` |
+| [`<paymentType>`](#paymentType) | 0 or 1 | `<extension type="payment">` |
+
+### `<url>` {:#url}
+
+* Containing element: [`<urls>`](#urls)
+* Description: Represents one URL which is associated with this extension. For example, the URL of the extension's documentation.
+* Contains: text
+
+Attributes acceptable for `<url>`
+
+| Attribute | Contains |  Purpose |
+| -- | -- | -- |
+| `desc` | text | A short (usually one word) description of the URL. This will display next to the URL in the CiviCRM UI before users install the extension. For example "Documentation" and "Support" are common values. |
+
+### `<urls>` {:#urls}
+
+* Containing element: [`<extension>`](#extension)
+* Description: Stores all the urls that you think are appropriate and necessary for users to find out more about what your extension does, additional documentation, etc.
+* Contains: elements
+
+Elements acceptable within `<urls>`
+
+| Element | Acceptable instances |
+| -- | -- |
+| [`<url>`](#url) | 1 |
 
 
-+--------------------------+--------------------------+--------------------------+
-| element name             | description              | required?                |
-+==========================+==========================+==========================+
-| **userNameLabel**        |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **passwordLabel**        |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **signatureLabel**       |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **subjectLabel**         |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlSiteDefault**       |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlApiDefault**        |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlRecurDefault**      |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlSiteTestDefault**   |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlApiTestDefault**    |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlRecurTestDefault**  |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlButtonDefault**     |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **urlButtonTestDefault** |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **billingMode**          |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **isRecur**              |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
-| **paymentType**          |                          | **YES**                  |
-+--------------------------+--------------------------+--------------------------+
+### `<urlSiteDefault>` {:#urlSiteDefault}
 
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
 
-## Example XML - type = Module
+### `<urlApiDefault>` {:#urlApiDefault}
 
-Module is the preferred extension type for 4.2+. Modules can include
-forms, form and pre/post processing modifications, custom searches,
-payment processors, reports and more. Prior versions of this page
-document the xml for the legacy format
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
 
-```xml
-<extension key="eu.tttp.exportexcel" type="module">
-  <file>exportexcel</file>
-  <downloadUrl>http://github.com/TechToThePeople/eu.tttp.excel/archive/master.zip</downloadUrl>
-  <name>Export to Excel</name>
-  <description>Excel isn't very good at importing csv files. If you have screamed at your computer with weird characters, long lines of gibberish and hair pulling, this extension is for you.
- Technically, it isn't excel but an html table with a header that pretends to be excel. Close enough to trick excel to behave like it doesn't hate you too much.
-  </description>
-  <urls>
-    <url desc="Main Extension Page">http://github.com/TechToThePeople/eu.tttp.excel</url>
-    <url desc="Documentation">http://github.com/TechToThePeople/eu.tttp.excel</url>
-    <url desc="Support">http://forum.civicrm.org</url><url desc="Licensing">http://civicrm.org/licensing</url>
-  </urls>
-  <license>AGPL v3</license>
-  <maintainer>
-    <author>xavier dutoit</author>
-    <email>civicrm@tttp.eu</email>
-  </maintainer>
-  <releaseDate>2012-01-08</releaseDate>
-  <version>1.2</version>
-  <develStage>stable</develStage>
-  <compatibility>
-    <ver>4.1</ver>
-    <ver>4.2</ver>
-  </compatibility>
-  <comments>Enable the extension and export, that's it</comments>
-  <civix>
-    <namespace>CRM/Exportexcel</namespace>
-  </civix>
-</extension>
-```
+### `<urlRecurDefault>` {:#urlRecurDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<urlSiteTestDefault>` {:#urlSiteTestDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<urlApiTestDefault>` {:#urlApiTestDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<urlRecurTestDefault>` {:#urlRecurTestDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<urlButtonDefault>` {:#urlButtonDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<urlButtonTestDefault>` {:#urlButtonTestDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<ver>` {:#ver}
+
+* Containing element: [`<compatibility>`](#compatibility)
+* Description: a version of CiviCRM with which this extension is compatible
+* Contains: text
+* Example: `4.7`
+
+!!! note
+    It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
+    
+### `<userNameLabel>` {:#userNameLabel}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: *not yet documented*
+* Contains: text
+
+### `<version>` {:#version}
+
+* Containing element: [`<extension>`](#extension)
+* Description: The current version of this extension (used for upgrade detection and used to sort available releases for automated distribution)
+* Contains: text
+
+Valid version formats include: `1`, `1.1`, `1.2.3.4`, `1.2-3`, `1.2.alpha2` , `1.2.rc2`, `2012-01-01-1`, `2012-01-01`, `r456 `, `r5000`
+
