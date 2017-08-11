@@ -66,6 +66,18 @@ Here we describe all the elements acceptable within the XML file. They are prese
 * Description: *not yet documented*
 * Contains: text
 
+### `<civix>` {:#civix}
+
+* Containing element: [`<extension>`](#extension)
+* Description: Used to store settings which [civix](/extensions/civix.md) reads and writes 
+* Contains: elements
+
+Elements acceptable within `<civix>`
+
+| Element | Acceptable instances | 
+| -- | -- |
+| [`<namespace>`](#namespace) | 1 |
+
 ### `<comments>` {:#comments}
 
 * Containing element: [`<extension>`](#extension)
@@ -132,6 +144,7 @@ Elements acceptable within `<extension>`
 
 | Element | Acceptable instances | Acceptable<br>when |
 | -- | -- | -- |
+| [`<civix>`](#civix) | 0 or 1 |  |
 | [`<compatibility>`](#compatibility) | 1 |  |
 | [`<comments>`](#comments) | 0 or 1 |  |
 | [`<description>`](#description) | 1 |  |
@@ -193,6 +206,13 @@ Elements acceptable within `<maintainer>`
 * Containing element: [`<extension>`](#extension)
 * Description: Human-readable name of the extension. It can contain spaces
 * Contains: text
+
+### `<namespace>` {:#namespace}
+
+* Containing element: [`<civix>`](#civix)
+* Description: The PHP namespace that [civix](/extensions/civix.md) uses when generating code 
+* Contains: text
+* Example: `CRM/Volunteer`
 
 ### `<passwordLabel>` {:#passwordLabel}
 
