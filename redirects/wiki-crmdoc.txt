@@ -169,3 +169,4 @@ Database+layer standards/database
 Using+Custom+Data+with+the+API api/custom-data
 CiviReport+Reference reference/civireport
 Manual+testing testing/manual
+Dedupe+and+merge+testing testing/manual
