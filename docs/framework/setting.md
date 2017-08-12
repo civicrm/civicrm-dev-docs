@@ -53,11 +53,11 @@ The Supported Properties for settings are:
 | property | Usage | Example Notes |
 | --- | --- | --- |
 | group | ? | Appears to correspond with the name of the file, doesn't that make it redundant? |
-| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these) |
+| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` |  Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these) |
 | name | Name of this setting| This is the same as the array key. Definitely redundant! |
 | type | Data type| String, Array, Integer, Boolean |
 | default | Default value| Value to use if setting is not set. |
-| add | Version added to CiviCRM|    |
+| add | Version added to CiviCRM| |
 | `quick_form_type` | Widget type (admin form)| e.g YesNo, Element  |
 | `html_type` | Html type (admin form)| Used when `quick_form_type` is "Element". |
 | `html_attributes` |  | size, style, class, etc. |
@@ -65,9 +65,9 @@ The Supported Properties for settings are:
 | description | Description (admin form)| note: do not use ts()  |
 | `help_text` | Popup Help (admin form)| note: do not use ts() |
 | `validate_callback` | Function to call for checking when submitted (admin form)| e.g `CRM_Utils_Rule::url` |
-| `on_change` | Callback function when this setting is altered e.g when you enable a component or logging|   |
+| `on_change` | Callback function when this setting is altered e.g when you enable a component or logging| |
 | `is_domain` | Domain setting| see `civicrm_setting` table |
-| `is_contact` | Contact setting| see `civicrm_setting` table  |
+| `is_contact` | Contact setting| see `civicrm_setting` table |
 | prefetch | Legacy support - will store the setting in the $config object| We need to migrate away from this |
 
 Deprecited settings proerties are :
@@ -126,7 +126,7 @@ It is desirable to make this api handling of domain id part of the api layer for
 1. Choose a group of settings to add the new setting to
 2. Add metadata to the appropriate .settings.php file about the new setting
 3. Choose an admin setting page to add the configuration option to.
-4. Add the name and group to the $_settings array at the top of the file. The rest happens automatically.
+4. Add the name and group to the `$_settings` array at the top of the file. The rest happens automatically.
 5. If the template for that form is not set up to handle new items automatically, add the necessary markup.
 6. Your setting will not be active until you run bin/regen.sh - run it and commit the changes to git.
 
@@ -138,7 +138,7 @@ Do not use the "URL Preferences" group to store any setting that is not a url st
 1. remove `config_only` from the settings - this is simply a case of removing the flag - e.g. [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/a5617bcc7dc59065dcf5309a9c62aafe25d2ec77) The upgrade process will do the conversion when it next runs. Probably calling `civicrm_api3('system', 'flush', ())` or rebuilding menus will too. You might need to ensure the civicrm_cache table is truncated first.
 2.  fix the admin form to still set the setting -  you need to declare the settings on the form
   - the parent class should add them appropriately e.g [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/8f0551201883036cac63d720149953c007d4f10d)
-  - you may need to do other fixups - e.g fix the metadata on the setting e.g. [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/fd0e547bffc97e7acfc90e280cfe6fceb00d3a29)/
+  - you may need to do other fixups - e.g fix the metadata on the setting e.g. [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/fd0e547bffc97e7acfc90e280cfe6fceb00d3a29)
 3.  As long as the 'prefetch' key is set you don't need to alter how the setting is accessed or used as it will still be cached in the $config object. If it's not really appropriate for the setting to be cached into config & it really is legacy you can grep for it & change how it is retrieved to use the api or setting retrieval functions above. Note that if you use getvalue api if will work on all stages on the conversion - ie. getvalue will retrieve 'config_only' settings as well as those that are 'prefetch' or simply settings. Using getvalue can be a migration strategy. If you do this you should also remove the property declaration from the config object.
 4. If you think a setting should be removed from config but are not going to take the time to do it at this stage think about adding a phpdoc comment to the relevant comment block in the config object to that effect.
 
@@ -148,7 +148,7 @@ As with Core Settings, all settings declareed in Extensions should have appropri
 
 1. Provide that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L268).
 2. Declare settings as in the same standard as CiviCRM Core [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/settings/Multisite.setting.php).
-3. Create Settings form, a [good example of generic metada based setings form in an extension](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/CRM/Civixero/Form/XeroSettings.php) - note that only the setting filter is non-generic
+3. Create Settings form, a [good example of generic metadata based setings form in an extension](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/CRM/Civixero/Form/XeroSettings.php) - note that only the setting filter is non-generic
 
 ## Adding Setting Config to Admin Forms.
 
