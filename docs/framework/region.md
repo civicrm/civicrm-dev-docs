@@ -31,7 +31,8 @@ A region is defined by placing a `{crmRegion}` tag within a Smarty template. For
 
 ## Adding content to a region.
 
-The crmRegion tag allows developers to sepcify which section of the page they wish to add their code to. A simple additon would be similar to the following
+The crmRegion tag allows developers to specify which section of the page they wish to add their code to. A simple addition would be similar to the following
+
 ```php
 if (rand(1,100) <= 5) {
   CRM_Core_Region::instance('page-body')->add(array(
@@ -39,7 +40,8 @@ if (rand(1,100) <= 5) {
   ));
 }
 ```
-For more complext formats perhaps needing to use a custom smarty template they can do the following:
+
+For more complex formats (perhaps needing to use a custom smarty) template they can do the following:
 
 ```php
 if (rand(1,100) <= 5) {
@@ -48,7 +50,9 @@ if (rand(1,100) <= 5) {
   ));
 }
 ```
+
 Then create a smarty template similar to:
+
 ```
 <div style="background: red; color: blue; font-size: 5em">
   <marquee>
@@ -58,7 +62,8 @@ Then create a smarty template similar to:
   </marquee>
 </div>
 ```
-The `Add()` method will accecpt a few different paramaters for injecting content into a region: 
+
+The `Add()` method will accept a few different parameters for injecting content into a region: 
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -69,16 +74,18 @@ The `Add()` method will accecpt a few different paramaters for injecting content
 | jquery | String (Javascript) | Add a `<script>` tag which has been guarded using jQuery conventions `jQuery(function($) { });`
 | style | String (CSS) | Add a `<style>` tag with CSS Code |
 
-Any of the above paramaters can be combined with the following additional options to organise the content in regions
+Any of the above parameters can be combined with the following additional options to organise the content in regions
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | name | String | A unique name for the snippet of content being added to the region |
-| weight | Int | Relative postion of this snippet compare to other snippetts (negative - before the default conent; positive - after the default content) |
+| weight | Int | Relative position of this snippet compare to other snippets (negative - before the default content; positive - after the default content) |
 | disabled | bool | Should this snippet be displayed or hidden |
 
 ## Replace Content in a Region
-If the defualt content of the region is innaproriate, then you can disable the default content and supply your own: 
+
+If the default content of the region is inappropriate, then you can disable the default content and supply your own: 
+
 ```php
 CRM_Core_Region::instance('page-body')->update('default', array(
   'disabled' => TRUE,
@@ -92,7 +99,7 @@ CRM_Core_Region::instance('page-body')->add(array(
 
 When adding a new region in the core templates, use a model similar to the file hierarchy of the template file itself.
 
-For example, if adding a section in templates/CRM/PCP/Page/PCPInfo.tpl, the crmRegion name should be:
+For example, if adding a section in `templates/CRM/PCP/Page/PCPInfo.tpl`, the `crmRegion` name should be:
 
 ```
 {crmRegion name="pcp-page-pcpinfo"}
@@ -100,7 +107,7 @@ For example, if adding a section in templates/CRM/PCP/Page/PCPInfo.tpl, the crmR
 {/crmRegion}
 ```
 
-In some cases, we may want to have multiple regions in a template file. Ideally, model the name on the closest relevant CSS "id". For example, in templates/CRM/PCP/Form/PCP.tpl:
+In some cases, we may want to have multiple regions in a template file. Ideally, model the name on the closest relevant CSS "id". For example, in `templates/CRM/PCP/Form/PCP.tpl`:
 
 ```
 <div id="pcpFields">
@@ -112,8 +119,8 @@ In some cases, we may want to have multiple regions in a template file. Ideally,
 
 As there are not many such regions in the templates at the moment, please help improve this documentation!
 
-!!!note
-Please keep in mind that changing an existing region name will break existing extensions.
+!!! note
+    Please keep in mind that changing an existing region name will break existing extensions.
 
 ## List of Regions
 
@@ -141,7 +148,7 @@ Please keep in mind that changing an existing region name will break existing ex
 
 | Region Name | Type | Details | CiviCRM Version |
 | --- | --- | --- | --- |
-| price-set-1| The block with the priceset (currently only 1 per page but 1 in name for potential for more)| CRM/Price/Form/PriceSet.tpl |  4.6.4 | 
+| price-set-1| The block with the price set (currently only 1 per page but 1 in name for potential for more)| `CRM/Price/Form/PriceSet.tpl` |  4.6.4 | 
 
 ### Contributon Page 
 
@@ -165,8 +172,8 @@ Please keep in mind that changing an existing region name will break existing ex
 | contribute-form-contributionpage-amount-post| Wrapper region after the main fields on amount settings tab| CRM/Contribute/Form/ContributionPage/Amount.tpl |  4.7.13+ | 
 | contribute-form-contributionpage-custom-main| Wrapper region around the main fields on the profile settings tab| CRM/Contribute/Form/ContributionPage/Custom.tpl |  4.7.13+ | 
 | contribute-form-contributionpage-custom-post| Wrapper region after the main fields on the profile settings tab| CRM/Contribute/Form/ContributionPage/Custom.tpl |  4.7.13+ | 
-| contribute-form-contributionpage-premium-main | Wrapper region around the main fields on the preimum settings tab| CRM/Contribute/Form/ContributionPage/Premium.tpl |  4.7.13+ | 
-| contribute-form-contributionpage-premium-post| Wrapper region after the main fields on the preimum settings tab| CRM/Contribute/Form/ContributionPage/Premium.tpl |  4.7.13+ | 
+| contribute-form-contributionpage-premium-main | Wrapper region around the main fields on the premium settings tab| CRM/Contribute/Form/ContributionPage/Premium.tpl |  4.7.13+ | 
+| contribute-form-contributionpage-premium-post| Wrapper region after the main fields on the premium settings tab| CRM/Contribute/Form/ContributionPage/Premium.tpl |  4.7.13+ | 
 | contribute-form-contributionpage-settings-main| Wrapper region around the main fields on the main settings tab| CRM/Contribute/Form/ContributionPage/Settings.tpl |  4.7.13+ | 
 | contribute-form-contributionpage-settings-post| Wrapper region after the main fields on the main settings tab| CRM/Contribute/Form/ContributionPage/Settings.tpl |  4.7.13+ | 
 | contribute-form-contributionpage-thankyou-main"| Wrapper region around the main fields on the thank you settings tab| CRM/Contribute/Form/ContributionPage/ThankYou.tpl |  4.7.13+ | 
