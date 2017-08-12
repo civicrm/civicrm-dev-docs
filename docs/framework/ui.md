@@ -822,3 +822,279 @@ or else include the smarty template crmeditable.tpl (which contains that
 js snippet). This template if used in 4.6+ will output a deprecation
 warning to the console, as it no longer serves any purpose and will be
 removed in a future version.
+
+
+# Notifications and Confirmations
+
+<div class="panel"
+style="background-color: #FFFFCE;border-color: #000;border-style: solid;border-width: 1px;">
+
+<div class="panelHeader"
+style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: #000;background-color: #F7D6C1;">
+
+**Table of Contents**
+
+</div>
+
+<div class="panelContent" style="background-color: #FFFFCE;">
+
+<div>
+
+-   [Popup
+    Notifications](#NotificationsandConfirmations-PopupNotifications)
+
+<!-- -->
+
+-   [Bindings](#NotificationsandConfirmations-Bindings)
+-   [Message Types](#NotificationsandConfirmations-MessageTypes)
+
+<!-- -->
+
+-   [Confirmations](#NotificationsandConfirmations-Confirmations)
+-   [Unobtrusive
+    Notifications](#NotificationsandConfirmations-UnobtrusiveNotifications)
+-   [Static Messages](#NotificationsandConfirmations-StaticMessages)
+
+</div>
+
+</div>
+
+</div>
+
+## Popup Notifications
+
+Popup notifications are the main way of alerting a message to the user
+in CiviCRM.
+![](/confluence/download/attachments/73924954/notification-shot.png?version=1&modificationDate=1347315131000&api=v2){.confluence-embedded-image
+width="100"}
+
+### Bindings
+
+#### Javascript: CRM.alert() and $().crmError()
+
+CRM.alert opens a CiviCRM-themed alert.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    CRM.alert(message, title, type, options);
+
+</div>
+
+</div>
+
+$.crmError opens an alert as well as changing the form element to be in
+an error state. The alert will be cleared automatically when the input
+is changed.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    $('#form_element').crmError(ts('Wrong input'));
+
+</div>
+
+</div>
+
+<div class="panelMacro">
+
+!!! note{width="16" height="16"}   CRM.alert() is generally preferred to javascript's built-in alert() function to maintain CiviCRM's consistent UI.
+
+
+</div>
+
+#### PHP: CRM_Core_Session::setStatus()
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    CRM_Core_Session::setStatus($message, $title, $type, $options);
+
+</div>
+
+</div>
+
+### Message Types
+
+The "type" parameter affects the css class of the notification. Although
+it accepts any value, the 4 options supported by CIviCRM's css icons
+are:
+
+-   *alert* (default)
+-   *success*
+-   *info*
+-   *error*
+
+#### Options
+
+Additional options are passed as an array (object in js):
+
+-   **unique**: (default: true) Check if this message was already set
+    before adding
+-   **expires**: how long to display this message before fadeout (in
+    ms)\
+    set to 0 for no expiration\
+    defaults to 10 seconds for most messages, 5 if it has a title but no
+    body, or 0 for errors or messages containing links
+
+## Confirmations
+
+To open a dialog to display a message and give the user 1 or more
+choices:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    CRM.confirm(options)
+      .on('crmConfirm:yes', function() {
+        // Do something
+      })
+      .on('crmConfirm:no', function() {
+        // Don't do something
+      });
+
+</div>
+
+</div>
+
+
+
+The **options** object takes any params accepted by jQuery UI dialog
+(e.g. 'title') plus a few others:
+
+-   **message**: defaults to "Are you sure you want to continue?
+-   **url**: load content from the server (overrides 'message' param)
+-   **options**: associative list of buttons keyed by the name of the
+    event they will trigger. Defaults to\
+    {no: "Cancel", yes: "Continue"}.\
+    You could add another button e.g. {maybe: ts('Not sure yet')} and
+    when clicked it would trigger a crmConfirm:maybe event.\
+    Note: in your event handler you can call event.preventDefault() to
+    stop the dialog from closing.
+
+
+
+<div class="panelMacro">
+
+!!! note{width="16" height="16"}   CRM.confirm() is generally preferred to javascript's built-in confirm() function to maintain CiviCRM's consistent UI.
+
+                            NOTE: Unlike window.confirm, CRM.confirm is non-blocking and relies on callbacks rather than interrupting script execution.
+
+
+</div>
+
+## Unobtrusive Notifications
+
+Added in CIviCRM 4.5, these small messages tell the user the status of
+an api call, form submission, or other asynchronous operation without
+getting in the way.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Basic Async Usage**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    CRM.status(messages, request);
+
+</div>
+
+</div>
+
+-   Messages is an object containing start, success, and error keys.
+    Each message can be a string, function returning a string, or null
+    to suppress output.
+-   Message defaults are {start: "Saving...", success: "Saved", error:
+    (no message, displays an alert warning the user that their
+    information was not saved)}
+-   Request is a jQuery deferred object. If you don't pass one in it
+    will be created for you and returned
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Simple Non-Async Usage**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    CRM.status(message, type);
+
+</div>
+
+</div>
+
+-   For simple usage without async operations you can pass in a string
+    as the first param. 2nd param is optional string 'error' if this is
+    not a success msg.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Chaining With CRM.api3**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    CRM.api3(entity, action, params, messages);
+
+</div>
+
+</div>
+
+-   Unfortunately jQuery deferred objects are not extendable so we can't
+    chain CRM.status to an api call. Instead CRM.api3 provides an
+    optional 4th param messages which will be passed into CRM.status.
+    Pass **true** instead of an object to accept the default messages
+    (defaults are set based on action, e.g. "Saving" for create or
+    "Loading" for get).
+
+## Static Messages
+
+To display a static alert box in the document (this was standard in
+CiviCRM 4.2 and below):
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**From Smarty**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    {capture assign=infoMessage}{ts}This is just a yellow box with a message.{/ts}{/capture}
+    {include file="CRM/common/info.tpl" infoType="no-popup"}
+
+</div>
+
+</div>
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**From PHP**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    CRM_Core_Session::setStatus(ts(This is just a yellow box with a message.), '', 'no-popup');
+
+</div>
+
+</div>
