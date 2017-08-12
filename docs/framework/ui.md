@@ -680,3 +680,145 @@ delete icon will be red:
 Non CRM-specific icons used inside of a button will change to
 "dark-icons" when you hover over the button (with the exception of the
 delete icon, which turns red)
+
+
+# In-Place Field Editing
+
+## Background
+
+In-place field editing was added to CiviCRM circa v4.1 and is built upon
+
+-   [The AJAX API](/confluence/display/CRMDOC/AJAX+Interface)
+-   The [Jeditable
+    plugin](http://www.appelsiini.net/projects/jeditable){.external-link}
+    for jQuery
+
+<div class="panelMacro">
+
++--+
+|  |
++--+
+
+</div>
+
+## Wrapper (Entity) Properties
+
+<div class="table-wrap">
+
+  Property             Default if Omitted   Possible Values                                           As Markup              As Data
+  -------------------- -------------------- --------------------------------------------------------- ---------------------- -----------------------
+  **Declaration**      *required*           Wrapper must have class "crm-entity"                      class="crm-entity"     *-*
+  **Entity Name**      *required*           Any API entity                                            id="**contact**-123"   data-entity="contact"
+  **Entity ID**        *required*           Numeric id of existing entity or "new" to add an entity   id="contact-**123**"   data-id="123"
+  **Default Action**   "setvalue"           Any api action                                            -                      data-action="create"
+
+</div>
+
+## <span>Item (Field) Properties</span>
+
+<div class="table-wrap">
+
++----------------+----------------+----------------+----------------+----------------+
+| Property       | Default if     | Possible       | As Markup      | As Data        |
+|                | Omitted        | Values         |                |                |
++================+================+================+================+================+
+| **Declaration* | *required*     | Item must have | class="crm-edi | *-*            |
+| *              |                | class          | table"         |                |
+|                |                | "crm-editable" |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| **Field Name** | *required*     | Any field for  | class="crmf-fi | data-field="fi |
+|                |                | this entity    | eld_name"     | eld_name"     |
++----------------+----------------+----------------+----------------+----------------+
+| **Action**     | (entity        | Any api action | -              | data-action="u |
+|                | default)       | (overrides     |                | pdate"         |
+|                |                | default set at |                |                |
+|                |                | entity level)  |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| **Widget       | text           | text,          | -              | data-type="tex |
+| Type**         |                | textarea,      |                | tarea"         |
+|                |                | select,        |                |                |
+|                |                | boolean        |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| **Empty        | -              | A string to    |                | data-empty-opt |
+| Option**       |                | label the      |                | ion="{ts}-     |
+|                |                | "null" option  |                | none -{/ts}"   |
+|                |                | if the field   |                |                |
+|                |                | is of type     |                |                |
+|                |                | select and the |                |                |
+|                |                | user should be |                |                |
+|                |                | allowed to     |                |                |
+|                |                | choose         |                |                |
+|                |                | nothing.       |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| **Tooltip**    | "Click to      | Any text       |                | data-tooltip=" |
+|                | edit"          |                |                | {ts}Help       |
+|                |                |                |                | text{/ts}"     |
++----------------+----------------+----------------+----------------+----------------+
+| **Placeholder* | (standard edit | Any markup     |                | data-placehold |
+| *              | icon)          |                |                | er="&lt;span&g |
+|                |                |                |                | t;Click        |
+|                |                |                |                | to             |
+|                |                |                |                | edit&lt;/span& |
+|                |                |                |                | gt;"           |
++----------------+----------------+----------------+----------------+----------------+
+| **Select       | (automatic)    | Json-encoded   |                |                |
+| Options**      |                | options (Note: |                |                |
+|                |                | this is rarely |                |                |
+|                |                | needed as      |                |                |
+|                |                | option lists   |                |                |
+|                |                | are            |                |                |
+|                |                | automatically  |                |                |
+|                |                | fetched from   |                |                |
+|                |                | the api by     |                |                |
+|                |                | crmEditable)   |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| **Refresh**    | false          | Boolean        |                | data-refresh=" |
+|                |                |                |                | true"          |
++----------------+----------------+----------------+----------------+----------------+
+
+</div>
+
+## <span>Use With Checkboxes</span>
+
+<span>If a field is marked-up as &lt;input type="checkbox"&gt; then the
+"widget type" property will be ignored and the checkbox will save via
+ajax whenever the user clicks it.</span>
+
+## <span>Example Markup</span>
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Simplified Example Markup**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    <table>
+      <tr class="crm-entity" id="contact-123">
+        <td class="crm-editable crmf-first_name">Fred</td> <!-- textfield (default type) -->
+        <td class="crm-editable crmf-prefix_id" data-type="select" data-empty-option="{ts}- none -{/ts}">Mr.</td> <!-- select list with empty option (note: options will be fetched automatically by the api) -->
+        <td class="crm-editable crmf-is_deceased" data-type="boolean">No</td> <!-- yes/no select -->
+      </tr>
+    </table>
+
+</div>
+
+</div>
+
+## Initializing the crmEditable Widget
+
+As of CiviCRM v4.6 you do not need to do anything to initialize
+crmEditable, it is handled automatically on every
+[crmLoad](http://wiki.civicrm.org/confluence/display/CRMDOC/Ajax+Pages+and+Forms#AjaxPagesandForms-Events.1)
+event.
+
+In previous versions you would need to manually write out the javascript
+<span
+style="color: rgb(0,51,0);">`$.('crm-editable').crmEditable();`</span>
+or else include the smarty template crmeditable.tpl (which contains that
+js snippet). This template if used in 4.6+ will output a deprecation
+warning to the console, as it no longer serves any purpose and will be
+removed in a future version.
