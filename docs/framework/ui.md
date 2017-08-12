@@ -1098,3 +1098,105 @@ CiviCRM 4.2 and below):
 </div>
 
 </div>
+
+
+# Section elements
+
+This element is to be used in the case that you have a number of
+elements that can be broken down into small groups of information. A
+good example of it's use is in the contribution page template.
+
+Here each logical grouping of related form elements are wrapped by a
+"section" div:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <div class="section amount_other-section">
+     <div class="label">
+        <label for="amount_other">Other Amount</label>
+     </div>
+     <div class="content">
+        $ <input type="text" class="form-text" id="amount_other" name="amount_other" onfocus="useAmountOther();" maxlength="10" size="10"/>
+     </div>
+     <div class="clear"/>
+    </div>
+
+</div>
+
+</div>
+
+the abstraction of this for elements **with** a label is as follows:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <div class="section unique_section_name-section">
+     <div class="label">
+        <label>Section Label</label>
+     </div>
+     <div class="content">
+        Section Content
+     </div>
+     <div class="clear"/>
+    </div>
+
+</div>
+
+</div>
+
+which is generated using the following .tpl syntax:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <div class="section {$form.element_name.name}-section">
+     <div class="label">{$form.element_name.label}</div>
+     <div class="content">{$form.element_name.html}</div>
+     <div class="clear"></div>
+    </div>
+
+</div>
+
+</div>
+
+the abstraction of this for elements **without** a label is as follows
+(this will keep the content in line with content from other section's
+that **are** using labels):
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <div class="section unique_section_name-section">
+     <div class="content">
+        Section Content
+     </div>
+     <div class="clear"/>
+    </div>
+
+</div>
+
+</div>
+
+the abstraction of this for elements **without** a label is as follows
+(this allow the content to take up the space normally reserved for
+labels):
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <div class="section unique_section_name-section nolabel-section">
+     <div class="content">
+        Section Content
+     </div>
+     <div class="clear"/>
+    </div>
+
+</div>
+
+</div>
