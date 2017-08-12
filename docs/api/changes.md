@@ -4,7 +4,7 @@
 
 ### 4.7.17: OR Operator
 
-Most API "get" operations (with the exception of some nonstandard entities - Contact, Contribution, Pledge & Participant) [now support the OR operator](https://issues.civicrm.org/jira/browse/CRM-20034). Use the API Explorer to see the syntax. ![](https://cloud.githubusercontent.com/assets/2874912/23006857/60c2d65c-f3d2-11e6-9623-9f1ae2c3141e.png)
+Most API "get" operations (with the exception of some nonstandard entities - Contact, Contribution, Pledge & Participant) [now support the OR operator](https://issues.civicrm.org/jira/browse/CRM-20034). Use the API Explorer to see the syntax. ![Example use of API Or functionality](/img/api-or-example.png)
 
 ### 4.7.13: Standardized output of EntityTag api
 
@@ -615,7 +615,7 @@ CiviCRM 4.2+ allowed developers to inject content on a web page using the [Regio
     1.  See also: [checkCaseTypeNameConsistency](/confluence/display/CRMDOC/checkCaseTypeNameConsistency)
     2.  The example CiviCase XML files have been renamed:
       | Case Type (Title)| Case Type (Name) | Old Filename | New Filename |
-      | --- | --- | --- | --- | -
+      | --- | --- | --- | --- |
       | Housing Support | `housing_support` | `HousingSupport.xml` | `housing_support.xml` |
       | Adult Day Care Referral | `adult_day_care_referral` | `AdultDayCareReferral.xml` | `adult_day_care_referral.xml` |
 
