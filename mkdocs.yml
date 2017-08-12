@@ -69,6 +69,7 @@ pages:
   # Database: /framework/database.md
   - Schema definition: framework/schema-definition.md
   - Resources Reference: framework/resources.md
+  - Region Reference: framework/region.md
   - Upgrade Reference: framework/upgrade.md
   - Setting Reference: framework/setting.md
   # Other Reference:
