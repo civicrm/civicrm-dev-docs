@@ -87,7 +87,7 @@ pages:
   - APIv3 Chaining: api/chaining.md
   - APIv3 Examples: api/examples.md
   - APIv3 Interfaces: api/interfaces.md
-  # APIv3 Changes: api/changes.md
+  - APIv3 Changes: api/changes.md
 - Hooks:
   - Using hooks: hooks/index.md
   - All hooks: hooks/list.md
