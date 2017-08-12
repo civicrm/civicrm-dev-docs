@@ -81,14 +81,14 @@ Elements acceptable within `<civix>`
 ### `<classloader>` {:#classloader}
 
 * Containing element: [`<extension>`](#extension)
-* Description: *not yet documented* 
+* Description: Specifies the namespace and file-path of classes to add to the classloader.
 * Contains: elements
 
 Elements acceptable within `<classloader>`
 
 | Element | Acceptable instances | 
 | -- | -- |
-| [`<psr4>`](#psr4) | ? |
+| [`<psr4>`](#psr4) | 1+ |
 
 ### `<comments>` {:#comments}
 
@@ -250,15 +250,15 @@ Elements acceptable within `<maintainer>`
 ### `<psr4>` {:#psr4}
 
 * Containing element: [`<classloader>`](#classloader)
-* Description: *not yet documented*
+* Description: Specifies the namespace and file-path of classes to add to the classloader in PSR-4 Standard.
 * Contains: nothing &mdash; should be empty
 
 Attributes acceptable for `<psr4>`
 
 | Attribute | Contains |  Purpose |
 | -- | -- | -- |
-| `prefix` | text | *Not yet documented* |
-| `path` | text | *Not yet documented* |
+| `prefix` | text | Namespace of classes to add |
+| `path` | text | Directory path to classes to add |
 
 
 ### `<releaseDate>` {:#releaseDate}
