@@ -78,6 +78,18 @@ Elements acceptable within `<civix>`
 | -- | -- |
 | [`<namespace>`](#namespace) | 1 |
 
+### `<classloader>` {:#classloader}
+
+* Containing element: [`<extension>`](#extension)
+* Description: *not yet documented* 
+* Contains: elements
+
+Elements acceptable within `<classloader>`
+
+| Element | Acceptable instances | 
+| -- | -- |
+| [`<psr4>`](#psr4) | ? |
+
 ### `<comments>` {:#comments}
 
 * Containing element: [`<extension>`](#extension)
@@ -127,6 +139,13 @@ Elements acceptable within `<compatibility>`
 * Description: The maintainer's email address
 * Contains: text
 
+### `<ext>` {:#ext}
+
+* Containing element: [`<requires>`](#requires)
+* Description: Specifies the unique name of one extension on which this extension is dependent.
+* Contains: text
+* Example: `org.civicrm.shoreditch`
+
 ### `<extension>` {:#extension}
 
 * Containing element: None. This is the root element of `info.xml`.
@@ -145,6 +164,7 @@ Elements acceptable within `<extension>`
 | Element | Acceptable instances | Acceptable<br>when |
 | -- | -- | -- |
 | [`<civix>`](#civix) | 0 or 1 |  |
+| [`<classloader>`](#classloader) | 0 or 1 |  |
 | [`<compatibility>`](#compatibility) | 1 |  |
 | [`<comments>`](#comments) | 0 or 1 |  |
 | [`<description>`](#description) | 1 |  |
@@ -156,6 +176,7 @@ Elements acceptable within `<extension>`
 | [`<maintainer>`](#maintainer) | 1 |  |
 | [`<name>`](#name)| 1 |  |
 | [`<releaseDate>`](#releaseDate) | 1 |  |
+| [`<requires>`](#requires) | 0 or 1 |  |
 | [`<typeInfo>`](#typeInfo) | 0 or 1 |  |
 | [`<urls>`](#urls) | 1 |  |
 | [`<version>`](#version) | 1 |  |
@@ -226,6 +247,20 @@ Elements acceptable within `<maintainer>`
 * Description: *not yet documented*
 * Contains: text
 
+### `<psr4>` {:#psr4}
+
+* Containing element: [`<classloader>`](#classloader)
+* Description: *not yet documented*
+* Contains: nothing &mdash; should be empty
+
+Attributes acceptable for `<psr4>`
+
+| Attribute | Contains |  Purpose |
+| -- | -- | -- |
+| `prefix` | text | *Not yet documented* |
+| `path` | text | *Not yet documented* |
+
+
 ### `<releaseDate>` {:#releaseDate}
 
 * Containing element: [`<extension>`](#extension)
@@ -237,6 +272,18 @@ Elements acceptable within `<maintainer>`
 * Containing element: [`<typeInfo>`](#typeInfo)
 * Description: *not yet documented*
 * Contains: text
+
+### `<requires>` {:#requires}
+
+* Containing element: [`<extension>`](#extension)
+* Description: Used to to specify other extension on which this extension is dependent
+* Contains: elements
+
+Elements acceptable within `<requires>`
+
+| Element | Acceptable instances | 
+| -- | -- |
+| [`<ext>`](#ext) | 1+ |
 
 ### `<signatureLabel>` {:#signatureLabel}
 
