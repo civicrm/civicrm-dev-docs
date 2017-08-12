@@ -32,7 +32,7 @@ pages:
   # Verifying a Bug Fix: /core/verifying.md
 - Extensions Development:
   - Basics: extensions/index.md
-  - Customization Strategies: extensions/customization-strategies.md
+  - Packaging options: extensions/packaging.md
   - civix: extensions/civix.md
   - Extension Structure: extensions/structure.md
   - info.xml file: extensions/info-xml.md
