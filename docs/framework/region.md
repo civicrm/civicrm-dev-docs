@@ -122,6 +122,53 @@ As there are not many such regions in the templates at the moment, please help i
 !!! note
     Please keep in mind that changing an existing region name will break existing extensions.
 
+## Header Region {#header}
+
+The HTML `<HEAD>` is a critical part of any HTML document, and most frameworks provide features for managing its construction (e.g. Drupal's `drupal_add_js` or Joomla's `JFactory::getDocument()`). Civi's Resource and Region APIs provide a portable way to add resources to this part of the document. However, because the HEAD contains several kinds of elements, and because each CMS has its own nuances, the mechanics are a little intricate.
+
+### General Design
+
+- Registering resources
+  - All CiviCRM code (either in core or extensions) registers Javascript and CSS resources using the Resource API. (`CRM_Core_Resources::singleton()->addScriptUrl(...)`).
+  - The Resource API builds on top of the Region API. Resources may be added to the "html-header" region – or to any other region. (We focus on "html-header" because it's special.)
+  - A list of resources accumulates inside `CRM_Core_Region::instance('html-header')`
+  - There is a list of standard resources that are registered on (almost) every CiviCRM page. The list is generated  by `CRM_Core_Resources::singleton()->addCoreResources()` and `CRM/common/jquery.files.tpl`. (Note: The `addCoreResources()` function provides a very coarse-grained way to register resources and often loads scripts unnecessarily. It should eventually be replaced by something more fine-grained.)
+- Rendering resources
+  - In each CMS, we identify a hook that (a) runs for every page request, (b) runs after the primary Civi code, but (c) runs before the final rendering of the HTML `<HEAD>`. For example, in Drupal 7, `hook_page_build` provides this; in WordPress, the `wp_head` action provides this.
+  - In that hook, we check to see if CiviCRM has bootstrapped for any reason. If so, then we render the region (`CRM_Core_Region::instance('html-header')->render()`) and output it using CMS-appropriate techniques. If CiviCRM hasn't bootstrapped, then we don't do anything.
+  - The render process allows the CMS driver to override some aspects. For example, when rendering a Javascript URL, `CRM_Utils_System_*` is given a chance to process the URL and forgo normal formatting. `CRM_Utils_System_Drupal` uses this to call `drupal_add_js`. `CRM_Utils_System_WordPress` does nothing – it relies on the default behavior (i.e. outputting a `<SCRIPT>` tag)
+
+This design incurres negligible overhead in composing the html-header (unless Civi has bootstrapped for some reason), it also allows for one Resource API on any page even if the primary rendering responsibility for the page doesn't belong to Civi. (For example, this is useful when Civi injects additional forms onto Drupal's user-registration screen, when Civi defines rearrangeable blocks in Drupal, or when Civi shortcodes are used to embed forms within WordPress pages.). It allows but isn't required, each CMS to handle teh management of the `<script>` markup.
+
+### CMS Notes
+
+#### Drupal 6
+
+Drupal 6 does not directly provide a suitable hook. However, it can be emulated: theme('page',...) executes at a suitable time in the request lifecycle, and its behavior can be influenced by manipulating the theme-registry:
+ - Implement [hook_theme_registry_alter](http://api.drupal.org/api/drupal/developer!hooks!core.php/function/hook_theme_registry_alter/6).
+ - If the 'page' handler is a template file, then add a preprocess function.
+ - If the 'page' handler is a function, then replace the function with a wrapper.
+
+At time of writing, `<SCRIPT>` and `<STYLE>` tags are outputted via `drupal_add_js()` and `drupal_add_css()`. Other tags use `drupal_set_html_head()`.
+
+#### Drupal 7
+
+Drupal 7 provides two hooks which appear suitable ([hook_page_build](http://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_page_build/7) and [hook_page_alter](http://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_page_alter/7)). We use [hook_page_build](http://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_page_build/7).
+
+At time of writing, `<SCRIPT>` and `<STYLE>` tags are outputted via `drupal_add_js()` and `drupal_add_css()`. Other tags use `drupal_add_html_head()`.
+
+#### Joomla
+
+The system plugin (plgSystemCivicrmsys) uses [onBeforeCompileHead](http://docs.joomla.org/Plugin/Events/System).
+
+At time of writing, tags are outputted as plain HTML markup.
+
+#### Wordpress
+
+The `civicrm_wp_main()` registers a callback for the [wp_head](http://codex.wordpress.org/Plugin_API/Action_Reference/wp_head) action.
+
+At time of writing, tags are outputted as plain HTML markup.
+
 ## List of Regions
 
 ### Core
