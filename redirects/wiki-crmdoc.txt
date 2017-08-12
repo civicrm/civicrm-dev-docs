@@ -168,3 +168,4 @@ Section+elements framework/ui
 Database+layer standards/database
 Using+Custom+Data+with+the+API api/custom-data
 CiviReport+Reference reference/civireport
+Manual+testing testing/manual

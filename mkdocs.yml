@@ -55,6 +55,7 @@ pages:
   - "Selinium Tests": testing/selinium.md
   - "Continuous Integration": testing/continuous-integration.md
   - "Upgrade Tests": testing/upgrades.md
+  - Manual Testing: testing/manual.md
 - Framework Reference:
   - AngularJS:
     - "AngularJS: Intro": framework/angular/index.md
