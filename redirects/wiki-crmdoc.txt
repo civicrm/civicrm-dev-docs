@@ -144,3 +144,4 @@ AJAX+Interface api/interfaces#ajax-interface
 Smarty+API+interface api/interfaces#smarty-api-interface
 Cache+Reference framework/cache-reference
 Extension+Reference extensions/info-xml
+Settings+Reference framework/setting

@@ -70,6 +70,7 @@ pages:
   - Schema definition: framework/schema-definition.md
   - Resources Reference: framework/resources.md
   - Upgrade Reference: framework/upgrade.md
+  - Setting Reference: framework/setting.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
   # CiviReport: /reference/civireport.md
