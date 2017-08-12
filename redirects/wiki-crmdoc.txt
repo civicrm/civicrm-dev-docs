@@ -148,3 +148,4 @@ Settings+Reference framework/setting
 Region+Reference framework/region
 HTML+Header+Region framework/region#header
 Chaining api/chaining
+Add-on+Formats extensions/customization-strategies
