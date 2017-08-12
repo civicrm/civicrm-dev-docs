@@ -81,14 +81,14 @@ Elements acceptable within `<civix>`
 ### `<classloader>` {:#classloader}
 
 * Containing element: [`<extension>`](#extension)
-* Description: *not yet documented* 
+* Description: This specifies what classes should be added to the Composer ClassLoader
 * Contains: elements
 
 Elements acceptable within `<classloader>`
 
 | Element | Acceptable instances | 
 | -- | -- |
-| [`<psr4>`](#psr4) | ? |
+| [`<psr4>`](#psr4) | Specifies the path and namespace to load into the class loader as per PHP PSR-4 Standard |
 
 ### `<comments>` {:#comments}
 
@@ -250,15 +250,15 @@ Elements acceptable within `<maintainer>`
 ### `<psr4>` {:#psr4}
 
 * Containing element: [`<classloader>`](#classloader)
-* Description: *not yet documented*
+* Description: Specifies the Name space and patho of classes to add the Composer Classloader
 * Contains: nothing &mdash; should be empty
 
 Attributes acceptable for `<psr4>`
 
 | Attribute | Contains |  Purpose |
 | -- | -- | -- |
-| `prefix` | text | *Not yet documented* |
-| `path` | text | *Not yet documented* |
+| `prefix` | text | Namespace of classes to load |
+| `path` | text | Directory path to classes to load |
 
 
 ### `<releaseDate>` {:#releaseDate}
