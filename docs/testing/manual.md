@@ -138,3 +138,197 @@ list screen ("Contacts in Group"  aka "civicrm/group/search"):
 -   Provide a button to force the cache to regenerate
 
 
+# Tarball installation testing
+
+If you are testing a release-candidate or specifically working on the
+installation subsystem, then you may need to try some of the manual
+testing processes below.
+
+## Picking tarballs
+
+
+
+-   For official tarballs, browse <http://civicrm.org/download>
+-   For unofficial nightly tarballs, browse
+    <https://download.civicrm.org/latest>[](http://dist.civicrm.org/by-date/latest/){.external-link}
+-   For a pending pull-request, you must build custom tarballs
+
+To make custom tarballs from a pull request, you need to run
+*distmaker*. Distmaker requires a special file structure and some config
+files, but *civibuild* can automated that. For example:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Building tarballs for a pull-request**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    ## Checkout the code for the pull request. (In this example, it uses civicrm-core.git#8177.)
+    civibuild create dist --url http://dist.localhost --patch https://github.com/civicrm/civicrm-core/pull/8177
+
+    ## Run distmaker
+    cd $HOME/buildkit/build/dist/src/distmaker
+    ./distmaker.sh all
+
+    ## Observe the output
+    ls $HOME/buildkit/build/dist/out/tar
+
+</div>
+
+</div>
+
+
+
+## Option 1. Fully manual installation and upgrade
+
+You can, of course, follow the normal instructions for [Installation and
+Upgrades](/confluence/display/CRMDOC/Installation+and+Upgrades).
+
+If you're not big into scripting/CLI, this is the way to go. But it can
+be time-consuming.
+
+## Option 2. Upgrade a staging site with "drush cvup"
+
+If you have a Drupal staging site with CiviCRM already installed, you
+can use *drush* to load a tarball.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Use civibuild with a tarball**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    ## Formula: drush cvup --tarfile=<path to tarfile> --backupdir=<path to backup dir>
+
+    ## Navigate to your site
+    cd /var/www/drupal
+
+    ## Clear caches
+    drush cc all
+
+    ## Download and extract an official CiviCRM tarball
+    wget http://download.civicrm.org/civicrm-4.7.7-drupal.tar.gz -O /tmp/civicrm-4.7.7-drupal.tar.gz
+    drush cvup --tarfile=/tmp/civicrm-4.7.7-drupal.tar.gz --backupdir=/tmp/myupgrade
+
+    ## OR... Extract a custom CiviCRM tarball
+    drush cvup --tarfile=$HOME/buildkit/build/dist/out/tar/civicrm-4.7.7-drupal.tar.gz --backupdir=/tmp/myupgrade
+
+    ## Clear caches
+    rm -rf sites/default/files/civicrm/templates_c/
+    sdrush cc all
+
+</div>
+
+</div>
+
+See also:
+<http://civicrm.stackexchange.com/questions/4829/is-it-easy-to-upgrade-civicrm-using-drush>
+
+## Option 3. Create an empty site with "civibuild"
+
+If you don't have a staging site, you can
+use* *[buildkit](https://github.com/civicrm/civicrm-buildkit/){.external-link}'s
+[civibuild](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md){.external-link}
+to create empty sites for Drupal, WordPress, and Backdrop and preload
+the tarball. This will cue the system so that it's ready for you to go
+the installation screen.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Use civibuild with a tarball**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    ## Formula:
+    ## civibuild create <name> --type <cms>-empty --url <site-url> --dl <path>=<tarball>
+
+    ## Create an empty Drupal test site. Download and extract a CiviCRM tarball. Display login details.
+    civibuild create dempty --type drupal-empty --url http://dempty.localhost --dl sites/all/modules=http://download.civicrm.org/civicrm-4.7.7-drupal.tar.gz
+
+    ## OR... create an empty Backdrop test site. Extract a custom CiviCRM tarball. Display login details.
+    civibuild create bempty --type backdrop-empty --url http://bempty.localhost --dl modules=$HOME/buildkit/build/dist/out/tar/civicrm-4.7.7-backdrop-unstable.tar.gz
+
+    ## Cleanup a test site
+    civibuild destroy dempty
+
+</div>
+
+</div>
+
+(Note: At time of writing, this supports Drupal 7, WordPress, and
+Backdrop.)
+
+## Option 4. Create a batch of sites with "civihydra" (experimental)
+
+This is a lot like Option 3, but it loops through all the tarballs and
+runs *civibuild* for each of them.
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+
+**Use civibuild with a tarball**
+
+</div>
+
+<div class="codeContent panelContent">
+
+    ## Formula: civihydra create <civicrm-tar-files>
+
+    ## Create D7, WordPress, and Backdrop sites using official tarballs. Display login details.
+    civihydra create http://download.civicrm.org/civicrm-4.7.7-{drupal.tar.gz,wordpress.zip,backdrop-unstable.tar.gz}
+
+    ## OR... create D7, WordPress, and Backdrop sites using your own custom tarballs. Display login details.
+    civihydra create $HOME/buildkit/build/dist/out/tar/*
+
+    ## Cleanup all the test sites
+    civihydra destroy
+
+</div>
+
+</div>
+
+(Note: At time of writing, this supports Drupal 7, WordPress, and
+Backdrop.)
+
+## See also: Headless installation testing for civibuild and git
+
+If you use
+[buildkit](https://github.com/civicrm/civicrm-buildkit/){.external-link}'s
+[civibuild](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md){.external-link},
+then you most likely setup the local source tree using a conventional
+configuration like *drupal-demo* or *wp-demo*. This downloads the
+pristine code from git and performs an automated installation and
+enables a convenient development loop:
+
+-   Write a patch
+-   Run `"civibuild reinstall <name>`".
+-   Check the outcome
+-   (Repeat as necessary)
+-   Commit and open a pull request
+
+(Note: In addition to re-running the installation, you can also test the
+DB upgrades by running "`civibuild upgrade-test <name>`". For more
+information about the available commands, see
+[civibuild.doc](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md){.external-link}
+and
+[daily-coding.doc](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/daily-coding.md#upgrade-tests){.external-link}.)
+
+This is convenient for most development but has a downside:  Most admins
+use the web-based graphical installer included with the tarballs (with a
+filtered version of the source tree). Consequently, the automated
+installation is not quite as representative of how a typical admin
+works.
+

@@ -171,3 +171,4 @@ CiviReport+Reference reference/civireport
 Manual+testing testing/manual
 Dedupe+and+merge+testing testing/manual
 Smart+group+testing testing/manual
+Tarball+installation+testing testing/manual
