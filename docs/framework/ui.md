@@ -94,3 +94,66 @@ loading accordions on page load):
 </div>
 
 </div>
+
+
+# Buttons
+
+Buttons initiate an immediate action.
+
+If you need to offer two opposing functions, such as Edit and Save,
+consider using two separate buttons instead of one dual-purpose button
+that changes state.
+
+CiviCRM provides a pre-themed button element, to be used for buttons
+throughout the system. Button elements may contain any of the optional
+icons provided by CiviCRM.
+
+The code to create a button **with** an icon:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <a class="button_name button" href="#">
+     <span>
+      <div class="icon icon_name-icon"></div>
+      Button Text
+     </span>
+    </a>
+
+</div>
+
+</div>
+
+The code to create a button **without** an icon:
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <a class="button_name button" href="#">
+     <span>
+      Button Text
+     </span>
+    </a>
+
+</div>
+
+</div>
+
+an example using the "Edit" button from the Contact View page :
+
+<div class="code panel" style="border-width: 1px;">
+
+<div class="codeContent panelContent">
+
+    <a title="Edit" class="edit button" href="#">
+     <span>
+     <div class="icon edit-icon"></div>
+     Edit
+     </span>
+    </a>
+
+</div>
+
+</div>
