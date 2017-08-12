@@ -75,3 +75,66 @@ From the dedupe listing screen.
 @todo
 
 
+# Smart group testing
+
+### General use cases
+
+-   Run advanced search by name=Adams. Create a smart group. Check
+    group membership.
+-   Run advanced search by name=Bachman. Create a smart group. Check
+    group membership.
+-   Edit a contact, changing last name to Adams. Check group membership.
+    Observe new member.
+-   Edit a contact, changing last name away from Adams. Check
+    group memberhsip. Observe removed member.
+-   Add a contact with last name Bachman.  Check group membership.
+    Observe  new member.
+-   Delete a contact with last name Bachman.  Check group membership.
+    Observe missing member.
+-   Update definition of group Bachman to filter on
+    contact_type=Individual.  Check group membership.  Observe removed
+    member (household "Bachman family").
+
+### Confounding Factors
+
+Smart groups are cached. The caching behavior is influenced by a couple
+options:
+
+-   **"smartGroupCacheTimeout**": Time-to-live (e.g. "retain the cached
+    list of members for 5 minutes")
+-   **"smart_group_cache_refresh_mode**": Refresh-mode\
+    -   "opportunistic": (e.g. "flush stale caches whenever
+        data changes")
+    -   "deterministic": (e.g. "flush stale caches using a cron job")
+
+You may experience slightly different behaviors depending what was
+cached before, how you time the steps, and which options are chosen.
+
+Think of it this way; each general use-case includes the step "Check
+group membership". As part of that step, you might initially see a stale
+list of members. To force it to display an actual list, you might wait 5
+minutes (to pass the TTL) **OR** hack *civicrm_group.cache_date* to
+set an earlier expiration.
+
+If your main interest is browsing the list of members through the UI,
+then (in my experience) it's not necessary to explicitly run the cron
+job. When you look at a group in the UI, it checks the staleness and
+updates the cache (if it's expired).
+
+However, if your main interest is testing the nuances of refresh-modes,
+then you should *not* check the list of members through the UI. Instead:
+
+-   Repeatedly use SQL to inspect the content of "civicrm_group" and
+    "civicrm_group_contact_cache"
+-   For opportunistic mode, trigger a flush by editing some
+    unrelated contact.
+-   For deterministic cron mode, trigger a flush by calling
+    "Job.group_cache_flush" API.
+
+WISHLIST: For testing/inspection purposes, it would help to update the
+list screen ("Contacts in Group"  aka "civicrm/group/search"):
+
+-   Display the timestamp for when the cache was generated
+-   Provide a button to force the cache to regenerate
+
+
