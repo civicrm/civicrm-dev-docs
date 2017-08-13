@@ -66,6 +66,7 @@ pages:
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
   - Cache Reference: framework/cache.md
+  - AJAX Pages and Forms Refernce: framework/ajax.md
   # Components: /framework/components.md
   # Database: /framework/database.md
   - Schema definition: framework/schema-definition.md
