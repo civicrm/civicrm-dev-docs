@@ -1,6 +1,6 @@
 # API changes
 
-# APIv3: Framework
+## APIv3: Framework
 
 ### 4.7.17: OR Operator
 
@@ -250,7 +250,7 @@ catch (CiviCRM_API3_Exception $e) {
 }
 ```
 
-# APIv3: Specific APIs (Changes)
+## APIv3: Specific APIs (Changes)
 
 ### 4.7.20/4.7.13 : Extensions API Get. All Information on Extensions is returned by default
 
@@ -311,7 +311,7 @@ If you create a contribution then a default line item will be automatically crea
 
 The event api can now clone templates similar to how the UI can do it. Add the param `template_id` and all properties of that event template (including payment processors, profiles, scheduled reminders, etc) will be added to your new event.
 
-# APIv3: Specific APIs (Additions)
+## APIv3: Specific APIs (Additions)
 
 ### 4.7.15 StateProvince API
 
@@ -449,7 +449,7 @@ Implements basic CRUD functionality for payment processors.
 
 Although location blocks are no longer used by CiviCRM contacts, they are currently still used for events. So the main purpose of this api is to allow you to CRUD the address, emails and phones associated with an event.
 
-# Object-Oriented APIs
+## Object-Oriented APIs
 
 This section doesn't document changes to APIv3 per se – rather, it documents changes to public-facing PHP classes. For example, when a developer writes a custom report or custom search, he typically extends a public-facing PHP class, and any changes to that class should be clearly communicated. 
 
@@ -472,7 +472,7 @@ Aside from the community-maintained custom searches in `CRM/Contact/Form/Search/
 
 See [CRM-15965](https://issues.civicrm.org/jira/browse/CRM-15965) for more information.
 
-# Hooks
+## Hooks
 
 This section doesn't document changes to APIv3 per se – rather, it documents changes to the the [Hook](/confluence/display/CRMDOC43/Hook+Reference) interfaces.
 
@@ -512,7 +512,7 @@ When displaying a profile-based listing (such as "civicrm/profile?gid=XXX"), the
 
 $ufGroups provides an array of UFGroup records. In previous releases, this array always contained the same fields for each record (`id`, `title`, `is_reserved`, etc). In 4.4, the fields are usually the same, but they may vary depending on the context. See patches to [CRM-13388](http://issues.civicrm.org/jira/browse/CRM-13388)
 
-# Other
+## Other
 
 ### 4.7.0: CRM_Core_Config: Property loading
 
