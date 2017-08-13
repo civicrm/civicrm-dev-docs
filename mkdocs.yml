@@ -68,8 +68,10 @@ pages:
   - Cache Reference: framework/cache.md
   - AJAX Pages and Forms Refernce: framework/ajax.md
   # Components: /framework/components.md
-  # Database: /framework/database.md
-  - Schema definition: framework/schema-definition.md
+  - Database: 
+    - Overview: framework/database/index.md
+    - XML Schema definition: framework/database/schema-definition.md
+    - Schema Design: framework/database/schema-design.md
   - Resources Reference: framework/resources.md
   - Region Reference: framework/region.md
   - Upgrade Reference: framework/upgrade.md
