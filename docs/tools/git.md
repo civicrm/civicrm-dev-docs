@@ -23,11 +23,19 @@ CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid unde
 
 * GitHub - **[github.com/civicrm](https://github.com/civicrm/)**
     * As of 2017, most of CiviCRM's repositories are hosted on GitHub
-    * Most of the repositories hosted on GitHub are owned by the "CiviCRM" organization. 
-    * The [civicrm-core](https://github.com/civicrm/civicrm-core) repo is the most important one, but there are many other repositories for other aspects of the project.
+    * Most of the repositories hosted on GitHub are owned by the "CiviCRM" organization.
+    * Here are some of the most important repositories hosted on GitHub
+        * [civicrm-core](https://github.com/civicrm/civicrm-core/) - Core application which can be embedded in different systems (Drupal, Joomla, etc).
+        * [civicrm-drupal](https://github.com/civicrm/civicrm-drupal/) - Drupal integration modules, with branches for each CiviCRM release & Drupal major version (e.g. 7.x-4.6, 7.x-4.7, 6.x-4.4, 6.x-4.6).
+        * [civicrm-joomla](https://github.com/civicrm/civicrm-joomla/) - Joomla integration modules.
+        * [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/) - WordPress integration modules.
+        * [civicrm-backdrop](https://github.com/civicrm/civicrm-backdrop/) - Backdrop integration module.
+        * [civicrm-packages](https://github.com/civicrm/civicrm-packages/) - External dependencies required by CiviCRM.
+        * [civicrm-l10n](https://github.com/civicrm/civicrm-l10n/) - Localization data.
+        * *...and [many others](https://github.com/civicrm/) too!*
 
 * GitLab - **[lab.civicrm.org/explore/projects](http://lab.civicrm.org/explore/projects)**
-    * CiviCRM also has some repositories hosted on its own private installation of GitLab
+    * CiviCRM also has some repositories hosted on this self-hosted installation of GitLab
 
 
 ## Git workflow overview {:#contributing}

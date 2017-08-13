@@ -26,7 +26,6 @@ pages:
 - Core Development:
   - When to Edit Core: core/hacking.md
   - Release process: core/release-process.md
-  - Developing CiviCRM: core/develop.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
   - Codebase & Architecture: core/architecture.md
