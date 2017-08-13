@@ -10,10 +10,10 @@ The CiviCRM page request lifecycle has always been closely coupled with traditio
 
 Handler for a jQuery event e.g. `$('a').click(CRM.popup);`
 
-!!!note Automatic via CSS Class
-Note: often you do not need to write javascript at all to use this function. CiviCRM will automatically call it when any `<a>` with class `crm-popup` is clicked.
+!!! note "Automatic via CSS Class"
+    Often you do not need to write javascript at all to use this function. CiviCRM will automatically call it when any `<a>` with class `crm-popup` is clicked.
 
-This function invokes the entire ajax stack (`jQuery dialog`, `crmSnippet`, `jquery.forms`, and `jquery.validate`) by calling `CRM.loadForm` and `CRM.refreshParent` when appropriate.
+    This function invokes the entire ajax stack (`jQuery dialog`, `crmSnippet`, `jquery.forms`, and `jquery.validate`) by calling `CRM.loadForm` and `CRM.refreshParent` when appropriate.
 
 #### Options
 
@@ -24,8 +24,8 @@ Default options can be overridden by adding to the markup of the triggering elem
 
 #### Events
 
-!!!note Event Buffering
-This function buffers `crmFormSuccess` type events and then triggers `crmPopupFormSuccess` once when the dialog is closed. This prevents the underlying content from being needlessly refreshed more than once if multiple save operations are performed in the popup.
+!!! note "Event Buffering"
+    This function buffers `crmFormSuccess` type events and then triggers `crmPopupFormSuccess` once when the dialog is closed. This prevents the underlying content from being needlessly refreshed more than once if multiple save operations are performed in the popup.
 
 The following events will be triggered on the `<a>` element which initiated the popup (see CRM.loadForm below for events triggered on the popup itself):
 
@@ -35,7 +35,7 @@ The following events will be triggered on the `<a>` element which initiated the 
 
 ### CRM.refreshParent
 
-An event callback for CRM.popup or a standalone function to refresh the content around a given element.
+An event callback for `CRM.popup` or a standalone function to refresh the content around a given element.
 
 This function is automatically called for any `<a class="crm-popup">` after `crmPopupFormSuccess`, and can also be used to refresh any section of the page.
 
@@ -51,11 +51,17 @@ The following js functions have been added to facilitate ajax page/form requests
 
 #### $().crmSnippet
 
-This is implemented as a [jQuery UI Widget](http://api.jqueryui.com/jQuery.widget). It should be called on a jquery object like `$('.my-div').crmSnippet({url: CRM.url('civicrm/participant/view', '{reset: 1}')});`
+This is implemented as a [jQuery UI Widget](http://api.jqueryui.com/jQuery.widget). It should be called on a jquery object as follows:
+
+```javascript
+$('.my-div').crmSnippet({
+  url: CRM.url('civicrm/participant/view', '{reset: 1}')
+});
+```
 
 Options:
 
-- `url`:(string: default document.location.href)
+- `url`: (string: default document.location.href)
 - `block`: (bool: default true) whether to use the `block_ui` overlay during load.
 
 Methods:
@@ -71,7 +77,8 @@ Once initialized it will sit dormant and wait for the "refresh" command before l
 ```javascript
 // This instantiates the widget but otherwise does nothing
 $('#my-div').crmSnippet();
-// Reload the snippet as needed. Since we still haven't set the url, it will use the current document location.
+// Reload the snippet as needed.
+// Since we still haven't set the url, it will use the current document location.
 $('document').on('someEvent', function() {
   $('#my-div').crmSnippet('refresh');
 });
@@ -85,6 +92,7 @@ Wrapper around `crmSnippet`. Returns jquery object with `crmSnippet` widget init
 - `dialog`: (assoc object) settings to pass to jQuery dialog. Set this option to false to disable creating a popup.
 
 Example:
+
 ```javascript
 // Open a page snippet in a popup - returns a jquery object
 var $el = CRM.loadPage('/some/url');
@@ -166,7 +174,7 @@ On the client-side, a handler has been attached to `jQuery.ajaxSuccess` which wi
 
 Some fun snippets you can paste directly into your browser console for instant ajaxification of CiviCRM.
 
-**Make every menu item open without a page refresh**
+Make every menu item open without a page refresh
 
 ```javascript
 // This is really fun but never use it in production
