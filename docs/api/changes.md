@@ -117,7 +117,8 @@ See [Pseudoconstant (option list) Reference](/confluence/display/CRMDOC43/Pseudo
 
 The 'sequential' param will cause results to be returned in a non-associative array, which is especially useful for json. Prior to 4.4, this param was ignored for the 'getoptions' action. This has now been fixed.
 
-!!!Caution: Because api calls from the smarty context set 'sequential=1' as a default, this will produce inconsistent results from 4.3 to 4.4 if you do not explicitly set this param. 
+!!! caution
+    Because api calls from the smarty context set 'sequential=1' as a default, this will produce inconsistent results from 4.3 to 4.4 if you do not explicitly set this param. 
 
 See:[CRM-13608](http://issues.civicrm.org/jira/browse/CRM-13608)
 
@@ -204,7 +205,7 @@ CRM-12140: The API update action was a clunky hack (get+create) to workaround th
 
 ### 4.3.0: Default permission changed from "access CiviCRM" to "administer CiviCRM"
 
--   [CRM-11329](http://issues.civicrm.org/jira/browse/CRM-11329#comment-46699){.external-link}
+-   [CRM-11329](http://issues.civicrm.org/jira/browse/CRM-11329#comment-46699)
 -   This affects API functions called with `check_permissions = 1` (all AJAX, & REST calls) where the permission is not otherwise     defined
 -   **This could affect you if**\
     1.   you use Rest / Ajax for non permissioned users or you use the `check_permissions` flag in smarty or php calls AND
@@ -217,31 +218,32 @@ CRM-12140: The API update action was a clunky hack (get+create) to workaround th
 Prior to 4.3, the syntax for [AJAX](/api/interfaces#AJAX) API calls was 
 
 ```javascript
-    cj().crmAPI('Entity', 'action', {...params...}, {
-      callBack: function(data) { ... }
-    });
+cj().crmAPI('Entity', 'action', {...params...}, {
+  callBack: function(data) { ... }
+});
 ```
 
 This notation is still supported in 4.3. However, the recommended notation has changed to:
 
 ```javascript
-    CRM.api('Entity', 'action', {...params...}, {
-      success: function(data) { ... }
-    });
+CRM.api('Entity', 'action', {...params...}, {
+  success: function(data) { ... }
+});
 ```
 
 ### 4.3.0: REST: user/password authentication unsupported
 
 In previous releases, REST API calls supported two forms of authentication:
 
--   Authentication with a per-user API key (e.g. *rest.php?entity=contact&action=get&api_key=...&key=...*) 
--   Authentication with a username/password (e.g.*rest.php?q=civicrm/login&user=...&pass=...&key=...*) and subsequent requests with a PHPSESSID (e.g. rest.php?q=civicrm/contact/get&PHPSESSID=...&key=...)
+-   Authentication with a per-user API key (e.g. `rest.php?entity=contact&action=get&api_key=...&key=...`) 
+-   Authentication with a username/password (e.g.`rest.php?q=civicrm/login&user=...&pass=...&key=...`) and subsequent requests with a PHPSESSID (e.g. `rest.php?q=civicrm/contact/get&PHPSESSID=...&key=...`)
 
 The second form is no longer supported.
 
 ### 4.3.5 / 4.2.10: Introduction of civicrm_api3 wrapper
 
 This allows the syntax
+
 ```php
 try {
   civicrm_api3('contact', 'get', array());
@@ -344,12 +346,13 @@ The StatusPreference API controls access to the new StatusPreference entity.  It
 ### 4.6.0: Attachment API
 
 The Attachment API allows reading and writing attachments. It is a successor to File API which provides a unified interface for managing 
- - a `civicrm_file` records,
- - b `civicrm_entity_file records`, and
- - c file content on disk. Details (at time of writing):
-   - It supports attachments on Activity and Mailing records.
-   - Permissions derive from the permissions on the related entity. (Ex: To attach a file to a mailing, one must have permission to  create/edit mailings. To read a file from an activity, one must have  permission to read activities.) Only coarse-grained permissions are supported.
-   - It supports 1-M relations (one entity to many attachments). Theoretically, the DB schema allows M-M, but this has not been used in practice and requires more complicated DX.
+
+- `civicrm_file` records,
+- `civicrm_entity_file records`, and
+- file content on disk. Details (at time of writing):
+    - It supports attachments on Activity and Mailing records.
+    - Permissions derive from the permissions on the related entity. (Ex: To attach a file to a mailing, one must have permission to  create/edit mailings. To read a file from an activity, one must have  permission to read activities.) Only coarse-grained permissions are supported.
+    - It supports 1-M relations (one entity to many attachments). Theoretically, the DB schema allows M-M, but this has not been used in practice and requires more complicated DX.
 
 ### 4.6.0: Mailing AB API
 
@@ -501,9 +504,11 @@ The new API call "getrefcount" allows one to ask about references to a given rec
 ### 4.4.0: Add hooks for profile forms
 
 Added hooks for 
+
 - "civicrm/profile/view" [hook_civicrm_viewProfile](/hook/hook_civicrm_viewProfile),
 - "civicrm/profile" [hook_civicrm_searchProfile](/hook/hook_civicrm_searchProfile),
 - "civicrm/profile/edit" or "civicrm/profile/create" [hook_civicrm_buildProfile](/hook/hook_civicrm_buildProfile),[hook_civicrm_validateProfile](/hook/hook_civicrm_validateProfile), [hook_civicrm_processProfile](/hook/hook_civicrm_processProfile)).
+
 See also: [CRM-12865](http://issues.civicrm.org/jira/browse/CRM-12865)
 
 ### 4.4.0: hook_civicrm_searchColumns: Change of $values in profile-listings
@@ -538,8 +543,8 @@ See also: [CRM-16373](https://issues.civicrm.org/jira/browse/CRM-16373)
 The global variable `$civicrm_setting` is used to [override CiviCRM settings](/confluence/display/CRMDOC/Override+CiviCRM+Settings). It has been changed:
 
 - In previous versions, settings were indexed by group name (e.g. `Search Preferences`). In v4.7+, settings should be indexed by entity name ("domain" or "contact"). For backward compatibility, most group names are treated as an alias for "domain" or "contact".
-  - Old/Deprecated: `$civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;`
-  - New/Preferred: `$civicrm_setting['domain']['search_autocomplete_count'] = 10;`
+    - Old/Deprecated: `$civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;`
+    - New/Preferred: `$civicrm_setting['domain']['search_autocomplete_count'] = 10;`
 - `$civicrm_setting` is usually modified within the file `civicrm.settings.php`, but it can be modified at runtime (e.g. in  a hook). *If you modify it at runtime*, then you must also call `useMandatory()` to assimilate the changes. Examples for v4.6 and  v4.7 are compared below.
 
 **Override setting at runtime**
@@ -608,18 +613,19 @@ CiviCRM 4.2+ allowed developers to inject content on a web page using the [Regio
 
 1.  CiviCase XML content may be loaded from the database (`civicrm_case_type.definition`) or from a file (as in previous versions). Database content will take precedence over file content.
 2.  CiviCase XML supports additional tags:
-   1. A **&lt;CaseType&gt;** may set **&lt;forkable&gt;0&lt;/forkable&gt;**. Use this if you want  to (a) store XML in a file **and** (b) prohibit editing in the GUI See also: [CRM-15097](https://issues.civicrm.org/jira/browse/CRM-15097)
-   2. An **&lt;ActivitySet&gt;** may set **&lt;sequence&gt;true&lt;/sequence&gt;** to indicate that  activities are performed in a linear, back-to-back fashion. See  also: [CRM-14727](https://issues.civicrm.org/jira/browse/CRM-14727)
-   3.(FIXME: In 4.5.beta6, the two tags have different representations of boolean. In the next release, use "true" or  "false" for both.)
+    1. A **&lt;CaseType&gt;** may set **&lt;forkable&gt;0&lt;/forkable&gt;**. Use this if you want  to (a) store XML in a file **and** (b) prohibit editing in the GUI See also: [CRM-15097](https://issues.civicrm.org/jira/browse/CRM-15097)
+    2. An **&lt;ActivitySet&gt;** may set **&lt;sequence&gt;true&lt;/sequence&gt;** to indicate that  activities are performed in a linear, back-to-back fashion. See  also: [CRM-14727](https://issues.civicrm.org/jira/browse/CRM-14727)
+    3.(FIXME: In 4.5.beta6, the two tags have different representations of boolean. In the next release, use "true" or  "false" for both.)
 
 3.  If a CiviCase XML file references an unknown activity-type or relationship-type, then it will be auto-created as a ManagedEntity. Moreover, if the XML changes or disappears, and if there are no records which rely on the activity-type or relationship-type, then it will be auto-removed. ManagedEntities are reconciled (created/preserved/deleted) when editing Casetypes via GUI, during extension install, and during other system flushes.
 4.  When using CiviCase XML files, the file-name and machine-name (`civicrm_case_type.name`) **should**match. Admins  may occasionally see a warning if these are mismatched.
     1.  See also: [checkCaseTypeNameConsistency](/confluence/display/CRMDOC/checkCaseTypeNameConsistency)
     2.  The example CiviCase XML files have been renamed:
-      | Case Type (Title)| Case Type (Name) | Old Filename | New Filename |
-      | --- | --- | --- | --- |
-      | Housing Support | `housing_support` | `HousingSupport.xml` | `housing_support.xml` |
-      | Adult Day Care Referral | `adult_day_care_referral` | `AdultDayCareReferral.xml` | `adult_day_care_referral.xml` |
+    
+        | Case Type (Title)| Case Type (Name) | Old Filename | New Filename |
+        | --- | --- | --- | --- |
+        | Housing Support | `housing_support` | `HousingSupport.xml` | `housing_support.xml` |
+        | Adult Day Care Referral | `adult_day_care_referral` | `AdultDayCareReferral.xml` | `adult_day_care_referral.xml` |
 
 ### 4.4.6, 4.2.17: Profiles: Removed hidden fields
 
