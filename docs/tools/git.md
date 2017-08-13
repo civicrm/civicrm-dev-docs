@@ -98,7 +98,7 @@ A few elements to include:
    However, some changes are non-functional -- e.g. they cleanup the
    code-style, improve the comments, or improve the test-suite.
 
-### Pull-Request Scope {:#pr-scope}
+### Pull request scope {:#pr-scope}
 
 A good pull request addresses a clearly-defined problem. There should be a detailed description logged in the [issue tracker](http://issues.civicrm.org/). Excellent PRs also increase test coverage. If you are tempted to do additional tweaks or code cleanup outside the scope of that issue, you could make a separate commit and include them in the PR if they are minor & non-controversial, or create a seperate PR if they are more complex.
 
@@ -107,6 +107,15 @@ There is no size limit for PRs as long as they are focused on completely solving
 ### Reviewing a pull request
 
 See [How to review a core pull request](/core/pr-review.md)
+
+### Who merges pull requests {:#pr-merge}
+
+A person may be granted the privilege/responsibility of reviewing and merging pull requests who:
+
+* Is an active contributor to the CiviCRM project.
+* Responds to communications in a timely fashion.
+* Is familiar with current CiviCRM coding standards and best practices.
+* Is a careful proofreader and tester, and who gives thorough constructive feedback.
 
 
 ## Git tasks
