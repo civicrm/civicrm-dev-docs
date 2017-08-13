@@ -3,7 +3,7 @@
 The database structure for core (as well as any schema defined for extensions) is defined in a series of XML files
 ([example](https://github.com/civicrm/civicrm-core/blob/master/xml/schema/SMS/History.xml)).
 These files are
-not packaged in the releases but are available in the Github repository. They
+not packaged in the releases but are available in the GitHub repository. They
 are located in
 [`/xml/schema`](https://github.com/civicrm/civicrm-core/blob/master/xml/schema).
 All the folders within the schema directory also
