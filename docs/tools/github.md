@@ -1,65 +1,15 @@
 # Using GitHub for CiviCRM development
 
 
-
-
-<div class="panelMacro">
-
-+--+
-|  |
-+--+
-
-</div>
-
-<div class="panel"
-style="background-color: #FFFFCE;border-color: #000;border-style: solid;border-width: 1px;">
-
-<div class="panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: #000;background-color: #F7D6C1;">
-
-**Table of Contents**
-
-</div>
-
-<div class="panelContent" style="background-color: #FFFFCE;">
-
-<div>
-
--   [Background](#ContributingtoCiviCRMusingGitHub-Background)
--   [Repositories](#ContributingtoCiviCRMusingGitHub-Repositories)
--   [How-To: Checkout the latest source code from
-    Github](#ContributingtoCiviCRMusingGitHub-How-To:CheckoutthelatestsourcecodefromGithub)
--   [How-To: Create your first
-    change ("pull-request")](#ContributingtoCiviCRMusingGitHub-How-To:Createyourfirstchange(%22pull-request%22))
--   [How-To: Submit a Patch to a Version
-    Branch](#ContributingtoCiviCRMusingGitHub-How-To:SubmitaPatchtoaVersionBranch)
--   [How-To: Manage
-    files](#ContributingtoCiviCRMusingGitHub-How-To:Managefiles)
--   [How-To: Manage day-to-day branching and
-    merging](#ContributingtoCiviCRMusingGitHub-How-To:Manageday-to-daybranchingandmerging)
--   [Tip: Getting out of
-    trouble](#ContributingtoCiviCRMusingGitHub-Tip:Gettingoutoftrouble)
--   [CiviCRM-Git Workflow for Git
-    Experts](#ContributingtoCiviCRMusingGitHub-CiviCRM-GitWorkflowforGitExperts)
--   [Links](#ContributingtoCiviCRMusingGitHub-Links)
-
-</div>
-
-</div>
-
-</div>
-
-## Background
-
 -   [Git is a "source-code management system" or "version control
-    system"](http://learn.github.com/p/intro.html){.external-link} – an
+    system"](http://learn.github.com/p/intro.html) – an
     alternative to Subversion. It was designed for a large open-source
     project (Linux) and has seen broad adoption among other
     FOSS projects.
 -   GitHub is a company which provides hosted, web-based tools for
     enhancing Git development. For open projects like CiviCRM, its
     services are free.
--   Git and GitHub have several advantages:\
+-   Git and GitHub have several advantages:
     -   The tools are already popular among FOSS projects and
         web developers.
     -   The tools are free ("as in beer") and mostly free ("as
@@ -68,8 +18,8 @@ style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: 
     -   They support lightweight branching, merging, and code-review.
     -   They support open teams – anyone can jump-in, make changes, and
         share changes.
--   <span>To develop patches or enhancements to CiviCRM, you should base
-    any changes on the latest source-code from Github.</span>
+-   To develop patches or enhancements to CiviCRM, you should base
+    any changes on the latest source-code from Github.
 -   For more introductions to Git and Github, see
     <https://help.github.com/>.
 
@@ -80,19 +30,6 @@ work with different components, allows different teams to manage each
 component, and will allow all the pieces to be remixed using different
 tools (shell scripts, Drush-make, or composer). The repositories are:
 
-<div class="table-wrap">
-
-  Type   URL                                               Description
-  ------ ------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  git    <https://github.com/civicrm/civicrm-core/>        Core application which can be embedded in different systems (Drupal, Joomla, etc)
-  git    <https://github.com/civicrm/civicrm-drupal/>      Drupal integration modules. (Note: Each major release of Drupal has its own development branch; e.g. 7.x-4.3.x and 6.x-4.3.x would be branches for running CiviCRM 4.3 on Drupal 7 and Drupal 6, respectively)
-  git    <https://github.com/civicrm/civicrm-joomla/>      Joomla integration modules
-  git    <https://github.com/civicrm/civicrm-wordpress/>   Word Press integration modules
-  git    <https://github.com/civicrm/civicrm-packages/>    External dependencies required by CiviCRM
-  svn    <http://svn.civicrm.org/l10n/>                    Localization data
-
-</div>
-
 
 
 ## How-To: Checkout the latest source code from Github
@@ -100,7 +37,7 @@ tools (shell scripts, Drush-make, or composer). The repositories are:
 Because CiviCRM is split across multiple repositories, the easiest way
 to get the latest code is to run a tool which handles all of the
 repositories. Two alternative tools are included with
-[civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit){.external-link}:
+[civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit):
 
 -   *gitify*: Gitify takes an existing CiviCRM installation and replaces
     various folders with the appropriate git repositories. This is
@@ -112,8 +49,8 @@ repositories. Two alternative tools are included with
     with your httpd/mysql servers. However, it provides a reproducible
     configuration (which matches the test infrastructure) and makes it
     easier to maintain multiple installations (v4.4 and v4.5 and v4.6;
-    WP and Drupal; etc) (For more, see <http://buildkit.civicrm.org/> or
-    <https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md> .)
+    WP and Drupal; etc) (For more, see http://buildkit.civicrm.org/ or
+    https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md .)
 
 For now, we'll assume this is your first project and proceed with
 *gitify*. You will need to:
@@ -126,25 +63,14 @@ For now, we'll assume this is your first project and proceed with
 You may need to adapt the command arguments, but a typical case would
 be:
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+    $ cd /var/www/drupal/sites/all/modules/civicrm
+    $ git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
+    $ cd ~/buildkit/bin
+    $ export PATH=$PWD:$PATH
+    $ cd /var/www/drupal/sites/all/modules/civicrm
+    $ gitify Drupal --hooks
 
-**gitify /var/www/drupal/sites/all/modules/civicrm**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
-    cd ~/buildkit/bin
-    export PATH=$PWD:$PATH
-    cd /var/www/drupal/sites/all/modules/civicrm
-    gitify Drupal --hooks
-
-</div>
-
-</div>
 
 Depending on the type of development you do, you may need to checkout
 more or less code. For example, if you work with CiviCRM in multiple
@@ -154,13 +80,21 @@ lot of source-code; if you only use one environment and one language,
 then you might instruct it to fetch less source-code. For more
 instructions, run "gitify" (with no extra parameters).
 
-<div class="panelMacro">
 
-+--+
-|  |
-+--+
 
-</div>
+"git clone" vs "gitify"
+
+If you're already familiar with git, then you've used "git clone" before. You're free to use "git clone" instead of "gitify". "gitify" is basically a wrapper that:
+
+* Calls "git clone" for each of the CiviCRM repositories
+* Optionally registers git-hooks in each of the CiviCRM repositories
+* Calls "GenCode.php" to generate PHP stubs and data files
+
+Skim the bottom of "gitify" to see the details.
+
+Note: the dependencies repository name on Github does not have the same directory name as CiviCRM structure e.g. civicrm-packages -> packages when you clone a repository from the github the would be:
+
+git clone git://github.com/civicrm/civicrm-packages.git packages
 
 
 
@@ -182,9 +116,9 @@ The process:
 
 1.  Checkout the latest source code from Github (see above)
 2.  [Signup for a user account on
-    Github](https://github.com/signup/free){.external-link}
+    Github](https://github.com/signup/free)
 3.  [Set up
-    git](https://help.github.com/articles/set-up-git){.external-link}
+    git](https://help.github.com/articles/set-up-git)
 4.  Create your own "fork" of the CiviCRM code.
     1.  In the web browser, navigate to
         <https://github.com/civicrm/civicrm-core/>
@@ -192,16 +126,13 @@ The process:
         the form.
     3.  You will be taken to a screen that lists files in your "fork".
     4.  Note the top of the screen includes an "HTTP" address like
-        "*<span
-        class="nolink">https://github.com/myuser/civicrm-core.git</span>*"
+        "*https://github.com/myuser/civicrm-core.git*"
         or an "SSH" address like:
         "*git@github.com:myuser/civicrm-core.git*" You will need this in
         a moment.
 
 5.  Link the local code to your "fork"
-    1.  <div class="code panel" style="border-width: 1px;">
-
-        <div class="codeContent panelContent">
+    1.  
 
             ## Navigate to the directory; adjust path to match your local system
             cd /var/www/drupal/sites/all/modules/civicrm
@@ -214,14 +145,9 @@ The process:
             git remote add upstream git://github.com/civicrm/civicrm-core.git
             git fetch upstream
 
-        </div>
-
-        </div>
 
 6.  Create a branch with your changes
-    1.  <div class="code panel" style="border-width: 1px;">
-
-        <div class="codeContent panelContent">
+    1.  
 
             ## Navigate to the directory; adjust the path to match your local system
             cd /var/www/drupal/sites/all/modules/civicrm
@@ -244,9 +170,7 @@ The process:
             git commit templates/CRM/common/footer.tpl -m 'CRM-12603 - subtracted 4 degrees C to make footer cooler'
             git push origin cool-footer
 
-        </div>
-
-        </div>
+        
 
     2.  In order to make it possible for people to understand your
         commit in the future, please follow the recommendations on [Git
@@ -283,21 +207,12 @@ patch and the related pull request.
 2.  Go to <https://github.com/civicrm/civicrm-core>, select the version
     branch you want to create a patch against such as 4.3 or 4.4, then
     click Fork to create a fork of that branch in your github
-    account:![](/confluence/download/attachments/86213305/2013-05-14_18-05-34.png?version=1&modificationDate=1372586127000&api=v2){.confluence-embedded-image}
+    account:![](/confluence/download/attachments/86213305/2013-05-14_18-05-34.png?version=1&modificationDate=1372586127000&api=v2)
 
-<!-- -->
 
 1.  On your local machine,
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
-
-**Create your local branch**
-
-</div>
-
-<div class="codeContent panelContent">
 
     ## go to the directory setup previously using steps 1 - 5 of How-To: Create your first change ("pull-request")
     $ cd /var/www/drupal/sites/all/modules/civicrm
@@ -317,15 +232,11 @@ patch and the related pull request.
     ## push your local issue branch to your github repository
     $ git push origin CRM-12603
 
-</div>
 
-</div>
 
-1.  1.  Note that the commit message should follow standards outlined
-        in [Git Commit Messages for
-        CiviCRM](/confluence/display/CRMDOC/Git+Commit+Messages+for+CiviCRM).
+    1.  Note that the commit message should follow standards outlined
+        in [Git Commit Messages for CiviCRM](/confluence/display/CRMDOC/Git+Commit+Messages+for+CiviCRM).
 
-<!-- -->
 
 1.  In your browser, go to your fork of civicrm-core
     at <https://github.com/myuser/civicrm-core>, click Pull Request, on
@@ -333,15 +244,16 @@ patch and the related pull request.
     on the right change to your local issue fix branch, then underneath
     make sure the Commits and Files Changed is what you expect, and
     finally click Send pull
-    request.![](/confluence/download/attachments/86213305/2013-05-14_17-12-10.png?version=1&modificationDate=1372586127000&api=v2){.confluence-embedded-image}
+    request.![](/confluence/download/attachments/86213305/2013-05-14_17-12-10.png?version=1&modificationDate=1372586127000&api=v2)
+
 2.  Note the pull request number. Go back to JIRA and add a comment
     including the pull request number.
 
 ## How-To: Manage files
 
-*git add*<span style="font-size: 10.0pt;line-height: 13.0pt;"> is used
+*git add* is used
 to add files to a repository.  For example if you want to add an
-additional .js file to the code. </span>
+additional .js file to the code. 
 
 *git commit * creates a point in time, with a message about it, that can
 be pushed to a repository.
@@ -353,11 +265,8 @@ files are combined together you would remove one from the repository.
 files you have changed or added).  It will also show you what will be
 included in your next commit.
 
-Here is a list of *[Major Git
-Commands](http://www.siteground.com/tutorials/git/commands.htm){.external-link} *and
-a list of  [Useful Git
-Commands](http://davidwalsh.name/git-commands){.external-link}.
-
+Here is a list of [Major Git Commands](http://www.siteground.com/tutorials/git/commands.htm) and
+a list of  [Useful Git Commands](http://davidwalsh.name/git-commands).
 
 
 ## How-To: Manage day-to-day branching and merging
@@ -368,42 +277,24 @@ suppose you work on two new features -- one feature provides a fancy
 event registration form, and the second feature adds clairvoyance to the
 automated dedupe system.  You begin work on the first feature:
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
 
-**Begin work on new feature #1, the fancy registration form**
+$ git fetch upstream
+$ git checkout upstream/master -b fancy-registration
+$ vi templates/CRM/Event/Form/FancyRegistration.tpl
+$ git commit templates/CRM/Event/Form/FancyRegistration.tpl
+$ vi templates/CRM/Event/Form/FancyRegistration.tpl
+$ vi CRM/Event/Form/FancyRegistration.php
+$ vi templates/CRM/Event/Form/FancyRegistration.tpl
 
-</div>
-
-<div class="codeContent panelContent">
-
-    me@localhost:~/civicrm$ git fetch upstream
-    me@localhost:~/civicrm$ git checkout upstream/master -b fancy-registration
-    me@localhost:~/civicrm$ vi templates/CRM/Event/Form/FancyRegistration.tpl
-    me@localhost:~/civicrm$ git commit templates/CRM/Event/Form/FancyRegistration.tpl
-    me@localhost:~/civicrm$ vi templates/CRM/Event/Form/FancyRegistration.tpl
-    me@localhost:~/civicrm$ vi CRM/Event/Form/FancyRegistration.php
-    me@localhost:~/civicrm$ vi templates/CRM/Event/Form/FancyRegistration.tpl
-
-</div>
-
-</div>
 
 The fancy registration isn't done yet, but you get a memo from the boss:
 the clairvoyant dedupe is now top priority!  You need to get started on
 it ASAP!  First, tie up any loose ends -- make sure your work has been
 saved.
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
 
-**Tie up loose ends on feature #1**
-
-</div>
-
-<div class="codeContent panelContent">
 
     me@localhost:~/civicrm$ git status
     # On branch fancy-registration
@@ -416,54 +307,30 @@ saved.
     #
     me@localhost:~/civicrm$ git commit templates CRM
 
-</div>
 
-</div>
 
 And then begin work on the new feature. Create a new branch using the
 same "git checkout ... -b ..." command.
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
 
-**Begin work on new feature #2, the clairvoyant deduper**
+$ git fetch upstream
+$ git checkout upstream/master -b clairvoyant-dedupe
+$ vi CRM/Dedupe/BAO/QueryBuilder/Clairvoyant.php
+$ git add CRM/Dedupe/BAO/QueryBuilder/Clairvoyant.php
+$ git commit .
 
-</div>
 
-<div class="codeContent panelContent">
-
-    me@localhost:~/civicrm$ git fetch upstream
-    me@localhost:~/civicrm$ git checkout upstream/master -b clairvoyant-dedupe
-    me@localhost:~/civicrm$ vi CRM/Dedupe/BAO/QueryBuilder/Clairvoyant.php
-    me@localhost:~/civicrm$ git add CRM/Dedupe/BAO/QueryBuilder/Clairvoyant.php
-    me@localhost:~/civicrm$ git commit .
-
-</div>
-
-</div>
 
 If you're clairvoyant yourself, then the clairvoyant deduper will be
 easy to write.  After a few minutes, you can resume work on the fancy
 registration form.
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+$ git checkout fancy-registration
+$ vi templates/CRM/Event/Form/FancyRegistration.tpl
+$ git commit templates/CRM/Event/Form/FancyRegistration.tpl
 
-**Switch back to the feature #1 (after brief interlude)**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    me@localhost:~/civicrm$ git checkout fancy-registration
-    me@localhost:~/civicrm$ vi templates/CRM/Event/Form/FancyRegistration.tpl
-    me@localhost:~/civicrm$ git commit templates/CRM/Event/Form/FancyRegistration.tpl
-
-</div>
-
-</div>
 
 Of course, some of us aren't good at writing clairvoyant code. It may
 take a couple days.  If you switch back to feature #1 after a notable
@@ -471,160 +338,100 @@ delay, then you might encounter a problem: the official "upstream" code
 has moved on!  To be safe, you should pull in the latest changes from
 upstream and reset your MySQL database.
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+$ git checkout fancy-registration
+$ git pull --rebase upstream master
+$ cd bin
+$ ./setup.sh
+$ cd ..
+$ vi templates/CRM/Event/Form/FancyRegistration.tpl
+$ git commit templates/CRM/Event/Form/FancyRegistration.tpl
 
-**Switch back to the feature #1 (after long interlude)**
 
-</div>
-
-<div class="codeContent panelContent">
-
-    me@localhost:~/civicrm$ git checkout fancy-registration
-    me@localhost:~/civicrm$ git pull --rebase upstream master
-    me@localhost:~/civicrm$ cd bin
-    me@localhost:~/civicrm/bin$ ./setup.sh
-    me@localhost:~/civicrm/bin$ cd ..
-    me@localhost:~/civicrm$ vi templates/CRM/Event/Form/FancyRegistration.tpl
-    me@localhost:~/civicrm$ git commit templates/CRM/Event/Form/FancyRegistration.tpl
-
-</div>
-
-</div>
 
 Note: There's a connection with the commands from the earlier step,
 "Begin work on new feature #1".
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+Begin work on new feature #1
 
-**Compare "Begin work" and "Switch back"**
+$ git fetch upstream
+$ git checkout upstream/master -b fancy-registration
 
-</div>
+Switch back to feature #1
+    
+$ git checkout fancy-registration
+$ git pull --rebase upstream master
 
-<div class="codeContent panelContent">
 
-    # Begin work on new feature #1
-    me@localhost:~/civicrm$ git fetch upstream
-    me@localhost:~/civicrm$ git checkout upstream/master -b fancy-registration
-
-    # Switch back to feature #1
-    me@localhost:~/civicrm$ git checkout fancy-registration
-    me@localhost:~/civicrm$ git pull --rebase upstream master
-
-</div>
-
-</div>
 
 In the first case, we create the new branch "fancy-registration"; in the
 second case, we update the existing branch "fancy-registration". In both
 cases, "fancy-registration" builds on top of the latest
 "upstream/master".
 
-<div class="panelMacro">
 
-+--+
-|  |
-+--+
+Push Changes
 
-</div>
+In all the steps above, changes are saved on your local computer but aren't published for other developers to see. When you're ready to share the changes for a particular branch, you should "push" them. Simply run "git push origin <branch-name>". This will send a copy of all your branch to Github. Feel free to push as frequently or rarely as you want.
+
+There is only one hard constraint: publish your changes (with "git push") before requesting review (with a "pull-request").
+
+
 
 ## Tip: Getting out of trouble
 
 To understand what branches you have locally:
 
-<div class="code panel" style="border-width: 1px;">
+$ git branch
 
-<div class="codeContent panelContent">
-
-    $ git branch
-
-</div>
-
-</div>
 
 To prune branches on your local system that are tracking remote branches
 that no longer exist:
 
-<div class="code panel" style="border-width: 1px;">
+$ git -p
 
-<div class="codeContent panelContent">
 
-    $ git -p
-
-</div>
-
-</div>
 
 To delete a branch on your local system:
 
-<div class="code panel" style="border-width: 1px;">
+$ git branch -d my_local_branch
 
-<div class="codeContent panelContent">
-
-    $ git branch -d my_local_branch
-
-</div>
-
-</div>
 
 If you changed a file and you have not git add'ed or committed it, but
 want to discard your changes:
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeContent panelContent">
+$ git checkout path/to/file
 
-    git checkout path/to/file
 
-</div>
-
-</div>
 
 If you altered a file or files and you have git add'ed them or you just
 want to blow away all un-committed changes in your repository:
 
-<div class="code panel" style="border-width: 1px;">
+$ git reset --hard HEAD
 
-<div class="codeContent panelContent">
-
-    git reset --hard HEAD
-
-</div>
-
-</div>
 
 If you committed to your local repository, but you have not pushed, and
 you want to change your previous commit (or commit message):
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeContent panelContent">
+fix the file you want fixed
 
-    # fix the file you want fixed
-    git add path/to/file/you/fixed
-    git commit --amend
+$ git add path/to/file/you/fixed
+$ git commit --amend
 
-</div>
-
-</div>
 
 If you git pull and git tells you have a conflict with your local
 changes:
 
-<div class="code panel" style="border-width: 1px;">
+Edit conflicted files, resolving the conflict
 
-<div class="codeContent panelContent">
+$ git add path/to/conflicted/file/or/files
+$ git commit
 
-    # Edit conflicted files, resolving the conflict
-    git add path/to/conflicted/file/or/files
-    git commit
 
-</div>
 
-</div>
 
 ## CiviCRM-Git Workflow for Git Experts
 
