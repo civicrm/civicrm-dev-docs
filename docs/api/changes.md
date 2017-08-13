@@ -1,5 +1,7 @@
 # API changes
 
+This page lists changes to CiviCRM core which affect the ways in which developers use the API.
+
 ## APIv3: Framework
 
 ### 4.7.17: OR Operator
