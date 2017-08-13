@@ -28,7 +28,7 @@ In general, CiviCRM follow's the [Drupal Coding Standards](https://www.drupal.or
 
 ## Continuous integration
 
-Jenkins will automatically check all pull requests for coding standards conformance, and code which does not meet the standards will not be merged. 
+[Jenkins](/tools/jenkins.md) will automatically check all pull requests for coding standards conformance, and code which does not meet the standards will not be merged. 
 
 
 ## Tools

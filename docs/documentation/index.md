@@ -12,6 +12,23 @@ This page describes the details of the documentation systems within CiviCRM and 
 [migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
 [wiki]: https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation
 
+
+## When to document {:#when}
+
+If you are [contributing to core](/core/contributing.md), updating documenting along with your changes is an important step to ensure the long-term usability and maintainability of CiviCRM.
+
+Not all changes require documentation updates. Here are some guidelines: 
+
+* Documentation should almost always accompany **new features**.
+    * Keep in mind that some features are user-facing (and thus require new documentation in the User Guide) whereas some features are *developer*-facing (and thus require new documentation in the Developer Guide.)
+* Bug fixes will occasionally require documentation updates. Check existing docs to see what changes might be necessary.
+
+!!! tip
+    Try writing documentation *before* writing your code! Then you have a way to organize your thoughts and measure whether the feature works.
+    
+If you are [submitting a core pull request](/tools/git.md#pr) and would like to submit accompanying doc changes, please provide comments in both pull requests for cross reference. Your docs PR will not be merged until your core PR is merged first.
+ 
+
 ## Guides in MkDocs
 
 We are using [MkDocs](http://www.mkdocs.org) to produce guides. The content for each of these guides is written in [markdown](/documentation/markdown.md), stored in text files, and hosted in a repository on GitHub. Then, the guides are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
@@ -31,7 +48,7 @@ In rarer cases, if you have an edit that pertains to a specific version, (e.g. d
 
 A guide can have multiple languages, and we use separate repositories for different languages. For example, you can click *See all X editions* and find the repositories for additional languages.
 
-## Contributing to documentation
+## Contributing to documentation {:#contributing}
 
 We welcome contributions, small and large, to documentation!
 

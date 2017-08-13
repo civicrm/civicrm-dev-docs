@@ -42,7 +42,7 @@ Whether you are contributing to civicrm-core or an ancillary project (using GitH
 1. **Choose the correct base branch** in the upstream repository as the starting point for your changes. (Usually this will be `master`.) *[Learn more...](#base-branch)*
 1. (If it's been some time since you've cloned) **pull or fetch** the latest changes from the *upstream repository* into the appropriate branch of your local repository. *(You might also need to  [upgrade your civibuild site](/tools/civibuild.md#upgrade-site).)*
 1. Create (and checkout) a **new branch** for your changes, based on the correct branch (chosen above) in the upstream repository. *[Learn more...](#branching)*
-1. Make your changes.
+1. Make your changes. (Take care to follow the guidelines in [contributing to core](/core/contributing.md).)
 1. **Commit** your changes. *[Learn more...](#commiting)*
 1. **Push** your changes *to your fork*.
 1. **Open a pull request**. *[Learn more...](#pr)*
@@ -50,6 +50,8 @@ Whether you are contributing to civicrm-core or an ancillary project (using GitH
 1. If you need to make more changes later, commit them on the same branch and push your new commits to your fork. The new commits the will automatically appear in the pull request.
 1. If other people commit changes to the upstream repository which create *merge conflicts* in your pull request, then **rebase** your branch. *[Learn more...](#rebasing)*
 1. Once your changes are merged, delete your local branch
+
+See also: [reviewing someone else's pull request](/core/pr-review.md)
  
 
 ## Specific steps
@@ -99,6 +101,8 @@ As much as possible, separate your changes into distinct commits that each make 
 
 #### Writing a commit message {:#commit-messages}
 
+When making commits, remember that this isn't just a small personal project: your audience is hundreds of other developers &mdash; now and ten years from now &mdash; as well as end users trying to understand features and bugs. By leaving a commit history that makes sense &mdash; both in content and in commit messages &mdash; you will make the code more legible for everyone.
+
 Follow these guidelines to write a good commit messages:
 
 * The first line should be a meaningful **subject**, which should:
@@ -131,7 +135,7 @@ Follow these guidelines to write a good commit messages:
 
 #### Writing a pull request subject {:#pr-subject}
 
-Guidelines for writing a good subject line:
+Pull request titles don't need to be identical to issue titles, and in particular, you may want to focus more positively on the changes in code than on the broader feature changes. Here are some guidelines for writing a good subject line:
 
 When filing a pull-request, use a descriptive subject. These are good examples:
 
@@ -158,6 +162,10 @@ A few elements to include:
 A good pull request addresses a clearly-defined problem. There should be a detailed description logged in the [issue tracker](http://issues.civicrm.org/). Excellent PRs also increase test coverage. If you are tempted to do additional tweaks or code cleanup outside the scope of that issue, you could make a separate commit and include them in the PR if they are minor & non-controversial, or create a seperate PR if they are more complex.
 
 There is no size limit for PRs as long as they are focused on completely solving a discreet problem. As a practical matter, though, bigger PRs may take longer to review and merge. When possible, split "epic" issues into bite-sized chunks as long as each seperate PR is functionally complete and does not cause merge conflicts with your other PRs. In the latter case, add commits to an existing PR.
+
+#### Reviewing a pull request
+
+See [How to review a core pull request](/core/pr-review.md)
 
 ### Rebasing {:#rebasing}
 
