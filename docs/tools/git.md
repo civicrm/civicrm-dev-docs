@@ -64,15 +64,51 @@ See also: [reviewing someone else's pull request](/core/pr-review.md)
 
 ## Specific steps
 
-
 ### Cloning {:#cloning}
 
-__TODO__
+When you want to set up a local copy of a git repo hosted on GitHub or GitLab, you *clone* it. Here are two ways: 
 
+* Using the SSH protocol
+    
+    ```bash
+    $ git clone git@github.com:civicrm/civicrm-core.git
+    ```
+
+* Using the HTTP protocol
+
+    ```bash
+    $ git clone https://github.com/civicrm/civicrm-core.git
+    ```
+
+Using SSH is a little bit better because you won't need to enter your password all the time, but it does require some [extra steps](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
 
 ### Managing multiple git remotes {:#remotes}
 
-__TODO__
+Your local git repo is typically set up to track at least one *remote* git repo for operations like `fetch`, `pull`, and `push`. But it can be helpful to set up multiple remotes when contributing to repos which you don't own.
+
+Common terminology: 
+
+* **Upstream repository** - a repo hosted on GitHub or GitLab which *you don't own* but would like to contribute to
+* **Fork repository** - a repo hosted on GitHub or GitLab which *you own* and have created by "forking" an upstream repo
+* **Local repository** - the repo that lives on your local computer after [cloning](#cloning)
+
+Show the remotes which your local repo is tracking:
+
+```bash
+$ git remote -v                                                                          
+upstream  https://github.com/civicrm/civicrm-core.git (fetch)
+upstream  https://github.com/civicrm/civicrm-core.git (push)
+myusername      git@github.com:myusername/civicrm-core.git (fetch)
+myusername      git@github.com:myusername/civicrm-core.git (push)
+```
+
+The first column shown in the output is the *name* of the remote. You can rename your remotes however you want. Assuming your GitHub user name is `myusername`, the above output looks pretty good because we have two remotes: one named `upstream` (an *upstream repo*), and another named `myusername` (a *fork repo*). When you first [clone](#cloning) a repository, git will set up a remote called `origin` which refers to the repo you initially cloned. In the above example we don't see `origin`, so that remote has been removed or renamed.
+
+Read about [how to use `git remote`](https://git-scm.com/docs/git-remote) to properly set up your remotes.
+
+!!! tip
+    If you use [hub](https://hub.github.com/), the command `hub clone` can help with this
+
 
 
 ### Branching {:#branching}
@@ -80,7 +116,7 @@ __TODO__
 Git uses branches to separate independent sets of changes. When creating a new branch, here are some things to keep in mind: 
  
 * [Choose an appropriate base branch](#base-branch)
-* You'll need to keep your local branch until its changes are merged. Sometimes this take several months. After it's merged, you can delete it.
+* You'll need to keep your local branch until its changes are merged. Sometimes this can take several months. After it's merged, you can delete it.
 * Give your branch a good name
     * The name of your branch is up to you.
     * It should be unique among your other outstanding branches.
@@ -99,9 +135,9 @@ $ git checkout upstream/master -b CRM-1234
 
 ### Choosing a base branch {:#base-branch}
 
-When create a new branch, you should explicitly declare a starting point.
+When creating a new branch, you should explicitly declare a starting point.
 
-__TODO__
+Most of the time, your base branch should be `master`. However, CiviCRM core keeps two main branches under active development: `master` (for the latest version), *and* another branch for the current LTS release (as listed on [civicrm.org/download](https://civicrm.org/download)). For example, if you have a client running the LTS version (e.g. `4.6`) then any changes you make to `master` will not affect this client until they do a major upgrade. In this case you may wish to "backport" a change to the LTS version and choose the `4.6` branch as your base branch.
 
 ### Committing {:#committing}
 
@@ -177,5 +213,54 @@ See [How to review a core pull request](/core/pr-review.md)
 
 ### Rebasing {:#rebasing}
 
-__TODO__
+Sometimes when you [make a pull request](#pr) someone else merges a change into the upstream repository that *conflicts* with your change. The best way to resolve this conflict is to rebase. It's a good idea to [read about rebasing](https://git-scm.com/docs/git-rebase) so you understand the theory. Here's the practice:
 
+!!! note
+    In this example we have two [remotes](#remotes) set up:
+
+    * `upstream` which tracks the upstream repo
+    * `myusername` which tracks the fork repo
+    
+    Also we are working on changes in a branch called `my-branch`
+
+1. Update your local `master` branch
+
+    ```bash
+    $ git checkout master
+    $ git pull upstream master
+    ```
+
+1. Checkout the branch that has conflicts you'd like to resolve
+
+    ```bash
+    $ git checkout my-branch
+    $ git rebase master
+    ```
+    
+1. See which files need attention
+
+    ```bash
+    $ git status
+    ```
+
+1. Make changes to the files which resolve the merge conflicts
+
+1. "Add" the files to tell git you have resolved the conflicts
+
+    ```bash
+    $ git add CRM/Utils/String.php
+    ```
+
+1. Continue the rebase
+
+    ```bash
+    $ git rebase --continue
+    ```
+
+1. Force-push your changes back up to your fork
+
+    ```bash
+    $ git push -f myusername my-branch
+    ```
+
+1. Now, if you go to back to the page for your pull request it should no longer show merge conflicts
