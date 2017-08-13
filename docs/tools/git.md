@@ -30,7 +30,7 @@ CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid unde
     * CiviCRM also has some repositories hosted on its own private installation of GitLab
 
 
-## Using git to contribute changes {:#contributing}
+## Git workflow overview {:#contributing}
 
 Whether you are contributing to civicrm-core or an ancillary project (using GitHub or GitLab) the process generally goes somewhat like this: 
 
@@ -95,7 +95,11 @@ __TODO__
 
 ### Committing {:#committing}
 
-Guidelines for commit messages:
+As much as possible, separate your changes into distinct commits that each make sense on their own. Using smaller commits will make your changes easier for others to review.
+
+#### Writing a commit message {:#commit-messages}
+
+Follow these guidelines to write a good commit messages:
 
 * The first line should be a meaningful **subject**, which should:
     * be prefixed with a Jira issue number (if the commit is to CiviCRM core)
@@ -107,23 +111,53 @@ Guidelines for commit messages:
     * examples: 
         * `CRM-20600 - Civi\Angular - Generate modules via AssetBuilder`
         * `CRM-19417 - distmaker - Change report to JSON`
-* (optionally) After the subject, include a short **body**, which should:
+* (optionally but recommended) After the subject, include a short **body**, which should:
     * have a blank line above it (below the subject)
     * be wrapped at 72 characters
     * explain *what*, *why*, and *how*
 
 
+### Pull requests {:#pr}
 
-### Submitting a pull request {:#pr}
+!!! note "terminology"
+    The terms "pull request", "merge request", "PR", and "MR" all effectively synonymous. GitHub uses "pull request", and GitLab uses "merge request".
 
-!!! note
-    In GitLab a pull request is called a "merge request". They are the same thing. The following instructions for for GitHub, but the steps are very similar for GitLab.
+#### Creating a pull request {:#pr-submit}
 
 1.  In the web browser, navigate to the web page for your fork (e.g. `https://github.com/myuser/civicrm-core` )
 1.  Click **Pull Request**
 1.  There will be two branches specified – the (first) left should be "civicrm" (i.e. where the code is going to). The second (right) should be your branch. 
-1.  Add an explanation and submit
+1.  Add a [good subject](#pr-subject) and explanation, and submit.
 
+#### Writing a pull request subject {:#pr-subject}
+
+Guidelines for writing a good subject line:
+
+When filing a pull-request, use a descriptive subject. These are good examples:
+
+ * `CRM-12345 - Fix Paypal IPNs when moon is at half-crescent (waxing)`
+ * `(WIP) CRM-67890 - Refactor SMS callback endpoint`
+ * `(NFC) CRM_Utils_PDF - Improve docblocks`
+
+A few elements to include:
+
+ * **CRM-_XXXXX_** - This is a reference to the [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will setup crosslinks between JIRA and GitHub.
+ * **Description** - Provide a brief description of what the pull-request does.
+ * **(WIP)** - "Work in Progress" - If you are still developing a set of
+   changes, it may be useful to submit a pull-request and flag it as
+   `(WIP)`. This allows you to have discussion with other developers and
+   check test results. Once the change is ready, update the subject line
+   to remove `(WIP)`.
+ * **(NFC)** - "Non-Functional Change" - Most patches are designed to
+   change functionality (e.g. fix an error message or add a new button).
+   However, some changes are non-functional -- e.g. they cleanup the
+   code-style, improve the comments, or improve the test-suite.
+
+#### Pull-Request Scope {:#pr-scope}
+
+A good pull request addresses a clearly-defined problem. There should be a detailed description logged in the [issue tracker](http://issues.civicrm.org/). Excellent PRs also increase test coverage. If you are tempted to do additional tweaks or code cleanup outside the scope of that issue, you could make a separate commit and include them in the PR if they are minor & non-controversial, or create a seperate PR if they are more complex.
+
+There is no size limit for PRs as long as they are focused on completely solving a discreet problem. As a practical matter, though, bigger PRs may take longer to review and merge. When possible, split "epic" issues into bite-sized chunks as long as each seperate PR is functionally complete and does not cause merge conflicts with your other PRs. In the latter case, add commits to an existing PR.
 
 ### Rebasing {:#rebasing}
 

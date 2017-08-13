@@ -20,10 +20,12 @@ pages:
   - civilint: tools/civilint.md
   - Issue Tracking: tools/issue-tracking.md
   - Git, GitHub, &amp; GitLab: tools/git.md
+  - Jenkins: tools/jenkins.md
   - PhpStorm: tools/phpstorm.md
   - Debugging: tools/debugging.md
 - Core Development:
   - When to Edit Core: core/hacking.md
+  - Release process: core/release-process.md
   - Developing CiviCRM: core/develop.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
