@@ -172,4 +172,4 @@ Manual+testing testing/manual
 Dedupe+and+merge+testing testing/manual/#dedupe
 Smart+group+testing testing/manual/#smart-group
 Tarball+installation+testing testing/manual/#tarball
-Contributing+to+CiviCRM+using+GitHub tools/github
+Contributing+to+CiviCRM+using+GitHub tools/git/#github

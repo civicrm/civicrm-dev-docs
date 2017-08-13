@@ -18,7 +18,8 @@ pages:
   - civibuild: tools/civibuild.md
   - cividist: tools/cividist.md
   - civilint: tools/civilint.md
-  - GitHub: tools/github.md
+  - Issue Tracking: tools/issue-tracking.md
+  - Git, GitHub, &amp; GitLab: tools/git.md
   - PhpStorm: tools/phpstorm.md
   - Debugging: tools/debugging.md
 - Core Development:
