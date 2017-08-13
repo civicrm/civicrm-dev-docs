@@ -95,7 +95,23 @@ __TODO__
 
 ### Committing {:#committing}
 
-__TODO__
+Guidelines for commit messages:
+
+* The first line should be a meaningful **subject**, which should:
+    * be prefixed with a Jira issue number (if the commit is to CiviCRM core)
+    * mention a "subsystem" after the issue number
+    * be 72 characters or less, in total
+    * be in "Sentence case"
+    * use the imperative mood
+    * not end in a period
+    * examples: 
+        * `CRM-20600 - Civi\Angular - Generate modules via AssetBuilder`
+        * `CRM-19417 - distmaker - Change report to JSON`
+* (optionally) After the subject, include a short **body**, which should:
+    * have a blank line above it (below the subject)
+    * be wrapped at 72 characters
+    * explain *what*, *why*, and *how*
+
 
 
 ### Submitting a pull request {:#pr}
