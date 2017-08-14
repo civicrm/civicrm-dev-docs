@@ -79,6 +79,7 @@ pages:
   - QuickForm Reference: 
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
+  - PseudoConstant Reference: framework/pseudoconstant.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
   # CiviReport: /reference/civireport.md
