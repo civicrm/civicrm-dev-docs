@@ -2,22 +2,22 @@
 
 ## Why a Entity Relationship Diagram may *not* be helpful
 
-As some coders are visual learners, ER Diagrams maybe a waste of time for thsoe coders to understand the CivCRM Database modle and structure. Fundamentally CiviCRM's Schema diesgn is way too complex, with at least 150 tables and loads of Foriegn Key Constraints linking tables together any such graphic or design document that tries to map out the CiviCRM database design would most likely be more confusion than help, espeically for visual learners.
+As some coders are visual learners, ER Diagrams maybe a waste of time for those coders to understand the CivCRM Database modle and structure. Fundamentally CiviCRM's Schema design is way too complex, with at least 150 tables and loads of Foreign Key Constraints linking tables together any such graphic or design document that tries to map out the CiviCRM database design would most likely bring more confusion than help, especially for visual learners.
 
-## Aleternate Methods to ERDs to explore CiviCRM's Database Design
+## Alternate Methods to ERDs to explore CiviCRM's Database Design
 
-Another method ofr viewing CiviCRM's Database model is to use one of various MySQL coding tools e.g. PHPMyAdmin or [MySql Workbench](https://www.mysql.com/products/workbench/). These tools allow coders to inspect the Table Structure more easily and look at all the constraints attached to tables very easily.
+Another method of viewing CiviCRM's Database model is to use one of various MySQL coding tools e.g. PHPMyAdmin or [MySQL Workbench](https://www.mysql.com/products/workbench/). These tools allow coders to inspect the Table Structure more easily and look at all the constraints attached to tables very easily.
 
 ## MySQL Workbench Workflow
 
 1. Look at the list of tables in the database. The table name generally gives you a good idea of the type of data it stores.
 2. Pick one table and look closer. Let's look at `civicrm_country` (a relatively simple example) by opening the "Table inspector" for that table.
     - We can look at the list of columns in the table.
-    ![Mysql Workbench CiviCRM Country Columns](/img/mysql_workbench_civicrm_country_tables.png)
+    ![MySQL Workbench CiviCRM Country Columns](/img/mysql_workbench_civicrm_country_tables.png)
     We can see that columns have comments which explain (to some extent) the meaning of the data stored in the columns. From the Column Names and the comments we can start to get some idea of the relationship between tables. For example we can see that there is a column `address_format_id` which indicates to us that the table `civicrm_country` has a relationship to the table `civicrm_address_format`
-    - We can also Look at the Foriegn Keys that are relevant to this table
-  ![Mysql Workbench CiviCRM Country Foreign Keys](/img/mysql_workbench_civicrm_country_foreign_keys.png)
-  Here we can get more of a comprenshive picture of what tables `civicrm_country` relates to. We can tell that because we see not only what tables are referenced by `civicrm_country` but also the tables that reference `civicrm_country`. 
+    - We can also look at the Foreign Keys that are relevant to this table
+  ![MySQL Workbench CiviCRM Country Foreign Keys](/img/mysql_workbench_civicrm_country_foreign_keys.png)
+  Here we can get more of a comprehensive picture of what tables `civicrm_country` relates to. We can tell that because we see not only what tables are referenced by `civicrm_country` but also the tables that reference `civicrm_country`. 
 
 ## General Characteristics of CiviCRM Tables
 
