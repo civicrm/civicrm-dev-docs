@@ -82,5 +82,5 @@ Option lists are cached in memory for performance, so in writing your code you s
 In most circumstances, this cache is automatically flushed if an option list gets modified. To manually flush CiviCRM's pseudoconstant cache, call:
 
 ```php
-    CRM_Core_PseudoConstant::flush();
+CRM_Core_PseudoConstant::flush();
 ```
