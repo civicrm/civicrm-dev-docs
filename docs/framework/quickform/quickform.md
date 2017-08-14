@@ -104,7 +104,7 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 | addUploadElement | file upload | |
 | addCurrency | select currency  | |
 | addMoney | money field + select currency | |
-| addEntityRef | autocomplete select of contacts, tags, events, etc. | [EntityRef documentation](/confluence/display/CRMDOC/EntityRef+Fields) |
+| addEntityRef | autocomplete select of contacts, tags, events, etc. | [EntityRef documentation](/framework/quickform/entityref) |
 
 #### Deprecated Form Elements
 
