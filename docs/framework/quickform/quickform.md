@@ -2,7 +2,7 @@
 
 ## Background
 
-Data-entry forms in CiviCRM use an extended variation of [PEAR](http://pear.php.net/){.external-link}'s `HTML_QuickForm` system. In QuickForm, a web developer defines a new form by creating a "Form" class which implements certain methods (such as "buildForm") and which calls methods to add new form fields (or "elements"). Reference materials for the main QuickForm system can be found online:
+Data-entry forms in CiviCRM use an extended variation of [PEAR](http://pear.php.net/)'s `HTML_QuickForm` system. In QuickForm, a web developer defines a new form by creating a "Form" class which implements certain methods (such as "buildForm") and which calls methods to add new form fields (or "elements"). Reference materials for the main QuickForm system can be found online:
 
 - [HTML_QuickForm Documentation Home](http://pear.php.net/package/HTML_QuickForm/docs)
 - [HTML_QuickForm Tutorial](http://www.devarticles.com/c/a/Web-Graphic-Design/Using-HTML-Quickform-for-Form-Processing/)
@@ -108,12 +108,12 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 
 #### Deprecated Form Elements
 
-| Method | Used For | Notes |
+| Method | Was Used For | Notes |
 | --- | --- | --- |
-| ~~addDate~~ | datepicker element | Use `$form()->add('datepicker', ...)` instead. |
-| ~~addDateTime~~ | datepicker with time element | Use `$form()->add('datepicker', ...)` instead. |
-| ~~addWysiwyg~~ | rich text area | Removed: Use `$form()->add("wysiwyg", ... )` instead. |
-| ~~addCountry~~ | country select field | Removed. |
+| ~~addDate~~ | Datepicker Element | Use `$form()->add('datepicker', ...)` instead. |
+| ~~addDateTime~~ | Datepicker with time Element | Use `$form()->add('datepicker', ...)` instead. |
+| ~~addWysiwyg~~ | Rich text Area | Removed: Use `$form()->add("wysiwyg", ... )` instead. |
+| ~~addCountry~~ | Country Select Field | Removed. Use AddSelect instad or addEntityRef |
 
 ## Request Lifecycle
 
@@ -122,7 +122,9 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 
 CiviCRM provides a more nuanced request lifecycle than traditional `HTML_QuickForm`. This extended request lifecycle allows the original web developer to create the form using a class – and allows third-party developers to modify the form using hooks. The request lifecycle is divided into a few phases, and each phase may have multiple steps. The phases and steps are presented in sequence:
 
-Build Phase  - Generate a set of HTML form fields (`$form->addElement()`, `$form->add()`, etc) and validation rules (`$form->addFormRule()`) to the form. (Note: The "Build" phase runs during the initial GET request and the subsequent POST request.)
+**Build Phase**
+
+Generate a set of HTML form fields (`$form->addElement()`, `$form->add()`, etc) and validation rules (`$form->addFormRule()`) to the form. (Note: The "Build" phase runs during the initial GET request and the subsequent POST request.)
 
 | Step | Audience | Comments |
 | --- | --- | --- |
@@ -131,7 +133,9 @@ Build Phase  - Generate a set of HTML form fields (`$form->addElement()`, `$form
 | [hook_civicrm_buildForm](/hook/hook_civicrm_buildForm) | Third-Party Developer |  |
 | `CRM_Core_Form::addRules` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `addRules()` function can be overridden.
 
-Validate Phase - Examine submitted form data to determine validity. (Note: The "Validation" phase runs during the POST request.)
+**Validate Phase**
+
+Examine submitted form data to determine validity. (Note: The "Validation" phase runs during the POST request.)
 
 | Step | Audience | Comments |
 | --- | --- | --- |
@@ -139,11 +143,15 @@ Validate Phase - Examine submitted form data to determine validity. (Note: The "
 | [hook_civicrm_validate()](/hook/hook_civicrm_validate) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
 | [hook_civicrm_validateForm()](/hook/hook_civicrm_validateForm) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
 
-Process Phase - Save the data, execute business logic, etc. (Note: The "Process" phase runs during the POST request – but only if the "Validation" was successful)  
+**Process Phase**
+
+Save the data, execute business logic, etc. (Note: The "Process" phase runs during the POST request – but only if the "Validation" was successful) 
 
 | Step | Audience | Comments |
 | --- | --- | --- |
 | `CRM_Core_Form::postProcess` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `postProcess()` function can be overridden. |
 | [hook_civicrm_postProcess](/hook/hook_civicrm_postprocess) | Third-Party Developer | |
 
-Render Phase - Generate HTML using Smarty. (Note: The "Render" phase does not provide events or hooks to the PHP controller.)
+**Render Phase** 
+
+Generate HTML using Smarty. (Note: The "Render" phase does not provide events or hooks to the PHP controller.)
