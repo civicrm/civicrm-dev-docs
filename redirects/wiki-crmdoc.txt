@@ -154,5 +154,4 @@ API+changes api/changes
 Ajax+Pages+and+Forms framework/ajax
 Coding+Standards standards
 QuickForm+Reference framework/quickform
-QuickForm+Reference framework/quickform/quickform
 EntityRef+Fields framework/quickform/entityref
