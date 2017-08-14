@@ -130,7 +130,7 @@ Generate a set of HTML form fields (`$form->addElement()`, `$form->add()`, etc) 
 | --- | --- | --- |
 | `CRM_Core_Form::preProcess` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `preProcess()` function can be overridden. |
 | `CRM_Core_Form::buildQuickForm` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `buildQuickForm()` function can be overridden. | 
-| [hook_civicrm_buildForm](/hook/hook_civicrm_buildForm) | Third-Party Developer |  |
+| [hook_civicrm_buildForm](/hooks/hook_civicrm_buildForm) | Third-Party Developer |  |
 | `CRM_Core_Form::addRules` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `addRules()` function can be overridden.
 
 **Validate Phase**
@@ -140,8 +140,8 @@ Examine submitted form data to determine validity. (Note: The "Validation" phase
 | Step | Audience | Comments |
 | --- | --- | --- |
 | (Process rules) | Original Developer & Third-Party Developer | Iteratively process any rules that here added during the "build" phase (i.e. call any callbacks registered via `$form()->addFormRule()`). |
-| [hook_civicrm_validate()](/hook/hook_civicrm_validate) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
-| [hook_civicrm_validateForm()](/hook/hook_civicrm_validateForm) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
+| [hook_civicrm_validate()](/hooks/hook_civicrm_validate) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
+| [hook_civicrm_validateForm()](/hooks/hook_civicrm_validateForm) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
 
 **Process Phase**
 
@@ -150,7 +150,7 @@ Save the data, execute business logic, etc. (Note: The "Process" phase runs duri
 | Step | Audience | Comments |
 | --- | --- | --- |
 | `CRM_Core_Form::postProcess` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `postProcess()` function can be overridden. |
-| [hook_civicrm_postProcess](/hook/hook_civicrm_postprocess) | Third-Party Developer | |
+| [hook_civicrm_postProcess](/hooks/hook_civicrm_postprocess) | Third-Party Developer | |
 
 **Render Phase** 
 
