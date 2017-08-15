@@ -155,5 +155,4 @@ Ajax+Pages+and+Forms framework/ajax
 Coding+Standards standards
 QuickForm+Reference framework/quickform
 EntityRef+Fields framework/quickform/entityref
-Pseudoconstant+%28option+list%29+Reference framework/pseudoconstant
-Pseudoconstant+(option+list)+Reference framework/pseudoconstant
+Pseudoconstant+option+list+Reference framework/pseudoconstant
