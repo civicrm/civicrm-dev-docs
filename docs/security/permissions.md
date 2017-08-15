@@ -29,8 +29,8 @@ Depending on how the API is called, it is either called with a `check_permission
 
 ## Extending Permissions
 
-If you want to add a permission to the list in the CMS, you can implement [hook_civicrm_permission](/hooks/hook_civicrm_permission/). Here, you can specify new permissions that will then be available to select within the CMS permissions.
+If you want to add a permission to the list in the CMS, you can implement [hook_civicrm_permission](/hooks/hook_civicrm_permission.md). Here, you can specify new permissions that will then be available to select within the CMS permissions.
 
 ## Altering API Permissions
 
-If you want to alter the permissions the API uses during its permissions check, you can implement the [hook_civicrm_alterAPIPermissions](/hooks/hook_civicrm_alterAPIPermissions/). Note that you should be very careful when altering any permissions because they may have unintended consequences.
+If you want to alter the permissions the API uses during its permissions check, you can implement the [hook_civicrm_alterAPIPermissions](/hooks/hook_civicrm_alterAPIPermissions.md). Note that you should be very careful when altering any permissions because they may have unintended consequences.
