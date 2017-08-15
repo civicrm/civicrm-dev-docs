@@ -45,7 +45,7 @@ Prior to 4.4, the `CRM_*_Pseudoconstant` classes contained 1 function per option
 The format of an option list needs to be slightly different depending on the context you're working in. For example if you have machine names as input and need to store the values in the database, you need the list to contain ids and names instead of ids and translated labels. The BAO `buildOptions` method (and the `api.getoptions` wrapper) accept a 'context' string which controls formatting. Quoting from the `CRM_Core_BAO::buildOptionsContext` code:
 
 | Context | Returned Options | Label Field | Key Field |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 |`'get` | All Including including disabled | Translated labels | Integer Option Value |
 |`create` | All enabled Options and limited to the current domain | Translated Labels | Integer Option Value |
 |`search` | As per create all Enabled Options limited to the current domain | Integer Option Value |
