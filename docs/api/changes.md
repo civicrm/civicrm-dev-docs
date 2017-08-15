@@ -215,7 +215,7 @@ CRM-12140: The API update action was a clunky hack (get+create) to workaround th
 
 ### 4.3.0: AJAX: cj().crmAPI() is now CRM.api()
 
-Prior to 4.3, the syntax for [AJAX](/api/interfaces#AJAX) API calls was 
+Prior to 4.3, the syntax for [AJAX](/api/interfaces.md#AJAX) API calls was 
 
 ```javascript
 cj().crmAPI('Entity', 'action', {...params...}, {
@@ -299,7 +299,7 @@ When creating a new Case record, the "create" API previously accepted `case_type
 
 ### 4.3.0: Deprecate Constant API
 
-Most `CRM_*_Pseudoconstant methods` (which the 'constant' api is a wrapper for) are deprecated in 4.3 and many are removed in 4.4. To future-proof your code, use the [api.getoptions](/api/changes#getOptions) method instead of the constant api. See [Pseudoconstant (option list) Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Pseudoconstant+%28option+list%29+Reference)
+Most `CRM_*_Pseudoconstant methods` (which the 'constant' api is a wrapper for) are deprecated in 4.3 and many are removed in 4.4. To future-proof your code, use the [api.getoptions](/api/actions.md#getoptions) method instead of the constant api. See [Pseudoconstant (option list) Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Pseudoconstant+%28option+list%29+Reference)
 
 ### 4.3.0: Contact get API now respects ACLS
 
@@ -323,7 +323,7 @@ This API can be used to create, update and delete 'state/province' entries via t
 
 ### 4.7.7 System.updatelogtables
 
-This api can be called to change the format of the `log_conn_id` fields to a 17 Char varchar - and to switch to using truly unique connection ids. Calling this api can also convert log tables to INNODB - using this hook [hook_civicrm_alterLogTables](/hooks/hook_civicrm_alterLogTables) either in your code or with the [Extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers/blob/master/innodbtriggers.php)
+This api can be called to change the format of the `log_conn_id` fields to a 17 Char varchar - and to switch to using truly unique connection ids. Calling this api can also convert log tables to INNODB - using this hook [hook_civicrm_alterLogTables](/hooks/hook_civicrm_alterLogTables.md) either in your code or with the [Extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers/blob/master/innodbtriggers.php)
 
 Note that log table conversion can be slow which is why we are offering a conversion tool for the improved `log_conn_id` storage rather than springing it in an upgrade script
 
@@ -471,7 +471,7 @@ You need to upgrade civix as well so it generates this new code for a custom sea
 ### 4.6.0: CRM_Contact_Form_Search_Interface-&gt;buildTaskList
 
 Classes which implement this interface must implement a new method called buildTaskList. This method is responsible for building the list of actions (e.g., Add to Group) that may be performed on set of search results. It differs
-from [hook_civicrm_searchTasks](/hooks/hook_civicrm_searchTasks) in that the hook allows a developer to specify tasks by entity (e.g., Contact, Event, etc.) whereas buildTaskList provides the ability to target a specific form. The new method takes a `CRM_Core_Form_Search` object as an argument and should return an array. Dump `CRM_Core_Form_Search()->_taskList` to learn about the format of the array. The array returned by buildTaskList will completely replace the task list.
+from [hook_civicrm_searchTasks](/hooks/hook_civicrm_searchTasks.md) in that the hook allows a developer to specify tasks by entity (e.g., Contact, Event, etc.) whereas buildTaskList provides the ability to target a specific form. The new method takes a `CRM_Core_Form_Search` object as an argument and should return an array. Dump `CRM_Core_Form_Search()->_taskList` to learn about the format of the array. The array returned by buildTaskList will completely replace the task list.
 
 Aside from the community-maintained custom searches in `CRM/Contact/Form/Search/Custom/`, this change does not affect CiviCRM core. Custom searches which extend `CRM_Contact_Form_Search_Custom_Base` (as do those built on civix) will not be affected, as the method is implemented there.
 
@@ -479,7 +479,7 @@ See [CRM-15965](https://issues.civicrm.org/jira/browse/CRM-15965) for more infor
 
 ## Hooks
 
-This section doesn't document changes to APIv3 per se – rather, it documents changes to the the [Hook](/hooks) interfaces.
+This section doesn't document changes to APIv3 per se – rather, it documents changes to the the [Hook](/hooks/index.md) interfaces.
 
 ### 4.7.14 hook_civicrm_pre & hook_civicrm_post supports CustomField
 
@@ -499,15 +499,15 @@ The deprecated enableDisablehook  was not reliably invoked every time an entity 
 
 ### 4.5.0: hook_civicrm_referenceCounts
 
-The new API call "getrefcount" allows one to ask about references to a given record. Using [hook_civicrm_referenceCounts](/hooks/hook_civicrm_referenceCounts), a third-party developer can modify the reference-count.
+The new API call "getrefcount" allows one to ask about references to a given record. Using [hook_civicrm_referenceCounts](/hooks/hook_civicrm_referenceCounts.md), a third-party developer can modify the reference-count.
 
 ### 4.4.0: Add hooks for profile forms
 
 Added hooks for 
 
-- "civicrm/profile/view" [hook_civicrm_viewProfile](/hook/hook_civicrm_viewProfile),
-- "civicrm/profile" [hook_civicrm_searchProfile](/hook/hook_civicrm_searchProfile),
-- "civicrm/profile/edit" or "civicrm/profile/create" [hook_civicrm_buildProfile](/hook/hook_civicrm_buildProfile),[hook_civicrm_validateProfile](/hook/hook_civicrm_validateProfile), [hook_civicrm_processProfile](/hook/hook_civicrm_processProfile)).
+- "civicrm/profile/view" [hook_civicrm_viewProfile](/hooks/hook_civicrm_viewProfile.md),
+- "civicrm/profile" [hook_civicrm_searchProfile](/hooks/hook_civicrm_searchProfile.md),
+- "civicrm/profile/edit" or "civicrm/profile/create" [hook_civicrm_buildProfile](/hooks/hook_civicrm_buildProfile.md),[hook_civicrm_validateProfile](/hooks/hook_civicrm_validateProfile.md), [hook_civicrm_processProfile](/hooks/hook_civicrm_processProfile.md)).
 
 See also: [CRM-12865](http://issues.civicrm.org/jira/browse/CRM-12865)
 
@@ -602,7 +602,7 @@ For more details, see [Transaction Reference](https://wiki.civicrm.org/confluenc
 
 ### 4.5.3: AJAX, Regions, and Resources
 
-CiviCRM 4.2+ allowed developers to inject content on a web page using the [Region](/framework/Region/) and [Resource](/framework/Resource) APIs. CiviCRM 4.5+ introduced broad changes to the page-loading process which cause many pages to load in-situ as "snippets". This significantly improved perceived load times but caused some regressions on customized backend forms which relied on Region or Resource APIs. v4.5.3 introduces the following changes:
+CiviCRM 4.2+ allowed developers to inject content on a web page using the [Region](/framework/region.md) and [Resource](/framework/resources.md) APIs. CiviCRM 4.5+ introduced broad changes to the page-loading process which cause many pages to load in-situ as "snippets". This significantly improved perceived load times but caused some regressions on customized backend forms which relied on Region or Resource APIs. v4.5.3 introduces the following changes:
 
 -   The `page-header`, `page-body`, and `page-footer` regions will all be processed on normal (full, standalone) pages as well as snippets (embedded AJAX pages).
 -   The `html-header` region is only processed on normal-pages.
