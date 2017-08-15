@@ -1,6 +1,7 @@
 # EntityRef Fields
 
 ## Introduction
+
 This widget was added in CiviCRM v4.5 and supplants the old autocomplete + hidden field techniques. A flexible form widget for finding/selecting/creating contacts and other entities.
 
 ## Features
@@ -19,7 +20,7 @@ An entityRef widget can be created via quickform on the server-side, or
 using jQuery on the client-side.
 
 
-**PHP: From a buildForm function**
+### PHP: From a buildForm function
 
 ```php
 // With no parameters passed in, will create a single contact select
@@ -54,9 +55,9 @@ $this->addEntityRef('field_5', ts('Activity Type'), array(
 
 Please see code-level documentation in [CRM_Core_Form](https://github.com/civicrm/civicrm-core/blob/master/CRM/Core/Form.php#L1813) for all available params.
 
-**JS: Add from client-side**
+### JS: Add from client-side
 
-```javascript
+```html
 <input name="my_field" placeholder="{ts}- select organization -{/ts}" />
 
 <script type="text/javascript">
@@ -71,7 +72,8 @@ Please see code-level documentation in [CRM_Core_Form](https://github.com/civicr
 </script>
 ```
 
-Note: Instead of passing params into the jQuery.crmEntityRef function, an alternative is to attach them as html data attributes. This is how they are passed from php forms onto the clientside.
+!!! note
+    Instead of passing params into the `jQuery.crmEntityRef` function, an alternative is to attach them as html data attributes. This is how they are passed from php forms onto the client-side.
 
 ## Getlist API
 
