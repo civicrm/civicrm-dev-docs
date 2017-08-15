@@ -73,6 +73,7 @@ pages:
     - XML Schema definition: framework/database/schema-definition.md
     - Schema Design: framework/database/schema-design.md
   - Resources Reference: framework/resources.md
+  - UI Reference: framework/ui.md
   - Region Reference: framework/region.md
   - Upgrade Reference: framework/upgrade.md
   - Setting Reference: framework/setting.md

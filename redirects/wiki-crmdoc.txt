@@ -157,3 +157,11 @@ QuickForm+Reference framework/quickform
 EntityRef+Fields framework/quickform/entityref
 Pseudoconstant+option+list+Reference framework/pseudoconstant
 API+Security api/usage/#api-security
+UI+Elements+Reference framework/ui
+Accordions framework/ui
+Buttons framework/ui
+crmDatepicker framework/ui
+Icons framework/ui
+In-Place+Field+Editing framework/ui
+Notifications+and+Confirmations framework/ui
+Section+elements framework/ui
