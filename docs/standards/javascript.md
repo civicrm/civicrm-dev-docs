@@ -157,7 +157,7 @@ CiviCRM ships with a number of UI widgets and plugins to create standardized "lo
 
 ## Test Tools
 
-CiviCRM has uses a couple of main tools to test Javascript Code when a pull request is made against code. This happens along side the [code style checks](/standard/javascript#coding-standards) which are as mentioned above against JsHint
+CiviCRM has uses a couple of main tools to test Javascript Code when a pull request is made against code. This happens along side the [code style checks](/standards/javascript.md#coding-standards) which are as mentioned above against JsHint
 
 ### Qunit
 
@@ -165,7 +165,7 @@ CiviCRM has a small set up of Qunit which is an automated testing system. It's g
 
 ### Karma
 
-For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request. More information on karma can be found in the [Javascript testing](/testing/javascript/) section of this guide
+For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request. More information on karma can be found in the [Javascript testing](/testing/javascript.md) section of this guide
 
 ## Javascript in Markup
 
