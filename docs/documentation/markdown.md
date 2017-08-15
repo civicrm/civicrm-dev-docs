@@ -378,7 +378,7 @@ You can use indented code within lists without needing any markdown extensions. 
       - markdown.extensions.admonition
     ```
 
-### Syntax
+### Syntax {:#admonition-syntax}
 
 Simple example:
 
@@ -396,7 +396,7 @@ Add a custom title (make sure to quote the title):
 
 (You can also add an admonition *without* a title by passing an empty string `""` in place of the title.)
 
-### Types
+### Types {:#admonition-types}
 
 The types of admonitions available for use in MkDocs depend on the theme being used. The Material theme [supports](http://squidfunk.github.io/mkdocs-material/extensions/admonition/#types) the following types:
 
