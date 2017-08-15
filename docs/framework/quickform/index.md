@@ -153,7 +153,7 @@ Save the data, execute business logic, etc. (Note: The "Process" phase runs duri
 | Step | Audience | Comments |
 | --- | --- | --- |
 | `CRM_Core_Form::postProcess` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `postProcess()` function can be overridden. |
-| [hook_civicrm_postProcess](/hooks/hook_civicrm_postprocess.md) | Third-Party Developer | |
+| [hook_civicrm_postProcess](/hooks/hook_civicrm_postProcess.md) | Third-Party Developer | |
 
 ### Render Phase
 
