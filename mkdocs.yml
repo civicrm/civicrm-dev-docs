@@ -136,6 +136,7 @@ pages:
     - hook_civicrm_idsException: hooks/hook_civicrm_idsException.md
     - hook_civicrm_postProcess: hooks/hook_civicrm_postProcess.md
     - hook_civicrm_preProcess: hooks/hook_civicrm_preProcess.md
+    - <del>hook_civicrm_validate</del>: hooks/hook_civicrm_validate.md
     - hook_civicrm_validateForm: hooks/hook_civicrm_validateForm.md
   - GUI hooks:
     - hook_civicrm_alterMenu: hooks/hook_civicrm_alterMenu.md
