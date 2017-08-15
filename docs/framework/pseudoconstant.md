@@ -44,11 +44,16 @@ Prior to 4.4, the `CRM_*_Pseudoconstant` classes contained 1 function per option
 
 The format of an option list needs to be slightly different depending on the context you're working in. For example if you have machine names as input and need to store the values in the database, you need the list to contain ids and names instead of ids and translated labels. The BAO `buildOptions` method (and the `api.getoptions` wrapper) accept a 'context' string which controls formatting. Quoting from the `CRM_Core_BAO::buildOptionsContext` code:
 
- - `'get` -  "All options are returned, even if they are disabled.  Labels are translated.",
- - `create` - "Options are filtered appropriately for the object being created/updated. Labels are translated.",
- - `search` - "Searchable options are returned. Labels are > translated.",
- - `validate` -  "All options are returned, even if they are disabled.  Machine names are used in place of labels."
- - `abbreviate` - "enabled options are returned; labels are replaced with abbreviations."
+| Context | Returned Options | Label Field | Key Field |
+| --- | --- | --- | --- | --- |
+|`'get` | All Including including disabled | Translated labels | Integer Option Value |
+|`create` | All enabled Options and limited to the current domain | Translated Labels | Integer Option Value |
+|`search` | As per create all Enabled Options limited to the current domain | Integer Option Value |
+|`validate` | All included disabled | machine names | Integer Option Value |
+|`abbreviate`* | All Enabled Options | Abbreviations of labels | Integer Option Value |
+|`match` | All Options including Disabled | Translated Labels | Machine Names |
+
+* Only applicable at present to state_province_id and country_id fields
 
 When used in 'create' mode, buildOptions/api.getoptions accepts additional info about the object being created/updated. It is recommended to pass in all known properties of the object so the BAO has all the info it needs for filtering. For example when creating an address, the list of states will depend on the selected country:
 
