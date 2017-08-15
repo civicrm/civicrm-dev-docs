@@ -76,6 +76,9 @@ pages:
   - Region Reference: framework/region.md
   - Upgrade Reference: framework/upgrade.md
   - Setting Reference: framework/setting.md
+  - QuickForm Reference: 
+     - QuickForm: framework/quickform/index.md
+     - Entity Reference Field: framework/quickform/entityref.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
   # CiviReport: /reference/civireport.md
@@ -133,6 +136,7 @@ pages:
     - hook_civicrm_idsException: hooks/hook_civicrm_idsException.md
     - hook_civicrm_postProcess: hooks/hook_civicrm_postProcess.md
     - hook_civicrm_preProcess: hooks/hook_civicrm_preProcess.md
+    - <del>hook_civicrm_validate</del>: hooks/hook_civicrm_validate.md
     - hook_civicrm_validateForm: hooks/hook_civicrm_validateForm.md
   - GUI hooks:
     - hook_civicrm_alterMenu: hooks/hook_civicrm_alterMenu.md

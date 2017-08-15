@@ -56,6 +56,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_idsException](/hooks/hook_civicrm_idsException.md)** - allows you to modify the list of form or page paths where submitted data should not be sent through PHPIDS, the intrusion detection system (IDS).
 * **[hook_civicrm_postProcess](/hooks/hook_civicrm_postProcess.md)** - invoked when a CiviCRM form is submitted.
 * **[hook_civicrm_preProcess](/hooks/hook_civicrm_preProcess.md)** - can be used to modify the behavior of a form before the `buildQuickForm` call.
+* **[<del>hook_civicrm_validate</del>](/hooks/hook_civicrm_validate.md)** - **(Removed)** invoked during all CiviCRM form validation. An array of errors detected is returned. Else we assume validation succeeded.
 * **[hook_civicrm_validateForm](/hooks/hook_civicrm_validateForm.md)** - allows you to customize the logic used to validate forms.
 
 ## GUI hooks
