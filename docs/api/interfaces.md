@@ -105,7 +105,7 @@ You can also access the AJAX Interface from the REST function but only as an XHR
 ```
 http://www.example.org/civicrm/ajax/rest?entity=contact&action=get&json=1
 ```
-More information on the security of the AJAX interface and permissions needed can be found on the [Permissions Page](/security/permissions) in Security.
+More information on the security of the AJAX interface and permissions needed can be found on the [Permissions Page](/security/permissions.md) in Security.
 
 Example Outputs from the REST Interface are as follows:
 

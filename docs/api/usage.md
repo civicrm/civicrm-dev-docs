@@ -220,3 +220,7 @@ wp civicrm-api contact.get first_name=Alice last_name=Roberts
 ```bash
 cv api contact.get first_name=Alice last_name=Roberts
 ```
+
+## API Security
+
+API has security mesasures inbuilt dependign on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Doucmentation](/security/permissions.md).
