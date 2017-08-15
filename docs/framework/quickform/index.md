@@ -33,7 +33,7 @@ class CRM_Example_Form extends CRM_Core_Form {
   /**
    * Will be called prior to outputting html (and prior to buildForm hook)
    */
-  public function buildForm() {
+  public function buildQuickForm() {
     // Add elements to the form
     $this->add('text', 'my_text_field', ts('Enter Some Text'));
   }
@@ -67,6 +67,9 @@ class CRM_Example_Form extends CRM_Core_Form {
   }
 }
 ```
+
+!!!note
+In CiviCRM Core, sometimes in sub classes e.g. in the Custom Search Sub classes, the function `buildForm` is used instead of `buildQuickForm, However there will be a call in the parent function for `buildQuickFrom` which then includes the subClasses buildForm. This is not standard for new form classes.`
 
 ## Form Elements
 
