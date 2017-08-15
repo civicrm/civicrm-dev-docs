@@ -1,6 +1,7 @@
 # Pseudoconstant Reference aka Option Lists
 
 ## Introduction
+
 CiviCRM defines a **Pseudoconstant** as: *A list of options associated with a field, the contents of which rarely changes*. This documentation uses the terms *pseudoconstant* and *option list* interchangeably.
 
 ### Field
@@ -29,8 +30,8 @@ Each option in a list generally has 3 parts:
 
 As of CiviCRM 4.4 (and to a limited extent 4.3) there are option retrieval methods which bridge these different ways of storage and return options in a predictable way for every field in the database.
 
-!!! note **Historical note**
-Prior to 4.4, the `CRM_*_Pseudoconstant` classes contained 1 function per option list. Those single-purpose methods are deprecated and in 4.4 many have been removed. The 'constant' api is therefore also *deprecated* in CiviCRM 4.3 and 4.4 in favor of the api.getoptions method.
+!!! note "Historical note"
+    Prior to 4.4, the `CRM_*_Pseudoconstant` classes contained 1 function per option list. Those single-purpose methods are deprecated and in 4.4 many have been removed. The 'constant' api is therefore also *deprecated* in CiviCRM 4.3 and 4.4 in favor of the api.getoptions method.
 
 | Method | Version Added | Purpose | Example |
 | --- | --- | --- | --- |
@@ -70,6 +71,7 @@ civicrm_api3('address', 'getoptions', array(
 );
 // Will return a list of states in the United States
 ```
+
 #### Api Getfields
 
 Option lists can also be retrieved as part of an api.getfields request:
