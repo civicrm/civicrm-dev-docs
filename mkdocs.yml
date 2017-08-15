@@ -76,9 +76,10 @@ pages:
   - Region Reference: framework/region.md
   - Upgrade Reference: framework/upgrade.md
   - Setting Reference: framework/setting.md
-  - QuickForm Reference: 
+  - QuickForm Reference:
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
+  - PseudoConstant Reference: framework/pseudoconstant.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
   # CiviReport: /reference/civireport.md
