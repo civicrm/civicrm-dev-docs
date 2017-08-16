@@ -15,11 +15,13 @@ $params['return.custom_N'] = 1;
 ```
 
 *or (depending on which API entity you are querying)*
+
 ```php
 $params['return'] = 'custom_N';
 ```
 
 *or*
+
 ```php
 $params['return'] = 'custom_N,custom_O,custom_P';
 ```
@@ -31,12 +33,14 @@ which vary for each API entity and function.
 
 ## Custom Value get
 
-If developers want to get all custom data related to a perticular entity. The best method is to do a `CustomValue.get` API Call. 
+If developers want to get all custom data related to a particular entity. The best method is to do a `CustomValue.get` API Call. 
 
 ```php
 $result = civicrm_api3('CustomValue', 'get', array('entity_id' => 1));
 ```
+
 A sample output would be like the following
+
 ```php 
 {
 	"is_error":0,
@@ -57,7 +61,7 @@ A sample output would be like the following
 
 For entities other than the Contact Entity you can use an alternate notation to the `custom_n` to specify the custom fields you wish to return. You can use `custom_group_name:custom_field_name`. Read carefully the documentation and parameters in `CustomValue.php` for more alternatives and details.
 
-!!!note 
-When retrieving custom data for contact entity, it will only return one value in the case of a multiple custom group set whereas for other entites e.g. Address, or using the CustomValue. get API you will get all custom data records that relate to the relevant entity
+!!! note 
+    When retrieving custom data for contact entity, it will only return one value in the case of a multiple custom group set whereas for other entities (e.g. Address, or using the `CustomValue.get` API) you will get all custom data records that relate to the relevant entity
 
-The CustomValue Entity implicitly deteremines what the `entity_table` variable should be when it is not supplied. If developers are finding that the implicity is not working out exactly then developers should spcifiy the `entity_table` key. 
+The CustomValue Entity implicitly determines what the `entity_table` variable should be when it is not supplied. If you find that the implicitly is not working out exactly, then specify the `entity_table` key. 
