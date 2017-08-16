@@ -10,7 +10,13 @@ some background material like:
 -   <http://en.wikipedia.org/wiki/Database_transaction>
 -   <http://dev.mysql.com/doc/refman/5.1/en/commit.html>
 
-## Example: Wrapping code in a transaction (exception-safe helper; recommended for v4.6+)
+## Examples
+
+### Wrapping code in a transaction
+
+#### Exception-safe helper
+
+(recommended for v4.6+)
 
 ```php
 function myBusinessOperation() {
@@ -48,13 +54,13 @@ function myBusinessOperation() {
 }
 ```
 
-## Example: Wrapping code in a transaction (procedural style)
+#### Procedural style
 
 General rules:
 
--   Mark the beginning of a transaction with "$tx =
-    new CRM_Core_Transaction()".
--   Mark the transaction as failed ("$tx-&gt;rollback()") when an error
+-   Mark the beginning of a transaction with 
+    `$tx = new CRM_Core_Transaction()`.
+-   Mark the transaction as failed (`$tx->rollback()`) when an error
     is detected
 -   Continue reporting and handling errors (by returning error-codes,
     throwing exceptions, etc)
@@ -98,7 +104,7 @@ instantiating `CRM_Core_Transaction`, it will issue a `BEGIN`
 automatically. When the function terminates (or, more specifically, when
 `$tx` destructs), it will issue a `COMMIT` or `ROLLBACK`.
 
-## Example: Combining transactions
+### Combining transactions
 
 When writing business-logic, each business operation should generally be
 executed within a transaction – for example, when a constituent fills in
@@ -181,7 +187,9 @@ This has a few important properties:
     transaction will be rolled back – leaving no contact records, no
     participant records, etc – and an error will be returned.
 
-## Example: Nesting transactions (v4.6+)
+### Nesting transactions
+
+(v4.6+)
 
 In some cases, it may be appropriate to use a **nested** transaction or
 [SAVEPOINT](http://dev.mysql.com/doc/refman/5.1/en/savepoint.html)s.
@@ -249,7 +257,7 @@ function importBatchOfContacts($contacts, $maxErrors, &$erroneousContacts) {
         -   `registerNewContactForEvent` terminates – and therefore $tx is destroyed, and **the SQL `ROLLBACK` is executed**
 
 
-## Example: Abnormal termination
+### Abnormal termination
 
 In some exceptional circumstances, program execution terminates
 abnormally – which prevents the normal transaction logic from managing
@@ -268,7 +276,9 @@ static function abend($code) {
 }
 ```
 
-## Special Topics: `TRUNCATE` and `ALTER` force immediate commit
+## Special Topics
+
+### `TRUNCATE` and `ALTER` force immediate commit
 
 In MySQL, changes to the schema will cause pending transactions to
 commit immediately (regardless of what Civi would normally do for
@@ -276,7 +286,7 @@ transactions) – so installation of new extensions, modification of
 custom-data, and cache-resets would be likely to interfere with
 transaction management.
 
-## Special Topics: Batching and imports
+### Batching and imports
 
 If you are serially processing a large number of 'rows', despite the
 additional overhead it is normally more appropriate to put a transaction
