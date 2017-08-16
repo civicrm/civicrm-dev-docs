@@ -97,7 +97,6 @@ pages:
   - APIv3 Usage: api/usage.md
   - APIv3 Actions: api/actions.md
   - APIv3 Options: api/options.md
-  # APIv3 Permissions: api/permissions.md
   - APIv3 Joins: api/joins.md
   - APIv3 Chaining: api/chaining.md
   - APIv3 Custom Data: api/custom-data.md
