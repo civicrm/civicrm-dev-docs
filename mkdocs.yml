@@ -83,7 +83,7 @@ pages:
   - PseudoConstant Reference: framework/pseudoconstant.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
-  # CiviReport: /reference/civireport.md
+  - CiviReport: reference/civireport.md
   # Payment Processing: /reference/payment.md
 - Security:
   - Secure Coding: security/index.md
