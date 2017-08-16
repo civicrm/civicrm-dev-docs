@@ -1,11 +1,6 @@
-# API Parameters
+# API Options
 
-There are many parameters accepted by the CiviCRM API. Most parameters
-depend on the entity – for current details in your see the [API Explorer](/api/index.md#api-explorer)
-and the [API examples](/api/index.md#api-examples). However, some parameters are particularly dynamic or
-generic; these may not be explained well by the auto-generated
-documentation. The format for passing options as parameters using the
-REST interface is explained at [REST interface](https://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface#RESTinterface-optionsparameters).
+There are many API Options accepted by the CiviCRM API. These options allow the developer to add in more parameters to the resulting Query that is run against the database. E.g. Limit, Sort. You can explore these options using the the [API Explorer](/api/index.md#api-explorer) and the [API Examples](/api/examples.md) However, some parameters are particularly dynamic or generic; these may not be explained well by the auto-generated documentation. The format for passing options as parameters using the REST interface is explained at [REST interface](/api/interfaces.md#rest).
 
 
 ## sequential
@@ -198,46 +193,3 @@ civicrm_api('Contact', 'create', array(
   ),
 ));
 ```
-
-
-## Custom Data
-
-Custom data attached to entities is referenced by `custom_N` where `N` is
-the unique numerical ID for the custom data field.
-
-To set a custom field, or find entities with custom fields of a
-particular value, you typically use a parameter like this:
-
-```php
-$params['custom_N'] = 'value';
-```
-
-To return custom data for an entity, you typically pass a param like the
-following:
-
-```php
-$params['return.custom_N'] = 1;
-```
-
-*or (depending on which API entity you are querying)*
-```php
-$params['return'] = 'custom_N';
-```
-
-*or*
-```php
-$params['return'] = 'custom_N,custom_O,custom_P';
-```
-
-For setting custom date fields, (ie CustomValue create), date format is
-`YmdHis`, for example: `20050425000000`.
-
-This is just a brief introduction; each API may have different requirements
-and allow different formats for accessing the custom data. See the
-[API function documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/Using+the+API)
-and also read the comments and documentation in each API php file
-(under civicrm/CRM/api/v3 in your CiviCRM installation) for exact details,
-which vary for each API entity and function.
-
-For more details and examples,
-[see the tutorial on using custom data with the API here](https://wiki.civicrm.org/confluence/display/CRMDOC/Using+Custom+Data+with+the+API).
