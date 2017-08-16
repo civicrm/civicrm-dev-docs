@@ -68,6 +68,7 @@ pages:
   - "API architecture": framework/api-architecture.md
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
+  - Backbone Reference: framework/backbone.md
   - Cache Reference: framework/cache.md
   - AJAX Pages and Forms Refernce: framework/ajax.md
   # Components: /framework/components.md
