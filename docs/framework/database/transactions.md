@@ -1,41 +1,4 @@
-# Transaction Reference
-
-<div class="panel"
-style="background-color: #FFFFCE;border-color: #000;border-style: solid;border-width: 1px;">
-
-<div class="panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: #000;background-color: #F7D6C1;">
-
-**Table of Contents**
-
-</div>
-
-<div class="panelContent" style="background-color: #FFFFCE;">
-
-<div>
-
--   [Background](#TransactionReference-Background)
--   [Example: Wrapping code in a transaction (exception-safe helper;
-    recommended
-    for v4.6+)](#TransactionReference-Example:Wrappingcodeinatransaction(exception-safehelper;recommendedforv4.6+))
--   [Example: Wrapping code in a transaction
-    (procedural style)](#TransactionReference-Example:Wrappingcodeinatransaction(proceduralstyle))
--   [Example: Combining
-    transactions](#TransactionReference-Example:Combiningtransactions)
--   [Example: Nesting
-    transactions (v4.6+)](#TransactionReference-Example:Nestingtransactions(v4.6+))
--   [Example: Abnormal
-    termination](#TransactionReference-Example:Abnormaltermination)
--   [Special Topics: TRUNCATE and ALTER force immediate
-    commit](#TransactionReference-SpecialTopics:TRUNCATEandALTERforceimmediatecommit)
--   [Special Topics: Batching and
-    imports](#TransactionReference-SpecialTopics:Batchingandimports)
-
-</div>
-
-</div>
-
-</div>
+# Database Transaction Reference
 
 ## Background
 
@@ -49,73 +12,41 @@ some background material like:
 
 ## Example: Wrapping code in a transaction (exception-safe helper; recommended for v4.6+)
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
-
-**Using a Transaction (Exception-safe helper)**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    <?php
-    /**
-     * @throws MyBusinessException
-     */
-    function myBusinessOperation() {
-      CRM_Core_Transaction::create()->run(function($tx) {
-        CRM_Core_DAO::executeQuery( /* ... do some stuff ... */ );
-        if (/* ... received an error ... */) {
-          throw new MyBusinessException();
-        }
-      });
+```php
+function myBusinessOperation() {
+  CRM_Core_Transaction::create()->run(function($tx) {
+    CRM_Core_DAO::executeQuery( /* ... do some stuff ... */ );
+    if (/* ... received an error ... */) {
+      throw new MyBusinessException();
     }
+  });
+}
+```
 
-</div>
-
-</div>
-
-In this examplle, one never explicitly issues a BEGIN, ROLLBACK, or
-COMMIT. When we instantiate the transaction with create(), it will issue
-BEGIN automatically. If you throw an exception (or if an exception
-otherwise bubbles up), then run() will issue a ROLLBACK; otherwise, it
-will issue a COMMIT.
+In this example, one never explicitly issues a `BEGIN`, `ROLLBACK`, or
+`COMMIT`. When we instantiate the transaction with `create()`, it will issue
+`BEGIN` automatically. If you throw an exception (or if an exception
+otherwise bubbles up), then `run()` will issue a `ROLLBACK`; otherwise, it
+will issue a `COMMIT`.
 
 You can also trigger a rollback without throwing an exception using
-$tx-&gt;rollback(), e.g.
+`$tx->rollback()`, e.g.
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
-
-**Using a Transaction (Exception-safe helper)**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    <?php
-    /**
-     * @return bool
-     */
-    function myBusinessOperation() {
-      $result = NULL;
-      CRM_Core_Transaction::create()->run(function($tx) use (&$result) {
-        CRM_Core_DAO::executeQuery( /* ... do some stuff ... */ );
-        if (/* ... received an error ... */) {
-          $tx->rollback();
-          $result = FALSE;
-        } else {
-          $result = TRUE;
-        }
-      });
-      return $result;
+```php
+function myBusinessOperation() {
+  $result = NULL;
+  CRM_Core_Transaction::create()->run(function($tx) use (&$result) {
+    CRM_Core_DAO::executeQuery( /* ... do some stuff ... */ );
+    if (/* ... received an error ... */) {
+      $tx->rollback();
+      $result = FALSE;
+    } else {
+      $result = TRUE;
     }
-
-</div>
-
-</div>
+  });
+  return $result;
+}
+```
 
 ## Example: Wrapping code in a transaction (procedural style)
 
@@ -128,60 +59,44 @@ General rules:
 -   Continue reporting and handling errors (by returning error-codes,
     throwing exceptions, etc)
 
-<div class="code panel" style="border-width: 1px;">
+```php
+/**
+ * @return bool TRUE on success; FALSE on failure
+ */
+function myBusinessOperation() {
+  $tx = new CRM_Core_Transaction();
+  CRM_Core_DAO::executeQuery( /* ... do some stuff ... */ );
+  if (/* ... received an error ... */) {
+    $tx->rollback();
+    return FALSE;
+  } else {
+    return TRUE;
+  }
+}
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
-
-**Using a Transaction (Non-Exception Style)**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    <?php
-    /**
-     * @return bool TRUE on success; FALSE on failure
-     */
-    function myBusinessOperation() {
-      $tx = new CRM_Core_Transaction();
-      CRM_Core_DAO::executeQuery( /* ... do some stuff ... */ );
-      if (/* ... received an error ... */) {
-        $tx->rollback();
-        return FALSE;
-      } else {
-        return TRUE;
-      }
+function myBusinessOperation() {
+  $tx = new CRM_Core_Transaction();
+  try {
+    /* ... do some stuff ... */
+    if (/* ... received an error ... */) {
+      throw new MyBusinessException();
     }
-
-    /**
-     * @throws MyBusinessException
-     */
-    function myBusinessOperation() {
-      $tx = new CRM_Core_Transaction();
-      try {
-        /* ... do some stuff ... */
-        if (/* ... received an error ... */) {
-          throw new MyBusinessException();
-        }
-      } catch (Exception $e) {
-        $tx->rollback();
-        throw $e; // re-throw the exception
-      }
-    }
-
-</div>
-
-</div>
+  } catch (Exception $e) {
+    $tx->rollback();
+    throw $e; // re-throw the exception
+  }
+}
+```
 
 The first example explicitly marks the beginning of the transaction in
 our function and (if there's an error) marks the transaction for
-ROLLBACK. It **also** reports the error ("return FALSE") so that anyone
-who calls myBusinessOperation() can perform their own cleanup.
+`ROLLBACK`. It **also** reports the error ("return `FALSE`") so that anyone
+who calls `myBusinessOperation()` can perform their own cleanup.
 
-Note that we never explicitly issue a BEGIN, ROLLBACK or COMMIT. When
-instantiating CRM_Core_Transaction, it will issue a BEGIN
+Note that we never explicitly issue a `BEGIN`, `ROLLBACK` or `COMMIT`. When
+instantiating `CRM_Core_Transaction`, it will issue a `BEGIN`
 automatically. When the function terminates (or, more specifically, when
-$tx destructs), it will issue a COMMIT or ROLLBACK.
+`$tx` destructs), it will issue a `COMMIT` or `ROLLBACK`.
 
 ## Example: Combining transactions
 
@@ -202,73 +117,60 @@ operations are combined or overlap, then the transactions will be
 combined automatically. The following example illustrates the
 programming style:
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
+```php
+/**
+ * Create a contact using a profile form
+ *
+ * @return NULL|int contact ID, or NULL on error
+ */
+function createContactFromProfile($contactData) {
+  $tx = new CRM_Core_Transaction();
+  ...
+  if (...error...) {
+    $tx->rollback();
+    return NULL;
+  } else {
+    return $contactID;
+  }
+}
 
-**Combining transactions**
+/**
+ * Register a contact for an event
+ * @return int|NULL participant registration ID, or NULL on error
+ */
+function registerForEvent($eventID, $contactID) {
+  $tx = new CRM_Core_Transaction();
+  ...
+  if (...error...) {
+    $tx->rollback();
+    return NULL;
+  } else {
+    return $participantID;
+  }
+}
 
-</div>
+/**
+ * Create a new contact and register for an event
+ *
+ * @return NULL|int participant ID, or NULL on error
+ */
+function registerNewContactForEvent($eventID, $contactData) {
+  $tx = new CRM_Core_Transaction();
 
-<div class="codeContent panelContent">
+  $contactID = createContactFromProfile($contactData);
+  if ($contactID === NULL) {
+    return NULL;
+  }
 
-    <?php
+  $participantID = registerForEvent($eventID, $contactID)
+  if ($participantID === NULL) {
+    return NULL;
+  }
 
-    /**
-     * Create a contact using a profile form
-     *
-     * @return NULL|int contact ID, or NULL on error
-     */
-    function createContactFromProfile($contactData) {
-      $tx = new CRM_Core_Transaction();
-      ...
-      if (...error...) {
-        $tx->rollback();
-        return NULL;
-      } else {
-        return $contactID;
-      }
-    }
-
-    /**
-     * Register a contact for an event
-     * @return int|NULL participant registration ID, or NULL on error
-     */
-    function registerForEvent($eventID, $contactID) {
-      $tx = new CRM_Core_Transaction();
-      ...
-      if (...error...) {
-        $tx->rollback();
-        return NULL;
-      } else {
-        return $participantID;
-      }
-    }
-
-    /**
-     * Create a new contact and register for an event
-     *
-     * @return NULL|int participant ID, or NULL on error
-     */
-    function registerNewContactForEvent($eventID, $contactData) {
-      $tx = new CRM_Core_Transaction();
-
-      $contactID = createContactFromProfile($contactData);
-      if ($contactID === NULL) {
-        return NULL;
-      }
-
-      $participantID = registerForEvent($eventID, $contactID)
-      if ($participantID === NULL) {
-        return NULL;
-      }
-
-      return $participantID;
-    }
-
-</div>
-
-</div>
+  return $participantID;
+}
+```
 
 This has a few important properties:
 
@@ -282,94 +184,69 @@ This has a few important properties:
 ## Example: Nesting transactions (v4.6+)
 
 In some cases, it may be appropriate to use a **nested** transaction or
-[SAVEPOINT](http://dev.mysql.com/doc/refman/5.1/en/savepoint.html){.external-link}s.
+[SAVEPOINT](http://dev.mysql.com/doc/refman/5.1/en/savepoint.html)s.
 With nested transactions, it is possible to rollback individual steps
 (such as the contact-creation or the registration) while committing the
 overall work. This is appropriate in cases where some errors are
 recoverable, expected, or otherwise tolerated. For example, suppose you
 have a bulk importer and want this policy: "We will tolerate errors as
-long as they affect &lt;5 records." If there are &lt;5 errors, then all
+long as they affect fewer than 5 records." If there are fewer than 5 errors, then all
 the valid records should be allowed (and bad records should be skipped);
-if there are &gt;=5 records, then the entire batch should be skipped.
+if there are 5 or more records, then the entire batch should be skipped.
 
 One can create a nested transaction the same way as before – but one
-must pass the argument "$nested==TRUE", e.g. "new
-CRM_Core_Transaction(TRUE)" or "CRM_Core_Transaction::create(TRUE)".
+must pass the argument `$nested == TRUE`, e.g. 
+`new CRM_Core_Transaction(TRUE)` or `CRM_Core_Transaction::create(TRUE)`.
 
-<div class="code panel" style="border-width: 1px;">
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
-
-**Nested transactions**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    <?php
-
-    /**
-     * Attempt to import a batch of contacts.
-     *
-     * @param array $contacts list of contact records to import
-     * @param int $maxErrors max number of contacts allowed to hit an error
-     * @param array $erroneousContacts a list of contacts that were skipped due to errors
-     * @return bool TRUE if the batch was committed
-     */
-    function importBatchOfContacts($contacts, $maxErrors, &$erroneousContacts) {
-      $txMain = new CRM_Core_Transaction(TRUE);
-      $erroneousContacts = array();
-      foreach ($contacts as $contact) {
-        try {
-          $txNested = new CRM_Core_Transaction(TRUE); // NOTE: the "TRUE" makes for a nested transaction
-          if (!createContactFromProfile($contact)) {
-            $erroneousContacts[] = $contact;
-          }
-        } catch (Exception $e) {
-          $erroneousContacts[] = $contact;
-          $txNested->rollback();
-        }
-        $txNested = NULL; // finish the nested transaction
+```php
+/**
+ * Attempt to import a batch of contacts.
+ *
+ * @param array $contacts list of contact records to import
+ * @param int $maxErrors max number of contacts allowed to hit an error
+ * @param array $erroneousContacts a list of contacts that were skipped due to errors
+ * @return bool TRUE if the batch was committed
+ */
+function importBatchOfContacts($contacts, $maxErrors, &$erroneousContacts) {
+  $txMain = new CRM_Core_Transaction(TRUE);
+  $erroneousContacts = array();
+  foreach ($contacts as $contact) {
+    try {
+      $txNested = new CRM_Core_Transaction(TRUE); // NOTE: the "TRUE" makes for a nested transaction
+      if (!createContactFromProfile($contact)) {
+        $erroneousContacts[] = $contact;
       }
-      if (count($erroneousContacts) < $maxErrors) {
-        // batch was "good enough"; errors have been outputted to $erroneousContacts
-        return TRUE;
-      } else {
-        // too many errors; give up on the entire batch
-        $txMain->rollback();
-        $erroneousContacts = $contacts;
-        return FALSE;
-      }
+    } catch (Exception $e) {
+      $erroneousContacts[] = $contact;
+      $txNested->rollback();
     }
+    $txNested = NULL; // finish the nested transaction
+  }
+  if (count($erroneousContacts) < $maxErrors) {
+    // batch was "good enough"; errors have been outputted to $erroneousContacts
+    return TRUE;
+  } else {
+    // too many errors; give up on the entire batch
+    $txMain->rollback();
+    $erroneousContacts = $contacts;
+    return FALSE;
+  }
+}
+```
 
-</div>
+!!! warning
+    Marking a transaction for rollback is different from sending the `ROLLBACK` command to the SQL server – the two may not happen at the same time.The transaction is marked for rollback when an error is first detected, but the `ROLLBACK` command is sent when all outstanding copies of `CRM_Core_Transaction` finish-up.
 
-</div>
+    For example, suppose the sequence of events include:
 
-<div class="panelMacro">
-
-!!! warning{width="16" height="16"}   Marking a transaction for rollback is different from sending the ROLLBACK command to the SQL server – the two may not happen at the same time.The transaction is marked for rollback when an error is first detected, but the ROLLBACK command is sent when all outstanding copies of CRM_Core_Transaction finish-up.
-
-                            For example, suppose the sequence of events include:
-
-                            -   Someone calls *registerNewContactForEvent*
-
-                                -   *registerNewContactForEvent* creates $tx (the first copy of *CRM_Core_Transaction*)
-                                -   *registerNewContactForEvent* calls *registerForEvent*
-
-                                    -   *registerForEvent* creates $tx (the second copy of *CRM_Core_Transaction*)
-
-                                    -   *registerForEvent* encounters an error and **marks the transaction for rollback** (but the SQL ROLLBACK is **not** executed yet)
-
-                                    -   *registerForEvent* terminates – and therefore $tx is destroyed (but the SQL ROLLBACK is **not** executed yet)
-
-                                -   *registerNewContactForEvent* terminates – and therefore $tx is destroyed, and **the SQL ROLLBACK is executed**
-
-
-
-
-</div>
-
+    -   Someone calls `registerNewContactForEvent`
+        -   `registerNewContactForEvent` creates $tx (the first copy of `CRM_Core_Transaction`)
+        -   `registerNewContactForEvent` calls `registerForEvent`
+            -   `registerForEvent` creates `$tx` (the second copy of `CRM_Core_Transaction`)
+            -   `registerForEvent` encounters an error and **marks the transaction for rollback** (but the SQL `ROLLBACK` is **not** executed yet)
+            -   `registerForEvent` terminates – and therefore $tx is destroyed (but the SQL `ROLLBACK` is **not** executed yet)
+        -   `registerNewContactForEvent` terminates – and therefore $tx is destroyed, and **the SQL `ROLLBACK` is executed**
 
 
 ## Example: Abnormal termination
@@ -382,29 +259,16 @@ there's a fatal error, then any pending transactions shouldn't be
 committed. CRM_Core_Error addresses this by calling
 CRM_Core_Transaction immediately before exit:
 
-<div class="code panel" style="border-width: 1px;">
+```php
+static function abend($code) {
+  // do a hard rollback of any pending transactions
+  // if we've come here, its because of some unexpected PEAR errors
+  CRM_Core_Transaction::forceRollbackIfEnabled();
+  CRM_Utils_System::civiExit($code);
+}
+```
 
-<div class="codeHeader panelHeader" style="border-bottom-width: 1px;">
-
-**Abnormal termination**
-
-</div>
-
-<div class="codeContent panelContent">
-
-    <?php
-      static function abend($code) {
-        // do a hard rollback of any pending transactions
-        // if we've come here, its because of some unexpected PEAR errors
-        CRM_Core_Transaction::forceRollbackIfEnabled();
-        CRM_Utils_System::civiExit($code);
-      }
-
-</div>
-
-</div>
-
-## Special Topics: TRUNCATE and ALTER force immediate commit
+## Special Topics: `TRUNCATE` and `ALTER` force immediate commit
 
 In MySQL, changes to the schema will cause pending transactions to
 commit immediately (regardless of what Civi would normally do for
