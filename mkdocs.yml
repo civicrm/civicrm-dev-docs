@@ -232,6 +232,7 @@ pages:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
   - Javascript Reference: standards/javascript.md
+  - Database Standards: standards/database.md
   # API: standards/api.md
   # Git: standards/git.md
 - Documentation:
