@@ -2,7 +2,7 @@
 
 ## Why a Entity Relationship Diagram may *not* be helpful
 
-As some coders are visual learners, ER Diagrams maybe a waste of time for those coders to understand the CiviCRM Database module and structure. Fundamentally CiviCRM's Schema design is way too complex, with at least 150 tables and loads of Foreign Key Constraints linking tables together any such graphic or design document that tries to map out the CiviCRM database design would most likely bring more confusion than help, especially for visual learners.
+As some coders are visual learners, ER Diagrams maybe a waste of time for those coders to understand the CiviCRM Database model and structure. Fundamentally CiviCRM's Schema design is way too complex, with at least 150 tables and loads of Foreign Key Constraints linking tables together any such graphic or design document that tries to map out the CiviCRM database design would most likely bring more confusion than help, especially for visual learners.
 
 ## Alternate Methods to ERDs to explore CiviCRM's Database Design
 
