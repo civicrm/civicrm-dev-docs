@@ -75,6 +75,7 @@ pages:
     - Overview: framework/database/index.md
     - XML Schema definition: framework/database/schema-definition.md
     - Schema Design: framework/database/schema-design.md
+    - Transaction Reference: framework/database/transactions.md
   - Resources Reference: framework/resources.md
   - UI Reference: framework/ui.md
   - Region Reference: framework/region.md
