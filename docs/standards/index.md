@@ -52,7 +52,7 @@ Orange light code is code that has the feel that it is wrong and should be refac
 * Using joins on `civicrm_option_value` rather than using PseudoConstants - this has performance iplications
 * Removing as much as possible passing by reference to functions.
 * Increasing code complexity, this has two issues firstly it increase the fragility of the code and also makes it harder to test
-* Where ever `$session = CRM_Core_Session(); $userid = $session->get('UserID');` or very similar these calls should be replaced with `CRM_Core_Session()->getLoggedInUser()`
+* Where ever `$session = CRM_Core_Session(); $userid = $session->get('UserID');` or very similar these calls should be replaced with `CRM_Core_Session::singleton()->getLoggedInContactID();`
 * Clean up messy code, see if code can be refactored and moved into parent classes and make them more generic, Also elimiate any duplicate code
 * Increase the usage of Doc blocks to help with auto generation of code
 * Move more business logic out from the Froms and API if possible to the BAO level
