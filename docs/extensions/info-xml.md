@@ -141,6 +141,9 @@ Elements acceptable within `<compatibility>`
 
 ### `<ext>` {:#ext}
 
+!!! warning "Experimental"
+    This element does not (yet?) do anything. Functionality is pending the merge of PR [#9416](https://github.com/civicrm/civicrm-core/pull/9416).
+
 * Containing element: [`<requires>`](#requires)
 * Description: Specifies the unique name of one extension on which this extension is dependent.
 * Contains: text
@@ -274,6 +277,9 @@ Attributes acceptable for `<psr4>`
 * Contains: text
 
 ### `<requires>` {:#requires}
+
+!!! warning "Experimental"
+    This element does not (yet?) do anything. Functionality is pending the merge of PR [#9416](https://github.com/civicrm/civicrm-core/pull/9416).
 
 * Containing element: [`<extension>`](#extension)
 * Description: Used to to specify other extension on which this extension is dependent
