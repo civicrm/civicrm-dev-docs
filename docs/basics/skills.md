@@ -30,10 +30,8 @@ accomplishing a particular development goal, certainly vary.
 
 -   **PHP** - the main programming language in which CiviCRM is written
     -   [Language reference](http://php.net/manual/en/langref.php)
--   **Git** - a version control system for tracking changes to source code
-    -   [Official documentation](https://git-scm.com/documentation)
-    -   [15 minute interactive tutorial](https://try.github.io/levels/1/challenges/1)
-    -   [Another site with more interactive tutorials](http://learngitbranching.js.org/)
+-   **Git, GitHub, and GitLab** - Git is a version control system for tracking changes to source code. GitHub and GitLab are web-based tools which host git repositories and issue-tracking systems.
+    -   See [our recommended external resources](/tools/git.md#resources)
 -   **Command line / bash** - in general, "the command line" refers to using a
     text-only interface to run programs such as `civix`, `git`, and many more.
     Bash is the most common "shell" program used to execute these commands on

@@ -168,3 +168,9 @@ Section+elements framework/ui
 Database+layer standards/database
 Using+Custom+Data+with+the+API api/custom-data
 CiviReport+Reference reference/civireport
+Manual+testing testing/manual
+Dedupe+and+merge+testing testing/manual/#dedupe
+Smart+group+testing testing/manual/#smart-group
+Tarball+installation+testing testing/manual/#tarball
+Contributing+to+CiviCRM+using+GitHub tools/git/#github
+Git+Commit+Messages+for+CiviCRM tools/git/#committing

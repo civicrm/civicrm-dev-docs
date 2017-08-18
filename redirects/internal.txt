@@ -7,3 +7,4 @@ api/general api
 hooks/hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
 framework/schema-definition framework/database/schema-definition
 api/params api/options
+core/develop tools/git

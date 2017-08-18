@@ -18,12 +18,14 @@ pages:
   - civibuild: tools/civibuild.md
   - cividist: tools/cividist.md
   - civilint: tools/civilint.md
-  - GitHub: tools/github.md
+  - Issue Tracking: tools/issue-tracking.md
+  - Git, GitHub, &amp; GitLab: tools/git.md
+  - Jenkins: tools/jenkins.md
   - PhpStorm: tools/phpstorm.md
   - Debugging: tools/debugging.md
 - Core Development:
   - When to Edit Core: core/hacking.md
-  - Developing CiviCRM: core/develop.md
+  - Release process: core/release-process.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
   - Codebase & Architecture: core/architecture.md
@@ -55,6 +57,7 @@ pages:
   - "Selinium Tests": testing/selinium.md
   - "Continuous Integration": testing/continuous-integration.md
   - "Upgrade Tests": testing/upgrades.md
+  - Manual Testing: testing/manual.md
 - Framework Reference:
   - AngularJS:
     - "AngularJS: Intro": framework/angular/index.md
