@@ -50,7 +50,6 @@ pages:
   - Extension Lifecycle: extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
-  - Customizing screens: extensions/custom-screens.md
 - Testing:
   - Testing Setup: testing/setup.md
   - "PHPUnit Tests": testing/phpunit.md
@@ -86,6 +85,9 @@ pages:
   - QuickForm Reference:
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
+  - Template Reference:
+    - Templates: framework/templates/index.md
+    - Customizing templates: framework/templates/customizing.md
   - PseudoConstant Reference: framework/pseudoconstant.md
   # Other Reference:
   # CiviMail: /reference/civimail.md
