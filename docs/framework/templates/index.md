@@ -1,7 +1,7 @@
 # Page Templates
 
 !!! warning
-    This page has been copied directly from the book. It need updating or deleting.
+    The content in this page was written at some unknown time prior to 2013. It needs updating and may contain inaccuracies. 
 
 CiviCRM uses page template files to display all the pages. This makes it
 possible for a person to customize any CiviCRM screen to suit a special
