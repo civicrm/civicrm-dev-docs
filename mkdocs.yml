@@ -50,6 +50,10 @@ pages:
   - Extension Lifecycle: extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
+  - Payment Processors:
+    - Payment Processors: extensions/payment-processors/index.md
+    - Creating a Payment Processor: extensions/payment-processors/create.md
+    - Payment Processor Example: extensions/payment-processors/example.md
 - Testing:
   - Testing Setup: testing/setup.md
   - "PHPUnit Tests": testing/phpunit.md
