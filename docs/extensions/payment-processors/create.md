@@ -1,11 +1,8 @@
 # Create a Payment-Processor Extension
 
-
-
 ## Create an extension
 
-See [Create a Module
-Extension](/confluence/display/CRMDOC/Create+a+Module+Extension).
+See [Create a Module Extension](/confluence/display/CRMDOC/Create+a+Module+Extension).
 
 ## Understand the processor you are setting up
 
@@ -41,7 +38,6 @@ Checkout - the info is entered at the processors' site.
 In CiviCRM there are four processor 'types'. These are used by CiviCRM
 to determine how to process a transaction.
 
-<div class="table-wrap">
 
 +--------------------+--------------------+--------------------+--------------------+
 | type               | billing_mode id   | corresponding      | description        |
@@ -184,185 +180,29 @@ to determine how to process a transaction.
 |                    |                    |                    | service provider.  |
 +--------------------+--------------------+--------------------+--------------------+
 
-</div>
+
 
 ## Add the processor to the database
 
 To insert a new payment processor plugin, a new entry must be added to
 the `civicrm_payment_processor_type` table.
 
-<div class="table-wrap">
-
-+----------------+----------------+----------------+----------------+----------------+
-| field          | type           | allowed values | required       | description    |
-+================+================+================+================+================+
-| id             | integer        | *automatic*    | Y              | A unique ID    |
-|                |                |                |                | used by        |
-|                |                |                |                | CiviCRM to     |
-|                |                |                |                | identify the   |
-|                |                |                |                | processor      |
-+----------------+----------------+----------------+----------------+----------------+
-| name           | string         | *no spaces*    | Y              | A name used by |
-|                |                |                |                | CiviCRM to     |
-|                |                |                |                | identify the   |
-|                |                |                |                | processor      |
-+----------------+----------------+----------------+----------------+----------------+
-| title          | string         |                | Y              | The name of    |
-|                |                |                |                | the processor  |
-|                |                |                |                | displayed in   |
-|                |                |                |                | the CiviCRM    |
-|                |                |                |                | administrator  |
-|                |                |                |                | panel          |
-+----------------+----------------+----------------+----------------+----------------+
-| description    | string         |                | N              | A description  |
-|                |                |                |                | of the         |
-|                |                |                |                | processor      |
-+----------------+----------------+----------------+----------------+----------------+
-| is_active     | boolean        | 0-1            | Y              | Inactive (0)   |
-|                |                |                |                | or Active (1)  |
-+----------------+----------------+----------------+----------------+----------------+
-| is_default    | boolean        | 0              | Y              | Not Default    |
-|                |                |                |                | (0) or Default |
-|                |                |                |                | (1)            |
-+----------------+----------------+----------------+----------------+----------------+
-| user_name_la | string         |                | Y              | The label for  |
-| bel            |                |                |                | the User Name  |
-|                |                |                |                | field          |
-|                |                |                |                | displayed in   |
-|                |                |                |                | the CiviCRM    |
-|                |                |                |                | administrator  |
-|                |                |                |                | panel          |
-+----------------+----------------+----------------+----------------+----------------+
-| password_labe | string         |                | N              | The label for  |
-| l              |                |                |                | the User Name  |
-|                |                |                |                | field          |
-|                |                |                |                | displayed in   |
-|                |                |                |                | the CiviCRM    |
-|                |                |                |                | administrator  |
-|                |                |                |                | panel          |
-+----------------+----------------+----------------+----------------+----------------+
-| signature_lab | string         |                | N              | The label for  |
-| el             |                |                |                | the User Name  |
-|                |                |                |                | field          |
-|                |                |                |                | displayed in   |
-|                |                |                |                | the CiviCRM    |
-|                |                |                |                | administrator  |
-|                |                |                |                | panel          |
-+----------------+----------------+----------------+----------------+----------------+
-| subject_label | string         |                | N              | The label for  |
-|                |                |                |                | the User Name  |
-|                |                |                |                | field          |
-|                |                |                |                | displayed in   |
-|                |                |                |                | the CiviCRM    |
-|                |                |                |                | administrator  |
-|                |                |                |                | panel          |
-+----------------+----------------+----------------+----------------+----------------+
-| class_name    | string         | payment_*name | Y              | The name of    |
-|                |                | *              |                | the class for  |
-|                |                |                |                | the payment    |
-|                |                |                |                | processor      |
-|                |                |                |                | script (where  |
-|                |                |                |                | *name*         |
-|                |                |                |                | corresponds to |
-|                |                |                |                | the filename   |
-|                |                |                |                | of the         |
-|                |                |                |                | processor      |
-|                |                |                |                | script)        |
-+----------------+----------------+----------------+----------------+----------------+
-| url_site_def | string         | *hyperlink*    | N              | URL of the     |
-| ault           |                |                |                | processor      |
-|                |                |                |                | service        |
-|                |                |                |                | provider       |
-|                |                |                |                | website        |
-+----------------+----------------+----------------+----------------+----------------+
-| url_api_defa | string         | *hyperlink*    | Y              | URL where the  |
-| ult            |                |                |                | data will be   |
-|                |                |                |                | posted         |
-+----------------+----------------+----------------+----------------+----------------+
-| url_recur_de | string         | *hyperlink*    | N              | URL where a    |
-| fault          |                |                |                | recurring      |
-|                |                |                |                | transaction    |
-|                |                |                |                | will be posted |
-+----------------+----------------+----------------+----------------+----------------+
-| url_button_d | string         | *hyperlink*    | N              | URL of a       |
-| efault         |                |                |                | custom button  |
-|                |                |                |                | graphic for    |
-|                |                |                |                | the            |
-|                |                |                |                | confirmation   |
-|                |                |                |                | page           |
-+----------------+----------------+----------------+----------------+----------------+
-| url_site_tes | string         | *hyperlink*    | N              | URL of the     |
-| t_default     |                |                |                | processor      |
-|                |                |                |                | service        |
-|                |                |                |                | provider       |
-|                |                |                |                | development    |
-|                |                |                |                | (sandbox)      |
-|                |                |                |                | website        |
-+----------------+----------------+----------------+----------------+----------------+
-| url_api_test | string         | *hyperlink*    | Y              | URL where the  |
-| _default      |                |                |                | data will be   |
-|                |                |                |                | posted when    |
-|                |                |                |                | test mode is   |
-|                |                |                |                | enabled        |
-+----------------+----------------+----------------+----------------+----------------+
-| url_recur_te | string         | *hyperlink*    | N              | URL where a    |
-| st_default    |                |                |                | recurring      |
-|                |                |                |                | transaction    |
-|                |                |                |                | will be posted |
-|                |                |                |                | when test mode |
-|                |                |                |                | is enabled     |
-+----------------+----------------+----------------+----------------+----------------+
-| url_button_t | string         | *hyperlink*    | N              | URL of a       |
-| est_default   |                |                |                | custom button  |
-|                |                |                |                | graphic for    |
-|                |                |                |                | the            |
-|                |                |                |                | confirmation   |
-|                |                |                |                | page when test |
-|                |                |                |                | mode is        |
-|                |                |                |                | enabled        |
-+----------------+----------------+----------------+----------------+----------------+
-| billing_mode  | integer        | 1-4            | Y              | Corresponds to |
-|                |                |                |                | the Processor  |
-|                |                |                |                | Type: Form     |
-|                |                |                |                | (1), Button    |
-|                |                |                |                | (2), Special   |
-|                |                |                |                | (3) or Notify  |
-|                |                |                |                | (4)            |
-+----------------+----------------+----------------+----------------+----------------+
-| is_recurr     | boolean        | 0-1            | Y              | No Recurring   |
-|                |                |                |                | Payments (0)   |
-|                |                |                |                | or Recurring   |
-|                |                |                |                | Payments       |
-|                |                |                |                | Allowed (1)    |
-+----------------+----------------+----------------+----------------+----------------+
-| payment_type  | integer        | 1-2            | Y              | Credit Card    |
-|                |                |                |                | (1) or Debit   |
-|                |                |                |                | Card (2)       |
-+----------------+----------------+----------------+----------------+----------------+
-
-</div>
-
 ##  Store any function files from your payment processor
 
 Create an appropriately named folder in the 'packages' directory for any
 files provided by your payment processor which have functions you need
 
-##  Write your processor ![(smile)](/confluence/s/en_GB/3398/84f448c1067609161db7eeaf020f96b084eef29d.24/_/images/icons/emoticons/smile.png){.emoticon .emoticon-smile}
+##  Write your processor
 
 OK, the groundwork is laid but writing the processor is the hard bit.
 
 Depending on your billing mode there are different considerations - I
 have less information and it is less checked on the first two. The file
-will live in CRM\Core\Payment and have the same name as entered into
+will live in `CRM/Core/Payment` and have the same name as entered into
 your processor_type table.
 
-## Test your processor
 
-Some suggestions of what you might test are here
-
-<http://wiki.civicrm.org/confluence/display/CRMDOC/Testing+Processor+Plugins>
-
-### <span id="CreateaPayment-ProcessorExtension-form_mode" class="confluence-anchor-link"></span>Form mode
+### Form mode
 
 The function called by this billing mode is
 
@@ -373,110 +213,73 @@ contribution will be confirmed. Values from the $params array will be
 updated based on what you return.  If the transaction does not succeed
 you should return an error to avoid confirming the transaction.
 
-The params available to doDirectPayment() are: -
+The params available to `doDirectPayment()` are: -
 
-qfKey -
-
-email-(bltID) -
-
-billing_first_name (=first_name)
-
-billing_middle_name (=middle_name)
-
+- qfKey
+- email-(bltID)
+- billing_first_name (=first_name)
+- billing_middle_name (=middle_name)
 - billing_last_name (=last_name)
-
-- location_name-(bltID) = billing_first_name + billing_middle_name
-+ billing_last_name
-
-- streeet_address
-
--(bltID)
-
+- location_name-(bltID) = billing_first_name + billing_middle_name + billing_last_name
+- street_address
+- (bltID)
 - city-(bltID)
-
 - state_province_id-(bltID) (int)
-
 - state_province-(bltID) (XX)
-
 - postal_code-(bltID)
-
 - country_id-(bltID) (int)
-
 - country-(bltID) (XX)
-
 - credit_card_number
-
 - cvv2 - credit_card_exp_date - M - Y
-
 - credit_card_type
-
 - amount
-
 - amount_other
-
 - year (credit_card_exp_date =&gt; Y)
-
 - month (credit_card_exp_date =&gt; M)
-
 - ip_address
-
 - amount_level
-
 - currencyID (XXX)
-
 - payment_action
-
 - invoiceID (hex number. hash?)
 
 bltID = Billing Location Type ID. This is not actually seen by the
 payment class.
 
-### <span id="CreateaPayment-ProcessorExtension-button_mode" class="confluence-anchor-link"></span>Button Mode
+### Button Mode
 
-\
 the function called by this billing mode is
 
-setExpressCheckout
+`setExpressCheckout`
 
 The customer is returned to confirm.php with the rfp value set to 1 and
 
-getExpressCheckoutDetails
+`getExpressCheckoutDetails`
 
-is called
+is called when the form is processed
 
-when the form is processed
-
-doExpressCheckout is called to finalise the payment - a result is
+`doExpressCheckout` is called to finalise the payment - a result is
 returned to the civiCRM site.
 
-### <span id="CreateaPayment-ProcessorExtension-notify_mode" class="confluence-anchor-link"></span>Notify mode
+### Notify mode
 
- The function called is
+The function called is
 
-doTransferCheckout
+`doTransferCheckout`
 
- The details from here are processor specific but you want to pass
+The details from here are processor specific but you want to pass
 enough details back to your function to identify the transaction. You
 should be aiming to have these variables to passthrough the processor to
 the confirmation routine:
 
-contactID
-
-contributionID
-
-contributionTypeID
-
-invoiceID
-
-membershipID(contribution only)
-
-participantID (event only)
-
-eventID (event only)
-
-component (event or contribute)
-
-qfkey
+* contactID
+* contributionID
+* contributionTypeID
+* invoiceID
+* membershipID(contribution only)
+* participantID (event only)
+* eventID (event only)
+* component (event or contribute)
+* qfkey
 
 Handling the return was the tricky part.
 
@@ -530,10 +333,7 @@ framework of it as an attachment to this post
 
 ## Information about existing Payment processors
 
-
-
-<span style="color: rgb(0,51,102);">**Describe them here so people can
-see if they are good matches.....**</span>
+**Describe them here so people can see if they are good matches.....**
 
 Google Checkout doesn't support recurring payments nor concurrent
 multiple payments (as of April 16, 2009).
@@ -550,117 +350,75 @@ Besides looking into the packaging format in order to create a clean
 extension, the main changes are:
 
 -   it is no longer necessary to have a MyProcessor.php file in
-    CRM/Contribute/Payment/, event, and so on.
+    `CRM/Contribute/Payment/`, event, and so on.
 -   make sure your MyProcessor class implements a "singleton" function
     (see other processors for examples). If this function is missing you
     may have a blank page because Apache has crashed (segfaulted).
 
-What additional interfaces must a payment processor support to work with
-some of the new recurring payment features that have been added in 4.3
-and above?
-
-What methods are invoked if a user cancels or updates their recurring
-contribution?
-
-Thanks
-
-These are excellent questions, and not easy to answer. I'm posting a new
-child page as a place to better document the payment processor object.
-
 
 ## Testing Processor Plugins
-
-**CiviCRM Payment Processor Test Spec**
 
 Here's some suggestions of what you might test once you have written
 your payment processor plug in.
 
-***** Don't forget that you need to search specifically for TEST
-transactions***************
+!!! important
+    Don't forget that you need to search specifically for TEST transactions
 
-ie from this page civicrm/contribute/search&reset=1 chose 'find test
-transactions
+    ie from this page `civicrm/contribute/search&reset=1` chose "find test transactions".
 
-**Std Payment processor tests**
+### Std Payment processor tests
 
-1\) Can process Successful transaction from
+1. Can process Successful transaction from
 
-            - Event
+    - Event
+    - Contribute Form
+    - Individual Contact Record (for on-site processors only)
 
-            - Contribute Form
+    Transaction should show as confirmed in CiviCRM and on the payment processor
 
-            - Individual Contact Record (for on-site processors only)
+2. Can include `, . & = ' "` in address and name fields without problems. Overlong ZIP code is handled
 
-Transaction should show as confirmed in CiviCRM and on the payment
-processor
+3. Can process a failed transaction from a Contribute form
 
-2\) Can include , . & = ' " in address and name fields without problems.
-Overlong ZIP code is handled
+    Can fix up details & resubmit for a successful transaction
+    
+    e-mail address is successfully passed through to payment processor and
+    payment processor sends e-mails if configured to do so.
+    
+    The invoice ID is processed and maintained in an adequate manner
 
-3\) Can process a failed transaction from a Contribute form
-
-Can fix up details & resubmit for a successful transaction
-
-e-mail address is successfully passed through to payment processor and
-payment processor sends e-mails if configured to do so.
-
-The invoice ID is processed and maintained in an adequate manner
-
-7\) Any result references and transaction codes are stored in an adequate
+7. Any result references and transaction codes are stored in an adequate
 manner
 
-**Recurring Payment Processor tests**
+    Recurring Payment Processor tests
+    
+    !!! note
+        IN Paypal Manager the recurring billing profiles are in Service Settings/Recurring Billing/ Manage Profiles
 
-NB - IN Paypal Manager the recurring billing profiles are in Service
-Settings/Recurring Billing/ Manage Profiles
+1. Process a recurring contribution. Check
 
-1\) Process a recurring contribution. Check
+    - wording on confirm page is acceptable
+    - wording on thankyou pages is acceptable
+    - wording on any confirmation e-mails is acceptable
+    - the payment processor shows the original transaction is successful 
+    - the payment processor shows the correct date for the next transaction 
+    - the payment processor shows the correct total number of transactions and / or the correct final date
 
-            - wording on confirm page is acceptable
+2. Try processing different types of frequencies. Preferably test a monthly contribution on the last day of a month where there isn't a similar day in the following month (e.g. 30 January)
 
-            - wording on thankyou pages is acceptable
+3. Process a transaction without filling in the total number of transactions (there should be no end date set)
 
-             - wording on any confirmation e-mails is acceptable
+4. Process a recurring contribution with the total instalments set to 1 (it should be treated as a one-off rather than a rec urring transaction). It should not show 'recurring contribution' when you search for it in CiviCRM
 
-           <span style="color: black;">**-**</span> <span
-style="color: black;">the payment processor shows the original
-transaction is successful</span>
+5. PayflowPro - check that you can edit the frequencies available on the configure contribution page form
 
-<span style="color: black;">           </span> <span
-style="color: black;">- the payment processor shows the correct date for
-the next transaction</span>
+6. Depending on your processor it may be important to identify the transactions that need to be updated or checked. You may wish to check what it being recorded in the civicrm_contribution_recur table for payment processor id, end date and next transaction date.
 
-<span style="color: black;">           </span> <span
-style="color: black;">- the payment processor shows the correct total
-number of transactions and / or the correct final date</span>
+### Specific Live tests
 
-<span style="color: black;">2) Try processing different types of
-frequencies. Preferably test a monthly contribution on the last day of a
-month where there isn't a similar day in the following month (e.g. 30
-January)</span>
+1. Successful and unsuccessful REAL transactions work
 
-<span style="color: black;">3) Process a transaction without filling in
-the total number of transactions (there should be no end date
-set)</span>
+2. Money vests into the bank account
 
-4\) Process a recurring contribution with the total instalments set to 1
-(it should be treated as a one-off rather than a rec urring
-transaction). It should not show 'recurring contribution' when you
-search for it in CiviCRM
-
-5\) PayflowPro - check that you can edit the frequencies available on the
-configure contribution page form
-
-6\) Depending on your processor it may be important to identify the
-transactions that need to be updated or checked. You may wish to check
-what it being recorded in the civicrm_contribution_recur table for
-payment processor id, end date and next transaction date.
-
-**Specific Live tests**
-
-1\) Successful and unsuccessful REAL transactions work
-
-2\) Money vests into the bank account
-
-3\) For recurring transactions wait for the first recurrent transaction
+3. For recurring transactions wait for the first recurrent transaction
 to vest

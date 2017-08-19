@@ -1,25 +1,7 @@
-# What is a Payment Processor
+# Payment Processors
 
-<div class="panelMacro">
+This page documents payment processing in CiviCRM. The key bit to understand is the payment processor object, a civicrm-specific way of representing and integrating an actual real-life payment processor (e.g. like Paypal, etc.). The object and how it is used (as of CiviCRM 4.4) is in need of some love and refactoring, so this page hopes to provide some help in that direction.
 
-Goals of this page
-
-This page is being written as a way of documenting payment processing in CiviCRM. The key bit to understand is the payment processor object, a civicrm-specific way of representing and integrating an actual real-life payment processor (e.g. like Paypal, etc.). The object and how it is used (as of CiviCRM 4.4) is in need of some love and refactoring, so this page hopes to provide some help in that direction.
-
-</div>
-
-<div>
-
--   [Definitions](#WhatisaPaymentProcessor-Definitions)
--   [Payment Processors](#WhatisaPaymentProcessor-PaymentProcessors)
--   [Payment Class](#WhatisaPaymentProcessor-PaymentClass)
--   [Payment Processor Objects, and in the
-    Database](#WhatisaPaymentProcessor-PaymentProcessorObjects,andintheDatabase)
--   [Payment Objects in
-    Code](#WhatisaPaymentProcessor-PaymentObjectsinCode)
--   [Existing Discussions](#WhatisaPaymentProcessor-ExistingDiscussions)
-
-</div>
 
 # Definitions
 
@@ -89,18 +71,18 @@ A challenge for any tool like CiviCRM is to provide supporting code and
 infrastructure for these payment processors that are all quite diverse
 in their ways of working, needs, and language. Two useful examples that
 are relatively successful in this challenge are [Drupal's commerce
-module](http://drupal.org/project/commerce){.external-link}, and the
+module](http://drupal.org/project/commerce), and the
 [omnipay
-project](https://github.com/thephpleague/omnipay){.external-link}.
+project](https://github.com/thephpleague/omnipay).
 
 # Payment Class
 
 CiviCRM's integration of a payment processor is based on subclassing the
 abstract class CRM_Core_Payment. That class is defined by the file
-CRM/Core/Payment.php, and each supported payment processor has a file in
-the directory CRM/Core/Payment that subclasses this abstract class. Any
+`CRM/Core/Payment.php`, and each supported payment processor has a file in
+the directory `CRM/Core/Payment` that subclasses this abstract class. Any
 extensions that provide a payment processor have to provide a
-corresponding subclass file in their own CRM/Core/Payment directory.
+corresponding subclass file in their own `CRM/Core/Payment directory`.
 
 The key method defined by the payment-processor-specific payment class
 depends on the billing mode. This is roughly documented on these two
@@ -109,7 +91,7 @@ extension](/confluence/display/CRMDOC/Example+of+creating+a+payment+processor+ex
 a Payment-Processor
 Extension](/confluence/display/CRMDOC/Create+a+Payment-Processor+Extension).
 
-The payment object is used in several places in the CivICRM code base.
+The payment object is used in several places in the CiviCRM code base.
 It's intention is to encapsulate all the details of processing a
 payment, so it can be used for a simple donation, a recurring series of
 donations, a payment for a membership, a payment for an event, and some
@@ -117,7 +99,7 @@ combination of those (e.g. a recurring series of payments for an
 auto-renewed membership).
 
 The way that payment objects get created is a bit convoluted. The
-payment objects are not created with the typical "new &lt;classname&gt;"
+payment objects are not created with the typical `new ClassName()`
 command, but use a mangled version of the singleton pattern to create
 new payment objects, with no more than one per mix of mode, payment
 processor, and whether it's attached to a form. Specifically, they get
@@ -129,8 +111,8 @@ Inside the singleton function,
 `$cacheKey = "{$mode}_{$paymentProcessor['id']}_" . (int)isset($paymentForm);`
 
 So that means we are creating unique payment objects per distinct value
-of: mode + payment processor id + &lt;is it associated with a payment
-form&gt;, where 'mode' in this case just means test or not (not the
+of: `mode + payment processor id + <is it associated with a payment
+form>`, where 'mode' in this case just means test or not (not the
 "billing mode"!).
 
 The paymentProcessor object is just the simple BAO object of fields from
@@ -197,85 +179,15 @@ Some other examples are:
 
 # Existing Discussions
 
-Here's a partial list of related discussions (please contribute here
-..):
+Here's a partial list of related discussions (please contribute here):
 
-<http://forum.civicrm.org/index.php/topic,34170.0.html>
-
-<http://forum.civicrm.org/index.php/topic,32920.0.html>
-
-<http://forum.civicrm.org/index.php/board,39.0.html>
-
-<http://forum.civicrm.org/index.php/topic,34458.0.html>
+* <http://forum.civicrm.org/index.php/topic,34170.0.html>
+* <http://forum.civicrm.org/index.php/topic,32920.0.html>
+* <http://forum.civicrm.org/index.php/board,39.0.html>
+* <http://forum.civicrm.org/index.php/topic,34458.0.html>
 
 and examples of challenges with the payment processing code
 
-<http://forum.civicrm.org/index.php/topic,29095.0.html>
+* <http://forum.civicrm.org/index.php/topic,29095.0.html>
+* <http://forum.civicrm.org/index.php/topic,34522.0.html>
 
-<http://forum.civicrm.org/index.php/topic,34522.0.html>
-
-
-
-
-
-
-
-
-
-So,
-
--   I've been basically assuming that for 4.6 I would move the work
-    around replacing billing.tpl with a tpl that simply renders the
-    billing fields as specified by php- you can see the sections that
-    specifies WHICH payment fields to show now relies on $paymentFields
-    & $billingFields being assigned. The second part of this is that
-    the function that determines what these fields are is easily moved
-    onto CRM_Core_Payment as getBillingFields & getPaymentFields (I'm
-    refering to contact related fields like billing address as billing
-    fields & fields like credit card, debit card etc as payment fields).
-    This isn't a complete solution but it makes it easy to override the
-    fields showing in payment processors & other custom code. I'm not
-    sure what detail is required in the template other than special
-    handling for cvv & credit card but it might make sense to move those
-    blocks (payment fields & billing fields) into their own templates -
-    I'll log a ticket to do this part - it's minor & it makes things
-    more generic.
-
-<https://github.com/eileenmcnaughton/nz.co.fuzion.omnipaymultiprocessor/blob/master/templates/SubstituteBillingBlock.tpl>
-
-
-
--   Also, "recurring payments: the code assumes that initial
-    contributions are not triggered until after the initial request is
-    submitted, and that the payment processor will report back on it's
-    payments using the IPN method." this is patched in 4.5.1 & I'm
-    debating whether to put the patch in 4.4.LTS - basically if you
-    return trxn_id then it is confirmed now. There are unit tests
-    covering that piece of code too,
-    <https://issues.civicrm.org/jira/browse/CRM-15296>
--   I agree about paylater being better as a payment processor- Kurund
-    raised some concerns about what happens when  pay later is paid off
-    by a different type - e.g credit card - but I think this can happen
-    to other types as well.
--   My biggest issue currently is the flow - I think we should move to a
-    flow of always creating a pending payment, then passing it to the
-    payment process class doPayment function which will either return
-    with a success or leave it pending. This would allow us to move away
-    from making assumptions about what the processors will do\
-    \
-
-
-
-
-
-I was curious for ways to determine the true interface used  by
-CRM_Core_Payment and its subclasses. This report seemed like it might
-be interesting – breaking down the classes & methods:
-
--   <https://gist.github.com/totten/8744df8cb9fdb976ec47>
--   <https://docs.google.com/spreadsheets/d/1_EeDJT1jGGigG-PSFAMPtY2XFtaTT3LU5uOgGXeBo78/edit?usp=sharing>
-
-You can see, e.g., that doTransferCheckout(), error(), and _checkDupe()
-are declared by a large number of classes –  but don't show up in the
-main interface. By contrast, getForm() and getVar() are inherited by all
-13 children – and never overridden.

@@ -1,56 +1,9 @@
 # Example of creating a payment processor extension
 
-<div class="panelMacro">
-
 Use a module extension instead of a payment processor extension
 
 This page has some useful bits, but if you want to contribute a new payment processor for CiviCRM, you should use the module extension, as per Create an Extension.
-</div>
 
-
-
-<div>
-
--   [Overview](#Exampleofcreatingapaymentprocessorextension-Overview)
--   [Creating the
-    extension](#Exampleofcreatingapaymentprocessorextension-Creatingtheextension)
-
-<!-- -->
-
--   [1. Create the
-    extension directory.](#Exampleofcreatingapaymentprocessorextension-1.Createtheextensiondirectory.)
--   [2. Create the
-    info.xml file.](#Exampleofcreatingapaymentprocessorextension-2.Createtheinfo.xmlfile.)
-
-<!-- -->
-
--   [Billing
-    modes](#Exampleofcreatingapaymentprocessorextension-Billingmodes)
-
-<!-- -->
-
--   [3. Create the default payment processor
-    file](#Exampleofcreatingapaymentprocessorextension-3.Createthedefaultpaymentprocessorfile)
-
-<!-- -->
-
--   [Form](#Exampleofcreatingapaymentprocessorextension-Form)
--   [Button](#Exampleofcreatingapaymentprocessorextension-Button)
--   [Notify](#Exampleofcreatingapaymentprocessorextension-Notify)
-
-<!-- -->
-
--   [Create initial
-    processing file.](#Exampleofcreatingapaymentprocessorextension-Createinitialprocessingfile.)
--   [Create return processing
-    file](#Exampleofcreatingapaymentprocessorextension-Createreturnprocessingfile)
-
-<!-- -->
-
--   [4. Add any additional libraries
-    needed](#Exampleofcreatingapaymentprocessorextension-4.Addanyadditionallibrariesneeded)
-
-</div>
 
 ## Overview
 
@@ -63,7 +16,7 @@ Merced.  It is a basic payment processor which works like this:
     redirects to the payment processors website.
 2.  The payment processor collects the credit card and any additional
     information and processes the payment.
-3.  The payment processor redirects the user pack to cvicrm at a
+3.  The payment processor redirects the user back to civicrm at a
     specific url.
 4.  The extension then processes the return information and completes
     the payment.
@@ -73,24 +26,15 @@ Merced.  It is a basic payment processor which works like this:
 ### 1. Create the extension directory.
 
 The extension directory needs to be created in a specific way. It is in
-the form of extensionid.type.extensionName.  So in the extension we are
-creating it uses edu.ucmerced.payment.ucmpaymentcollection
+the form of `extensionid.type.extensionName`.  So in the extension we are
+creating it uses `edu.ucmerced.payment.ucmpaymentcollection`
 
 ### 2. Create the info.xml file.
 
 In your new extension directory create an info.xml file. The layout of
 the file will look like this:
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
 
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
-
-**info.xml**
-
-</div>
-
-<div class="codeContent panelContent">
 
     <?xml version="1.0" encoding="UTF-8" ?>
      <extension key="[Your Directory Name]" type="payment">
@@ -132,9 +76,7 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
       </typeInfo>
     </extension>
 
-</div>
 
-</div>
 
 #### Billing modes
 
@@ -165,16 +107,8 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
 
 So for the extension we are building it looks like
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
-
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
 
 **info.xml**
-
-</div>
-
-<div class="codeContent panelContent">
 
     <?xml version="1.0" encoding="UTF-8" ?>
      <extension key="edu.ucmerced.payment.ucmpaymentcollection" type="payment">
@@ -216,9 +150,6 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
       </typeInfo>
     </extension>
 
-</div>
-
-</div>
 
 ### 3. Create the default payment processor file
 
@@ -227,8 +158,7 @@ used above.
 
 #### Form
 
-**Method Called:**\
-doDirectPayment()
+**Method Called:** `doDirectPayment()`
 
 **Notes:**
 
@@ -246,7 +176,7 @@ you should return an error to avoid confirming the transaction.
 -   billing_last_name
 -   location_name = billing_first_name + billing_middle_name +
     billing_last_name
--   streeet_address
+-   street_address
 -   city
 -   state_province_id
 -   state_province
@@ -268,27 +198,25 @@ you should return an error to avoid confirming the transaction.
 
 #### Button
 
-**Method Called:**\
-setExpressCheckout()
+**Method Called:** `setExpressCheckout()`
 
-**Notes:**\
-The customer is returned to confirm.php with the rfp value set to 1 and
+**Notes:** The customer is returned to confirm.php with the rfp value set to 1 and
 
-getExpressCheckoutDetails()
+`getExpressCheckoutDetails()`
 
 is called when the form is processed
 
-doExpressCheckout() is called to finalise the payment - a result is
+`doExpressCheckout()` is called to finalise the payment - a result is
 returned to the civiCRM site.
 
 **Available Parameters:**
 
 #### Notify
 
-**Method Called:**\
-doTransferCheckout()
+**Method Called:** `doTransferCheckout()`
 
-**Notes:**\
+**Notes:**
+
 The details from here are processor specific but you want to pass enough
 details back to your function to identify the transaction. You should be
 aiming to have these variables to passthrough the processor to the
@@ -315,16 +243,8 @@ file we are going to create is UCMPaymentCollection.php
 
 It should have this basic template.
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
-
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
-
 **UCMPaymentCollection.php**
 
-</div>
-
-<div class="codeContent panelContent">
 
     <?php
 
@@ -419,30 +339,19 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
       }
     }
 
-</div>
 
-</div>
 
 There are 4 areas that need changing for your specific processor.
 
 The class name needs to match to your chosen class name (directory of
 the extension)
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeContent panelContent">
 
     class edu_ucmerced_payment_ucmpaymentcollection extends CRM_Core_Payment {
 
-</div>
-
-</div>
 
 The processor name needs to match the name of your processor.
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeContent panelContent">
 
     function __construct( $mode, &$paymentProcessor ) {
       $this->_mode             = $mode;
@@ -450,15 +359,9 @@ The processor name needs to match the name of your processor.
       $this->_processorName    = ts('UC Merced Payment Collection');
     }
 
-</div>
-
-</div>
 
 This method should call your class name
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeContent panelContent">
 
     static function &singleton( $mode, &$paymentProcessor ) {
         $processorName = $paymentProcessor['name'];
@@ -468,23 +371,13 @@ This method should call your class name
         return self::$_singleton[$processorName];
     }
 
-</div>
-
-</div>
 
 You need to process the data given to you in the doTransferCheckout()
 method. Here is an example of how it's done in this processor
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
-
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
 
 **UCMPaymentCollection.php-doTransferCheckout**
 
-</div>
-
-<div class="codeContent panelContent">
 
     function doTransferCheckout( &$params, $component ) {
         // Start building our paramaters.
@@ -546,9 +439,7 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
       }
     }
 
-</div>
 
-</div>
 
 ##### Create return processing file
 
@@ -558,16 +449,7 @@ UCMPaymentCollectionNotify.php
 
 It should have this template.
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
-
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
-
 **UCMPaymentCollectionNotify.php**
-
-</div>
-
-<div class="codeContent panelContent">
 
     <?php
 
@@ -584,24 +466,13 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
     // Change this to match your payment processor class.
     edu_ucmerced_payment_ucmpaymentcollection_UCMPaymentCollectionIPN::main();
 
-</div>
-
-</div>
 
 As you can see this includes UCMPaymentCollectionIPN.php Let's create
 this file now. Although this file is very large there is only a small
 amount of changes needed.
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
-
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
 
 **UCMPaymentCollectionNotify.php**
-
-</div>
-
-<div class="codeContent panelContent">
 
     <?php
 
@@ -851,30 +722,17 @@ style="border-bottom-width: 1px;border-bottom-style: solid;">
 
     }
 
-</div>
-
-</div>
 
 Let's start out with the minor changes that are necessary
 
 Change the class name to fit your class. You can add any ending just as
 long as it's consistent everywhere.
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeContent panelContent">
-
     class edu_ucmerced_payment_ucmpaymentcollection_UCMPaymentCollectionIPN extends CRM_Core_Payment_BaseIPN {
 
-</div>
-
-</div>
 
 Again match class name to fit your class
 
-<div class="code panel" style="border-width: 1px;">
-
-<div class="codeContent panelContent">
 
     static function &singleton( $mode, $component, &$paymentProcessor ) {
     if ( self::$_singleton === null ) {
@@ -883,101 +741,88 @@ Again match class name to fit your class
     return self::$_singleton;
     }
 
-</div>
-
-</div>
 
 Insert your processing code into static function main()
 
-<div class="code panel" style="border-style: solid;border-width: 1px;">
-
-<div class="codeHeader panelHeader"
-style="border-bottom-width: 1px;border-bottom-style: solid;">
 
 **UCMPaymentCollectionNotify.php - main()**
 
-</div>
-
-<div class="codeContent panelContent">
-
-          $config = CRM_Core_Config::singleton();
-
-          // Add external library to process soap transaction.
-          require_once('libraries/nusoap/lib/nusoap.php');
-
-          $client = new nusoap_client("https://test.example.com/verify.php", 'wsdl');
-          $err = $client->getError();
-          if ($err) {
-            echo '<h2>Constructor error</h2><pre>' . $err . '</pre>';
-          }
-
-          // Prepare SoapHeader parameters
-          $param = array(
-            'Username' => 'user',
-            'Password' => 'password',
-            'TransactionGUID' => $_GET['uuid'],
-          );
-
-          // This will give us some info about the transaction
-          $result = $client->call('PaymentVerification', array('parameters' => $param), '', '', false, true);
-
-          // Make sure there are no errors.
-          if (isset($result['PaymentVerificationResult']['Errors']['Error'])) {
-            if ($component == "event") {
-              $finalURL = CRM_Utils_System::url('civicrm/event/confirm',
-                   "reset=1&cc=fail&participantId={$privateData[participantID]}", false, null, false);
-            } elseif ( $component == "contribute" ) {
-              $finalURL = CRM_Utils_System::url('civicrm/contribute/transact',
-                   "_qf_Main_display=1&cancel=1&qfKey={$privateData['qfKey']}", false, null, false);
-            }
-          }
-          else {
-            $success = TRUE;
-            $ucm_pc_values = $result['PaymentResult']['Payment'];
-
-            $invoice_array = explode('-', $ucm_pc_values['InvoiceNumber']);
-
-            // It is important that $privateData contains these exact keys.
-            // Otherwise getContext may fail.
-            $privateData['invoiceID'] = (isset($invoice_array[0])) ? $invoice_array[0] : '';
-            $privateData['qfKey'] = (isset($invoice_array[1])) ? $invoice_array[1] : '';
-            $privateData['contactID'] = (isset($invoice_array[2])) ? $invoice_array[2] : '';
-            $privateData['contributionID'] = (isset($invoice_array[3])) ? $invoice_array[3] : '';
-            $privateData['contributionTypeID'] = (isset($invoice_array[4])) ? $invoice_array[4] : '';
-            $privateData['eventID'] = (isset($invoice_array[5])) ? $invoice_array[5] : '';
-            $privateData['participantID'] = (isset($invoice_array[6])) ? $invoice_array[6] : '';
-            $privateData['membershipID'] = (isset($invoice_array[7])) ? $invoice_array[7] : '';
-
-            list($mode, $component, $paymentProcessorID, $duplicateTransaction) = self::getContext($privateData);
-            $mode = $mode ? 'test' : 'live';
-
-            require_once 'CRM/Core/BAO/PaymentProcessor.php';
-            $paymentProcessor = CRM_Core_BAO_PaymentProcessor::getPayment($paymentProcessorID, $mode);
-
-            $ipn=& self::singleton( $mode, $component, $paymentProcessor );
-
-            if ($duplicateTransaction == 0) {
-              // Process the transaction.
-              $ipn->newOrderNotify($success, $privateData, $component,
-                      $ucm_pc_values['TotalAmountCharged'], $ucm_pc_values['TransactionNumber']);
-            }
-
-            // Redirect our users to the correct url.
-            if ($component == "event") {
-              $finalURL = CRM_Utils_System::url('civicrm/event/register',
-                  "_qf_ThankYou_display=1&qfKey={$privateData['qfKey']}", false, null, false);
-            }
-            elseif ($component == "contribute") {
-              $finalURL = CRM_Utils_System::url('civicrm/contribute/transact',
-                  "_qf_ThankYou_display=1&qfKey={$privateData['qfKey']}", false, null, false);
-            }
-          }
-
-          CRM_Utils_System::redirect( $finalURL );
-
-</div>
-
-</div>
+    
+    $config = CRM_Core_Config::singleton();
+    
+    // Add external library to process soap transaction.
+    require_once('libraries/nusoap/lib/nusoap.php');
+    
+    $client = new nusoap_client("https://test.example.com/verify.php", 'wsdl');
+    $err = $client->getError();
+    if ($err) {
+      echo '<h2>Constructor error</h2><pre>' . $err . '</pre>';
+    }
+    
+    // Prepare SoapHeader parameters
+    $param = array(
+      'Username' => 'user',
+      'Password' => 'password',
+      'TransactionGUID' => $_GET['uuid'],
+    );
+    
+    // This will give us some info about the transaction
+    $result = $client->call('PaymentVerification', array('parameters' => $param), '', '', false, true);
+    
+    // Make sure there are no errors.
+    if (isset($result['PaymentVerificationResult']['Errors']['Error'])) {
+      if ($component == "event") {
+        $finalURL = CRM_Utils_System::url('civicrm/event/confirm',
+             "reset=1&cc=fail&participantId={$privateData[participantID]}", false, null, false);
+      } elseif ( $component == "contribute" ) {
+        $finalURL = CRM_Utils_System::url('civicrm/contribute/transact',
+             "_qf_Main_display=1&cancel=1&qfKey={$privateData['qfKey']}", false, null, false);
+      }
+    }
+    else {
+      $success = TRUE;
+      $ucm_pc_values = $result['PaymentResult']['Payment'];
+    
+      $invoice_array = explode('-', $ucm_pc_values['InvoiceNumber']);
+    
+      // It is important that $privateData contains these exact keys.
+      // Otherwise getContext may fail.
+      $privateData['invoiceID'] = (isset($invoice_array[0])) ? $invoice_array[0] : '';
+      $privateData['qfKey'] = (isset($invoice_array[1])) ? $invoice_array[1] : '';
+      $privateData['contactID'] = (isset($invoice_array[2])) ? $invoice_array[2] : '';
+      $privateData['contributionID'] = (isset($invoice_array[3])) ? $invoice_array[3] : '';
+      $privateData['contributionTypeID'] = (isset($invoice_array[4])) ? $invoice_array[4] : '';
+      $privateData['eventID'] = (isset($invoice_array[5])) ? $invoice_array[5] : '';
+      $privateData['participantID'] = (isset($invoice_array[6])) ? $invoice_array[6] : '';
+      $privateData['membershipID'] = (isset($invoice_array[7])) ? $invoice_array[7] : '';
+    
+      list($mode, $component, $paymentProcessorID, $duplicateTransaction) = self::getContext($privateData);
+      $mode = $mode ? 'test' : 'live';
+    
+      require_once 'CRM/Core/BAO/PaymentProcessor.php';
+      $paymentProcessor = CRM_Core_BAO_PaymentProcessor::getPayment($paymentProcessorID, $mode);
+    
+      $ipn=& self::singleton( $mode, $component, $paymentProcessor );
+    
+      if ($duplicateTransaction == 0) {
+        // Process the transaction.
+        $ipn->newOrderNotify($success, $privateData, $component,
+                $ucm_pc_values['TotalAmountCharged'], $ucm_pc_values['TransactionNumber']);
+      }
+    
+      // Redirect our users to the correct url.
+      if ($component == "event") {
+        $finalURL = CRM_Utils_System::url('civicrm/event/register',
+            "_qf_ThankYou_display=1&qfKey={$privateData['qfKey']}", false, null, false);
+      }
+      elseif ($component == "contribute") {
+        $finalURL = CRM_Utils_System::url('civicrm/contribute/transact',
+            "_qf_ThankYou_display=1&qfKey={$privateData['qfKey']}", false, null, false);
+      }
+    }
+    
+    CRM_Utils_System::redirect( $finalURL );
+    
 
 ### 4. Add any additional libraries needed
 
