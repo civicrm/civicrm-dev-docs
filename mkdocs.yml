@@ -50,6 +50,7 @@ pages:
   - Extension Lifecycle: extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
+  - Customizing screens: extensions/custom-screens.md
 - Testing:
   - Testing Setup: testing/setup.md
   - "PHPUnit Tests": testing/phpunit.md
