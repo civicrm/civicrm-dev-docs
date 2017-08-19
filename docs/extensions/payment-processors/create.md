@@ -356,7 +356,7 @@ extension, the main changes are:
     may have a blank page because Apache has crashed (segfaulted).
 
 
-## Testing Processor Plugins
+## Testing Processor Plugins {:#testing}
 
 Here's some suggestions of what you might test once you have written
 your payment processor plug in.

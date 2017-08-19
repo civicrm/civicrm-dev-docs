@@ -180,3 +180,7 @@ Extensions+and+Permissions security/permissions#extensions
 Customize+Built-in+Profile+Contribution+and+Event+Registration+Screens framework/templates/customizing
 Page+Templates framework/templates
 Extending+Smarty framework/templates/extending-smarty
+What+is+a+Payment+Processor extensions/payment-processors
+Create+a+Payment-Processor+Extension docs/extensions/payment-processors/create
+Testing+Processor+Plugins docs/extensions/payment-processors/create/#testing
+Example+of+creating+a+payment+processor+extension extensions/payment-processors/example
