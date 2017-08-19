@@ -566,3 +566,101 @@ Thanks
 
 These are excellent questions, and not easy to answer. I'm posting a new
 child page as a place to better document the payment processor object.
+
+
+## Testing Processor Plugins
+
+**CiviCRM Payment Processor Test Spec**
+
+Here's some suggestions of what you might test once you have written
+your payment processor plug in.
+
+***** Don't forget that you need to search specifically for TEST
+transactions***************
+
+ie from this page civicrm/contribute/search&reset=1 chose 'find test
+transactions
+
+**Std Payment processor tests**
+
+1\) Can process Successful transaction from
+
+            - Event
+
+            - Contribute Form
+
+            - Individual Contact Record (for on-site processors only)
+
+Transaction should show as confirmed in CiviCRM and on the payment
+processor
+
+2\) Can include , . & = ' " in address and name fields without problems.
+Overlong ZIP code is handled
+
+3\) Can process a failed transaction from a Contribute form
+
+Can fix up details & resubmit for a successful transaction
+
+e-mail address is successfully passed through to payment processor and
+payment processor sends e-mails if configured to do so.
+
+The invoice ID is processed and maintained in an adequate manner
+
+7\) Any result references and transaction codes are stored in an adequate
+manner
+
+**Recurring Payment Processor tests**
+
+NB - IN Paypal Manager the recurring billing profiles are in Service
+Settings/Recurring Billing/ Manage Profiles
+
+1\) Process a recurring contribution. Check
+
+            - wording on confirm page is acceptable
+
+            - wording on thankyou pages is acceptable
+
+             - wording on any confirmation e-mails is acceptable
+
+           <span style="color: black;">**-**</span> <span
+style="color: black;">the payment processor shows the original
+transaction is successful</span>
+
+<span style="color: black;">           </span> <span
+style="color: black;">- the payment processor shows the correct date for
+the next transaction</span>
+
+<span style="color: black;">           </span> <span
+style="color: black;">- the payment processor shows the correct total
+number of transactions and / or the correct final date</span>
+
+<span style="color: black;">2) Try processing different types of
+frequencies. Preferably test a monthly contribution on the last day of a
+month where there isn't a similar day in the following month (e.g. 30
+January)</span>
+
+<span style="color: black;">3) Process a transaction without filling in
+the total number of transactions (there should be no end date
+set)</span>
+
+4\) Process a recurring contribution with the total instalments set to 1
+(it should be treated as a one-off rather than a rec urring
+transaction). It should not show 'recurring contribution' when you
+search for it in CiviCRM
+
+5\) PayflowPro - check that you can edit the frequencies available on the
+configure contribution page form
+
+6\) Depending on your processor it may be important to identify the
+transactions that need to be updated or checked. You may wish to check
+what it being recorded in the civicrm_contribution_recur table for
+payment processor id, end date and next transaction date.
+
+**Specific Live tests**
+
+1\) Successful and unsuccessful REAL transactions work
+
+2\) Money vests into the bank account
+
+3\) For recurring transactions wait for the first recurrent transaction
+to vest
