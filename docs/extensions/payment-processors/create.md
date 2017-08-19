@@ -1,0 +1,568 @@
+# Create a Payment-Processor Extension
+
+
+
+## Create an extension
+
+See [Create a Module
+Extension](/confluence/display/CRMDOC/Create+a+Module+Extension).
+
+## Understand the processor you are setting up
+
+You need to check your processor's documentation and understand the flow
+of the processor's process and compare it to existing processors (I
+intend that people should add descriptions of existing ones at the end
+of this wiki entry to assist with this)
+
+Factors you should take note of are:
+
+-   Does your processor require the user to interact directly with
+    forms/pages on their servers (like PayPal Express), or are are data
+    fields collected by CiviContrib form and submitted "behind the
+    scenes"?
+-   What fields are required?
+-   What authentication method(s) are used between Civi and the payment
+    processor servers?
+-   In what format is data submitted (soap/xml, arrays...)?
+-   What are the steps in completing a transaction (e.g. simple POST and
+    response, vs multi-step sequence...). Are transaction results
+    returned real-time (PayPal Pro/Express and I think Moneris) - or
+    posted back in a separate process (PayPal Standard w/ IPN)?
+
+Note that None of the plugins distributed with CiviCRM use a model where
+the donor's credit card info is stored in the CiviCRM site's database.
+For PayPal Pro, Authorize.net and PayJunction - Credit card numbers, exp
+date and security codes are entered on the CiviCRM contribution page and
+immediately passed to the processor / not saved. For PayPal Std, Google
+Checkout - the info is entered at the processors' site.
+
+## Determine what 'type' of processor you are dealing with.
+
+In CiviCRM there are four processor 'types'. These are used by CiviCRM
+to determine how to process a transaction.
+
+<div class="table-wrap">
+
++--------------------+--------------------+--------------------+--------------------+
+| type               | billing_mode id   | corresponding      | description        |
+|                    |                    | functions called   |                    |
++====================+====================+====================+====================+
+| [form](#CreateaPay | 1                  | doDirectPayment(*p | This mode allows   |
+| ment-ProcessorExte |                    | arams*)            | the credit card    |
+| nsion-form_mode)   |                    |                    | information to be  |
+|                    |                    |                    | collected on a     |
+|                    |                    |                    | form within        |
+|                    |                    |                    | CiviCRM which is   |
+|                    |                    |                    | then submitted     |
+|                    |                    |                    | directly to the    |
+|                    |                    |                    | payment processor  |
+|                    |                    |                    | using an API. It   |
+|                    |                    |                    | requires an SSL    |
+|                    |                    |                    | connection as well |
+|                    |                    |                    | as proper security |
+|                    |                    |                    | compliance. The    |
+|                    |                    |                    | specific           |
+|                    |                    |                    | requirements of    |
+|                    |                    |                    | this method will   |
+|                    |                    |                    | be available from  |
+|                    |                    |                    | the service        |
+|                    |                    |                    | provider.          |
++--------------------+--------------------+--------------------+--------------------+
+| [button](#CreateaP | 2                  | setExpressCheckout | This mode utilizes |
+| ayment-ProcessorEx |                    | (*params*)\        | a three-step       |
+| tension-button_mod |                    | getExpressCheckout | method for passing |
+| e)                 |                    | Details(*token*)\  | information to the |
+|                    |                    | doExpressCheckout( | payment processor. |
+|                    |                    | *params*)          | The first step     |
+|                    |                    |                    | makes a direct     |
+|                    |                    |                    | connection to the  |
+|                    |                    |                    | payment processor  |
+|                    |                    |                    | API to pass        |
+|                    |                    |                    | initial            |
+|                    |                    |                    | information about  |
+|                    |                    |                    | the transaction.   |
+|                    |                    |                    | The user is then   |
+|                    |                    |                    | redirected to the  |
+|                    |                    |                    | payment processor  |
+|                    |                    |                    | checkout form with |
+|                    |                    |                    | reference          |
+|                    |                    |                    | information to the |
+|                    |                    |                    | transaction data   |
+|                    |                    |                    | previously         |
+|                    |                    |                    | provided to the    |
+|                    |                    |                    | API. In the second |
+|                    |                    |                    | step, the          |
+|                    |                    |                    | transaction        |
+|                    |                    |                    | information is     |
+|                    |                    |                    | retrieved by the   |
+|                    |                    |                    | payment processor  |
+|                    |                    |                    | using the          |
+|                    |                    |                    | reference          |
+|                    |                    |                    | information, the   |
+|                    |                    |                    | user provides      |
+|                    |                    |                    | payment and        |
+|                    |                    |                    | shipping           |
+|                    |                    |                    | information and is |
+|                    |                    |                    | then redirected    |
+|                    |                    |                    | back to the        |
+|                    |                    |                    | CiviCRM            |
+|                    |                    |                    | confirmation page  |
+|                    |                    |                    | where CiviCRM      |
+|                    |                    |                    | directly requests  |
+|                    |                    |                    | the transaction    |
+|                    |                    |                    | information from   |
+|                    |                    |                    | the payment        |
+|                    |                    |                    | processor API.     |
+|                    |                    |                    | Once the user      |
+|                    |                    |                    | confirms the       |
+|                    |                    |                    | payment, CiviCRM   |
+|                    |                    |                    | completes the      |
+|                    |                    |                    | third step by      |
+|                    |                    |                    | making one final   |
+|                    |                    |                    | direct request to  |
+|                    |                    |                    | the payment        |
+|                    |                    |                    | processor API to   |
+|                    |                    |                    | confirm the        |
+|                    |                    |                    | transaction.       |
++--------------------+--------------------+--------------------+--------------------+
+| special            | 3                  | -                  | This mode is       |
+|                    |                    |                    | reserved           |
+|                    |                    |                    | exclusively for    |
+|                    |                    |                    | PayPal Website     |
+|                    |                    |                    | Payments Pro. It   |
+|                    |                    |                    | enables PayPal to  |
+|                    |                    |                    | have both a 'form' |
+|                    |                    |                    | and 'button' mode  |
+|                    |                    |                    | available.         |
++--------------------+--------------------+--------------------+--------------------+
+| [notify](#CreateaP | 4                  | doTransferCheckout | This mode posts    |
+| ayment-ProcessorEx |                    | (*params*,*compone | sales information  |
+| tension-notify_mod |                    | nt*)               | from the CiviCRM   |
+| e)                 |                    |                    | form to the        |
+|                    |                    |                    | service provider's |
+|                    |                    |                    | checkout page      |
+|                    |                    |                    | where a user will  |
+|                    |                    |                    | complete the       |
+|                    |                    |                    | transaction by     |
+|                    |                    |                    | entering payment   |
+|                    |                    |                    | details. Upon      |
+|                    |                    |                    | success (or        |
+|                    |                    |                    | cancellation) the  |
+|                    |                    |                    | user is then       |
+|                    |                    |                    | returned to the    |
+|                    |                    |                    | original site.     |
+|                    |                    |                    | Notification may   |
+|                    |                    |                    | take place either  |
+|                    |                    |                    | upon the return of |
+|                    |                    |                    | the user to the    |
+|                    |                    |                    | site, or by a      |
+|                    |                    |                    | separate direct    |
+|                    |                    |                    | connection from    |
+|                    |                    |                    | the payment        |
+|                    |                    |                    | processor API to a |
+|                    |                    |                    | notification       |
+|                    |                    |                    | script on the      |
+|                    |                    |                    | site. Because this |
+|                    |                    |                    | mode does not      |
+|                    |                    |                    | request any        |
+|                    |                    |                    | payment            |
+|                    |                    |                    | information within |
+|                    |                    |                    | CiviCRM, it does   |
+|                    |                    |                    | not require the    |
+|                    |                    |                    | use of SSL. Some   |
+|                    |                    |                    | providers will     |
+|                    |                    |                    | still require      |
+|                    |                    |                    | testing of a       |
+|                    |                    |                    | payment form       |
+|                    |                    |                    | before authorising |
+|                    |                    |                    | live transactions  |
+|                    |                    |                    | to be made.        |
+|                    |                    |                    | Specific           |
+|                    |                    |                    | requirements vary  |
+|                    |                    |                    | and will be        |
+|                    |                    |                    | available from the |
+|                    |                    |                    | service provider.  |
++--------------------+--------------------+--------------------+--------------------+
+
+</div>
+
+## Add the processor to the database
+
+To insert a new payment processor plugin, a new entry must be added to
+the `civicrm_payment_processor_type` table.
+
+<div class="table-wrap">
+
++----------------+----------------+----------------+----------------+----------------+
+| field          | type           | allowed values | required       | description    |
++================+================+================+================+================+
+| id             | integer        | *automatic*    | Y              | A unique ID    |
+|                |                |                |                | used by        |
+|                |                |                |                | CiviCRM to     |
+|                |                |                |                | identify the   |
+|                |                |                |                | processor      |
++----------------+----------------+----------------+----------------+----------------+
+| name           | string         | *no spaces*    | Y              | A name used by |
+|                |                |                |                | CiviCRM to     |
+|                |                |                |                | identify the   |
+|                |                |                |                | processor      |
++----------------+----------------+----------------+----------------+----------------+
+| title          | string         |                | Y              | The name of    |
+|                |                |                |                | the processor  |
+|                |                |                |                | displayed in   |
+|                |                |                |                | the CiviCRM    |
+|                |                |                |                | administrator  |
+|                |                |                |                | panel          |
++----------------+----------------+----------------+----------------+----------------+
+| description    | string         |                | N              | A description  |
+|                |                |                |                | of the         |
+|                |                |                |                | processor      |
++----------------+----------------+----------------+----------------+----------------+
+| is_active     | boolean        | 0-1            | Y              | Inactive (0)   |
+|                |                |                |                | or Active (1)  |
++----------------+----------------+----------------+----------------+----------------+
+| is_default    | boolean        | 0              | Y              | Not Default    |
+|                |                |                |                | (0) or Default |
+|                |                |                |                | (1)            |
++----------------+----------------+----------------+----------------+----------------+
+| user_name_la | string         |                | Y              | The label for  |
+| bel            |                |                |                | the User Name  |
+|                |                |                |                | field          |
+|                |                |                |                | displayed in   |
+|                |                |                |                | the CiviCRM    |
+|                |                |                |                | administrator  |
+|                |                |                |                | panel          |
++----------------+----------------+----------------+----------------+----------------+
+| password_labe | string         |                | N              | The label for  |
+| l              |                |                |                | the User Name  |
+|                |                |                |                | field          |
+|                |                |                |                | displayed in   |
+|                |                |                |                | the CiviCRM    |
+|                |                |                |                | administrator  |
+|                |                |                |                | panel          |
++----------------+----------------+----------------+----------------+----------------+
+| signature_lab | string         |                | N              | The label for  |
+| el             |                |                |                | the User Name  |
+|                |                |                |                | field          |
+|                |                |                |                | displayed in   |
+|                |                |                |                | the CiviCRM    |
+|                |                |                |                | administrator  |
+|                |                |                |                | panel          |
++----------------+----------------+----------------+----------------+----------------+
+| subject_label | string         |                | N              | The label for  |
+|                |                |                |                | the User Name  |
+|                |                |                |                | field          |
+|                |                |                |                | displayed in   |
+|                |                |                |                | the CiviCRM    |
+|                |                |                |                | administrator  |
+|                |                |                |                | panel          |
++----------------+----------------+----------------+----------------+----------------+
+| class_name    | string         | payment_*name | Y              | The name of    |
+|                |                | *              |                | the class for  |
+|                |                |                |                | the payment    |
+|                |                |                |                | processor      |
+|                |                |                |                | script (where  |
+|                |                |                |                | *name*         |
+|                |                |                |                | corresponds to |
+|                |                |                |                | the filename   |
+|                |                |                |                | of the         |
+|                |                |                |                | processor      |
+|                |                |                |                | script)        |
++----------------+----------------+----------------+----------------+----------------+
+| url_site_def | string         | *hyperlink*    | N              | URL of the     |
+| ault           |                |                |                | processor      |
+|                |                |                |                | service        |
+|                |                |                |                | provider       |
+|                |                |                |                | website        |
++----------------+----------------+----------------+----------------+----------------+
+| url_api_defa | string         | *hyperlink*    | Y              | URL where the  |
+| ult            |                |                |                | data will be   |
+|                |                |                |                | posted         |
++----------------+----------------+----------------+----------------+----------------+
+| url_recur_de | string         | *hyperlink*    | N              | URL where a    |
+| fault          |                |                |                | recurring      |
+|                |                |                |                | transaction    |
+|                |                |                |                | will be posted |
++----------------+----------------+----------------+----------------+----------------+
+| url_button_d | string         | *hyperlink*    | N              | URL of a       |
+| efault         |                |                |                | custom button  |
+|                |                |                |                | graphic for    |
+|                |                |                |                | the            |
+|                |                |                |                | confirmation   |
+|                |                |                |                | page           |
++----------------+----------------+----------------+----------------+----------------+
+| url_site_tes | string         | *hyperlink*    | N              | URL of the     |
+| t_default     |                |                |                | processor      |
+|                |                |                |                | service        |
+|                |                |                |                | provider       |
+|                |                |                |                | development    |
+|                |                |                |                | (sandbox)      |
+|                |                |                |                | website        |
++----------------+----------------+----------------+----------------+----------------+
+| url_api_test | string         | *hyperlink*    | Y              | URL where the  |
+| _default      |                |                |                | data will be   |
+|                |                |                |                | posted when    |
+|                |                |                |                | test mode is   |
+|                |                |                |                | enabled        |
++----------------+----------------+----------------+----------------+----------------+
+| url_recur_te | string         | *hyperlink*    | N              | URL where a    |
+| st_default    |                |                |                | recurring      |
+|                |                |                |                | transaction    |
+|                |                |                |                | will be posted |
+|                |                |                |                | when test mode |
+|                |                |                |                | is enabled     |
++----------------+----------------+----------------+----------------+----------------+
+| url_button_t | string         | *hyperlink*    | N              | URL of a       |
+| est_default   |                |                |                | custom button  |
+|                |                |                |                | graphic for    |
+|                |                |                |                | the            |
+|                |                |                |                | confirmation   |
+|                |                |                |                | page when test |
+|                |                |                |                | mode is        |
+|                |                |                |                | enabled        |
++----------------+----------------+----------------+----------------+----------------+
+| billing_mode  | integer        | 1-4            | Y              | Corresponds to |
+|                |                |                |                | the Processor  |
+|                |                |                |                | Type: Form     |
+|                |                |                |                | (1), Button    |
+|                |                |                |                | (2), Special   |
+|                |                |                |                | (3) or Notify  |
+|                |                |                |                | (4)            |
++----------------+----------------+----------------+----------------+----------------+
+| is_recurr     | boolean        | 0-1            | Y              | No Recurring   |
+|                |                |                |                | Payments (0)   |
+|                |                |                |                | or Recurring   |
+|                |                |                |                | Payments       |
+|                |                |                |                | Allowed (1)    |
++----------------+----------------+----------------+----------------+----------------+
+| payment_type  | integer        | 1-2            | Y              | Credit Card    |
+|                |                |                |                | (1) or Debit   |
+|                |                |                |                | Card (2)       |
++----------------+----------------+----------------+----------------+----------------+
+
+</div>
+
+##  Store any function files from your payment processor
+
+Create an appropriately named folder in the 'packages' directory for any
+files provided by your payment processor which have functions you need
+
+##  Write your processor ![(smile)](/confluence/s/en_GB/3398/84f448c1067609161db7eeaf020f96b084eef29d.24/_/images/icons/emoticons/smile.png){.emoticon .emoticon-smile}
+
+OK, the groundwork is laid but writing the processor is the hard bit.
+
+Depending on your billing mode there are different considerations - I
+have less information and it is less checked on the first two. The file
+will live in CRM\Core\Payment and have the same name as entered into
+your processor_type table.
+
+## Test your processor
+
+Some suggestions of what you might test are here
+
+<http://wiki.civicrm.org/confluence/display/CRMDOC/Testing+Processor+Plugins>
+
+### <span id="CreateaPayment-ProcessorExtension-form_mode" class="confluence-anchor-link"></span>Form mode
+
+The function called by this billing mode is
+
+doDirectPayment()
+
+If you return to the calling class at the end of the function the
+contribution will be confirmed. Values from the $params array will be
+updated based on what you return.  If the transaction does not succeed
+you should return an error to avoid confirming the transaction.
+
+The params available to doDirectPayment() are: -
+
+qfKey -
+
+email-(bltID) -
+
+billing_first_name (=first_name)
+
+billing_middle_name (=middle_name)
+
+- billing_last_name (=last_name)
+
+- location_name-(bltID) = billing_first_name + billing_middle_name
++ billing_last_name
+
+- streeet_address
+
+-(bltID)
+
+- city-(bltID)
+
+- state_province_id-(bltID) (int)
+
+- state_province-(bltID) (XX)
+
+- postal_code-(bltID)
+
+- country_id-(bltID) (int)
+
+- country-(bltID) (XX)
+
+- credit_card_number
+
+- cvv2 - credit_card_exp_date - M - Y
+
+- credit_card_type
+
+- amount
+
+- amount_other
+
+- year (credit_card_exp_date =&gt; Y)
+
+- month (credit_card_exp_date =&gt; M)
+
+- ip_address
+
+- amount_level
+
+- currencyID (XXX)
+
+- payment_action
+
+- invoiceID (hex number. hash?)
+
+bltID = Billing Location Type ID. This is not actually seen by the
+payment class.
+
+### <span id="CreateaPayment-ProcessorExtension-button_mode" class="confluence-anchor-link"></span>Button Mode
+
+\
+the function called by this billing mode is
+
+setExpressCheckout
+
+The customer is returned to confirm.php with the rfp value set to 1 and
+
+getExpressCheckoutDetails
+
+is called
+
+when the form is processed
+
+doExpressCheckout is called to finalise the payment - a result is
+returned to the civiCRM site.
+
+### <span id="CreateaPayment-ProcessorExtension-notify_mode" class="confluence-anchor-link"></span>Notify mode
+
+ The function called is
+
+doTransferCheckout
+
+ The details from here are processor specific but you want to pass
+enough details back to your function to identify the transaction. You
+should be aiming to have these variables to passthrough the processor to
+the confirmation routine:
+
+contactID
+
+contributionID
+
+contributionTypeID
+
+invoiceID
+
+membershipID(contribution only)
+
+participantID (event only)
+
+eventID (event only)
+
+component (event or contribute)
+
+qfkey
+
+Handling the return was the tricky part.
+
+In order to keep the return url short (because paymentexpress appends a
+long hex string) our return url goes to a file (in the extern folder )
+which redirects through to the 'main' routine in paymentExpressIPN.php
+(IPN = instant payment notification). I have stuck a copy of the
+framework of it as an attachment to this post
+
+> note - you need to  re-initialise the environment to get civi
+> functions to work
+>
+> require_once '../civicrm.config.php';\
+> require_once 'CRM/Core/Config.php';
+>
+> $config =& CRM_Core_Config::singleton();
+>
+>  An appropriate structure for the return routine file is:
+>
+> function newOrderNotify( $success, $privateData,
+> $component,$amount,$transactionReference ) {
+>
+>         $ids = $input = $params = array( );
+>
+> this version in the paymentexpress file is not processor specific -
+> pass it the variables above and it will complete the transaction.
+> Success is boolean, the private data array holds, the component is
+> (lower case) 'event' or 'contribute' , amount is obvious, transaction
+> reference is any processor related reference.
+>
+> contactID, contributionID, contributionTypeID,invoiceID,
+> membershipID(contribution only), participantID (event only), eventID
+> (event only)
+>
+> static function getContext( $privateData, $orderNo)
+>
+> generic function - taken from google version - retrieves information
+> to complete transaction (required?)
+>
+> private data as above
+>
+> orderno - transactionreference is OK
+>
+> Static function main(blah, blah,  blah)
+>
+> this function is processor specific - it  converts whatever form your
+> processor response is into the variables required for the above
+> function and if necessary redirects the browser using
+>
+> CRM_Utils_System::redirect( $finalURL );
+
+## Information about existing Payment processors
+
+
+
+<span style="color: rgb(0,51,102);">**Describe them here so people can
+see if they are good matches.....**</span>
+
+Google Checkout doesn't support recurring payments nor concurrent
+multiple payments (as of April 16, 2009).
+
+(It would be great if a matrix of Payment Processor Features could be
+included in the Civi documentation.)
+
+## Porting payment processor code from a previous version of CiviCRM to 4.0
+
+**This has been verified for processor of the type "form", not tested
+for others (notify and button).**
+
+Besides looking into the packaging format in order to create a clean
+extension, the main changes are:
+
+-   it is no longer necessary to have a MyProcessor.php file in
+    CRM/Contribute/Payment/, event, and so on.
+-   make sure your MyProcessor class implements a "singleton" function
+    (see other processors for examples). If this function is missing you
+    may have a blank page because Apache has crashed (segfaulted).
+
+What additional interfaces must a payment processor support to work with
+some of the new recurring payment features that have been added in 4.3
+and above?
+
+What methods are invoked if a user cancels or updates their recurring
+contribution?
+
+Thanks
+
+These are excellent questions, and not easy to answer. I'm posting a new
+child page as a place to better document the payment processor object.
