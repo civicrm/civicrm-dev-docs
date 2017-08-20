@@ -2,11 +2,11 @@
 
 ## Introduction
 
-CiviMail is probably one of the most complex parts of CiviCRM that is around. There have been a number of efforts over the years to streamline and to improve how CiviMail performs and the methods by which it generates dynamic content as well. This guide will aim to go through, What settings are avliable to administrators to tweak the performance of CiviMail, how CiviMail runs its jobs and How Extension Authors can extend CiviMail.
+CiviMail is probably one of the most complex parts of CiviCRM that is around. There have been a number of efforts over the years to streamline and to improve how CiviMail performs and the methods by which it generates dynamic content as well. This guide will aim to go through, What settings are available to administrators to tweak the performance of CiviMail, how CiviMail runs its jobs and How Extension Authors can extend CiviMail.
 
 ## Settings
 
-In CiviMail there are a number of settings that allows users to improve the speed of their sending. These can be found in `Administer -> CiviMail -> Mailer Settings`. These settings should be configured based on your hosting provider and email provider. There is also a few important settings in `Administer -> CiviMail -> CiviMailComponent Settings`. Some settings allow end users to disable checking for mandatory tokens and others allow you to tell CiviCRM whether or not to automatically dedupe email address. This can be useful to stop users getting multiple copies of your emails. Since 4.6 some settings especially in regards to the autodeuping are able to be overriden permailing as well. This is done by clicking on the rachet icon next to the receipients box when composing a CiviMail. 
+In CiviMail there are a number of settings that allows users to improve the speed of their sending. These can be found in `Administer -> CiviMail -> Mailer Settings`. These settings should be configured based on your hosting provider and email provider. There is also a few important settings in `Administer -> CiviMail -> CiviMailComponent Settings`. Some settings allow end users to disable checking for mandatory tokens and others allow you to tell CiviCRM whether or not to automatically dedupe email address. This can be useful to stop users getting multiple copies of your emails. Since 4.6 some settings especially in regards to the auto-deduping are able to be overridden pre-mailing as well. This is done by clicking on the ratchet icon next to the recipients box when composing a CiviMail. 
 
 ## Email Selection
 
@@ -18,15 +18,15 @@ Note that a contact may only have one subscription record for the group, so the 
 
 ## Tokens
 
-In 4.7+ there was major changes to the Scheduled Reminders facility which also inclded changes to CiviMail in so far as how tokens are generated. There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatability layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are. 
+In 4.7+ there was major changes to the Scheduled Reminders facility which also included changes to CiviMail in so far as how tokens are generated. There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatibility layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are. 
 
-- `CRM_Utils_Token::getTokens` - Retrieves an array of tokens conatined in the given string e.g. HTML of an email
+- `CRM_Utils_Token::getTokens` - Retrieves an array of tokens contained in the given string e.g. HTML of an email
 - `CRM_Utils_Token::getRequiredTokens` - What are the minimum required tokens for CiviMail
 - `CRM_Utils_Token::requiredTokens` - Check that the required tokens are there
 - `CRM_Utils_Token::&replace<type>Tokens` - Replaces x type of Tokens where x is User, Contact, Action, Resubscribe etc
 - `CRM_Utils_Token::get<type>TokenReplcaement` - Format and escape for use in Smarty the found content for Tokens for x type. This is usually called within `CRM_Utils_Token::&replace<type>Tokens`
 
-Extension Authors are also able to extend the list of tokens by implement ["hook_civicrm_tokens"](/hooks/hook_civicrm_tokens.md). The conent of the custom token needs to be set with ["hook_civicrm_tokenValues"](/hooks/hook_civicrm_tokenValues.md).
+Extension Authors are also able to extend the list of tokens by implement ["hook_civicrm_tokens"](/hooks/hook_civicrm_tokens.md). The content of the custom token needs to be set with ["hook_civicrm_tokenValues"](/hooks/hook_civicrm_tokenValues.md).
 
 ### Required Tokens
 
@@ -105,6 +105,7 @@ All outgoing mail uses the following associated VERP addresses:
 Where `JOB` is the ID of the Job, `QUEUE` is the ID of the queue event for this particular message, and `HASH` is the SHA-1 of the job ID, contact's email ID, and contact ID. The email and contact IDs are never exposed to the recipient within the message. The recipient's email address is VERP-encoded (`=EMAIL`) in the address.
 
 Additionally, the following addresses are used only for inbound processing:
+
 | Address | Use |
 | --- | --- |
 | `subscribe.DOMAIN.GROUP@FIXME.ORG` | Subscribe a contact to a group |
@@ -121,16 +122,16 @@ Given a job, find all email addresses that should receive the mailing (`job.mail
 If a job has `is_retry = 1`, the queue is generated by finding all jobs with the same `mailing_id` and joining to bounce event (through queue). Otherwise, the queue is generated as follows:
 
 - Included recipients (`group_type = Include`) 
-  - Static groups - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`. 
-  - Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
-  - Previous mailings - All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mailing-group join table. Only jobs with `Complete` status should be considered.
+    - Static groups - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`. 
+    - Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
+    - Previous mailings - All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mailing-group join table. Only jobs with `Complete` status should be considered.
 
 - Excluded recipients (`group_type = Exclude`)
-  - Static groups
-    - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`.
-    -   Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
-    -   Previous mailings -   All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mail-group join table.
-    -   Successful deliveries in previous jobs of the same mailing  -   All email addresses in `Mailing_Event_Queue` where `job.mailing_id = mailing_id` inner join to `Mailing_Event_Delivery` and left join to `Mailing_Event_Bounce` where `Mailing_Event_Delivery.id <> null` and `Mailing_Event_Bounce.id is null`.
+    - Static groups
+        - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`.
+        -   Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
+        -   Previous mailings -   All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mail-group join table.
+        -   Successful deliveries in previous jobs of the same mailing  -   All email addresses in `Mailing_Event_Queue` where `job.mailing_id = mailing_id` inner join to `Mailing_Event_Delivery` and left join to `Mailing_Event_Bounce` where `Mailing_Event_Delivery.id <> null` and `Mailing_Event_Bounce.id is null`.
 
 ### Status
 
@@ -138,17 +139,17 @@ Job `status` can take one of 5 states.
 
 1.  `Scheduled`: All jobs start in this state, and stay there until the `start_date` has passed.
 2.  `Running`: Jobs are marked `Running` only after the entire recipient queue (`Mailing_Event_Queue`) has been constructed. If the queuing process is interrupted, the job will remain in `Scheduled` and the queue will be reconstructed the next time the mailer is run.
-3.  `Complete`: Jobs are marked complete after the mailer has attempted to send the message to every recipient in the queue (ie. every queue event has a coresponding bounce or delivery event). Note that slow bounce events may continue well after the job has been marked `Complete`.
+3.  `Complete`: Jobs are marked complete after the mailer has attempted to send the message to every recipient in the queue (ie. every queue event has a corresponding bounce or delivery event). Note that slow bounce events may continue well after the job has been marked `Complete`.
 4.  `Paused`: A job can only be marked paused by the admin interface. The mailer will not act on paused jobs.
 5.  `Canceled`: Like paused, but cannot be placed back in the `Running` state.
 
 ## Events
 
 - Delivery
-  - Registered after a succesful SMTP transaction.
-  - Action - Add a new row in `Mailing_Event_Delivery` with the `queue_id`.
+    - Registered after a successful SMTP transaction.
+    - Action - Add a new row in `Mailing_Event_Delivery` with the `queue_id`.
 - Bounce
-  - Registered after an unsuccesful SMTP transaction (fast bounce), or by the inbound processor (slow bounce, see: [CiviMail Mailer Settings](/confluence/display/CRMDOC41/CiviMail+Mailer+Settings))
-  - Action:
-    - Add a new row in `Mailing_Event_Bounce` with the `queue_id`, `bounce_type` and `bounce_reason` returned by the bounce  processor
-    - Count the bounce events for `email_id` and compare with the `hold_threshold` for the matching bounce type. If the email address has more than the threshold of any type of bounce, place it on bounce hold.
+    - Registered after an unsuccessful SMTP transaction (fast bounce), or by the inbound processor (slow bounce, see: [CiviMail Mailer Settings](https://wiki.civicrm.org/confluence/display/CRMDOC41/CiviMail+Mailer+Settings))
+    - Action:
+        - Add a new row in `Mailing_Event_Bounce` with the `queue_id`, `bounce_type` and `bounce_reason` returned by the bounce  processor
+        - Count the bounce events for `email_id` and compare with the `hold_threshold` for the matching bounce type. If the email address has more than the threshold of any type of bounce, place it on bounce hold.
