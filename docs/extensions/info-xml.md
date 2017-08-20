@@ -63,8 +63,10 @@ Here we describe all the elements acceptable within the XML file. They are prese
 ### `<billingMode>` {:#billingMode}
 
 * Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
+* Description: Specifies the billing mode (aka "type") for a payment processing extension
 * Contains: text
+* Acceptable values: See [payment processor types](/extensions/payment-processors/create.md#type)
+* Example: `button`
 
 ### `<civix>` {:#civix}
 
@@ -241,7 +243,7 @@ Elements acceptable within `<maintainer>`
 ### `<passwordLabel>` {:#passwordLabel}
 
 * Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
+* Description: Label to use for the password field
 * Contains: text
 
 ### `<paymentType>` {:#paymentType}
@@ -294,13 +296,13 @@ Elements acceptable within `<requires>`
 ### `<signatureLabel>` {:#signatureLabel}
 
 * Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
+* Description: Label to use for the signature field
 * Contains: text
 
 ### `<subjectLabel>` {:#subjectLabel}
 
 * Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
+* Description: Label to use for the subject field
 * Contains: text
 
 ### `<typeInfo>` {:#typeInfo}
@@ -313,22 +315,22 @@ Elements acceptable within `<typeInfo>`
 
 | Element | Acceptable instances | Acceptable<br>when |
 | -- | -- | -- |
-| [`<reportUrl>`](#reportUrl) | 0 or 1 | `<extension type="report">` |
-| [`<userNameLabel>`](#userNameLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<passwordLabel>`](#passwordLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<signatureLabel>`](#signatureLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<subjectLabel>`](#subjectLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<urlSiteDefault>`](#urlSiteDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlApiDefault>`](#urlApiDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlRecurDefault>`](#urlRecurDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlSiteTestDefault>`](#urlSiteTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlApiTestDefault>`](#urlApiTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlRecurTestDefault>`](#urlRecurTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlButtonDefault>`](#urlButtonDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlButtonTestDefault>`](#urlButtonTestDefault) | 0 or 1 | `<extension type="payment">` |
 | [`<billingMode>`](#billingMode) | 0 or 1 | `<extension type="payment">` |
 | [`<isRecur>`](#isRecur) | 0 or 1 | `<extension type="payment">` |
+| [`<passwordLabel>`](#passwordLabel) | 0 or 1 | `<extension type="payment">` |
 | [`<paymentType>`](#paymentType) | 0 or 1 | `<extension type="payment">` |
+| [`<reportUrl>`](#reportUrl) | 0 or 1 | `<extension type="report">` |
+| [`<signatureLabel>`](#signatureLabel) | 0 or 1 | `<extension type="payment">` |
+| [`<subjectLabel>`](#subjectLabel) | 0 or 1 | `<extension type="payment">` |
+| [`<urlApiDefault>`](#urlApiDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlApiTestDefault>`](#urlApiTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlButtonDefault>`](#urlButtonDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlButtonTestDefault>`](#urlButtonTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlRecurDefault>`](#urlRecurDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlRecurTestDefault>`](#urlRecurTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlSiteDefault>`](#urlSiteDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<urlSiteTestDefault>`](#urlSiteTestDefault) | 0 or 1 | `<extension type="payment">` |
+| [`<userNameLabel>`](#userNameLabel) | 0 or 1 | `<extension type="payment">` |
 
 ### `<url>` {:#url}
 
@@ -373,10 +375,16 @@ Elements acceptable within `<urls>`
 * Description: *not yet documented*
 * Contains: text
 
+### `<urlSiteDefault>` {:#urlSiteTestDefault}
+
+* Containing element: [`<typeInfo>`](#typeInfo)
+* Description: The url to use to process live site transactions
+* Contains: text
+
 ### `<urlSiteTestDefault>` {:#urlSiteTestDefault}
 
 * Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
+* Description: The url to use to process test site transactions
 * Contains: text
 
 ### `<urlApiTestDefault>` {:#urlApiTestDefault}
@@ -416,7 +424,7 @@ Elements acceptable within `<urls>`
 ### `<userNameLabel>` {:#userNameLabel}
 
 * Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
+* Description: Label to use for the username field
 * Contains: text
 
 ### `<version>` {:#version}

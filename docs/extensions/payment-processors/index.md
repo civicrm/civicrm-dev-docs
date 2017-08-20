@@ -3,7 +3,7 @@
 This page documents payment processing in CiviCRM. The key bit to understand is the payment processor object, a civicrm-specific way of representing and integrating an actual real-life payment processor (e.g. like Paypal, etc.). The object and how it is used (as of CiviCRM 4.4) is in need of some love and refactoring, so this page hopes to provide some help in that direction.
 
 
-# Definitions
+## Definitions
 
 Some of these definitions are a bit loose, but should at least help
 clarify the use of these over-used words in the rest of the page.
@@ -32,7 +32,7 @@ fields in the user form.
 of payment processing: 'form', 'button', or 'notify'. These determine
 the user workflow required and how the CiviCRM code works.
 
-# Payment Processors
+## Processors
 
 Online payment processing is a relatively recent innovation and is still
 evolving. The earliest widely used, and still most widely used payment
@@ -75,7 +75,7 @@ module](http://drupal.org/project/commerce), and the
 [omnipay
 project](https://github.com/thephpleague/omnipay).
 
-# Payment Class
+## Payment Class
 
 CiviCRM's integration of a payment processor is based on subclassing the
 abstract class CRM_Core_Payment. That class is defined by the file
@@ -125,7 +125,7 @@ At the end of this process, you have a payment object that includes
 payment processor specific methods and a reasonably simple payment
 processor object attached to it.
 
-# Payment Processor Objects, and in the Database
+## Payment Processor Objects, and in the Database
 
 Most object instantiations in CiviCRM correspond to a row in a similarly
 named table. Payment processors are also like this, but just a little
@@ -133,7 +133,7 @@ more complicated.
 
 The key tables are:
 
-**civicrm_payment_processor_type** This table provides some
+`civicrm_payment_processor_type` This table provides some
 db-configurable values for a "payment processor" as defined above. For
 example - the labels for the account name and passwd and the urls used
 with that service. Is also contains fields with default values for the
@@ -141,7 +141,7 @@ billing mode, payment type and whether it supports recurring billing.
 Most importantly, it contains the class name of the payment processor
 that corresponds to the file defining the class.
 
-**civicrm_payment_processor** This table provides the
+`civicrm_payment_processor` This table provides the
 organization-specific implementation details of the payment processor -
 most notably the account name and passwd. It has a foreign key into the
 payment processor type table, and fields that allow for service-specific
@@ -149,7 +149,7 @@ overrides of the billing mode, payment type and whether it supports
 recurring billing. This is the table that provides the row that helps
 instantiate the payment processor object.
 
-# Payment Objects in Code
+## Payment Objects in Code
 
 As hinted at above, how the payment object is used in the code base is
 the most challenging part, particularly how it deals with the variety of
@@ -177,7 +177,7 @@ Some other examples are:
     processor, but built into the code, with all kinds of configuration
     bits in different places.
 
-# Existing Discussions
+## Existing Discussions
 
 Here's a partial list of related discussions (please contribute here):
 
