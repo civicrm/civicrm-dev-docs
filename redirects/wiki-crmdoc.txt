@@ -176,3 +176,4 @@ Contributing+to+CiviCRM+using+GitHub tools/git/#github
 Git+Commit+Messages+for+CiviCRM tools/git/#committing
 Transaction+Reference framework/database/transactions.md
 Backbone+Reference framework/backbone
+Extensions+and+Permissions security/permissions#extensions
