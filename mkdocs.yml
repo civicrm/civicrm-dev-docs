@@ -85,6 +85,10 @@ pages:
   - QuickForm Reference:
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
+  - Template Reference:
+    - Templates: framework/templates/index.md
+    - Customizing templates: framework/templates/customizing.md
+    - Extending Smarty: framework/templates/extending-smarty.md
   - PseudoConstant Reference: framework/pseudoconstant.md
   # Other Reference:
   # CiviMail: /reference/civimail.md

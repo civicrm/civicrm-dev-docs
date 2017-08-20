@@ -177,3 +177,6 @@ Git+Commit+Messages+for+CiviCRM tools/git/#committing
 Transaction+Reference framework/database/transactions.md
 Backbone+Reference framework/backbone
 Extensions+and+Permissions security/permissions#extensions
+Customize+Built-in+Profile+Contribution+and+Event+Registration+Screens framework/templates/customizing
+Page+Templates framework/templates
+Extending+Smarty framework/templates/extending-smarty
