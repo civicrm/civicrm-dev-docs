@@ -85,11 +85,8 @@ extensions that provide a payment processor have to provide a
 corresponding subclass file in their own `CRM/Core/Payment directory`.
 
 The key method defined by the payment-processor-specific payment class
-depends on the billing mode. This is roughly documented on these two
-pages: [Example of creating a payment processor
-extension](/confluence/display/CRMDOC/Example+of+creating+a+payment+processor+extension) and [Create
-a Payment-Processor
-Extension](/confluence/display/CRMDOC/Create+a+Payment-Processor+Extension).
+depends on the [billing mode](/extensions/payment-processors/types.md).
+This is roughly documented in the page on [creating a payment processor](/extensions/payment-processors/create.md)
 
 The payment object is used in several places in the CiviCRM code base.
 It's intention is to encapsulate all the details of processing a
