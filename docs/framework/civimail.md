@@ -95,9 +95,9 @@ foreach ($p->getRows() as $row) {
 }
 ```
 
-### Entending the Token system
+### Extending the Token system
 
-In the old system the standard way extension authors would  extend the list of tokens by implement ["hook_civicrm_tokens"](/hooks/hook_civicrm_tokens.md). The content of the custom token needs to be set with ["hook_civicrm_tokenValues"](/hooks/hook_civicrm_tokenValues.md).
+In the old system the standard way extension authors would  extend the list of tokens by implement [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md). The content of the custom token needs to be set with [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md).
 
 To utilise the newer method extension authors should implement code similar to the following. This is able to be done because when executing `TokenProcessor::evaluate()`, the processor dispatches an event so that other classes may define token content.
 
@@ -254,7 +254,7 @@ Job `status` can take one of 5 states.
 
 ## Inbound CiviMail Events
 
-Events within CiviMail are usually designed as where CiviMail receieves something back follwoing an email and does som processing
+Events within CiviMail are usually designed for when CiviMail receives an email in the VERP structure as defined above. There can also be events fired when CiviCRM is preparing emails to send or delivering emails, or processing forms with links generated from CiviMails.
 
 - Delivery
   - Registered after a successful SMTP transaction.
@@ -272,8 +272,8 @@ Events within CiviMail are usually designed as where CiviMail receieves somethin
 - Opt Out
   - Registered after a successful SMTP transaction or on submisssion of the opt out form.
   - Action
-   - Adds a row in `mailing_event_unsubscrive` setting `is_domain = 1`.
-   - Updaes the `is_opt_out` field to 1 for the contact
+    - Adds a row in `mailing_event_unsubscrive` setting `is_domain = 1`.
+    - Updaes the `is_opt_out` field to 1 for the contact
 - tracking url
   - Regisreted when a successfull webrequest is recieved and processed
   - Action adds a row into `mailing_event_trackable_url_open` with the current date and the `url_id` that was clicked
@@ -282,9 +282,12 @@ Events within CiviMail are usually designed as where CiviMail receieves somethin
   - Action
     - Adds a record into `mailing_event_reply` table with the relevant `queue_id` and when the reply was procesed
     - Rewrites the mail envelope and sends on the email to the intended reply address as set in the `civicrm_mailing` table
+- Queue
+  - Registered with CiviMail goes to send a CiviMail and creates queues as above
+  - Action - Adds a row to `mailing_event_queue` table with relevant `queue_id`
 - Subscribe / Confirm
   - Regisreted CiviMail successfully processes an SMTP transaction or when the relevant form is used
   - Action
-   - Adds a row into either `mailing_event_confirm` or `mailing_event_subscribe`
-   - if subscribe and double confirm is enabled sends a confirm email, for confirmations and where double confirm is not used, it adds a relevant row into `civicrm_group_contact`and `civicrm_subscription_history` adding the contact to the relevant group.
+    - Adds a row into either `mailing_event_confirm` or `mailing_event_subscribe`
+    - if subscribe and double confirm is enabled sends a confirm email, for confirmations and where double confirm is not used, it adds a relevant row into `civicrm_group_contact`and `civicrm_subscription_history` adding the contact to the relevant group.
 
