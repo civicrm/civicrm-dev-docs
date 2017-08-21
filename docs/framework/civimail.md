@@ -6,7 +6,7 @@ CiviMail is probably one of the most complex parts of CiviCRM that is around. Th
 
 ## Settings
 
-In CiviMail there are a number of settings that allows users to improve the speed of their sending. These can be found in `Administer -> CiviMail -> Mailer Settings`. These settings should be configured based on your hosting provider and email provider. There is also a few important settings in `Administer -> CiviMail -> CiviMailComponent Settings`. Some settings allow end users to disable checking for mandatory tokens and others allow you to tell CiviCRM whether or not to automatically dedupe email address. This can be useful to stop users getting multiple copies of your emails. Since 4.6 some settings especially in regards to the auto-deduping are able to be overridden pre-mailing as well. This is done by clicking on the ratchet icon next to the recipients box when composing a CiviMail. 
+In CiviMail there are a number of settings that allows users to improve the speed of their sending. These can be found in `Administer -> CiviMail -> Mailer Settings`. These settings should be configured based on your hosting provider and email provider. There is also a few important settings in `Administer -> CiviMail -> CiviMailComponent Settings`. Some settings allow end users to disable checking for mandatory tokens and others allow you to tell CiviCRM whether or not to automatically dedupe email address. This can be useful to stop users getting multiple copies of your emails. Since 4.6 some settings especially in regards to the auto-deduping are able to be overridden pre-mailing as well. This is done by clicking on the ratchet icon next to the recipients box when composing a CiviMail.
 
 ## Email Selection
 
@@ -36,17 +36,17 @@ As the use-cases grew, techniques from the original CiviMail code were duplicate
 $subject = $template->subject;
 $body_html = $template->body_html;
 $body_text = $template->body_text;
- 
+
 $subject = CRM_Utils_Token::replaceFooTokens($subject, $fooData... $encodingOptions...);
 $subject = CRM_Utils_Token::replaceBarTokens($subject, $barData... $encodingOptions...);
 $subject = CRM_Utils_Token::replaceHookTokens($subject, $encodingOptions...);
 if (smarty enabled) $subject = $smarty->display("string:$subject");
- 
+
 $body_html = CRM_Utils_Token::replaceFooTokens($body_html, $fooData... $encodingOptions...);
 $body_html = CRM_Utils_Token::replaceBarTokens($body_html, $barData... $encodingOptions...);
 $body_html = CRM_Utils_Token::replaceHookTokens($body_html, $encodingOptions...);
 if (smarty enabled) $body_html = $smarty->display("string:$body_html");
- 
+
 $body_text = CRM_Utils_Token::replaceFooTokens($body_text, $fooData... $encodingOptions...);
 $body_text = CRM_Utils_Token::replaceBarTokens($body_text, $barData... $encodingOptions...);
 $body_text = CRM_Utils_Token::replaceHookTokens($body_text, $encodingOptions...);
@@ -62,7 +62,7 @@ Some of the key functions of this system are:
 - `CRM_Utils_Token::get<type>TokenReplacement` - Format and escape for use in Smarty the found content for Tokens for x type. This is usually called within `CRM_Utils_Token::&replace<type>Tokens`
 
 
-In 4.7+ there was major changes to the Scheduled Reminders facility which also included potentail changes to CiviMail in so far as how tokens are generated see [CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244). There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatibility layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are. 
+In 4.7+ there was major changes to the Scheduled Reminders facility which also included potentail changes to CiviMail in so far as how tokens are generated see [CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244). There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatibility layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are.
 
 This new system of generating content for tokens has a number of advantages
 - Decreases the number of SQL Queries
@@ -79,16 +79,16 @@ $p = new TokenProcessor(Container::singleton()->get('dispatcher'), array(
   'controller' => __CLASS__,
   'smarty' => FALSE,
 ));
- 
+
 // Fill the processor with a batch of data.
 $p->addMessage('body_text', 'Hello {contact.display_name}!', 'text/plain');
 $p->addRow()->context('contact_id', 123);
 $p->addRow()->context('contact_id', 456);
- 
+
 // Lookup/compose any tokens which are referenced in the message.
 // e.g. SELECT id, display_name FROM civicrm_contact WHERE id IN (...contextual contact ids...);
 $p->evaluate();
- 
+
 // Display mail-merge data.
 foreach ($p->getRows() as $row) {
   echo $row->render('body_text');
@@ -104,20 +104,20 @@ To utilise the newer method extension authors should implement code similar to t
 ```php
 function example_civicrm_container($container) {
   $container->addResource(new \Symfony\Component\Config\Resource\FileResource(__FILE__));
-  $container->findDefinition('dispatcher')->addMethodCall('addListener', 
+  $container->findDefinition('dispatcher')->addMethodCall('addListener',
     array(\Civi\Token\Events::TOKEN_REGISTER, 'example_register_tokens')
   );
-  $container->findDefinition('dispatcher')->addMethodCall('addListener', 
+  $container->findDefinition('dispatcher')->addMethodCall('addListener',
     array(\Civi\Token\Events::TOKEN_EVALUATE, 'example_evaluate_tokens')
   );
 }
- 
+
 function example_register_tokens(\Civi\Token\Event\TokenRegisterEvent $e) {
   $e->entity('profile')
     ->register('viewUrl', ts('Profile View URL'))
     ->register('viewLink', ts('Profile View Link'));
 }
- 
+
 function example_evaluate_tokens(\Civi\Token\Event\TokenValueEvent $e) {
   foreach ($e->getRows() as $row) {
     /** @var TokenRow $row */
@@ -150,14 +150,14 @@ Some example tokens and their meaning
 | --- | --- |
 | `{domain.name}` | Name of this Domain |
 | `{domain.address}` | Meta-token constructed by merging the various address components from `civicrm_domain` |
-| `{domain.phone}` | Phone Number for this domain | 
+| `{domain.phone}` | Phone Number for this domain |
 | `{domain.email}` | Primary email address to contact this domain |
 | `{contact.display_name}` | The contact's `display_name` (also used in the To: header) |
 | `{contact.xxx}` | the value of xxx as returned by a `contact.get` api call |
 | `{action.forward}` | Link to forward this mailing to an unsubscribed user |
 | `{action.donate}` | Link to make a donation |
 | `{action.reply}` | mailto: link to reply |
-| `{action.unsubscribe}` | mailto: link to unsubscribe | 
+| `{action.unsubscribe}` | mailto: link to unsubscribe |
 | `{action.optOut}` | mailto: link to opt out of the domain |
 | `{mailing.groups}` | The list of target groups for this mailing |
 | `{mailing.name}` | The name of the mailing |
@@ -173,7 +173,7 @@ Since we support both HTML and Text formatting of outgoing mail, we will need ru
 In HTML content, action tokens should always be used as if they were URLs. If the action is an email address, a mailto: prefix will be added automatically
 
 ```
-Example HTML 
+Example HTML
 To unsubscribe from this mailing list, click <a href="{action.unsubscribe}">here</a>.
 
 Example text
@@ -190,7 +190,7 @@ Many non-required contact fields are exposed to the token processor, and not eve
 
 ```
 {capture assign=first_name}{contact.first_name}{/capture}
- 
+
 Hello {$first_name|default:Friend}!
 ```
 
@@ -231,17 +231,16 @@ Given a job, find all email addresses that should receive the mailing (`job.mail
 
 If a job has `is_retry = 1`, the queue is generated by finding all jobs with the same `mailing_id` and joining to bounce event (through queue). Otherwise, the queue is generated as follows:
 
-- Included recipients (`group_type = Include`) 
-    - Static groups - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`. 
-    - Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
-    - Previous mailings - All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mailing-group join table. Only jobs with `Complete` status should be considered.
+- Included recipients (`group_type = Include`)
+  - Static groups - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`.
+  - Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
+  - Previous mailings - All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mailing-group join table. Only jobs with `Complete` status should be considered.
 
 - Excluded recipients (`group_type = Exclude`)
-    - Static groups
-        - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`.
-        -   Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
-        -   Previous mailings -   All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mail-group join table.
-        -   Successful deliveries in previous jobs of the same mailing  -   All email addresses in `Mailing_Event_Queue` where `job.mailing_id = mailing_id` inner join to `Mailing_Event_Delivery` and left join to `Mailing_Event_Bounce` where `Mailing_Event_Delivery.id <> null` and `Mailing_Event_Bounce.id is null`.
+  - Static groups - All contacts belonging to (`status = In`) any group in `crm_mailing_group where mailing_id = job.mailing_id`.
+  - Saved searches - All contacts matching the where clause of a saved search linked from groups in `crm_mailing_group`.
+  - Previous mailings - All email addresses in `Mailing_Event_Queue` with the `job.mailing_id` keyed from the mail-group join table.
+  - Successful deliveries in previous jobs of the same mailing - All email addresses in `Mailing_Event_Queue` where `job.mailing_id = mailing_id` inner join to `Mailing_Event_Delivery` and left join to `Mailing_Event_Bounce` where `Mailing_Event_Delivery.id <> null` and `Mailing_Event_Bounce.id is null`.
 
 ### Status
 
@@ -258,26 +257,34 @@ Job `status` can take one of 5 states.
 Events within CiviMail are usually designed as where CiviMail receieves something back follwoing an email and does som processing
 
 - Delivery
-    - Registered after a successful SMTP transaction.
-    - Action - Add a new row in `Mailing_Event_Delivery` with the `queue_id`.
+  - Registered after a successful SMTP transaction.
+  - Action - Add a new row in `Mailing_Event_Delivery` with the `queue_id`.
 - Bounce
-    - Registered after an unsuccessful SMTP transaction (fast bounce), or by the inbound processor (slow bounce, see: [CiviMail Mailer Settings](https://wiki.civicrm.org/confluence/display/CRMDOC41/CiviMail+Mailer+Settings))
-    - Action:
-        - Add a new row in `Mailing_Event_Bounce` with the `queue_id`, `bounce_type` and `bounce_reason` returned by the bounce  processor
-        - Count the bounce events for `email_id` and compare with the `hold_threshold` for the matching bounce type. If the email address has more than the threshold of any type of bounce, place it on bounce hold.
+  - Registered after an unsuccessful SMTP transaction (fast bounce), or by the inbound processor (slow bounce, see: [CiviMail Mailer Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviMail+Mailer+Settings))
+  - Action:
+    - Add a new row in `Mailing_Event_Bounce` with the `queue_id`, `bounce_type` and `bounce_reason` returned by the bounce  processor
+    - Count the bounce events for `email_id` and compare with the `hold_threshold` for the matching bounce type. If the email address has more than the threshold of any type of bounce, place it on bounce hold.
 - Unsbuscribe
   - Registered after either a Successful SMTP transacftion or submission on the usubscribe webform
-  - Action 
-    - Removes the contact from the group leaving a note in the `civicrm_subscription_history` table indicating it was from an email and when it happend
-    - Add a row in `mailing_event_unsbuscribe` setting the `is_domain = 0` for the new row.
-- Opt Out 
-  - Registered after a successful SMTP transaction or on submisssion of the opt out form
   - Action
-     - Adds a row in `mailing_event_unsubscrive` setting `is_domain = 1`. 
-     - Updaes the `is_opt_out` field to 1 for the contact
+    - Removes the contact from the group leaving a note in the `civicrm_subscription_history` table indicating it was from an email and when it happend
+    - Add a row in `mailing_event_unsbuscribe` setting the `is_domain = 0`for the new row.
+- Opt Out
+  - Registered after a successful SMTP transaction or on submisssion of the opt out form.
+  - Action
+   - Adds a row in `mailing_event_unsubscrive` setting `is_domain = 1`.
+   - Updaes the `is_opt_out` field to 1 for the contact
 - tracking url
   - Regisreted when a successfull webrequest is recieved and processed
-  - Action adds a row into `mailing_event_trackable_url` with the current date and the `url_id` that was clicked
+  - Action adds a row into `mailing_event_trackable_url_open` with the current date and the `url_id` that was clicked
 - Reply
-  - Registered when CiviMail successfully processes an SMTP transaction
+  - Registered when CiviMail successfully processes an SMTP transaction.
+  - Action
+    - Adds a record into `mailing_event_reply` table with the relevant `queue_id` and when the reply was procesed
+    - Rewrites the mail envelope and sends on the email to the intended reply address as set in the `civicrm_mailing` table
+- Subscribe / Confirm
+  - Regisreted CiviMail successfully processes an SMTP transaction or when the relevant form is used
+  - Action
+   - Adds a row into either `mailing_event_confirm` or `mailing_event_subscribe`
+   - if subscribe and double confirm is enabled sends a confirm email, for confirmations and where double confirm is not used, it adds a relevant row into `civicrm_group_contact`and `civicrm_subscription_history` adding the contact to the relevant group.
 
