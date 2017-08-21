@@ -70,7 +70,7 @@ pages:
   - Bootstrap Process: framework/bootstrap.md
   - Backbone Reference: framework/backbone.md
   - Cache Reference: framework/cache.md
-  - AJAX Pages and Forms Refernce: framework/ajax.md
+  - AJAX Pages and Forms Reference: framework/ajax.md
   # Components: /framework/components.md
   - Database: 
     - Overview: framework/database/index.md
