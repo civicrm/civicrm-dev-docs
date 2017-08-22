@@ -50,6 +50,10 @@ pages:
   - Extension Lifecycle: extensions/lifecycle.md
   - Troubleshooting: extensions/troubleshooting.md
   - Advanced patterns: extensions/advanced.md
+  - Payment Processors:
+    - Payment Processors: extensions/payment-processors/index.md
+    - Payment Processor Types: extensions/payment-processors/types.md
+    - Creating a Payment Processor: extensions/payment-processors/create.md
 - Testing:
   - Testing Setup: testing/setup.md
   - "PHPUnit Tests": testing/phpunit.md
@@ -70,7 +74,7 @@ pages:
   - Bootstrap Process: framework/bootstrap.md
   - Backbone Reference: framework/backbone.md
   - Cache Reference: framework/cache.md
-  - AJAX Pages and Forms Refernce: framework/ajax.md
+  - AJAX Pages and Forms Reference: framework/ajax.md
   # Components: /framework/components.md
   - Database: 
     - Overview: framework/database/index.md
