@@ -12,7 +12,7 @@ pages:
   - Useful Skills: basics/skills.md
   - Planning Your Project: basics/planning.md
   - File System: basics/filesystem.md
-- Development tools:
+- Tools:
   - Development Tools: tools/index.md
   - Buildkit: tools/buildkit.md
   - civibuild: tools/civibuild.md
@@ -23,13 +23,13 @@ pages:
   - Jenkins: tools/jenkins.md
   - PhpStorm: tools/phpstorm.md
   - Debugging: tools/debugging.md
-- Core Development:
+- Core:
   - When to Edit Core: core/hacking.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
   - Release Process: core/release-process.md
   - Codebase & Architecture: core/architecture.md
-- Extensions Development:
+- Extensions:
   - Basics: extensions/index.md
   - Packaging Options: extensions/packaging.md
   - civix: extensions/civix.md
