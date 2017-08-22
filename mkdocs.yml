@@ -45,20 +45,20 @@ pages:
     - Creating a Payment Processor: extensions/payment-processors/create.md
 - Testing:
   - Testing Setup: testing/setup.md
-  - "PHPUnit Tests": testing/phpunit.md
-  - "Javascript Tests": testing/javascript.md
-  - "Selinium Tests": testing/selinium.md
-  - "Continuous Integration": testing/continuous-integration.md
-  - "Upgrade Tests": testing/upgrades.md
+  - PHPUnit Tests: testing/phpunit.md
+  - Javascript Tests: testing/javascript.md
+  - Selinium Tests: testing/selinium.md
+  - Continuous Integration: testing/continuous-integration.md
+  - Upgrade Tests: testing/upgrades.md
   - Manual Testing: testing/manual.md
 - Framework Reference:
   - AngularJS:
-    - "AngularJS: Intro": framework/angular/index.md
-    - "AngularJS: Quick Start": framework/angular/quickstart.md
-    - "AngularJS: File Names": framework/angular/files.md
-    - "AngularJS: Loader": framework/angular/loader.md
-    - "AngularJS: Changesets":  framework/angular/changeset.md
-  - "API architecture": framework/api-architecture.md
+    - AngularJS Intro: framework/angular/index.md
+    - AngularJS Quick Start: framework/angular/quickstart.md
+    - AngularJS File Names: framework/angular/files.md
+    - AngularJS Loader: framework/angular/loader.md
+    - AngularJS Changesets:  framework/angular/changeset.md
+  - API architecture: framework/api-architecture.md
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
   - Backbone Reference: framework/backbone.md
