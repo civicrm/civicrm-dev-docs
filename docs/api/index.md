@@ -49,4 +49,4 @@ From the API explorer, you can click on the **Examples** tab to find examples of
 ## Changelog
 
 All important changes made to the API are be recorded on the wiki at:
-[API changes](https://wiki.civicrm.org/confluence/display/CRMDOC/API+changes)
+[API changes](/api/changes.md)

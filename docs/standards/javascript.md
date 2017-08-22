@@ -75,7 +75,7 @@ You can also use CRM_Core_Resources to add in inline scripts such as the followi
 CRM_Core_Resources::singleton()->addScript('alert("hello");');
 ```
 
-You can also specify other regions of the page to place the script in (the most common reason for this is because jQuery plugins must be added to the "html-header" region). See [Resource Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference) for more details.
+You can also specify other regions of the page to place the script in (the most common reason for this is because jQuery plugins must be added to the "html-header" region). See [Resource Reference](/framework/resources.md) for more details.
 
 ## Using CiviCRM Javascript in non CiviCRM pages
 
@@ -121,7 +121,7 @@ If the current user has sufficient permissions (usually "Access CiviCRM") then y
 ```javascript
 CRM.api('entity', 'action', {params}, {success: function});
 ```
-For more details, see [AJAX API](http://wiki.civicrm.org/confluence/display/CRMDOC43/AJAX+Interface) docs.
+For more details, see [AJAX API](/api/interfaces.md#ajax-interface) docs.
 
 ## Server-Side Variables
 
