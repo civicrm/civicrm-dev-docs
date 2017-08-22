@@ -11,7 +11,6 @@ pages:
   - Requirements: basics/requirements.md
   - Useful Skills: basics/skills.md
   - Planning Your Project: basics/planning.md
-  - File System: basics/filesystem.md
 - Tools:
   - Development Tools: tools/index.md
   - Buildkit: tools/buildkit.md
@@ -214,6 +213,7 @@ pages:
     - XML Schema definition: framework/database/schema-definition.md
     - Schema Design: framework/database/schema-design.md
     - Transaction Reference: framework/database/transactions.md
+  - File System: framework/filesystem.md
   - PseudoConstant Reference: framework/pseudoconstant.md
   - QuickForm Reference:
      - QuickForm: framework/quickform/index.md
