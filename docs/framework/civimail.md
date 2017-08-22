@@ -16,7 +16,7 @@ If the contact has multiple locations, a location preference may be set for each
 
 Note that a contact may only have one subscription record for the group, so the mailing will go to at most one of the contact's email addresses.
 
-## Tokens (#tokens)
+## Tokens {:#tokens}
 
 CiviCRM's token functionality originates in CiviMail, which focuses on writing and delivering newsletters to large constituencies. In its original form, the design placed heavy weight on:
 
@@ -62,7 +62,7 @@ Some of the key functions of this system are:
 - `CRM_Utils_Token::get<type>TokenReplacement` - Format and escape for use in Smarty the found content for Tokens for x type. This is usually called within `CRM_Utils_Token::&replace<type>Tokens`
 
 
-In 4.7+ there was major changes to the Scheduled Reminders facility which also included potentail changes to CiviMail in so far as how tokens are generated see [CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244). There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatibility layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are.
+In 4.7+ there was major changes to the Scheduled Reminders facility which also included potential changes to CiviMail in so far as how tokens are generated see [CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244). There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatibility layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are.
 
 This new system of generating content for tokens has a number of advantages
 - Decreases the number of SQL Queries
