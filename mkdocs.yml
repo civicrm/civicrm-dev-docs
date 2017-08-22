@@ -25,9 +25,9 @@ pages:
   - Debugging: tools/debugging.md
 - Core Development:
   - When to Edit Core: core/hacking.md
-  - Release Process: core/release-process.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
+  - Release Process: core/release-process.md
   - Codebase & Architecture: core/architecture.md
 - Extensions Development:
   - Basics: extensions/index.md
@@ -43,54 +43,6 @@ pages:
     - Payment Processors: extensions/payment-processors/index.md
     - Payment Processor Types: extensions/payment-processors/types.md
     - Creating a Payment Processor: extensions/payment-processors/create.md
-- Testing:
-  - Testing Setup: testing/setup.md
-  - PHPUnit Tests: testing/phpunit.md
-  - Javascript Tests: testing/javascript.md
-  - Selinium Tests: testing/selinium.md
-  - Continuous Integration: testing/continuous-integration.md
-  - Upgrade Tests: testing/upgrades.md
-  - Manual Testing: testing/manual.md
-- Framework Reference:
-  - AngularJS:
-    - AngularJS Intro: framework/angular/index.md
-    - AngularJS Quick Start: framework/angular/quickstart.md
-    - AngularJS File Names: framework/angular/files.md
-    - AngularJS Loader: framework/angular/loader.md
-    - AngularJS Changesets:  framework/angular/changeset.md
-  - API Architecture: framework/api-architecture.md
-  - Asset Builder: framework/asset-builder.md
-  - Bootstrap Process: framework/bootstrap.md
-  - Backbone Reference: framework/backbone.md
-  - Cache Reference: framework/cache.md
-  - AJAX Pages and Forms Reference: framework/ajax.md
-  - Database: 
-    - Overview: framework/database/index.md
-    - XML Schema definition: framework/database/schema-definition.md
-    - Schema Design: framework/database/schema-design.md
-    - Transaction Reference: framework/database/transactions.md
-  - Resources Reference: framework/resources.md
-  - UI Reference: framework/ui.md
-  - Region Reference: framework/region.md
-  - Upgrade Reference: framework/upgrade.md
-  - Setting Reference: framework/setting.md
-  - QuickForm Reference:
-     - QuickForm: framework/quickform/index.md
-     - Entity Reference Field: framework/quickform/entityref.md
-  - Template Reference:
-    - Templates: framework/templates/index.md
-    - Customizing Templates: framework/templates/customizing.md
-    - Extending Smarty: framework/templates/extending-smarty.md
-  - PseudoConstant Reference: framework/pseudoconstant.md
-  - CiviMail: framework/civimail.md
-  - CiviReport: framework/civireport.md
-- Security:
-  - Secure Coding: security/index.md
-  - Securing Inputs: security/inputs.md
-  - Securing Outputs: security/outputs.md
-  - Permissions: security/permissions.md
-  - Access Control: security/access.md
-  - Reporting Vulnerabilities: security/reporting.md
 - API:
   - APIv3 Intro: api/index.md
   - APIv3 Usage: api/usage.md
@@ -227,6 +179,54 @@ pages:
     - hook_civicrm_tokens: hooks/hook_civicrm_tokens.md
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
+- Testing:
+  - Testing Setup: testing/setup.md
+  - PHPUnit Tests: testing/phpunit.md
+  - Javascript Tests: testing/javascript.md
+  - Selinium Tests: testing/selinium.md
+  - Continuous Integration: testing/continuous-integration.md
+  - Upgrade Tests: testing/upgrades.md
+  - Manual Testing: testing/manual.md
+- Security:
+  - Secure Coding: security/index.md
+  - Securing Inputs: security/inputs.md
+  - Securing Outputs: security/outputs.md
+  - Permissions: security/permissions.md
+  - Access Control: security/access.md
+  - Reporting Vulnerabilities: security/reporting.md
+- Framework Reference:
+  - AJAX Pages and Forms Reference: framework/ajax.md
+  - AngularJS:
+    - AngularJS Intro: framework/angular/index.md
+    - AngularJS Quick Start: framework/angular/quickstart.md
+    - AngularJS File Names: framework/angular/files.md
+    - AngularJS Loader: framework/angular/loader.md
+    - AngularJS Changesets:  framework/angular/changeset.md
+  - API Architecture: framework/api-architecture.md
+  - Asset Builder: framework/asset-builder.md
+  - Bootstrap Process: framework/bootstrap.md
+  - Backbone Reference: framework/backbone.md
+  - Cache Reference: framework/cache.md
+  - CiviMail: framework/civimail.md
+  - CiviReport: framework/civireport.md
+  - Database:
+    - Overview: framework/database/index.md
+    - XML Schema definition: framework/database/schema-definition.md
+    - Schema Design: framework/database/schema-design.md
+    - Transaction Reference: framework/database/transactions.md
+  - PseudoConstant Reference: framework/pseudoconstant.md
+  - QuickForm Reference:
+     - QuickForm: framework/quickform/index.md
+     - Entity Reference Field: framework/quickform/entityref.md
+  - Region Reference: framework/region.md
+  - Resources Reference: framework/resources.md
+  - Setting Reference: framework/setting.md
+  - Template Reference:
+    - Templates: framework/templates/index.md
+    - Customizing Templates: framework/templates/customizing.md
+    - Extending Smarty: framework/templates/extending-smarty.md
+  - UI Reference: framework/ui.md
+  - Upgrade Reference: framework/upgrade.md
 - Coding Standards:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
