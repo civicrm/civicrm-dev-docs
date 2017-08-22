@@ -12,6 +12,9 @@ This is very applicable when you need to maintain foreign key
 constraints etc (when deleting an object, the child objects have to be
 deleted first).
 
+!!!note These hooks use database transactions.  Don't execute code that updates the same data in the database without using a callback.  Eg. if triggering on a `Membership` entity, don't try and update that membership entity within the hook.  Use CRM_Core_Transaction::addCallback() instead.
+
+
 ## Definition
 
 ```php
@@ -139,3 +142,18 @@ if ($send_an_email) {
 Once the files are in the directory, you need to login to Drupal admin,
 go to Modules and enable our new module and click Save. Now go and edit
 a contact and you should get an email!
+
+## Example with transaction callback
+
+Here is an example that calls a function `updateMembershipCustomField()` every time a membership is created (or updated).
+
+```php
+<?php
+function example_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+  if ($objectName == 'Membership' && $op == 'create') {
+    CRM_Core_Transaction::addCallback(CRM_Core_Transaction::PHASE_POST_COMMIT,
+      'updateMembershipCustomField', array($objectRef->id));
+    break;
+  }
+}
+```
