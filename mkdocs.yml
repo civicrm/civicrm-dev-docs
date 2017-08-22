@@ -26,6 +26,7 @@ pages:
   - When to Edit Core: core/hacking.md
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
+  - Verifying a Bug Fix: core/verify-fix.md
   - Release Process: core/release-process.md
 - Extensions:
   - Basics: extensions/index.md
