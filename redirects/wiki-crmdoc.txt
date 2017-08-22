@@ -184,3 +184,5 @@ What+is+a+Payment+Processor extensions/payment-processors
 Create+a+Payment-Processor+Extension docs/extensions/payment-processors/create
 Testing+Processor+Plugins docs/extensions/payment-processors/create/#testing
 Example+of+creating+a+payment+processor+extension extensions/payment-processors/create
+CiviMail+Reference framework/civimail
+Token+Reference framework/civimail#tokens

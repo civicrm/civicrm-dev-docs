@@ -95,7 +95,7 @@ pages:
     - Extending Smarty: framework/templates/extending-smarty.md
   - PseudoConstant Reference: framework/pseudoconstant.md
   # Other Reference:
-  # CiviMail: /reference/civimail.md
+  - CiviMail: framework/civimail.md
   - CiviReport: framework/civireport.md
   # Payment Processing: /reference/payment.md
 - Security:
