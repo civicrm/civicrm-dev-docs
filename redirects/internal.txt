@@ -9,3 +9,4 @@ framework/schema-definition framework/database/schema-definition
 api/params api/options
 core/develop tools/git
 basics/filesystem framework/filesystem
+core/architecture framework/codebase

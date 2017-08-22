@@ -193,7 +193,7 @@ to create a new entity. For this, you can use the command `civix generate:entity
 
 1. Edit the [XML schema definitions](/framework/database/schema-definition.md) in the `xml` folder to define your desired fields.
 
-1. Generate a [DAO file](/core/architecture.md#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
+1. Generate a [DAO file](/framework/codebase.md#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
 
     1. Begin with a *development* installation of CiviCRM core.
 

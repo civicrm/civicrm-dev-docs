@@ -49,9 +49,10 @@ $result = civicrm_api3('Event', 'get', array(
 
 ## Identifying fields eligible for a join
 
-It is possible to join an entity to any other entity if the [xml](/core/architecture.md#xml)
-schema identifies a [foreign key](https://en.wikipedia.org/wiki/Foreign_key) or
-a pseudoconstant.  The [getfields](/api/actions.md#getfields) action identifies
+It is possible to join an entity to any other entity if the
+[xml schema](/framework/database/schema-definition.md)
+identifies a [foreign key](/framework/database/schema-definition.md#table-foreignKey) or
+a [pseudoconstant](/framework/database/schema-definition.md#table-field-pseudoconstant).  The [getfields](/api/actions.md#getfields) action identifies
 fields that are eligible for an API join.
 
 !!! warning

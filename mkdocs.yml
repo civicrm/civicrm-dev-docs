@@ -27,7 +27,6 @@ pages:
   - How to Contribute: core/contributing.md
   - Reviewing PR's: core/pr-review.md
   - Release Process: core/release-process.md
-  - Codebase & Architecture: core/architecture.md
 - Extensions:
   - Basics: extensions/index.md
   - Packaging Options: extensions/packaging.md
@@ -208,6 +207,7 @@ pages:
   - Cache Reference: framework/cache.md
   - CiviMail: framework/civimail.md
   - CiviReport: framework/civireport.md
+  - Codebase: framework/codebase.md
   - Database:
     - Overview: framework/database/index.md
     - XML Schema definition: framework/database/schema-definition.md
