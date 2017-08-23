@@ -185,3 +185,13 @@ Example+of+creating+a+payment+processor+extension extensions/payment-processors/
 CiviMail+Reference framework/civimail
 Token+Reference framework/civimail#tokens
 Verify+a+bug+fix core/verify-fix
+Overview index.html
+Developer+Setup index.html
+Techniques index.html
+Customize+Built-in+Screens index.html
+Custom+Error+Screens+and+Error+Handlers index.html
+Reference+Sheets index.html
+API+Reference api
+Database+Reference framework/database
+Permission+Reference security/permissions
+Develop index.html
