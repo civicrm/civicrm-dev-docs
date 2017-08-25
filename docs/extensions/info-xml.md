@@ -174,7 +174,6 @@ Elements acceptable within `<extension>`
 | [`<name>`](#name)| 1 |  |
 | [`<releaseDate>`](#releaseDate) | 1 |  |
 | [`<requires>`](#requires) | 0 or 1 |  |
-| [`<typeInfo>`](#typeInfo) | 0 or 1 |  |
 | [`<urls>`](#urls) | 1 |  |
 | [`<version>`](#version) | 1 |  |
 
@@ -263,19 +262,6 @@ Elements acceptable within `<requires>`
 | Element | Acceptable instances | 
 | -- | -- |
 | [`<ext>`](#ext) | 1+ |
-
-### `<signatureLabel>` {:#signatureLabel}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Label to use for the signature field
-* Contains: text
-
-### `<subjectLabel>` {:#subjectLabel}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Label to use for the subject field
-* Contains: text
-
 
 ### `<url>` {:#url}
 
