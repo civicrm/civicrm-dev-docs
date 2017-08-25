@@ -178,6 +178,9 @@ Elements acceptable within `<extension>`
 | [`<urls>`](#urls) | 1 |  |
 | [`<version>`](#version) | 1 |  |
 
+!!! tip "Legacy extensions: Payment, Report, Search"
+      Historically, CiviCRM v3.x-4.1 strictly categorized extensions as "Payment", "Report", or "Search" -- which required additional XML tags. These have been phased out during the 4.x cycle, and they are no longer documented here. For archival documentation, see [CRMDOC46: Extension Reference](https://wiki.civicrm.org/confluence/display/CRMDOC46/Extension+Reference).
+
 ### `<file>` {:#file}
 
 * Containing element: [`<extension>`](#extension)
