@@ -83,7 +83,7 @@ or using one of available `docker` images ([1](https://github.com/progressivetec
 requirement but it is definitely the fastest path to a good development
 experience!
 
-**From the outset, [automate testing](https://wiki.civicrm.org/confluence/display/CRMDOC/Testing)**.
+**From the outset, [automate testing](/testing/setup.md)**.
 In the current climate of rapid evolution of not just CiviCRM, but
 also it's myriad of dependancies, automated testing of PHP code with `phpunit`
 and javascript with tools like `karma` and `jasmine` is essential. Start all
@@ -109,7 +109,7 @@ versions of CiviCRM.
 the implications.
 
 **Follow the
-[Coding Standards](https://wiki.civicrm.org/confluence/display/CRMDOC/Coding+Standards)**
+[Coding Standards](/standards/index.md)**
 for uniform structure that will make everyone's development work easier.
 
 

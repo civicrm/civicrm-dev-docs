@@ -87,7 +87,7 @@ The first interaction comes when CiviCRM generates the initial HTML page:
    way which is compatible with multiple CMSs -- Drupal, Joomla, WordPress, etc.)
  * CiviCRM builds the list of CSS/JS/JSON resources in lines 3-5.  (It does this in a
    way which allows extensions to add new CSS/JS/JSON. See also:
-   [Resource Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference).)
+   [Resource Reference](/framework/resources.md).)
  * CiviCRM ensures that the page includes the site-wide elements, such as
    lines 8 and 10. (It does this in a way which is compatible with multiple CMSs.)
 

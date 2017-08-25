@@ -118,7 +118,7 @@ and loads them on the page. This will include:
     all modules are loaded on `civicrm/a`.
 
 !!! note "How does `load()` output the `<script>` tag(s)?"
-    `load()` uses [CRM_Core_Resources](https://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference)
+    `load()` uses [CRM_Core_Resources](/framework/resources.md)
     to register JS/CSS files.
 
 ## Other base-pages

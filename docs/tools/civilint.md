@@ -16,8 +16,8 @@ git diff --name-only origin/4.6.. | civilint - # Check changed files
 
 See also:
 
-- [CiviCRM Coding Standards](https://wiki.civicrm.org/confluence/display/CRMDOC/PHP+Code+and+Inline+Documentation)
-- [CiviCRM Javascript Standards](https://wiki.civicrm.org/confluence/display/CRMDOC/Javascript+Reference)
+- [CiviCRM Coding Standards](/standards/php.md)
+- [CiviCRM Javascript Standards](/standards/javascript.md)
 - [Drupal Coding Standards](https://www.drupal.org/docs/develop/standards/coding-standards)
 - [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 - [coder](https://github.com/civicrm/coder)

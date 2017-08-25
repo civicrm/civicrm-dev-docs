@@ -335,7 +335,7 @@ The webserver can be configured to display errors to screen, but it also logs er
 -   `/var/log/php5/*log` PHP-FPM & PHP-CGI error logs
 -   `/path/to/site/err*log` Some hosting environments
 
-And a **CiviCRM specific debug log** file - location varies depending on hosting environment *and* CMS, refer to [this wiki page](https://wiki.civicrm.org/confluence/display/CRMDOC/Debugging+for+developers#Debuggingfordevelopers-Logfiles) for location -
+And a **CiviCRM specific debug log** file - location varies depending on hosting environment *and* CMS, refer to [this wiki page](/tools/debugging.md#Debuggingfordevelopers-Logfiles) for location -
 
     path/to/site/path/to/civicrm/files/ConfigAndLog/CiviCRM*log
 
@@ -373,7 +373,7 @@ This is where you can start debugging meaningfully. There's a good chance you're
  * https://civicrm.stackexchange.com/questions/376/where-should-one-look-for-logs-when-debugging-a-new-problem
  * [Drupal.org: Blank pages or White Screen of Death](https://www.drupal.org/node/158043)
  * [Joomla SE: What is an efficient way to troubleshoot a White Screen of Death](https://joomla.stackexchange.com/questions/299/what-is-an-efficient-way-to-troubleshoot-a-white-screen-of-death)
- * [CiviCRM wiki: Debugging for developers](https://wiki.civicrm.org/confluence/display/CRMDOC/Debugging+for+developers#Debuggingfordevelopers-Logfiles)
+ * [CiviCRM wiki: Debugging for developers](/tools/debugging.md#Debuggingfordevelopers-Logfiles)
 
 **Notes**
 

@@ -48,7 +48,7 @@ Classes and interfaces in Civi take one of two forms:
 
 **Rational for Change**
 
-Changing these can be quite difficult and can break interfaces consumed by downstream. For more discussion of `CRM_` and `Civi\`, see [The Codebase](https://wiki.civicrm.org/confluence/display/CRMDOC/The+codebase).
+Changing these can be quite difficult and can break interfaces consumed by downstream. For more discussion of `CRM_` and `Civi\`, see [The Codebase](/framework/filesystem.md).
 
 
 ## Scope
