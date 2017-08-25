@@ -42,7 +42,7 @@ Fetch entity metadata, i.e. the list of fields supported by the entity
 ## getlist
 
 Used for autocomplete lookups by the
-[entityRef](https://wiki.civicrm.org/confluence/display/CRMDOC/EntityRef+Fields) widget
+[entityRef](/framework/quickform/entityref.md) widget
 
 ## getoptions
 
