@@ -60,14 +60,6 @@ Here we describe all the elements acceptable within the XML file. They are prese
 * Description: Name of the person and/or organisation maintaining the extension
 * Contains: text
 
-### `<billingMode>` {:#billingMode}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Specifies the billing mode (aka "type") for a payment processing extension
-* Contains: text
-* Acceptable values: See [payment processor types](/extensions/payment-processors/create.md#type)
-* Example: `button`
-
 ### `<civix>` {:#civix}
 
 * Containing element: [`<extension>`](#extension)
@@ -182,20 +174,16 @@ Elements acceptable within `<extension>`
 | [`<name>`](#name)| 1 |  |
 | [`<releaseDate>`](#releaseDate) | 1 |  |
 | [`<requires>`](#requires) | 0 or 1 |  |
-| [`<typeInfo>`](#typeInfo) | 0 or 1 |  |
 | [`<urls>`](#urls) | 1 |  |
 | [`<version>`](#version) | 1 |  |
+
+!!! tip "Legacy extensions: Payment, Report, Search"
+      Historically, CiviCRM v3.x-4.1 strictly categorized extensions as "Payment", "Report", or "Search" -- which required additional XML tags. These have been phased out during the 4.x cycle, and they are no longer documented here. For archival documentation, see [CRMDOC46: Extension Reference](https://wiki.civicrm.org/confluence/display/CRMDOC46/Extension+Reference).
 
 ### `<file>` {:#file}
 
 * Containing element: [`<extension>`](#extension)
 * Description: The name of the file to invoke when the extension is executed (not including `.php` file extension) This file must be present in the root of the extension `.zip` file / in base directory of the extension
-* Contains: text
-
-### `<isRecur>` {:#isRecur}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
 * Contains: text
 
 ### `<label>` {:#label}
@@ -240,18 +228,6 @@ Elements acceptable within `<maintainer>`
 * Contains: text
 * Example: `CRM/Volunteer`
 
-### `<passwordLabel>` {:#passwordLabel}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Label to use for the password field
-* Contains: text
-
-### `<paymentType>` {:#paymentType}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
 ### `<psr4>` {:#psr4}
 
 * Containing element: [`<classloader>`](#classloader)
@@ -272,12 +248,6 @@ Attributes acceptable for `<psr4>`
 * Description: The release date of the current version (use `YYYY-MM-DD` format)
 * Contains: text
 
-### `<reportUrl>` {:#reportUrl}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
 ### `<requires>` {:#requires}
 
 !!! warning "Experimental"
@@ -292,45 +262,6 @@ Elements acceptable within `<requires>`
 | Element | Acceptable instances | 
 | -- | -- |
 | [`<ext>`](#ext) | 1+ |
-
-### `<signatureLabel>` {:#signatureLabel}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Label to use for the signature field
-* Contains: text
-
-### `<subjectLabel>` {:#subjectLabel}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Label to use for the subject field
-* Contains: text
-
-### `<typeInfo>` {:#typeInfo}
-
-* Containing element: [`<extension>`](#extension)
-* Description: This is a container tag for other tags which store information that is only relevant to extensions of particular types (e.g. payment processor extensions)
-* Contains: elements
-
-Elements acceptable within `<typeInfo>`
-
-| Element | Acceptable instances | Acceptable<br>when |
-| -- | -- | -- |
-| [`<billingMode>`](#billingMode) | 0 or 1 | `<extension type="payment">` |
-| [`<isRecur>`](#isRecur) | 0 or 1 | `<extension type="payment">` |
-| [`<passwordLabel>`](#passwordLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<paymentType>`](#paymentType) | 0 or 1 | `<extension type="payment">` |
-| [`<reportUrl>`](#reportUrl) | 0 or 1 | `<extension type="report">` |
-| [`<signatureLabel>`](#signatureLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<subjectLabel>`](#subjectLabel) | 0 or 1 | `<extension type="payment">` |
-| [`<urlApiDefault>`](#urlApiDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlApiTestDefault>`](#urlApiTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlButtonDefault>`](#urlButtonDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlButtonTestDefault>`](#urlButtonTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlRecurDefault>`](#urlRecurDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlRecurTestDefault>`](#urlRecurTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlSiteDefault>`](#urlSiteDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<urlSiteTestDefault>`](#urlSiteTestDefault) | 0 or 1 | `<extension type="payment">` |
-| [`<userNameLabel>`](#userNameLabel) | 0 or 1 | `<extension type="payment">` |
 
 ### `<url>` {:#url}
 
@@ -356,61 +287,6 @@ Elements acceptable within `<urls>`
 | -- | -- |
 | [`<url>`](#url) | 1+ |
 
-
-### `<urlSiteDefault>` {:#urlSiteDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
-### `<urlApiDefault>` {:#urlApiDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
-### `<urlRecurDefault>` {:#urlRecurDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
-### `<urlSiteDefault>` {:#urlSiteTestDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: The url to use to process live site transactions
-* Contains: text
-
-### `<urlSiteTestDefault>` {:#urlSiteTestDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: The url to use to process test site transactions
-* Contains: text
-
-### `<urlApiTestDefault>` {:#urlApiTestDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
-### `<urlRecurTestDefault>` {:#urlRecurTestDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
-### `<urlButtonDefault>` {:#urlButtonDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
-### `<urlButtonTestDefault>` {:#urlButtonTestDefault}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: *not yet documented*
-* Contains: text
-
 ### `<ver>` {:#ver}
 
 * Containing element: [`<compatibility>`](#compatibility)
@@ -420,12 +296,6 @@ Elements acceptable within `<urls>`
 
 !!! note
     It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
-    
-### `<userNameLabel>` {:#userNameLabel}
-
-* Containing element: [`<typeInfo>`](#typeInfo)
-* Description: Label to use for the username field
-* Contains: text
 
 ### `<version>` {:#version}
 
