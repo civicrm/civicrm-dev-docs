@@ -22,15 +22,15 @@ Token| Purpose| Where used...| Example |
 | **{action.subscribeUrl}** | Provides a link to view and subscribe to any public mailing lists.| Mailing Body, Header, Footer| To see our mailing lists and join the ones you're interested in, click `<a href="{action.subscribeUrl}" >here</a>`.| 
 | **{action.unsubscribeUrl}** | Provides an unsubscribe link for each recipient.| Mailing Body, Header, Footer,unsubscribe,resubscribe| To unsubscribe from this mailing, click `<a href="{action.unsubscribeUrl}" >here</a>`.| 
 | **{action.unsubscribe}** | Provides an unsubscribe email address for each recipient| Mailing Body, Header, Footer,unsubscribe,resubscribe| To unsubscribe from this mailing, send mail to {action.unsubscribe}| 
-| **{contact.custom_nn}** | Displays content of custom contact field nn Mailing Body, Subject, not sure about elsewhere | Thanks for indicating your interest in {contact.`custom_1`}. We will keep you updated on that topic.| 
-| **{contribution.custom_nn}** | Displays content of custom field nn for the contribution Mailing Body, Subject, not sure about elsewhere | Thanks for indicating that if your first choice for where we should use your contribution is {contribution.`custom_42`}.| 
+| **{contact.custom_nn}** | Displays content of custom contact field nn | Mailing Body, Subject, not sure about elsewhere | Thanks for indicating your interest in {contact.`custom_1`}. We will keep you updated on that topic.| 
+| **{contribution.custom_nn}** | Displays content of custom field nn for the contribution | Mailing Body, Subject, not sure about elsewhere | Thanks for indicating that if your first choice for where we should use your contribution is {contribution.`custom_42`}.|
 | **{domain.address}** | Displays postal address for your domain.| Mailing Body or any message templates | Mailing Address:  {domain.address}| 
 | **{domain.email}** | Displays email address of domain.| Mailing Body or any message templates|  Or send a mail to {domain.email}.| 
 | **{domain.name}** | Displays your domain name.| Mailing Body or any message templates| This mailing is from {domain.name}.| 
 | **{domain.phone}** | Displays phone number of domain.| Mailing Body or any message templates| To contact us call {domain.phone}.| 
 | **{mailing.group}** | Displays a listing of the names of the groups to which a mailing has been sent.| Mailing Body, Header, Footer,resubscribe,unsubscribe or optout| This mailing has been sent to the members of {mailing.group}.| 
 | **{mailing.name}** | Displays name of mailing.| Mailing Body, Header, Footer,resubscribe,unsubscribe or optout| Name of this mailing is {mailing.name}.| 
-| **{mailing.viewUrl}** | Will create a 'View in Browser' url Mailing Body  | Can't see this email? `<a href="{mailing.viewUrl}"><strong>View in Browser</strong></a>`|
+| **{mailing.viewUrl}** | Will create a 'View in Browser' url | Mailing Body  | Can't see this email? `<a href="{mailing.viewUrl}"><strong>View in Browser</strong></a>`|
 | **{resubscribe.group}** | Displays group name in re-subscribe messages.| Resubscribe Message| As requested, you have been resubscribed to {resubscribe.group}.| 
 | **{subscribe.group}** | Displays group name in subscription confirmation requests.| Subscription confirmation request | You requested to be subscribed to the {subscribe.group}.| 
 | **{unsubscribe.group}** | Displays group name in unsubscribe confirmation messages.| Unsubscribe Message| You have been unsubscribed from {unsubscribe.group}.| 
