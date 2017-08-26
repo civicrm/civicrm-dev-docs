@@ -5,13 +5,7 @@ To *read* documentation, go to [docs.civicrm.org](https://docs.civicrm.org) for 
 This page describes the details of the documentation systems within CiviCRM and how to contribute. We also have a more [basic overview](https://docs.civicrm.org/user/en/latest/the-civicrm-community/contributing-to-this-manual/) on how to contribute to this guide or the user guide. 
 
 !!! note "Note: the wiki is not covered here"
-    The [wiki] has historically been CiviCRM's documentation system but is currently being phased out. As of early 2017, documentation is still somewhat split between the wiki the the guides described below, but we are working to eventually consolidate *all* documentation into guides. A [migration process][migration] is currently underway for this Developer Guide, and a process will [likely](https://github.com/civicrm/civicrm-docs/issues/17) follow for a dedicated Administrator Guide, as well as [extension guides](https://github.com/civicrm/civicrm-docs/issues/14).
-
-    The rest of **this page describes guides only** and does *not* cover documentation processes that involve the wiki.
-
-[migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
-[wiki]: https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation
-
+    The [wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) has historically been CiviCRM's documentation system but is being phased out as of 2017. The rest of this page describes MkDocs guides only and does not cover documentation processes that involve the wiki.
 
 ## When to document {:#when}
 
@@ -144,7 +138,6 @@ The most advanced way to work on a guide is to use git to download all the markd
     * Specify a location for the markdown file for your new page which follows the folder structure of the menu location you decided on.
 1. Add a new markdown file in the location specified by your new menu item and begin add content to it.
 1. If you're copying existing content from other sources (e.g. wiki, StackExchange, etc.) then follow the [instructions for providing attribution](#attributing-imports)
-1. If you're migrating one whole wiki page, follow [instructions for redirecting a wiki page to MkDocs](https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide#ContentmigrationfromwikitoDeveloperGuide-HowtoredirectonewikipagetotheDevGuide).
 
 ### Moving pages
 
