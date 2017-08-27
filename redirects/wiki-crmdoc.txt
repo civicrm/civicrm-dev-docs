@@ -195,3 +195,5 @@ API+Reference api
 Database+Reference framework/database
 Permission+Reference security/permissions
 Develop index.html
+Customized+and+Custom+Tokens framework/civimail#extending-the-token-system
+Tokens framework/civimail/tokens
