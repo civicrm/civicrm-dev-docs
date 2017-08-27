@@ -84,7 +84,7 @@ for usability:
 plugin, or a standalone script, then you may need to **bootstrap** CiviCRM
 before using the API.  See the examples in [Bootstrap Reference].
 
-[Bootstrap Reference]: https://wiki.civicrm.org/confluence/display/CRMDOC/Bootstrap+Reference
+[Bootstrap Reference](/framework/bootstrap.md)
 
 ## PHP (class.api.php)
 
@@ -150,11 +150,9 @@ http://www.example.com/civicrm/ajax/rest
 Obviously you should substitute your site in! You can explore the syntax
 and options available using the [API Explorer](/api/index.md#api-explorer).
 
-Please note that the REST interface is subject to
-[API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security).
+Please note that the REST interface is subject to [API Security](/security/permissions.md#api-permissions).
 
-For more details, see [REST
-interface](http://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface). 
+For more details, see [REST interface](/api/interfaces.md#rest). 
 
 
 ## AJAX
@@ -165,7 +163,7 @@ CRM.api3('entity', 'action', [params], [statusMessage]);
 
 For more details, see [AJAX Interface].
 
-[AJAX Interface]: https://wiki.civicrm.org/confluence/display/CRMDOC/AJAX+Interface
+[AJAX Interface](/api/interfaces.md#ajax)
 
 The AJAX interface is automatically available for web-pages generated through
 CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions,
@@ -175,7 +173,7 @@ The AJAX interface could be made available to other parts of the same website
 (e.g. a drupal module or wordpress widget) by calling
 `CRM_Core_Resources::singleton()->addCoreResources()`
 from php. Please note that the AJAX interface is subject to
-[API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security)
+[API Security](/security/permissions.md#api-permissions)
 and
 [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy).
 To use it from an external site or application, see REST interface documentation.
@@ -191,7 +189,7 @@ The smarty call is to add extra information, therefore *create* or *delete*
 actions don't make sense in this case.
 
 For more details, see
-[Smarty API interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface).
+[Smarty API interface](/api/interfaces.md#smarty-api-interface).
 
 ## Command line
 

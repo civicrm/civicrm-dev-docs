@@ -46,15 +46,11 @@ Optional lists you may also want to register for:
 
 ## Falling out of use
 
--   [Wiki] - still used for specs & recipes, *but documentation
-        [is moving][migration] to the guides listed above*
+-   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - still used for some older documentation
 -   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
         *but now mostly replaced by Mattermost*
 -   [Forum](https://forum.civicrm.org/) - *now mostly replaced by
         StackExchange*
-
-[wiki]: https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation
-[migration]: https://wiki.civicrm.org/confluence/display/CRMDOC/Content+migration+from+wiki+to+Developer+Guide
 
 The developer community is full of friendly people, eager to welcome newcomers.
 Mattermost and in-person events are great starting points if you're looking to

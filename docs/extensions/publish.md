@@ -35,7 +35,7 @@ detected, published, and submitted for translation.
 -   The extension code is published in a public GitHub repository.
 -   The extension manifest (`info.xml`) is in the root of the repository.
 -   The extension manifest is
-    [valid](https://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference#ExtensionReference-Tagsininfo.xml).
+    [valid](/extensions/info-xml.md#ExtensionReference-Tagsininfo.xml).
 -   The name of the extension repository (e.g., *https://github.com/civicrm/org.civicrm.legcase.git*)
     matches the extension's fully qualified name (.e.g, *org.civicrm.legcase*) or
     its short name as specified by the `file` tag in `info.xml` (e.g., *legcase*).

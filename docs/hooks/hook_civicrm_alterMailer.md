@@ -61,8 +61,3 @@ Introduced in CiviCRM v4.4.
       }
     }
 
-[Jon Goldberg](https://wiki.civicrm.org/confluence/display/~palantejon), good catch spotting a
-discrepancy in the naming. However, I've switched the docs back to say
-"alterMailer" because that was the downstream/consumable interface. More
-discussion a
-[https://github.com/civicrm/civicrm-core/pull/7500](https://github.com/civicrm/civicrm-core/pull/7500)

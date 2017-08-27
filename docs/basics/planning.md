@@ -34,9 +34,13 @@ practice, even for relatively small projects, to write
 
 The requirements are typically written to be understandable to end
 users, and the specification can be thought of as a translation of those
-requirements into the language of CiviCRM. Both requirements and
-specification should go on the
-[wiki](http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki).
+requirements into the language of CiviCRM. 
+
+Store your requirements and specifications in a public location such as:
+
+* A markdown file in your project's repository
+* A google doc 
+* The [CiviCRM wiki](http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki)
 
 Once you've written the requirements and specification document, you
 should go about soliciting feedback.  Get feedback on the requirements
@@ -83,7 +87,7 @@ or using one of available `docker` images ([1](https://github.com/progressivetec
 requirement but it is definitely the fastest path to a good development
 experience!
 
-**From the outset, [automate testing](https://wiki.civicrm.org/confluence/display/CRMDOC/Testing)**.
+**From the outset, [automate testing](/testing/setup.md)**.
 In the current climate of rapid evolution of not just CiviCRM, but
 also it's myriad of dependancies, automated testing of PHP code with `phpunit`
 and javascript with tools like `karma` and `jasmine` is essential. Start all
@@ -109,7 +113,7 @@ versions of CiviCRM.
 the implications.
 
 **Follow the
-[Coding Standards](https://wiki.civicrm.org/confluence/display/CRMDOC/Coding+Standards)**
+[Coding Standards](/standards/index.md)**
 for uniform structure that will make everyone's development work easier.
 
 

@@ -48,5 +48,4 @@ From the API explorer, you can click on the **Examples** tab to find examples of
 
 ## Changelog
 
-All important changes made to the API are be recorded on the wiki at:
-[API changes](/api/changes.md)
+All important changes made to the API are recorded in [API changes](/api/changes.md).

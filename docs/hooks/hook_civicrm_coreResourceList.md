@@ -10,7 +10,7 @@ the list prior to the resources being added, or add your own.
 
 Added in v4.6.6.
 
-See [Resource Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference)
+See [Resource Reference](/framework/resources.md)
 for more information.
 
 ## Definition

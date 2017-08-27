@@ -24,12 +24,12 @@ different short-name, but that requires extra work.
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming
 -   Install ***civix v14.01*** or newer. For instructions, see
-    [https://github.com/totten/civix/](https://github.com/totten/civix/)
-    . This wiki page assumes that "civix" is installed and registered in
+    [Civix Documentation](/extensions/civix.md/).
+    This page assumes that "civix" is installed and registered in
     the PATH.
 -   Configure an extensions directory. For instructions, see
-    [Extensions](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
-    This wiki page assumes the directory is "/var/www/extensions", but
+    [Extensions](/extensions/index.md).
+    This page assumes the directory is `/var/www/extensions`, but
     you should adapt as appropriate.
      Your extensions directory must be under the CMS root directory so
     that civix can find and bootstrap the CMS. Otherwise, it will fail
@@ -39,7 +39,7 @@ different short-name, but that requires extra work.
     to read all CMS files, including configuration files, and write to
     the extensions directory.
      For example, Debian's drupal7 package saves database configuration
-    to /etc/drupal/7/sites/default/dbconfig.php, which is only readable
+    to `/etc/drupal/7/sites/default/dbconfig.php`, which is only readable
     by the www-data user. You will need to make this file readable by
     your development user account for civix to work.
 
@@ -53,7 +53,7 @@ sure, you can do a couple things:
 Extensions provide a native, portable way to extend CiviCRM, but there are
 other ways to extend CiviCRM – such as implementing Drupal modules or Joomla
 plugins. If you're considering another way, look at the
-[Add-on Formats](https://wiki.civicrm.org/confluence/display/CRMDOC/Add-on+Formats)
+[Add-on Formats](/extensions/packaging.md)
 to help decide.
 
 ### 1. Install civix
@@ -67,12 +67,12 @@ tasks.
 
 >> For more information on the boilerplate civix generates for you, in
    particular the extension manifest file (info.xml), see the [Extension
-   Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference).
+   Reference](/extensions/index.md).
 
 ### 2. Develop
 To get started with development, one should usually follow the steps in
 "[Create a Module
-Extension.](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension)"
+Extension.](/extensions/civix.md#generate-module)"
 A module extension is the most flexible type of extension – it can define any
 mix of new reports, custom search screens, payment processors, and web pages;
 it can listen for hooks, override page-templates, and more. The coding

@@ -56,7 +56,7 @@ All pre-requisites must support command-line access using the standard command
 names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments,
 you may need to enable these commands by configuring `PATH` -- this is especially
 true for MAMP, XAMPP, and other downloaded packages.
-(See, e.g., [Setup Command-Line PHP](http://wiki.civicrm.org/confluence/display/CRMDOC/Setup+Command-Line+PHP).)
+(See, e.g., [Setup Command-Line PHP](/standards/php.md).)
 
 Once the pre-requisites are met, download buildkit to `~/buildkit`:
 

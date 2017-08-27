@@ -59,8 +59,7 @@ and `--email`.
 
 You can now update your `info.xml`. This file initially contains some
 examples and placeholders which you need to fix. You can edit most of these
-fields intuitively.  If you need detailed specifications, see [Extension
-Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Extension+Reference).
+fields intuitively.  If you need detailed specifications, see [Extension Reference](/extensions/index.md).
 
 Now that you have created your extension, you need to activate it by navigating
 to:
@@ -72,7 +71,7 @@ or
 **Administer » Customize Data and Screens » Manage Extensions.**
 
 For more detailed instructions, see
-[Extensions](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
+[Extensions](/extensions/index.md).
 
 ## Add features
 
@@ -126,7 +125,7 @@ basic operations, such as passing data from the controller to the view.
 
 If the data on the page is read and updated through the API, then you
 may want to consider using the
-[in-place editing](https://wiki.civicrm.org/confluence/display/CRMDOC/In-Place+Field+Editing) API.
+[in-place editing](/framework/ui.md#in-place-field-editing) API.
 
 ### Add a basic web form {:#generate-form}
 
@@ -136,7 +135,7 @@ may want to consider using the
     will be easier than migrating basic forms, so you may want
     to consider building your data-input interface  using basic pages, the AJAX
     API, and the
-    [in-place editing](https://wiki.civicrm.org/confluence/display/CRMDOC/In-Place+Field+Editing) API.
+    [in-place editing](/framework/ui.md#in-place-field-editing) API.
 
 CiviCRM uses a typical web-MVC architecture. To implement a basic web
 form, you must create a PHP controller class, create a Smarty template
@@ -158,7 +157,7 @@ This creates three files:
 -   `CRM/Myextension/Form/FavoriteColor.php` is the controller which
     coordinates any parsing, validation, business-logic, or database
     operations. For more details on how this class works, see [QuickForm
-    Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/QuickForm+Reference).
+    Reference](/framework/quickform/index.md).
 -   `templates/CRM/Myextension/Form/FavoriteColor.tpl` is loaded
     automatically after the controller executes. It defines the markup
     that is eventually displayed. For more information on the syntax of
@@ -235,7 +234,7 @@ to create a new entity. For this, you can use the command `civix generate:entity
 
 1. Run `civix generate:upgrader` from within your extension. (Even though you're not yet creating any upgrades for your extension, you need to do this step now so that CiviCRM will pick up `auto_install.sql` and `auto_uninstall.sql`
 
-1. Define your entity using [hook_civicrm_entityTypes](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes).
+1. Define your entity using [hook_civicrm_entityTypes](/hooks/hook_civicrm_entityTypes.md).
 
 ### Add a database upgrader, installer and uninstaller {:#generate-upgrader}
 
@@ -273,7 +272,7 @@ action-link to perform the upgrades.
 
 !!! note
     The "upgrader" class is a wrapper for
-    [hook_civicrm_upgrade](https://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
+    [hook_civicrm_upgrade](/hooks/hook_civicrm_upgrade.md)
     which aims to be easy-to-use for developers with Drupal experience. If
     you need to organize the upgrade logic differently, then consider
     providing your own implementation of hook_civicrm_upgrade.
@@ -283,7 +282,7 @@ action-link to perform the upgrades.
     tables. Do not manipulate core schema.
 
 If you need to create triggers on core SQL tables, use
-[hook_civicrm_triggerInfo](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference).
+[hook_civicrm_triggerInfo](/hooks/hook_civicrm_triggerInfo.md).
 This allows your triggers to coexist with triggers from other modules.
 
 ### Add a case type {:#generate-case-type}
@@ -487,8 +486,7 @@ function myextension_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 
 To include static resources such as stylesheets, Javascript files, or
 images place them in your extension directory. To load
-the files at runtime, see the examples in the [Resource
-Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/Resource+Reference).
+the files at runtime, see the examples in the [Resource Reference](/framework/resources.md).
 
 ### Add a report {:#generate-report}
 
@@ -512,13 +510,13 @@ This creates three files:
 
 -   `CRM/Myextension/Form/Report/MyReport.mgd.php` stores metadata
     about the report in a format based on
-    [hook_civicrm_managed](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
+    [hook_civicrm_managed](/hooks/hook_civicrm_managed.md)
     and the
-    [API](http://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference).
+    [API](/api/index.md).
 -   `CRM/Myextension/Form/Report/MyReport.php` contains the
     form-builder and query-builder for the report. For details about its
     structure, see the [CiviReport
-    Reference](http://wiki.civicrm.org/confluence/display/CRMDOC/CiviReport+Reference).
+    Reference](/framework/civireport.md).
 -   `templates/CRM/Myextension/Form/Report/MyReport.tpl` contains
     the report's HTML template. This template usually delegates
     responsibility to a core template and does not need to be edited.
@@ -557,9 +555,9 @@ This command will create two files:
 
 -   `CRM/Myextension/Form/Search/MySearch.mgd.php` stores metadata
     about the custom search. The format of the file is based on
-    [hook_civicrm_managed](http://wiki.civicrm.org/confluence/display/CRMDOC/Hook+Reference)
+    [hook_civicrm_managed](/hooks/hook_civicrm_managed.md)
     and the
-    [API](http://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference).
+    [API](/api/index.md).
 -   `CRM/Myextension/Form/Search/MySearch.php` contains the
     form-builder and query-builder for the custom search.
 

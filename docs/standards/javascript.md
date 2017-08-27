@@ -153,7 +153,7 @@ When your script file is being added to the page by `CRM_Core_Resources` it will
 
 ## UI Elements
 
-CiviCRM ships with a number of UI widgets and plugins to create standardized "look and feel" More information can be found in [UI Elements Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/UI+Elements+Reference).
+CiviCRM ships with a number of UI widgets and plugins to create standardized "look and feel" More information can be found in [UI Elements Reference](/framework/ui.md).
 
 ## Test Tools
 
