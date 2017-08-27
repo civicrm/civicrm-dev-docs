@@ -34,9 +34,13 @@ practice, even for relatively small projects, to write
 
 The requirements are typically written to be understandable to end
 users, and the specification can be thought of as a translation of those
-requirements into the language of CiviCRM. Both requirements and
-specification should go on the
-[wiki](http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki).
+requirements into the language of CiviCRM. 
+
+Store your requirements and specifications in a public location such as:
+
+* A markdown file in your project's repository
+* A google doc 
+* The [CiviCRM wiki](http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki)
 
 Once you've written the requirements and specification document, you
 should go about soliciting feedback.  Get feedback on the requirements

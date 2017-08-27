@@ -24,12 +24,12 @@ different short-name, but that requires extra work.
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming
 -   Install ***civix v14.01*** or newer. For instructions, see
-    [Civix Doumentation/](/extensions/civix.md/)
-    . This wiki page assumes that "civix" is installed and registered in
+    [Civix Documentation](/extensions/civix.md/).
+    This page assumes that "civix" is installed and registered in
     the PATH.
 -   Configure an extensions directory. For instructions, see
     [Extensions](/extensions/index.md).
-    This wiki page assumes the directory is "/var/www/extensions", but
+    This page assumes the directory is `/var/www/extensions`, but
     you should adapt as appropriate.
      Your extensions directory must be under the CMS root directory so
     that civix can find and bootstrap the CMS. Otherwise, it will fail
@@ -39,7 +39,7 @@ different short-name, but that requires extra work.
     to read all CMS files, including configuration files, and write to
     the extensions directory.
      For example, Debian's drupal7 package saves database configuration
-    to /etc/drupal/7/sites/default/dbconfig.php, which is only readable
+    to `/etc/drupal/7/sites/default/dbconfig.php`, which is only readable
     by the www-data user. You will need to make this file readable by
     your development user account for civix to work.
 

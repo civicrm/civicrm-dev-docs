@@ -23,9 +23,7 @@ Civi development should work with most packages -- but there's one proviso:
 
 Some packages are configured properly out-of-the-box. (Linux distributions
 do a pretty good job of this.) Other packages require extra configuration
-steps (e.g.  [Setup Command Line
-PHP](http://wiki.civicrm.org/confluence/display/CRMDOC/Setup+Command-Line+PHP)
-for MAMP).
+steps.
 
 In subsequent steps, the download script will attempt to identify
 misconfigurations and display an appropriate message.

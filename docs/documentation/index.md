@@ -186,7 +186,7 @@ This is relevant when you want to copy content *out of* our documentation books.
 2. Navigate to the corresponding markdown file within GitHub (it will match the URL path of the published content).
 3. Click on "Blame" to see detailed information about content authors, line, by line.
 
-### How to displaying attributing for content migrated *into* our books {:#attributing-imports}
+### How to display attribution for content migrated *into* our books {:#attributing-imports}
 
 The [CiviCRM wiki](https://wiki.civicrm.org/confluence/dashboard.action) and [Stack Exchange](http://civicrm.stackexchange.com/) also use the CC BY-SA 3.0 license, which is convenient because content is regularly migrated into our MkDocs guides from these sources. But to comply with the license, we must attribute the original content authors
 

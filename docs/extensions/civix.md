@@ -71,7 +71,7 @@ or
 **Administer » Customize Data and Screens » Manage Extensions.**
 
 For more detailed instructions, see
-[Extensions](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
+[Extensions](/extensions/index.md).
 
 ## Add features
 
