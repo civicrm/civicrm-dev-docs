@@ -2,14 +2,13 @@
 
 CiviMail uses a number of **action** and **mail-merge tokens** and which can be placed in mailing labels, PDF letters, email messages and message templates, mailing headers and footers, and system-workflow (automated) messages. These tokens are converted dynamically to text, reply-to email addresses, and URLs.
 
-The best source of documentation for tokens is: <https://docs.civicrm.org/user/en/stable/common-workflows/tokens-and-mail-merge/>
+The best source of documentation for tokens is the [token page within the User Guide](https://docs.civicrm.org/user/en/stable/common-workflows/tokens-and-mail-merge/).
 
-This wiki page gives supplemental information for working with tokens. [You can also customize or create new tokens relatively painlessly](/framework/civimail/index.md##extending-the-token-system).
-
+This page gives supplemental information for working with tokens. [You can also customize or create new tokens relatively painlessly](/framework/civimail/index.md#extending-the-token-system).
 
 This table documents the available action tokens, their purpose and the place(s) they can be used.
 
-Token| Purpose| Where used...| Example | 
+| Token | Purpose | Where used... | Example | 
 | --- | --- | --- | --- |
 | **{action.forward}** | Provides a link for each recipient to forward the mailing to others.| Mailing Body, Header, Footer| To forward this mailing to friends or colleagues, click `<a href="{action.forward}" >here</a>`.| 
 | **{action.optOutUrl}** | Provides an opt-out link for each recipient.| Mailing Body, Header, Footer,unsubscribe,resubscribe| To opt-out of all future mailings from us, click `<a href="{action.optOutUrl}" >here</a>`.| 
