@@ -11,7 +11,7 @@ As of 2017 CiviCRM uses three different system for tracking and managing issues 
 
 Used as an issue-tracking system for: 
 
-* **[CiviCRM core](https://issues.civicrm.org/jira/browse/CRM)**
+* **[CiviCRM (Standard Repos)](https://issues.civicrm.org/jira/browse/CRM)**  (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
 * [CiviVolunteer](https://issues.civicrm.org/jira/browse/VOL)
 * [CiviHR](https://issues.civicrm.org/jira/browse/HR)
 * *...and a small number of [other projects](https://issues.civicrm.org/jira/secure/BrowseProjects.jspa?selectedCategory=all&selectedProjectType=all)*
