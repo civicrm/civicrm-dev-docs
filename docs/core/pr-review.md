@@ -79,7 +79,7 @@ An easy way to do this is:
 
 1. Install [Hub](https://hub.github.com/)
 1. `cd` to your `civicrm` root directory
-1. Run `git checkout https://github.com/civicrm/civicrm-core/pull/1234` where `1234` is the PR number you're reviewing
+1. Run `hub checkout https://github.com/civicrm/civicrm-core/pull/1234` where `1234` is the PR number you're reviewing
 
 #### If the PR contains database upgrades
 
