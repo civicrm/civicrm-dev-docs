@@ -81,7 +81,7 @@ pages:
     - hook_civicrm_referenceCounts: hooks/hook_civicrm_referenceCounts.md
   - Entity Hooks:
     - hook_civicrm_entityTypes: hooks/hook_civicrm_entityTypes.md
-  - Extension Hifecycle Hooks:
+  - Extension Lifecycle Hooks:
     - hook_civicrm_disable: hooks/hook_civicrm_disable.md
     - hook_civicrm_enable: hooks/hook_civicrm_enable.md
     - hook_civicrm_install: hooks/hook_civicrm_install.md
