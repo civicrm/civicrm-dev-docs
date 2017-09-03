@@ -184,6 +184,6 @@ $ cv url 'civicrm/caseadmin/#/caseType'
 
     In the example, we created a new, standalone page.  But you can use
     `AngularLoader` in other ways -- eg, you might listen for
-    `hook_civicrm_pageRun` and embed Angular onto a pre-existing,
+    [hook_civicrm_pageRun](/hooks/hook_civicrm_pageRun.md) and embed Angular onto a pre-existing,
     non-Angular page.  Some extensions do this -- though it remains to be
     seen whether this is *wise*.
