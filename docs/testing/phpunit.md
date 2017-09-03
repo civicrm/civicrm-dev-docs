@@ -52,6 +52,19 @@ $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/api/v3/CaseTest.php --filter
     You can also specify tests in an environment variable `PHPUNIT_TESTS` (eg. `env PHPUNIT_TESTS="MyFirstTest::testFoo MySecondTest" phpunit EnvTests`
     Then run `phpunit4 ./tests/phpunit/EnvTests.php`.
 
+You can also optionallly run a full standard CiviCRM Test suite by running `civi-test-run` as per example below
+
+```bash
+$ civi-test-run "<buildName>" "<civicrm version>" "<junit dir>" "<test-type>"
+```
+The test type is one of:
+
+-  All: Run all standard CiviCRM Test Suites
+-  phpunit-e2e - Run the E2E test suite
+-  phpunit-civi - Run the Civi/ Test Suite
+-  phpunit-api - Run the `api_v3` Test Suite
+-  phpunit-crm - Run the `CRM` Test Suite
+
 ## Writing Tests
 
 When writing Core tests you should extend from `\CiviUnitTestCase`.

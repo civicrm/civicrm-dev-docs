@@ -8,3 +8,10 @@ CMS-integration.
 
 Upgrade tests are run daily on the Jenkins [continuous integration](/testing/continuous-integration.md) server.
 
+## Local Upgrade Testing
+
+Locally you can run the same upgrade tests as Jenkins would using `civi-test-run` as per the following example
+
+```bash
+$ civi-test-run "<civibuildname>" "<civiversion>" "<junitdir>" "upgrade"
+```
