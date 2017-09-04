@@ -54,11 +54,12 @@ detected, published, and submitted for translation.
     message, you'll need to email [info@civicrm.org](mailto:info@civicrm.org)
     with your user id and request permission to publish extensions.
 -   Fill out all required fields. Also provide the "Git URL" for the extension.
+-   Complete the steps in "Publishing an extension release" below.
 -   Within a day, you will receive an email notifying you that the extension
     was published on civicrm.org or that a problem with the extension manifest
     (`info.xml`) prevented publication.
 
-### Publishing subsequent releases:
+### Publishing an extension release:
 
 -   Update the extension manifest and push the changes to your GitHub repository.
     At minimum you'll need to increment the version number.
@@ -67,6 +68,8 @@ detected, published, and submitted for translation.
         git tag -a v1.2.0
         git push origin v1.2.0
 
+-   Visit your extension node (created in "Publishing an extension" step above)
+    and click "Add CiviCRM-native release" at bottom of page.
 -   Within a day, you will receive an email notifying you that the release
     was published on civicrm.org or that a problem with the extension manifest
     prevented publication.
