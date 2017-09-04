@@ -101,7 +101,7 @@ function _civicrm_api3_tag_create_spec(&$params) {
 }
 ```
 
-If the `_spec` function makes no alterations to `$params`, then each field will behave as defined in the [schema definition](/framework/schema-definition/#table-field) for the entity. All of those field-level xml schema tags are also available for use in the API `_spec` function. So for example, you can use `$params['id']['type'] = CRM_Utils_Type::T_INT;` to specify that the `'id'` field must be an integer.
+If the `_spec` function makes no alterations to `$params`, then each field will behave as defined in the [schema definition](/framework/schema-definition.md#table-field) for the entity. All of those field-level xml schema tags are also available for use in the API `_spec` function. So for example, you can use `$params['id']['type'] = CRM_Utils_Type::T_INT;` to specify that the `'id'` field must be an integer.
   
 
 Additionally, the following settings may be applied to each field: 
