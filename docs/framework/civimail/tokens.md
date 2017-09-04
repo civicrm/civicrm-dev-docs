@@ -43,26 +43,26 @@ The way it works is you create a "special" link in the CiviMail message that inc
 
 DEVELOPER NOTE: the checksum token outputs the QS param, so if you are building a URL using `CRM_Contact_BAO_Contact_Utils::generateChecksum()`, you should include 'cs='
 
-**Checksum for Contribution Pages**: To send people to a contribution page use this path where **N** is the ID of your contribution page:
+**Checksum for Contribution Pages**: To send people to a contribution page use this path where **IDNUMBER** is the ID of your contribution page:
 
--   Drupal: `http://www.myorganization.org/civicrm/contribute/transact?reset=1&id=>**N**&{contact.checksum}&cid={contact.contact_id}`
--   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/contribute/transact&reset=1&id=**N**&{contact.checksum}&cid={contact.contact_id}`
--   WordPress: `http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&id=**N**&{contact.checksum}&cid={contact.contact_id}`
+-   Drupal: `http://www.myorganization.org/civicrm/contribute/transact?reset=1&id=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
+-   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/contribute/transact&reset=1&id=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
+-   WordPress: `http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&id=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
 
-**Checksum for standard Profiles** (edit mode): To send people to a profile use this path where **N** is the ID of the Profile you want to send them to:
+**Checksum for standard Profiles** (edit mode): To send people to a profile use this path where **IDNUMBER** is the ID of the Profile you want to send them to:
 
--   Drupal: `http://www.myorganization.org/civicrm/profile/edit?reset=1&gid=**N**&{contact.checksum}&id={contact.contact_id}`
--   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/profile/edit&reset=1&gid=**N**&{contact.checksum}&id={contact.contact_id}`
--   WordPress:`http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&gid=**N**&{contact.checksum}&id={contact.contact_id}`
+-   Drupal: `http://www.myorganization.org/civicrm/profile/edit?reset=1&gid=IDNUMBER&{contact.checksum}&id={contact.contact_id}`
+-   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/profile/edit&reset=1&gid=IDNUMBER&{contact.checksum}&id={contact.contact_id}`
+-   WordPress:`http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&gid=IDNUMBER&{contact.checksum}&id={contact.contact_id}`
 
-**Checksum for Event Registration Pages**: To send people to an event registration page use this path where **N** is the ID of your event:
+**Checksum for Event Registration Pages**: To send people to an event registration page use this path where **IDNUMBER** is the ID of your event:
 
--   Drupal: `http://www.myorganization.org/civicrm/event/register?reset=1&id=>**N**&{contact.checksum}&cid={contact.contact_id}`
--   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/event/register&reset=1&id=>**N**&{contact.checksum}&cid={contact.contact_id}`
--   WordPress: `http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&id=**N**&{contact.checksum}&cid={contact.contact_id}`
+-   Drupal: `http://www.myorganization.org/civicrm/event/register?reset=1&id=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
+-   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/event/register&reset=1&id=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
+-   WordPress: `http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&id=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
 
-**Checksum for Petition Signature Pages**: To send people to sign a Petition, use this path where **N** is the ID of your petition:
+**Checksum for Petition Signature Pages**: To send people to sign a Petition, use this path where **IDNUMBER** is the ID of your petition:
 
--   Drupal: `http://www.myorganization.org/civicrm/event/register?reset=1&sid=&{contact.checksum}&cid={contact.contact_id}`
--   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/event/register&reset=1&sid=**N**&{contact.checksum}&cid={contact.contact_id}`
--   WordPress: `http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&sid=**N**&{contact.checksum}&cid={contact.contact_id}`
+-   Drupal: `http://www.myorganization.org/civicrm/event/register?reset=1&sid=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
+-   Joomla!: `http://www.myorganization.org/index.php?option=com_civicrm&task=civicrm/event/register&reset=1&sid=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
+-   WordPress: `http://wordpress.demo.civicrm.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1&sid=IDNUMBER&{contact.checksum}&cid={contact.contact_id}`
