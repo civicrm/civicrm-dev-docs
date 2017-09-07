@@ -84,6 +84,14 @@ Elements acceptable within `<classloader>`
 | -- | -- |
 | [`<psr4>`](#psr4) | 1+ |
 
+For example, if you want to write PHP classes in the `Civi` namespace and autoload those classes within your extension, you'll need to use the following XML:
+
+```xml
+<classloader>
+  <psr4 prefix="Civi\" path="Civi"/>
+</classloader>
+```
+
 ### `<comments>` {:#comments}
 
 * Containing element: [`<extension>`](#extension)
