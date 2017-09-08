@@ -79,7 +79,7 @@ The most advanced way to work on a guide is to use git to download all the markd
         cd civicrm-dev-docs
         ```
         
-1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "view the guide" step below.
+1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "view the guide locally ..." step below.
 	1. For folks who have a full Docker for Windows / Mac / Linux environment, run this command:
 
 		```
@@ -96,7 +96,7 @@ The most advanced way to work on a guide is to use git to download all the markd
 		```
 		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
 		```
-		and skip to the "view the book" step below.
+		and skip to the "view the guide locally ..." step below.
 	
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
@@ -119,13 +119,13 @@ The most advanced way to work on a guide is to use git to download all the markd
         -   If you get `[Errno 98] Address already in use` then try using a
             different port with `mkdocs serve -a localhost:8001`
 
-1. View the guide locally your browser at `http://localhost:8000`.
+1. View the guide locally in your browser at `http://localhost:8000`.
 
-1.  Edit the [markdown](/documentation/markdown.md) with an editor of your choice. As you
+1.  Edit the [markdown](/documentation/markdown.md) with an editor of your choice.  As you
     save your changes `mkdocs` will automatically reprocess the page and
     refresh your browser.
 
-1.  When you are happy with your edits, use git to commit and push your changes up to your fork.    Then submit a  pull request on GitHub.
+1.  When you are happy with your edits, use git to commit and push your changes up to your fork.  Then submit a  pull request on GitHub.
 
 
 ### Adding a new page {:#new-page}
