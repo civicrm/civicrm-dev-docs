@@ -1,10 +1,6 @@
-Civilint is a thin wrapper which calls jshint and PHP_CodeSniffer (with the 
-coder ruleset).
+Civilint is a thin wrapper which calls jshint and PHP_CodeSniffer (with the coder ruleset).
 
-Code-style tests ensure a consistent layout across all of the codebase, and 
-they also identify some unsafe or confusing coding patterns. While working on a 
-patch, you should run civilint to determine if the pending changes comply with 
-style guides. 
+Code-style tests ensure a consistent layout across all of the codebase, and they also identify some unsafe or confusing coding patterns. While working on a patch, you should run civilint to determine if the pending changes comply with style guides. 
 
 Note that civilint may be invoked a few different ways:
 
