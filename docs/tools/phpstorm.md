@@ -37,36 +37,26 @@ For browser helpers see: https://confluence.jetbrains.com/display/PhpStorm/Brows
 
 From the `Run > Edit Configurations` menu add a new PHPUnit configuration.
 
-Check "Use alternative configuration file" and choose `phpunit.xml.dist` in your
-CiviCRM root directory.
+Check "Use alternative configuration file" and choose `phpunit.xml.dist` in your CiviCRM root directory.
 
 Expand "Environment variables" and add the following two:
 
-- `TEST_DB_DSN`: Use the DSN to connect to your test database. It is displayed
-on completion of civibuild. You should also be able to find it by running
+- `TEST_DB_DSN`: Use the DSN to connect to your test database. It is displayed on completion of civibuild. You should also be able to find it by running
 `cv vars:show`.
-- `CIVICRM_UF`: Use "UnitTests" unless you're running WebTests or End-to-end
-tests.
+- `CIVICRM_UF`: Use "UnitTests" unless you're running WebTests or End-to-end tests.
 
 For step by step instructions (with screenshots!) see this [StackExchange answer](https://civicrm.stackexchange.com/questions/16489/how-do-i-run-php-unit-tests-w-xdebug-from-within-phpstorm-on-mac/16497#16497).
 
 ### Adding external libraries
 
-It can be frustrating when writing tests the PHPStorm complains about missing
-classes or undefined methods. This happens because PHPUnit is not included in
-the CiviCRM codebase.
+It can be frustrating when writing tests the PHPStorm complains about missing classes or undefined methods. This happens because PHPUnit is not included in the CiviCRM codebase.
 
-To remedy this you can add an external content root. You'll need to clone the
-[phpunit] library locally. Then from that directory check out the latest supported
-version of phpunit (4.x right now).
+To remedy this you can add an external content root. You'll need to clone the [phpunit] library locally. Then from that directory check out the latest supported version of phpunit (4.x right now).
 
-After that you just add the directory to your project include paths by
-[following the instructions on the Jetbrains site][phpstorm-include-paths].
+After that you just add the directory to your project include paths by [following the instructions on the Jetbrains site][phpstorm-include-paths].
 
 [phpstorm-include-paths]: https://www.jetbrains.com/help/phpstorm/configuring-include-paths.html
 [phpunit]: https://github.com/sebastianbergmann/phpunit
 
 Alternatively: always use buildkit to generate you CiviCRM development environment; it ships with many tools - including phpunit4
-
-
 
