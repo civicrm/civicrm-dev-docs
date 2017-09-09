@@ -11,9 +11,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ### Ubuntu
 
-If you have a new installation of Ubuntu 12.04 or later, then you can download
-everything -- buildkit and the system requirements -- with one command. This
-command will install buildkit to `~/buildkit`:
+If you have a new installation of Ubuntu 12.04 or later, then you can download everything -- buildkit and the system requirements -- with one command. This command will install buildkit to `~/buildkit`:
 
 ```bash
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
@@ -21,8 +19,7 @@ curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildki
 
 !!! note
 
-    * When executing the above command, you should *not* run as `root`, as it *will* cause failures. However, you *should*
-    have `sudo` permissions.
+    * When executing the above command, you should *not* run as `root`, as it *will* cause failures. However, you *should*     have `sudo` permissions.
     * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
     * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
  
@@ -52,11 +49,7 @@ You may install buildkit in other environments. The main pre-requisites are:
     * Apache 2.2 or 2.4 (Modules: `mod_rewrite`. On SUSE, possibly `mod_access_compat`. This list may not be exhaustive.)
     * MySQL 5.1+ (client and server)
 
-All pre-requisites must support command-line access using the standard command
-names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments,
-you may need to enable these commands by configuring `PATH` -- this is especially
-true for MAMP, XAMPP, and other downloaded packages.
-(See, e.g., [Setup Command-Line PHP](/standards/php.md).)
+All pre-requisites must support command-line access using the standard command names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments, you may need to enable these commands by configuring `PATH` -- this is especially true for MAMP, XAMPP, and other downloaded packages. (See, e.g., [Setup Command-Line PHP](/standards/php.md).)
 
 Once the pre-requisites are met, download buildkit to `~/buildkit`:
 
@@ -76,16 +69,14 @@ $ ./bin/civi-download-tools
 
 Buildkit includes many CLI commands in the `bin/` folder.
 
-You may execute the commands directly (e.g.  `./bin/civix` or `/path/to/buildkit/bin/civix`).  However, this would
-become very cumbersome.  Instead, you should configure the shell's `PATH` to recognize these commands automatically.
+You may execute the commands directly (e.g.  `./bin/civix` or `/path/to/buildkit/bin/civix`).  However, this would become very cumbersome.  Instead, you should configure the shell's `PATH` to recognize these commands automatically.
 
 !!! tip
     Throughout this document, we will provide examples which assume that buildkit was downloaded to `/path/to/buildkit`. Be sure to adjust the examples to match your system.
 
 If you want to ensure that the buildkit CLI tools are always available, then:
 
-1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or
-`~/.profile`.
+1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or `~/.profile`.
 1. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`
 1. Close and reopen the terminal.
 1. Enter the command `which civibuild`. This should display a full-path. If nothing appears, then retry the steps.
@@ -190,9 +181,7 @@ Nodejs problems
 
 ## Upgrading buildkit {:#upgrading}
 
-New versions of buildkit are likely to include new versions of tools. The
-new tools will download automatically when you first run `civibuild`.
-If you prefer to download explicitly, then re-run `civi-download-tools`.
+New versions of buildkit are likely to include new versions of tools. The new tools will download automatically when you first run `civibuild`. If you prefer to download explicitly, then re-run `civi-download-tools`.
 
 The configurations and tools in buildkit are periodically updated. To get the latest, simply run:
 
