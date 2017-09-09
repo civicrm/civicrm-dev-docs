@@ -15,4 +15,4 @@ To help you decide, here are a couple of principles:
   core, especially if they would be useful to others.
 - New features should generally be packed as Extensions.
 - If you aren't familiar with CiviCRM, by far the best way to get a sense if
-  you should be editing core is by talking with the CiviCRM developer community.
+  you should be editing core is by [talking with the CiviCRM developer community](/basics/community.md#collaboration-tools).
