@@ -7,8 +7,7 @@ Developers from around the globe use the following systems to communicate and co
 -   [CiviCRM.org](https://civicrm.org)
     -   [Extensions](https://civicrm.org/extensions) publishing
     -   [Blog posts](https://civicrm.org/blog/) are written by both the CiviCRM core team and other community members, and cover a wide range of topics. Subscribe to the [RSS feed](https://civicrm.org/blog/feed) to make sure you stay up to date.
-    -   [Events](https://civicrm.org/events) -
-        meetups, conferences, camps, sprints, webinars
+    -   [Events](https://civicrm.org/events) - meetups, conferences, camps, sprints, webinars
     -   [Job Board](https://civicrm.org/jobs) - Post and find paid work
 -   [Documentation](https://docs.civicrm.org)
 -   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall.
@@ -52,6 +51,4 @@ Optional lists you may also want to register for:
 -   [Forum](https://forum.civicrm.org/) - *now mostly replaced by
         StackExchange*
 
-The developer community is full of friendly people, eager to welcome newcomers.
-Mattermost and in-person events are great starting points if you're looking to
-get involved!
+The developer community is full of friendly people, eager to welcome newcomers. Mattermost and in-person events are great starting points if you're looking to get involved!
