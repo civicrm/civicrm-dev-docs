@@ -1,38 +1,28 @@
 # civibuild
 
-Creating a full development environment for CiviCRM requires a lot of work, e.g.
+Creating a full development environment for CiviCRM requires a lot of work, e.g.,
 
- * Downloading / installing / configuring a CMS (Drupal, Joomla, WordPress)
- * Downloading / installing / configuring CiviCRM
- * Configuring Apache and MySQL
- * Configuring file permissions on data folders
- * Configuring a headless test database for phpunit
- * Configuring Selenium to connect to Civi
+ * Downloading / installing / configuring a CMS (Drupal, Joomla, WordPress).
+ * Downloading / installing / configuring CiviCRM.
+ * Configuring Apache and MySQL.
+ * Configuring file permissions on data folders.
+ * Configuring a headless test database for phpunit.
+ * Configuring Selenium to connect to Civi.
 
-The *civibuild* command automates this process. It includes different
-build-types that are useful for core development, such as *drupal-clean* (a
-barebones Drupal+Civi site) and *wp-demo* (a WordPress+Civi site with some
-example content).
+The *civibuild* command automates this process. It includes different build-types that are useful for core development, such as *drupal-clean* (a barebones Drupal+Civi site) and *wp-demo* (a WordPress+Civi site with some example content).
 
-Note: There are a number of build tools on the market which can, e.g.,
-create a Drupal web site (like [drush](http://drush.ws/)) or WordPress web
-site (like [wp-cli](http://wp-cli.org/)).  Civibuild does not aim to replace
-these.  Unfortunately, such tools generally require extra work for a Civi
-developer environment.  Civibuild works with these tools and and fills
-in missing parts.
+Note: There are a number of build tools on the market which can, e.g., create a Drupal web site (like [drush](http://drush.ws/)) or WordPress web site (like [wp-cli](http://wp-cli.org/)).  Civibuild does not aim to replace these.  Unfortunately, such tools generally require extra work for a Civi developer environment.  Civibuild works with these tools and and fills in missing parts.
 
 ## Build Types
 
-`civibuild` includes a small library of build scripts for different
-configurations.
+`civibuild` includes a small library of build scripts for different configurations.
 
-For a list of available build-types as well as documentation on writing build scripts,
-see `app/config` within your buildkit installation.
+For a list of available build-types as well as documentation on writing build scripts, see `app/config` within your buildkit installation.
 
 For example, at time of writing, it includes:
 
-* `backdrop-clean`: A bare, "out-of-the-box" installation of Backdrop+CiviCRM
-* `backdrop-demo`: A demo site running Backdrop and CiviCRM
+* `backdrop-clean`: A bare, "out-of-the-box" installation of Backdrop+CiviCRM.
+* `backdrop-demo`: A demo site running Backdrop and CiviCRM.
 * `backdrop-empty`: An empty Backdrop site (without CiviCRM). Useful for testing tarball installation.
 * `drupal8-clean`: A bare, "Out of the box" Installation of Druapl8+CiviCRM.
 * `druapl8-demo` : A demo site running Drupal8 and CiviCRM.
@@ -40,19 +30,19 @@ For example, at time of writing, it includes:
 * `drupal-demo`: A demo site running Drupal and CiviCRM.
 * `drupal-empty`: An empty Drupal site (without CiviCRM). Useful for testing tarball installation.
 * `joomla-empty`: An empty Joomla site (without CiviCRM). Useful for testing tarball installation.
-* `wp-demo`: A demo site running WordPress and CiviCRM
+* `wp-demo`: A demo site running WordPress and CiviCRM.
 * `wp-empty`: An empty WordPress site (without CiviCRM). Useful for testing tarball installation.
-* `hrdemo` A demo site running Drupal, CiviCRM, and CiviHR
-* `symfony`: An experimental hybrid site running Drupal 7, Symfony 2, and CiviCRM
+* `hrdemo` A demo site running Drupal, CiviCRM, and CiviHR.
+* `symfony`: An experimental hybrid site running Drupal 7, Symfony 2, and CiviCRM.
 * `cxnapp`: A self-signed CiviConnect app based on the reference implementation.
 * `messages`: A backend service for delivering in-app messages (eg "Getting Started").
 * `extdir`: A mock website akin to civicrm.org/extdir/ . Useful for testing the extension download process.
 * `dist`: A website containing nightly builds akin to dist.civicrm.org. Useful for preparing CiviCRM tarballs.
 * `distmgr`: A service which manages redirects and report-backs for the download site.
 * `l10n`: WIP - A build environment for creating translation files.
-* `joomla-demo`: WIP/incomplete/broken
+* `joomla-demo`: WIP/incomplete/broken.
 
-Build types can be mixed/matched with different versions of Civi, e.g.
+Build types can be mixed/matched with different versions of Civi, e.g.,
 
 ```bash
 $ civibuild create my-drupal-civi47 \
@@ -76,37 +66,33 @@ You can also specify `--patch` with a pull request URL to apply those changes on
 
 ## Build Aliases
 
-For developers who work with several CMSs and several versions of Civi, it's
-useful to have a naming convention and shorthand for the most common
-configurations.  Civibuild includes aliases (in `src/civibuild.aliases.sh`)
-like "d44" and "wpmaster":
+For developers who work with several CMSs and several versions of Civi, it's useful to have a naming convention and shorthand for the most common configurations.  Civibuild includes aliases (in `src/civibuild.aliases.sh`) like "d44" and "wpmaster":
 
-Create a build "d44" using build-type "drupal-demo" with Civi "4.4"
+Create a build "d44" using build-type "drupal-demo" with Civi "4.4":
 
 ```
 $ civibuild create d44 --url http://d44.localhost
 ```
 
-Create a build "d45" using build-type "drupal-demo" with Civi "4.5"
+Create a build "d45" using build-type "drupal-demo" with Civi "4.5":
 
 ```
 $ civibuild create d45 --url http://d45.localhost
 ```
 
-Create a build "wp45" using build-type "wp-demo" with Civi "4.5"
+Create a build "wp45" using build-type "wp-demo" with Civi "4.5":
 
 ```
 $ civibuild create wp45 --url http://wp45.localhost
 ```
 
-Create a build "wpmaster" using build-type "wp-demo" with Civi's "master" branch
+Create a build "wpmaster" using build-type "wp-demo" with Civi's "master" branch:
 
 ```
 $ civibuild create wpmaster --url http://wpmaster.localhost
 ```
 
-These aliases exactly match the demo sites deployed under civicrm.org (e.g.
-"wp45" produces the demo site "wp45.demo.civicrm.org").
+These aliases exactly match the demo sites deployed under civicrm.org (e.g. "wp45" produces the demo site "wp45.demo.civicrm.org").
 
 
 ## Upgrading a site you installed with civibuild {:#upgrade-site}
@@ -309,15 +295,11 @@ civibuild create dmaster \
   --admin-pass s3cr3t
 ```
 
-This will create a test environment with the Drupal, CiviCRM master branch
-and the patch in PR 8494. 
+This will create a test environment with the Drupal, CiviCRM master branch and the patch in PR 8494. 
 
 ### Experimental: Multiple demo/training sites {:#demo-training}
 
-When creating a batch of identical sites for training or demonstrations,
-one may want to create a single source-code-build with several
-databases/websites running on top (using "Drupal multi-site"). To install
-extra sites,  use the notation "civibuild create buildname/site-id" as in:
+When creating a batch of identical sites for training or demonstrations, one may want to create a single source-code-build with several databases/websites running on top (using "Drupal multi-site"). To install extra sites,  use the notation "civibuild create buildname/site-id" as in:
 
 Create the original build
 
@@ -343,9 +325,7 @@ done
 
 ## Development/Testing of `civibuild` {:#development}
 
-The tests for `civibuild` are stored in `tests/phpunit`.  These are
-integration tests which create and destroy real builds on the local system.
-To run them:
+The tests for `civibuild` are stored in `tests/phpunit`. These are integration tests which create and destroy real builds on the local system. To run them:
 
 * Configure `amp` (as above)
 * Ensure that a test site is configured (`civibuild create civibild-test --type empty`)
