@@ -167,7 +167,7 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
 
 Nodejs version too old or npm update does not work
 
-: Download the latest version from nodejs.org and follow to their instructions
+: Download the latest version from nodejs.org and follow their instructions
 
 Nodejs problems
 
