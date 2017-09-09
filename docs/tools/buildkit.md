@@ -77,7 +77,7 @@ You may execute the commands directly (e.g.  `./bin/civix` or `/path/to/buildkit
 If you want to ensure that the buildkit CLI tools are always available, then:
 
 1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or `~/.profile`.
-1. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`
+1. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`.
 1. Close and reopen the terminal.
 1. Enter the command `which civibuild`. This should display a full-path. If nothing appears, then retry the steps.
 
@@ -112,7 +112,7 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
     !!! tip "tips"
         * Run this as a non-`root` user who has `sudo` permission. This will ensure that new files are owned by a regular user, and (if necessary) it enables `civibuild` to restart your webserver and edit `/etc/hosts`.
         * Pay close attention to any instructions given in the output of this command.
-        * To check which version of apache you have, run `apachectl -v`
+        * To check which version of apache you have, run `apachectl -v`.
     
     !!! caution
         We strongly recommend using Apache as your webserver because support for nginx is limited. 
@@ -165,7 +165,7 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
 
 ## Troubleshooting {:#troubleshooting}
 
-Nodejs version too old or npm update does not work
+Nodejs version too old or npm update does not work:
 
 : Download the latest version from nodejs.org and follow to their instructions
 
@@ -177,7 +177,6 @@ Nodejs problems
     npm update
     npm install fs-extra
     ```
-
 
 ## Upgrading buildkit {:#upgrading}
 
