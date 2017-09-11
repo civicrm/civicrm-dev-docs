@@ -546,9 +546,11 @@ The global variable `$civicrm_setting` is used to [override CiviCRM settings](ht
   ```php
   // Old/Deprecated/Verbose. Compatible with v4.1+.
   $civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;
+  $civicrm_setting['CiviCRM Preferences']['remote_profile_submissions'] = FALSE;
 
   // New/Preferred/Simplified. Compatible with v4.7+.
   $civicrm_setting['domain']['search_autocomplete_count'] = 10;
+  $civicrm_setting['domain']['remote_profile_submissions'] = FALSE;
   ```
 - `$civicrm_setting` is usually modified within the file `civicrm.settings.php`, but it can be modified at runtime (e.g. in  a hook). *If you modify it at runtime*, then you must also call `useMandatory()` to assimilate the changes. Examples for v4.6 and  v4.7 are compared below.
    ```php
