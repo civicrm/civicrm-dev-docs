@@ -1,78 +1,48 @@
 # Extension Life cycle
 
-This document describes the process of publishing extensions within the CiviCRM
-ecosystem.
+This document describes the process of publishing extensions within the CiviCRM ecosystem.
 
 ## Background
 
-The CiviCRM ecosystem is built on the belief that non-profit
-organizations can serve themselves best by collaborating in development of their
-data-management applications.  As staff, volunteers, and consultants for
-non-profit organizations, we can share our new enhancements and extensions
-&mdash; and build a richer whole for the entire ecosystem.
+The CiviCRM ecosystem is built on the belief that non-profit organizations can serve themselves best by collaborating in development of their data-management applications.  As staff, volunteers, and consultants for non-profit organizations, we can share our new enhancements and extensions &mdash; and build a richer whole for the entire ecosystem.
 
-Of course, this collaboration means that we're all engaged in some give-and-take. 
-We alternate between two roles:
+Of course, this collaboration means that we're all engaged in some give-and-take. We alternate between two roles:
 
--   **Consumers**: Sometimes we're the receivers. We want to quickly browse the available
-    extensions, pick the ones which look best, and install them. We
-    expect the extensions to work &mdash; both now and going forward (with
-    future upgrades).
--   **Developers**: Sometimes we're the providers. We enjoy building great functionality, and
-    want to invite people to use our products, but need to juggle the
-    publishing tasks (like testing and maintenance releases) with the goals
-    and resources provided by our bosses and clients.
+-   **Consumers**: Sometimes we're the receivers. We want to quickly browse the available extensions, pick the ones which look best, and install them. We expect the extensions to work &mdash; both now and going forward (with future upgrades).
+-   **Developers**: Sometimes we're the providers. We enjoy building great functionality, and want to invite people to use our products, but need to juggle the publishing tasks (like testing and maintenance releases) with the goals and resources provided by our bosses and clients.
 
-With the extension life-cycle described here, we seek to build an ecosystem that
-balances the needs of both consumers and developers.
+With the extension life-cycle described here, we seek to build an ecosystem that balances the needs of both consumers and developers.
 
 ## Definitions
 
 ### Project Maturity
 
-Should we expect this to work for most users? Should we expect to work in 6
-months?
+Should we expect this to work for most users? Should we expect it to work in 6 months?
 
 Experimental
-:   An experimental project offers zero support, stability, or maintenance.
-    It may be useful for discussion, finding collaborators, or proving a
-    concept.
+:   An experimental project offers zero support, stability, or maintenance. It may be useful for discussion, finding collaborators, or proving a concept.
 
 Incubation
-:   An incubation project offers some degree of support,
-    stability, or maintenance. It's probably in use at multiple
-    organizations. However, the levels are not guaranteed; some gaps and
-    road bumps should be expected. A project may be "Incubation" for days
-    or months or years.
+:   An incubation project offers some degree of support, stability, or maintenance. It's probably in use at multiple     organizations. However, the levels are not guaranteed; some gaps and road bumps should be expected. A project may be "Incubation" for days or months or years.
 
 Stable
-:   A stable project has undertaken significant efforts to
-    ensure that it works and continues working in the future. It has a
-    strong quality-signal.
+:   A stable project has undertaken significant efforts to ensure that it works and continues working in the future. It has a     strong quality-signal.
 
 Deprecated
-:   The project is no longer being maintained. It may work
-    today; but it's liable to break tomorrow (unless someone steps up to
-    manage it).
+:   The project is no longer being maintained. It may work today; but it's liable to break tomorrow (unless someone steps up to     manage it).
 
 ### Stewardship
 
-Who manages a project? Who decides whether the project is experimental? Or
-maintained? Or unmaintained?
+Who manages a project? Who decides whether the project is experimental? Or maintained? Or unmaintained?
 
 Contributed
-:   This project is managed by an individual or company in the ecosystem. All
-    design, support, and maintenance are at discretion of the original author.
+:   This project is managed by an individual or company in the ecosystem. All design, support, and maintenance are at discretion of the original author.
 
 Official
-:   The project is monitored as a community resource.
-    Generally, the original author retains editorial control, but the
-    project receives more strenuous reviews and follows stricter standards
-    with feedback from others in the community.
+:   The project is monitored as a community resource. Generally, the original author retains editorial control, but the     project receives more strenuous reviews and follows stricter standards with feedback from others in the community.
 
 Seeking Maintainer
-:   This project does not have a person or organization responsible for it.
-    If you think the project is useful, feel free to take responsibility for it.
+:   This project does not have a person or organization responsible for it. If you think the project is useful, feel free to take responsibility for it.
 
 ### Support Model
 
@@ -82,56 +52,37 @@ Free
 :   Submit questions and requests to an open bug-tracker.
 
 Negotiated
-:   Issues may be reported to open bug-tracker. If the
-    author agrees it is critical or data-loss, they may address it.
-    Otherwise, you need to negotiate a contract.
+:   Issues may be reported to open bug-tracker. If the author agrees it is critical or data-loss, they may address it. Otherwise, you need to negotiate a contract.
 
 Pre-Paid
-:   The author will not engage in any support discussions unless you have
-    pre-paid for support.
+:   The author will not engage in any support discussions unless you have pre-paid for support.
 
 ### Quality Signals
 
 How do we know if an extension is any good?
 
 Self-Assessment
-:   An author makes a claim about the stability of their
-    work. (This is a low-tech, low-touch process.)
+:   An author makes a claim about the stability of their work. (This is a low-tech, low-touch process.)
 
 Informal Discussion
-:   One or more experts give gut reactions. (This
-    is a low-tech, high-touch process.)
+:   One or more experts give gut reactions. (This is a low-tech, high-touch process.)
 
 Formal Review
-:   One or more experts assesses the quality,
-    maintainability, best-practices, etc. using formal criteria. (This is a
-    low-tech, high-touch process.)
+:   One or more experts assesses the quality, maintainability, best-practices, etc. using formal criteria. (This is a low-tech, high-touch process.)
 
 Social Metrics
-:   Data-points (such as #installations or average
-    5-star rating) is collected from many people. (This is a high-tech,
-    low-touch process.)
+:   Data-points (such as #installations or average 5-star rating) is collected from many people. (This is a high-tech, low-touch process.)
 
 Technical Metrics
-:   Technical details (such as test-coverage,
-    test-results, style-checks, or cyclomatic complexity) are checked by a
-    bot. (This is a high-tech, low-touch process.)
+:   Technical details (such as test-coverage, test-results, style-checks, or cyclomatic complexity) are checked by a bot. (This is a high-tech, low-touch process.) 
 
 ## Workflow
 
-The database on `civicrm.org` publishes information about available extensions,
-including maturity and stewardship. This is significant because it affects
-authors (who publish the extension) and users (who download the extension) and
-determines access to communal resources on `civicrm.org`. The particulars are
-determined the maturity and stewardship of the project -- with a few basic
-rules of thumb:
+The database on `civicrm.org` publishes information about available extensions, including maturity and stewardship. This is significant because it affects authors (who publish the extension) and users (who download the extension) and determines access to communal resources on `civicrm.org`. The particulars are determined the maturity and stewardship of the project -- with a few basic rules of thumb:
 
--   The author always registers their extension on `civicrm.org` by creating an
-    `extension` node.
--   *Official* extensions are subject to more scrutiny than *Contributed*
-    extensions.
--   *Experimental*, *Incubation*, and *Deprecated* extensions have simple, open
-    processes -- such as *Self-Assessment* or *Informal Discussion*.
+-   The author always registers their extension on `civicrm.org` by creating an `extension` node.
+-   *Official* extensions are subject to more scrutiny than *Contributed* extensions.
+-   *Experimental*, *Incubation*, and *Deprecated* extensions have simple, open processes -- such as *Self-Assessment* or *Informal Discussion*.
 -   *Stable* extensions require some kind of *Formal Review*.
 
 Based on these rules, we can fill out a full table of the workflow:
@@ -158,7 +109,7 @@ The review process assess several criteria, and as a rule of thumb, *Contributed
 ### Who can review?
 
 * Contributed extensions must be reviewed by at least one peer/contributor.
-* Official extensions must be reviewed by at least one senior member of core team
+* Official extensions must be reviewed by at least one senior member of core team.
 
 ### Becoming an extensions reviewer
 
@@ -167,10 +118,7 @@ To become an extensions reviewer, please take the following steps:
 1. Set up accounts on these sites *(if you need help, reach out through the [community resources](/basics/community.md))*
     1.  [civicrm.org](https://civicrm.org/user/)
     1.  [issues.civicrm.org](https://issues.civicrm.org/jira/login.jsp) - log in using your civicrm.org account
-1.  Contact the [CiviCRM Extension Ecosystem Working
-    Group](https://civicrm.org/working-groups/extension-ecosystem) and
-    ask to become an extension reviewer.  You'll be notified when the
-    necessary administrative steps have been completed.
+1.  Contact the [CiviCRM Extension Ecosystem Working Group](https://civicrm.org/working-groups/extension-ecosystem) and ask to become an extension reviewer. You'll be notified when the necessary administrative steps have been completed.
 
 ### Selecting an Extension for Review
 
@@ -178,40 +126,24 @@ To become an extensions reviewer, please take the following steps:
 
     Consider the following criteria while choosing:
 
-    -   Readiness: The issue should contain a link to an extension node on
-        civicrm.org. If no such link is provided, please request one in a
-        comment on the issue, and move on to another issue.
-    -   Age of request: All else being equal, older review requests should
-        be reviewed first.
-    -   Affinity/interest: Reviewers may wish to select an extension which
-        relates to functionality in which they have an interest or with
-        which they're especially familiar. On the other hand, there's no
-        requirement to have any special knowledge of the extension's
-        functionality if one is prepared to invest a little extra effort in
-        the review.
-    -   Neutrality: Reviewers should not have been involved in the
-        development of the extension. Employment or contracting
-        relationships can introduce conflicts of interest. Reviews should be
-        conducted by a neutral third party.
+    -   Readiness: The issue should contain a link to an extension node on civicrm.org. If no such link is provided, please request one in a comment on the issue, and move on to another issue.
+    -   Age of request: All else being equal, older review requests should be reviewed first.
+    -   Affinity/interest: Reviewers may wish to select an extension which relates to functionality in which they have an interest or with which they're especially familiar. On the other hand, there's no requirement to have any special knowledge of the extension's functionality if one is prepared to invest a little extra effort in the review.
+    -   Neutrality: Reviewers should not have been involved in the development of the extension. Employment or contracting  relationships can introduce conflicts of interest. Reviews should be conducted by a neutral third party.
 
-1.  To claim a review, assign the relevant "Extension Review Request"
-    issue to yourself so that others know you're beginning the review.
-    When you are ready to begin the review, update the issue status to
-    "In Progress."
+1.  To claim a review, assign the relevant "Extension Review Request" issue to yourself so that others know you're beginning the review. When you are ready to begin the review, update the issue status to "In Progress".
 
 !!! tip
     You can also browse [*all* extension  review requests](https://issues.civicrm.org/jira/issues/?filter=28710), including assigned ones.
 
 ### Conducting a Review
 
-Reviewers should follow these steps to conduct an extension review for
-automated distribution:
+Reviewers should follow these steps to conduct an extension review for automated distribution:
 
 1. Review the extension on at least one [supported CMS](https://docs.civicrm.org/user/en/latest/website-integration/choosing-your-cms/). (You don't need to test that it works on every CMS.)
 
     !!! tip
         Use [Buildkit](https://github.com/civicrm/civicrm-buildkit) to create the CMS environment on-demand.
-
 
 1. Download and install the most recent release of the extension.
 
@@ -239,8 +171,6 @@ automated distribution:
 
 
 1. Use all of the information gained in the review to decide whether to approve the extension.
-
-
 
 ### Criteria for passing a review {:#review-criteria}
 
@@ -275,43 +205,27 @@ automated distribution:
 
 #### If the extension needs work
 
-If a review indicates that the extension needs further improvement
-before it can be approved, the reviewer should take these steps:
+If a review indicates that the extension needs further improvement before it can be approved, the reviewer should take these steps:
 
-1.  Edit the extension's node on civicrm.org to set the field "Reviewed
-    and ready for automated distribution?" to "Needs work: This
-    Extension Release has been reviewed and needs work from the
-    developer before the review can continue"
-1.  Add a comment to the issue to notify the issue reporter that the
-    extension needs work; specifically mention the issues that prevent
-    approval as well as other items which the developer may want to
-    improve at their discretion.
+1.  Edit the extension's node on civicrm.org to set the field "Reviewed and ready for automated distribution?" to "Needs work: This Extension Release has been reviewed and needs work from the developer before the review can continue".
+1.  Add a comment to the issue to notify the issue reporter that the extension needs work; specifically mention the issues that prevent approval as well as other items which the developer may want to improve at their discretion.
 
 Continue monitoring the issue for updates from the developer, and respond in a timely way to answer questions or to conduct a follow-up review after changes have been made.
 
 #### If the extension is approved
 
-If a review indicates that the extension should be approved, the
-reviewer should take these steps:
+If a review indicates that the extension should be approved, the reviewer should take these steps:
 
-1.  Edit the extension's node on civicrm.org to set the field "Reviewed
-    and ready for automated distribution?" to "Yes: This Extension
-    Release has been reviewed and is ready for automated distribution."
-1.  Add a comment to the issue to notify the issue reporter that the
-    extension has been approved for automated distribution.  Also
-    mention any items which the developer may want to improve, even
-    though they did not prevent the extension from being approved.
+1.  Edit the extension's node on civicrm.org to set the field "Reviewed and ready for automated distribution?" to "Yes: This Extension Release has been reviewed and is ready for automated distribution."
+1.  Add a comment to the issue to notify the issue reporter that the extension has been approved for automated distribution.  Also mention any items which the developer may want to improve, even though they did not prevent the extension from being approved.
 1.  Close the issue.
-1.  Optionally: Mention the extension approval on Twitter or in the
-    extensions channel at chat.civicrm.org.
+1.  Optionally: Mention the extension approval on Twitter or in the extensions channel at chat.civicrm.org.
 1.  Congratulate yourself on your contribution to CiviCRM. Thank you!
-
 
 
 ## Benefits
 
-Based on a project's maturity and stewardship, it may be eligible to use
-resources from `civicrm.org`.
+Based on a project's maturity and stewardship, it may be eligible to use resources from `civicrm.org`.
 
 | Action Type | Benefit/Resource/Privilege	| Eligibility |
 | ----------- | ---------------------------- | ----------- |
