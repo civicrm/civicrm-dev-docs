@@ -262,7 +262,7 @@ Your next step is not to fix the error, but to first give yourself enough inform
 
 **Viewing errors in logfiles**
 
-The webserver can be configured to display errors to screen, but it also logs errors to files on disk. These files vary depending on your hosting environment, so you might consult your webhost's documentation to locate them. You might look for  errors in some of these locations depending on webserver/php config:
+The webserver can be configured to display errors to screen, but it also logs errors to files on disk. These files vary depending on your hosting environment, so you might consult your webhost's documentation to locate them. You might look for errors in some of these locations depending on webserver/php config:
 
 -   `/var/log/nginx/*err*log` NginX webserver error logs
 -   `/var/log/apache2/*err*log` Apache webserver & mod_php error logs
