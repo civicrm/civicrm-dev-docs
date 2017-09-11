@@ -542,36 +542,40 @@ See also: [CRM-16373](https://issues.civicrm.org/jira/browse/CRM-16373)
 
 The global variable `$civicrm_setting` is used to [override CiviCRM settings](https://wiki.civicrm.org/confluence/display/CRMDOC/Override+CiviCRM+Settings). It has been changed:
 
-- In previous versions, settings were indexed by group name (e.g. `Search Preferences`). In v4.7+, settings should be indexed by entity name ("domain" or "contact"). For backward compatibility, most group names are treated as an alias for "domain" or "contact".
-    - Old/Deprecated: `$civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;`
-    - New/Preferred: `$civicrm_setting['domain']['search_autocomplete_count'] = 10;`
-- `$civicrm_setting` is usually modified within the file `civicrm.settings.php`, but it can be modified at runtime (e.g. in  a hook). *If you modify it at runtime*, then you must also call `useMandatory()` to assimilate the changes. Examples for v4.6 and  v4.7 are compared below.
-
-**Override setting at runtime**
-
-```php
-// Ex: Compatible with v4.6 or older (minimalist)
-function example_hook() {
-  global $civicrm_setting;
+- In previous versions, settings were indexed by group name (e.g. `Search Preferences`). In v4.7+, settings should be indexed by entity name (e.g. `domain` or `contact`). For backward compatibility, most group names are treated as an alias for `domain` or `contact`.
+  ```php
+  // Old/Deprecated/Verbose. Compatible with v4.1+.
   $civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;
-}
+  $civicrm_setting['CiviCRM Preferences']['remote_profile_submissions'] = FALSE;
 
-// Ex: Compatible with v4.7 or newer (minimalist)
-function example_hook() {
-  global $civicrm_setting;
+  // New/Preferred/Simplified. Compatible with v4.7+.
   $civicrm_setting['domain']['search_autocomplete_count'] = 10;
-  Civi::service('settings_manager')->useMandatory();
-}
+  $civicrm_setting['domain']['remote_profile_submissions'] = FALSE;
+  ```
+- `$civicrm_setting` is usually modified within the file `civicrm.settings.php`, but it can be modified at runtime (e.g. in  a hook). *If you modify it at runtime*, then you must also call `useMandatory()` to assimilate the changes. Examples for v4.6 and  v4.7 are compared below.
+   ```php
+   // Ex: Compatible with v4.6 or older (minimalist)
+   function example_hook() {
+     global $civicrm_setting;
+     $civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;
+   }
 
-// Ex: Compatible with both v4.6 and v4.7
-function example_hook() {
-  global $civicrm_setting;
-  $civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;
-  if (version_compare('>=', CRM_Utils_System::version(), '4.7.alpha1')) {
-    Civi::service('settings_manager')->useMandatory();
-  }
-}
-```
+   // Ex: Compatible with v4.7 or newer (minimalist)
+   function example_hook() {
+     global $civicrm_setting;
+     $civicrm_setting['domain']['search_autocomplete_count'] = 10;
+     Civi::service('settings_manager')->useMandatory();
+   }
+
+   // Ex: Compatible with both v4.6 and v4.7
+   function example_hook() {
+     global $civicrm_setting;
+     $civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;
+     if (version_compare('>=', CRM_Utils_System::version(), '4.7.alpha1')) {
+       Civi::service('settings_manager')->useMandatory();
+     }
+   }
+   ```
 
 See also: [CRM-16373](htps://issues.civicrm.org/jira/browse/CRM-16373).
 
