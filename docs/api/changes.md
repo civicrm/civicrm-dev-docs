@@ -542,7 +542,7 @@ See also: [CRM-16373](https://issues.civicrm.org/jira/browse/CRM-16373)
 
 The global variable `$civicrm_setting` is used to [override CiviCRM settings](https://wiki.civicrm.org/confluence/display/CRMDOC/Override+CiviCRM+Settings). It has been changed:
 
-- In previous versions, settings were indexed by group name (e.g. `Search Preferences`). In v4.7+, settings should be indexed by entity name ("domain" or "contact"). For backward compatibility, most group names are treated as an alias for "domain" or "contact".
+- In previous versions, settings were indexed by group name (e.g. `Search Preferences`). In v4.7+, settings should be indexed by entity name (e.g. `domain` or `contact`). For backward compatibility, most group names are treated as an alias for `domain` or `contact`.
   ```php
   // Old/Deprecated/Verbose. Compatible with v4.1+.
   $civicrm_setting['Search Preferences']['search_autocomplete_count'] = 10;
