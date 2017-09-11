@@ -77,9 +77,9 @@ civix generate:page MyPage civicrm/my-page
 
 This creates three files:
 
--   `xml/Menu/myextension.xml` defines request-routing rules and associates the controller ("CRM_Myextension_Page_Greeter") with     the web path `civicrm/my-page`.
--   `CRM/Myextension/Page/MyPage.php` is the controller which coordinates any parsing, validation, business-logic, or database     operations.
--   `templates/CRM/Myextension/Page/MyPage.tpl` is loaded automatically after the controller executes. It defines the markup     that is eventually displayed. For more information on the syntax of this file, see [the smarty guide](http://www.smarty.net/docs/en/).
+-   `xml/Menu/myextension.xml` defines request-routing rules and associates the controller ("CRM_Myextension_Page_Greeter") with the web path `civicrm/my-page`.
+-   `CRM/Myextension/Page/MyPage.php` is the controller which coordinates any parsing, validation, business-logic, or database operations.
+-   `templates/CRM/Myextension/Page/MyPage.tpl` is loaded automatically after the controller executes. It defines the markup that is eventually displayed. For more information on the syntax of this file, see [the smarty guide](http://www.smarty.net/docs/en/).
 
 The auto-generated code for the controller and view demonstrate a few basic operations, such as passing data from the controller to the view.
 
@@ -93,7 +93,7 @@ If the data on the page is read and updated through the API, then you may want t
 ### Add a basic web form {:#generate-form}
 
 !!! caution
-    The form system is not well documented and may undergo significant revision after the CiviCRM 4.x series. In general, migrating basic pages will be easier than migrating basic forms, so you may want to consider building your data-input interface  using basic pages, the AJAX API, and the [in-place editing](/framework/ui.md#in-place-field-editing) API.
+    The form system is not well documented and may undergo significant revision after the CiviCRM 4.x series. In general, migrating basic pages will be easier than migrating basic forms, so you may want to consider building your data-input interface using basic pages, the AJAX API, and the [in-place editing](/framework/ui.md#in-place-field-editing) API.
 
 CiviCRM uses a typical web-MVC architecture. To implement a basic web form, you must create a PHP controller class, create a Smarty template file, and create a routing rule. You can create the appropriate files by calling `civix generate:form`.
 
@@ -225,7 +225,7 @@ civix generate:case-type "Volunteer Training" Training
 
 This creates two files:
 
--   `xml/case/Training.xml` defines the roles, activity types, and timelines associated with the new case type. For more in depth     discussion of CiviCase XML, see [CiviCase Configuration](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCase+Configuration).
+-   `xml/case/Training.xml` defines the roles, activity types, and timelines associated with the new case type. For more in depth discussion of CiviCase XML, see [CiviCase Configuration](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCase+Configuration).
 -   `alltypes.civix.php`(which may already exist) defines implementations of various hooks (notably hook_civicrm_caseTypes).
 
 ### Add custom fields
@@ -267,8 +267,8 @@ The automatic export does not work too well when the custom-data group extends a
 
 To create this extension, the author used `civix generate:custom-data` and then:
 
-1. Renamed the `xml/auto_install.xml` to  `templates/hremerg-customdata.xml.tpl`
-1. Changed the value of `<extends_entity_column_value>` in the `.tpl file` using  a variable instead of a hard-coded type ID.
+1. Renamed the `xml/auto_install.xml` to `templates/hremerg-customdata.xml.tpl`
+1. Changed the value of `<extends_entity_column_value>` in the `.tpl file` using a variable instead of a hard-coded type ID.
 1. Added logic in the upgrader to create the relationship type.
 1. Added logic in the upgrader to evaluate the Smarty template.
 
@@ -361,7 +361,7 @@ This creates three files:
 -   `CRM/Myextension/Form/Report/MyReport.mgd.php` stores metadata about the report in a format based on [hook_civicrm_managed](/hooks/hook_civicrm_managed.md) and the [API](/api/index.md).
 -   `CRM/Myextension/Form/Report/MyReport.php` contains the form-builder and query-builder for the report. For details about its
     structure, see the [CiviReport Reference](/framework/civireport.md).
--   `templates/CRM/Myextension/Form/Report/MyReport.tpl` contains the report's HTML template. This template usually delegates     responsibility to a core template and does not need to be edited.
+-   `templates/CRM/Myextension/Form/Report/MyReport.tpl` contains the report's HTML template. This template usually delegates responsibility to a core template and does not need to be edited.
 
 If one of the existing reports is close to meeting your needs, but requires further PHP or SQL customization, you may simply make a new report based on that report. To copy a report, find the class-name of the original report within the `civicrm/CRM/Report/Form/` directory in the CiviCRM repository. Then run the `civix generate:report` command using the copy option from with your extension directory.
 
@@ -472,7 +472,7 @@ civix generate:test CRM_Myextension_MyTest
 This creates a new directory and a new PHP file:
 
 -   `tests/phpunit` is the base directory for all test classes.
--   `tests/phpunit/CRM/Myextension/MyTest.php` is the actual test class. It should be written according to the conventions of     [PHPUnit](http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html).
+-   `tests/phpunit/CRM/Myextension/MyTest.php` is the actual test class. It should be written according to the conventions of [PHPUnit](http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html).
 
 To make sure you can run the test civix needs to know where the CiviCRM base install is located.
 
