@@ -1,25 +1,15 @@
 # Debugging
 
-When your code isn't doing what you want it to do, it's time to debug.
-There are lots of options for debugging and there is lots you can do
-without setting up a sophisticated debugging environment.  This chapter
-contains some simple debugging tips and tricks to get you started and
-also instructions on setting up XDebug, which is the recommended
-debugging tool for CiviCRM when you have bugs which are really hard to squish.
+When your code isn't doing what you want it to do, it's time to debug. There are lots of options for debugging and there is lots you can do without setting up a sophisticated debugging environment.  This chapter contains some simple debugging tips and tricks to get you started and also instructions on setting up XDebug, which is the recommended debugging tool for CiviCRM when you have bugs which are really hard to squish.
 
 !!! danger "Security Alert"
     None of these debugging methods should be performed on production sites, as they can expose system configuration and authentication information to unauthorized visitors.
 
 The debugging methods presented here are ordered with the easiest ones first, but you may find the more challenging methods near the end to be more rewarding.
 
-
-
 ## Changing settings in the UI
 
-CiviCRM has a debug mode which can be enabled via the UI to give you quick
-access to a couple of useful diagnostic tools, including all the
-Smarty variables that make up a page. It also provides shortcut methods
-to empty the file-based cache and session variables.
+CiviCRM has a debug mode which can be enabled via the UI to give you quick access to a couple of useful diagnostic tools, including all the Smarty variables that make up a page. It also provides shortcut methods to empty the file-based cache and session variables.
 
 To use debugging via the UI, first go to **Administer > System Settings > Debugging and Error Handling** to enable these options, and find out more about them.
 
@@ -37,7 +27,7 @@ After enabling debugging, append any of the following name-value pairs to the UR
 -   `&angularDebug=1` displays live variable updates on certain Angular-based pages.
 
 !!! tip "Caveats"
-    - Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected.  An example of this is looking at the Contact Summary page, when using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs. To do this you will need to debug via code, as explained below.
+    - Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected. An example of this is looking at the Contact Summary page, when using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs. To do this you will need to debug via code, as explained below.
     - If the page you are debugging does not already have a key-value parameter before debugging, you will need to begin the first parameter with a question mark instead of a ampersand.
 
 ### Displaying a backtrace
@@ -46,17 +36,9 @@ The backtrace can be enabled independently of debugging. If this option is selec
 
 A backtrace is a list of all the functions that were run in the execution of the page, and the PHP files that contain these functions. It can be really useful in understanding the path that was taken through code, what gets executed where, etc.
 
-
-
 ## Viewing log files
 
-CiviCRM's log files are stored in the `ConfigAndLog` directory within CiviCRM's
-local file storage (see [the File System documentation](/framework/filesystem.md)
-for details on your CMS).  Most runtime errors are logged here, as well as data
-that you explicitly write to log using the `CRM_Core_Error::debug log=true`
-parameter.
-
-
+CiviCRM's log files are stored in the `ConfigAndLog` directory within CiviCRM's local file storage (see [the File System documentation](/framework/filesystem.md) for details on your CMS).  Most runtime errors are logged here, as well as data that you explicitly write to log using the `CRM_Core_Error::debug log=true` parameter.
 
 ## Changing file-based settings
 
@@ -82,7 +64,6 @@ The following values can be added to your site's settings file `civicrm.settings
 
 !!! tip
     If you're developing within a site built with [civibuild](/tools/civibuild.md), then you can to apply settings to *all your local sites* by using the [civicrm.settings.d folders](/tools/civibuild.md#settings-civicrm).
-
 
 ## Viewing a query log from MySQL
 
@@ -216,35 +197,15 @@ Alternatively, you can call the following methods in PHP code:
 -   `CRM_Core_Config::clearDBCache();` clears *only* the database cache
 -   `CRM_Core_Config::cleanup();` clears *only* the file cache
 
-
-
 ## Running a debugger program
 
 ### What is a debugger?
 
-A debugger is a software program that watches your code while it
-executes and allows you to inspect, interrupt, and step through the
-code. That means you can stop the execution right before a critical
-juncture (for example, where something is crashing or producing bad
-data) and look at the values of all the variables and objects to make
-sure they are what you expect them to be. You can then step through the
-execution one line at a time and see exactly where and why things break
-down. It's no exaggeration to say that a debugger is a developer's best
-friend. It will save you countless hours of beating your head against
-your desk while you insert print statements everywhere to track down an
-elusive bug.
+A debugger is a software program that watches your code while it executes and allows you to inspect, interrupt, and step through the code. That means you can stop the execution right before a critical juncture (for example, where something is crashing or producing bad data) and look at the values of all the variables and objects to make sure they are what you expect them to be. You can then step through the execution one line at a time and see exactly where and why things break down. It's no exaggeration to say that a debugger is a developer's best friend. It will save you countless hours of beating your head against your desk while you insert print statements everywhere to track down an elusive bug.
 
-Debugging in PHP is a bit tricky because your code is actually running
-inside the PHP interpreter, which is itself (usually) running inside a
-web server. This web server may or may not be on the same machine where
-you're writing your code. If you're running your CiviCRM development
-instance on a separate server, you need a debugger that can communicate
-with you over the network. Luckily such a clever creature already
-exists: XDebug.
+Debugging in PHP is a bit tricky because your code is actually running inside the PHP interpreter, which is itself (usually) running inside a web server. This web server may or may not be on the same machine where you're writing your code. If you're running your CiviCRM development instance on a separate server, you need a debugger that can communicate with you over the network. Luckily such a clever creature already exists: XDebug.
 
-XDebug isn't the only PHP debugger, but it's the one we recommend for
-CiviCRM debugging.
-
+XDebug isn't the only PHP debugger, but it's the one we recommend for CiviCRM debugging.
 
 ### Installing XDebug
 
@@ -269,55 +230,29 @@ Specific installation steps vary due to the diversity of PHP installation source
 
 ### Setting up PHP to talk to XDebug
 
-Tell XDebug to start automatically (don't do this on a production
-server!) by adding the following two lines to your `php.ini` file (your
-`php.ini` file is a php configuration file which is found somewhere on
-your server.  Calling the `phpinfo()` function is probably the  easiest
-way to tell you where this file is in your case.
+Tell XDebug to start automatically (don't do this on a production server!) by adding the following two lines to your `php.ini` file (your `php.ini` file is a php configuration file which is found somewhere on your server.  Calling the `phpinfo()` function is probably the  easiest way to tell you where this file is in your case.
 
 ```php
 xdebug.remote_enable = On
 xdebug.remote_autostart = 1
 ```
 
-Once XDebug is installed and enabled in your PHP configuration, you'll
-need to restart your web server.
+Once XDebug is installed and enabled in your PHP configuration, you'll need to restart your web server.
 
 ### Installing an XDebug Front-End
 
-After you have XDebug running on your PHP web server, you need to
-install a front-end to actually see what it is telling you about your
-code. There are a few different options available depending on what
-operating system you use.
+After you have XDebug running on your PHP web server, you need to install a front-end to actually see what it is telling you about your code. There are a few different options available depending on what operating system you use.
 
 #### NetBeans
 
-[NetBeans](http://www.netbeans.org/) is a cross platform heavyweight Java IDE
-(Integrated Development Environment).
-It offers lots of features, but isn't exactly small
-or fast. However, it is very good at interactive debugging with XDebug. And
-since it's written in  Java, it should run on any operating system you want
-to run it on.
+[NetBeans](http://www.netbeans.org/) is a cross platform heavyweight Java IDE (Integrated Development Environment). It offers lots of features, but isn't exactly small or fast. However, it is very good at interactive debugging with XDebug. And since it's written in  Java, it should run on any operating system you want to run it on.
 
-After installing NetBeans, open your local CiviCRM installation in
-NetBeans and click the Debug button on the toolbar. It will fire up your
-web browser and start the debugger on CiviCRM. You may went to set a
-breakpoint in `CRM/Core/Invoke.php` to make the debugger pause there. For
-more information, see the NetBeans debugging documentation.
+After installing NetBeans, open your local CiviCRM installation in NetBeans and click the Debug button on the toolbar. It will fire up your web browser and start the debugger on CiviCRM. You may went to set a breakpoint in `CRM/Core/Invoke.php` to make the debugger pause there. For more information, see the NetBeans debugging documentation.
 
 #### MacGDBp
 
-[MacGDBp](http://www.bluestatic.org/software/macgdbp/)
-is a lighter-weight option, only available for OS X. After installing MacGDBp,
-launch it and make sure it says "Connecting"
-at the bottom in the status bar. If it doesn't, click the green "On"
-button in the upper-right corner to enable it. The next time you access
-CiviCRM, the web browser will appear to hang. If you click on MacGDBp,
-you'll see that it has stopped on the first line of code in CiviCRM.
-From there you can step through the code to the part you're interested
-in. But it's probably a better idea to set a breakpoint in the part of
-the code you're interested in stopping at. See the MacGDBp documentation
-for more information.
+[MacGDBp](http://www.bluestatic.org/software/macgdbp/) is a lighter-weight option, only available for OS X. After installing MacGDBp, launch it and make sure it says "Connecting" at the bottom in the status bar. If it doesn't, click the green "On"
+button in the upper-right corner to enable it. The next time you access CiviCRM, the web browser will appear to hang. If you click on MacGDBp, you'll see that it has stopped on the first line of code in CiviCRM. From there you can step through the code to the part you're interested in. But it's probably a better idea to set a breakpoint in the part of the code you're interested in stopping at. See the MacGDBp documentation for more information.
 
 ## Error 500, white screen (WSoD),  "Internal Server Error" errors
 
