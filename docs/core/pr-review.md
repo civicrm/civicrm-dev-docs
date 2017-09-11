@@ -27,11 +27,9 @@ If you're a beginning developer looking for easy PRs to review, you might have g
 
 Add a comment to the PR like "Reviewing this now" to let others know that you intend to submit a review.
 
-
 ## Read about the issue
 
 Every PR *should* have an issue ID for [JIRA](https://issues.civicrm.org) linked from the PR's page on GitHub. Read the original issue and understand how to reproduce the problem and what the solution looks like as well.
-
 
 ## Read the code changes
 
@@ -41,13 +39,11 @@ On the PR, click over to “Files Changed” and understand what the code is doi
 * Ensure it follows best practices. *(TODO: what best practice?)* (Note: basic code format standards are checked in the automated testing process.)
 * Consider whether any additional automated tests might be needed for this change. *(TODO: how should I know?)*
 
-
 ## Reproduce the problem
 
 Confirm which branch the PR was created against. This is probably either `master` or the LTS. Setup an instance locally from that branch (e.g. with [buildkit](https://github.com/civicrm/civicrm-buildkit)), or test on the [public demo site if possible](https://civicrm.org/demo). Repeat the steps to reproduce described in the Jira Issue.
 
 Confirm that the issue was a problem and a problem “worth solving”, generally worthy of being in core.
-
 
 ## Reproduce the fix
 
@@ -87,8 +83,8 @@ An easy way to do this is:
 
 1. Install a buildkit site for the latest publicly available release of CiviCRM (*not* `master`). Pass the `--civi-ver` option to civibuild for this.
 1. Update the `civicrm` directory files so that the codebase has the changes in the PR (perhaps by using [Hub](https://hub.github.com/) as described above).
-1. From the `civicrm` directory, run `./bin/setup.sh -Dg` to update the generated-code
-1. Run `drush civicrm-upgrade-db` to perform database upgrades
+1. From the `civicrm` directory, run `./bin/setup.sh -Dg` to update the generated-code.
+1. Run `drush civicrm-upgrade-db` to perform database upgrades.
 
 
 ## Form an opinion about the fix
@@ -101,6 +97,4 @@ An easy way to do this is:
 ## Write a review as a comment
 
 Summarize your actions and findings, and recommend specific next steps (e.g. merging or otherwise). In your comment, tag [one of the active contributors](https://github.com/civicrm/civicrm-core/graphs/contributors) (e.g. `@eileenmcnaughton`) so they will see that the PR is ready for further action.
-
-
 
