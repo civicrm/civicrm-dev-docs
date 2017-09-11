@@ -84,7 +84,7 @@ An easy way to do this is:
 1. Install a buildkit site for the latest publicly available release of CiviCRM (*not* `master`). Pass the `--civi-ver` option to civibuild for this.
 1. Update the `civicrm` directory files so that the codebase has the changes in the PR (perhaps by using [Hub](https://hub.github.com/) as described above).
 1. From the `civicrm` directory, run `./bin/setup.sh -Dg` to update the generated-code.
-1. Run `drush civicrm-upgrade-db` to perform database upgrades. *(TODO:  Check for Drupal dependencies.  If Wordpress or Joomla! is the target CMS, how should database upgrades be accomplished?)*
+1. Run `drush civicrm-upgrade-db` to perform database upgrades.
 
 
 ## Form an opinion about the fix
