@@ -10,9 +10,11 @@ conventions using [karma] and [jasmine].
 ## Running Javascript Tests
 
 ```bash
-cd /path/to/civicrm
-npm test
+$ cd /path/to/civicrm
+$ npm test
 ```
+
+You can also run the karama tests as they would be run by [Jenkins](/testing/continuous-integration.md) using [civi-test-run](/tools/civi-test-run.md).
 
 [karma]: https://karma-runner.github.io/1.0/index.html
 [jasmine]: https://jasmine.github.io/2.1/introduction.html

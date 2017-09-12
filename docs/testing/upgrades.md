@@ -8,3 +8,4 @@ CMS-integration.
 
 Upgrade tests are run daily on the Jenkins [continuous integration](/testing/continuous-integration.md) server.
 
+Locally you can use [civi-test-run](/tools/civi-test-run.md) to run the same upgrade tests as Jenkins would.
