@@ -12,7 +12,8 @@ This is very applicable when you need to maintain foreign key
 constraints etc (when deleting an object, the child objects have to be
 deleted first).
 
-!!!note These hooks use database transactions.  Don't execute code that updates the same data in the database without using a callback.  Eg. if triggering on a `Membership` entity, don't try and update that membership entity within the hook.  Use CRM_Core_Transaction::addCallback() instead.
+!!! note
+    These hooks use database transactions.  Don't execute code that updates the same data in the database without using a callback.  Eg. if triggering on a `Membership` entity, don't try and update that membership entity within the hook.  Use CRM_Core_Transaction::addCallback() instead.
 
 
 ## Definition
