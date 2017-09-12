@@ -14,11 +14,7 @@ $ cd /path/to/civicrm
 $ npm test
 ```
 
-You can also run the karama tests as they would be run by Jenkins using the `civi-test-run` command
-
-```bash
-$ civi-test-run "<buildname>" "<civicrm version>" "<junitdir>" "karma"
-```
+You can also run the karama tests as they would be run by [Jenkins](/testing/continuous-integration.md) using [civi-test-run](/tools/civi-test-run.md).
 
 [karma]: https://karma-runner.github.io/1.0/index.html
 [jasmine]: https://jasmine.github.io/2.1/introduction.html

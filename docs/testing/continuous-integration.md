@@ -35,5 +35,9 @@ codebase.
  
 Code-style is not checked on this build, but all upgrade and web tests are run.
 
+## Running the test suite locally
+
+You can use [civi-test-run](/tools/civi-test-run.md) locally to run a full standard CiviCRM Test suite.
+
 [jenkins-test-results]: https://test.civicrm.org/
 [testing-readme]: https://github.com/civicrm/civicrm-core/blob/master/tests/README.md
