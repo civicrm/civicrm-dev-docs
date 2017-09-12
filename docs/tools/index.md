@@ -34,6 +34,9 @@ When you install [buildkit](/tools/buildkit.md) you'll get all these tools.
     * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/civihydra)*
 * `civicrm-upgrade-test` - Scripts and data files for testing upgrades
     * *[documentation& repository](https://github.com/civicrm/civicrm-upgrade-test)*
+* `civi-test-run` - Run one or more test suites
+    * *[documentation](/tools/civi-test-run.md)*
+    * *repository: [within civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit/blob/master/bin/civi-test-run)*
 * Coder - Configure phpcs for CiviCRM's [coding standards](/standards/php.md)
     * *[documentation & repository](https://github.com/civicrm/coder)*
     * *(Derived from [Drupal's coder project](https://www.drupal.org/project/coder))*

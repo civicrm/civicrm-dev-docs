@@ -17,6 +17,7 @@ pages:
   - civibuild: tools/civibuild.md
   - cividist: tools/cividist.md
   - civilint: tools/civilint.md
+  - civi-test-run: tools/civi-test-run.md
   - Issue Tracking: tools/issue-tracking.md
   - Git, GitHub, &amp; GitLab: tools/git.md
   - Jenkins: tools/jenkins.md
