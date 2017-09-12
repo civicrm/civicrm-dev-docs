@@ -1,6 +1,6 @@
 # civi-test-run
 
-`civi-test-run` is a script which runs one or more test suites locally.
+`civi-test-run` is a script which runs one or more test suites locally. It is compatible with `civibuild`-based deployments.
 
 ## Installation
 
@@ -19,8 +19,9 @@ $ civi-test-run
 The test type is one of:
 
 -  `all` - Run all standard CiviCRM Test Suites
--  `phpunit-e2e` - Run the E2E test suite
--  `phpunit-civi` - Run the `Civi/` Test Suite
+-  `karma` - Run the KarmaJS test suite
 -  `phpunit-api` - Run the `api_v3` Test Suite
+-  `phpunit-civi` - Run the `Civi/` Test Suite
 -  `phpunit-crm` - Run the `CRM` Test Suite
-
+-  `phpunit-e2e` - Run the E2E test suite
+-  `upgrade` - Run the upgrade test suite
