@@ -106,7 +106,6 @@ File 2:
 `/drupal_install_dir/sites/all/modules/civicrm/drupal/modules/example_sendEmailOnIndividual/example_sendEmailOnIndividual.module`
 
 ```php
-<?php
 function exampleSendEmailOnIndividual_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 
 $send_an_email = false; //Set to TRUE for DEBUG only
@@ -149,7 +148,6 @@ a contact and you should get an email!
 Here is an example that calls a function `updateMembershipCustomField()` every time a membership is created (or updated).
 
 ```php
-<?php
 function example_civicrm_post($op, $objectName, $objectId, &$objectRef) {
   if ($objectName == 'Membership' && $op == 'create') {
     CRM_Core_Transaction::addCallback(CRM_Core_Transaction::PHASE_POST_COMMIT,
