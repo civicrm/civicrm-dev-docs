@@ -47,12 +47,12 @@ The format of an option list needs to be slightly different depending on the con
 
 | Context | Returned Options | Label Field | Key Field |
 | --- | --- | --- | --- |
-|`'get` | All Including including disabled | Translated labels | Integer Option Value |
-|`create` | All enabled Options and limited to the current domain | Translated Labels | Integer Option Value |
-|`search` | As per create all Enabled Options limited to the current domain | Translated Labels | Integer Option Value |
-|`validate` | All included disabled | machine names | Integer Option Value |
-|`abbreviate`| All Enabled Options | Abbreviations of labels | Integer Option Value |
-|`match` | All Options including Disabled | Translated Labels | Machine Names |
+|`'get` | All options are returned, even if they are disabled | Translated labels | Integer Option Value |
+|`create` | Options are filtered appropriately for the object being created/updated | Translated Labels | Integer Option Value |
+|`search` | Searchable options are returned | Translated Labels | Integer Option Value |
+|`validate` | All options are returned, even if they are disabled | machine names | Integer Option Value |
+|`abbreviate`| Enabled options are returned | Abbreviations of labels | Integer Option Value |
+|`match` | Enabled options are returned using machine names as keys | Translated Labels | Machine Names |
 
 * Abbreviate is only applicable at present to `state_province_id` and `country_id` fields
 
