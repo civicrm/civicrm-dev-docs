@@ -18,10 +18,10 @@ $ civi-test-run
 
 The test type is one of:
 
--  `all` - Run all standard CiviCRM Test Suites
+-  `all` - Run all standard CiviCRM test suites
 -  `karma` - Run the KarmaJS test suite
--  `phpunit-api` - Run the `api_v3` Test Suite
--  `phpunit-civi` - Run the `Civi/` Test Suite
--  `phpunit-crm` - Run the `CRM` Test Suite
--  `phpunit-e2e` - Run the E2E test suite
+-  `phpunit-api` - Run the `api_v3` test suite
+-  `phpunit-civi` - Run the `Civi/` test suite
+-  `phpunit-crm` - Run the `CRM` test suite
+-  `phpunit-e2e` - Run the `E2E` test suite
 -  `upgrade` - Run the upgrade test suite
