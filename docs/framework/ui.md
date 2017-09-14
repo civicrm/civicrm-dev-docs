@@ -190,7 +190,7 @@ use the following:
 ```
 
 !!! note "Why `crm-i`?"
-    
+
     Many websites use Font Awesome, and a site's implementation of the `fa` class might differ from CiviCRM's Font Awesome implementation.  The version might be different, or other styling might be associated with the class.
 
     To avoid this, CiviCRM uses the `crm-i` class alongside the `fa-...` class for the specific icon.
@@ -202,40 +202,40 @@ purpose of an option and to help experienced users navigate quickly.
 Here are some brief descriptions of the ways that various icons are
 used:
 
-| Class | Meaning within CiviCRM |
-| -- | -- |
-| `.fa-trash` | delete something that's already been saved |
-| `.fa-arrows` | move something (anywhere) |
-| `.fa-trophy` | award something a prize |
-| `.fa-random` | swap places |
-| `.fa-print` | print something |
-| `.fa-clipboard` | paste something, or file onto a case |
-| `.fa-undo` | undo (or revert) things |
-| `.fa-info-circle` | highlight information |
-| `.fa-list-alt` | display the details of something |
-| `.fa-bars` | open a menu of options |
-| `.fa-search` | search for things |
-| `.fa-lightbulb-o` | an idea to consider |
-| `.fa-pencil` | edit a value |
-| `.fa-exclamation-triangle` | provide a warning |
-| `.fa-expand` | make a UI element bigger |
-| `.fa-compress` | make a UI element smaller, or merge two things together |
-| `.fa-rocket` | embark upon an adventure |
-| `.fa-plus-circle` | add a new item |
-| `.fa-bolt` | execute something forcefully |
-| `.fa-television` | preview something |
-| `.fa-times` | close something without saving anything, or remove something that hasn't yet been saved |
-| `.fa-check` | complete something |
-| `.fa-chevron-right` | advance to the next thing |
-| `.fa-chevron-left` | go back |
-| `.fa-floppy-o` | save without advancing |
-| `.fa-wrench` | modify options |
-| `.fa-paper-plane` | send something |
-| `.fa-envelope` | do something about email other than actually sending it *(use judiciously when within CiviMail, where everything is about email)* |
-| `.fa-flag-checkered` | complete a multi-step action |
-| `.fa-bell-o` | sound alarms |
-| `.fa-bell-slash-o` | hush alarms |
-| `.fa-clock-o` | schedule something |
+| Class | Meaning within CiviCRM | Compare with |
+| -- | -- | -- |
+| `.fa-trash` | delete something that's already been saved | `.fa-times` to cancel something that hasn't been saved yet<br/><br/>`.fa-undo` to roll back a bigger process |
+| `.fa-arrows` | move something (anywhere) | `.fa-chevron-left` and `.fa-chevron-right` to advance through a series |
+| `.fa-trophy` | award something a prize | `.fa-check` to confirm something |
+| `.fa-random` | swap places | |
+| `.fa-print` | print something | |
+| `.fa-clipboard` | paste something, or file onto a case | |
+| `.fa-undo` | undo (or revert) things | `.fa-chevron-left` to move backwards in a process (revert things in accounting)<br/><br/>`.fa-trash` to delete something<br/><br/>`.fa-times` to remove something (that hasn't yet been saved) or to exit without saving |
+| `.fa-info-circle` | highlight information | `.fa-lightbulb-o` to highlight a tip or suggestion<br/><br/>`.fa-exclamation-triangle` to highlight a danger |
+| `.fa-list-alt` | display the details of something | `.fa-television` to preview something<br/><br/>`.fa-expand` and `.fa-compress` to make something full-screen or a window
+| `.fa-bars` | open a menu of options | `.fa-chevron-right` to advance to the next thing<br/><br/>`.fa-expand` to make something full-screen |
+| `.fa-search` | search for things | `.fa-list-alt` to display details<br/><br/>`.fa-search-plus` to zoom in |
+| `.fa-lightbulb-o` | an idea to consider | `.fa-bolt` to execute something bold<br/><br/>`.fa-info-circle` to provide normative information<br/><br/>`.fa-exclamation-triangle` to highlight a danger |
+| `.fa-pencil` | edit a value | `.fa-wrench` to edit configuration<br/><br/>`.fa-floppy-o` to save a value |
+| `.fa-exclamation-triangle` | provide a warning | `.fa-info-circle` to give information<br/><br/>`.fa-lightbulb-o` to highlight a tip or suggestion |
+| `.fa-expand` | make a UI element bigger | |
+| `.fa-compress` | make a UI element smaller, or merge two things together | |
+| `.fa-rocket` | embark upon an adventure | `.fa-chevron-right` to advance to something less exciting and/or fraught with danger<br/><br/>`.fa-check` to agree to something that is already a done deal<br/><br/>`.fa-flag-checkered` to finish a long process<br/><br/>`.fa-space-shuttle` if you need to access your payload with the Canada Arm |
+| `.fa-plus-circle` | add a new item | *if you have several of these side-by-side, try to provide more illustrative icons for what you're adding*<br/><br/>`.fa-bolt` to force a new thing |
+| `.fa-bolt` | execute something forcefully | `.fa-floppy-o` to save something normally<br/><br/>`.fa-check` to agree to something innocuous<br/><br/>`.fa-chevron-right` to advance to the next step<br/><br/>`.fa-trash` to delete something<br/><br/>`.fa-undo` to revert to something |
+| `.fa-television` | preview something | `.fa-search` to search for things<br/><br/>`.fa-list-alt` to view the details of something<br/><br/>`.fa-times` to close the edit dialog and see the thing itself |
+| `.fa-times` | close something without saving anything, or remove something that hasn't yet been saved | fa-trash to delete something that has been saved already<br/><br/>`.fa-check` to complete something (that has just been saved or that is to be saved upon clicking the icon)<br/><br/>`.fa-undo` to roll something back<br/><br/>`.fa-chevron-left` to return to the previous step |
+| `.fa-check` | complete something | `.fa-times` to close out without doing anything<br/><br/>`.fa-chevron-right` to advance to the next step<br/><br/>`.fa-flag-checkered` to complete something major<br/><br/>`.fa-rocket` to agree to start something big<br/><br/>`.fa-bolt` to execute something bold |
+| `.fa-chevron-right` | advance to the next thing | `.fa-check` to complete something<br/><br/>`.fa-rocket` to start an epic journey |
+| `.fa-chevron-left` | go back | `.fa-times` to cancel the process<br/><br/>`.fa-undo` to revert what was done |
+| `.fa-floppy-o` | save without advancing | `.fa-check` to save and complete<br/><br/>`.fa-pencil` to start editing a value |
+| `.fa-wrench` | modify options | `.fa-pencil` to edit values<br/><br/>`.fa-bolt` to do something drastic |
+| `.fa-paper-plane` | send something | `.fa-envelope` to do something else about email<br/><br/>`.fa-check`, `.fa-chevron-right`, `.fa-bolt`, `.fa-rocket` or others if you are doing an action that does not send a message immediately<br/><br/>`.fa-fax` to send something on curly paper |
+| `.fa-envelope` | do something about email other than actually sending it *(use judiciously when within CiviMail, where everything is about email)* | `.fa-paper-plane` to actually send an email<br/><br/>`.fa-pencil` to edit a value |
+| `.fa-flag-checkered` | complete a multi-step action | `.fa-trophy` to award a prize<br/><br/>`.fa-check` to finish something quick |
+| `.fa-bell-o` | sound alarms | `.fa-paper-plane` to send an email notification<br/><br/>`.fa-exclamation-triangle` to highlight something dangerous |
+| `.fa-bell-slash-o` | hush alarms | `.fa-times` to cancel something<br/><br/>`.fa-user-secret` to cloak identity |
+| `.fa-clock-o` | schedule something | `.fa-history` to roll back the clock<br/><br/>`.fa-calendar` to display dates<br/><br/>`.fa-birthday-cake` to schedule a celebration |
 
 ### Special effects
 
@@ -290,7 +290,7 @@ The following **non CRM-specific** icons are available:
 
 Non CRM-specific icons can be altered to use one of 4 possible colors:
 
-| Class | Resulting color | 
+| Class | Resulting color |
 | -- | -- |
 | `light-icon` | <code style="color: white; background-color:#888888">#888888</code> |
 | `dark-icon`  | <code style="color: white; background-color:#222222">#222222</code> |
@@ -354,21 +354,21 @@ ajax whenever the user clicks it.
 ```html
 <table>
   <tr class="crm-entity" id="contact-123">
-  
+
     <!-- textfield (default type) -->
     <td class="crm-editable crmf-first_name">Fred</td>
-    
+
     <!-- select list with empty option -->
     <!-- (note: options will be fetched automatically by the api) -->
-    <td class="crm-editable crmf-prefix_id" 
-        data-type="select" 
+    <td class="crm-editable crmf-prefix_id"
+        data-type="select"
         data-empty-option="{ts}- none -{/ts}">Mr.</td>
 
     <!-- yes/no select -->
     <td class="crm-editable crmf-is_deceased" data-type="boolean">
       No
     </td>
-    
+
   </tr>
 </table>
 ```
@@ -558,13 +558,13 @@ Here each logical grouping of related form elements are wrapped by a
   </div>
   <div class="content">
     $
-    <input 
-        type="text" 
-        class="form-text" 
-        id="amount_other" 
-        name="amount_other" 
-        onfocus="useAmountOther();" 
-        maxlength="10" 
+    <input
+        type="text"
+        class="form-text"
+        id="amount_other"
+        name="amount_other"
+        onfocus="useAmountOther();"
+        maxlength="10"
         size="10"/>
   </div>
   <div class="clear"/>
@@ -616,4 +616,3 @@ labels):
   <div class="clear"/>
 </div>
 ```
-
