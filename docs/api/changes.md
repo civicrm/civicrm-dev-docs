@@ -256,6 +256,10 @@ catch (CiviCRM_API3_Exception $e) {
 
 ## APIv3: Specific APIs (Changes)
 
+### 4.7.25: Event API. price_set_id not returned unless specified.
+
+This api now follows the standard convention of only returning extra data when requested. Specify `return: 'price_set_id'` in the params to fetch this field.
+
 ### 4.7.20/4.7.13 : Extensions API Get. All Information on Extensions is returned by default
 
 When calling either the get or getsingle action for the Extension API you will now by default be returned all information on an extension rather than just id status and key - See [CRM-19414](https://issues.civicrm.org/jira/browse/CRM-19414). However the initial implementation meant that there was no ability to filter Extensions down to just retrieve either information on one extension or a specific set of fields for extensions. This has been fixed
