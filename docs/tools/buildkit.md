@@ -126,19 +126,23 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
     
         * For Apache 2.2: 
         
-            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+            Create a new file `buildkit.conf` with the following contents in either `/etc/apache2/conf.d/` or `/etc/httpd/conf.d` depending on your server configuration.
         
             ```
             Include <amp-installation>/apache.d/*conf
             ```
+
+            This [blog](http://commanigy.com/blog/2011/6/8/finding-apache-configuration-file-httpd-conf-location) has some good information on finding the relevant apache conf dir
     
         * For Apache 2.4: 
         
-            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+            Create a new file `buildkit.conf` with the following contents in either `/etc/apache2/conf.d/` or `/etc/httpd/conf.d` depending on your server configuration.
         
             ```
             IncludeOptional <amp-installation>/apache.d/*conf
             ```
+
+            This [blog](http://commanigy.com/blog/2011/6/8/finding-apache-configuration-file-httpd-conf-location) has some good information on finding the relevant apache conf dir
     
         * For nginx:
         
