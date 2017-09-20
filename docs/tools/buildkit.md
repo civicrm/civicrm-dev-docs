@@ -178,6 +178,13 @@ Nodejs problems
     npm install fs-extra
     ```
 
+If you find that when you try and login to a new buildkit build or similar and it doesn't seem to login just redirects to the same page. This may mean that the rewrite module for apache is not enabled. To enable it do the following
+
+```bash
+sudo a2enmod rewrite
+sudo service apache2 or apache or httpd restart
+```
+
 ## Upgrading buildkit {:#upgrading}
 
 New versions of buildkit are likely to include new versions of tools. The new tools will download automatically when you first run `civibuild`. If you prefer to download explicitly, then re-run `civi-download-tools`.
