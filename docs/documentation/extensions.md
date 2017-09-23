@@ -154,7 +154,7 @@ When you set up automatic publishing, GitHub will tell the publishing system whe
 1. Go to **Webhooks > Add webhook**.
 1. Set the **Payload URL** to `https://docs.civicrm.org/admin/listen`
 1. Set the **Content type** to `application/json`
-1. Set **Which events would you like to trigger this webhook?** to 'Let me select individual events' and select 'Pull request' and 'Push' (since these are the only events that should trigger an update)
+1. Set **Which events would you like to trigger this webhook?** to "Just send the push event".
 
 Now when you make changes to your docs, those changes will be published automatically *and* you'll receive an email notification from the publishing system informing you of the status (including any errors) of the publishing process.
 
