@@ -32,8 +32,10 @@ After running the above command, then proceed to the [post-installation configur
 
 ### Docker
 
-If you have [Docker](https://www.docker.com/) running, you can [use this Docker image](https://github.com/ErichBSchulz/dcbk) to run buildkit.
+If you have [Docker](https://www.docker.com/) running, you can use one of the following projects to run buildkit within a Docker container:
 
+* <https://github.com/progressivetech/docker-civicrm-buildkit>
+* <https://github.com/ErichBSchulz/dcbk>
 
 
 ### Other platforms
