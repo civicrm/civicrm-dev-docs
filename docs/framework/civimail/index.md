@@ -265,7 +265,7 @@ Events within CiviMail are usually designed for when CiviMail receives an email 
         - Add a new row in `Mailing_Event_Bounce` with the `queue_id`, `bounce_type` and `bounce_reason` returned by the bounce  processor
         - Count the bounce events for `email_id` and compare with the `hold_threshold` for the matching bounce type. If the email address has more than the threshold of any type of bounce, place it on bounce hold.
 - Unsbuscribe
-    - Registered after either a Successful SMTP transacftion or submission on the usubscribe webform
+    - Registered after either a Successful SMTP transaction or submission on the usubscribe webform
     - Action
         - Removes the contact from the group leaving a note in the `civicrm_subscription_history` table indicating it was from an email and when it happend
         - Add a row in `mailing_event_unsbuscribe` setting the `is_domain = 0`for the new row.
