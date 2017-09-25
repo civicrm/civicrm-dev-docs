@@ -165,6 +165,7 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
 
 ## Troubleshooting {:#troubleshooting}
 
+### Node JS issues
 Nodejs version too old or npm update does not work:
 
 : Download the latest version from nodejs.org and follow their instructions
@@ -177,6 +178,16 @@ Nodejs problems
     npm update
     npm install fs-extra
     ```
+
+### Website login issues
+
+If you find that when you try and login to a new buildkit build or similar and it doesn't seem to login just redirects to the same page. This may mean that the rewrite module for apache is not enabled. To enable it do the following
+
+```bash
+sudo a2enmod rewrite
+```
+
+After enabling the rewite module you will need to restart apache.
 
 ## Upgrading buildkit {:#upgrading}
 
