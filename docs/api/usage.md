@@ -8,7 +8,7 @@ with the supported actions and parameters:
 | Entity                   | Description              | Actions |  Parameters       |
 |--------------------------|--------------------------|---------|-------------------|
 | <code>Contact</code>     | An individual, <br /> organization, or <br />house-hold.         |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_type</code><br /> <code>nick\_name</code>  <br /><code>preferred\_language</code>       |
-| <code>Activity</code>    | An phone call, meeting,<br /> or email message. that <br /> has occurred (or will <br /> occur) at a specific <br /> date and time|<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>activity\_type\_id</code> <br /> <code>source\_contact\_id</code> <br /> <code>assignee\_contact\_id</code>    |
+| <code>Activity</code>    | A phone call, meeting,<br /> or email message. that <br /> has occurred (or will <br /> occur) at a specific <br /> date and time|<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>activity\_type\_id</code> <br /> <code>source\_contact\_id</code> <br /> <code>assignee\_contact\_id</code>    |
 | <code>Address</code>     | A street-address related <br /> to a contact. |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_id</code>,  <br /> <code>street\_address</code> <br /> <code>city</code>  <br /> <code>state\_province\_id</code> <br /> <code>country\_id</code>     |
 
 (*For full, up-to-date details about specific entities and parameters, use the
@@ -221,4 +221,4 @@ cv api contact.get first_name=Alice last_name=Roberts
 
 ## API Security
 
-API has security mesasures inbuilt dependign on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Doucmentation](/security/permissions.md).
+API has security mesasures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Doucmentation](/security/permissions.md).
