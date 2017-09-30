@@ -124,28 +124,32 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
 
     1. Identify the location of your `amp` installation. It is probably a `.amp` folder within your home directory. Make sure to *use the full path* to this directory in the settings below. We will use `<amp-installation>` henceforth to refer to the full path of this directory. 
     
-    1. Identify your webserver. (If using Apache, use `apachectl -v` to see which version you have.)
+    1. Go to your webserver's system-wide configuration files. For Apache, this is usually `/etc/apache2`, but on some systems it might be `/etc/httpd/` or similar. (Check this [blog](http://commanigy.com/blog/2011/6/8/finding-apache-configuration-file-httpd-conf-location) for more info on finding your Apache configuration.) For nginx, the directory is usually `/etc/nginx`. 
     
-        * For Apache 2.2: 
+        1. Inside this directory, create a new directory called `conf.d`, if not already present.
         
-            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+        1. Inside the `conf.d` directory, create an empty file called `buildkit.conf`. We will put some settings in this file in a minute.
+            
+            * For example, this file will be `/etc/apache2/conf.d/buildkit.conf` in most situations, but its location may be different for you depending on the above steps.
+        
+    1. Identify your webserver version. (If using Apache, use `apachectl -v` to see which version you have.)
+    
+    1. Put the following content in your `buildkit.conf` file (created above).
+    
+        * For Apache 2.2, use this content:
         
             ```
             Include <amp-installation>/apache.d/*conf
             ```
-    
-        * For Apache 2.4: 
-        
-            Create a new file `/etc/apache2/conf.d/buildkit.conf` with the following contents:
+
+        * For Apache 2.4, use this content: 
         
             ```
             IncludeOptional <amp-installation>/apache.d/*conf
             ```
-    
-        * For nginx:
+
+        * For nginx, use this content:
         
-            Create a new file `/etc/nginx/conf.d/buildkit.conf` with the following contents:
-    
             ```
             include <amp-installation>/nginx.d/*.conf;
             ```
