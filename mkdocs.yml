@@ -23,6 +23,7 @@ pages:
   - Jenkins: tools/jenkins.md
   - PhpStorm: tools/phpstorm.md
   - Debugging: tools/debugging.md
+  - Universe: tools/universe.md
 - Core:
   - When to Edit Core: core/hacking.md
   - How to Contribute: core/contributing.md
