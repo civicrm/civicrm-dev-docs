@@ -39,6 +39,7 @@ For example, at time of writing, it includes:
 * `extdir`: A mock website akin to civicrm.org/extdir/ . Useful for testing the extension download process.
 * `dist`: A website containing nightly builds akin to dist.civicrm.org. Useful for preparing CiviCRM tarballs.
 * `distmgr`: A service which manages redirects and report-backs for the download site.
+* [`universe`](/tools/universe.md): A broad collection of publicly visible repos, extensions, infrastructure, etc.
 * `l10n`: WIP - A build environment for creating translation files.
 * `joomla-demo`: WIP/incomplete/broken.
 
