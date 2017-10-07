@@ -124,7 +124,7 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
 
     1. Identify the location of your `amp` installation. It is probably a `.amp` folder within your home directory. Make sure to *use the full path* to this directory in the settings below. We will use `<amp-installation>` henceforth to refer to the full path of this directory. 
     
-    1. Go to your webserver's system-wide configuration files. For Apache, this is usually `/etc/apache2`, but on some systems it might be `/etc/httpd/` or similar. (Check this [blog](http://commanigy.com/blog/2011/6/8/finding-apache-configuration-file-httpd-conf-location) for more info on finding your Apache configuration.) For nginx, the directory is usually `/etc/nginx`. 
+    1. Go to your webserver's system-wide configuration files. For Apache, this is usually `/etc/apache2`, but on some systems it might be `/etc/httpd/` or similar. (Check this [blog](http://commanigy.com/blog/2011/6/8/finding-apache-configuration-file-httpd-conf-location) for more info on finding your Apache configuration.)
     
         1. Inside this directory, create a new directory called `conf.d`, if not already present.
         
@@ -146,12 +146,6 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
         
             ```
             IncludeOptional <amp-installation>/apache.d/*conf
-            ```
-
-        * For nginx, use this content:
-        
-            ```
-            include <amp-installation>/nginx.d/*.conf;
             ```
     
     1. Restart your webserver.
