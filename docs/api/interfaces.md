@@ -2,11 +2,15 @@
 
 The APIv3 has three main interfaces along with the PHP Code that can be used to access the API. 
 
-## AJAX Interface {:#ajax}
+## Javascript {#javascript}
+
+CiviCRM provides a number of different methods to interact with the API when in javascript code. The most common of these is through the AJAX interface which is usally called using jQuery code. The next most common is through the angular interface with a couple of nodejs interfaces
+
+### Javasript AJAX Interface {:#ajax}
 
 The AJAX interface is one of the more common interfaces used within CiviCRM code. The AJAX interface is most commonly seen when used in Javascript code. You can get example AJAX interface code out of the [API Explorer](/api/index.md#api-explorer) as needed.
 
-### CRM.api3
+#### CRM.api3
 
 `CRM.api3` is a Javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of a `CRM.api3` call would be
 
@@ -57,13 +61,13 @@ These requests are different to doing a Chained API call as they are making simu
     Javascript does not guarantee the *ordering* of associative objects. To ensure the API calls execute in a specific order, use the array syntax instead. 
 
 
-### Tests 
+#### Tests
 
 Qunit tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
 
 You can run the tests within a web browser by visiting `/civicrm/dev/qunit/civicrm/crm-api3` within a CiviCRM [development installation](/tools/civibuild.md).
 
-### Changes
+#### Changes
 
 The recommended AJAX interface has changed between CiviCRM versions as follows: 
 
@@ -73,7 +77,7 @@ The recommended AJAX interface has changed between CiviCRM versions as follows:
 
 For details see [API changes](/api/changes.md).
 
-### crmAPI (AngularJS) {:#angularjs}
+### Javascript AngularJS crmAPI {:#angularjs}
 
 With the advent of AngularJS being introduced into the CiviCRM framework, a service was created `crmApi()` which is a variant of `CRM.api3()` for AngularJS. It should be noted that the results are packaged as "promises" by AngularJS. the crmAPI property can be manipulate to mock responses and also the JSON encoder  uses `angular.toJson()` to correctly handle hidden properties. Examples of use are
 
