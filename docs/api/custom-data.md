@@ -66,8 +66,12 @@ For entities other than the Contact Entity you can use an alternate notation to 
 
 The CustomValue Entity implicitly determines what the `entity_table` variable should be when it is not supplied. If you find that the implicitly is not working out exactly, then specify the `entity_table` key.
 
-When setting the value of custom data that is of type checkbox or multivalue it is important to note that the options need to be passed in as an array. For example if i want to set options a and c of for custom value 2 on contact you should do the following
+When setting the value of custom data that is of type checkbox or multivalue it is important to note that the options need to be passed in as an array. For example, if you want to set options `a` and `c` of for custom value `2` on `contact` you should do the following
 
 ```php
-$result = civicrm_api3('Contact', 'create', array('id' = 2, 'custom_2' => array('a', 'c'));
-``` `
+$result = civicrm_api3(
+  'Contact',
+  'create', 
+  array('id' = 2, 'custom_2' => array('a', 'c'))
+);
+```
