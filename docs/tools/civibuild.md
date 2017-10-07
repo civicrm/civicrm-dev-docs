@@ -25,7 +25,7 @@ For example, at time of writing, it includes:
 * `backdrop-demo`: A demo site running Backdrop and CiviCRM.
 * `backdrop-empty`: An empty Backdrop site (without CiviCRM). Useful for testing tarball installation.
 * `drupal8-clean`: A bare, "Out of the box" Installation of Drupal8+CiviCRM.
-* `druapl8-demo` : A demo site running Drupal8 and CiviCRM.
+* `drupal8-demo` : A demo site running Drupal8 and CiviCRM.
 * `drupal-clean`: A bare, "out-of-the-box" installation of Drupal+CiviCRM.
 * `drupal-demo`: A demo site running Drupal and CiviCRM.
 * `drupal-empty`: An empty Drupal site (without CiviCRM). Useful for testing tarball installation.
