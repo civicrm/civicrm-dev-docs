@@ -86,6 +86,54 @@ angular.module('myModule').controller('myController', function(crmApi) {
 });
 ```
 
+### CiviCRM-CV nodeJS bidning {#cv-nodejs}
+
+This is a tool that aims to work locally with NodeJS and intergrates into NodeJS cv commands which allow for the interaction with a local civicrm install. For example you could use it to get the first 25 contacts from the database as follows
+
+```javascript
+  var cv = require('civicrm-cv')({mode: 'promise'});
+  cv('api contact.get').then(function(result){
+    console.log("Found records: " + result.count);
+  });
+```
+
+You can also use all of CV commands such as getting the vars used to make connection to the CiviCRM instance and other site metadata as follows
+
+```javascript
+// Lookup the general site metadata. Return the data synchronously (blocking I/O).
+
+var cv = require('civicrm-cv')({mode: 'sync'});
+var result = cv('vars:show');
+console.log("The Civi database is " + result.CIVI_DB_DSN);
+console.log("The CMS database is " + result.CMS_DB_DSN);
+```
+More information can be found on the [project page](https://github.com/civicrm/cv-nodejs)
+
+### Node-CiviCRM package {#node-civicrm}
+
+Node CiviCRM is a nodejs package which allows for the interaction with a CiviCRM instance from a remote server. This uses the Rest API to communicate to CiviCRM. For example to get the first 25 individuals from the database can be done as follows
+
+```javascript
+var config = {
+  server:'http://example.org',
+  path:'/sites/all/modules/civicrm/extern/rest.php',
+  key:'your key from settings.civicrm.php',
+  api_key:'the user key'
+};
+var crmAPI = require('civicrm')(config);
+
+crmAPI.get ('contact',{contact_type:'Individual',return:'display_name,email,phone'},
+  function (result) {
+    for (var i in result.values) {
+      val = result.values[i];
+     console.log(val.id +": "+val.display_name+ " "+val.email+ " "+ val.phone);
+    }
+  }
+);
+```
+
+More information can be found on the [project page](https://github.com/TechToThePeople/node-civicrm)
+
 ## REST Interface {:#rest}
 
 The REST interface examples can also be found in the API Explorer as with the AJAX interface. The REST interface works very much like the AJAX interface however there is one major difference. The REST interface requires an `api_key` which is attached to the user that will be performing the action against the system and a `site_key` which is the key stored in `civicrm.settings.php`. There must also be a user account in the relevant content management system for the user associated with the API Key. The main reason for this is that the REST interface unlike the AJAX interface is designed for being accessed from an external site. The REST interface defaults to returning XML data however in your API calls you can request to have it return a JSON formatted version. When calling the REST interface you should do it as a `POST` not as a `GET` request. The only API actions that will work over the GET call would be get actions. 
