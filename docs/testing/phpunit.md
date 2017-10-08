@@ -32,6 +32,9 @@ environment variable `CIVICRM_UF` to "UnitTests" (eg. in `civicrm.settings.test.
     (creating system users etc.) your local build will be affected when running
     tests.
 
+!!! tip
+    If you are using PhpStorm, you can [run the tests from within PhpStorm](/tools/phpstorm.md#testing) (which is especially helpful because you can set breakpoints and inspect variables while the tests run).
+
 ## Running Tests
 
 From the CiviCRM root directory run the phpunit command, specifying a single
