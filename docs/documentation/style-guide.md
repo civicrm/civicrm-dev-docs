@@ -59,25 +59,27 @@ Titles for parts, chapters, and sections should all be in sentence case
 Menu selections, buttons, tabs (basically, things that the reader is
 being told to click) should be in bold.
 
+For example:
+
 -   Navigate to **Administer > CiviEvent > Event Types** to review the
     default list of event types.
 -   Modify event type labels by clicking **Edit** on any row.
 -   Click **Add Event Type** to create a new category for your events.
 
-Elements of the system and interface should be capitalized (e.g., the
+Elements of the system and interface should be capitalized (e.g. the
 Events component, the Template Title field).
 
 It is also sometimes helpful for clarity when discussing concepts to use
 capitalization to distinguish between a specific activity within CiviCRM
-and a generic activity (e.g., the Send Email activity versus sending an
+and a generic activity (e.g. the Send Email activity versus sending an
 email). However, sometimes it is too cumbersome or just plain weird to
 capitalize every instance of a term even if it refers to a specific CiviCRM
-thing or technical definition (e.g., scheduled reminders, plain text).
+thing or technical definition (e.g. scheduled reminders, plain text).
 Use your best judgment as to what serves the reader; trying to enforce
 consistency in this arena will slow us down or drive us crazy.
 
 Quotes should be avoided as much as possible; however, do use them when
-they seem necessary for clarity (e.g., if you are talking about setting
+they seem necessary for clarity (e.g. if you are talking about setting
 or field labels that are long phrases).
 
 You can divide the CiviCRM interface into administration pages and
