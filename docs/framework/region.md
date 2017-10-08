@@ -163,7 +163,7 @@ The system plugin (plgSystemCivicrmsys) uses [onBeforeCompileHead](http://docs.j
 
 At time of writing, tags are outputted as plain HTML markup.
 
-#### Wordpress
+#### WordPress
 
 The `civicrm_wp_main()` registers a callback for the [wp_head](http://codex.wordpress.org/Plugin_API/Action_Reference/wp_head) action.
 

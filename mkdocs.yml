@@ -62,7 +62,7 @@ pages:
     - Hooks with Symfony: hooks/setup/symfony.md
     - Hooks with Joomla: hooks/setup/joomla.md
     - Hooks with Drupal: hooks/setup/drupal.md
-    - Hooks with Wordpress: hooks/setup/wordpress.md
+    - Hooks with WordPress: hooks/setup/wordpress.md
   - Batch Hooks:
     - hook_civicrm_batchItems: hooks/hook_civicrm_batchItems.md
     - hook_civicrm_batchQuery: hooks/hook_civicrm_batchQuery.md

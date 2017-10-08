@@ -79,7 +79,7 @@ You can also specify other regions of the page to place the script in (the most 
 
 ## Using CiviCRM Javascript in non CiviCRM pages
 
-If you are working outside the context of CiviCRM pages (e.g. on a Drupal page, Wordpress widget, Joomla page, etc) you need to explicitly tell CiviCRM to load its javascript in to the page header. You can add your own scripts as well.
+If you are working outside the context of CiviCRM pages (e.g. on a Drupal page, WordPress widget, Joomla page, etc) you need to explicitly tell CiviCRM to load its javascript in to the page header. You can add your own scripts as well.
 
 ```php
 civicrm_initialize();
