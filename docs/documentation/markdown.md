@@ -277,7 +277,7 @@ BLOCK
 ```
 ````
 
-*Fenced code can use more thank three backticks when necessary to represent code that contains 3 backticks (which is what you'd see in the source for this page).*
+*Fenced code can use more than three backticks when necessary to represent code that contains 3 backticks (which is what you'd see in the source for this page).*
 
 Alternate syntax: For fenced code, the tilde `~` character also works
 in place of the backtick character but should be avoided for consistency.
