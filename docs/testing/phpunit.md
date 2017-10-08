@@ -94,10 +94,9 @@ with that there are two methods:
 Sometimes it will be convenient to prepare test data for whole test case -
 in such case, you will want to put all the test data creation code in there.
 
-Another option is for your test to implement `TransactionalInterface`.
-
-That will guarantee that each test will be wrapped in a Transaction, that will
-rollback automatically at the end of the test.
+Another option is for your test to implement `TransactionalInterface`.  That
+will guarantee that each test will be wrapped in a SQL transaction which
+automatically rolls back any database changes.
 
 !!! warning
     Schema changes in your test will cause an auto-commit of all changes, and
