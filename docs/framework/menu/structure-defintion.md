@@ -11,21 +11,96 @@ The standard menu XML files can be found in `CRM/Core/xml/Menu/`. Each route is 
 
 The XML will contain a structure made up of the following fields
 
-| Key | Contains | Example | Acceptable Instances | Required | Purpose |
-| --- | --- | --- | --- | --- | --- |
-| path | text | `civicrm/admin/eway/settings` | 1 | Yes | The URL path that this menu item is for |
-| Title | text | `Eway Settings` | 1 | Yes | The Page title |
-| `access_callback` | text | `CRM_Core_Permission::checkMenu` | 0 or 1 | No | Function to be called when checking access to this route, if you wish for this route to be public set it to be 1 |
-| `access_arguments` | text | `access CiviCRM` | 0 or 1 | No | Arguments to be passed to to the function called to check access. To set up an Or i.e either this permission or this one use a `;` as the separator otherwise for AND purpose use `,`  | 
-| `page_callback` | text | `CRM_Contact_Page_Dashboard` | 0 or 1 | No | Name of class to be called when loading this route |
-| `page_arguments` | text | `addSequence=1` | 0 or 1 | No | Arguments to be passed to the Run function within the class being called | 
-| `path_arguments` | text | `ct=Household` | 0 or 1 | No | Arguments to be added to the URL path. These can be useful as the code may call to set variables in the template based on what is passed in the URL |
-| `is_public` | Boolean | `true` | 0 or 1 | No | Is this route public i.e. doesn't need authentication |
-| `is_ssl` | Boolean | `true` | 0 or 1 | No | Does this route need SSL to work. Main example of route that need it is wherever your submitting credit card information |
-| `weight` | integer | `105` | 0 or 1 | No | Order various menu items with lighter weights appearing higher up |
-| `adminGroup` | text | `Manage` | 0 or 1 | No | What Administration group does this route fit under |
-| `dsc` | text | `This sets up specific eway settings` | 0 or 1 | No | Page Description |
-| `icon` | text | `admin/small/duplicate_matching.png` | 0 or 1 | No | Icon to display next to menu text | 
-| `page_type` | text | `1` | 1 | Yes | What type of page is this e.g. 0 for non set or contribute or event pages | 
-| skipBreadCrumb | Boolean | `True` | 0 or 1 | No | Should we not add breadcrumbs for this menu item |
+* path
+  The path is the url route that this menu item is for
+  * Example: `civicrm/admin/eway/settings`
+  * Type: Text
+  * Required: Yes
 
+* `path_arguments`
+   These are arguments to be added to the url when it is loaded. These are generally useful when redirecting people after filling in the page or form
+  * Example `ct=Household`
+  * Type: Text
+  * Required: No
+
+* `title`
+  Title of the route
+  * Example: `Eway Settings`
+  * Type: Text
+  * Required: Yes
+
+* `acess_callback`
+  Function to be used to check access to the route
+  * Example: `CRM_Core_Permission::checkMenu`
+  * Type: Text
+  * Required: No
+  * If you wish for this route to be public you can set it to be 1.
+
+* `access_arguments`
+  Arguments to be passed to the permission checking function
+  * Example: '`access CiviCRM;administer CiviCRM`
+  * Type: Text
+  * Required: No
+  * If you want the permissions to be an "or" situation i.e. User needs either access CiviCRM or administer CiviCRM put a `;` between the permissions. If you want it so that users need multiple permissions put a `,` between
+
+* `page_callback`
+  Function called to generate the content of the route
+  * Example: `CRM_Contact_Page_Dashboard`
+  * Type: Text
+  * Required: No
+
+* `page_arguments`
+  Arguments passed to the function generating the content of the route
+  * Example: `addSequence=1`
+  * Type: Text
+  * Required: No
+
+* `is_public`
+  Is this route Public?
+  * Example: `true`
+  * Type: Boolean
+  * Required No
+
+* `is_ssl`
+  Does this route need SSL
+  * Example: `true`
+  * Type: Boolean
+  * Required: No
+
+* weight
+  Set a weight on the route to change the order of it in the menu
+  * Example: `105`
+  * Type: Integer
+  * Required: No
+  * Items with heavier weights will appear lower in the menu
+
+* `admin_group`
+  Is this menu part of a Administration group and if so which one
+  * Example: `Manage`
+  * Type: Text
+  * Required: No
+
+* `dsc`
+  What is the description of this route
+  * Example: `This sets up specific eway settings`
+  * Type: Text
+  * Required: No
+
+* `icon`
+  What icon should display next to the title in the menu
+  * Example: `admin/small/duplicate_matching.png`
+  * Type: Text
+  * Required: No
+
+* `page_type`
+  What type of a page is this
+  * Example: `1 or contribute`
+  * Type: Text
+  * Required: No
+  * If this is not set the default is 0
+
+* skipBreadCrumb
+  Should this route not generate any breadcrumbs
+  * Example: `true`
+  * Type: Boolean
+  * Required: No
