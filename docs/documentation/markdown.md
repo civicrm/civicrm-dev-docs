@@ -293,7 +293,7 @@ A block of **"indented code"** with four spaces at the start of each line:
 
 ### Syntax highlighting for code
 
-*   For code blocks, some platforms (e.g. GitHub) will guess guess the language of the code and automatically apply syntax highlighting to the display.
+*   For code blocks, some platforms (e.g. GitHub) will guess the language of the code and automatically apply syntax highlighting to the display.
 *   To force a particular type of syntax highlighting, use fenced code with a keyword (like `javascript` in this case) as follows:
 
     ````
