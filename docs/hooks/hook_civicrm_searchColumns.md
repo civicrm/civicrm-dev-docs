@@ -46,7 +46,7 @@ column values and therefore appear to be sorting incorrectly.
 
     function civitest_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
 
-        if ( $objectName == 'Contact' ) {
+        if ( $objectName == 'contact' ) {
 
             // Lets move a few header around, and overwrite stuff we dont need
 
