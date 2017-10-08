@@ -54,7 +54,7 @@ The Supported Properties for settings are:
 | property | Usage | Example Notes |
 | --- | --- | --- |
 | group | ? | Appears to correspond with the name of the file, doesn't that make it redundant? |
-| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` |  Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these). This has been deprecated as of 4.7 but is used for historical support reasons. Since 4.7 the two main options are `domain` or `contact`. The older name such as `CiviCRM Preferences` are treated as an alias for `domain` or `contact`|
+| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` |  Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these). This has been deprecated as of 4.7. Since 4.7, the two main options are `domain` or `contact`. The older names such as `CiviCRM Preferences` are treated as aliases for `domain` or `contact`|
 | name | Name of this setting| This is the same as the array key. Definitely redundant! |
 | type | Data type| String, Array, Integer, Boolean |
 | default | Default value| Value to use if setting is not set. |
