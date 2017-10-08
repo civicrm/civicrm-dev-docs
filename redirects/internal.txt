@@ -5,6 +5,7 @@ best-practices/documentation-style-guide documentation/style-guide
 extensions/basics extensions
 api/general api
 hooks/hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
+testing/setup testing/index
 framework/schema-definition framework/database/schema-definition
 api/params api/options
 core/develop tools/git

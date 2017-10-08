@@ -15,4 +15,4 @@ Pull-requests are tested automatically with build-bot software called [Jenkins](
 * There are a handful of unit tests which are time-sensitive and which fail sporadically. See: https://forum.civicrm.org/index.php?topic=36964.0
 * The web test suite (`WebTest_AllTests`) takes several hours to execute. [It runs separately -- after the PR has been merged.](https://test.civicrm.org/job/CiviCRM-WebTest-Matrix/)
 
-For detailed discussion about automated tests, see [Testing](/testing/setup.md)
+For detailed discussion about automated tests, see [Testing](/testing/index.md)

@@ -16,7 +16,7 @@ are supported for accessing the api functions
 
 -   There are a number of (fairly new) helper functions you should use
     in the test - please check [Writing a PHPUnit testcase
-    HOWTO](/testing/setup.md)
+    HOWTO](/testing/index.md)
 -   API functions should match the relevant BAO names & have the
     functions 'get', 'create' and delete'
 -   All functions should receive $params as an array(not a reference)

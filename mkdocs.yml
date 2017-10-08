@@ -182,7 +182,7 @@ pages:
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
 - Testing:
-  - Testing Setup: testing/setup.md
+  - Testing: testing/index.md
   - PHPUnit Tests: testing/phpunit.md
   - Javascript Tests: testing/javascript.md
   - Selinium Tests: testing/selinium.md
