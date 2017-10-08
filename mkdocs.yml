@@ -218,6 +218,8 @@ pages:
     - XML Schema definition: framework/database/schema-definition.md
     - Schema Design: framework/database/schema-design.md
     - Transaction Reference: framework/database/transactions.md
+  - Menu:
+    - XML Menu Definition: framework/menu/structure-defintion.md
   - File System: framework/filesystem.md
   - PseudoConstant Reference: framework/pseudoconstant.md
   - QuickForm Reference:
