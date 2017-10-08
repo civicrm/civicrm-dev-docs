@@ -53,7 +53,7 @@ add_filter( 'civicrm_pre', array( $this, 'my_callback_method', 10, 4 )
 ```
 
 For more details (as well as the exceptions to this rule) see the 
-[blog post][civi-wp-blog] on CiviCRM in Wordpress.
+[blog post][civi-wp-blog] on CiviCRM in WordPress.
 
 ## Legacy Hooks
 

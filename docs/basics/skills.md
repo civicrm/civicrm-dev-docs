@@ -32,9 +32,9 @@ other technologies (such as PHP and Git, which are not CiviCRM-specific) are out
     -   [CSS tutorial](http://www.w3schools.com/css/default.asp)
     -   [Can I use](http://caniuse.com/) - good for seeing which web browsers have implemented certain CSS features.
     -   [Comparison of layout engines](https://en.wikipedia.org/wiki/Comparison_of_layout_engines_\(Cascading_Style_Sheets\)) another helpful comparison of the differences between web browsers.
--   **Drupal / Wordpress / Joomla!** - CiviCRM must be installed within one of these content management systems, and learning more about the underlying CMS will aid CiviCRM development. Drupal is favored by most CiviCRM developers and CiviCRM actually borrows many development practices from the project, so learning Drupal is a good place to start if you are unsure. That said, Wordpress is the most popular CMS and it has been so for several years now. 
+-   **Drupal / WordPress / Joomla!** - CiviCRM must be installed within one of these content management systems, and learning more about the underlying CMS will aid CiviCRM development. Drupal is favored by most CiviCRM developers and CiviCRM actually borrows many development practices from the project, so learning Drupal is a good place to start if you are unsure. That said, WordPress is the most popular CMS and it has been so for several years now. 
     -   [Drupal documentation](https://www.drupal.org/docs/)
-    -   [Wordpress documentation](https://codex.wordpress.org/Main_Page)
+    -   [WordPress documentation](https://codex.wordpress.org/Main_Page)
     -   [Joomla documentation](https://docs.joomla.org/)
 -   **SQL / MySQL** - "SQL" is a standardized language used by many different types of database management systems to manipulate data in the database. "MySQL" is one specific database management system which, by default, CiviCRM uses to store all its data. The query syntax that MySQL uses conforms [almost](http://troels.arvin.dk/db/rdbms/) entirely to the SQL standard, so learning SQL is basically synonymous to learning MySQL.
     -   [SQL tutorial](http://www.w3schools.com/sql/default.asp)

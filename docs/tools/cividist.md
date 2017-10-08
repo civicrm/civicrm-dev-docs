@@ -30,7 +30,7 @@ git remote add myfork https://github.com/myfork/civicrm-packages.git
 cd build/dist/src/joomla
 git remote add myfork https://github.com/myfork/civicrm-joomla.git
 
-cd build/dist/src/Wordpress
+cd build/dist/src/WordPress
 git remote add myfork https://github.com/myfork/civicrm-wordpress.git
 ```
 
