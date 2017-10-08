@@ -150,25 +150,17 @@ Below are our preferred spellings of CiviCRM-specific words:
 ### Terminology
 
 -   **contact** - a contact record within CiviCRM
--   **organisation/organization** - a non-profit (or other community group,
-    etc) who is (or could be) using CiviCRM
--   **user** - a person who interacts with CiviCRM via the front end
--   **site admin** - a staff member (of an organisation) who regularly
-    administers CiviCRM from the front end. (By definition these people are
-    also "users".)
--   **system administrator** - a technical person who administers CiviCRM from
-    the back end
+-   **organisation/organization** - an organisation that uses (or is evaluating) CiviCRM
+-   **user** - a person who interacts with CiviCRM via the user interface
+-   **site admin** - a *user* who administers CiviCRM via the administration pages
+-   **system administrator** - a technical person who administers the CiviCRM system above and beyond the user interface
 -   **hosting provider**
-    -   In the User Guide - synonymous with *"system administrator"*
-    -   In other guides - a person or company that owns and/or maintains the
-        server upon which CiviCRM runs
--   **developer** - a computer programmer who writes code to improve or extend
-    the functionality, stability, or security of CiviCRM
+    -   in the User Guide - synonymous with *system administrator*
+    -   in other guides - a person or company that owns and/or maintains the server upon which CiviCRM runs
+-   **developer** - a computer programmer who writes code to improve or extend the functionality, stability or security of CiviCRM
 -   **core team**
-    -   In the User Guide - *should be avoided. Use "CiviCRM" or "the CiviCRM
-        community".*
-    -   In other guides - refers to the
-        [core team](https://civicrm.org/teams/core-team)
+    -   in the User Guide - *should be avoided* - use "CiviCRM" or "the CiviCRM community"
+    -   in other guides - refers to the  [core team](https://civicrm.org/teams/core-team)
 
 ### Gender neutrality
 
