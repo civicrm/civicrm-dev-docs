@@ -81,7 +81,7 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 1. Determine the location of your shell configuration file. This is usually `~/.bashrc`, `~/.bash_profile`, or `~/.profile`.
 1. At the end of the file, add `export PATH="/path/to/buildkit/bin:$PATH"`.
 1. Close and reopen the terminal.
-1. Enter the command `civibuild -v`. This should display a help screen for civibuild. If you get 'command not found', then check your path and retry the steps above.
+1. Enter the command `civibuild -h`. This should display a help screen for civibuild. If you get 'command not found', then check your path and retry the steps above.
 
 
 !!! note
