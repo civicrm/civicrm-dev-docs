@@ -2,19 +2,23 @@
 
 The APIv3 has three main interfaces along with the PHP Code that can be used to access the API. 
 
-## AJAX Interface {:#ajax}
+## Javascript {#javascript}
 
-The AJAX interface is one of the more common interfaces used within CiviCRM code. The AJAX interface is most commonly seen when used in Javascript code. You can get example AJAX interface code out of the [API Explorer](/api/index.md#api-explorer) as needed.
+CiviCRM provides a number of different methods to interact with the API when in javascript code. The most common of these is through the AJAX interface which is usually called using jQuery code. The next most common is through the angular interface with a couple of Node.js interfaces
 
-### CRM.api3
+### Javascript AJAX Interface {:#ajax}
 
-`CRM.api3` is a Javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of a `CRM.api3` call would be
+The AJAX interface is one of the more common interfaces used within CiviCRM code. The AJAX interface is most commonly seen when used in javascript code. You can get example AJAX interface code out of the [API Explorer](/api/index.md#api-explorer) as needed.
+
+#### CRM.api3
+
+`CRM.api3` is a javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of a `CRM.api3` call would be
 
 ```javascript
 CRM.api3('entity', 'action', [params], [statusMessage]);
 ```
 
-If you pass `true` in as the `StatusMessage` Param, it will display the default status Message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
+If you pass `true` in as the `StatusMessage` param, it will display the default status Message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
 
 ```javascript
 CRM.api3('entity_tag', 'create', {contact_id:123, tag_id:42})
@@ -51,19 +55,19 @@ CRM.api3(params).done(function(result) {
 });
 ```
 
-These requests are different to doing a Chained API call as they are making simultaneous API requests and they are not related or dependant on each other.
+These requests are different to doing a Chained API call as they are making simultaneous API requests and they are not related or dependent on each other.
 
 !!! note
     Javascript does not guarantee the *ordering* of associative objects. To ensure the API calls execute in a specific order, use the array syntax instead. 
 
 
-### Tests 
+#### Tests
 
 Qunit tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
 
 You can run the tests within a web browser by visiting `/civicrm/dev/qunit/civicrm/crm-api3` within a CiviCRM [development installation](/tools/civibuild.md).
 
-### Changes
+#### Changes
 
 The recommended AJAX interface has changed between CiviCRM versions as follows: 
 
@@ -73,9 +77,9 @@ The recommended AJAX interface has changed between CiviCRM versions as follows:
 
 For details see [API changes](/api/changes.md).
 
-### crmAPI (AngularJS) {:#angularjs}
+### Javascript AngularJS crmAPI {:#angularjs}
 
-With the advent of AngularJS being introduced into the CiviCRM framework, a service was created `crmApi()` which is a variant of `CRM.api3()` for AngularJS. It should be noted that the results are packaged as "promises" by AngularJS. the crmAPI property can be manipulate to mock responses and also the JSON encoder  uses `angular.toJson()` to correctly handle hidden properties. Examples of use are
+With the advent of AngularJS being introduced into the CiviCRM framework, a service was created `crmApi()` which is a variant of `CRM.api3()` for AngularJS. It should be noted that the results are packaged as "promises" by AngularJS. The crmAPI property can be manipulate to mock responses and also the JSON encoder  uses `angular.toJson()` to correctly handle hidden properties. Examples of use are
 
 ```javascript
 angular.module('myModule').controller('myController', function(crmApi) {
@@ -85,6 +89,54 @@ angular.module('myModule').controller('myController', function(crmApi) {
     });
 });
 ```
+
+### CiviCRM-CV Node.js binding {#cv-node.js}
+
+This is a tool that aims to work locally with Node.js and integrates into Node.js cv commands which allow for the interaction with a local CiviCRM install. For example you could use it to get the first 25 contacts from the database as follows
+
+```javascript
+  var cv = require('civicrm-cv')({mode: 'promise'});
+  cv('api contact.get').then(function(result){
+    console.log("Found records: " + result.count);
+  });
+```
+
+You can also use all of CV commands such as getting the vars used to make connection to the CiviCRM instance and other site metadata as follows
+
+```javascript
+// Lookup the general site metadata. Return the data synchronously (blocking I/O).
+
+var cv = require('civicrm-cv')({mode: 'sync'});
+var result = cv('vars:show');
+console.log("The Civi database is " + result.CIVI_DB_DSN);
+console.log("The CMS database is " + result.CMS_DB_DSN);
+```
+More information can be found on the [project page](https://github.com/civicrm/cv-nodejs)
+
+### Javascript Node-CiviCRM package {#node-civicrm}
+
+Node CiviCRM is a Node.js package which allows for the interaction with a CiviCRM instance from a remote server. This uses the Rest API to communicate to CiviCRM. For example to get the first 25 individuals from the database can be done as follows
+
+```javascript
+var config = {
+  server:'http://example.org',
+  path:'/sites/all/modules/civicrm/extern/rest.php',
+  key:'your key from settings.civicrm.php',
+  api_key:'the user key'
+};
+var crmAPI = require('civicrm')(config);
+
+crmAPI.get ('contact',{contact_type:'Individual',return:'display_name,email,phone'},
+  function (result) {
+    for (var i in result.values) {
+      val = result.values[i];
+     console.log(val.id +": "+val.display_name+ " "+val.email+ " "+ val.phone);
+    }
+  }
+);
+```
+
+More information can be found on the [project page](https://github.com/TechToThePeople/node-civicrm)
 
 ## REST Interface {:#rest}
 
