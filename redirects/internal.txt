@@ -8,7 +8,7 @@ hooks/hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
 testing/setup testing/index
 framework/schema-definition framework/database/schema-definition
 api/params api/options
+testing/selinium testing/selenium
 core/develop tools/git
 basics/filesystem framework/filesystem
-core/architecture framework/codebase
-framework/civimail/tokens https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/
+core/architecture framework/codebaseframework/civimail/tokens https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/
