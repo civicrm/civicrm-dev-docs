@@ -9,7 +9,7 @@ Applications like CiviCRM often need to be 'configured' with small bits of persi
  - MySQL connection information
  - The primary language of the install.
 
-Sites can configure the settings through the UI or [put in overrides](https://wiki.civicrm.org/confluence/display/CRMDOC/Override+CiviCRM+Settings);
+Sites can configure the settings through the UI or [put in overrides](https://docs.civicrm.org/sysadmin/en/master/customize/settings/)
 
 This page describes the CiviCRM standard tool for managing these configuration settings – the 'Settings' system. As a developer, you'll want to understand this system so you can access CiviCRM 'core' settings (e.g. if you're sending out a system email, you'll want to set an appropriate From name and address). You may also want to use this system for storing and retrieving your own settings for your extension. If you're a Drupal developer, this system is analogous to the Drupal variables table and tools.
 
@@ -34,8 +34,7 @@ Each file consists of a php snippet which returns an array. Array keys are sting
 
 ```php
   'remote_profile_submissions' => array(
-    'group_name' => 'CiviCRM Preferences',
-    'group' => 'core',
+    'group_name' => 'domain',
     'name' => 'remote_profile_submissions',
     'type' => 'Boolean',
     'quick_form_type' => 'YesNo',
@@ -55,7 +54,7 @@ The Supported Properties for settings are:
 | property | Usage | Example Notes |
 | --- | --- | --- |
 | group | ? | Appears to correspond with the name of the file, doesn't that make it redundant? |
-| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` |  Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these) |
+| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` |  Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these). This has been deprecated as of 4.7 but is used for historical support reasons. Since 4.7 the two main options are `domain` or `contact`. The older name such as `CiviCRM Preferences` are treated as an alias for `domain` or `contact`|
 | name | Name of this setting| This is the same as the array key. Definitely redundant! |
 | type | Data type| String, Array, Integer, Boolean |
 | default | Default value| Value to use if setting is not set. |
