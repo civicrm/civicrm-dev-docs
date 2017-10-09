@@ -79,16 +79,16 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 
 | Type | Notes |
 | --- | --- | 
-| text | |
-| textarea | |
+| text | Simple text box|
+| textarea | Multirow text region. Good for fields like description |
 | select | give it css class "crm-select2" to add select2 widget |
 | advcheckbox | like "checkbox" element but normalizes data in postProcess |
-| radio | |
+| radio | Radio options |
 | group | mainly useful to contain radios, see addRadio extended method |
 | hidden | does not need to be added to the template |
 | advmultiselect | takes up a lot of space - consider using select.crm-select2 |
-| submit | |
-| password | |
+| submit | Buttons generally used to either submit or cancel the form |
+| password | Add a password field. The display will be replaced with dots |
 
 ### Extended Types
 
@@ -143,8 +143,8 @@ Examine submitted form data to determine validity. (Note: The "Validation" phase
 | Step | Audience | Comments |
 | --- | --- | --- |
 | (Process rules) | Original Developer & Third-Party Developer | Iteratively process any rules that here added during the "build" phase (i.e. call any callbacks registered via `$form()->addFormRule()`). |
-| [hook_civicrm_validate()](/hooks/hook_civicrm_validate.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
-| [hook_civicrm_validateForm()](/hooks/hook_civicrm_validateForm.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
+| [hook_civicrm_validate](/hooks/hook_civicrm_validate.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
+| [hook_civicrm_validateForm](/hooks/hook_civicrm_validateForm.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
 
 ### Process Phase
 
