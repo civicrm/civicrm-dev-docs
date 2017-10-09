@@ -22,7 +22,7 @@ This hook is called when the contact summary is rendered, allowing you to modify
 
     function civitest_civicrm_summary( $contactID, &$content, &$contentPlacement ) {
         // REPLACE default Contact Summary with your customized content
-        $contentPlacement = 3;
+        $contentPlacement = CRM_Utils_Hook::SUMMARY_REPLACE;
         $content = "
     <table>
     <tr><th>Hook Data</th></tr>
