@@ -28,7 +28,7 @@ After enabling debugging, append any of the following name-value pairs to the UR
 
 !!! tip "Caveats"
     - Sometimes using `&smartyDebug=1` to inspect variables available to a template will not work as expected. An example of this is looking at the Contact Summary page, when using this method will display the variables available only to the summary tab and you might want to see the variables available to one of the other tabs. To do this you will need to debug via code, as explained below.
-    - If the page you are debugging does not already have a key-value parameter before debugging, you will need to begin the first parameter with a question mark instead of a ampersand.
+    - If the page you are debugging does not already have a key-value parameter before debugging, you will need to begin the first parameter with a question mark instead of an ampersand.
 
 ### Displaying a backtrace
 
@@ -274,11 +274,11 @@ The webserver can be configured to display errors to screen, but it also logs er
 -   `/var/log/php5/*log` PHP-FPM & PHP-CGI error logs
 -   `/path/to/site/err*log` Some hosting environments
 
+*(The `*`s above represent a wildcard, not an actual filename. Eg the last entry might be public_html/error_log on Bluehost.)*
+
 And a **CiviCRM specific debug log** file - location varies depending on hosting environment *and* CMS, refer to [this page](/tools/debugging.md#Debuggingfordevelopers-Logfiles) for location -
 
     path/to/site/path/to/civicrm/files/ConfigAndLog/CiviCRM*log
-
-*(The `*`s above represent a wildcard, not an actual filename. Eg the last entry might be public_html/error_log on Bluehost.)*
 
 !!! Tip
     Buildkit uses [amp](https://github.com/amp-cli/amp) to install sites which means you have to look in `~/.amp`. Log files are in `~/.amp/log` and separated by site.
@@ -309,7 +309,7 @@ This is where you can start debugging meaningfully. There's a good chance you're
 **Further reading**
 
  * [Stack Overflow: How do I get PHP errors to display?](http://stackoverflow.com/questions/1053424/how-do-i-get-php-errors-to-display)
- * https://civicrm.stackexchange.com/questions/376/where-should-one-look-for-logs-when-debugging-a-new-problem
+ * [CiviCRM StackExchange: Where should one look for logs when debugging a new problem](https://civicrm.stackexchange.com/questions/376/where-should-one-look-for-logs-when-debugging-a-new-problem)
  * [Drupal.org: Blank pages or White Screen of Death](https://www.drupal.org/node/158043)
  * [Joomla SE: What is an efficient way to troubleshoot a White Screen of Death](https://joomla.stackexchange.com/questions/299/what-is-an-efficient-way-to-troubleshoot-a-white-screen-of-death)
 
