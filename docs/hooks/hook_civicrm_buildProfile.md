@@ -2,38 +2,24 @@
 
 ## Summary
 
-This hook is called while preparing a profile form.
+This hook is called while preparing a profile form. This form allows for extension authors to add various scripts onto the profile pages. Note that `hook_civicrm_buildForm` is not fired for profile pages
 
 ## Definition
 
-    buildProfile($profileName)
+buildProfile($profileName)
 
 ## Parameters
 
--   $profileName - the (machine readable) name of the profile.
+- $profileName - the (machine readable) name of the profile.
 
 ## Returns
 
--   null
+- null
 
-Can someone say a little more about the purpose of this hook? It's not
-immediately obvious how I can use this. I could do something like this:
-
-
-
-    function myext_civicrm_buildProfile($profileName) {
-
-      if ($profileName === 'MyTargetedProfile) {
-
-        CRM_Core_Resources::singleton()->addScriptFile('org.example.myext', 'some/fancy.js', 100);
-
-      }
-
-    }
-
-
-
-... but it would be way more useful if the hook also received a form
-object so developers could alter the fields. I seem to recall that
-hook_civicrm_buildForm() doesn't get fired for profiles – is that
-right?
+```php
+function myext_civicrm_buildProfile($profileName) {
+  if ($profileName === 'MyTargetedProfile) {
+    CRM_Core_Resources::singleton()->addScriptFile('org.example.myext', 'some/fancy.js', 100);
+  }
+}
+```
