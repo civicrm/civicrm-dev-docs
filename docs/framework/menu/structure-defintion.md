@@ -1,11 +1,11 @@
 # Menu XML Structure
 
-CiviCRM's menu routeing system is built based on XML files. These XML files define what class gets loaded when a specific path is arrived at, what permissions are required to access that route.
+CiviCRM's menu routing system is built based on XML files. These XML files define what class gets loaded when a specific path is arrived at, what permissions are required to access that route.
 
 The standard menu XML files can be found in `CRM/Core/xml/Menu/`. Each route is defined as an "Item" Within the menu. In extensions you should add your menu to `<extension folder>/xml/Menu/<extensionName>.xml`
 
 !!! Caution "Caution: Wild card sub-paths"
-    One path can match all subpaths.  For example, `<path>civicrm/admin</path>` can match `http://example.org/civicrm/admin/f/o/o/b/a/r`.  However, one should avoid designs which rely on this because it's imprecise and it can be difficult to integrate with some frontends.
+    One path can match all sub-paths.  For example, `<path>civicrm/admin</path>` can match `http://example.org/civicrm/admin/f/o/o/b/a/r`.  However, one should avoid designs which rely on this because it's imprecise and it can be difficult to integrate with some frontends.
 
 ## XML Item Structure
 
