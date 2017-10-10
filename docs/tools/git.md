@@ -100,7 +100,7 @@ A few elements to include:
 
 ### Pull request scope {:#pr-scope}
 
-A good pull request addresses a clearly-defined problem. There should be a detailed description logged in the [issue tracker](http://issues.civicrm.org/). Excellent PRs also increase test coverage. If you are tempted to do additional tweaks or code cleanup outside the scope of that issue, you could make a separate commit and include them in the PR if they are minor & non-controversial, or create a seperate PR if they are more complex.
+A good pull request addresses a clearly-defined problem. There should be a detailed description logged in the [issue tracker](http://issues.civicrm.org/). Excellent PRs also increase test coverage. If you are tempted to do additional tweaks or code cleanup outside the scope of that issue, you could make a separate commit and include them in the PR if they are minor & non-controversial, or create a separate PR if they are more complex.
 
 There is no size limit for PRs as long as they are focused on completely solving a discreet problem. As a practical matter, though, bigger PRs may take longer to review and merge. When possible, split "epic" issues into bite-sized chunks as long as each seperate PR is functionally complete and does not cause merge conflicts with your other PRs. In the latter case, add commits to an existing PR.
 
@@ -108,14 +108,14 @@ There is no size limit for PRs as long as they are focused on completely solving
 
 See [How to review a core pull request](/core/pr-review.md)
 
-### Who merges pull requests {:#pr-merge}
+### Who merges pull requests? {:#pr-merge}
 
 A person may be granted the privilege/responsibility of reviewing and merging pull requests who:
 
-* Is an active contributor to the CiviCRM project.
-* Responds to communications in a timely fashion.
-* Is familiar with current CiviCRM coding standards and best practices.
-* Is a careful proofreader and tester, and who gives thorough constructive feedback.
+* is an active contributor to the CiviCRM project
+* responds to communications in a timely fashion
+* is familiar with current CiviCRM coding standards and best practices
+* is a careful proofreader and tester, and who gives thorough constructive feedback
 
 
 ## Git tasks
