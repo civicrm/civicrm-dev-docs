@@ -263,6 +263,16 @@ Attributes acceptable for `<psr4>`
 * Containing element: [`<extension>`](#extension)
 * Description: Used to to specify other extensions on which this extension is dependent.
 * Contains: elements
+* Example:
+
+    ```xml
+    <extension key="org.civicrm.foo" type="module">
+      <requires>
+        <ext>org.civicrm.bar</ext>
+      </requires>
+    </extension>
+    ```
+    
 * Notes:
     * For example if `org.civicrm.foo` requires `org.civicrm.bar`, then CiviCRM core will not enable `org.civicrm.foo` unless it can enable `org.civicrm.bar` _first_.
     * Also, if `org.civicrm.bar` depends on other extensions, the process will continue recursively, always by enabling the dependencies first. 
