@@ -40,6 +40,10 @@ Would the patch change the contract for a PHP function or JS widget or CSS class
 
 Many changes should introduce some kind of automated test or protective measure to ensure maintainability. However, there can be tricky cost/benefit issues, and the author and reviewer must exercise balanced judgment. (***R-MAINT***)
 
+### Check for documentation. {:#r-doc}
+
+Some changes require addition documentation, or adjustments to existing documentation. Consider the impact of this change on users, system administrators, and developers. Do they need additional instructions in order to reap the benefits of this change? If so, [update documentation](/documentation/index.md) as necessary by making a corresponding PR on one of the guides. (***R-DOC***)
+
 ## Gotchas
 
 ### Packaging {:#rg-pkg}
