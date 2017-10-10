@@ -57,7 +57,7 @@ function EXAMPLE_civicrm_xmlMenu(&$files) {
 
 ## XML Structure
 
-To read up on the XML Structure you can find information on the Menu [XML Structure documentation](/framework/menu/structure-defintion.md)
+See the [routing](/framework/routing.md) page for details on the XML schema.
 
 ## XML: IDS
 

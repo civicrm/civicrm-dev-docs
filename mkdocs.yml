@@ -218,14 +218,13 @@ pages:
     - XML Schema definition: framework/database/schema-definition.md
     - Schema Design: framework/database/schema-design.md
     - Transaction Reference: framework/database/transactions.md
-  - Menu:
-    - XML Menu Definition: framework/menu/structure-defintion.md
   - File System: framework/filesystem.md
   - PseudoConstant Reference: framework/pseudoconstant.md
   - QuickForm Reference:
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
   - Region Reference: framework/region.md
+  - Routing: framework/routing.md
   - Resources Reference: framework/resources.md
   - Setting Reference: framework/setting.md
   - Template Reference:
