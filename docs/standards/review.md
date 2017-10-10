@@ -1,8 +1,8 @@
-The Review Standards provide a name and description for common review tasks.
+These review standards provide a name and description for common review tasks.
 
 ## Usage
 
-When reviewing a pull-request, you may consult this list for ideas/inspiration on things to check.  If you find a problem or feel that some QA task remains to
+When [reviewing a pull-request](/core/pr-review.md), you may consult this list for ideas/inspiration on things to check.  If you find a problem or feel that some QA task remains to
 be done, then it can help to post a link to the relevant guideline.  This practice allows newcomers to understand the critique, but it doesn't require you to
 write a long, bespoke blurb.
 
@@ -10,11 +10,11 @@ write a long, bespoke blurb.
 
 ### Ensure that the PR links to a JIRA issue. {:#r-jira}
 
-For most bug-fixes and improvements, there needs to be a JIRA issue. However, small NFC PRs and some WIP PRs may not need that. (***R-JIRA***)
+For most bug-fixes and improvements, there needs to be a [JIRA issue](/tools/issue-tracking.md#jira). However, small [NFC](/tools/git.md#nfc) PRs and some [WIP](/tools/git.md#wip) PRs may not need that. (***R-JIRA***)
 
 ### Examine test results. {:#r-test}
 
-If the automated test comes back with any failures, look into why. Hopefully, Jenkins provides an itemized list of failures. If not, dig further into the "Console" output for PHP-fatals or build-failures. (***R-TEST***)
+If the [automated tests](/testing/continuous-integration.md) comes back with any failures, look into why. Hopefully, Jenkins provides an itemized list of failures. If not, dig further into the "Console" output for PHP-fatals or build-failures. (***R-TEST***)
 
 ### Read the code. {:#r-read}
 
@@ -30,7 +30,7 @@ If a user was comfortable using the old revision, would they upgrade and assimil
 
 ### Assess impact on extensions/integrations. {:#r-ext}
 
-Would the proposal change the behaviors/inputs/outputs of an API, hook, or widely-used function? If an existing extension uses it, would it continue to work the same way? If you're unsure, consider grepping universe for inspiration. If there is a foreseeable problem, has there been commensurate effort to communicate change and provide a fair transition path? (***R-EXT***)
+Would the proposal change the behaviors/inputs/outputs of an API, hook, or widely-used function? If an existing extension uses it, would it continue to work the same way? If you're unsure, consider grepping [universe](/tools/universe.md) for inspiration. If there is a foreseeable problem, has there been commensurate effort to communicate change and provide a fair transition path? (***R-EXT***)
 
 ### Assess impact on core. {:#r-core}
 
@@ -44,7 +44,7 @@ Many changes should introduce some kind of automated test or protective measure 
 
 ### Packaging {:#rg-pkg}
 
-If the PR adds a new top-level file, new top-level folder, or novel file-type, consider whether "distmaker" will properly convey the file in *.zip/*.tar.gz builds. (***RG-PKG***)
+If the PR adds a new top-level file, new top-level folder, or novel file-type, consider whether "distmaker" will properly convey the file in `*.zip/*.tar.gz` builds. (***RG-PKG***)
 
 ### Permissions {:#rg-perm}
 
@@ -52,7 +52,7 @@ If the PR changes the permissions model, are we sure that demo/test builds and e
 
 ### Security {:#rg-sec}
 
-If the PR passes data between different tiers (such as SQL/PHP/HTML/CLI), is this data escaped and validated correctly? Or would it be vulnerable to SQL-injections, cross-site scripting, or similar? (***RG-SEC***)
+If the PR passes data between different tiers (such as SQL/PHP/HTML/CLI), is this data [escaped and validated](/security/index.md) correctly? Or would it be vulnerable to SQL-injections, cross-site scripting, or similar? (***RG-SEC***)
 
 ### Settings {:#rg-setting}
 
