@@ -232,7 +232,7 @@ pages:
     - Extending Smarty: framework/templates/extending-smarty.md
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
-- Coding Standards:
+- Development Standards:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
   - Javascript Reference: standards/javascript.md
