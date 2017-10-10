@@ -19,9 +19,9 @@ Your changes might require documentation updates. Read about [when to document](
 
 ## Write tests
 
-Having a plain-language description of how things should work in hand, it's time to operationalize the description and build automated tests for the feature.  CiviCRM comes with a variety of [testing tools](/testing/setup.md) that help ensure that changes don't break existing functionality.
-
-Since CiviCRM [doesn't release code with failing tests](/tools/jenkins.md), your bug or improvement must not be covered in the existing tests.  Maybe there are incomplete tests, maybe the tests aren't valid measures of the functionality, or maybe your feature lacks test coverage.  Either way, you will need to write them to make sure your work doesn't get undermined by future changes.
+Before you write any code you should write tests. You can use your plain-language description of how things should work to create automated tests for the feature.
+  
+CiviCRM comes with a variety of [testing tools](/testing/setup.md) that help ensure that changes don't break existing functionality. Since CiviCRM [doesn't release code with failing tests](/tools/jenkins.md), your bug or improvement must not be covered in the existing tests.  Maybe there are incomplete tests, maybe the tests aren't valid measures of the functionality, or maybe your feature lacks test coverage.  Either way, you will need to write them to make sure your work doesn't get undermined by future changes.
 
 Use your documentation to identify tests that can be run, and then write them.  If you are adding functionality, you may not have the code that the test will call, but you can write your tests as if all the pages and functions exist, defining them later.
 
@@ -33,9 +33,9 @@ The key in making changes is legibility: helping others see what you've changed 
 
 ### Coding style
 
-One element of legibility is literal: make your changes according to the [CiviCRM coding standards](/standards/index.md).  This doesn't just make the code more readable on its own; standards make the diff more legible too.
+One element of legibility is literal: make your changes according to the [CiviCRM coding standards](/standards/index.md).  This doesn't just make the code more readable on its own; standards make the `diff` more legible too.
 
-Each pull request is [automatically tested](/tools/jenkins.md) by PHP_CodeSniffer according to [the standards](https://github.com/civicrm/coder), and you should save time and test your code yourself.
+Each pull request is [automatically tested](/tools/jenkins.md) by `PHP_CodeSniffer` according to [the standards](https://github.com/civicrm/coder), and you should save time and test your code yourself.
 
 ### Making commits
 
