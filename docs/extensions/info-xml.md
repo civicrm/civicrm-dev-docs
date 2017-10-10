@@ -42,6 +42,7 @@ Here is an example of a full `info.xml` file from [CiviVolunteer](https://github
 
 | CiviCRM Version | Description |
 | -- | -- |
+| 4.7.27 | Added [`<requires>`](#requires) and [`<ext>`](#ext) | 
 | 4.5 | [`<develStage>`](#develStage) is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
 | 4.2 | Most extensions should be packaged as generic *module* rather than type-specific extensions.
 | 4.2 | [`<downloadUrl>`](#downloadUrl) is optional for ordinary development; when using civicrm.org to distribute extensions, the [`<downloadUrl>`](#downloadUrl) will be specified when announcing the release on the website
@@ -143,13 +144,14 @@ Elements acceptable within `<compatibility>`
 
 ### `<ext>` {:#ext}
 
-!!! warning "Experimental"
-    This element does not (yet?) do anything. Functionality is pending the merge of PR [#9416](https://github.com/civicrm/civicrm-core/pull/9416).
-
 * Containing element: [`<requires>`](#requires)
 * Description: Specifies the unique name of one extension on which this extension is dependent.
+* Notes:
+    * It is not currently possible to specify *versions* in these dependencies. 
+    * See [`<requires>`](#requires) for more details about extension dependencies.
 * Contains: text
 * Example: `org.civicrm.shoreditch`
+* Added in: CiviCRM 4.7.27
 
 ### `<extension>` {:#extension}
 
@@ -258,12 +260,15 @@ Attributes acceptable for `<psr4>`
 
 ### `<requires>` {:#requires}
 
-!!! warning "Experimental"
-    This element does not (yet?) do anything. Functionality is pending the merge of PR [#9416](https://github.com/civicrm/civicrm-core/pull/9416).
-
 * Containing element: [`<extension>`](#extension)
-* Description: Used to to specify other extension on which this extension is dependent
+* Description: Used to to specify other extensions on which this extension is dependent.
 * Contains: elements
+* Notes:
+    * For example if `org.civicrm.foo` requires `org.civicrm.bar`, then CiviCRM core will not enable `org.civicrm.foo` unless it can enable `org.civicrm.bar` _first_.
+    * Also, if `org.civicrm.bar` depends on other extensions, the process will continue recursively, always by enabling the dependencies first. 
+    * **CiviCRM core does not _download_ the dependencies** &mdash; it only *enables* them. The *user* must first download the dependencies. 
+    * Currently, `<requires>` is only for managing dependencies on other *extensions* (not other libraries).
+* Added in: CiviCRM 4.7.27
 
 Elements acceptable within `<requires>`
 
