@@ -224,6 +224,7 @@ pages:
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
   - Region Reference: framework/region.md
+  - Routing: framework/routing.md
   - Resources Reference: framework/resources.md
   - Setting Reference: framework/setting.md
   - Template Reference:

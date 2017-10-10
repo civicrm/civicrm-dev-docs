@@ -55,34 +55,9 @@ function EXAMPLE_civicrm_xmlMenu(&$files) {
 }
 ```
 
-## XML: Common
+## XML Structure
 
-Several elements are supported in any route:
-
- * `<path>` (ex:`civicrm/ajax/my-page`): This specifies the URL of the page. On a system like Drupal (which supports "clean URLs"), the full page URL would look like `http://example.org/civicrm/ajax/my-page`.
- * `<page_callback>` (ex: `CRM_Example_Page_AJAX::runMyPage` or `CRM_Example_Page_MyStuff`): This specifies the page-controller, which may be any of the following:
-    * Static function (ex: `CRM_Example_Page_AJAX::runMyPage`)
-    * A subclass of `CRM_Core_Page` named `CRM_*_Page_*` (ex: `CRM_Example_Page_MyStuff`)
-    * A subclass of `CRM_Core_Form` named `CRM_*_Form_*` (ex: `CRM_Example_Form_MyStuff`)
-    * A subclass of `CRM_Core_Controller` named `CRM_*_Controller_*` (ex: `CRM_Example_Controller_MyStuff` )
- * `<access_arguments>` (ex: `administer CiviCRM`): A list of permissions required for this page.
-    * If you'd like to reference *new* permissions, be sure to declare them with [hook_civicrm_permission](/hooks/hook_civicrm_permission.md).
-    * To require *any one* permission from a list, use a semicolon (`;`). (ex: `edit foo;administer bar` requires `edit foo` **or** `administer bar`)
-    * To require *multiple* permissions, use a comma (`,`). (ex: `edit foo,administer bar` requires `edit foo` **and** `administer bar`)
-    * At time of writing, mixing `,`s and `;`s has not been tested.
- * `<title>` (ex: `Hello world`): Specifies the default value for the HTML `<TITLE>`. (This default be programmatically override on per-request basis.)
-
-!!! caution "Caution: Wildcard sub-paths"
-    One path can match all subpaths.  For example, `<path>civicrm/admin</path>` can match `http://example.org/civicrm/admin/f/o/o/b/a/r`.  However, one should avoid designs which rely on this because it's imprecise and it can be difficult to integrate with some frontends.
-
-## XML: Administration
-
-The administration screen (`civicrm/admin`) includes a generated list of fields. This content is determined by some additional elements:
-
- * `<desc>`
- * `<icon>`
- * `<adminGroup>`
- * `<weight>`
+See the [routing](/framework/routing.md) page for details on the XML schema.
 
 ## XML: IDS
 
