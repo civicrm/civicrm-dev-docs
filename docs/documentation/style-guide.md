@@ -224,4 +224,24 @@ out there (setting up an SSL certificate, configuring CiviMail etc.) and point
 them in the right direction when they want to know about those tasks.
 
 
+### Shell Commands in documentation.
 
+When writing shell commands in documentation as examples, for any commands that are expected to be typed out by the user a `$` should be put in front of the command. e.g.
+
+```shell
+$ cd ~/buildkit/build/drupal-demo/sites/all/modules/civicrm
+$ civibuild create drupal-demo --civi-ver master --url http://localhost:8001
+$ hub fork
+```
+
+When your putting in any content that would be outputted by a shell command this should not have a `$` appended to it e.g.
+
+```shell
+$ git remote -v
+origin  https://github.com/civicrm/civicrm-core.git (fetch)
+origin  https://github.com/civicrm/civicrm-core.git (push)
+yourusername      git@github.com:yourusername/civicrm-core.git (fetch)
+yourusername      git@github.com:yourusername/civicrm-core.git (push)
+```
+
+Authors should also not put any comments within the examples themselves, whereas any comments should go outside of the code block in regular paragraphs. Where possible each command should be its own comment block. When it is crucial for the user to understand the directory in which to run the command, include a separate code block before hand with a `cd` command.
