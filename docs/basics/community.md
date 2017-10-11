@@ -34,6 +34,12 @@ Developers from around the globe use the following systems to communicate and co
     3.  [Stack Exchange](https://civicrm.stackexchange.com/users/signup?ssrc=head&returnurl=https%3a%2f%2fcivicrm.stackexchange.com%2f) - Read the user guide after joining. Write your own Q&A and vote on others'.
 
     4.  [GitHub](https://github.com/join?source=header) - Find repositories under CiviCRM's group after confirming your account.
+    
+!!! warning "Don't include a space in your username"
+
+    CiviCRM.org allows spaces in usernames but this won't work with GitLab.  So it's best if you don't use any spaces in your CiviCRM.org username. 
+    
+    If you have already set up an account on CiviCRM.org you can easily log in and change your username.
 
 ## Discussion communities
 
