@@ -321,21 +321,21 @@ If you're not familiar with UNIX, this may seem like a lot of effort. It's a lot
 
 ## Debugging Javascript issues
 
-**Symptoms**
+### Symptoms
 * Popup forms, tabs, custom fields, and other dynamic content fail to load or save correctly.
 * Autocompletes or profile selectors look wrong (like a textbox that doesn't do anything) or fail to get results when you try to search.
 * The CiviCRM menubar fails to appear at the top of the page.
 * You frequently see error messages like "Network Error - Unable to reach the server."
 
-**Background**
+### Background
 Javascript (JS) is what makes web-apps interactive. Without it, nothing on a webpage can change without refreshing or clicking to a new page. The CiviCRM UI, especially in newer versions, uses javascript for everything from popup forms to date and time inputs. If a bug or misconfiguration on your website interferes with some aspect of JS, certain elements of the CiviCRM interface may function badly or not at all.
 
 AJAX is a complicated-sounding acronym for the simple task of loading more stuff from the server on-demand. When you see a spinning triangle or have to wait for autocomplete results, the content is loading via AJAX. The J stands for Javascript, so if your site is having JS toubles, AJAX may not work either.
 
-**Troubleshooting Tools**
+### Troubleshooting Tools
 Most of the time the other debugging methods metioned earlier will solve 90% of the issues. However sometimes you need to use your browser to debug. Your web-browser (Firefox/Chrome/etc.) has a javascript console where you can view error messages. Press F12 to turn it on and then click over to the "Console" tab. With these tools enabled, try triggering the symptom again and watch for error messages on the screen or in the console. If you see an error message, try doing a google search for it to see if others have solved the same problem.
 
-**Problems and Solutions**
+### Problems and Solutions
 * Incompatible/buggy extensions for CiviCRM might crash javascript. Try temporarily turning them all off. If your problem is fixed, re-enable them one at a time to find the culprit.
 * If your site is accessible from more than one url (e.g. `http://mysite.org` and `http://www.mysite.org`) AJAX requests may fail. Ask your host or sysadmin to restrict access to one url or the other, and ensure the one you choose matches `$civicrm_root` in `civicrm.settings.php`.
 * Some people customize CiviCRM by overriding templates and php code. This custom code can become out-of-date and incompatible with the latest version, causing problems after upgrading. To see if your site has custom code, go to `Administer->System Settings->Directories` and check if either Custom Templates or Custom PHP Path Directory has been set (they are both blank by default). If so, try deleting them temporarily (don't forget to copy their values into a text file on your computer so you can restore them later). Check if your problem is solved, and if so, you can conclude that your custom code is in need up updating.
