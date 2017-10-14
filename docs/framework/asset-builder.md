@@ -112,7 +112,7 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 }
 ```
 
-!!! note "Note: Parmaters and caching"
+!!! note "Note: Parameters and caching"
     Each combination of (`$asset`,`$params`) will be cached separately.
 
 !!! tip "Tip: Economize on parameters"
@@ -123,7 +123,7 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 ## Other considerations
 
 !!! note "Compare: How does AssetBuilder differ from [Assetic](https://github.com/kriswallsmith/assetic)?"
-    Both are written in PHP, but they address differet parts of the process:
+    Both are written in PHP, but they address different parts of the process:
 
      * `AssetBuilder` provides URL-routing, caching, and parameterization.
        Its strength is defining a *lazy lifecycle* for the assets.
