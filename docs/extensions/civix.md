@@ -158,7 +158,7 @@ If you want your extension to store data in the database, then you will need to 
 
         * *Prior to CiviCRM 4.7.12, you would instead run `php ./GenCode.php` from the `xml` folder.*
 
-    1. Copy the DAO file `<civiroot>/CRM/MyEntity/DAO/MyEntity.php` into your extension at `CRM/MyEntity/DAO/MyEntity.php`.
+    1. Copy the DAO file `<civiroot>/CRM/MyExtension/DAO/MyEntity.php` into your extension at `CRM/MyExtension/DAO/MyEntity.php`.
 
     1. Within your extension, create an `sql` directory and create two empty files within it: `auto_install.sql` and `auto_uninstall.sql`.
 
