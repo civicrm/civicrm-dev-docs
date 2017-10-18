@@ -363,7 +363,7 @@ This creates three files:
     structure, see the [CiviReport Reference](/framework/civireport.md).
 -   `templates/CRM/Myextension/Form/Report/MyReport.tpl` contains the report's HTML template. This template usually delegates responsibility to a core template and does not need to be edited.
 
-If one of the existing reports is close to meeting your needs, but requires further PHP or SQL customization, you may simply make a new report based on that report. To copy a report, find the class-name of the original report within the `civicrm/CRM/Report/Form/` directory in the CiviCRM repository. Then run the `civix generate:report` command using the copy option from with your extension directory.
+If one of the existing reports is close to meeting your needs, but requires further PHP or SQL customization, you may simply make a new report based on that report. To copy a report, find the class-name of the original report within the `civicrm/CRM/Report/Form/` directory in the CiviCRM repository. Then run the `civix generate:report` command using the copy option from within your extension directory.
 
 For example, this command will copy the activity report in the class `CRM_Report_Form_Activity` to a new report within your extension: 
 
