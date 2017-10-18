@@ -130,16 +130,16 @@ echo Civi::resources()->addScriptFile('civicrm.bower', 'jquery/dist/jquery.min.j
 
 ## Local data files
 
-CiviCRM also needs a files directory for storing a variety of site-specific
-files, including uploaded files, logs, and the template cache.  This directory
-is located away from the codebase in a location that is unlikely to be
-overwritten during upgrades.
+CiviCRM also needs a directory for storing a variety of site-specific data
+files, such as logs, caches, and uploads.  This directory is located outside
+the main codebase -- in a location that can be safely preserved during
+upgrades.
 
 ### Drupal and Backdrop
 
-CiviCRM stores its files in a folder named `civicrm` within the site-specific
-files directory.  This is commonly `sites/default/files/civicrm`, though it
-could be `files/civicrm`, `sites/example.org/files/civicrm`, or another
+CiviCRM stores its files in a folder named `civicrm` within the Drupal
+`files` directory.  This is commonly `sites/default/files/civicrm`, though
+it could be `files/civicrm`, `sites/example.org/files/civicrm`, or another
 folder determined by the system administrator.
 
 ### Joomla
