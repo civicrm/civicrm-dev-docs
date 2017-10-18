@@ -44,6 +44,7 @@ pages:
     - Payment Processors: extensions/payment-processors/index.md
     - Payment Processor Types: extensions/payment-processors/types.md
     - Creating a Payment Processor: extensions/payment-processors/create.md
+  - CMS-specific development: extensions/cms-specific.md
 - API:
   - APIv3 Intro: api/index.md
   - APIv3 Usage: api/usage.md
