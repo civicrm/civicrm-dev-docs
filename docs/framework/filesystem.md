@@ -135,6 +135,9 @@ files, such as logs, caches, and uploads.  This directory is located outside
 the main codebase -- in a location that can be safely preserved during
 upgrades.
 
+This folder is generically referred to as `[civicrm.files]`, but the actual
+path is chosen to align with each CMS's conventions.
+
 ### Drupal and Backdrop
 
 CiviCRM stores its files in a folder named `civicrm` within the Drupal
@@ -151,6 +154,27 @@ The CiviCRM local files are within the `media/civicrm` directory.
 Newly-installed CiviCRM sites on WordPress have their local files at
 `wp-content/uploads/civicrm`.  Many older sites use the previous default:
 `wp-content/plugins/files/civicrm`.
+
+### Tip: Sub-directories
+
+The `[civicrm.files]` is a base which contains several sub-directories.
+These folders include:
+
+
+| Code Name            | Typical Path                         | Recommended Access Level                        | Data Access Patterns
+| -------------------- | ------------------------------------ | ----------------------------------------------- |-----------------------------------------------------------------
+| `configAndLogDir`    | `[civicrm.files]/ConfigAndLog`       | Prohibit all web access                         | Writes and reads should be infrequent, unless there are errors/warnings.
+| `imageUploadDir`     | `[civicrm.files]/persist/contribute` | Allow file reads but prohibit directory listing | Writes and reads vary widely (depending on use-case/config).
+| `templateCompileDir` | `[civicrm.files]/templates_c`        | Prohibit all web access                         | Writes should be infrequent. Reads are very frequent.
+| `uploadDir`          | `[civicrm.files]/upload`             | Prohibit all web access                         | Writes and reads vary widely (depending on use-case/config).
+
+!!! tip "Advanced filesystem and web server configurations"
+
+    Each folder has different requirements (with respect to permissions,
+    read-write frequency, etc).  Most Apache-based web servers respect the `.htaccess`
+    and `index.html` files, and these are configured automatically.
+    However, some web-servers don't support these, so CiviCRM's
+    status-check shows warnings if it detects unexpected configuration.
 
 ### Tip: Programmatic lookup
 
