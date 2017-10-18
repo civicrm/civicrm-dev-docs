@@ -112,7 +112,7 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 }
 ```
 
-!!! note "Note: Parmaters and caching"
+!!! note "Note: Parameters and caching"
     Each combination of (`$asset`,`$params`) will be cached separately.
 
 !!! tip "Tip: Economize on parameters"
@@ -123,7 +123,7 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 ## Other considerations
 
 !!! note "Compare: How does AssetBuilder differ from [Assetic](https://github.com/kriswallsmith/assetic)?"
-    Both are written in PHP, but they address differet parts of the process:
+    Both are written in PHP, but they address different parts of the process:
 
      * `AssetBuilder` provides URL-routing, caching, and parameterization.
        Its strength is defining a *lazy lifecycle* for the assets.
@@ -141,3 +141,74 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 
     It may be possible to fix this by computing URL digests differently, but
     (at time of writing) we don't have a need/use-case.
+
+## CSS Example
+
+In this example, we want to use the CiviCRM logo image provided by core in our extension's CSS.  Extensions can refer to their own files using relative paths, but given the variety of possible installation locations for both CiviCRM core and extensions then neither relative or absolute paths work to refer to a core file.
+
+Using asset builder, we can create a template file, process it at run time then serve up the result to our page.
+
+Our module name is `org.example.myextension`
+
+Create `css/my_css_template.css` with content:
+
+```css
+.logo_class {background: url(LOGO_URL)}
+```
+
+In `myextension.php`:
+
+```php
+function myextension_civicrm_coreResourceList(&$list, $region) {
+   ...
+   // To include the file without any processing we could use:
+   // CRM_Core_Resources::singleton()->addStyleFile('org.example.myextension', 'css/my_css.css');
+   // replace that with the following:
+   
+   // use the asset_builder service to get the url of an asset labeled 'mycss'
+   $url = \Civi::service('asset_builder')->getUrl('mycss');
+
+   // load the processed style on the page 
+   CRM_Core_Resources::singleton()->addStyleUrl($url);
+}
+
+// Use the buildAsset hook to process the css template
+function myextension_civicrm_buildAsset($asset, $params, &$mimetype, &$content) {
+  // Check for the asset of interest
+  if ($asset !== 'mycss') return;
+
+  // Find the path to our template css file
+  $path = \Civi::resources()->getPath('org.example.myextension', 'css/my_css_template.css');
+
+  // Read in the template
+  $raw = file_get_contents($path);
+
+  // Get the URL of the image we want from Core
+  // Note that the 'civicrm' string here is a special to refer to the installation location of the core files
+  $url = \Civi::resources()->getUrl('civicrm', 'i/logo_sm.png');
+  
+  // Replace the LOGO_URL token in the file with the actual url
+  // Note that $content is passed by reference to this hook function
+  $content = str_replace('LOGO_URL', $url, $raw);
+  
+  // Set the mimetype appropriately for the type of content
+  // Note that $mimetype is passed by reference to this hook function
+  $mimetype = 'text/css';
+}
+```
+
+Check it is functioning correctly with:
+```
+$ cv ev '$x = \Civi::service("asset_builder")->render("mycss"); echo $x["content"];' 
+```
+
+To see the generated URL use:
+```
+$ cv ev 'return \Civi::service("asset_builder")->getURL("mycss");' 
+```
+
+Notes:
+
+1. The result is cached normally so this does not add significant overhead.
+
+1. If your extension is providing multiple CSS files, they can be combined and processed together by looping around the `file_get_contents()` line reducing the number of http requests your extension pages need to make.
