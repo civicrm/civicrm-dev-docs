@@ -3,6 +3,55 @@
 CiviCRM uses the [Drupal Coding Standards](https://www.drupal.org/docs/develop/standards) as a basis for the coding standards used in civicrm-core code and in civicrm-drupal code.
 The standards are version-independent and all new code should follow the current standards regardless of version. 
 
+## Brief example
+
+```php
+/**
+ * The example class demonstrates Drupal/Civi code convention.
+ */
+class CRM_Coding_Example implements CRM_Coding_ExampleInterface {
+
+  /**
+   * Increase the size of a file exponentially.
+   *
+   * @param string $file
+   *   The full file path. (Ex: '/tmp/myfile.txt')
+   * @param int $power
+   *   The number of times to double the size.
+   * @return bool
+   *   Whether the operation succeeded.
+   */
+  public function expandFile($file, $power) {
+    $keyValuePairs = array(
+      'first' => 1,
+      'second' => 2,
+    );
+
+    if ($power < 4) {
+      echo "You got it, boss.\n";
+    }
+    elseif ($power < 10) {
+      echo "Whoa, that's gonna be a big file!\n";
+    }
+    else {
+      echo "Whoa, that's gonna be a really big file!\n";
+    }
+
+    for ($i = 0; $i < $power; $i++) {
+      $oldContent = file_get_contents($file);
+      if (file_put_contents($file, $oldContent . $oldContent) === FALSE) {
+        return FALSE;
+      }
+    }
+
+    return TRUE;
+  }
+
+}
+```
+
+For more details, see [the full series of example snippets](https://www.drupal.org/docs/develop/standards/coding-standards) from `drupal.org`.
+
 ## Deviations from the Drupal Coding Standards {:#vs-drupal}
 
 There are two deviations from the Drupal Coding standards that apply in CiviCRM.
