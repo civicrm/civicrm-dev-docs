@@ -167,6 +167,8 @@ These folders include:
 | `imageUploadDir`     | `[civicrm.files]/persist/contribute` | Allow file reads but prohibit directory listing | Writes and reads vary widely (depending on use-case/config).
 | `templateCompileDir` | `[civicrm.files]/templates_c`        | Prohibit all web access                         | Writes should be infrequent. Reads are very frequent.
 | `uploadDir`          | `[civicrm.files]/upload`             | Prohibit all web access                         | Writes and reads vary widely (depending on use-case/config).
+| `customFileUploadDir` | `[civicrm.files]/custom`            | Prohibit all web access                         | Writes and reads vary widely (depending on use-case/config).
+| `extensionsDir`      | `[civicrm.files]/ext`                | Allow file reads but prohibit directory listing | Writes should be infrequent. Reads are very frequent.
 
 !!! tip "Advanced filesystem and web server configurations"
 
