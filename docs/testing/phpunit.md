@@ -98,8 +98,9 @@ rollback automatically at the end of the test.
 
 !!! warning
     Schema changes in your test will cause an auto-commit of all changes, and
-    therefore the transaction will be ignored. If your tests create custom tables
-    or change the database schema please be aware you may need to manually reset
-    it.
+    therefore the transaction will be ignored. This includes `TRUNCATE TABLE`,
+    because this implicitly drops and re-creates the table. If your tests create
+    custom tables or change the database schema please be aware you may need to
+    manually reset it.
 
 [civi-test-class]: https://github.com/civicrm/org.civicrm.testapalooza/blob/master/civi-test.md
