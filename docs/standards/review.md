@@ -89,11 +89,14 @@ _Standard code: `rg-pkg`_
 
 If the PR adds a new top-level file, new top-level folder, or novel file-type, consider whether "distmaker" will properly convey the file in `*.zip/*.tar.gz` builds.
 
+If the PR *removes* a dangerous file, then common package handling may not be enough to remove the file. (This is particularly for Joomla users, but also true for with
+manual file management on other platforms.) Consider updating `CRM_Utils_Check_Component_Security::checkFilesAreNotPresent`.
+
 ### Permissions {:#rg-perm}
 
 _Standard code: `rg-perm`_
 
-If the PR changes the permissions model, are we sure that demo/test builds and existing installations will continue to work the same?
+If the PR changes the permissions model (by adding, removing, or repurposing a permission), are we sure that demo/test builds and existing installations will continue to work as expected?
 
 ### Security {:#rg-sec}
 
