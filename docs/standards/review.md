@@ -9,22 +9,6 @@ write a long, bespoke blurb.
 !!! tip
     The codes below (e.g. `r-jira`) are here to make it easier to reference these standards when chatting with others about PR review.
 
-### Checklist template {:#checklist}
-
-If you want to quickly indicate which criteria you have evaluated while reviewing a PR, you can copy-paste the following markdown template into your comment and check the boxes as necessary.
-
-```markdown
-* [ ] Ensure that the PR links to a JIRA issue ([`r-jira`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-jira))
-* [ ] Examine test results ([`r-test`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-test))
-* [ ] Read the code ([`r-read`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-read))
-* [ ] Try it out ([`r-run`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-run))
-* [ ] Assess impact on users ([`r-users`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-users))
-* [ ] Assess impact on extensions/integrations ([`r-ext`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-ext))
-* [ ] Assess impact on core ([`r-core`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-core))
-* [ ] Check for tests or maintainability ([`r-maint`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-maint))
-* [ ] Check for documentation ([`r-doc`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-doc))
-```
-
 ## Common standards
 
 ### JIRA {:#r-jira}
