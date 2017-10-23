@@ -245,3 +245,8 @@ yourusername      git@github.com:yourusername/civicrm-core.git (push)
 ```
 
 Authors should also not put any comments within the examples themselves, whereas any comments should go outside of the code block in regular paragraphs. Where possible each command should be its own comment block. When it is crucial for the user to understand the directory in which to run the command, include a separate code block before hand with a `cd` command.
+
+!!! tip "Write portable shell commands"
+
+    Most system administrators use `bash` as their interactive command-line, but some administrators customize their systems to use `csh`, `zsh`, or similar. 
+    These systems are usually very similar -- but may differ if there are complex conditionals, job-controls, etc. See [bash-hackers.org](http://wiki.bash-hackers.org/scripting/nonportable) for tips on writing portable shell commands.
