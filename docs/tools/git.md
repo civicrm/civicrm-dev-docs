@@ -86,17 +86,21 @@ When filing a pull-request, use a descriptive subject. These are good examples:
 
 A few elements to include:
 
+ * **Acronyms** - Use zero or more of the [acronyms](#acronymns) below to flag your PR with certain characteristics.
  * **CRM-_XXXXX_** - This is a reference to the [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will setup crosslinks between JIRA and GitHub.
  * **Description** - Provide a brief description of what the pull-request does.
- * **(WIP)** - "Work in Progress" - If you are still developing a set of
-   changes, it may be useful to submit a pull-request and flag it as
-   `(WIP)`. This allows you to have discussion with other developers and
-   check test results. Once the change is ready, update the subject line
-   to remove `(WIP)`.
- * **(NFC)** - "Non-Functional Change" - Most patches are designed to
-   change functionality (e.g. fix an error message or add a new button).
-   However, some changes are non-functional -- e.g. they cleanup the
-   code-style, improve the comments, or improve the test-suite.
+
+### Acronyms within PR subjects {:#acronymns}
+
+You can put these acronyms at the beginning of your PR subject to flag it as such.
+
+#### (WIP) - "Work in Progress" {:#wip}
+
+If you are still developing a set of changes, it may be useful to submit a pull-request and flag it as `(WIP)`. This allows you to have discussion with other developers and check test results. Once the change is ready, update the subject line to remove `(WIP)`.
+   
+#### (NFC) - "Non-Functional Change" {:#nfc}
+
+Most patches are designed to change functionality (e.g. fix an error message or add a new button). However, some changes are non-functional -- e.g. they cleanup the code-style, improve the comments, or improve the test-suite. 
 
 ### Pull request scope {:#pr-scope}
 

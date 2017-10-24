@@ -234,11 +234,12 @@ pages:
     - Extending Smarty: framework/templates/extending-smarty.md
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
-- Coding Standards:
+- Development Standards:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
   - Javascript Reference: standards/javascript.md
   - Database Standards: standards/database.md
+  - Review Standards: standards/review.md
 - Documentation:
   - Writing Documentation: documentation/index.md
   - Documenting Extensions: documentation/extensions.md
