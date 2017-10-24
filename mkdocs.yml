@@ -101,6 +101,7 @@ pages:
     - <del>hook_civicrm_validate</del>: hooks/hook_civicrm_validate.md
     - hook_civicrm_validateForm: hooks/hook_civicrm_validateForm.md
   - GUI Hooks:
+    - hook_civicrm_alterEntityRefParams: hooks/hook_civicrm_alterEntityRefParams.md
     - hook_civicrm_alterMenu: hooks/hook_civicrm_alterMenu.md
     - hook_civicrm_buildAmount: hooks/hook_civicrm_buildAmount.md
     - hook_civicrm_caseSummary: hooks/hook_civicrm_caseSummary.md
@@ -119,7 +120,6 @@ pages:
     - <del>hook_civicrm_tabs</del>: hooks/hook_civicrm_tabs.md
     - hook_civicrm_tabset: hooks/hook_civicrm_tabset.md
     - hook_civicrm_xmlMenu: hooks/hook_civicrm_xmlMenu.md
-    - hook_civicrm_alterEntityRefParams: hooks/hook_civicrm_alterEntityRefParams.md
   - Mail Hooks:
     - hook_civicrm_alterMailContent: hooks/hook_civicrm_alterMailContent.md
     - hook_civicrm_alterMailer: hooks/hook_civicrm_alterMailer.md
