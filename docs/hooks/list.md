@@ -11,19 +11,19 @@
 
 This is an overview list of all available hooks, listed by category.
 
-## Batch hooks
+## Batch Hooks
 
 * **[hook_civicrm_batchItems](/hooks/hook_civicrm_batchItems.md)** - called when a CSV batch export file is about to be generated.
 * **[hook_civicrm_batchQuery](/hooks/hook_civicrm_batchQuery.md)** - called when the query of CSV batch export is generated.
 
-## Case hooks
+## Case Hooks
 
 * **[hook_civicrm_caseChange](/hooks/hook_civicrm_caseChange.md)** - fires whenever a record in a case changes.
 * **[hook_civicrm_caseTypes](/hooks/hook_civicrm_caseTypes.md)** - defines available case types.
 * **[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge.md)** - called after a case merge happens.
 * **[hook_civicrm_pre_case_merge](/hooks/hook_civicrm_pre_case_merge.md)** - called before a case merge happens.
 
-## Database hooks
+## Database Hooks
 
 * **[hook_civicrm_copy](/hooks/hook_civicrm_copy.md)** - called after a CiviCRM object (Event, ContributionPage, Profile) has been copied.
 * **[hook_civicrm_custom](/hooks/hook_civicrm_custom.md)** - called *after* the database write on a custom table.
@@ -35,11 +35,11 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_triggerInfo](/hooks/hook_civicrm_triggerInfo.md)** - allows you to define MySQL triggers.
 * **[hook_civicrm_referenceCounts](/hooks/hook_civicrm_referenceCounts.md)** - called to determine the reference-count for a record.
 
-## Entity hooks
+## Entity Hooks
 
 * **[hook_civicrm_entityTypes](/hooks/hook_civicrm_entityTypes.md)** - called for declaring managed entities via API.
 
-## Extension lifecycle hooks
+## Extension Lifecycle Hooks
 
 * **[hook_civicrm_disable](/hooks/hook_civicrm_disable.md)** - called when an extension is disabled.
 * **[hook_civicrm_enable](/hooks/hook_civicrm_enable.md)** - called when an extension is re-enabled.
@@ -48,7 +48,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_uninstall](/hooks/hook_civicrm_uninstall.md)** - called when an extension is uninstalled.
 * **[hook_civicrm_upgrade](/hooks/hook_civicrm_upgrade.md)** - called when an administrator visits the "Manage Extensions" screen to determine if there are any pending upgrades.
 
-## Form hooks
+## Form Hooks
 
 * **[hook_civicrm_alterContent](/hooks/hook_civicrm_alterContent.md)** - invoked after all the content of a CiviCRM form or page is generated and allows for direct manipulation of the generated content.
 * **[hook_civicrm_alterTemplateFile](/hooks/hook_civicrm_alterTemplateFile.md)** - invoked while selecting the tpl file to use to render the page.
@@ -59,8 +59,9 @@ This is an overview list of all available hooks, listed by category.
 * **[<del>hook_civicrm_validate</del>](/hooks/hook_civicrm_validate.md)** - **(Removed)** invoked during all CiviCRM form validation. An array of errors detected is returned. Else we assume validation succeeded.
 * **[hook_civicrm_validateForm](/hooks/hook_civicrm_validateForm.md)** - allows you to customize the logic used to validate forms.
 
-## GUI hooks
+## GUI Hooks
 
+* **[hook_civicrm_alterEntityRefParams](/hooks/hook_civicrm_alterEntityRefParams.md)** - called when an `entityRef` field is rendered in a form, which allows you to modify the parameters used to fetch options for this kind of field.
 * **[hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md)** - called when building CiviCRM's list of HTTP routes and should be used when you want to register custom paths or URLS.
 * **[hook_civicrm_buildAmount](/hooks/hook_civicrm_buildAmount.md)** - called when building the amount structure for a Contribution or Event Page, allowing you to modify the set of radio buttons representing amounts for contribution levels and event registration fees.
 * **[hook_civicrm_caseSummary](/hooks/hook_civicrm_caseSummary.md)** - called when the manage case screen is displayed, and it allows the injection of label/value pairs which are rendered inside divs underneath the existing summary table.
@@ -79,9 +80,8 @@ This is an overview list of all available hooks, listed by category.
 * **[<del>hook_civicrm_tabs</del>](/hooks/hook_civicrm_tabs.md)** - deprecated in 4.7 in favor of [hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md).
 * **[hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md)** - called when composing the tabs interface used for contacts, contributions and events.
 * **[hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md)** - called when building CiviCRM's menu structure, which is used to render urls in CiviCRM.
-* **[hook_civicrm_alterEntityRefParams](/hooks/hook_civicrm_alterEntityRefParams.md)** - called when building CiviCRM's entityRef field is rendered, allowing you to modify the entityRef parameters to fetch select options as per your need.
 
-## Mail hooks
+## Mail Hooks
 
 * **[hook_civicrm_alterMailContent](/hooks/hook_civicrm_alterMailContent.md)** - called after getting the content of the mail and before tokenizing it.
 * **[hook_civicrm_alterMailer](/hooks/hook_civicrm_alterMailer.md)** - called when CiviCRM prepares an email driver class to handle outbound message delivery.
@@ -93,7 +93,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_postMailing](/hooks/hook_civicrm_postMailing.md)** - called at the successful completion of a bulk mailing done through CiviMail.
 * **[hook_civicrm_unsubscribeGroups](/hooks/hook_civicrm_unsubscribeGroups.md)** - called when CiviCRM receives a request to unsubscribe a user from a mailing.
 
-## Permission hooks
+## Permission Hooks
 
 * **[hook_civicrm_aclGroup](/hooks/hook_civicrm_aclGroup.md)** - called when composing the ACL to restrict access to civicrm entities (civicrm groups, profiles and events).
 * **[hook_civicrm_aclWhereClause](/hooks/hook_civicrm_aclWhereClause.md)** - called when composing the ACL where clause to restrict visibility of contacts to the logged in user.
@@ -102,24 +102,24 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_permission_check](/hooks/hook_civicrm_permission_check.md)** - called to dynamically alter permissions based on conditions or external criteria.
 * **[hook_civicrm_selectWhereClause](/hooks/hook_civicrm_selectWhereClause.md)** - called when executing a SELECT query.
 
-## Profile hooks
+## Profile Hooks
 
-* **[hook_civicrm_buildProfile](/hooks/hook_civicrm_buildProfile.md)** - called while preparing a profile form.
+* **[hook_civicrm_buildProfile](/hooks/hook_civicrm_buildProfile.md)** - called while preparing a profile form. This form allows for extension authors to add various scripts onto the profile pages. Note that `hook_civicrm_buildForm` is not fired for profile pages.
 * **[hook_civicrm_buildUFGroupsForModule](/hooks/hook_civicrm_buildUFGroupsForModule.md)** - called when ufgroups (profiles) are being built for a module.
 * **[hook_civicrm_processProfile](/hooks/hook_civicrm_processProfile.md)** - called when processing a valid profile form submission (e.g. for "civicrm/profile/create" or "civicrm/profile/edit").
 * **[hook_civicrm_searchProfile](/hooks/hook_civicrm_searchProfile.md)** - called while preparing a list of contacts (based on a profile).
 * **[hook_civicrm_validateProfile](/hooks/hook_civicrm_validateProfile.md)** - called while validating a profile form submission.
 * **[hook_civicrm_viewProfile](/hooks/hook_civicrm_viewProfile.md)** - called while preparing a read-only profile screen.
 
-## Report hooks
+## Report Hooks
 
 * **[hook_civicrm_alterReportVar](/hooks/hook_civicrm_alterReportVar.md)** - used to add or modify display columns and filters.
 
-## SMS hooks
+## SMS Hooks
 
 * **[hook_civicrm_inboundSMS](/hooks/hook_civicrm_inboundSMS.md)** - called when an inbound SMS has been received, processed by the provider extension, but not matched or processed by CiviSMS.
 
-## Uncategorized hooks
+## Uncategorized Hooks
 
 * **[hook_civicrm_alterBadge](/hooks/hook_civicrm_alterBadge.md)** - allows you to modify the content and format of name badges.
 * **[hook_civicrm_alterBarcode](/hooks/hook_civicrm_alterBarcode.md)** - allows you to modify the content that is encoded in barcode.
