@@ -79,6 +79,7 @@ This is an overview list of all available hooks, listed by category.
 * **[<del>hook_civicrm_tabs</del>](/hooks/hook_civicrm_tabs.md)** - deprecated in 4.7 in favor of [hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md).
 * **[hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md)** - called when composing the tabs interface used for contacts, contributions and events.
 * **[hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md)** - called when building CiviCRM's menu structure, which is used to render urls in CiviCRM.
+* **[hook_civicrm_alterEntityRefParams](/hooks/hook_civicrm_alterEntityRefParams.md)** - called when building CiviCRM's entityRef field is rendered, allowing you to modify the entityRef parameters to fetch select options as per your need.
 
 ## Mail hooks
 
