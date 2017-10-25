@@ -25,7 +25,7 @@ If the [automated tests](/testing/continuous-integration.md) come back with any 
 
 ### Code quality {:#r-code}
 
-_Standard code: `r-read`_
+_Standard code: `r-code`_
 
 Is it understandable? Does it follow common conventions? Does it fit in context? If it changes a difficult section of code -- does it tend to make that section better or worse?
 
