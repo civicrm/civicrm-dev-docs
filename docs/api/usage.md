@@ -229,5 +229,5 @@ You can use a CMS username in lieu of a contact ID by prefacing it with `@user:`
 
 ```bash
 cv api contact.get id=123
-cv api contact.get id=@user:demo
+cv api contact.get id=@user:james
 ```
