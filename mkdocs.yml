@@ -196,7 +196,7 @@ pages:
   - Permissions: security/permissions.md
   - Access Control: security/access.md
   - Reporting Vulnerabilities: security/reporting.md
-- Framework Reference:
+- Framework:
   - AJAX Pages and Forms Reference: framework/ajax.md
   - AngularJS:
     - AngularJS Intro: framework/angular/index.md
@@ -234,10 +234,10 @@ pages:
     - Extending Smarty: framework/templates/extending-smarty.md
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
-- Development Standards:
+- Standards:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
-  - Javascript Reference: standards/javascript.md
+  - Javascript Standards: standards/javascript.md
   - Database Standards: standards/database.md
   - Review Standards: standards/review.md
 - Documentation:
