@@ -222,3 +222,12 @@ cv api contact.get first_name=Alice last_name=Roberts
 ## API Security
 
 API has security mesasures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Doucmentation](/security/permissions.md).
+
+## API Lookups by Username
+
+You can use a CMS username in lieu of a contact ID by prefacing it with `@user:`.  For instance, if the user "james" has a CiviCRM contact ID of 123, these statements are identical:
+
+```bash
+cv api contact.get id=123
+cv api contact.get id=@user:demo
+```
