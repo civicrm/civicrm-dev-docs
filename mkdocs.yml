@@ -235,11 +235,11 @@ pages:
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
 - Standards:
-  - General: standards/index.md
-  - PHP: standards/php.md
-  - Javascript: standards/javascript.md
-  - Database: standards/database.md
-  - Review: standards/review.md
+  - Coding Standards: standards/index.md
+  - PHP Standards: standards/php.md
+  - Javascript Standards: standards/javascript.md
+  - Database Standards: standards/database.md
+  - Review Standards: standards/review.md
 - Documentation:
   - Writing Documentation: documentation/index.md
   - Documenting Extensions: documentation/extensions.md
