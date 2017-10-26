@@ -6,6 +6,7 @@ extensions/basics extensions
 api/general api
 hooks/hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
 testing/setup testing/index
+testing/javascript testing/karma
 framework/schema-definition framework/database/schema-definition
 api/params api/options
 testing/selinium testing/selenium

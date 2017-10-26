@@ -184,7 +184,7 @@ pages:
 - Testing:
   - Testing: testing/index.md
   - PHPUnit Tests: testing/phpunit.md
-  - Javascript Tests: testing/javascript.md
+  - Karma (JS) Tests: testing/karma.md
   - Selenium Tests: testing/selenium.md
   - Continuous Integration: testing/continuous-integration.md
   - Upgrade Tests: testing/upgrades.md

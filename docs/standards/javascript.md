@@ -165,7 +165,7 @@ CiviCRM has a small set up of Qunit which is an automated testing system. It's g
 
 ### Karma
 
-For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request. More information on karma can be found in the [Javascript testing](/testing/javascript.md) section of this guide
+For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request. More information on karma can be found in the [Karama (JS)](/testing/karma.md) section of this guide
 
 ## Javascript in Markup
 
