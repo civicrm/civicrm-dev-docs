@@ -155,17 +155,14 @@ When your script file is being added to the page by `CRM_Core_Resources` it will
 
 CiviCRM ships with a number of UI widgets and plugins to create standardized "look and feel" More information can be found in [UI Elements Reference](/framework/ui.md).
 
-## Test Tools
+## Automated testing
 
-CiviCRM has uses a couple of main tools to test Javascript Code when a pull request is made against code. This happens along side the [code style checks](/standards/javascript.md#coding-standards) which are as mentioned above against JsHint
+CiviCRM's testing regimen includes:
 
-### Qunit
-
-CiviCRM has a small set up of Qunit which is an automated testing system. It's generally inspired by the xUnit family (JUnit, PHPUnit, etc) and allows you to test low- and mid-level component functionality. It's most suitable for testing pure Javascript components. For a general introduction, see the [README](https://github.com/civicrm/civicrm-core/blob/master/tests/qunit/README.txt) and [example test](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/example) that ship with CiviCRM. It is currently only run manually through a web broweser.
-
-### Karma
-
-For testing CiviCRM's Angular implementation in Core, CiviCRM has intergrated some Karma tests into the standard test suite that is run against each Pull request. More information on karma can be found in the [Karama (JS)](/testing/karma.md) section of this guide
+ * (Linting) [JSHint](/standards/javascript.md#coding-standards)
+ * (Unit testing) [Karma and Jasmine](/testing/karma.md)
+ * (End-to-end testing, for AngularJS) [Protractor and Jasmine](/testing/protractor.md)
+ * (Deprecated; end-to-end testing) [QUnit](/testing/qunit.md)
 
 ## Javascript in Markup
 
