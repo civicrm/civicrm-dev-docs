@@ -63,7 +63,7 @@ These requests are different to doing a Chained API call as they are making simu
 
 #### Tests
 
-Qunit tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
+[QUnit](/testing/qunit.md) tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
 
 You can run the tests within a web browser by visiting `/civicrm/dev/qunit/civicrm/crm-api3` within a CiviCRM [development installation](/tools/civibuild.md).
 
