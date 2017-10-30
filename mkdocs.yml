@@ -186,11 +186,11 @@ pages:
   - Continuous Integration: testing/continuous-integration.md
   - PHP:
     - PHPUnit Tests: testing/phpunit.md
-    - Codeception Tests: testing/codeception.md
+    # - Codeception Tests: testing/codeception.md
     - Selenium Tests: testing/selenium.md
   - Javascript:
     - Karma Tests: testing/karma.md
-    - Protractor Tests: testing/protractor.md
+    # - Protractor Tests: testing/protractor.md
     - QUnit Tests: testing/qunit.md
   - Other:
     - Upgrade Tests: testing/upgrades.md

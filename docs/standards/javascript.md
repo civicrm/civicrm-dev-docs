@@ -161,7 +161,7 @@ CiviCRM's testing regimen includes:
 
  * (Linting) [JSHint](/standards/javascript.md#coding-standards)
  * (Unit testing) [Karma and Jasmine](/testing/karma.md)
- * (End-to-end testing, for AngularJS) [Protractor and Jasmine](/testing/protractor.md)
+ <!-- * (End-to-end testing, for AngularJS) [Protractor and Jasmine](/testing/protractor.md) -->
  * (Deprecated; end-to-end testing) [QUnit](/testing/qunit.md)
 
 ## Javascript in Markup

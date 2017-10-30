@@ -63,11 +63,11 @@ Depending on the scope of the test and the relevant language, one chooses among 
       </td>
       <td>
         <a href="phpunit">PHPUnit</a><br/>
-        <a href="codeception">Codeception</a><br/>
+        <!-- <a href="codeception">Codeception</a><br/> -->
         <s><a href="webtest">Selenium</a></s>
       </td>
       <td>
-        <a href="protractor">Protractor</a><br/>
+        <!-- <a href="protractor">Protractor</a><br/> -->
         <s><a href="qunit">QUnit</a></s>
       </td>
       <td>
