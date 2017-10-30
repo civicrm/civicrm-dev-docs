@@ -14,8 +14,10 @@ PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this t
 ## Suites
 
 PHPUnit tests are grouped together into *suites*.  For example, the `CRM` suite includes the tests `CRM_Core_RegionTest`,
-`CRM_Import_Datasource_CsvTest`, and many others.  Each suite has its own coding conventions.  For example, all tests in the `CRM` suite extend the
-base class `CiviUnitTestCase` and execute on the headless database.
+`CRM_Import_Datasource_CsvTest`, and many others.
+
+Each suite has its own coding conventions.  For example, all tests in the `CRM` suite extend the base class `CiviUnitTestCase` and execute on the
+headless database. They require a special environment variable (`CIVICRM_UF`).
 
 You'll find suites in many places, such as `civicrm-core`, `civicrm-drupal`, and various extensions. In `civicrm-core`, the main suites are:
 
@@ -36,11 +38,10 @@ $ cd /path/to/my/project
 $ phpunit4 ./tests/MyTest.php
 ```
 
-Note the command involves a few elements, such as the base-path of the project, the name of the PHPUnit binary, and the relative path of the test.
+Note how the command involves a few elements, such as the base-path of the project, the name of the PHPUnit binary, and the relative path of the test.
 
 Let's apply this to a more realistic example.  Suppose we used `civibuild` to create a Drupal 7 site with a copy of `civicrm-core` in the typical
-folder, `sites/all/modules/civicrm`.  Test files are stored under `./tests/phpunit`.  To run a typical test like `CRM_Core_RegionTest`, you might
-execute:
+folder, `sites/all/modules/civicrm`.  To run a typical test file like `tests/phpunit/CRM/Core/RegionTest.php`, you might execute:
 
 ```bash
 $ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
