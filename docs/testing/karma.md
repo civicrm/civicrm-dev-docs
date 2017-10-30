@@ -3,23 +3,26 @@
     The test suites require a small amount of [setup](/testing/index.md#setup).  If your system was created via [buildkit](/tools/buildkit.md) and
     [civibuild](/tools/civibuild.md), then it was handled automatically.
 
-Javascript tests ensure that CiviCRM's JS logic is working as expected – 
-for example, ensuring that a custom JS widget adapts correctly to different inputs.
+[Karma] is a Javascript testing tool which executes [Jasmine] tests on the command-line.
+It was introduced  in Civi v4.6 in tandem with several AngularJS-based UIs.
 
-Buildkit includes the tools required for running the tests. Alternatively, 
-download Karma and Jasmine by running "npm install" in the civicrm directory.
+[Buildkit](/tools/buildkit.md) includes a copy of `karma`. Alternatively,
+you can download it by running `npm install` in the `civicrm` directory.
 
-These test were introduced in Civi v4.6 and are written in the AngularJS 
-conventions using [karma] and [jasmine].
+## Running Karma
 
-## Running Javascript Tests
+If you're actively working on Javascript files or Karma tests, then you can
+start `karma` in a *watch* mode.  Any time you save a change to disk, it
+will automatically re-execute the tests.
 
 ```bash
 $ cd /path/to/civicrm
-$ npm test
+$ karma start
 ```
+
+## Running Karma (Other ways)
 
 You can also run the karma tests as they would be run by [Jenkins](/testing/continuous-integration.md) using [civi-test-run](/tools/civi-test-run.md).
 
-[karma]: https://karma-runner.github.io/1.0/index.html
-[jasmine]: https://jasmine.github.io/2.1/introduction.html
+[Karma]: https://karma-runner.github.io/1.0/index.html
+[Jasmine]: https://jasmine.github.io/2.1/introduction.html
