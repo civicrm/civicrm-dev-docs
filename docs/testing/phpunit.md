@@ -6,14 +6,18 @@
 [PHPUnit](https://phpunit.de/) tests ensure that CiviCRM's PHP logic is working as expected &mdash; for example,
 ensuring that the `Contact.create` API actually creates a contact.
 
+## Binary
+
+PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this tool is named `phpunit4`.  In other environments, it might be
+`phpunit` or `phpunit.phar`.
+
 ## Suites
 
-PHPUnit tests are written as *PHP classes* (such as `CRM_Core_RegionTest`) and grouped together into *suites* (such as `CRM`).  Each suite
-may follow different coding conventions.  For example, all tests in the `CRM` suite extend the base class `CiviUnitTestCase` and execute on the
-headless database.
+PHPUnit tests are grouped together into *suites*.  For example, the suite `CRM` includes the `CRM_Core_RegionTest`, `CRM_Import_Datasource_CsvTest`,
+and many others.  Each suite has its own coding conventions.  For example, all tests in the `CRM` suite extend the base class `CiviUnitTestCase` and
+execute on the headless database.
 
-The `civicrm-core` project includes these suites:
-
+You'll find suites in many places, such as `civicrm-core`, `civicrm-drupal`, and various extensions. In `civicrm-core`, the main suites are:
 
 | Suite   | Type | CMS | Typical Base Class | Comment |
 | ------- | ---- | --- | ------------------ | ----------- |
@@ -23,31 +27,29 @@ The `civicrm-core` project includes these suites:
 |`E2E`    | [E2E](/testing/index.md#e2e) |Agnostic|`CiviEndToEndTestCase`|Useful for command-line scripts and web-services|
 |`WebTest`| [E2E](/testing/index.md#e2e) |Drupal-only|`CiviSeleniumTestCase`|Useful for tests which require a full web-browser|
 
-Each extension may have its own suite(s).
-
 ## Running tests
 
-PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this tool is named `phpunit4`.  (In other environments, it might be
-`phpunit` or `phpunit.phar`.)
-
-Generally, to run any PHPUnit test, you should `cd` into the relevant project; then note the relative file-path of the test file; and run it with
-`phpunit4`.  A typical command might look like this:
+To run any PHPUnit test, use a command like this:
 
 ```bash
 $ cd /path/to/my/project
 $ phpunit4 ./tests/MyTest.php
 ```
 
-For the main `civicrm-core` project, you'll navigate to the main `civicrm` folder. Test files are stored under `./tests/phpunit`. For example,
-in Drupal 7, the canonical `civicrm` folder is `sites/all/modules/civicrm`, and a typical test is `CRM_Core_RegionTest`. You might run:
+Note the command involves a few elements, such as (a) the base-path of the project, (b) the name of the PHPUnit binary, and (c) the
+relative path of the test.
+
+For a more realistic example, suppose we have a Drupal 7 build with a copy of `civicrm-core` in the typical folder, `sites/all/modules/civicrm`.
+Test files are stored under `./tests/phpunit`. To run a typical test like `CRM_Core_RegionTest`, you might execute:
 
 ```bash
 $ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
 $ phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
 ```
 
-*However*, this command would only work on a [minimal unit test](/testing/index.md#unit).  `CRM_Core_RegionTest` is actually
-[headless](/testing/index.md#headless) (as are all tests in `CRM`).  Consequently, you may see an error message like this:
+*However*, this command would fail -- even though it's well-formed.  The command would work on a [minimal unit test](/testing/index.md#unit).  In
+this case, `CRM_Core_RegionTest` is actually [headless](/testing/index.md#headless) (as are all tests in `CRM`).  Consequently, you may see an error
+message like this:
 
 ```
 PHPUnit 4.8.21 by Sebastian Bergmann and contributors.
@@ -70,17 +72,31 @@ $ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
 $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
 ```
 
-!!! tip "PhpStorm"
+!!! tip "Using PhpStorm for local developmental"
 
     PhpStorm is an IDE which provides built-in support for executing tests with a debugger -- you can set breakpoints and inspect variables while the tests run.
 
     Once you've successfully run a test on the command-line, you can take it to the next level and [run the tests within PhpStorm](/tools/phpstorm.md#testing).
 
-!!! tip "civi-test-run"
+!!! tip "Using `civi-test-run` for continuous integration"
 
-    [civi-test-run](/tools/civi-test-run.md) is a grand unified wrapper which runs *all* CiviCRM test suites. It's particularly useful for *continuous-integration*.
+    In continuous-integration, one frequently executes a large number of tests from many suites.  [civi-test-run](/tools/civi-test-run.md) is a
+    grand unified wrapper which runs *all* CiviCRM test suites, and it is more convenient for use in CI scripts.
 
-!!! tip "Select tests using `AllTests.php`"
+!!! tip "Using the legacy wrapper"
+
+    Up through CiviCRM v4.6, the CiviCRM repository included a custom, forked version of PHPUnit. One would execute this command as:
+
+    ```bash
+    $ cd /path/to/civicrm
+    $ cd tools
+    $ ./scripts/phpunit CRM_Core_RegionTest
+    ```
+
+    As of v4.7+, there is no longer a fork, and you can use standard PHPUnit binaries. For backward compatibility,
+    v4.7+ still includes a thin wrapper script (`tools/scripts/phpunit`) which supports the old calling convention.
+
+!!! tip "Selecting tests with `AllTests.php`"
 
     In `civicrm-core`, there are several suites (`CRM`, `api_v3_`, etc). Each suite has a file named `AllTests.php` which can be used as follows:
 
@@ -89,7 +105,7 @@ $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
     $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/AllTests.php
     ```
 
-!!! tip "Select tests using `--filter`, `--group`, etc"
+!!! tip "Selecting tests with `--filter`, `--group`, etc"
 
     The PHPUnit CLI supports a number of [filtering options](https://phpunit.de/manual/current/en/textui.html). For example,
     execute a single test function, you can pass `--filter`, as in:
@@ -98,7 +114,7 @@ $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
     $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php --filter testOverride
     ```
 
-!!! tip "Select tests using PHPUNIT_TESTS"
+!!! tip "Selecting tests with PHPUNIT_TESTS"
 
     If you want to hand-pick a mix of tests to execute, set the environment variable `PHPUNIT_TESTS`.  This a space-delimited list of classes and
     functions. For example:
@@ -106,6 +122,7 @@ $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
     ```bash
     $ env PHPUNIT_TESTS="MyFirstTest::testFoo MySecondTest" CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/EnvTests.php
     ```
+
 
 ## Writing tests
 
