@@ -13,9 +13,9 @@ PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this t
 
 ## Suites
 
-PHPUnit tests are grouped together into *suites*.  For example, the suite `CRM` includes the `CRM_Core_RegionTest`, `CRM_Import_Datasource_CsvTest`,
-and many others.  Each suite has its own coding conventions.  For example, all tests in the `CRM` suite extend the base class `CiviUnitTestCase` and
-execute on the headless database.
+PHPUnit tests are grouped together into *suites*.  For example, the `CRM` suite includes the tests `CRM_Core_RegionTest`,
+`CRM_Import_Datasource_CsvTest`, and many others.  Each suite has its own coding conventions.  For example, all tests in the `CRM` suite extend the
+base class `CiviUnitTestCase` and execute on the headless database.
 
 You'll find suites in many places, such as `civicrm-core`, `civicrm-drupal`, and various extensions. In `civicrm-core`, the main suites are:
 
@@ -36,20 +36,18 @@ $ cd /path/to/my/project
 $ phpunit4 ./tests/MyTest.php
 ```
 
-Note the command involves a few elements, such as (a) the base-path of the project, (b) the name of the PHPUnit binary, and (c) the
-relative path of the test.
+Note the command involves a few elements, such as the base-path of the project, the name of the PHPUnit binary, and the relative path of the test.
 
-For a more realistic example, suppose we have a Drupal 7 build with a copy of `civicrm-core` in the typical folder, `sites/all/modules/civicrm`.
-Test files are stored under `./tests/phpunit`. To run a typical test like `CRM_Core_RegionTest`, you might execute:
+Let's apply this to a more realistic example.  Suppose we used `civibuild` to create a Drupal 7 site with a copy of `civicrm-core` in the typical
+folder, `sites/all/modules/civicrm`.  Test files are stored under `./tests/phpunit`.  To run a typical test like `CRM_Core_RegionTest`, you might
+execute:
 
 ```bash
 $ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
 $ phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
 ```
 
-*However*, this command would fail -- even though it's well-formed.  The command would work on a [minimal unit test](/testing/index.md#unit).  In
-this case, `CRM_Core_RegionTest` is actually [headless](/testing/index.md#headless) (as are all tests in `CRM`).  Consequently, you may see an error
-message like this:
+This command ought to work.  It's well-formed.  It *would* work in many cases -- but here it produces an error:
 
 ```
 PHPUnit 4.8.21 by Sebastian Bergmann and contributors.
@@ -64,15 +62,15 @@ There were 9 errors:
 exception 'RuntimeException' with message '_populateDB requires CIVICRM_UF=UnitTests'...
 ```
 
-Headless tests are designed to run with a fake CMS, and you must activate the fake CMS by setting the environment variable `CIVICRM_UF`. This revised
-command should correct the issue:
+What's going on?  The `CRM` suite (and its siblings, `api_v3` and `Civi`) has a special requirement: set the environment variable `CIVICRM_UF`.  This
+revised command should correct the issue:
 
 ```bash
 $ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
 $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
 ```
 
-!!! tip "Using PhpStorm for local developmental"
+!!! tip "Using PhpStorm for local debugging"
 
     PhpStorm is an IDE which provides built-in support for executing tests with a debugger -- you can set breakpoints and inspect variables while the tests run.
 
