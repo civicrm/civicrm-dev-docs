@@ -24,7 +24,7 @@ Note: When making a new JS component, consider designing a package which
 doesn't depend on CivCRM at all -- put it in its own repo and handle the
 testing yourself.  This is ideal for collaborating with developers on other
 projects (beside CiviCRM).  When the package is stable, you can import your
-package into CiviCRM's codebase (by way of "packages/" or "vendors/").
+package into CiviCRM's codebase (by way of `packages/` or `vendors/`).
 
 Note: The primary benefit of using this system -- rather than a vanilla
 QUnit deployment -- is that you can include dependencies based on Civi's
@@ -38,34 +38,34 @@ However, if you really need to write a Javascript component in CiviCRM core
 
 To see an example test-suite:
 
-1. Inspect the example code "civicrm/tests/qunit/example"
+1. Inspect the example code `civicrm/tests/qunit/example`
 
 2. Run the example code by logging into CiviCRM as administrator and
    visiting:
 
    http://localhost/civicrm/dev/qunit/civicrm/example
 
-   (Modify "localhost" to match your CiviCRM installation.)
+   (Modify `localhost` to match your CiviCRM installation.)
 
 To create a new test-suite:
 
-1. Determine a name for the new test-suite, such as "my-stuff".
+1. Determine a name for the new test-suite, such as `my-stuff`.
 
-2. Copy "civicrm/tests/qunit/example" to "civicrm/tests/qunit/my-stuff"
+2. Copy `civicrm/tests/qunit/example` to `civicrm/tests/qunit/my-stuff`
 
-3. Edit the "civicrm/tests/qunit/my-stuff/test.php" to load your JS file
+3. Edit the `civicrm/tests/qunit/my-stuff/test.php` to load your JS file
    (my-stuff.js) as well as any special dependencies (jQuery plugins,
    Backbone, etc).
 
-4. Edit the "civicrm/tests/qunit/my-stuff/test.js"
+4. Edit the `civicrm/tests/qunit/my-stuff/test.js`
 
 5. To run the test-suite, login to CiviCRM as administrator and visit:
 
    http://${base_url}/civicrm/dev/qunit/${extension}/${suite}
 
-   For example, suppose the base_url is "localhost", and suppose the
-   qunit test is part of the core codebase (aka extension="civicrm"),
-   and suppose the suite is "my-stuff". Then navigate to:
+   For example, suppose the base_url is `localhost`, and suppose the
+   qunit test is part of the core codebase (aka extension=`civicrm`),
+   and suppose the suite is `my-stuff`. Then navigate to:
 
    http://localhost/civicrm/dev/qunit/civicrm/my-stuff
 
@@ -84,17 +84,17 @@ with it, we can change it -- but please communicate any problems/issues
       third-party JS dependencies, etc.
 
     * Note: As a rule-of-thumb, if you add a new js file to CiviCRM
-      ("civicrm/js/foo.js"), and if that file is useful on its own, then you
-      might create a new test-suite for it ("civicrm/tests/qunit/foo").
+      (`civicrm/js/foo.js`), and if that file is useful on its own, then you
+      might create a new test-suite for it (`civicrm/tests/qunit/foo`).
 
 * Each QUnit test-suite for CiviCRM lives in a subdirectory of
-  "tests/qunit/".
+  `tests/qunit/`.
 
      Rationale: Following a predictable naming convention will help us automate
      testing/loading across all suites, and it will make the code more recognizable
      to other developers.
 
-* Each QUnit test-suite *may* include the file "test.php" to specify
+* Each QUnit test-suite *may* include the file `test.php` to specify
   loading of resource files or bundles (such as CSS/JS). The file will
   be recognized automatically.
 
@@ -103,10 +103,10 @@ with it, we can change it -- but please communicate any problems/issues
       Since there is no autoloader, this is most easily done with CiviCRM's
       resource-loader.
 
-* Each QUnit test-suite *may* include the file "test.tpl" to specify
+* Each QUnit test-suite *may* include the file `test.tpl` to specify
   any HTML or CSS fixtures. The file will be recognized automatically.
 
-* Each QUnit test-suite *may* include the file "test.js" to specify
+* Each QUnit test-suite *may* include the file `test.js` to specify
   assertions. The file will be recognized automatically. If one wants to
   split the tests into multiple JS files, then each file should
-  registered as a resource in "test.php".
+  registered as a resource in `test.php`.
