@@ -149,10 +149,9 @@ possible inputs/permutations.
 
 ### Headless test {:#headless}
 
-The most common kind of automated test in `civicrm-core` is a **headless test**.  A headless test focuses on a combination of artifacts, such as
-multiple PHP classes and a database.  Headless tests have a *nearly complete* CiviCRM environment, but some elements (such as the web server and CMS)
-are omitted.  This is ideally suited to testing data-management APIs (where the DBMS is an important part of the system) and other portable services
-(where you wouldn't expect the CMS or HTTPD to influence behavior).
+The most common kind of automated test in `civicrm-core` is a **headless test**.  Headless tests use a *nearly complete* CiviCRM environment;
+however, there is no CMS or web-server, and all data is stored on a private, headless database.  This is ideally suited to testing data-management
+APIs (where the DBMS is an important part of the system) and other portable services (where you wouldn't expect the CMS to influence behavior).
 
 !!! tip "Headless tests and safety"
 
