@@ -209,9 +209,7 @@ pages:
   - Bootstrap Process: framework/bootstrap.md
   - Backbone Reference: framework/backbone.md
   - Cache Reference: framework/cache.md
-  - CiviMail: 
-     - CiviMail: framework/civimail/index.md
-     - Tokens: framework/civimail/tokens.md
+  - CiviMail: framework/civimail.md
   - CiviReport: framework/civireport.md
   - Codebase: framework/codebase.md
   - Database:
