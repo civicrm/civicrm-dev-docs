@@ -18,7 +18,7 @@ Note that a contact may only have one subscription record for the group, so the 
 
 ## Tokens {:#tokens}
 
-CiviCRM's token functionality originates in CiviMail, which focuses on writing and delivering newsletters to large constituencies. In its original form, the design placed heavy weight on:
+CiviCRM's [token functionality](https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/) originates in CiviMail, which focuses on writing and delivering newsletters to large constituencies. In its original form, the design placed heavy weight on:
 
 - **Performance**: Divide mail-composition into batches and split the batches among parallel workers. Moreover, when processing each batch, improve efficiency by minimizing the #SQL queries - i.e. fetch all records in a batch at once, and only fetch columns which are actually used.
 - **Security**: Do not trust email authors with a fully programmable language.
