@@ -22,7 +22,7 @@ This hook is available in CiviCRM 4.7.27+ (maybe depends on the commit).
 ```php
 function myextension_civicrm_alterEntityRefParams(&$params, $formName) {
   // use your custom API to fetch tags of your choice on specific form say on 'New Individual'
-  if (formName == 'CRM_Contact_Form_Contact' && $params['entity'] == 'tag') {
+  if ($formName == 'CRM_Contact_Form_Contact' && $params['entity'] == 'tag') {
     $params['entity'] = 'my_tags';
     $params['api'] = array('params' => array('parent_id' => 292));
   }
