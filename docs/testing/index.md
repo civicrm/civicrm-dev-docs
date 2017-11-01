@@ -64,7 +64,7 @@ Depending on the scope of the test and the relevant language, one chooses among 
       <td>
         <a href="phpunit">PHPUnit</a><br/>
         <!-- <a href="codeception">Codeception</a><br/> -->
-        <s><a href="webtest">Selenium</a></s>
+        <s><a href="selenium">Selenium</a></s>
       </td>
       <td>
         <!-- <a href="protractor">Protractor</a><br/> -->
