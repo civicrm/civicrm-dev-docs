@@ -1,5 +1,5 @@
 Documentation+Infrastructure+Canary develop
 Book+style+guide best-practices/documentation-style-guide
-CiviCRM+Unit+Testing+basic+information testing/index
-Writing+a+PHPUnit+testcase+HOWTO testing/index
+CiviCRM+Unit+Testing+basic+information testing
+Writing+a+PHPUnit+testcase+HOWTO testing
 Pull-Request+Process tools/git/#pr
