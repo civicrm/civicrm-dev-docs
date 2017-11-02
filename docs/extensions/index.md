@@ -35,7 +35,7 @@ Some tasks in the process of writing an extension require boilerplate code. To r
 
 >> See [https://github.com/totten/civix/](https://github.com/totten/civix/)
 
->> For more information on the boilerplate civix generates for you, in particular the extension manifest file (info.xml), see the [Extension Reference](/extensions/index.md).
+>> For more information on the boilerplate civix generates for you, in particular the extension manifest file (info.xml), [read on](/extensions/info-xml.md).
 
 ### 2. Develop
 To get started with development, one should usually follow the steps in "[Create a Module Extension.](/extensions/civix.md#generate-module)". A module extension is the most flexible type of extension – it can define any mix of new reports, custom search screens, payment processors, and web pages; it can listen for hooks, override page-templates, and more. The coding
