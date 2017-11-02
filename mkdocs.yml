@@ -183,13 +183,19 @@ pages:
     - hook_civicrm_tokenValues: hooks/hook_civicrm_tokenValues.md
     - hook_civicrm_unhandledException: hooks/hook_civicrm_unhandledException.md
 - Testing:
-  - Testing Setup: testing/setup.md
-  - PHPUnit Tests: testing/phpunit.md
-  - Javascript Tests: testing/javascript.md
-  - Selinium Tests: testing/selinium.md
+  - Testing: testing/index.md
   - Continuous Integration: testing/continuous-integration.md
-  - Upgrade Tests: testing/upgrades.md
-  - Manual Testing: testing/manual.md
+  - PHP:
+    - PHPUnit Tests: testing/phpunit.md
+    # - Codeception Tests: testing/codeception.md
+    - Selenium Tests: testing/selenium.md
+  - Javascript:
+    - Karma Tests: testing/karma.md
+    # - Protractor Tests: testing/protractor.md
+    - QUnit Tests: testing/qunit.md
+  - Other:
+    - Upgrade Tests: testing/upgrades.md
+    - Manual Tests: testing/manual.md
 - Security:
   - Secure Coding: security/index.md
   - Securing Inputs: security/inputs.md

@@ -1,62 +1,131 @@
-PHP tests ensure that CiviCRM's PHP logic is working as expected &mdash; for example,
-ensuring that the 'Contact.create' API actually creates a contact.
+!!! tip "Setup"
 
-These tests are written with PHPUnit. The PHP tests are grouped into suites
-(`api_v3_AllTests`, `CRM_AllTests`, and `Civi\AllTests`).
+    The test suites require a small amount of [setup](/testing/index.md#setup).  If your system was created via [buildkit](/tools/buildkit.md) and
+    [civibuild](/tools/civibuild.md), then it was handled automatically.
 
-## Setup
+[PHPUnit](https://phpunit.de/) tests ensure that CiviCRM's PHP logic is working as expected &mdash; for example,
+ensuring that the `Contact.create` API actually creates a contact.
 
-These tests required the latest supported version of PHPUnit. This is included
-with [buildkit](/tools/buildkit.md).
+## Binary
 
-!!!warning 
-    It is possible that using the wrong configuration for tests will cause your main
-    local database to be used for testing, and will leave it unusable afterwards.
+PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this tool is named `phpunit4`.  In other environments, it might be
+`phpunit` or `phpunit.phar`.
 
-To check that everything is configured correctly:
+## Suites
 
-```bash
-$ cd /path/to/civicrm
-$ cv vars:show
-```
+PHPUnit tests are grouped together into *suites*.  For example, the `CRM` suite includes the tests `CRM_Core_RegionTest`,
+`CRM_Import_Datasource_CsvTest`, and many others.
 
-Check that `CIVI_DB_DSN` and `TEST_DB_DSN` is configured.  If you installed 
-using buildkit this should all be configured for you.
+Each suite has its own coding conventions.  For example, all tests in the `CRM` suite extend the base class `CiviUnitTestCase` and execute on the
+headless database. They require a special environment variable (`CIVICRM_UF`).
 
-If you want to run unit tests (and not WebTests or E2E tests) set the
-environment variable `CIVICRM_UF` to "UnitTests" (eg. in `civicrm.settings.test.php` above). This can also be set using the
-`env` command to change the environment just for a single command.
+You'll find suites in many places, such as `civicrm-core`, `civicrm-drupal`, and various extensions. In `civicrm-core`, the main suites are:
 
-!!! warning
-    Beware that if your tests change data in your CMS database
-    (creating system users etc.) your local build will be affected when running
-    tests.
+| Suite   | Type | CMS | Typical Base Class | Comment |
+| ------- | ---- | --- | ------------------ | ----------- |
+|`api_v3` | [Headless](/testing/index.md#headless) |Agnostic|`CiviUnitTestCase`|Requires `CIVICRM_UF=UnitTests`|
+|`Civi`   | [Headless](/testing/index.md#headless) |Agnostic|`CiviUnitTestCase`|Requires `CIVICRM_UF=UnitTests`|
+|`CRM`    | [Headless](/testing/index.md#headless) |Agnostic|`CiviUnitTestCase`|Requires `CIVICRM_UF=UnitTests`|
+|`E2E`    | [E2E](/testing/index.md#e2e) |Agnostic|`CiviEndToEndTestCase`|Useful for command-line scripts and web-services|
+|`WebTest`| [E2E](/testing/index.md#e2e) |Drupal-only|`CiviSeleniumTestCase`|Useful for tests which require a full web-browser|
 
-## Running Tests
+## Running tests
 
-From the CiviCRM root directory run the phpunit command, specifying a single
-test if necessary.
+To run any PHPUnit test, use a command like this:
 
 ```bash
-$ cd /path/to/civicrm
-$ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/AllTests.php
+$ cd /path/to/my/project
+$ phpunit4 ./tests/MyTest.php
 ```
 
-or to run an individual test you could run: 
+Note how the command involves a few elements, such as the base-path of the project, the name of the PHPUnit binary, and the relative path of the test.
+
+Let's apply this to a more realistic example.  Suppose we used `civibuild` to create a Drupal 7 site with a copy of `civicrm-core` in the typical
+folder, `sites/all/modules/civicrm`.  To run a typical test file like `tests/phpunit/CRM/Core/RegionTest.php`, you might execute:
+
+```bash
+$ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
+$ phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
+```
+
+This command ought to work.  It's well-formed.  It *would* work in many cases -- but here it produces an error:
 
 ```
-$ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/api/v3/CaseTest.php --filter testCaseCreate
+PHPUnit 4.8.21 by Sebastian Bergmann and contributors.
+
+EEEEEEEEE
+
+Time: 450 ms, Memory: 17.75Mb
+
+There were 9 errors:
+
+1) CRM_Core_RegionTest
+exception 'RuntimeException' with message '_populateDB requires CIVICRM_UF=UnitTests'...
 ```
 
-!!! note
-    You can also specify tests in an environment variable `PHPUNIT_TESTS` (eg. `env PHPUNIT_TESTS="MyFirstTest::testFoo MySecondTest" phpunit EnvTests`
-    Then run `phpunit4 ./tests/phpunit/EnvTests.php`.
+What's going on?  The `CRM` suite (and its siblings, `api_v3` and `Civi`) has a special requirement: set the environment variable `CIVICRM_UF`.  This
+revised command should correct the issue:
 
-You can also optionally use [civi-test-run](/tools/civi-test-run.md) to run a full standard CiviCRM Test suite.
+```bash
+$ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm
+$ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
+```
 
-## Writing Tests
+!!! tip "Using PhpStorm for local debugging"
 
-When writing Core tests you should extend from `\CiviUnitTestCase`.
+    PhpStorm is an IDE which provides built-in support for executing tests with a debugger -- you can set breakpoints and inspect variables while the tests run.
+
+    Once you've successfully run a test on the command-line, you can take it to the next level and [run the tests within PhpStorm](/tools/phpstorm.md#testing).
+
+!!! tip "Using `civi-test-run` for continuous integration"
+
+    In continuous-integration, one frequently executes a large number of tests from many suites.  [civi-test-run](/tools/civi-test-run.md) is a
+    grand unified wrapper which runs *all* CiviCRM test suites, and it is more convenient for use in CI scripts.
+
+!!! tip "Using the legacy wrapper"
+
+    Up through CiviCRM v4.6, the CiviCRM repository included a custom, forked version of PHPUnit. One would execute this command as:
+
+    ```bash
+    $ cd /path/to/civicrm
+    $ cd tools
+    $ ./scripts/phpunit CRM_Core_RegionTest
+    ```
+
+    As of v4.7+, there is no longer a fork, and you can use standard PHPUnit binaries. For backward compatibility,
+    v4.7+ still includes a thin wrapper script (`tools/scripts/phpunit`) which supports the old calling convention.
+
+!!! tip "Selecting tests with `AllTests.php`"
+
+    In `civicrm-core`, there are several suites (`CRM`, `api_v3_`, etc). Each suite has a file named `AllTests.php` which can be used as follows:
+
+    ```bash
+    $ cd /path/to/civicrm
+    $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/AllTests.php
+    ```
+
+!!! tip "Selecting tests with `--filter`, `--group`, etc"
+
+    The PHPUnit CLI supports a number of [filtering options](https://phpunit.de/manual/current/en/textui.html). For example,
+    execute a single test function, you can pass `--filter`, as in:
+
+    ```bash
+    $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php --filter testOverride
+    ```
+
+!!! tip "Selecting tests with PHPUNIT_TESTS"
+
+    If you want to hand-pick a mix of tests to execute, set the environment variable `PHPUNIT_TESTS`.  This a space-delimited list of classes and
+    functions. For example:
+
+    ```bash
+    $ env PHPUNIT_TESTS="MyFirstTest::testFoo MySecondTest" CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/EnvTests.php
+    ```
+
+
+## Writing tests
+
+When writing headless tests for `civicrm-core`, extend the class `\CiviUnitTestCase`.
 
 But for extensions you should extend directly from `\PHPUnit_Framework_TestCase`.
 
@@ -91,10 +160,9 @@ with that there are two methods:
 Sometimes it will be convenient to prepare test data for whole test case -
 in such case, you will want to put all the test data creation code in there.
 
-Another option is for your test to implement `TransactionalInterface`.
-
-That will guarantee that each test will be wrapped in a Transaction, that will
-rollback automatically at the end of the test.
+Another option is for your test to implement `TransactionalInterface`.  That
+will guarantee that each test will be wrapped in a SQL transaction which
+automatically rolls back any database changes.
 
 !!! warning
     Schema changes in your test will cause an auto-commit of all changes, and
