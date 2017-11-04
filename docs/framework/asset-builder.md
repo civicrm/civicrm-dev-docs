@@ -40,11 +40,6 @@ For example, suppose we wanted to define a static file named
 `api-fields.json` which lists all the fields of all the API entities.
 
 ```php
-// Get the URL to `api-fields.json`.
-$url = \Civi::service('asset_builder')->getUrl('api-fields.json');
-
-...
-
 // Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
 function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
   if ($asset !== 'api-fields.json') return;
@@ -59,6 +54,23 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
   $content = json_encode($fields);
 }
 ```
+
+To quickly test if the asset is defined correctly, run this on the command-line:
+
+```
+$ cv ev '$x = \Civi::service("asset_builder")->render("api-fields.json"); echo $x["content"];'
+```
+
+Or run this command to obtain the asset's URL:
+
+```
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json");'
+```
+
+Notice that these commands use `Civi::service("asset_builder")` and the
+functions `render(...)` or `getUrl(...)` to manage the asset.  You can call
+these functions in your PHP code.  Further down, the fully formed CSS
+example will demonstrate this.
 
 !!! note "What does `getUrl(...)` do?"
 
@@ -76,28 +88,9 @@ What should you do if you need to create a series of similar assets, based on sl
 different permutations or configurations? Add parameters (aka `$params`).
 
 For example, we might want a copy of `api-fields.json` which only includes a
-handful of chosen entities.  Simply pass the chosen entities into
-`getUrl()`, then update the definition to use `$params['entities']`, as in:
+handful of chosen entities.  Simply update the definition to read `$params['entities']`:
 
 ```php
-// Get the URL to `api-fields.json`. This variant only includes
-// a few contact-related entities.
-$contactEntitiesUrl = \Civi::service('asset_builder')
-  ->getUrl('api-fields.json', array(
-    'entities' => array('Contact', 'Phone', 'Email', 'Address'),
-  )
-);
-
-// Get the URL to `api-fields.json`. This variant only includes
-// a few case-related entities.
-$caseEntitiesUrl = \Civi::service('asset_builder')
-  ->getUrl('api-fields.json', array(
-    'entities' => array('Case', 'Activity', 'Relationship'),
-  )
-);
-
-...
-
 // Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
 function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
   if ($asset !== 'api-fields.json') return;
@@ -110,6 +103,20 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
   $mimeType = 'application/json';
   $content = json_encode($fields);
 }
+```
+
+Then, in each call to `render(...)` or `getUrl(...)`, pass the `$params` array with a specific value for `entities`.
+
+For example, run this command to get the generated URL for `api-fields.json` for a few contact-related entities:
+
+```
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json", array("entities" => array("Contact", "Phone", "Email", "Address")));'
+```
+
+Or, for a few case-related entities, change the `entities` list:
+
+```
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json", array("entities" => array("Case", "Activity", "Relationship")));'
 ```
 
 !!! note "Note: Parameters and caching"
@@ -142,13 +149,13 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
     It may be possible to fix this by computing URL digests differently, but
     (at time of writing) we don't have a need/use-case.
 
-## CSS Example
+## Example: Dynamic CSS file {:#css-example}
 
-In this example, we want to use the CiviCRM logo image provided by core in our extension's CSS.  Extensions can refer to their own files using relative paths, but given the variety of possible installation locations for both CiviCRM core and extensions then neither relative or absolute paths work to refer to a core file.
+In this example, we want to use the CiviCRM logo in our extension's CSS. The extension's CSS can refer to its own files using relative paths, but the logo is provided by `civicrm-core`, and every deployment can have a different file-structure -- making it impossible to predict the correct path.
 
-Using asset builder, we can create a template file, process it at run time then serve up the result to our page.
+Using asset builder, we can create a template file, fill in the proper logo URL, and then serve up the result to our page.
 
-Our module name is `org.example.myextension`
+Our module name is `org.example.myextension`.
 
 Create `css/my_css_template.css` with content:
 
@@ -159,20 +166,14 @@ Create `css/my_css_template.css` with content:
 In `myextension.php`:
 
 ```php
-function myextension_civicrm_coreResourceList(&$list, $region) {
-   ...
-   // To include the file without any processing we could use:
-   // CRM_Core_Resources::singleton()->addStyleFile('org.example.myextension', 'css/my_css.css');
-   // replace that with the following:
-   
-   // use the asset_builder service to get the url of an asset labeled 'mycss'
-   $url = \Civi::service('asset_builder')->getUrl('mycss');
-
-   // load the processed style on the page 
-   CRM_Core_Resources::singleton()->addStyleUrl($url);
-}
-
-// Use the buildAsset hook to process the css template
+/**
+ * Implements hook_civicrm_buildAsset().
+ *
+ * Use hook_civicrm_buildAsset() to define the asset 'mycss'
+ * It locates the css template in the extension and the required image from core
+ * and substitutes the image path into the css template returning the value via
+ * the $content parameter.
+ */
 function myextension_civicrm_buildAsset($asset, $params, &$mimetype, &$content) {
   // Check for the asset of interest
   if ($asset !== 'mycss') return;
@@ -186,25 +187,45 @@ function myextension_civicrm_buildAsset($asset, $params, &$mimetype, &$content) 
   // Get the URL of the image we want from Core
   // Note that the 'civicrm' string here is a special to refer to the installation location of the core files
   $url = \Civi::resources()->getUrl('civicrm', 'i/logo_sm.png');
-  
+
   // Replace the LOGO_URL token in the file with the actual url
   // Note that $content is passed by reference to this hook function
   $content = str_replace('LOGO_URL', $url, $raw);
-  
+
   // Set the mimetype appropriately for the type of content
   // Note that $mimetype is passed by reference to this hook function
   $mimetype = 'text/css';
 }
 ```
 
-Check it is functioning correctly with:
+Check it is functioning correctly:
 ```
-$ cv ev '$x = \Civi::service("asset_builder")->render("mycss"); echo $x["content"];' 
+$ cv ev '$x = \Civi::service("asset_builder")->render("mycss"); echo $x["content"];'
 ```
 
-To see the generated URL use:
+Get the generated URL:
 ```
-$ cv ev 'return \Civi::service("asset_builder")->getURL("mycss");' 
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("mycss");'
+```
+
+Now we can use our newly defined asset in place of a static css file in `myextension.php`:
+
+```php
+/**
+ * Implements hook_civicrm_coreResourceList().
+ */
+function myextension_civicrm_coreResourceList(&$list, $region) {
+   ...
+   // To include the file without any processing we could use:
+   // CRM_Core_Resources::singleton()->addStyleFile('org.example.myextension', 'css/my_css.css');
+   // replace that with the following:
+
+   // use the asset_builder service to get the url of an asset labeled 'mycss'
+   $url = \Civi::service('asset_builder')->getUrl('mycss');
+
+   // load the processed style on the page
+   CRM_Core_Resources::singleton()->addStyleUrl($url);
+}
 ```
 
 Notes:
