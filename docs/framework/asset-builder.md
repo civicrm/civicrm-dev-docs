@@ -149,13 +149,13 @@ $ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json", array
     It may be possible to fix this by computing URL digests differently, but
     (at time of writing) we don't have a need/use-case.
 
-## CSS Example
+## Example: Dynamic CSS file {:#css-example}
 
-In this example, we want to use the CiviCRM logo image provided by core in our extension's CSS.  Extensions can refer to their own files using relative paths, but given the variety of possible installation locations for both CiviCRM core and extensions then neither relative or absolute paths work to refer to a core file.
+In this example, we want to use the CiviCRM logo in our extension's CSS. The extension's CSS can refer to its own files using relative paths, but the logo is provided by `civicrm-core`, and every deployment can have a different file-structure -- making it impossible to predict the correct path.
 
-Using asset builder, we can create a template file, process it at run time then serve up the result to our page.
+Using asset builder, we can create a template file, fill in the proper logo URL, and then serve up the result to our page.
 
-Our module name is `org.example.myextension`
+Our module name is `org.example.myextension`.
 
 Create `css/my_css_template.css` with content:
 
