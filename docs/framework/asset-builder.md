@@ -55,15 +55,22 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 }
 ```
 
-Check it is functioning correctly with:
+To quickly test if the asset is defined correctly, run this on the command-line:
+
 ```
 $ cv ev '$x = \Civi::service("asset_builder")->render("api-fields.json"); echo $x["content"];'
 ```
 
-Get the generated URL:
+Or run this command to obtain the asset's URL:
+
 ```
-$ cv ev 'return \Civi::service("asset_builder")->getURL("api-fields.json");'
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json");'
 ```
+
+Notice that these commands use `Civi::service("asset_builder")` and the
+functions `render(...)` or `getUrl(...)` to manage the asset.  You can call
+these functions in your PHP code.  Further down, the fully formed CSS
+example will demonstrate this.
 
 !!! note "What does `getUrl(...)` do?"
 
