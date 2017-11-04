@@ -88,8 +88,7 @@ What should you do if you need to create a series of similar assets, based on sl
 different permutations or configurations? Add parameters (aka `$params`).
 
 For example, we might want a copy of `api-fields.json` which only includes a
-handful of chosen entities.  Simply pass the chosen entities into
-`getUrl()`, then update the definition to use `$params['entities']`.
+handful of chosen entities.  Simply update the definition to read `$params['entities']`:
 
 ```php
 // Define the content of `api-fields.json` using `hook_civicrm_buildAsset`.
@@ -106,14 +105,18 @@ function mymodule_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
 }
 ```
 
-Get the generated URL for `api-fields.json` for a few contact-related entities:
+Then, in each call to `render(...)` or `getUrl(...)`, pass the `$params` array with a specific value for `entities`.
+
+For example, run this command to get the generated URL for `api-fields.json` for a few contact-related entities:
+
 ```
-$ cv ev 'return \Civi::service("asset_builder")->getURL("api-fields.json", array("entities" => array("Contact", "Phone", "Email", "Address")));'
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json", array("entities" => array("Contact", "Phone", "Email", "Address")));'
 ```
 
-Get the generated URL for `api-fields.json` for a few case-related entities:
+Or, for a few case-related entities, change the `entities` list:
+
 ```
-$ cv ev 'return \Civi::service("asset_builder")->getURL("api-fields.json", array("entities" => array("Case", "Activity", "Relationship")));'
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("api-fields.json", array("entities" => array("Case", "Activity", "Relationship")));'
 ```
 
 !!! note "Note: Parameters and caching"
@@ -202,7 +205,7 @@ $ cv ev '$x = \Civi::service("asset_builder")->render("mycss"); echo $x["content
 
 Get the generated URL:
 ```
-$ cv ev 'return \Civi::service("asset_builder")->getURL("mycss");'
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("mycss");'
 ```
 
 Now we can use our newly defined asset in place of a static css file in `myextension.php`:
