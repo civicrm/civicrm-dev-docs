@@ -240,7 +240,7 @@ pages:
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
 - Translation:
-  - Translation for Developers: translation/developers.md
+  - Translation: translation/index.md
   - Extensions Translation: translation/extensions.md
   - Database localized fields and upgrades: translation/database.md
 - Standards:

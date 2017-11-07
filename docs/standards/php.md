@@ -116,7 +116,7 @@ $string = ts("Membership for %1 has been updated. The membership End Date is %2.
 ));
 ```
 
-For more information on translation, see [Translation for Developers](/translation/developers.md).
+For more information on translation, see [Translation for Developers](/translation/index.md).
 
 ## Scope
 
