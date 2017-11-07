@@ -17,12 +17,16 @@ $group = array('' => ts('- any group -')) + $this->_group;
 You can also use placeholders for variables:
 
 ```php
-$string = ts("A new '%1' has been created.", array(
-  1 => $contactType
-));
+$string = ts("A new '%1' has been created.", array(1 => $contactType));
 ```
 
 Note that variables should themselves be translated by your code before passing in, if appropriate.
+
+If the string might be singular or plural, use the following syntax:
+
+```php
+$string = ts('%count item created', array('count' => $total, 'plural' => '%count items created'));
+```
 
 A few examples to avoid:
 
@@ -41,6 +45,12 @@ $string = ts("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
   elementum, ex in pretium tincidunt, felis lorem facilisis lacus, vel 
   iaculis ex orci vitae risus. Maecenas in sapien ut velit scelerisque 
   interdum.");
+
+// Bad:
+$string = ts('%1 item(s) created', array(1 => $count));
+
+// Good:
+$string = ts('%count item created', array('count' => $total, 'plural' => '%count items created'));
 ```
 
 Another common error is to use `ts()` to aggregate strings or as a "clever" way of writing shorter code:
@@ -49,13 +59,56 @@ Another common error is to use `ts()` to aggregate strings or as a "clever" way 
 // Bad: incorrect aggregation
 // This will be extremely confusing to translations
 // and might give some really bad results in some languages.
-$operation = $is_early ? ts('Good morning') : ts('Hi');
-$string = ts("%1 %2, how are you?", array(1 => $name));
+$operation = empty($params['id']) ? ts('New') : ts('Edit'));
+$string = ts("%1 %2", array(1 => $operation, 2 => $contactType));
 
-// Good:
-$string = ts("Hi %2, how are you?", array(1 => $name));
-
-if ($is_early) {
-  $string = ts("Good morning %2, how are you?", array(1 => $name));
+// Less bad:
+// Note that this still makes it difficult to use the correct gender.
+if (empty($params['id'])) {
+  $string = ts("New %1", array(1 => $contactType));
 }
+else {
+  $string = ts("Edit %1", array(1 => $contactType));
+}
+```
+
+## Javascript
+
+When translating strings in an extension, ts scope needs to be declared. The CRM.ts function takes scope as an argument and returns a function that always applies that scope to ts calls:
+
+```js
+// This closure gets a local copy of jQuery, Lo-dash, and ts
+(function($, _, ts) {
+  CRM.alert(ts('Your foo has been barred.'));
+})(CRM.$, CRM._, CRM.ts('foo.bar.myextension'));
+```
+
+Note that `CRM.ts` is not the same as the global `ts` function. `CRM.ts` is a function that returns a function (javascript is wacky like that). Since your closure gives the local `ts` the same name as the global `ts`, it will be used instead.
+
+Important: Your local version of `ts` could be named anything, but strings in your javascript file cannot be accurately parsed unless you name it ts.
+
+## Smarty templates
+
+The strings hard-coded into templates should be wrapped in `{ts}...{/ts}` tags. For example:
+
+```
+{ts}Full or partial name (last name, or first name, or organization name).{/ts}
+```
+
+If you need to pass a variable to the localisable string, you should use the following pattern:
+
+```
+<div class="status">{ts 1=$delName}Are you sure you want to delete <b>%1</b> Tag?{/ts}</div>
+```
+
+When possible, avoid HTML formatting and newlines inside `{ts}...{/ts}` tags. For example:
+
+```
+<p>{ts}Hello, world!{/ts}</p>
+```
+
+and not:
+
+```
+{ts}<p>This is a bad example.</p>{/ts}
 ```
