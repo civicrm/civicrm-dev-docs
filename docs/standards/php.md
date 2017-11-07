@@ -99,6 +99,24 @@ Classes and interfaces in Civi take one of two forms:
 
 Changing these can be quite difficult and can break interfaces consumed by downstream. For more discussion of `CRM_` and `Civi\`, see [The Codebase](/framework/filesystem.md).
 
+## Localization
+
+Any string that will be displayed to the user should be wrapped in ts() to translate the string:
+
+```
+$string = ts("Hello, world!");
+```
+
+Translation strings can also include placeholders for variables:
+
+```
+$string = ts("Membership for %1 has been updated. The membership End Date is %2.", array(
+  1 => $userDisplayName,
+  2 => $endDate,
+));
+```
+
+For more information on translation, see [Translation for Developers](/translation/developers.md).
 
 ## Scope
 
