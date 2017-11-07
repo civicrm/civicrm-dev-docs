@@ -2,11 +2,11 @@
 
 When writing new application code, developers should organize their code in a way which is amenable to internationalization, so that it may be localized to various languages and regions of the world.
 
-If you are an extension developer, there is additional documentation in the [Extension translation](/translation/extensions.md] page.
+If you are an extension developer, there is additional documentation in the [Extension translation](/translation/extensions.md) page.
 
 ## PHP
 
-The strings hard-coded into PHP should be wrapped in ts() function calls. Here are a few examples:
+The strings hard-coded into PHP should be wrapped in `ts()` function calls. Here are a few examples:
 
 ```php
 $string = ts('Hello, World!');
@@ -74,7 +74,7 @@ else {
 
 ## Javascript
 
-When translating strings in an extension, ts scope needs to be declared. The CRM.ts function takes scope as an argument and returns a function that always applies that scope to ts calls:
+When translating strings in an extension, ts scope needs to be declared. The `CRM.ts` function takes scope as an argument and returns a function that always applies that scope to ts calls:
 
 ```js
 // This closure gets a local copy of jQuery, Lo-dash, and ts
@@ -83,37 +83,43 @@ When translating strings in an extension, ts scope needs to be declared. The CRM
 })(CRM.$, CRM._, CRM.ts('foo.bar.myextension'));
 ```
 
-Note that `CRM.ts` is not the same as the global `ts` function. `CRM.ts` is a function that returns a function (javascript is wacky like that). Since your closure gives the local `ts` the same name as the global `ts`, it will be used instead.
+!!! note
+    `CRM.ts` is not the same as the global `ts` function. `CRM.ts` is a function that returns a function (javascript is wacky like that). Since your closure gives the local `ts` the same name as the global `ts`, it will be used instead.
 
-Important: Your local version of `ts` could be named anything, but strings in your javascript file cannot be accurately parsed unless you name it ts.
+!!! important
+    Your local version of `ts` could be named anything, but strings in your javascript file cannot be accurately parsed unless you name it `ts`.
 
 ## Smarty templates
 
-The strings hard-coded into templates should be wrapped in `{ts}...{/ts}` tags. For example:
+* The strings hard-coded into templates should be wrapped in `{ts}...{/ts}` tags. For example:
 
-```
-{ts}Full or partial name (last name, or first name, or organization name).{/ts}
-```
+    ```smarty
+    {ts}Full or partial name (last name, or first name, or organization name).{/ts}
+    ```
 
-If you need to pass a variable to the localisable string, you should use the following pattern:
+* If you need to pass a variable to the localizable string, you should use the following pattern:
 
-```
-<div class="status">{ts 1=$delName}Are you sure you want to delete <b>%1</b> Tag?{/ts}</div>
-```
+    ```smarty
+    <div class="status">
+      {ts 1=$delName}Are you sure you want to delete <b>%1</b> Tag?{/ts}
+    </div>
+    ```
 
-When possible, avoid HTML formatting and newlines inside `{ts}...{/ts}` tags. For example:
+* When possible, avoid HTML formatting and newlines inside `{ts}...{/ts}` tags. 
 
-```
-<p>{ts}Hello, world!{/ts}</p>
-```
+    * Good
 
-and not:
+        ```smarty
+        <p>{ts}Hello, world!{/ts}</p>
+        ```
+    
+    * Bad
+    
+        ```
+        {ts}<p>Hello, world!</p>{/ts}
+        ```
 
-```
-{ts}<p>This is a bad example.</p>{/ts}
-```
-
-## Why not use the Drupal locale module?
+## Rationale for using Gettext
 
 In most projects, strings are typically translated by either:
 
@@ -127,6 +133,6 @@ In order to be support Joomla!, WordPress, Backdrop and eventually other content
 
 Here are the guides to other popular projects:
 
-* Drupal: https://www.drupal.org/node/322729
-* Joomla!: https://docs.joomla.org/Specification_of_language_files
-* WordPress: https://codex.wordpress.org/I18n_for_WordPress_Developers
+* Drupal: <https://www.drupal.org/node/322729>
+* Joomla!: <https://docs.joomla.org/Specification_of_language_files>
+* WordPress: <https://codex.wordpress.org/I18n_for_WordPress_Developers>

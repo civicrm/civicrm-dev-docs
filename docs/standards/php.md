@@ -101,15 +101,15 @@ Changing these can be quite difficult and can break interfaces consumed by downs
 
 ## Localization
 
-Any string that will be displayed to the user should be wrapped in ts() to translate the string:
+Any string that will be displayed to the user should be wrapped in `ts()` to translate the string:
 
-```
+```php
 $string = ts("Hello, world!");
 ```
 
 Translation strings can also include placeholders for variables:
 
-```
+```php
 $string = ts("Membership for %1 has been updated. The membership End Date is %2.", array(
   1 => $userDisplayName,
   2 => $endDate,
