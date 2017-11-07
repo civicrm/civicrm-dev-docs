@@ -1,4 +1,4 @@
-# Database upgrades
+# Database localized fields and upgrades
 
 ## PHP code related to database upgrades
 
@@ -17,6 +17,31 @@ For example, do not translate:
 ```php
 $this->addTask('Update financial_account_id in financial_trxn table', 'updateFinancialTrxnData', $rev);
 ```
+
+## Localized fields
+
+Any value stored in the database that may depend on the language must be localizable. For example:
+
+* A contribution page title or description,
+* A group title or description,
+* A configurable string to display on forms (ex: a custom "submit" button label).
+
+However, since localizable fields add a certain technical complexity, the following type of fields are not localized:
+
+* Contact information, such as the first name, nickname, etc.
+* Address fields.
+
+While there are many cities where street names can officially be in multiple languages (or have official transliterations), users usually enter their address only in one language. It is rarely required to store the address translation (one exception: event locations, which is currently a known limitation).
+
+Similarly, the first and last name of an individual may be written in different alphabets (ex: Latin and Cyrillic), but this is not a frequent use-case worth the complexity. Adminstrators can workaround this by creating custom fields.
+
+In order to define a field as localizable, the XML schema files must have the following tag:
+
+```
+<localizable>true</localizable>
+```
+
+If a new field was not initially tagged as localizable, the upgrade must explicitely convert the field. See the section below on localised fields schema changes.
 
 ## SQL upgrades
 
