@@ -112,3 +112,21 @@ and not:
 ```
 {ts}<p>This is a bad example.</p>{/ts}
 ```
+
+## Why not use the Drupal locale module?
+
+In most projects, strings are typically translated by either:
+
+* using Gettext (which is what CiviCRM does),
+* using arrays of key/string dictionaries,
+* using database lookups of strings (which is what Drupal does).
+
+In order to be support Joomla!, WordPress, Backdrop and eventually other content management systems. Gettext is the standard way to translate strings in PHP, used by most projects.
+
+## Other guides/references
+
+Here are the guides to other popular projects:
+
+* Drupal: https://www.drupal.org/node/322729
+* Joomla!: https://docs.joomla.org/Specification_of_language_files
+* WordPress: https://codex.wordpress.org/I18n_for_WordPress_Developers
