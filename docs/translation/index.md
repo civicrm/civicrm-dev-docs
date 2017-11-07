@@ -65,6 +65,27 @@ When translating strings in an extension, ts scope needs to be declared. The `CR
 
 ## Best practices
 
+The general rules for avoiding errors may be summed up like this:
+
+* If the string needs to be parsed (i.e. is in double quotes) then there's probably an error there.
+* No string concatenation in the `ts()` calls.
+* The second parameter of the `ts()` call must be an array.
+* You must pass a literal string into `ts()`, not a variable.
+
+### Avoid variables inside strings
+
+!!! failure "Bad"
+    
+    ```php
+    $string = ts("The date type '$name' has been saved.");
+    ```
+
+!!! success "Good"
+
+    ```php
+    $string = ts("The date type '%1' has been saved.", array(1 => $name));
+    ```
+
 ### Avoid tags inside strings 
 
 !!! failure "Bad"
@@ -97,7 +118,21 @@ Even if your code editor may not like it, long strings should be on a single lin
     ```php
     $string = ts("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum, ex in pretium tincidunt, felis lorem facilisis lacus, vel iaculis ex orci vitae risus. Maecenas in sapien ut velit scelerisque interdum.");
     ```
+
+### Avoid strings which begin or end with spaces
+
+!!! failure "Bad"
     
+    ```php
+    $string = $labelFormat['label'] . ts(' has been created.'),
+    ```
+
+!!! success "Good"
+
+    ```php
+    $string = ts('%1 has been created.', array(1 => $labelFormat['label'])),
+    ```
+ 
 ### Avoid escaped quotes
 
 !!! failure "Bad"
@@ -153,10 +188,22 @@ Another common error is to use `ts()` to aggregate strings or as a "clever" way 
     ```
     
     Note that this still makes it difficult to use the correct gender.
+
+### Include typography in strings
+
+Typography is different in different languages and thus must be translated along with the string. For example, in French, there must be a space before a colon. 
+
+!!! failure "Bad"
     
+    ```smarty
+    {ts}Event Total{/ts}:
+    ```
 
+!!! success "Good"
 
-
+    ```smarty
+    {ts}Event Total:{/ts}
+    ```
 
 ## Rationale for using Gettext
 
