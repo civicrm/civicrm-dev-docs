@@ -8,7 +8,7 @@ If you are an extension developer, there is additional documentation in the [Ext
 
 The strings hard-coded into PHP should be wrapped in ts() function calls. Here are a few examples:
 
-```
+```php
 $string = ts('Hello, World!');
 
 $group = array('' => ts('- any group -')) + $this->_group;
@@ -16,7 +16,7 @@ $group = array('' => ts('- any group -')) + $this->_group;
 
 You can also use placeholders for variables:
 
-```
+```php
 $string = ts("A new '%1' has been created.", array(
   1 => $contactType
 ));
@@ -26,7 +26,7 @@ Note that variables should themselves be translated by your code before passing 
 
 A few examples to avoid:
 
-```
+```php
 // Bad: Avoid escaped quotes: this is harder to read:
 $string = ts('A new \'%1\' has been created.', array(1 => $contactType));
 
@@ -45,7 +45,7 @@ $string = ts("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 
 Another common error is to use `ts()` to aggregate strings or as a "clever" way of writing shorter code:
 
-```
+```php
 // Bad: incorrect aggregation
 // This will be extremely confusing to translations
 // and might give some really bad results in some languages.
@@ -59,4 +59,3 @@ if ($is_early) {
   $string = ts("Good morning %2, how are you?", array(1 => $name));
 }
 ```
-
