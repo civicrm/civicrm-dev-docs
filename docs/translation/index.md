@@ -6,71 +6,29 @@ If you are an extension developer, there is additional documentation in the [Ext
 
 ## PHP
 
-The strings hard-coded into PHP should be wrapped in `ts()` function calls. Here are a few examples:
+* The strings hard-coded into PHP should be wrapped in `ts()` function calls. For example:
 
-```php
-$string = ts('Hello, World!');
+    ```php
+    $string = ts('Hello, World!');
+    
+    $group = array('' => ts('- any group -')) + $this->_group;
+    ```
 
-$group = array('' => ts('- any group -')) + $this->_group;
-```
+* You can also use placeholders for variables:
 
-You can also use placeholders for variables:
+    ```php
+    $string = ts("A new '%1' has been created.", array(1 => $contactType));
+    ```
 
-```php
-$string = ts("A new '%1' has been created.", array(1 => $contactType));
-```
+    Note that variables should themselves be translated by your code before passing in, if appropriate.
 
-Note that variables should themselves be translated by your code before passing in, if appropriate.
+* If the string might be singular or plural, use the following syntax:
 
-If the string might be singular or plural, use the following syntax:
-
-```php
-$string = ts('%count item created', array('count' => $total, 'plural' => '%count items created'));
-```
-
-A few examples to avoid:
-
-```php
-// Bad: Avoid escaped quotes: this is harder to read:
-$string = ts('A new \'%1\' has been created.', array(1 => $contactType));
-
-// Good:
-$string = ts("A new '%1' has been created.", array(1 => $contactType));
-
-// Bad: multi-line strings:
-// Even if your code editor may not like it, this should be on a single line
-// since a change in indentation might change where the line breaks are, which
-// would then require re-translating the string.
-$string = ts("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin 
-  elementum, ex in pretium tincidunt, felis lorem facilisis lacus, vel 
-  iaculis ex orci vitae risus. Maecenas in sapien ut velit scelerisque 
-  interdum.");
-
-// Bad:
-$string = ts('%1 item(s) created', array(1 => $count));
-
-// Good:
-$string = ts('%count item created', array('count' => $total, 'plural' => '%count items created'));
-```
-
-Another common error is to use `ts()` to aggregate strings or as a "clever" way of writing shorter code:
-
-```php
-// Bad: incorrect aggregation
-// This will be extremely confusing to translations
-// and might give some really bad results in some languages.
-$operation = empty($params['id']) ? ts('New') : ts('Edit'));
-$string = ts("%1 %2", array(1 => $operation, 2 => $contactType));
-
-// Less bad:
-// Note that this still makes it difficult to use the correct gender.
-if (empty($params['id'])) {
-  $string = ts("New %1", array(1 => $contactType));
-}
-else {
-  $string = ts("Edit %1", array(1 => $contactType));
-}
-```
+    ```php
+    $string = ts('%count item created',
+      array('count' => $total, 'plural' => '%count items created')
+    );
+    ```
 
 ## Javascript
 
@@ -105,19 +63,100 @@ When translating strings in an extension, ts scope needs to be declared. The `CR
     </div>
     ```
 
-* When possible, avoid HTML formatting and newlines inside `{ts}...{/ts}` tags. 
+## Best practices
 
-    * Good
+### Avoid tags inside strings 
 
-        ```smarty
-        <p>{ts}Hello, world!{/ts}</p>
-        ```
+!!! failure "Bad"
     
-    * Bad
+    ```smarty
+    {ts}<p>Hello, world!</p>{/ts}
+    ```
+
+!!! success "Good"
+
+    ```smarty
+    <p>{ts}Hello, world!{/ts}</p>
+    ```
     
-        ```
-        {ts}<p>Hello, world!</p>{/ts}
-        ```
+### Avoid multi-line strings
+
+Even if your code editor may not like it, long strings should be on a single line since a change in indentation might change where the line breaks are, which would then require re-translating the string.
+
+!!! failure "Bad"
+    
+    ```php
+    $string = ts("Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin elementum, ex in pretium tincidunt, felis lorem facilisis 
+      lacus, vel iaculis ex orci vitae risus. Maecenas in sapien ut velit
+      scelerisque interdum.");
+    ```
+
+!!! success "Good"
+
+    ```php
+    $string = ts("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum, ex in pretium tincidunt, felis lorem facilisis lacus, vel iaculis ex orci vitae risus. Maecenas in sapien ut velit scelerisque interdum.");
+    ```
+    
+### Avoid escaped quotes
+
+!!! failure "Bad"
+    
+    ```php
+    $string = ts('A new \'%1\' has been created.', array(1 => $contactType));
+    ```
+
+!!! success "Good"
+
+    ```php
+    $string = ts("A new '%1' has been created.", array(1 => $contactType));
+    ```
+    
+### Use separate strings for plural items
+
+!!! failure "Bad"
+    
+    ```php
+    $string = ts('%1 item(s) created', array(1 => $count));
+    ```
+
+!!! success "Good"
+
+    ```php
+    $string = ts('%count item created',
+      array('count' => $total, 'plural' => '%count items created')
+    );
+    ```
+    
+### Ensure that strings have *some* words in them
+
+Another common error is to use `ts()` to aggregate strings or as a "clever" way of writing shorter code:
+
+!!! failure "Bad"
+
+    Incorrect aggregation. This will be extremely confusing to translations and might give some really bad results in some languages.
+    
+    ```php
+    $operation = empty($params['id']) ? ts('New') : ts('Edit'));
+    $string = ts("%1 %2", array(1 => $operation, 2 => $contactType));
+    ```
+
+!!! success "Less bad"
+
+    ```php
+    if (empty($params['id'])) {
+      $string = ts("New %1", array(1 => $contactType));
+    }
+    else {
+      $string = ts("Edit %1", array(1 => $contactType));
+    }
+    ```
+    
+    Note that this still makes it difficult to use the correct gender.
+    
+
+
+
 
 ## Rationale for using Gettext
 
