@@ -239,6 +239,10 @@ pages:
     - Extending Smarty: framework/templates/extending-smarty.md
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
+- Translation:
+  - Translation: translation/index.md
+  - Extensions Translation: translation/extensions.md
+  - Database localized fields and upgrades: translation/database.md
 - Standards:
   - Coding Standards: standards/index.md
   - PHP Standards: standards/php.md
