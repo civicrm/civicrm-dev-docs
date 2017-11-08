@@ -87,14 +87,10 @@ An easy way to do this is:
 1. Run `drush civicrm-upgrade-db` to perform database upgrades.
 
 
-## Form an opinion about the fix
-
-* The change should make sense for *all users*.
-* The change should not take users by surprise.
-* Significant changes should add functionality in a generalized way that is configurable.
-
-
 ## Write a review as a comment
 
-Summarize your actions and findings, and recommend specific next steps (e.g. merging or otherwise). In your comment, tag [one of the active contributors](https://github.com/civicrm/civicrm-core/graphs/contributors) (e.g. `@eileenmcnaughton`) so they will see that the PR is ready for further action.
+1. Evaluate the change against each of our [review standards](/standards/review.md) criteria.
+1. If you like, copy-paste one of the [review templates](/standards/review.md#templates) into your comment and fill out the template. 
+    * If you choose not to use a template, then summarize your actions and findings, and recommend specific next steps (e.g. merging or otherwise).
+1. In your comment, tag [one of the active contributors](https://github.com/civicrm/civicrm-core/graphs/contributors) (e.g. `@eileenmcnaughton`) so they will see that the PR is ready for further action.
 
