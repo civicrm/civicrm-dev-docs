@@ -37,13 +37,13 @@ Use the code somehow. You don’t need to attack every imaginable scenario in ev
 
 ### User impact {:#r-user}
 
-_Standard code: `r-users`_
+_Standard code: `r-user`_
 
 If a user was comfortable using the old revision, would they upgrade and assimilate naturally and unthinkingly to the new revision? If not, has there been commensurate effort to provide a fair transition-path and communication?
 
-### Technical impact {:#r-technical}
+### Technical impact {:#r-tech}
 
-_Standard code: `r-technical`_
+_Standard code: `r-tech`_
 
 * Would the patch materially change the contract (signature/pre-condition/post-condition) for APIv3, a hook, a PHP function, a PHP class, a JS widget, or a CSS class?
 * Would you consider the changed element to be an officially supported contract? A de-facto important contract? An obscure internal detail?

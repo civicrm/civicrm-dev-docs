@@ -20,12 +20,12 @@
     * [ ] __PASS__: I executed the code in a few plausible ways, and it behaved as expected.
     * [ ] __ISSUE__: I executed the code in a few plausible ways, and it had a problem.
     * [ ] __COMMENTS__: *(optional)*
-* User impact ([`r-users`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-users))
+* User impact ([`r-user`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-user))
     * [ ] __PASS__: The change would be intuitive or unnoticeable for a majority of users who work with this feature.
     * [ ] __ISSUE__: The change would noticeably impact the user-experience (eg requiring retraining).
     * [ ] __PASS__: The change would noticeably impact the user-experience (eg requiring retraining), but this has been addressed with a suitable transition/communication plan.
     * [ ] __COMMENTS__: *(optional)*
-* Technical impact ([`r-technical`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-technical))
+* Technical impact ([`r-tech`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-tech))
     * [ ] __PASS__: The change preserves compatibility with existing callers/code/downstream.
     * [ ] __PASS__: The change potentially affects compatibility, but the risks have been sufficiently managed.
     * [ ] __ISSUE__: The change potentially affects compatibility, and the risks have **not** been sufficiently managed.

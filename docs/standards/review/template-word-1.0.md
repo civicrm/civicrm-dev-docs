@@ -8,5 +8,5 @@
 * ([`r-doc`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-doc)) __Undecided__
 * ([`r-maint`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-maint)) __Undecided__
 * ([`r-run`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-run)) __Undecided__: (*Describe...*)
-* ([`r-users`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-users)) __Undecided__: (*Describe...*)
-* ([`r-technical`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-technical)) __Undecided__: (*Describe...*)
+* ([`r-user`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-user)) __Undecided__: (*Describe...*)
+* ([`r-tech`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-tech)) __Undecided__: (*Describe...*)
