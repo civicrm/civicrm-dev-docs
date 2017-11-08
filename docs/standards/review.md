@@ -9,11 +9,12 @@ write a long, bespoke blurb.
 !!! tip "Standard codes"
     Each standard has a code name (e.g. `r-jira`). These make it easier to reference the standards when chatting with others about PR review.
 
-!!! tip "Templates"
-    You may conduct a structured review, checking each standard in turn. Doing this  will be easier if you copy a template and paste it into your Github comment.
+## Templates
 
-    * When conducting your first or second structured review, copy [template-mc-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-mc-1.0.md). It provides several examples.
-    * Once you're familiar with the criteria, copy [template-word-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-word-1.0.md). It's a bit shorter and quicker.
+You may conduct a structured review, checking each standard in turn. Doing this  will be easier if you copy a template and paste it into your Github comment.
+
+* When conducting your first or second structured review, copy [template-mc-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-mc-1.0.md). It provides several examples.
+* Once you're familiar with the criteria, copy [template-word-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-word-1.0.md). It's a bit shorter and quicker.
 
 ## Common standards
 
