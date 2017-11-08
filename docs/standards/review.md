@@ -6,8 +6,15 @@ When [reviewing a pull-request](/core/pr-review.md), you may consult this list f
 be done, then it can help to post a link to the relevant guideline.  This practice allows newcomers to understand the critique, but it doesn't require you to
 write a long, bespoke blurb.
 
-!!! tip
-    The codes below (e.g. `r-jira`) are here to make it easier to reference these standards when chatting with others about PR review.
+!!! tip "Standard codes"
+    Each standard has a code name (e.g. `r-jira`). These make it easier to reference the standards when chatting with others about PR review.
+
+## Templates
+
+You may conduct a structured review, checking each standard in turn. Doing this  will be easier if you copy a template and paste it into your Github comment.
+
+* When conducting your first or second structured review, copy [template-mc-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-mc-1.0.md). It provides several examples.
+* Once you're familiar with the criteria, copy [template-word-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-word-1.0.md). It's a bit shorter and quicker.
 
 ## Common standards
 
@@ -37,13 +44,13 @@ Use the code somehow. You don’t need to attack every imaginable scenario in ev
 
 ### User impact {:#r-user}
 
-_Standard code: `r-users`_
+_Standard code: `r-user`_
 
 If a user was comfortable using the old revision, would they upgrade and assimilate naturally and unthinkingly to the new revision? If not, has there been commensurate effort to provide a fair transition-path and communication?
 
-### Technical impact {:#r-technical}
+### Technical impact {:#r-tech}
 
-_Standard code: `r-technical`_
+_Standard code: `r-tech`_
 
 * Would the patch materially change the contract (signature/pre-condition/post-condition) for APIv3, a hook, a PHP function, a PHP class, a JS widget, or a CSS class?
 * Would you consider the changed element to be an officially supported contract? A de-facto important contract? An obscure internal detail?
