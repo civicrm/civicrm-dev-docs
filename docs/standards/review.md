@@ -13,7 +13,7 @@ write a long, bespoke blurb.
 
 You may conduct a structured review, checking each standard in turn. Doing this  will be easier if you copy a template and paste it into your Github comment.
 
-* When conducting your first or second structured review, copy [template-mc-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-mc-1.0.md). It provides several examples.
+* When conducting your first or second structured review, copy [template-del-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-del-1.0.md) or [template-mc-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-mc-1.0.md). It provides several examples.
 * Once you're familiar with the criteria, copy [template-word-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-word-1.0.md). It's a bit shorter and quicker.
 
 ## Common standards
