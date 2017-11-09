@@ -149,7 +149,7 @@ It is desirable to make this api handling of domain id part of the api layer for
 
 As with core settings, all settings declared in extensions should have appropriate metadata attached to them. 
 
-1. Provide that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L268).
+1. Provide that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L347).
 2. Declare settings as in the same standard as CiviCRM Core [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/settings/Multisite.setting.php).
 3. Create Settings form, a [good example of generic metadata based setings form in an extension](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/CRM/Civixero/Form/XeroSettings.php) - note that only the setting filter is non-generic
 4. Use `cv api system.flush` or `Admin → System Settings → Cleanup Caches` to flush CiviCRM caches and register your new settings metadata.
