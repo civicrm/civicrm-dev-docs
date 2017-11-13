@@ -154,7 +154,7 @@ As with core settings, all settings declared in extensions should have appropria
 3. Create Settings form, a [good example of generic metadata based settings form in an extension](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/CRM/Civixero/Form/XeroSettings.php) - note that only the setting filter is non-generic
 4. Add [routing for your settings form](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/xml/Menu/xerosync.xml).
 5. Add [a template for your settings form](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/templates/CRM/Civixero/Form/XeroSettings.tpl).
-6. Add a menu item by implementing [hook_civicrm_navigationMenu](https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_navigationMenu).
+6. Add a menu item by implementing [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
 7. Use `cv api system.flush` or `Admin → System Settings → Cleanup Caches` to flush CiviCRM caches and register your new settings metadata.
 
 ## Adding Setting Config to Admin Forms.
