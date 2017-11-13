@@ -83,22 +83,21 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 1. If you are on a mac, you can close and re-open your terminal. On other systems, you will need to log-out or source your `~/.profile`
 1. Enter the command `civibuild -h`. This should display a help screen for civibuild. If you get 'command not found', then check your path and retry the steps above.
 
-!!! note More on bash $PATH
+!!! note "More on bash `$PATH`"
 
-    On most OS's ~/.profile is run only once when you login to your desktop. There is a distinction between "login shells" and "non-login shells" which you don't really need to worry about, except that the distinction is the reason that you should set your PATH in your `~/.profile` and not your `~/.bashrc`.
+    On most OS's `~/.profile` is run only once when you login to your desktop. There is a distinction between "login shells" and "non-login shells" which you don't really need to worry about, except that the distinction is the reason that you should set your `$PATH` in your `~/.profile` and not your `~/.bashrc`.
     
-    When you open a terminal (non-login), ~/.bashrc will be executed. The common idiom for changing the path is to add to the $PATH, not rebuild it, so if you update your PATH every time a shell is invoked, your PATH will continually grow. This is not really a problem, but you might want to be aware of this.
+    When you open a terminal (non-login), `~/.bashrc` will be executed. The common idiom for changing the path is to add to the `$PATH`, not rebuild it, so if you update your `$PATH` every time a shell is invoked, your `$PATH` will continually grow. This is not really a problem, but you might want to be aware of this.
     
-    If you are on a mac, the situation is reversed. That is, your PATH is not set when you login into your desktop and every terminal you open is a "login shell" and ~/.profile will be executed every time.
+    If you are on a mac, the situation is reversed. That is, your `$PATH` is not set when you login into your desktop and every terminal you open is a "login shell" and `~/.profile` will be executed every time.
     
-    You do not need to `export PATH` because your system certainly has already exported the PATH variable and you only need to update it.
-    
-    In windows: someone help me out here, it's been awhile...
+    You do not need to run `export PATH=...` because your system certainly has already exported the `$PATH` variable and you only need to update it.
     
     References: 
-      https://unix.stackexchange.com/a/26059
-      https://superuser.com/questions/244964/mac-os-x-bashrc-not-working#244990
-      https://askubuntu.com/questions/155865/what-are-login-and-non-login-shells#156038
+
+    * <https://unix.stackexchange.com/a/26059>
+    * <https://superuser.com/questions/244964/mac-os-x-bashrc-not-working#244990>
+    * <https://askubuntu.com/questions/155865/what-are-login-and-non-login-shells#156038>
 
 !!! note
 
