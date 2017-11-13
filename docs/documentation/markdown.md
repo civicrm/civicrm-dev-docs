@@ -434,6 +434,10 @@ point and with alt text in place of the link text.
 ![Alt text](/directory/image.png)
 ```
 
+Note:
+
+* The image files should be committed into git and stored in the `docs/img` directory within the project.
+* The URL to the image should follow out [internal URL standards](#internal-url-standards)  
 
 ## Other markdown syntax
 
