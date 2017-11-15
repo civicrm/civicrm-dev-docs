@@ -2,7 +2,7 @@
 
 ## Introduction
 
-CiviCRM Comes with a number of standard report templates which can be useful. Extensions such as CiviVisulise have added on capabilities to the CiviReport functionality. This guide will go through the process of developers creating their own new custom report template. Reports in CiviCRM are built based off php report templates.
+CiviCRM Comes with a number of standard report templates which can be useful. Extensions such as [CiviVisualize](https://civicrm.org/extensions/civisualize-missing-data-visualization-extension) have added on capabilities to the CiviReport functionality. This guide will go through the process of developers creating their own new custom report template. Reports in CiviCRM are built based off php report templates.
 
 ## Generating Report Template
 
