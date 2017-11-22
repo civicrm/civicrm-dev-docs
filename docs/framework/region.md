@@ -243,9 +243,30 @@ At time of writing, tags are outputted as plain HTML markup.
 | pcp-form-campaign| PCP page creation/edit.| CRM/PCP/Form/Campaign.tpl |  4.3.0+ | 
 | pcp-page-pcpinfo| PCP page displayed to a visitor.| CRM/PCP/Page/PCPInfo.tpl |  4.3.0+ | 
 
-### Manage Premimums
+### Manage Premiums
 
 | Region Name | Type | Details | CiviCRM Version |
 | --- | --- | --- | --- |
 | contribute-form-managepremiums-standard-fields| The non-collapsible fields at the top of the form.| CRM/Contribute/Form/ManagePremiums.tpl | 4.7.2+ | 
 | contribute-form-managepremiums-other-fields| The collapsible fields at the bottom of the form. | CRM/Contribute/Form/ManagePremiums.tpl | 4.7.2+ | 
+
+### User Dashboard (CMS front-end)
+
+| Region Name | Type | Details | CiviCRM Version |
+| --- | --- | --- | --- |
+| crm-activity-userdashboard-pre| Region immediately before the user's activities section.| CRM/Activity/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-activity-userdashboard-pre| Region immediately after the user's activities section. | CRM/Activity/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-contact-relationshipselector-pre| Region immediately before the user's relationships listing.| CRM/Contact/Page/View/RelationshipSelector.tpl | 4.7.29+ | 
+| crm-contact-relationshipselector-post| Region immediately after the user's relationships listing. | CRM/Contact/Page/View/RelationshipSelector.tpl | 4.7.29+ | 
+| crm-contact-userdashboard-groupcontact-pre| Region immediately before the user's groups.| CRM/Contact/Page/View/UserDashBoard/GroupContact.tpl | 4.7.29+ | 
+| crm-contact-userdashboard-groupcontact-post| Region immediately after the user's groups. | CRM/Contact/Page/View/UserDashBoard/GroupContact.tpl | 4.7.29+ | 
+| crm-contribute-pcp-userdashboard-pre| Region immediately before the user's PCP(s).| CRM/Contribute/Page/PcpUserDashboard.tpl | 4.7.29+ | 
+| crm-contribute-pcp-userdashboard-post| Region immediately after the user's PCP(s). | CRM/Contribute/Page/PcpUserDashboard.tpl | 4.7.29+ | 
+| crm-contribute-userdashboard-pre| Region immediately before the user's contribution list.| CRM/Contribute/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-contribute-userdashboard-post| Region immediately after the user's contribution list. | CRM/Contribute/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-event-userdashboard-pre| Region immediately before the user's list of participating events.| CRM/Event/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-event-userdashboard-post| Region immediately after the user's list of participating events. | CRM/Event/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-member-userdashboard-pre| Region immediately before the user's memberships.| CRM/Member/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-member-userdashboard-post| Region immediately after the user's memberships. | CRM/Member/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-pledge-userdashboard-pre| Region immediately before the user's pledge(s) list.| CRM/Pledge/Page/UserDashboard.tpl | 4.7.29+ | 
+| crm-pledge-userdashboard-post| Region immediately after the user's pledge(s) list. | CRM/Pledge/Page/UserDashboard.tpl | 4.7.29+ | 
