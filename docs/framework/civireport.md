@@ -81,6 +81,7 @@ filters is a list of filters related to the table that the user can use to filte
 | `title`  | text | The caption/label | 
 | `default` | text | The default value of the filter | 
 | `operatorType` | `CRM_Report_Form::OP_XXX` | The widget type. Look in `CRM_Report_Form` for the possible values. Note that some like `DATE` have some built-in functionality for you. Also note that some filters have built-in functionality even without a type, like the `sort_name` in the example above gives the user a choice of "contains", "starts with", etc... |
+| `default_op` | text | The default operator of the filter, e.g `'eq'` for `CRM_Utils_Type::T_INT` |
 | `options` | array | For widgets that have a selection of values. Pass in an array with value as the key and label as the value, e.g. `array('1'=>'Low', '2'=>'Medium', '3'=>'High')` |
 | `group` | true/false | Used for group related form fields for e.g `group_id`. A true value for this flag, makes the query include the condition inside the main `WHERE` clause like a normal query. If false, condition is excluded from main clause. | 
 | `no_display` | true/false | When set for a filter makes the filter hidden but can still be used in the query. Required for cases when filter is expected from url and not be present on the form |
