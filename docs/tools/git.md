@@ -100,7 +100,27 @@ If you are still developing a set of changes, it may be useful to submit a pull-
    
 #### (NFC) - "Non-Functional Change" {:#nfc}
 
-Most patches are designed to change functionality (e.g. fix an error message or add a new button). However, some changes are non-functional -- e.g. they cleanup the code-style, improve the comments, or improve the test-suite. 
+Most patches are designed to change functionality (e.g. fix an error message or add a new button). However, some changes are non-functional -- they presumptively have no impact on users or integrations at runtime.
+The aim of flagging a PR as "(NFC)" is to streamline review on trivial changes.
+
+Here are some examples and counter-examples of NFC:
+
+* _Non-Functional Change_:
+    * Modify whitepsace in PHP code.
+    * Update a code comment.
+    * Fix a typo or grammatical error in a help dialog.
+    * (*Maybe*) Add a new unit-test where there was no coverage before.
+* _Functional Change_:
+    * Replace 20 lines of redundant code with a call to a helper function.
+        * (__Why?__ A reviewer would consider whether the helper is truly equivalent, better, or worse.)
+    * Fix a typo in a *symbol* (PHP class-name, PHP function-name, HTML field name, etc).
+        * (__Why?__ A reviewer would consider dangling references to the symbol.)
+    * Change the general wording of a help dialog or menu item.
+        * (__Why?__ A reviewer would consider impact on the user's comprehension.)
+    * Alter the substance of an existing unit-test.
+        * (__Why?__ A reviewer would consider whether the change improves the correctness of the test.)
+    * Alter the build process.
+        * (__Why?__ A reviewer would consider whether the new build will work correctly.)
 
 ### Pull request scope {:#pr-scope}
 
