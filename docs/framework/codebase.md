@@ -4,7 +4,7 @@ This chapter provides a general overview of the codebase organisation.
 
 !!! tip
     In order to explore the directories inside the CiviCRM repository it is
-    generally quickest to to make a local clone of the CiviCRM from GitHub,
+    generally quickest to make a local clone of CiviCRM from GitHub,
     or better yet install the [buildkit](/basics/requirements.md#buildkit).
 
 !!! tip
@@ -93,7 +93,7 @@ Looking at the field 'pledge.amount' we see
   ),
 ```
 
-The key is the unique name but the name field is the field's name and the 'where' field shows the MySQL description of it. We also see the data type and whether it is available for search or export.
+The key is the unique name but the 'name' field is the field's name and the 'where' field shows the MySQL description of it. We also see the data type and whether it is available for search or export.
 
 Generally fields should be exportable unless there is a security reason or they are weird and confusing as the search builder is also driven by this setting.
 
@@ -118,8 +118,8 @@ the form directories.  Form files contain a class that extends CRM_Core_Form.
 This class has different methods that the core calls before display to
 check permissions, retrieve information (`preProcess`), display
 the form (`buildForm`), validate the form (`formRule`) and carry out tasks once the
-form is submitted (`postProcess`).  Forms can diplay information from the BAO
-to users and then call the BAO on submission. Generaly each form has an
+form is submitted (`postProcess`).  Forms can display information from the BAO
+to users and then call the BAO on submission. Generally each form has an
 associated template (see below) which defines the form's html.
 
 !!! Note
@@ -131,7 +131,7 @@ associated template (see below) which defines the form's html.
     experimentation.
 
 ### Page
-If a CiviCRM screen is not a Form, it is probably a page.  Pages files contain a
+If a CiviCRM screen is not a Form, it is probably a Page.  Pages files contain a
 class that extend CRM_Core_Page.  Similar to the form class, Pages have methods
 that are called before the page is displayed to control access, set the title,
 etc. (`preProcess`), and when the page is displayed (`run`). Pages tend to
@@ -166,7 +166,7 @@ directory.  Best practice for using the API is discussed in more detail in
 ## bin scripts
 The bin directory contains a variety of scripts that can be run to carry out
 specific functions.  Some of these scripts are run on a regular basis, for
-example the CiviMail 'send' and 'process' scripts.  Others are run on a one of
+example the CiviMail 'send' and 'process' scripts.  Others are run on a one-off
 or occasional basis, e.g. update geo-coding.
 
 ## SQL
@@ -182,4 +182,4 @@ CiviCRM's online translation tool transifex.
 ## packages
 CiviCRM makes use of a lot of 3rd party packages for things like the database,
         form, javascript and pdf libraries, wysiwyg editors and so on.  You
-        shouldn't need to edit these packages directory.
+        shouldn't need to edit files under the packages directory.
