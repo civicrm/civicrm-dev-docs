@@ -6,7 +6,7 @@ This hook is called when an `entityRef` field is rendered in a form, which allow
 
 ## Availability
 
-This hook is available in CiviCRM 4.7.27+ (maybe depends on the commit).
+This hook is available in CiviCRM 4.7.28 and later.
 
 ## Definition
 
