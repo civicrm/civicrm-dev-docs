@@ -109,10 +109,10 @@ If your code needs to work across multiple versions of CiviCRM, where jQuery was
 ```javascript
 (function($) {
   // your code here
-})(CRM.$ || cj)
+})(CRM.$ || cj);
 ```
 
-For more examples you can take a look at a [gist](https://gist.github.com/totten/9591b10d4bc09c78108d) from Tim Otten on javascript alternatives For more information on javascript closures, [here is some further reading](http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth).
+For more examples you can take a look at a [gist](https://gist.github.com/totten/9591b10d4bc09c78108d) from Tim Otten on javascript alternatives. For more information on javascript closures, [here is some further reading](http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth).
 
 ## Accessing CiviCRM API from JS
 
