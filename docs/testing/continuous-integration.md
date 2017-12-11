@@ -1,7 +1,7 @@
 ## Jenkins
 
 To prevent defects from entering the system or remaining in the system, 
-the tests are executed automatically Jenkins. 
+the tests are executed automatically by Jenkins - our continuous integration server.
 
 The test system runs twice. Firstly, when a change is proposed through Github 
 (as a "pull-request" or "PR"), Jenkins tests it immediately. (This takes 5-90min.) 
