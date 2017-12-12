@@ -2,7 +2,7 @@
 
 The CiviCRM suite spans the full stack -- it includes low-level helpers and user-facing applications; it includes
 server-side PHP and client-side Javascript; it touches multiple business areas (such as contributions, mailings, and
-cases); it includes a common core project and an ecosystem of add-ons.
+cases); it includes a common core project and an ecosystem of add-ons. This requires a lot of testing.
 
 Depending on the scope of the test and the relevant language, one chooses among these tools:
 
