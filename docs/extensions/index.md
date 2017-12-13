@@ -56,11 +56,11 @@ Extensions which undergo a [formal review](/extensions/lifecycle.md#formal-revie
 
 There are a number of ways in which extensions can interact with core. These are supported to greater or lesser degrees and only extensions that use fully supported methods are eligible for publication in the extensions directory.
 
-# Fully supported methods are:
- - civicrm v3 api
- - civicrm v4 api (when it is stable)
- - hooks documented in this guide
- - [Civi::cache](https://docs.civicrm.org/dev/en/latest/framework/cache/)
- - Civi::$statics (page to be added)
- - [Civi::settings](https://docs.civicrm.org/dev/en/latest/framework/setting/)
- - internal symphony listeners  - 'civi.api.resolve', 'civi.api.prepare'
+Fully supported methods are:
+
+* [API](/api/index.md)
+* [Hooks](/hooks/index.md)
+* [`Civi::cache`](https://docs.civicrm.org/dev/en/latest/framework/cache/)
+* `Civi::$statics`
+* [`Civi::settings`](https://docs.civicrm.org/dev/en/latest/framework/setting/)
+* Internal Symfony listeners (e.g. `civi.api.resolve`, `civi.api.prepare`)
