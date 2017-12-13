@@ -54,7 +54,7 @@ Extensions which undergo a [formal review](/extensions/lifecycle.md#formal-revie
 
 ## Interacting with core
 
-There are a number of ways in which extensions can interact with core. These are supported to greater or lesser degrees and only extensions that use fully supported methods are eligible for publication in the extensions directory.
+There are a number of ways in which extensions can interact with core. These are supported to greater or lesser degrees.
 
 Fully supported methods are:
 
