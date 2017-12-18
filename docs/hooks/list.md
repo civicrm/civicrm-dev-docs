@@ -149,6 +149,8 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_membershipTypeValues](/hooks/hook_civicrm_membershipTypeValues.md)** - called when composing the array of membership types and their costs during a membership registration (new or renewal).
 * **[hook_civicrm_notePrivacy](/hooks/hook_civicrm_notePrivacy.md)** - provides a way to override the default privacy behavior for notes.
 * **[<del>hook_civicrm_optionValues</del>](/hooks/hook_civicrm_optionValues.md)** - deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md).
+* **[hook_civicrm_preJob](/hooks/hook_civicrm_preJob.md)** - called before executing a scheduled job.
+* **[hook_civicrm_postJob](/hooks/hook_civicrm_postJob.md)** - called after executing a scheduled job.
 * **[hook_civicrm_queryObjects](/hooks/hook_civicrm_queryObjects.md)** - called while building the core search query, allowing you to provide your own query objects which alter or extend the core search.
 * **[hook_civicrm_recent](/hooks/hook_civicrm_recent.md)** - called before storing recently viewed items.
 * **[hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md)** - called to allow custom tokens to be defined.
