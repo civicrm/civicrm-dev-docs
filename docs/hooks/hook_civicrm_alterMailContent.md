@@ -15,4 +15,19 @@ tokenizing it.
 
 ## Details
 
--   $content - fields include: html, text, subject
+-   $content - fields include: html, text, subject, groupName, valueName, messageTemplateID
+
+## Example
+
+    /**
+     * Implement hook_civicrm_alterMailContent
+     *
+     * Replace invoice template with custom content from file
+    */
+    function mail_civicrm_alterMailContent(&$content) {
+      if (CRM_Utils_Array::value('valueName', $content) == 'contribution_invoice_receipt') {
+        $path = CRM_Core_Resources::singleton()->getPath('org.myorg.invoice');
+        $html = file_get_contents($path.'/msg/contribution_invoice_receipt.html.tpl');
+        $content['html'] = $html;
+      }
+    }
