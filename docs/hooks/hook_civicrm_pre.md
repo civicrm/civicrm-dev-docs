@@ -48,6 +48,7 @@ changing between the old and new data.
         created/edited)
     -   'Membership'
     -   'MembershipPayment'
+    -   'MessageTemplate'
     -   'Event'
     -   'Participant'
     -   'ParticipantPayment'
