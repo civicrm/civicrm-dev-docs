@@ -97,7 +97,7 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 | Method | Used For | Notes |
 | --- | --- | --- | 
 | addButtons | form submit buttons | |
-| addRado | set of radio buttons | | 
+| addRadio | set of radio buttons | | 
 | addYesNo | radio buttons with preset 'Yes' & 'No' options | |
 | addCheckbox | set of checkboxes | |
 | addDateRange | set of "to" and "from" dates | requires an extra template to be included |
@@ -116,7 +116,7 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 | ~~addDate~~ | Datepicker Element | Use `$form()->add('datepicker', ...)` instead. |
 | ~~addDateTime~~ | Datepicker with time Element | Use `$form()->add('datepicker', ...)` instead. |
 | ~~addWysiwyg~~ | Rich text Area | Removed: Use `$form()->add("wysiwyg", ... )` instead. |
-| ~~addCountry~~ | Country Select Field | Removed. Use AddSelect instad or addEntityRef |
+| ~~addCountry~~ | Country Select Field | Removed. Use AddSelect instead or addEntityRef |
 
 ## Request Lifecycle
 
@@ -142,7 +142,7 @@ Examine submitted form data to determine validity. (Note: The "Validation" phase
 
 | Step | Audience | Comments |
 | --- | --- | --- |
-| (Process rules) | Original Developer & Third-Party Developer | Iteratively process any rules that here added during the "build" phase (i.e. call any callbacks registered via `$form()->addFormRule()`). |
+| (Process rules) | Original Developer & Third-Party Developer | Iteratively process any rules added during the "build" phase (i.e. call any callbacks registered via `$form()->addFormRule()`). |
 | [hook_civicrm_validate](/hooks/hook_civicrm_validate.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
 | [hook_civicrm_validateForm](/hooks/hook_civicrm_validateForm.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
 
