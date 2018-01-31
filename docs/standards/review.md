@@ -22,9 +22,9 @@ You may conduct a structured review, checking each standard in turn. Doing this 
 
 _Standard code: `r-explain`_
 
-This change may be inspected by current+future colleagues who (a) want to understand what's improved in the next release and/or (b) need to understand why the system works the way it does. 
+This change will likely be inspected by current+future colleagues who (a) want to understand what's improved in the next release and/or (b) want to understand why the system works the way it does. 
 
-Ensure that PR has an adequate explanation. The explanation may be directly in the PR description, or it could be linked in a [JIRA issue](/tools/issue-tracking.md#jira)[Gitlab issue](http://lab.civicrm.org/), or [StackExchange](https://civicrm.stackexchange.com/) thread.
+Ensure that PR has an adequate explanation. The explanation may be written directly in the PR description, or it could be linked in a [JIRA issue](/tools/issue-tracking.md#jira), [Gitlab issue](http://lab.civicrm.org/), or [StackExchange](https://civicrm.stackexchange.com/) thread.
 
 Exception: [NFC](/tools/git.md#nfc) and [WIP](/tools/git.md#wip) PRs may not need a detailed explanation.
 
