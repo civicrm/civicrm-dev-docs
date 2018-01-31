@@ -7,7 +7,7 @@ be done, then it can help to post a link to the relevant guideline.  This practi
 write a long, bespoke blurb.
 
 !!! tip "Standard codes"
-    Each standard has a code name (e.g. `r-jira`). These make it easier to reference the standards when chatting with others about PR review.
+    Each standard has a code name (e.g. `r-explain`). These make it easier to reference the standards when chatting with others about PR review.
 
 ## Templates
 
@@ -18,11 +18,15 @@ You may conduct a structured review, checking each standard in turn. Doing this 
 
 ## Common standards
 
-### JIRA {:#r-jira}
+### Explanation {:#r-explain}
 
-_Standard code: `r-jira`_
+_Standard code: `r-explain`_
 
-For most bug-fixes and improvements, there needs to be a [JIRA issue](/tools/issue-tracking.md#jira). However, [NFC](/tools/git.md#nfc) and [WIP](/tools/git.md#wip) PRs may not need an issue.
+This change may be inspected by current+future colleagues who (a) want to understand what's improved in the next release and/or (b) need to understand why the system works the way it does. 
+
+Ensure that PR has an adequate explanation. The explanation may be directly in the PR description, or it could be linked in a [JIRA issue](/tools/issue-tracking.md#jira)[Gitlab issue](http://lab.civicrm.org/), or [StackExchange](https://civicrm.stackexchange.com/) thread.
+
+Exception: [NFC](/tools/git.md#nfc) and [WIP](/tools/git.md#wip) PRs may not need a detailed explanation.
 
 ### Test results {:#r-test}
 
