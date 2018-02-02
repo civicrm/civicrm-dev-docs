@@ -26,7 +26,7 @@ Ensure the PR has an adequate explanation.
 
 If you were a site-builder reading the PR-log/release-notes and drilled into this PR, would you understand the description? If you were debugging a problem and traced the change back to this PR, would you understand why the change was made?
 
-The explanation may be written directly in the PR description, or it could be linked in a [JIRA issue](/tools/issue-tracking.md#jira), [Gitlab issue](http://lab.civicrm.org/), or [StackExchange](https://civicrm.stackexchange.com/) thread.
+It is strongly encouraged that PR's include URLs/hyperlinks for any explanatory material (when available) -- such as a [JIRA issue](/tools/issue-tracking.md#jira), [Gitlab issue](http://lab.civicrm.org/), [StackExchange question](https://civicrm.stackexchange.com/), related PR, or [Mattermost chat](https://chat.civicrm.org). However, hyperlinks are not a substitute for a description. The PR should still have a description.
 
 Exception: [NFC](/tools/git.md#nfc) and [WIP](/tools/git.md#wip) PRs may not need a detailed explanation.
 
