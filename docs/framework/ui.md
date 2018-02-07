@@ -340,8 +340,9 @@ In-place field editing was added to CiviCRM circa v4.1 and is built upon
 | **Empty Option** | *-* | A string to label the "null" option if the field is of type select and the user should be allowed to choose nothing. |   | `data-empty-option="{ts}- none -{/ts}"` |
 | **Tooltip** | *"Click to edit"* | Any text |   | `data-tooltip="{ts}Help text{/ts}"` |
 | **Placeholder** | *(standard edit icon)* | Any markup |   | `data-placeholder="<span>Click to edit</span>"` |
-| **Select Options** | *(automatic)* | Json-encoded options (Note: this is rarely needed as option lists are automatically fetched from the api by crmEditable) |   |   |
+| **Select Options** | *(automatic)* | JSON-encoded options (Note: this is rarely needed as option lists are automatically fetched from the api by crmEditable) |   |   |
 | **Refresh** | *false* | Boolean |   | `data-refresh="true"` |
+| **Params** |  | JSON-encoded parameters to add to the api call when saving updates | | `data-params='{"key":"value"}'` |
 
 ### Use With Checkboxes
 
