@@ -12,17 +12,25 @@ See: <https://www.transifex.com/projects/p/civicrm_extensions/>
 
 The easiest way to download translations for extensions is to use the [l10nupdate](https://github.com/cividesk/com.cividesk.l10n.update/) extension.
 
-## For developers: Correct usage of the `ts()` function
+## For developers: Correct usage of the `E::ts()` function
 
-In PHP, Smarty, and JS code, the convention is to perform translations using the `ts()` helper function. This is the same as in core code &mdash; with the additional requirement that one must specify the "domain" so that the translation engine can use the correct dictionary (`.mo` file) at run-time.
+In PHP, Smarty, and JS code, the convention is to perform translations using the `E::ts()` helper function. This is the same as in core code &mdash; with the additional requirement that one must specify the "domain" so that the translation engine can use the correct dictionary (`.mo` file) at run-time.
+
+!!! note "New in civix 17.08"
+    `E::ts()` was added to civix 17.08. The civix file may need to be regenerated. You can read more about it in the [civix upgrade notes](https://github.com/totten/civix/blob/master/UPGRADE.md#upgrade-to-v17081-the-big-e). Extensions may still use the old syntax using `ts()` with the `domain` argument.
 
 PHP:
 
 ```php
-$string = ts('Hello, %1', array(
-  1 => $display_name,
-  'domain' => 'org.example.myextension',
-));
+use CRM_Myextension_ExtensionUtil as E;
+
+class CRM_Myextension_Form_Example {
+  function example() {
+    $string = E::ts('Hello, %1', array(
+      1 => $display_name,
+    ));
+  }
+}
 ```
  
 Smarty templates:
