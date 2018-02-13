@@ -34,8 +34,39 @@ After running the above command, then proceed to the [post-installation configur
 
 If you have [Docker](https://www.docker.com/) running, you can use one of the following projects to run buildkit within a Docker container:
 
+* <https://github.com/michaelmcandrew/civicrm-buildkit-docker>
 * <https://github.com/progressivetech/docker-civicrm-buildkit>
 * <https://github.com/ErichBSchulz/dcbk>
+
+!!! Note
+
+    There different version of Buildkit on Docker. Michael McAndrews seems to be the easiest to get started with. 
+
+#### Install buildkit on docker on ubuntu
+
+Follow the official installation instructions from https://docs.docker.com/compose/install/ to install docker compose on your linux machine.
+
+```bash
+git clone https://github.com/michaelmcandrew/civicrm-buildkit-docker.git
+cd civicrm-buildkit-docker
+sudo docker-compose up -d
+```
+
+Now you are ready to go.
+
+To create a new site with buildkit run the following command:
+
+```bash
+docker-compose exec -u buildkit civicrm civibuild create dmaster --url http://localhost:8080
+```
+
+Alternative you can login into the conatiner and run the commands from there:
+
+```bash
+docker-compose exec -u buildkit civicrm bash
+```
+
+More information is in the Readme: https://github.com/michaelmcandrew/civicrm-buildkit-docker/blob/master/README.md
 
 
 ### Other platforms
