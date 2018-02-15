@@ -40,7 +40,7 @@ If you have [Docker](https://www.docker.com/) running, you can use one of the fo
 
 !!! Note
 
-    There different version of Buildkit on Docker. Michael McAndrews seems to be the easiest to get started with. 
+    There different version of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with. 
 
 #### Install buildkit on docker on ubuntu
 
