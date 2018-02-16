@@ -81,7 +81,7 @@ Deprecated settings properties are :
 
 ## Setting Storage and Retrieval
 
-To set a setting, developers can use either the Setting.Create API or use `Civi::settings->set()` to set the value e.g. `Civi::settings->set('editor_id', 'CKEditor');`. To Retrieve a setting value, developers can use the Setting.Get API or use `Civi::settings->get()` e.g. `Civi::settings()->get('max_attachments');`
+To set a setting, developers can use either the Setting.Create API or use `Civi::settings()->set()` to set the value e.g. `Civi::settings()->set('editor_id', 'CKEditor');`. To Retrieve a setting value, developers can use the Setting.Get API or use `Civi::settings()->get()` e.g. `Civi::settings()->get('max_attachments');`
 
 ## API actions
 
