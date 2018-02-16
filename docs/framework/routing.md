@@ -91,13 +91,13 @@ The XML will contain a structure made up of the following elements.
 ### `<is_public>` {:#is_public}
 
 * Containing element: [`<item>`](#item)
-* Description: ???
+* Description: This determines whether the path is considered to be "frontend" (`true`) or "backend" (`false`, the default) in CMSes that make such a distinction (Joomla! and WordPress).  Attempting to visit the path via the wrong end of the site may result in denied permission or the site acting like the path doesn't exist.
 * Contains: `true` or `false`
 
 ### `<is_ssl>` {:#is_ssl}
 
 * Containing element: [`<item>`](#item)
-* Description: ???
+* Description: If `true`, HTTP visitors will be redirected to HTTPS when they visit this path if the site has "Force Secure URLs (SSL)" set to "Yes".  The visitors will not be redirected if this element is set to `false` or omitted.
 * Contains: `true` or `false`
 
 ### `<item>` {:#item}
@@ -109,19 +109,19 @@ Elements acceptable within `<item>`
 
 | Element | Acceptable instances |
 | -- | -- |
-| [`<access_callback>`](#access_callback) | 0 or 1 |
 | [`<access_arguments>`](#access_arguments) | 0 or 1 |
+| [`<access_callback>`](#access_callback) | 0 or 1 |
 | [`<adminGroup>`](#adminGroup) | 0 or 1 |
+| [`<comment>`](#comment) | 0 or 1 |
+| [`<component>`](#component) | 0 or 1 |
 | [`<desc>`](#desc) | 0 or 1 |
 | [`<icon>`](#icon) | 0 or 1 |
 | [`<is_public>`](#is_public) | 0 or 1 |
 | [`<is_ssl>`](#is_ssl) | 0 or 1 |
-| [`<comment>`](#comment) | 0 or 1 |
-| [`<component>`](#component) | 0 or 1 |
-| [`<path>`](#path) | 1 |
 | [`<page_arguments>`](#page_arguments) | 0 or 1 |
 | [`<page_callback>`](#page_callback) | 0 or 1 |
 | [`<page_type>`](#page_type) | 0 or 1 |
+| [`<path>`](#path) | 1 |
 | [`<path_arguments>`](#path_arguments) | 0 or 1 |
 | [`<return_url>`](#return_url) | 0 or 1 |
 | [`<skipBreadCrumb>`](#skipBreadCrumb) | 0 or 1 |
