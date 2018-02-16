@@ -5,10 +5,10 @@ CiviCRM's routing system is built based on XML files. These XML files define wha
 The standard menu XML files can be found in `CRM/Core/xml/Menu/`. Each route is defined as an "Item" Within the menu. In extensions you should add your menu to `<extension folder>/xml/Menu/<extensionName>.xml`
 
 !!! note
-    For historical reasons, the routing files live in a `Menu` folder, but the contents of these files do *not* affect the navigation menu at the top of the screen. 
-    
+    For historical reasons, the routing files live in a `Menu` folder, but the contents of these files do *not* affect the navigation menu at the top of the screen.
+
     Extension authors can add new menu entires by using [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
-    
+
 ## Example
 
 ```xml
@@ -35,15 +35,6 @@ The XML will contain a structure made up of the following elements.
 
 !!! tip
     The [`<menu>`](#menu) element must be the root element of the document.
-    
-### `<access_callback>` {:#access_callback}
-
-* Containing element: [`<item>`](#item)
-* Description: Function to be used to check access to the route
-* Example: `CRM_Core_Permission::checkMenu`
-* Contains: Text
-* Notes:
-    * If you wish for this route to be public you can set it to be 1.
 
 ### `<access_arguments>` {:#access_arguments}
 
@@ -53,6 +44,15 @@ The XML will contain a structure made up of the following elements.
 * Contains: Text
 * Notes:
     * If you want the permissions to be an "or" situation i.e. User needs either access CiviCRM or administer CiviCRM put a `;` between the permissions. If you want it so that users need multiple permissions put a `,` between
+
+### `<access_callback>` {:#access_callback}
+
+* Containing element: [`<item>`](#item)
+* Description: Function to be used to check access to the route
+* Example: `CRM_Core_Permission::checkMenu`
+* Contains: Text
+* Notes:
+    * If you wish for this route to be public you can set it to be 1.
 
 ### `<adminGroup>` {:#adminGroup}
 
@@ -88,6 +88,18 @@ The XML will contain a structure made up of the following elements.
 * Example: `admin/small/duplicate_matching.png`
 * Contains: Text
 
+### `<is_public>` {:#is_public}
+
+* Containing element: [`<item>`](#item)
+* Description: ???
+* Contains: `true` or `false`
+
+### `<is_ssl>` {:#is_ssl}
+
+* Containing element: [`<item>`](#item)
+* Description: ???
+* Contains: `true` or `false`
+
 ### `<item>` {:#item}
 
 * Containing element: [`<menu>`](#menu)
@@ -95,7 +107,7 @@ The XML will contain a structure made up of the following elements.
 
 Elements acceptable within `<item>`
 
-| Element | Acceptable instances | 
+| Element | Acceptable instances |
 | -- | -- |
 | [`<access_callback>`](#access_callback) | 0 or 1 |
 | [`<access_arguments>`](#access_arguments) | 0 or 1 |
@@ -116,18 +128,6 @@ Elements acceptable within `<item>`
 | [`<title>`](#title) | 1 |
 | [`<weight>`](#weight) | 0 or 1 |
 
-### `<is_public>` {:#is_public}
-
-* Containing element: [`<item>`](#item)
-* Description: ???
-* Contains: `true` or `false`
-
-### `<is_ssl>` {:#is_ssl}
-
-* Containing element: [`<item>`](#item)
-* Description: ???
-* Contains: `true` or `false`
-
 ### `<menu>` {:#menu}
 
 * Containing element: none (this is the root element)
@@ -135,19 +135,9 @@ Elements acceptable within `<item>`
 
 Elements acceptable within `<menu>`
 
-| Element | Acceptable instances | 
+| Element | Acceptable instances |
 | -- | -- |
 | [`<item>`](#item) | 1+ |
-
-### `<path>` {:#path}
-
-* Containing element: [`<item>`](#item)
-* Description: The path is the url route that this menu item is for
-* Example: `civicrm/admin/eway/settings`
-* Contains: Text
-
-!!! Caution "Caution: Wild card sub-paths"
-    One path can match all sub-paths.  For example, `<path>civicrm/admin</path>` can match `http://example.org/civicrm/admin/f/o/o/b/a/r`.  However, one should avoid designs which rely on this because it's imprecise and it can be difficult to integrate with some frontends.
 
 
 ### `<page_arguments>` {:#page_arguments}
@@ -172,6 +162,16 @@ Elements acceptable within `<menu>`
 * Contains: Text
 * Notes:
     * If this is not set the default is 0
+
+### `<path>` {:#path}
+
+* Containing element: [`<item>`](#item)
+* Description: The path is the url route that this menu item is for
+* Example: `civicrm/admin/eway/settings`
+* Contains: Text
+
+!!! Caution "Caution: Wild card sub-paths"
+    One path can match all sub-paths.  For example, `<path>civicrm/admin</path>` can match `http://example.org/civicrm/admin/f/o/o/b/a/r`.  However, one should avoid designs which rely on this because it's imprecise and it can be difficult to integrate with some frontends.
 
 ### `<path_arguments>` {:#path_arguments}
 
