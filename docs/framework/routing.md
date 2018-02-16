@@ -94,6 +94,9 @@ The XML will contain a structure made up of the following elements.
 * Description: This determines whether the path is considered to be "frontend" (`true`) or "backend" (`false`, the default) in CMSes that make such a distinction (Joomla! and WordPress).  Attempting to visit the path via the wrong end of the site may result in denied permission or the site acting like the path doesn't exist.
 * Contains: `true` or `false`
 
+!!! tip
+    The word "public" is a bit of a misnomer.  The `<is_public>` element determines whether the path works on the public side of the website, but it *does not* grant permission for it to be seen by the public.  Permissions are handled by `<access_callback>` and `<access_arguments>`.
+
 ### `<is_ssl>` {:#is_ssl}
 
 * Containing element: [`<item>`](#item)
