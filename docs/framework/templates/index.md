@@ -88,10 +88,9 @@ CiviCRM introduces some extra features to Smarty:
 
 All the templates are under the folder `templates/CRM` in your CiviCRM
 installation. Finding which template is used on a given page can be
-difficult, but the easiest way to find out the answer is to enable debugging
-then view the source of the page from a web browser and search for `.tpl`. 
-To enable debugging to go to **Administer > System Settings > Debugging 
-and Error Handling** then select **Enable Debugging**.
+difficult, but the easiest way to find out the answer is to 
+[enable debugging](/tools/debugging.md#changing-settings-in-the-ui) then 
+view the source of the page from a web browser and search for `.tpl`.
 For example, for the Contact Summary page, use the web browser to open the
 Contact Summary page, then click "View Source" in the browser.  You
 should find an HTML comment such as:
