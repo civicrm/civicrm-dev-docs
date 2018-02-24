@@ -1,6 +1,6 @@
 # Jenkins
 
-Jenkins is CiviCRM's continual integration server
+Jenkins is CiviCRM's [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) server.
 
 To prevent defects from entering the system or remaining in the system, the tests are executed automatically by Jenkins. Jenkins first runs php and javascript style checks through the usage of `civilint` before running unit tests.
 
@@ -14,7 +14,7 @@ If the user is trusted, CiviCRM administrators can add the person to the whiteli
 
 ## PR Test Jobs
 
-Jenkins runs a "PR Test" job which is triggered whenever a pull request is created or updated in Github. PR test jobs can take anywhere from 5 - 90 min to complete. This works for the following repos:
+Jenkins runs a "PR Test" job which is triggered whenever a pull request is created or updated in GitHub. PR test jobs can take anywhere from 5 - 90 min to complete. This works for the following repos:
 
 * `civicrm-core`
 * `civicrm-packages`
@@ -38,7 +38,7 @@ If the tests have failed for something that we suspect is a random failure, we c
 
 ## Matrix Test Jobs
 
-The other type of Job that jenkins runs is what is desccribed as a "matrix" job. This is a much more extended version of the PR job and is usually run against multiple different webserver configurations.
+The other type of Job that jenkins runs is what is described as a "matrix" job. This is a much more extended version of the PR job and is usually run against multiple different webserver configurations.
 
 The main difference between the `CiviCRM-Core-Matrix` job and a PR test job is that it runs more upgrade tests than the `CiviCRM-Core-PR`.
 
@@ -46,7 +46,7 @@ The other matrix job is one that runs the webtests.
 
 The matrix jobs operate on two main combinations, a PHP5.5 + MySQL5.5 server and a PHP7.0 + MySQL5.7 test seerver.
 
-Due to the length and the test regieme matrix jobs can take from 2 to 24hours to complete depending on the job.
+Due to the size of the test matrix, jobs can take from 2 to 24 hours to complete depending on the job.
 
 ### Build Schedule
 
