@@ -4,9 +4,9 @@
 
 * JIRA ([`r-explain`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-explain))
     * __UNREVIEWED__
-    * __PASS__ : The problem+goal have been adequately explained in the PR.
-    * __PASS__ : The problem+goal have been adequately explained with a link (StackExchange, Github, or Gitlab).
-    * __ISSUE__: Please provide a better explanation of the issue being addressed.
+    * __PASS__ : The goal/problem/solution have been adequately explained in the PR.
+    * __PASS__ : The goal/problem/solution have been adequately explained with a link (JIRA, Github, Gitlab, StackExchange).
+    * __ISSUE__: Please provide a better explanation of the goal/problem being addressed.
     * __ISSUE__: Please provide a better explanation of how this solution works.
     * __COMMENTS__: <!-- optional -->
 * Test results ([`r-test`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-test))
