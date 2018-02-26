@@ -2,7 +2,7 @@
 
 ## Introduction
 
-CiviCRM has a system of ACLs which are done in the effort to allow end users to customise which groups of their users are able to see what contacts within the organisation. The Access Control Lists (ACL) also allows Administrators of sites. ACLs work alongside the system of permissions set out by CiviCRM which is intergrated in the Content Management System's Permissions strtucure. 
+CiviCRM has a system of ACLs which are done in the effort to allow end users to customise which groups of their users are able to see what contacts within the organisation. The Access Control Lists (ACL) also allows Administrators of sites. ACLs work alongside the system of permissions set out by CiviCRM which is intergrated in the Content Management System's Permissions structure. 
 
 ## Context
 
