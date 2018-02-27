@@ -1,11 +1,13 @@
-(*CiviCRM Review Template DEL-1.0*)
+(*CiviCRM Review Template DEL-1.1*)
 
 <!-- In each category, choose the option that most applies. Delete the others. Optionally, provide more details or explanation in the "Comments". -->
 
-* JIRA ([`r-jira`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-jira))
+* JIRA ([`r-explain`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-explain))
     * __UNREVIEWED__
-    * __PASS__ : The PR has a JIRA reference. (Or: it does not need one.)
-    * __ISSUE__: Please file a ticket in [JIRA](http://issues.civicrm.org/) and place it in the subject
+    * __PASS__ : The goal/problem/solution have been adequately explained in the PR.
+    * __PASS__ : The goal/problem/solution have been adequately explained with a link (JIRA, Github, Gitlab, StackExchange).
+    * __ISSUE__: Please provide a better explanation of the goal/problem being addressed.
+    * __ISSUE__: Please provide a better explanation of how this solution works.
     * __COMMENTS__: <!-- optional -->
 * Test results ([`r-test`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-test))
     * __UNREVIEWED__

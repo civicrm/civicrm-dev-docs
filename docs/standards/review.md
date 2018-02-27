@@ -7,7 +7,7 @@ be done, then it can help to post a link to the relevant guideline.  This practi
 write a long, bespoke blurb.
 
 !!! tip "Standard codes"
-    Each standard has a code name (e.g. `r-jira`). These make it easier to reference the standards when chatting with others about PR review.
+    Each standard has a code name (e.g. `r-explain`). These make it easier to reference the standards when chatting with others about PR review.
 
 ## Templates
 
@@ -18,11 +18,22 @@ You may conduct a structured review, checking each standard in turn. Doing this 
 
 ## Common standards
 
-### JIRA {:#r-jira}
+### Explanation {:#r-explain}
 
-_Standard code: `r-jira`_
+_Standard code: `r-explain`_
 
-For most bug-fixes and improvements, there needs to be a [JIRA issue](/tools/issue-tracking.md#jira). However, [NFC](/tools/git.md#nfc) and [WIP](/tools/git.md#wip) PRs may not need an issue.
+Ensure the PR has an adequate explanation. 
+
+If you were a site-builder reading the PR-log/release-notes and drilled into this PR, would you understand the description? If you were debugging a problem and traced the change back to this PR, would you understand why the change was made?
+
+It is strongly encouraged that PR's include URLs/hyperlinks for any explanatory material (when available) -- such as a [JIRA issue](/tools/issue-tracking.md#jira), [Gitlab issue](http://lab.civicrm.org/), [StackExchange question](https://civicrm.stackexchange.com/), related PR, or [Mattermost chat](https://chat.civicrm.org). However, hyperlinks are not a substitute for a description. The PR should still have a description.
+
+PR descriptions should generally follow the [pull-request template](https://github.com/civicrm/civicrm-core/blob/master/.github/PULL_REQUEST_TEMPLATE.md), although this could be waived if another structure is more expressive.
+
+__Exception__: 
+
+* [WIP](/tools/git.md#wip) PRs do not need a detailed explanation until they're ready for earnest review.
+* Genuine [NFC](/tools/git.md#nfc) PRs do not need a detailed explanation. 
 
 ### Test results {:#r-test}
 

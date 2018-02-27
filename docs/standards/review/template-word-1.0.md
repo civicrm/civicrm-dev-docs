@@ -1,8 +1,8 @@
-(*CiviCRM Review Template WORD-1.0*)
+(*CiviCRM Review Template WORD-1.1*)
 
 <!-- In each category, change the word "Undecided" to "Pass" or "Issue". Add explanatory comments if prompted or desired. -->
 
-* ([`r-jira`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-jira)) __Undecided__
+* ([`r-explain`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-explain)) __Undecided__
 * ([`r-test`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-test)) __Undecided__
 * ([`r-code`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-code)) __Undecided__
 * ([`r-doc`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-doc)) __Undecided__
