@@ -30,7 +30,7 @@ The "Settings" system developed incrementally:
 
 Settings are defined in the /settings directory, in files ending with `.settings.php`
 
-Each file consists of a php snippet which returns an array. Array keys are stings corresponding with each setting's name. Values are an array of metadata properties for that setting. Note that for radio buttons or similar the options will be retrieved if there is an option group of the same name. An example array is as follows:
+Each file consists of a php snippet which returns an array. Array keys are strings corresponding with each setting's name. Values are an array of metadata properties for that setting. Note that for radio buttons or similar the options will be retrieved if there is an option group of the same name. An example array is as follows:
 
 ```php
   'remote_profile_submissions' => array(
@@ -136,7 +136,7 @@ It is desirable to make this api handling of domain id part of the api layer for
 !!! warning
     Do not use the "URL Preferences" group to store any setting that is not a url string.
 
-## Converting a config object ot a setting
+## Converting a config object to a setting
 
 1. remove `config_only` from the settings - this is simply a case of removing the flag - e.g. [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/a5617bcc7dc59065dcf5309a9c62aafe25d2ec77) The upgrade process will do the conversion when it next runs. Probably calling `civicrm_api3('system', 'flush', ())` or rebuilding menus will too. You might need to ensure the civicrm_cache table is truncated first.
 2.  fix the admin form to still set the setting -  you need to declare the settings on the form
