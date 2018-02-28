@@ -147,9 +147,11 @@ It is desirable to make this api handling of domain id part of the api layer for
 
 ## Creating a new setting in an Extension
 
-As with core settings, all settings declared in extensions should have appropriate metadata attached to them. 
+As with core settings, all settings declared in extensions should have appropriate metadata attached to them.
 
-1. Provide that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L347).
+To avoid naming conflicts, it makes sense to prefix settings defined in an extension with the extension shortname. For example, a 'Rate limit' setting in a 'My Extension' should be named.`my_extension_rate_limit`.
+
+1. Ensure that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L347).
 2. Declare settings as in the same standard as CiviCRM Core [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/settings/Multisite.setting.php).
 3. Create Settings form, a [good example of generic metadata based settings form in an extension](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/CRM/Civixero/Form/XeroSettings.php) - note that only the setting filter is non-generic
 4. Add [routing for your settings form](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/xml/Menu/xerosync.xml).
