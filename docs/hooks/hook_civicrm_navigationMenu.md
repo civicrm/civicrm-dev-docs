@@ -54,7 +54,7 @@ hook_civicrm_navigationMenu(&$params)
 
 ## Examples
 
-!!! note You probably want to use the civix implmentation rather than these examples (see above).
+*Consider using the civix implementation in place of these examples (see above).*
 
 ```php
 function _getMenuKeyMax($menuArray) {
