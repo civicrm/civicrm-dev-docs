@@ -46,7 +46,7 @@ function myextension_civicrm_coreResourceList(&$list, $region) {
   Civi::resources()->addStyleFile('org.example.myextension', 'css/my_style.css', 0, $region);
 
   // Add a setting - in this example we override the CKEditor config file location
-  $myCKEConfFile = Civi::resources()->getUrl('org.example.myextension', 'js/my-ckeditor-config.js')
-  $list[] = array('config' => array('CKEditorCustomConfig' => $myCKEConfFile));
+  $myCKEConfFile = Civi::resources()->getUrl('org.example.myextension', 'js/my-ckeditor-config.js');
+  $list[] = ['config' => ['CKEditorCustomConfig' => ['default' => $myCKEConfFile]]];
 }
 ```
