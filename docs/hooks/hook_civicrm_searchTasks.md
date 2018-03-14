@@ -27,7 +27,7 @@ search, allowing you to inject additional actions or to remove existing actions.
 
 -   null
 
-## **Example**
+## **Example (Disable an existing task)**
 
     function civitest_perm () {
       return array(
@@ -40,8 +40,18 @@ search, allowing you to inject additional actions or to remove existing actions.
         if ( $objectType == 'contact' ) {
             // remove the action from the contact search results if the user doesn't have the permission
             if (! user_access( 'access add contacts to group search action' )) {
-                // in real life, you'd want to find your task by searching the tasks by title or class
-                unset($tasks[1]);
+                unset($tasks[CRM_Core_Task::GROUP_ADD]);
             }
         }
+    }
+
+## **Example (Add a new task)**
+
+    function smsconversation_civicrm_searchTasks( $objectName, &$tasks ){
+      if($objectName == 'contact'){
+        $tasks[] = [
+          'title' => 'SMS - schedule a conversation',
+          'class' => 'CRM_SmsConversation_Form_ScheduleMultiple'
+        ];
+      }
     }
