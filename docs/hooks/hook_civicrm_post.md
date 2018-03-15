@@ -14,7 +14,9 @@ deleted first).
 
 !!! note
     These hooks use database transactions.  Don't execute code that updates the same data in the database without using a callback.  Eg. if triggering on a `Membership` entity, don't try and update that membership entity within the hook.  Use CRM_Core_Transaction::addCallback() instead.
-
+    
+!!! tip
+    Some of the more esoteric entities may not fire this hook when they're saved. If you happen to find such an entity, please make a PR to core which adds this hook. As an example, you can refer to `CRM_Core_BAO_Dashboard::create()` to find succinct syntax that appropriately calls both `CRM_Utils_Hook::pre()` and `CRM_Utils_Hook::post()`.
 
 ## Definition
 

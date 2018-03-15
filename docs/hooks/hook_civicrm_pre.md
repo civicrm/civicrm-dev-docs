@@ -15,6 +15,9 @@ constraints etc (when deleting an object, the child objects have to be
 deleted first). Another good use for the pre hook is to see what is
 changing between the old and new data.
 
+!!! tip
+    Some of the more esoteric entities may not fire this hook when they're saved. If you happen to find such an entity, please make a PR to core which adds this hook. As an example, you can refer to `CRM_Core_BAO_Dashboard::create()` to find succinct syntax that appropriately calls both `CRM_Utils_Hook::pre()` and `CRM_Utils_Hook::post()`.
+
 ## Definition
 
     hook_civicrm_pre($op, $objectName, $id, &$params)
