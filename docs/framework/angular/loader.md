@@ -132,53 +132,52 @@ If this is a concern, then you can create new base-pages which are tuned to
 a more specific use-case.  For example, suppose we want to create a page
 which *only* has the CiviCase administrative UI.
 
-First, create a skeletal CiviCRM page:
+1. Create a skeletal CiviCRM page:
 
-```
-$ civix generate:page CaseAdmin civicrm/caseadmin
-```
+    ```
+    $ civix generate:page CaseAdmin civicrm/caseadmin
+    ```
 
-Second, edit the new PHP file and update the `run()` function.  Create an
+1. Edit the new PHP file and update the `run()` function.  Create an
 `AngularLoader` to load all the JS/CSS files:
 
-```php
-public function run() {
-  $loader = new \Civi\Angular\AngularLoader();
-  $loader->setModules(array('crmCaseType'));
-  $loader->setPageName('civicrm/caseadmin');
-  $loader->load();
-  parent::run();
-}
-```
+    ```php
+    public function run() {
+      $loader = new \Civi\Angular\AngularLoader();
+      $loader->setModules(array('crmCaseType'));
+      $loader->setPageName('civicrm/caseadmin');
+      $loader->useApp(array(
+        'defaultRoute' => '/caseType',
+      ));
+      $loader->load();
+      parent::run();
+    }
+    ```
+    
+    !!! note "Initializing AngularJS"
+    
+        In this example, we called `useApp()`.  This automatically boots
+        AngularJS on the client side by outputting the HTML snippet 
+        `<div ng-app="crmApp">`.
+        This is suitable for a simple, standalone base-page.
+    
+        If you want to control the AngularJS boot, then omit the call to
+        `useApp()`.  Instead, read the [AngularJS Bootstrap
+        Guide](https://code.angularjs.org/1.5.11/docs/guide/bootstrap) and
+        define your own boot code.
 
-Third, initialize AngularJS on the client-side.  You might put this
-in the Smarty template:
+1. Flush the cache
 
-```html
-<div ng-app="crmCaseType">
-  <div ng-view=""></div>
-</div>
-```
+    ```
+    $ cv flush
+    ```
 
-!!! caution "Security note"
-    When embedding AngularJS within Smarty, it's important that you [do not put untrusted data in Smarty variables](/security/outputs.md#angularjs).
+1. Visit the new page. (The command below will lookup the URL in a Drupal 7 site.)
 
-Finally, flush the cache and visit the new page.
-
-```
-# Flush the cache
-$ cv flush
-
-# Lookup the URL (Drupal 7 example)
-$ cv url 'civicrm/caseadmin/#/caseType'
-"http://dmaster.l/civicrm/caseadmin/#/caseType"
-```
-
-!!! seealso "See Also: AngularJS Bootstrap Guide"
-
-    There are a few ways to boot Angular, such as `ng-app="..."` or
-    `angular.bootstrap(...);`.  These techniques are discussed more in the
-    [AngularJS Bootstrap Guide](https://code.angularjs.org/1.5.11/docs/guide/bootstrap).
+    ```
+    $ cv url 'civicrm/caseadmin/#/caseType'
+    "http://dmaster.l/civicrm/caseadmin/#/caseType"
+    ```
 
 !!! caution "Embedding Angular in other contexts"
 
