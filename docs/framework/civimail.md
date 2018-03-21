@@ -23,6 +23,7 @@ CiviCRM's [token functionality](https://docs.civicrm.org/user/en/latest/common-w
 - **Performance**: Divide mail-composition into batches and split the batches among parallel workers. Moreover, when processing each batch, improve efficiency by minimizing the #SQL queries - i.e. fetch all records in a batch at once, and only fetch columns which are actually used.
 - **Security**: Do not trust email authors with a fully programmable language.
 - **Contact Records**: The main data for mail-merge came from contact records. Other data (contribution, event, participant, membership, etc) were not applicable.
+- **Adaptive Text/HTML**: Email messages often have two renditions, `text/plain` and `text/html`. Some tokens, such as `{domain.address}`, may present different formatting in each medium. Other tokens, such as `{action.unsubscribe}`, can even present a different user-experience.
 
 Over time, the token functionality evolved:
 
@@ -165,20 +166,6 @@ Some example tokens and their meaning
 | `{unsubscribe.group}` | A bulleted list of groups from which the contact has been unsubscribed, along with web links to resubscribe. |
 
 For more examples of tokens and token replacement see the [Token documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/Tokens)
-
-### HTML vs Text
-
-Since we support both HTML and Text formatting of outgoing mail, we will need rules for how the tokens are used in both cases. This is mainly an issue for action tokens, but certain other tokens (such as **domain.address**) may be formatted differently in HTML mode.
-
-In HTML content, action tokens should always be used as if they were URLs. If the action is an email address, a mailto: prefix will be added automatically
-
-```
-Example HTML
-To unsubscribe from this mailing list, click <a href="{action.unsubscribe}">here</a>.
-
-Example text
-Send email to {action.unsubscribe} to unsubscribe from this mailing list.
-```
 
 ### NULL values and Defaults
 
