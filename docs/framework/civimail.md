@@ -136,7 +136,7 @@ Some notes on the the above
 - To update a row's data, use the `context()` and `tokens()` methods. To read a row's data, use the $context and $tokens properties. These interfaces support several notations, which are described in the TokenRow class.
 - You have control over the loop. You can do individual data-lookups in the loop (for simplicity) – or you can also do prefetches and batched lookups (for performance).
 - The class `\Civi\Token\AbstractTokenSubscriber` provides a more structured/opinionated way to handle these events.
-- For background on the `event dispatcher` (e.g. `listeners` vs subscribers), see [Symphony Documentation](http://symfony.com/doc/current/components/event_dispatcher/introduction.html)
+- For background on the `event dispatcher` (e.g. `listeners` vs subscribers), see [Symfony Documentation](http://symfony.com/doc/current/components/event_dispatcher/introduction.html)
 
 ### Required Tokens
 
