@@ -180,10 +180,6 @@ Example text
 Send email to {action.unsubscribe} to unsubscribe from this mailing list.
 ```
 
-### I18n
-
-In order to support locale-specific token codes, a separate class will be created to map tokens to their localized equivalent. Instead of matching directly on a token, the token replacement code will match on the localized version of the code. Substitution then continues as before.
-
 ### NULL values and Defaults
 
 Many non-required contact fields are exposed to the token processor, and not every contact will have values for every token. By default, if there is no value for a token field, it is replaced with a blank string. To override this behavior, use either Smarty or `hook_civicrm_tokens()` and `hook_civicrm_tokenValues()`. The following is an example of using Smarty to override a token (note that since Smarty sees tokens as constants, they will never register as empty. The `{capture assign=variable}{token}{/capture}` is a workaround for this):
