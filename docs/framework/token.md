@@ -24,23 +24,13 @@ For each task, there are a couple available patterns, and we'll explore them in 
 
 | Token | Description |
 | --- | --- |
-| `{domain.name}` | Name of this domain |
-| `{domain.address}` | Meta-token constructed by merging the various address components from `civicrm_domain` |
-| `{domain.phone}` | Phone number for this domain |
-| `{domain.email}` | Primary email address to contact this domain |
-| `{contact.display_name}` | The contact's `display_name` (also used in the To: header) |
-| `{contact.xxx}` | the value of xxx as returned by a `contact.get` api call |
-| `{action.forward}` | Link to forward this mailing to an unsubscribed user |
-| `{action.donate}` | Link to make a donation |
-| `{action.reply}` | mailto: link to reply |
-| `{action.unsubscribe}` | mailto: link to unsubscribe |
-| `{action.optOut}` | mailto: link to opt out of the domain |
-| `{mailing.groups}` | The list of target groups for this mailing |
+| `{domain.name}` | Name of this domain (organization/site/deployment) |
+| `{domain.address}` | Meta-token with the full-formed mailing address of this domain (organization/site/deployment)) |
+| `{contact.first_name}`| The contact's `first_name` |
+| `{contact.display_name}` | The contact's `display_name` |
 | `{mailing.name}` | The name of the mailing |
-| `{mailing.name}` | The name of the mailing |
-| `{unsubscribe.group}` | A bulleted list of groups from which the contact has been unsubscribed, along with web links to resubscribe. |
 
-For more examples of tokens and token replacement see the [Token documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/Tokens)
+For more examples of tokens and token replacement, see [User Guide: Common workflows: Tokens and mail merge](https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/).
 
 ## Composing messages
 
