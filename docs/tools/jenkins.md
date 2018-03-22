@@ -14,7 +14,7 @@ Pull-requests are tested automatically with build-bot software called [Jenkins](
         * __Tip__: Sometimes, the console output is relatively short (a page or two). You might look for evidence of one of these typical problems:
             * A network service (such as `github.com` or `packagist.org`) was unavailable. These are usually corrected quickly without any action. Try running the test again.
             * The pull-request is based on an old version of the codebase, and it cannot be applied cleanly with `git apply` or `git scan am`. Rebasing the PR branch should resolve this.
-            * On the test node, a local resource (such as disk-space, RAM, or inode count) was exhausted. If the failure was recent (past few hours), seek help on `infrastructure`. If the failure occurred a few hours or days ago, try running the test again.
+            * On the test node, a local resource (such as disk-space, RAM, or inode count) was exhausted. If the failure was recent (past few hours), seek help on [the infrastructure channel](https://chat.civicrm.org/civicrm/channels/infrastructure). If the failure occurred a few hours or days ago, try running the test again.
             * Some part of the build/test toolchain needs attention. For example, a test script may have been changed without supporting an edge-case; or a tool like `bower` or `npm` may need to be upgraded. Seek help on `infrastructure`.
 * Code-style tests are executed first. If the code-style in this patch is inconsistent, the remaining tests will be skipped.
 * The primary tests may take 20-120 min to execute. This includes the following suites: `api_v3_AllTests`, `CRM_AllTests`, `Civi\AllTests`, `civicrm-upgrade-test`, and `karma`
