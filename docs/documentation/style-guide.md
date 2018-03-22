@@ -234,7 +234,7 @@ $ civibuild create drupal-demo --civi-ver master --url http://localhost:8001
 $ hub fork
 ```
 
-When your putting in any content that would be outputted by a shell command this should not have a `$` appended to it e.g.
+The output of a shell command should not have a `$` prepended. e.g.
 
 ```shell
 $ git remote -v
