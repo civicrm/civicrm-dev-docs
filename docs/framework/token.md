@@ -80,8 +80,7 @@ Some of the key functions of this system are:
 
 However, this idiom has a few problems:
 
-- Token substitution is performed *iteratively* and not *atomicly*.  To ensure secure and consistent handling of tokens,
-  one has to be quite careful with the selection/ordering/encoding of each call to `replace<Type>Tokens()`.
+- Token substitution is performed *iteratively* and not *atomicly*.  To ensure secure and consistent handling of tokens, one has to be quite careful with the selection/ordering/encoding of each call to `replace<Type>Tokens()`.
 - Token substitution is not standardized. To make any general improvement to the token language or process, one must work through disparate functions and use-cases.
 - Encoding issues (regarding HTML and Smarty) are handled by each function separately, leading to inconsistencies.
 
@@ -131,9 +130,7 @@ foreach ($p->getRows() as $row) {
 
 ### hook_civicrm_tokens
 
-The oldest and most broadly supported way to register a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and
-[hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and
-they work with a range of mailing use-cases.
+The oldest and most broadly supported way to register a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
 
 However, these hooks have some limitations:
 
@@ -143,7 +140,7 @@ However, these hooks have some limitations:
 
 ### Token Events (v4.7+)
 
-Newer use-cases which build on `TokenProcessor` support an additional API for registering hooks. This API resolves those limitations.
+If a use-case builds on the newer `TokenProcessor`, then an additional API is available for defining tokens. This API resolves the limitations above.
 
 `TokenProcessor` (above) emits two events which allow you to define new tokens, as in this example:
 
@@ -179,7 +176,7 @@ function example_evaluate_tokens(\Civi\Token\Event\TokenValueEvent $e) {
 Some notes on the the above:
 
 - `$row->context['...']` returns contextual data, regardless of whether you declared it at the row level or the processor level.
-- To update a row's data, use the `context()` and `tokens()` methods. To read a row's data, use the $context and $tokens properties. These interfaces support several notations, which are described in the TokenRow class.
+- To update a row's data, use the `context()` and `tokens()` methods. To read a row's data, use the $context and $tokens properties. These interfaces support several notations, which are described in the `TokenRow` class.
 - You have control over the loop. You can do individual data-lookups in the loop (for simplicity) – or you can also do prefetches and batched lookups (for performance).
 - To avoid unnecessary computation, you can get a list of tokens which are actually required by this mailing. Call `$e->getTokenProcessor()->getMessageTokens()`.
 - In this example, we defined tokens in HTML format, and we rely on a default behavior that auto-converts between HTML and text (as needed). However, we could explicitly define HTML and plain-text variants by calling `$row->format()` and `$row->tokens()` again.
