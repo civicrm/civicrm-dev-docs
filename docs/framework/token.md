@@ -1,3 +1,5 @@
+## Introduction
+
 CiviCRM's [token functionality](https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/) originates in CiviMail, which focuses on writing and delivering newsletters to large constituencies. In its original form, the design placed heavy weight on:
 
 - **Performance**: Divide mail-composition into batches and split the batches among parallel workers. Moreover, when processing each batch, improve efficiency by minimizing the #SQL queries - i.e. fetch all records in a batch at once, and only fetch columns which are actually used.
@@ -11,15 +13,20 @@ Over time, the token functionality evolved:
 - Add a hook for custom tokens.
 - Expand to other applications, such as individual mailings, print letters, receipts for contributions, and scheduled reminders.
 
-### Example Tokens
+When working with tokens, there are two major tasks:
 
-Some example tokens and their meaning
+- *Composing a message* by evaluating a token expression (`Hello {contact.first_name}! How do you like {address.city}?`).
+- *Registering a token* and defining its content.
 
-| Token | Value |
+For each task, there are a couple available patterns, and we'll explore them in more depth below.
+
+## Examples
+
+| Token | Description |
 | --- | --- |
-| `{domain.name}` | Name of this Domain |
+| `{domain.name}` | Name of this domain |
 | `{domain.address}` | Meta-token constructed by merging the various address components from `civicrm_domain` |
-| `{domain.phone}` | Phone Number for this domain |
+| `{domain.phone}` | Phone number for this domain |
 | `{domain.email}` | Primary email address to contact this domain |
 | `{contact.display_name}` | The contact's `display_name` (also used in the To: header) |
 | `{contact.xxx}` | the value of xxx as returned by a `contact.get` api call |
@@ -35,9 +42,12 @@ Some example tokens and their meaning
 
 For more examples of tokens and token replacement see the [Token documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/Tokens)
 
-### Fixme
+## Composing messages
 
-As the use-cases grew, techniques from the original CiviMail code were duplicated and adapted, leading to a lengthy idiom which looks a bit like this:
+### CRM_Utils_Token {:#crm-utils-token}
+
+For most of its history, CiviMail used a helper class, `CRM_Utils_Token`, with a number of static helper functions.  As the use-cases grew, the
+technique was duplicated and adapted, leading to a lengthy idiom which looks a bit like this:
 
 ```php
 $subject = $template->subject;
@@ -68,29 +78,44 @@ Some of the key functions of this system are:
 - `CRM_Utils_Token::&replace<type>Tokens` - Replaces x type of Tokens where x is User, Contact, Action, Resubscribe etc
 - `CRM_Utils_Token::get<type>TokenReplacement` - Format and escape for use in Smarty the found content for Tokens for x type. This is usually called within `CRM_Utils_Token::&replace<type>Tokens`
 
+However, this idiom has a few problems:
 
-In 4.7+ there was major changes to the Scheduled Reminders facility which also included potential changes to CiviMail in so far as how tokens are generated see [CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244). There is a move to use more of the `Civi\Token\TokenProcessor` sub system as this is more robust. However there have been compatibility layers built in to use the older `CRM_Utils_Token` processors. Developers should aim to work off the `Civi\Token\TokenProcessor` where possible. However there are still some systems that haven't been refactored. Some of the key functions in the older systems are.
+- Token substitution is performed *iteratively* and not *atomicly*.  To ensure secure and consistent handling of tokens,
+  one has to be quite careful with the selection/ordering/encoding of each call to `replace<Type>Tokens()`.
+- Token substitution is not standardized. To make any general improvement to the token language or process, one must work through disparate functions and use-cases.
+- Encoding issues (regarding HTML and Smarty) are handled by each function separately, leading to inconsistencies.
 
-This new system of generating content for tokens has a number of advantages
-- Decreases the number of SQL Queries
-- Is not as tightly coupled with the one templating engine
+Consequently, this pattern is not recommend for new code.
+
+### TokenProcessor (v4.7+) {:#token-processor}
+
+CiviCRM v4.7 introduced `Civi\Token\TokenProcessor`, which provides a more flexible way to define and process tokens.  It preserves the performance, batching, and security virtues
+of `CRM_Utils_Token` and also:
+
+- Allows more *contextual* information -- enabling tokens for more entities.
+- Loosens the coupling between token-consumers and token-providers.
+- Loosens the coupling between token-content and template-language.
+
+Originally, `TokenProcessor` was introduced to support extensible, contextual tokens in Scheduled Reminders ([CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244)). 
+However, you can also use `TokenProcessor` for CiviMail by installing [FlexMailer](https://docs.civicrm.org/flexmailer/en/latest/), and you can use it for developing new logic.
 
 The basic process in the new subsystem is
-- Whenever an application's controller (e.g. for CiviMail or PDFs or scheduled reminders) needs to work with tokens, it instantiates `Civi\Token\TokenProcessor`.
+
+- Whenever an application's controller (e.g. for CiviMail or PDFs or scheduled reminders) needs to compose a message, it instantiates `Civi\Token\TokenProcessor`.
 - The `controller` passes some information to `TokenProcessor` – namely, the `$context` and the list of `$rows`.
 - The `TokenProcessor` fires an event (`TOKEN_EVALUATE`). Other modules respond with the actual token content.
 - For each of the rows, the controller requests a rendered blob of text.
 
 ```php
-$p = new TokenProcessor(Container::singleton()->get('dispatcher'), array(
+$p = new TokenProcessor(\Civi::dispatcher(), array(
   'controller' => __CLASS__,
   'smarty' => FALSE,
 ));
 
 // Fill the processor with a batch of data.
 $p->addMessage('body_text', 'Hello {contact.display_name}!', 'text/plain');
-$p->addRow()->context('contact_id', 123);
-$p->addRow()->context('contact_id', 456);
+$p->addRow()->context('contactId', 123);
+$p->addRow()->context('contactId', 456);
 
 // Lookup/compose any tokens which are referenced in the message.
 // e.g. SELECT id, display_name FROM civicrm_contact WHERE id IN (...contextual contact ids...);
@@ -102,11 +127,25 @@ foreach ($p->getRows() as $row) {
 }
 ```
 
-### Extending the Token system
+## Registering tokens
 
-In the old system the standard way extension authors would  extend the list of tokens by implement [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md). The content of the custom token needs to be set with [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md).
+### hook_civicrm_tokens
 
-To utilise the newer method extension authors should implement code similar to the following. This is able to be done because when executing `TokenProcessor::evaluate()`, the processor dispatches an event so that other classes may define token content.
+The oldest and most broadly supported way to register a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and
+[hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and
+they work with a range of mailing use-cases.
+
+However, these hooks have some limitations:
+
+- Encoding (HTML-vs-text) is ambiguous.
+- Contextual data (adding information about the particular use-case/context) is not supported.
+- All tokens have to be fully rendered for all recipients. One cannot skip unused tokens.
+
+### Token Events (v4.7+)
+
+Newer use-cases which build on `TokenProcessor` support an additional API for registering hooks. This API resolves those limitations.
+
+`TokenProcessor` (above) emits two events which allow you to define new tokens, as in this example:
 
 ```php
 function example_civicrm_container($container) {
@@ -129,7 +168,7 @@ function example_evaluate_tokens(\Civi\Token\Event\TokenValueEvent $e) {
   foreach ($e->getRows() as $row) {
     /** @var TokenRow $row */
     $row->format('text/html');
-    $row->tokens('profile', 'viewUrl', 'http://example.com/profile/' . $row->context['contact_id']);
+    $row->tokens('profile', 'viewUrl', 'http://example.com/profile/' . $row->context['contactId']);
     $row->tokens('profile', 'viewLink', ts("<a href='%1'>Open Profile</a>", array(
       1 => $row->tokens['profile']['viewUrl'],
     )));
@@ -137,10 +176,14 @@ function example_evaluate_tokens(\Civi\Token\Event\TokenValueEvent $e) {
 }
 ```
 
-Some notes on the the above
+Some notes on the the above:
 
 - `$row->context['...']` returns contextual data, regardless of whether you declared it at the row level or the processor level.
 - To update a row's data, use the `context()` and `tokens()` methods. To read a row's data, use the $context and $tokens properties. These interfaces support several notations, which are described in the TokenRow class.
 - You have control over the loop. You can do individual data-lookups in the loop (for simplicity) – or you can also do prefetches and batched lookups (for performance).
+- To avoid unnecessary computation, you can get a list of tokens which are actually required by this mailing. Call `$e->getTokenProcessor()->getMessageTokens()`.
+- In this example, we defined tokens in HTML format, and we rely on a default behavior that auto-converts between HTML and text (as needed). However, we could explicitly define HTML and plain-text variants by calling `$row->format()` and `$row->tokens()` again.
 - The class `\Civi\Token\AbstractTokenSubscriber` provides a more structured/opinionated way to handle these events.
 - For background on the `event dispatcher` (e.g. `listeners` vs subscribers), see [Symfony Documentation](http://symfony.com/doc/current/components/event_dispatcher/introduction.html)
+
+The main limitation of this technique is that it only works with `TokenProcessor`. At time of writing, this is used for Scheduled Reminders and FlexMailer.
