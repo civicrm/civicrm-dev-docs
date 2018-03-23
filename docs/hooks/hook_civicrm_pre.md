@@ -39,20 +39,39 @@ changing between the old and new data.
 
 -   $objectName - can have the following values:
     -   'Activity'
+    -   'Address'
+    -   'Batch'
     -   'Campaign' (from 4.6)
+    -   'Case'
+    -   'CaseType'
     -   'Contribution'
+    -   'ContributionPage'
     -   'ContributionRecur'
     -   'CustomGroup'
+    -   'CustomField'
+    -   'Dashboard'
+    -   'Email'
+    -   'EntityBatch'
     -   'EntityTag' (from 4.7.16)
+    -   'Event'
+    -   'FinancialAccount'
+    -   'FinancialItem'
     -   'Event'
     -   'Individual'
     -   'Household'
+    -   'Grant'
     -   'Group'
     -   'GroupContact'
+    -   'LineItem'
+    -   'Mailing'
+    -   'MailingAB'
+    -   'MailingEventBounce'
     -   'Membership'
+    -   'MembershipBlock'
     -   'MembershipPayment'
     -   'MessageTemplate'
     -   'Organization'
+    -   'OpenID'
     -   'Participant'
     -   'ParticipantPayment'
     -   'Pledge'
@@ -60,11 +79,16 @@ changing between the old and new data.
     -   'Profile' (while this is not really an object, people have
         expressed an interest to perform an action when a profile is
         created/edited)
+    -   'RecurringEntity'
+    -   'ReportInstance'
     -   'Relationship'
+    -   'SmsProvider'
+    -   'StatusPreference'
     -   'Survey' (from 5.1.x)
     -   'UFMatch' (when an object is linked to a CMS user record, at the
         request of GordonH. A UFMatch object is passed for both the pre
         and post hooks)
+    -   'Website'
 
 **
 

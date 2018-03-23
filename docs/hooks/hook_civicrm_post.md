@@ -36,8 +36,11 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
 
 -   `$objectName` - can have the following values:
     -   'Activity'
+    -   'ActionLog'
     -   'Address'
+    -   'Batch'
     -   'Case'
+    -   'CaseType'
     -   'Campaign' (from 4.6)
     -   'Contribution'
     -   'ContributionRecur'
@@ -47,26 +50,34 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
     -   'Email'
     -   'Event'
     -   'EntityTag'
-    -   'Individual'
-    -   'IM'
-    -   'Household'
-    -   'OpenID'
-    -   'Organization'
+    -   'EntityBatch'
     -   'Grant'
     -   'Group'
+    -   'GroupNesting'
     -   'GroupContact'
+    -   'Household'
+    -   'Individual'
+    -   'IM'
     -   'LineItem'
+    -   'Mailing'
+    -   'MailingAB'
     -   'Membership'
+    -   'MembershipBlock'
     -   'MembershipPayment'
+    -   'OpenID'
     -   'Participant'
     -   'ParticipantPayment'
     -   'Phone'
     -   'Pledge'
+    -   'PledgeBlock'
     -   'PledgePayment'
     -   'Profile' *(while this is not really an object, people have
         expressed an interest to perform an action when a profile is
         created/edited)*
+    -   'RecurringEntity'
     -   'Relationship'
+    -   'SmsProvider'
+    -   'StatusPreference'
     -   'Survey' (from 5.1.x)
     -   'Tag'
     -   'UFMatch' *(when an object is linked to a CMS user record, at the
