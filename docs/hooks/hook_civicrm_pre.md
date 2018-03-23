@@ -38,32 +38,33 @@ changing between the old and new data.
         objects only)
 
 -   $objectName - can have the following values:
+    -   'Activity'
+    -   'Campaign' (from 4.6)
+    -   'Contribution'
+    -   'ContributionRecur'
+    -   'CustomGroup'
+    -   'EntityTag' (from 4.7.16)
+    -   'Event'
     -   'Individual'
     -   'Household'
-    -   'Organization'
     -   'Group'
     -   'GroupContact'
-    -   'Relationship'
-    -   'Activity'
-    -   'Contribution'
-    -   'Profile' (while this is not really an object, people have
-        expressed an interest to perform an action when a profile is
-        created/edited)
     -   'Membership'
     -   'MembershipPayment'
     -   'MessageTemplate'
-    -   'Event'
+    -   'Organization'
     -   'Participant'
     -   'ParticipantPayment'
+    -   'Pledge'
+    -   'PledgePayment'
+    -   'Profile' (while this is not really an object, people have
+        expressed an interest to perform an action when a profile is
+        created/edited)
+    -   'Relationship'
+    -   'Survey' (from 5.1.x)
     -   'UFMatch' (when an object is linked to a CMS user record, at the
         request of GordonH. A UFMatch object is passed for both the pre
         and post hooks)
-    -   PledgePayment
-    -   ContributionRecur
-    -   Pledge
-    -   CustomGroup
-    -   'Campaign' (from 4.6)
-    -   'EntityTag' (from 4.7.16)
 
 **
 

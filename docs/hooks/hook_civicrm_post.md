@@ -67,6 +67,7 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
         expressed an interest to perform an action when a profile is
         created/edited)*
     -   'Relationship'
+    -   'Survey' (from 5.1.x)
     -   'Tag'
     -   'UFMatch' *(when an object is linked to a CMS user record, at the
         request of GordonH. A UFMatch object is passed for both the pre
