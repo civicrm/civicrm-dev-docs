@@ -104,6 +104,7 @@ Tags acceptable within `<table>` / `<field>`
 | `<collate>` | text | `utf8_bin` | 0 or 1 | Only needs to be set if you want something other than `utf8_unicode_ci` |
 | `<html>` | [tags](#table-field-html) |  | 0 or 1 | Settings for the form element to use for this field |
 | `<pseudoconstant>` | [tags](#table-field-pseudoconstant) |  | 0 or 1 | See [notes below](#table-field-pseudoconstant) |
+| `serialize` | text| | `PHP`/`JSON`/`SEPARATOR_BOOKEND`/`SEPARATOR_TRIMMED` | Method to serialize array data. For new fields use JSON |
 
 `<type>` should be one of the following values which correspond to [MySQL data types](https://dev.mysql.com/doc/refman/en/data-types.html)
 
