@@ -5,33 +5,47 @@ high-quality "finished" [documentation](/documentation/index.md)
 about CiviCRM. This Style Guide page documents the standards we wish to
 uphold to ensure all guides maintain this high level of quality.
 
-## Parts, chapters, sections
+## General guidelines
 
-Similar to most text books and manuals, we divide our guides into "parts",
-"chapters", and "sections". In mkdocs, these blocks translate as follows:
+### Docs nomenclature {:#nomenclature}
+
+To streamline communication about documentation issues, we define the following terms:
 
 -   "part" - folder
 -   "chapter" - file (in markdown), also one web page with a given URL
 -   "section" - heading within the page
 
+### Menu depth
+
 In the navigation menu (as stored in `mkdocs.yml`):
 
--   Keep the page hierarchy to the depth described above
+-   keep the page hierarchy to the depth described above
     (i.e. do not put folders within other folders).
+
+### Chapter names
+
+In the navigation menu (as stored in `mkdocs.yml`):
+
 -   Each chapter name should be short enough to fit nicely in the menu,
     but also long enough to stand on its own to a reasonable extent.
     The titles set here are used in the navigation menu *and* the page title
     that displays in the browser tab. The guide will be more usable if the
     reader sees two tabs titled "Using Hooks" and "API Usage" instead of
     "Usage" and "Usage".
+    
+### Introductory paragraphs
 
 Each chapter should start with a paragraph that explains what will be
 covered in the chapter.
+
+### Cumulative concepts
 
 Effort should be given to arrange all content within a guide so that skills and
 concepts which build upon one another are presented sequentially.
 Although guides should not require start-to-finish reading, providing the
 option (when possible) is helpful to some readers.
+
+### Cross-references
 
 Don't use terms like "previous chapter", etc. because we may add or re-arrange
 chapters in the future. Instead, use a hyperlink to the chapter.
@@ -47,14 +61,14 @@ in H2 and H3, only where necessary.  If you find yourself wanting to use
 H4, consider if it's truly necessary and whether the chapter should
 instead be refactored.
 
-### Capitalization
+### Title capitalization
 
 Titles for parts, chapters, and sections should all be in sentence case
 (first word capitalized), not headline case (each word capitalized).
 
-## Formatting conventions
+## Describing the CiviCRM user interface
 
-### Describing the CiviCRM user interface
+### Bold for things you click
 
 Menu selections, buttons, tabs (basically, things that the reader is
 being told to click) should be in bold.
@@ -65,6 +79,8 @@ For example:
     default list of event types.
 -   Modify event type labels by clicking **Edit** on any row.
 -   Click **Add Event Type** to create a new category for your events.
+
+### UI element capitalization
 
 Elements of the system and interface should be capitalized (e.g. the
 Events component, the Template Title field).
@@ -78,12 +94,18 @@ thing or technical definition (e.g. scheduled reminders, plain text).
 Use your best judgment as to what serves the reader; trying to enforce
 consistency in this arena will slow us down or drive us crazy.
 
+### Quotes
+
 Quotes should be avoided as much as possible; however, do use them when
 they seem necessary for clarity (e.g. if you are talking about setting
 or field labels that are long phrases).
 
+### Types of CiviCRM pages
+
 You can divide the CiviCRM interface into administration pages and
 public-facing pages.
+
+## Formatting conventions
 
 ### Bullets and numbered lists
 
