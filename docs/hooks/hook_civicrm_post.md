@@ -14,7 +14,9 @@ deleted first).
 
 !!! note
     These hooks use database transactions.  Don't execute code that updates the same data in the database without using a callback.  Eg. if triggering on a `Membership` entity, don't try and update that membership entity within the hook.  Use CRM_Core_Transaction::addCallback() instead.
-
+    
+!!! tip
+    Some of the more esoteric entities may not fire this hook when they're saved. If you happen to find such an entity, please make a PR to core which adds this hook. As an example, you can refer to `CRM_Core_BAO_Dashboard::create()` to find succinct syntax that appropriately calls both `CRM_Utils_Hook::pre()` and `CRM_Utils_Hook::post()`.
 
 ## Definition
 
@@ -65,6 +67,7 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
         expressed an interest to perform an action when a profile is
         created/edited)*
     -   'Relationship'
+    -   'Survey' (from 5.1.x)
     -   'Tag'
     -   'UFMatch' *(when an object is linked to a CMS user record, at the
         request of GordonH. A UFMatch object is passed for both the pre

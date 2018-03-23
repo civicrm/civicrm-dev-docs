@@ -15,6 +15,9 @@ constraints etc (when deleting an object, the child objects have to be
 deleted first). Another good use for the pre hook is to see what is
 changing between the old and new data.
 
+!!! tip
+    Some of the more esoteric entities may not fire this hook when they're saved. If you happen to find such an entity, please make a PR to core which adds this hook. As an example, you can refer to `CRM_Core_BAO_Dashboard::create()` to find succinct syntax that appropriately calls both `CRM_Utils_Hook::pre()` and `CRM_Utils_Hook::post()`.
+
 ## Definition
 
     hook_civicrm_pre($op, $objectName, $id, &$params)
@@ -35,32 +38,33 @@ changing between the old and new data.
         objects only)
 
 -   $objectName - can have the following values:
+    -   'Activity'
+    -   'Campaign' (from 4.6)
+    -   'Contribution'
+    -   'ContributionRecur'
+    -   'CustomGroup'
+    -   'EntityTag' (from 4.7.16)
+    -   'Event'
     -   'Individual'
     -   'Household'
-    -   'Organization'
     -   'Group'
     -   'GroupContact'
-    -   'Relationship'
-    -   'Activity'
-    -   'Contribution'
-    -   'Profile' (while this is not really an object, people have
-        expressed an interest to perform an action when a profile is
-        created/edited)
     -   'Membership'
     -   'MembershipPayment'
     -   'MessageTemplate'
-    -   'Event'
+    -   'Organization'
     -   'Participant'
     -   'ParticipantPayment'
+    -   'Pledge'
+    -   'PledgePayment'
+    -   'Profile' (while this is not really an object, people have
+        expressed an interest to perform an action when a profile is
+        created/edited)
+    -   'Relationship'
+    -   'Survey' (from 5.1.x)
     -   'UFMatch' (when an object is linked to a CMS user record, at the
         request of GordonH. A UFMatch object is passed for both the pre
         and post hooks)
-    -   PledgePayment
-    -   ContributionRecur
-    -   Pledge
-    -   CustomGroup
-    -   'Campaign' (from 4.6)
-    -   'EntityTag' (from 4.7.16)
 
 **
 
