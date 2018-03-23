@@ -110,7 +110,7 @@ Tags acceptable within `<table>` / `<field>`
 
 * `blob`, `boolean`, `char`, `datetime`, `date`, `decimal`, `float`, `int`, `int unsigned`, `longtext`, `mediumblob`, `text`, `timestamp`,  `varchar`
 
-`<serialize>` can be one of the following values `PHP`, `JSON`, `SEPARATOR_BOOKEND`, `SEPARATOR_TRIMMED`, `SERIALIZE_COMMA`. The Accepted values can be found in `CRM_Core_DAO` Class 
+`<serialize>` can be one of the following values `PHP`, `JSON`, `SEPARATOR_BOOKEND`, `SEPARATOR_TRIMMED`, `COMMA`. The Accepted values can be found in `CRM_Core_DAO` Class 
 
 ## `<table>` / `<field>` / `<html>` {:#table-field-html}
 
