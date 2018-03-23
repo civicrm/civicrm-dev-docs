@@ -11,15 +11,16 @@ uphold to ensure all guides maintain this high level of quality.
 
 To streamline communication about documentation issues, we define the following terms:
 
--   "part" - folder
--   "chapter" - file (in markdown), also one web page with a given URL
--   "section" - heading within the page
+-   "Chapter" - folder
+-   "Sub-chapter" - a folder within a folder
+-   "Page" - file (in markdown)
+-   "Section" - heading within the page
 
-### Chapter names
+### Page names
 
 In the navigation menu (as stored in `mkdocs.yml`):
 
--   Each chapter name should be short enough to fit nicely in the menu,
+-   Each page name should be short enough to fit nicely in the menu,
     but also long enough to stand on its own to a reasonable extent.
     The titles set here are used in the navigation menu *and* the page title
     that displays in the browser tab. The guide will be more usable if the
@@ -28,8 +29,8 @@ In the navigation menu (as stored in `mkdocs.yml`):
     
 ### Introductory paragraphs
 
-Each chapter should start with a paragraph that explains what will be
-covered in the chapter.
+Each page should start with a paragraph that explains what will be
+covered in the page.
 
 ### Cumulative concepts
 
@@ -41,7 +42,7 @@ option (when possible) is helpful to some readers.
 ### Cross-references
 
 Don't use terms like "previous chapter", etc. because we may add or re-arrange
-chapters in the future. Instead, use a hyperlink to the chapter.
+pages in the future. Instead, use a hyperlink to the page, or ideally to the specific section within the page.
 
 ### Hackable URLs
 
@@ -49,14 +50,14 @@ When you organize several markdown files into one folder, it's good practice to 
 
 ### Headings
 
-The first heading in a chapter should be Heading 1. All others should be
+The first heading in a page should be Heading 1. All others should be
 in H2 and H3, only where necessary.  If you find yourself wanting to use
-H4, consider if it's truly necessary and whether the chapter should
+H4, consider if it's truly necessary and whether the page should
 instead be refactored.
 
 ### Title capitalization
 
-Titles for parts, chapters, and sections should all be in sentence case
+Titles for chapters, pages, and sections should all be in sentence case
 (first word capitalized), not headline case (each word capitalized).
 
 ## Describing the CiviCRM user interface
