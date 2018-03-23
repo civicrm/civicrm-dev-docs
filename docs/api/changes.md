@@ -4,6 +4,33 @@ This page lists changes to CiviCRM core which affect the ways in which developer
 
 ## APIv3: Framework
 
+### 5.0 Support for custom data on any entity via the api
+It is now possible to add any (almost) entity to the cg_group_extends option group and create / retrieve custom data for that field via the api (also custom entities). Ones that do not work as of 5.0 release are       
+      'CaseContact',
+      'CustomField',
+      'CustomGroup',
+      'DashboardContact',
+      'Domain',
+      'File',
+      'FinancialType',
+      'LocBlock',
+      'MailingEventConfirm',
+      'MailingEventResubscribe',
+      'MailingEventSubscribe',
+      'MailingEventUnsubscribe',
+      'MailingJob',
+      'MembershipPayment',
+      'SavedSearch',
+      'UFJoin',
+      'UFField',
+      'PriceFieldValue',
+      'GroupContact',
+      'EntityTag',
+      'PledgePayment',
+
+### 5.0 Support for Serialization Metadata ###
+A field defined with the key 'serialize' (in the metadata) will be serialized on save/create with no additional handling if using basic create methods. Generally this is used by adding <serialize>JSON</serialize> to the xml when generating the DAO. ![Example declaration(https://github.com/eileenmcnaughton/org.wikimedia.geocoder/blob/master/CRM/Geocoder/DAO/Geocoder.php#L259)
+
 ### 4.7.17: OR Operator
 
 Most API "get" operations (with the exception of some nonstandard entities - Contact, Contribution, Pledge & Participant) [now support the OR operator](https://issues.civicrm.org/jira/browse/CRM-20034). Use the API Explorer to see the syntax. ![Example use of API Or functionality](/img/api-or-example.png)
