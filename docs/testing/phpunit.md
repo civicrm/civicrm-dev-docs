@@ -6,10 +6,14 @@
 [PHPUnit](https://phpunit.de/) tests ensure that CiviCRM's PHP logic is working as expected &mdash; for example,
 ensuring that the `Contact.create` API actually creates a contact.
 
-## Binary
+## Command name
 
-PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this tool is named `phpunit4`.  In other environments, it might be
-`phpunit` or `phpunit.phar`.
+PHPUnit is a command-line tool, but the command name varies depending on how it was installed. For example:
+
+* In [buildkit](/tools/buildkit.md), this command is named `phpunit4`.
+* In other environments, it might be `phpunit` or `phpunit.phar`.
+
+For the following examples, we'll use `phpunit4`.
 
 ## Suites
 
