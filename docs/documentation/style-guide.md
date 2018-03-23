@@ -15,13 +15,6 @@ To streamline communication about documentation issues, we define the following 
 -   "chapter" - file (in markdown), also one web page with a given URL
 -   "section" - heading within the page
 
-### Menu depth
-
-In the navigation menu (as stored in `mkdocs.yml`):
-
--   keep the page hierarchy to the depth described above
-    (i.e. do not put folders within other folders).
-
 ### Chapter names
 
 In the navigation menu (as stored in `mkdocs.yml`):
