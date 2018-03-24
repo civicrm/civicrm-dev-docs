@@ -219,42 +219,12 @@ When creating a new branch, you should explicitly declare a starting point.
 
 Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, *Stable*, or *LTS* branch. The table below summarizes the policies for each branch.
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Git branch (example)</th>
-      <th>Version number (example)</th>
-      <th>Acceptable patches</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Master</td>
-      <td><code>master</code></td>
-      <td>5.99.alpha1</td>
-      <td>This is primary target for most patches, including typical bugfixes, cleanups, and minor features.</td>
-    </tr>
-    <tr>
-      <td>Release Candidate</td>
-      <td><code>5.98</code></td>
-      <td>5.98.beta1</td>
-      <td>Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.</td>
-    </tr>
-    <tr>
-      <td>Stable</td>
-      <td><code>5.97</code></td>
-      <td>5.97.1</td>
-      <td>Backports of fixes for very critical issues.</td>
-    </tr>
-    <tr>
-      <td>LTS</td>
-      <td><code>4.6</code></td>
-      <td>4.6.36</td>
-      <td>Backports of fixes for very critical issues.</td>
-    </tr>
-  </tbody>
-</table>
+| Name | Git branch (example) | Version number (example) | Acceptable patches |
+| --- | ---- | --- | --- |
+| Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
+| Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
+| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
+| LTS | 4.6 | 4.6.36 | Backports of fixes for very critical issues. |
 
 ### Committing {:#committing}
 
