@@ -91,3 +91,5 @@ For Smarty APIs (`{crmScript}` and `{crmStyle}`), the optional weight and region
 {crmScript ext=com.example.foo file=bar.js weight=10 region=page-footer}
 {crmStyle url="http://example.com/bar.css" weight=10 region=page-footer}
 ```
+
+If extensions want to modify what core styles and scripts are loaded you can use the hook [`hook_civicrm_coreResourceList`](/hooks/hook_civicrm_coreResourceList.md) to modify which styles or scripts are loaded. The hook would also allow you to add an array of javascript settings into the CRM javascript object.
