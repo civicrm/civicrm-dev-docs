@@ -42,7 +42,7 @@ column values and therefore appear to be sorting incorrectly.
 
 -   null
 
-## **Example**
+## Example
 
     function civitest_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
 
@@ -102,7 +102,7 @@ column values and therefore appear to be sorting incorrectly.
             }
         }
 
-### **Example to add new column header at desired place**
+### Example to add new column header at desired place
 
     function civitest_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
 

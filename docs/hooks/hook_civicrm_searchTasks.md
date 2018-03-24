@@ -27,7 +27,7 @@ search, allowing you to inject additional actions or to remove existing actions.
 
 -   null
 
-## **Example (Disable an existing task)**
+## Example (Disable an existing task)
 
     function civitest_perm () {
       return array(
@@ -45,7 +45,7 @@ search, allowing you to inject additional actions or to remove existing actions.
         }
     }
 
-## **Example (Add a new task)**
+## Example (Add a new task)
 
     function smsconversation_civicrm_searchTasks( $objectName, &$tasks ){
       if($objectName == 'contact'){
