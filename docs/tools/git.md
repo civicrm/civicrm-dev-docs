@@ -217,7 +217,14 @@ $ git checkout upstream/master -b CRM-1234
 
 When creating a new branch, you should explicitly declare a starting point.
 
-Most of the time, your base branch should be `master`. However, CiviCRM core keeps two main branches under active development: `master` (for the latest version), *and* another branch for the current LTS release (as listed on [civicrm.org/download](https://civicrm.org/download)). For example, if you have a client running the LTS version (e.g. `4.6`) then any changes you make to `master` will not affect this client until they do a major upgrade. In this case you may wish to "backport" a change to the LTS version and choose the `4.6` branch as your base branch.
+Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, *Stable*, or *LTS* branch. The table below summarizes the policies for each branch.
+
+| Name | Git branch (example) | Version number (example) | Acceptable patches |
+| --- | ---- | --- | --- |
+| Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
+| Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
+| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
+| LTS | 4.6 | 4.6.36 | Backports of fixes for very critical issues. |
 
 ### Committing {:#committing}
 
