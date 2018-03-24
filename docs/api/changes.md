@@ -29,7 +29,7 @@ It is now possible to add any (almost) entity to the cg_group_extends option gro
       'PledgePayment',
 
 ### 5.0 Support for Serialization Metadata ###
-A field defined with the key 'serialize' (in the metadata) will be serialized on save/create with no additional handling if using basic create methods. Generally this is used by adding `<serialize>JSON</serialize>` to the xml when generating the DAO. ![Example declaration](https://github.com/eileenmcnaughton/org.wikimedia.geocoder/blob/master/CRM/Geocoder/DAO/Geocoder.php#L259)
+A field defined with the key 'serialize' (in the metadata) will be serialized on save/create with no additional handling if using basic create methods. Generally this is used by adding `<serialize>JSON</serialize>` to the xml when generating the DAO. [Example declaration](https://github.com/eileenmcnaughton/org.wikimedia.geocoder/blob/master/CRM/Geocoder/DAO/Geocoder.php#L259)
 
 ### 4.7.17: OR Operator
 
