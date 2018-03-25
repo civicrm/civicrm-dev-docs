@@ -18,7 +18,7 @@ Note that a contact may only have one subscription record for the group, so the 
 
 ## Tokens {:#tokens}
 
-*Tokens* are an important feature for CiviMail -- they allow you to merge in data about the recipient (e.g. `{contact.first_name}`) and to facilitate workflows with hyperlinks (e.g. `{action.optOutUrl`).
+*Tokens* are an important feature for CiviMail -- they allow you to merge in data about the recipient (e.g. `{contact.first_name}`) and to facilitate workflows with hyperlinks (e.g. `{action.optOutUrl}`).
 
 Tokens were originally developed for CiviMail, but they are now used in several more contexts -- such as individual mailings, print letters, receipts for contributions, and scheduled reminders.
 For more details on *how tokens work generally*, see the [Token Reference](/framework/token.md).
