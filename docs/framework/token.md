@@ -1,6 +1,17 @@
 ## Introduction
 
-CiviCRM's [token functionality](https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/) originates in CiviMail, which focuses on writing and delivering newsletters to large constituencies. In its original form, the design placed heavy weight on:
+CiviCRM [tokens](https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/) enable one to generate personalized emails, reminders, print documents. etc. 
+
+When working with tokens as a developer, there are two major tasks:
+
+- *Composing a message* by evaluating a token expression (`Hello {contact.first_name}! How do you like {address.city}?`).
+- *Defining a token* and its content.
+
+For each task, there are a couple available patterns, and we'll explore them in more depth below. But first, it helps to put the functionality in context.
+
+## Background
+
+Token functionality originated in CiviMail, which focuses on writing and delivering newsletters to large constituencies. In its original form, the design placed heavy weight on:
 
 - **Performance**: Divide mail-composition into batches and split the batches among parallel workers. Moreover, when processing each batch, improve efficiency by minimizing the #SQL queries - i.e. fetch all records in a batch at once, and only fetch columns which are actually used.
 - **Security**: Do not trust email authors with a fully programmable language.
@@ -9,16 +20,9 @@ CiviCRM's [token functionality](https://docs.civicrm.org/user/en/latest/common-w
 
 Over time, the token functionality evolved:
 
-- Add optional support for more powerful templates with conditions and loops (Smarty). (In the case of CiviMail, this was still disabled by default as a security consideration, but in other use-cases it might be enabled by default.)
-- Add a hook for custom tokens.
-- Expand to other applications, such as individual mailings, print letters, receipts for contributions, and scheduled reminders.
-
-When working with tokens, there are two major tasks:
-
-- *Composing a message* by evaluating a token expression (`Hello {contact.first_name}! How do you like {address.city}?`).
-- *Registering a token* and defining its content.
-
-For each task, there are a couple available patterns, and we'll explore them in more depth below.
+- Add optional support for more powerful templates with conditions and loops (**Smarty**). (In the case of CiviMail, this was still disabled by default as a security consideration, but in other use-cases it might be enabled by default.)
+- Add a **hook for custom tokens**.
+- Expand to other applications, such as **individual mailings, print letters, receipts for contributions, and scheduled reminders**.
 
 ## Examples
 
@@ -36,8 +40,7 @@ For more examples of tokens and token replacement, see [User Guide: Common workf
 
 ### CRM_Utils_Token {:#crm-utils-token}
 
-For most of its history, CiviMail used a helper class, `CRM_Utils_Token`, with a number of static helper functions.  As the use-cases grew, the
-technique was duplicated and adapted, leading to a lengthy idiom which looks a bit like this:
+For most of its history, CiviMail used a helper class, `CRM_Utils_Token`, with a number of static helper functions.  As the more kinds of tokens were created for more use-cases, the technique was duplicated and adapted, leading to an idiom which looks a bit like this:
 
 ```php
 $subject = $template->subject;
@@ -116,11 +119,11 @@ foreach ($p->getRows() as $row) {
 }
 ```
 
-## Registering tokens
+## Defining tokens
 
 ### hook_civicrm_tokens
 
-The oldest and most broadly supported way to register a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
+The oldest and most broadly supported way to define a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
 
 However, these hooks have some limitations:
 
