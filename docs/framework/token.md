@@ -81,15 +81,13 @@ Consequently, this pattern is not recommend for new code.
 
 ### TokenProcessor (v4.7+) {:#token-processor}
 
-CiviCRM v4.7 introduced `Civi\Token\TokenProcessor`, which provides a more flexible way to define and process tokens.  It preserves the performance, batching, and security virtues
-of `CRM_Utils_Token` and also:
+CiviCRM v4.7 introduced `Civi\Token\TokenProcessor`, which provides a more flexible way to define and process tokens.  It preserves the performance, batching, and security virtues of `CRM_Utils_Token` and also:
 
 - Allows more *contextual* information -- enabling tokens for more entities.
 - Loosens the coupling between token-consumers and token-providers.
 - Loosens the coupling between token-content and template-language.
 
-Originally, `TokenProcessor` was introduced to support extensible, contextual tokens in Scheduled Reminders ([CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244)). 
-However, you can also use `TokenProcessor` for CiviMail by installing [FlexMailer](https://docs.civicrm.org/flexmailer/en/latest/), and you can use it for developing new logic.
+Originally, `TokenProcessor` was introduced to support extensible, contextual tokens in Scheduled Reminders ([CRM-13244](https://issues.civicrm.org/jira/browse/CRM-13244)). However, you can also use `TokenProcessor` for CiviMail by installing [FlexMailer](https://docs.civicrm.org/flexmailer/en/latest/), and you can use it for developing new logic.
 
 The basic process in the new subsystem is
 
@@ -133,9 +131,9 @@ However, these hooks have some limitations:
 
 ### Token Events (v4.7+)
 
-If a use-case builds on the newer `TokenProcessor`, then an additional API is available for defining tokens. This API resolves the limitations above.
+If a use-case builds on the newer `TokenProcessor` (above), then an additional API is available for defining tokens. This API resolves the limitations above.
 
-`TokenProcessor` (above) emits two events which allow you to define new tokens, as in this example:
+`TokenProcessor` emits two events which allow you to define new tokens. Consider this example which defines `{profile.viewUrl}` and `{profile.viewLink}`:
 
 ```php
 function example_civicrm_container($container) {
