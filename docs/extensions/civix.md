@@ -259,13 +259,13 @@ civix generate:custom-xml --data=7
 
 Most of the [CiviHR](https://github.com/civicrm/civihr/tree/master) modules rely on the first approach (e.g.: [Upgrader/Base.php](https://github.com/civicrm/civihr/blob/master/hrqual/CRM/HRQual/Upgrader/Base.php#L244) and [auto_install.xml](https://github.com/civicrm/civihr/blob/master/hrqual/xml/auto_install.xml)).
 
-#### Extending an subtype
+#### Extending a subtype
 
 <!-- This section still is not really clear to me. (Erich Schulz) Is this really about sub-types in an OO sense?? or subtypes in as a base entity of a particular type as defined by its properties? -->
 
 The automatic export does not work too well when the custom-data group extends a specific subtype. The "HR Emergency Contact" extension provides and example that creates a custom-data group that describes Relationships with type "Emergency Contact". Internally, Civi uses "relationship type IDs", but those are not portable. As a quick work-around, this extension uses Smarty: ([HREmerg/Upgrader.php](https://github.com/civicrm/civihr/blob/master/hremerg/CRM/HREmerg/Upgrader.php#L14) and [hremerg-customdata.xml.tpl](https://github.com/civicrm/civihr/blob/master/hremerg/templates/hremerg-customdata.xml.tpl#L11)).
 
-To create this extension, the author used `civix generate:custom-data` and then:
+To create this extension, the author used `civix generate:custom-xml` and then:
 
 1. Renamed the `xml/auto_install.xml` to `templates/hremerg-customdata.xml.tpl`
 1. Changed the value of `<extends_entity_column_value>` in the `.tpl file` using a variable instead of a hard-coded type ID.
