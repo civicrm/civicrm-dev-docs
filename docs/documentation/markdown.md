@@ -33,10 +33,10 @@ To maintain some consistency and peace of mind for documentation content editors
 * **Unordered lists:** use `*` to delimiters.
 * **Headings:** use hashes like `## Heading 2`.
 
-### Internal URL standards {:#internal-url-standards}
+### Internal link standards {:#internal-url-standards}
 
 !!! note
-    These standards only apply to *internal* hyperlinks and images (which should be internal anyway). There are no markdown standards for external links (which point outside of the current guide).
+    These standards only apply to *internal* links and images (which should be internal anyway). There are no markdown standards for external links (which point outside of the current guide).
 
 Valid examples:
 
@@ -49,14 +49,14 @@ Valid examples:
 
 Rules:
 
-* Use absolute URLs which begin with a forward slash. (The root directory is the `docs` folder.)
+* Use links which begin with a forward slash. (The root directory is the `docs` folder.)
     * Exception: when you are linking to a section within the current page, use only the fragment which corresponds to that heading (beginning with `#`, as in example 4 above.). (Also consider [specifying a custom heading ID](#custom-heading-ids) to prevent broken links if the heading is later renamed.)
 * Append `.md` when linking to a page.
-* If you are linking to a page which is named `index.md`, then include `index.md` in the URL (even though your link will technically still work if you don't).
+* If you are linking to a page which is named `index.md`, then include `index.md` in the path (even though your link will technically still work if you don't).
 * If you're linking to a section within a page (other than the current one), then do it as shown in example 3 above (even though some some other variants will also work).
-* Do not use syntax like `[Link Text][url]` which defines the URL in a separate part of the document (even though it will technically work).
+* Do not use syntax like `[Link Text][path]` which defines the path in a separate part of the document (even though it will technically work).
 
-Reasons for these internal URL standards:
+Reasons for these internal link standards:
 
 * Following the rules above helps us avoid broken links.
 * MkDocs will detect broken links when building books, but only if the links are absolute and end with `.md`.
@@ -80,7 +80,7 @@ platforms.
 
 ## Internal hyperlinks
 
-See the [internal URL standards](#internal-url-standards) above for examples of internal hyperlinks.
+See the [internal link standards](#internal-url-standards) above for examples of internal hyperlinks.
 
 !!! warning
     Several different syntax variants will produce functionally identical hyperlinks, but it's important you follow our [standards](#internal-url-standards) so that we can avoid broken links when re-organizing pages in the future.
@@ -437,7 +437,7 @@ point and with alt text in place of the link text.
 Note:
 
 * The image files should be committed into git and stored in the `docs/img` directory within the project.
-* The URL to the image should follow out [internal URL standards](#internal-url-standards)  
+* The path to the image should follow our [internal link standards](#internal-url-standards)  
 
 ## Other markdown syntax
 
