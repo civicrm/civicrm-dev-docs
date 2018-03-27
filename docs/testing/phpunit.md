@@ -236,21 +236,39 @@ The first step -- as with any PHPUnit project -- is to create a `phpunit.xml.dis
 </phpunit>
 ```
 
-At a minimum, the `bootstrap.php` script should register CiviCRM's class-loader, e.g.
+At a minimum, the `bootstrap.php` script should register CiviCRM's class-loader. One mighty initially write:
+
+```php
+require_once '/var/www/sites/all/modules/civicrm/CRM/Core/ClassLoader.php';
+CRM_Core_ClassLoader()::singleton()->register();
+```
+
+However, this faces several problems:
+
+* If you want to test the extension in a different environment (different server, CMS, file-structure, etc), then you have to patch the test files.
+* There is no simple, portable formula for the file-path. Between various CMS configuration options and Civi configuration options, it can be quite difficult to predict the file paths (whether using absolute or relative paths).
+* It only sets up the classloader. For many tests, you'll also want to bootstrap a CMS (or pseudo-CMS), setup database credentials, etc.
+
+The simplest way to bootstrap Civi is to use [cv](https://github.com/civicrm/cv). `cv` autodetects many environments, and it accepts configuration (environment variables)
+for more difficult environments.
+
+The `bootstrap.php` file just needs one line:
 
 ```php
 eval(`cv php:boot --level=classloader`);
 ```
 
-Additionally, if you're going to create any custom PHPUnit utilities (your own base-classes, traits, listeners), then load those files or register your own class-loader.
+You can change the parameters to `cv php:boot` and specify different bootstrap behaviors, e.g.
 
-If the tests require a fully functional CiviCRM environment, then you might perform a more complete bootstrap, e.g.
-
-* `cv php:boot --level=settings` -- Load CiviCRM and its settings files, but do *not* bootstrap a CMS.
+* `cv php:boot --level=settings` -- Load CiviCRM and its settings files, but do *not* bootstrap Civi services or the CMS.
 * `cv php:boot --level=full` -- Bootstrap the full CiviCRM+CMS. (This is appropriate for end-to-end testing.)
 * `cv php:boot --level=full --test` -- Bootstrap CiviCRM and fake CMS in a headless test environment. (This is appropriate for headless testing.)
 
-Next, you could create a boilerplate test:
+!!! tip "Add your own PHPUnit helpers to the `bootstrap.php`"
+
+    There are a few PHPUnit helpers provided by `civicrm-core` (e.g. base-classes, traits), but you'll probably want to write some of your own. Load these files explicitly in `bootstrap.php` -- or add a class-loader which can handle them.
+
+Once you have a bootstrap file, create a basic test class, `tests/phpunit/MyTest.php`:
 
 ```php
 class MyTest extends PHPUnit_Framework_TestCase {
