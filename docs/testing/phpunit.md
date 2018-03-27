@@ -6,10 +6,14 @@
 [PHPUnit](https://phpunit.de/) tests ensure that CiviCRM's PHP logic is working as expected &mdash; for example,
 ensuring that the `Contact.create` API actually creates a contact.
 
-## Binary
+## Command name
 
-PHPUnit provides a command-line tool.  In [buildkit](/tools/buildkit.md), this tool is named `phpunit4`.  In other environments, it might be
-`phpunit` or `phpunit.phar`.
+PHPUnit is a command-line tool, but the command name varies depending on how it was installed. For example:
+
+* In [buildkit](/tools/buildkit.md), this command is named `phpunit4`.
+* In other environments, it might be `phpunit` or `phpunit.phar` or `phpunit.bat`.
+
+For the following examples, we'll use `phpunit4`.
 
 ## Suites
 
@@ -123,52 +127,320 @@ $ env CIVICRM_UF=UnitTests phpunit4 ./tests/phpunit/CRM/Core/RegionTest.php
     ```
 
 
-## Writing tests
+## Writing tests for core
 
-When writing headless tests for `civicrm-core`, extend the class `\CiviUnitTestCase`.
+As we mentioned in "Suites" (above), the coding conventions vary depending on the suite.  We'll consider a few different ways to write tests.
 
-But for extensions you should extend directly from `\PHPUnit_Framework_TestCase`.
+### CiviUnitTestCase
 
-!!! note
-    Once we move to a PHP5.4 minimum requirement we can break up CiviUnitTestCase.php into `traits` so the helper functions are more accessible to extensions.  Currently you have to copy them into your extensions test environment (eg. `callAPISuccess`).
+`CiviUnitTestCase` forms the basis of [headless testing](/testing/index.md#headless) and [unit testing](/testing/index.md#unit) in `civicrm-core`.  In the
+three main test suites (`CRM`, `Civi`, and `API`), the vast majority of tests extend `CiviUnitTestCase`. This base-class is generally appropriate for
+writing `civicrm-core` tests which execute against a headless database and the standard, baseline schema. Subclasses follow a naming convention
+which parallels the primary core code.
 
-Test methods naming should follow the pattern:
+For example, if you were writing a test for `CRM/Foo/Bar.php`, then you would create `tests/phpunit/CRM/Foo/BarTest.php`:
 
-- Start with test
-- The name should describe what the test does, e.g. testCreateWithWrongParamsType
+```php
+/**
+ * @group headless
+ */
+class CRM_Foo_BarTest extends CiviUnitTestCase {
+  public function testSomething() {
+    $fooBar = new CRM_Foo_Bar();
+    $this->assertEquals(1234, $fooBar->getOneTwoThreeFour());
+  }
+}
+```
 
-It is also recommended that your tests implement `HeadlessInterface` to run your
-test against a fake, headless database. `CiviTestListener` will automatically
-boot Civi. These tests do not use a real CMS and are faster.
+Tests based on `CiviUnitTestCase` have a few distinctive features:
 
-Alternatively, if you wish to run a test in a live (CMS-enabled) environment,
-implement `EndToEndInterface`.
+* When you first start running the tests, they reset the headless database to a standard baseline. The DB reset generally runs once for each test-class; it does not run for each test-function.
+* If you define a `setUp()` or `tearDown()` function, be sure to call the `parent::setUp()` or `parent::tearDown()`.
+* In the `setUp()` function, you can call `$this->useTransaction()`.  This will wrap all your test functions with a MySQL transaction (`BEGIN`/`ROLLBACK`); any test data you create will be automatically cleaned up.
+    * __Caveat__: Some SQL statements implicitly terminate a transaction -- e.g. `CREATE TABLE`, `ALTER TABLE`, and `TRUNCATE`. Consequently, you should only use `useTransaction()` if the tests perform basic data manipulation (`SELECT`, `INSERT`, `UPDATE`, `DELETE`).
+* Executing tests based on `CiviUnitTestCase` requires setting an environment variable, `CIVICRM_UF=UnitTests`.
+* The tests belong to `@group headless`.
 
-The `\Civi\Test` class offers a range of methods for setting up your test and
-installing extensions. Read [the documentation here][civi-test-class] for more
-information.
+### CiviEndToEndTestCase
 
-### Test Data
+`CiviEndToEndTestCase` forms the basis of CMS-neutral [end-to-end testing](/testing/index.md#e2e) in `civicrm-core`.
 
-It's important that each test is responsible for setting up the data it requires
-and returning the database to the original state after it is complete. To help
-with that there are two methods:
+For example, one might create an end-to-end test for a web service `civicrm/my-web-service` by creating `tests/phpunit/E2E/My/WebServiceTest.php`:
 
-- `setUp` is executed before each test method
-- `tearDown` is executed after each test method
+```php
+/**
+ * @group e2e
+ */
+class E2E_My_WebServiceTest extends CiviEndToEndTestCase {
+  public function testSomething() {
+    $url = cv('url civicrm/my-web-service');
+    list (, $content) = CRM_Utils_HttpClient::singleton()->post($url, array());
+    $this->assertRegExp(';My service is working;', $content);
+  }
+}
+```
 
-Sometimes it will be convenient to prepare test data for whole test case -
-in such case, you will want to put all the test data creation code in there.
+Tests based on `CiviEndToEndTestCase` have a few distinctive features:
 
-Another option is for your test to implement `TransactionalInterface`.  That
-will guarantee that each test will be wrapped in a SQL transaction which
-automatically rolls back any database changes.
+* You can call Civi classes and functions directly within the test process (eg `CRM_Utils_HttpClient::singleton()` or `civicrm_api3('Contact','get', ['id'=>123])`). In-process code executes with the permissions of an administrative user.
+* You can perform work in a sub-process by either:
+    * Sending HTTP requests back to the system -- as in `CRM_Utils_HttpClient::singleton()->post(...)`.
+    * Using `cv()` to run the scripting tool [cv](https://github.com/civicrm/cv) -- as in `cv('url civicrm/my-web-service')` or `cv('api contact.get id=123')`.
+* The global variable `$_CV` provides configuration data about the running system, such as example usernames and passwords. Use `cv vars:show` to view an example.
+* The tests belong to `@group e2e`.
+* There is no automated cleanup procedure. Write defensive code which cleans up after itself and checks that its environment is sufficiently clean.
 
-!!! warning
-    Schema changes in your test will cause an auto-commit of all changes, and
-    therefore the transaction will be ignored. This includes `TRUNCATE TABLE`,
-    because this implicitly drops and re-creates the table. If your tests create
-    custom tables or change the database schema please be aware you may need to
-    manually reset it.
+!!! tip "Mixing in-process and sub-process work"
 
-[civi-test-class]: https://github.com/civicrm/org.civicrm.testapalooza/blob/master/civi-test.md
+    End-to-end testing allows you to perform in-process work (eg `civicrm_api3('Contact','get', ['id'=>123])`) or sub-process work (eg `cv('api contact.get id=123')`).
+    In-process calls are faster, but they're not as realistic. It's generally safest to pick one style or the other for a particular test because this categorically prevents
+    issues with cache-coherence. Never-the-less, it is possible to mix the styles -- as in the example above.
+
+<!-- FIXME: Document CiviSeleniumTestCase -->
+
+## Writing tests for extensions
+
+### civix
+
+If you are writing an extension using [civix](/extensions/civix.md), the quickest way to create a new test is to generate skeletal code with [civix generate:test](/extensions/civix.md#generate-test).
+
+The generator includes templates for different styles of testing. To generate a [basic unit test](/testing/index.md#unit), [headless test](/testing/index.md#headless), or [end-to-end test](/testing/index.md#e2e), specify `--template`. For example:
+
+```
+$ civix generate:test --template=phpunit CRM_Myextension_MyBasicUnitTest
+$ civix generate:test --template=headless CRM_Myextension_MyHeadlessTest
+$ civix generate:test --template=e2e CRM_Myextension_MyEndToEndTest
+```
+
+The resulting tests will extend `PHPUnit_Framework_TestCase` and employ various utilities, such as `HeadlessInterface` or `Civi\Test`. These are described more in the [Reference](#reference).
+
+### From scratch
+
+If you've worked with PHPUnit generally, you can build tests from first principles and incorporate CiviCRM. Although we're presenting in the context of PHPUnit and Civi extensions, the advice is more general -- it may be applied to other kinds of deliverables (such as Civi-CMS integrations and modules).
+
+The first step -- as with any PHPUnit project -- is to create a `phpunit.xml.dist` file and specify a boostrap script.
+
+```xml
+<?xml version="1.0"?>
+<phpunit bootstrap="tests/phpunit/bootstrap.php" ...>
+  <testsuites>
+    <testsuite name="My Test Suite">
+      <directory>./tests/phpunit</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">./</directory>
+    </whitelist>
+  </filter>
+</phpunit>
+```
+
+At a minimum, the `bootstrap.php` script should register CiviCRM's class-loader. One might initially write:
+
+```php
+require_once '/var/www/sites/all/modules/civicrm/CRM/Core/ClassLoader.php';
+CRM_Core_ClassLoader()::singleton()->register();
+```
+
+However, this faces several problems:
+
+* If you want to test the extension in a different environment (different server, CMS, file-structure, etc), then you have to patch the test files.
+* There is no simple, portable formula for the file-path. Between various CMS configuration options and Civi configuration options, it can be quite difficult to predict the file paths (whether using absolute or relative paths).
+* It only sets up the classloader. For many tests, you'll also want to bootstrap a CMS (or pseudo-CMS), setup database credentials, etc.
+
+The simplest way to bootstrap Civi is to use [cv](https://github.com/civicrm/cv).  `cv` scans the directory tree to autodetect the Civi+CMS environment. The scan works in many stock environments; for more difficult environments, you can set environment variables to configure bootstrap.
+
+The `bootstrap.php` file just needs one line:
+
+```php
+eval(`cv php:boot --level=classloader`);
+```
+
+You can change the parameters to `cv php:boot` and specify different bootstrap behaviors, e.g.
+
+* `cv php:boot --level=settings` -- Load CiviCRM and its settings files, but do *not* bootstrap Civi services or the CMS.
+* `cv php:boot --level=full` -- Bootstrap the full CiviCRM+CMS. (This is appropriate for end-to-end testing.)
+* `cv php:boot --level=full --test` -- Bootstrap CiviCRM and fake CMS in a headless test environment. (This is appropriate for headless testing.)
+
+!!! tip "Add your own PHPUnit helpers to the `bootstrap.php`"
+
+    There are a few PHPUnit helpers provided by `civicrm-core` (e.g. base-classes, traits), but you'll probably want to write some of your own. Load these files explicitly in `bootstrap.php` -- or add a class-loader which can handle them.
+
+Once you have a bootstrap file, create a basic test class, `tests/phpunit/MyTest.php`:
+
+```php
+class MyTest extends PHPUnit_Framework_TestCase {
+  public function testSomething() { ... }
+}
+```
+
+If you aim to write *pure, basic* unit-tests, then you're ready to go -- the test function has access to any CiviCRM classes. (And, if you fully bootstrapped, then it also has access to a working database environment.)
+
+However, *pure, basic unit-tests* usually don't get very far in testing Civi -- because a large number of services involve constants, globals, or singletons which are difficult to mock.
+Most tests are *headless* or *end-to-end*, and a couple of tricks will help build those:
+
+* It helps to establish a starting environment -- what mix of database tables and extensions should be activated as the test starts? Creating this environment can be resource-intensive, so be tactical: only do the expensive stuff when you really need to.
+* For in-process, headless tests, it helps if each test-run resets the in-process state. Call `Civi::reset()` and/or `CRM_Core_Config::singleton(TRUE,TRUE)`.
+* For multi-process, end-to-end tests, it helps to have utility functions for launching sub-processes. For example, you might have utilities for sending HTTP requests or invoking `cv`.
+
+Of course, these are recurring problems for developers in the Civi community. The [Reference](#reference) below describes some utilities and techniques. The `civix` templates make heavy use of these, but you can also assemble these pieces yourself.
+
+## Reference
+
+### \Civi\Test
+
+`Civi\Test::headless()` and `Civi\Test:e2e()` help you to define a baseline environment -- by installing extensions, loading SQL files, etc. Consider a few examples:
+
+```php
+// Use the stock schema and stock data in the headless DB.
+Civi\Test::headless()->apply();
+
+// Use the stock schema and install this extension (i.e. the
+// extension which contains __DIR__).
+Civi\Test::headless()
+      ->installMe(__DIR__)
+      ->apply();
+
+// Use the stock schema, as well as some special SQL statements
+// and extensions.
+Civi\Test::headless()
+      ->sqlFile(__DIR__ . '/../example.sql')
+      ->install(array('org.civicrm.foo', 'org.civicrm.bar'))
+      ->apply();
+
+// Use the existing Civi+CMS stack, and also install this
+// extension.
+Civi\Test::e2e()
+      ->installMe(__DIR__)
+      ->apply();
+
+// Use the existing Civi+CMS stack, and do a lot of
+// crazy stuff
+Civi\Test::e2e()->
+      ->uninstall('*')
+      ->sqlFile(__DIR__ . '/../example.sql')
+      ->installMe(__DIR__)
+      ->callback(function(){
+        civicrm_api3('Widget', 'frobnicate', array());
+      }, 'mycallback')
+      ->apply();
+```
+
+A few things to note:
+
+* `Civi\Test::headless()` and `Civi\Test::e2e()` are similar -- both allow you to declare a sequence of setup steps. Differences:
+    * `headless()` only runs on a headless DB, and it can be very aggressive about resetting the system. For example, it may casually reset all your option-groups, drop all custom-data, and uninstall all extensions.
+    * `e2e()` only runs with a live CMS (Drupal/WordPress/etc), and it has a lighter touch. It tends to leave things in-place unless you specifically instruct otherwise.
+* `Civi\Test` is lazy (in a good way). It keeps track of how the environment is configured, and it only makes a change when necessary.
+    * Ex: If you call `Civi\Test` as part of `setUp()`, it will be executed several times (for every test). However, it will usually be a null-op. It will only incur a notable performance penalty when you call with *different* configurations.
+    * How: Everytime you run `apply()`, it computes a signature for the requested steps. If the signature is already stored (table `civitest_revs`), then it does nothing. If the signature is new/changed, then it runs.
+* `Civi\Test` is stupid. It only knows what you tell it.
+    * Ex: If you independently executed `INSERT INTO civicrm_contact` or `TRUNCATE civicrm_option_value`, it won't reset automatically.
+    * Tip: If you know that your test cases are particularly dirty, you can force `Civi\Test` to execute by calling `apply(TRUE)` (aka `apply($force === TRUE)`). This may incur a significant performance penalty for the overall suite.
+* PATCHWELCOME: If you need to test with custom-data, consider adding more helper functions to `Civi\Test`. Handling custom-data at this level (rather than the test body) should reduce the amount of work spent on tearing-down/re-creating custom data schema, and it should allow better use of transactions.
+
+### \Civi\Test\Api3TestTrait {:#api3testtrait}
+
+Many CiviCRM tests focus on APIv3 or call APIv3 incidentally. This can be as simple as:
+
+```php
+public function testContactGet() {
+  $results = civicrm_api3('Contact', 'get', array('id' => 1));
+  $this->assertEquals(1, $results['values'][1]['contact_id'])
+}
+```
+
+This is pretty intuitive. If there's an error while running the API call, it will throw an exception.
+
+However, the exceptions aren't always easy to read.  The `Api3TestTrait` (CivCRM v5.1+) provides helper functions which report API failures in a more
+presentable fashion.  For example, one would typically say:
+
+```php
+use \Civi\Test\Api3TestTrait;
+
+public function testContactGet() {
+  $results = $this->callApiSuccess('Contact', 'get', array('id' => 1));
+  $this->assertEquals(1, $results['values'][1]['contact_id'])
+}
+```
+
+For a more complete listing of `callApi*()` and `assertApi*()` functions, inspect the trait directly.
+
+### \Civi\Test\CiviTestListener {:#civitestlistener}
+
+The `CiviTestListener` is a PHPUnit plugin which allows you to mix-in common test behaviors. You can enable it in `phpunit.xml.dist`:
+
+```xml
+<phpunit bootstrap="tests/phpunit/bootstrap.php" ...>
+  <!-- ... -->
+  <listeners>
+    <listener class="Civi\Test\CiviTestListener">
+      <arguments/>
+    </listener>
+  </listeners>
+  <!-- ... -->
+</phpunit>
+```
+
+Note that the `bootstrap.php` script activates the CiviCRM classloader (e.g. `cv php:boot --level=classloader`), and the `<listener>` tag activates `CiviTestListener`.
+
+Now, in your test classes, you can enable new behaviors by using the interfaces. This example enables several behaviors for `MyFancyTest`:
+
+```php
+class MyFancyTest extends PHPUnit_Framework_TestCase
+  implements HeadlessInterface, HookInterface, TransactionalInterface {
+```
+
+Let's consider each interface that's available.
+
+#### EndToEndInterface
+
+The `\Civi\Test\EndToEndInterface` marks a test-class as [end-to-end](/testing/index.md#e2e), which means:
+
+* The test will only run on a live environment (`CIVICRM_UF=Drupal`, `CIVICRM_UF=WordPress`, et al). If you try to run in a headless environment, it will throw an exception.
+* The test will automatically bootstrap a live environment (if you haven't already booted).
+* The test must be flagged with a PHPUnit annotation, `@group e2e`.
+* CiviCRM errors will generally be converted to PHP exceptions.
+
+#### HeadlessInterface
+
+The `\Civi\Test\HeadlessInterface` marks a test-class as [headless](/testing/index.md#headless), which means:
+
+* The test will only run on a headless environment (`CIVICRM_UF=UnitTests`). If you try to run in any other environment, it will throw an exception.
+* The test will automatically bootstrap a headless environment (if you haven't already booted).
+* The test will automatically reset common global/static variables at the start of each test function.
+* The test must be flagged with a PHPUnit annotation, `@group headless`.
+* In addition to `setUp()` and `setUpBeforeClass()`, one may implement the function `setUpHeadless()`. This is usually used to call `Civi\Test::headless()`.
+* CiviCRM errors will generally be converted to PHP exceptions.
+
+#### HookInterface
+
+The `\Civi\Test\HookInterface` simplifies testing of CiviCRM hooks. Your test may listen to a hook by adding an eponymous function. For example, this listens to `hook_civicrm_post`:
+
+```php
+class MyTest extends PHPUnit_Framework_TestCase
+  implements HeadlessInterface, HookInterface {
+
+  public function testSomething() {
+    civicrm_api3('Contact', 'create', [...]);
+  }
+
+  public function hook_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+    // listen to hook_civicrm_post
+  }
+}
+```
+
+The mechanism for registering hooks only applies within the current PHP process -- the hooks would not work when using multiple PHP processes (HTTP/cv). Consequently, `HookInterface` is only compatible with headless testing -- not with E2E testing.
+
+#### TransactionalInterface
+
+The `\Civi\Test\TransactionalInterface` simplifies data-cleanup. At the start of each test-function, it will issue a MySQL `BEGIN`; and, at the end of each
+test-function, it will issue a MySQL `ROLLBACK`. The test is free to `INSERT`, `UPDATE`, and `DELETE` data -- and those changes will be automatically
+undone. This ensures that subsequent test-functions run in the same clean, baseline environment.
+
+However, there are a few caveats:
+
+* Some SQL statements implicitly terminate a transaction -- e.g. `CREATE TABLE`, `ALTER TABLE`, and `TRUNCATE`. If you need these, then don't use `TransactionalInterface`.
+* MySQL transactions can only be enforced if all work focuses on one MySQL database using one PHP process. If you have other databases (e.g. Drupal/WP) or other multiple PHP processes (HTTP/cv), then they won't work. Consequently, `TransactionalInterface` is only compatible with headless testing -- not with E2E testing.
