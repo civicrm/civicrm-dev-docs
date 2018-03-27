@@ -340,7 +340,7 @@ A few things to note:
     * Tip: If you know that your test cases are particularly dirty, you can force `Civi\Test` to execute by calling `apply(TRUE)` (aka `apply($force === TRUE)`). This may incur a significant performance penalty for the overall suite.
 * PATCHWELCOME: If you need to test with custom-data, consider adding more helper functions to `Civi\Test`. Handling custom-data at this level (rather than the test body) should reduce the amount of work spent on tearing-down/re-creating custom data schema, and it should allow better use of transactions.
 
-### \Civi\Test\Api3TestTrait
+### \Civi\Test\Api3TestTrait {:#api3testtrait}
 
 Many CiviCRM tests focus on APIv3 or call APIv3 incidentally. This can be as simple as:
 
@@ -367,12 +367,12 @@ public function testContactGet() {
 
 For a more complete listing of `callApi*()` and `assertApi*()` functions, inspect the trait directly.
 
-### \Civi\Test\CiviTestListener
+### \Civi\Test\CiviTestListener {:#civitestlistener}
 
-The `CiviTestListener` is a PHPUnit plugin which allows you to mix-in common test behaviors. You can enable it in `phpunit.xml.dist` using the `<listener>` tag:
+The `CiviTestListener` is a PHPUnit plugin which allows you to mix-in common test behaviors. You can enable it in `phpunit.xml.dist`:
 
 ```xml
-<phpunit ...>
+<phpunit bootstrap="tests/phpunit/bootstrap.php" ...>
   <!-- ... -->
   <listeners>
     <listener class="Civi\Test\CiviTestListener">
@@ -383,10 +383,13 @@ The `CiviTestListener` is a PHPUnit plugin which allows you to mix-in common tes
 </phpunit>
 ```
 
-Once the listener is enabled, you can mix-in behaviors with various interfaces. For example, one might mix several features into `MyFancyTest`:
+Note that the `bootstrap.php` script activates the CiviCRM classloader (e.g. `cv php:boot --level=classloader`), and the `<listener>` tag activates `CiviTestListener`.
+
+Now, in your test classes, you can enable new behaviors by using the interfaces. This example enables several behaviors for `MyFancyTest`:
 
 ```php
-class MyFancyTest extends PHPUnit_Framework_TestCase implements HeadlessInterface, HookInterface, TransactionalInterface {
+class MyFancyTest extends PHPUnit_Framework_TestCase
+  implements HeadlessInterface, HookInterface, TransactionalInterface {
 ```
 
 Let's consider each interface that's available.
@@ -395,28 +398,30 @@ Let's consider each interface that's available.
 
 The `\Civi\Test\EndToEndInterface` marks a test-class as [end-to-end](/testing/index.md#e2e), which means:
 
-* CiviCRM errors will generally be converted to PHP exceptions.
-* The test will only run on a live environment (`CIVICRM_UF=Drupal`, `CIVICRM_UF=WordPress`, et al). If you try to run in a headless environment, it will throw an error.
+* The test will only run on a live environment (`CIVICRM_UF=Drupal`, `CIVICRM_UF=WordPress`, et al). If you try to run in a headless environment, it will throw an exception.
 * The test will automatically bootstrap a live environment (if you haven't already booted).
 * The test must be flagged with a PHPUnit annotation, `@group e2e`.
+* CiviCRM errors will generally be converted to PHP exceptions.
 
 #### HeadlessInterface
 
 The `\Civi\Test\HeadlessInterface` marks a test-class as [headless](/testing/index.md#headless), which means:
 
-* CiviCRM errors will generally be converted to PHP exceptions.
-* The test will only run on a headless environment (`CIVICRM_UF=UnitTests`). If you try to run in any other environment, it will throw an error.
+* The test will only run on a headless environment (`CIVICRM_UF=UnitTests`). If you try to run in any other environment, it will throw an exception.
 * The test will automatically bootstrap a headless environment (if you haven't already booted).
 * The test will automatically reset common global/static variables at the start of each test function.
 * The test must be flagged with a PHPUnit annotation, `@group headless`.
 * In addition to `setUp()` and `setUpBeforeClass()`, one may implement the function `setUpHeadless()`. This is usually used to call `Civi\Test::headless()`.
+* CiviCRM errors will generally be converted to PHP exceptions.
 
 #### HookInterface
 
-The `\Civi\Test\HookInterface` simplifies testing of CiviCRM hooks. Your test call may register hook listeners by adding a new function `hook_civicrm_foo()` function. For example:
+The `\Civi\Test\HookInterface` simplifies testing of CiviCRM hooks. Your test may listen to a hook by adding an eponymous function. For example, this listens to `hook_civicrm_post`:
 
 ```php
-class MyTest extends PHPUnit_Framework_TestCase implements HeadlessInterface, HookInterface {
+class MyTest extends PHPUnit_Framework_TestCase
+  implements HeadlessInterface, HookInterface {
+
   public function testSomething() {
     civicrm_api3('Contact', 'create', [...]);
   }
@@ -424,6 +429,7 @@ class MyTest extends PHPUnit_Framework_TestCase implements HeadlessInterface, Ho
   public function hook_civicrm_post($op, $objectName, $objectId, &$objectRef) {
     // listen to hook_civicrm_post
   }
+}
 ```
 
 The mechanism for registering hooks only applies within the current PHP process -- the hooks would not work when using multiple PHP processes (HTTP/cv). Consequently, `HookInterface` is only compatible with headless testing -- not with E2E testing.
@@ -431,8 +437,8 @@ The mechanism for registering hooks only applies within the current PHP process 
 #### TransactionalInterface
 
 The `\Civi\Test\TransactionalInterface` simplifies data-cleanup. At the start of each test-function, it will issue a MySQL `BEGIN`; and, at the end of each
-test-function, it will issue a MySQL `ROLLBACK`. This means that your test can `INSERT`, `UPDATE`, and `DELETE` data -- but those changes will be automatically
-undone. This allows all your tests to execute in the same clean, baseline environment.
+test-function, it will issue a MySQL `ROLLBACK`. The test is free to `INSERT`, `UPDATE`, and `DELETE` data -- and those changes will be automatically
+undone. This ensures that subsequent test-functions run in the same clean, baseline environment.
 
 However, there are a few caveats:
 
