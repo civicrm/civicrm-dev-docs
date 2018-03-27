@@ -236,7 +236,7 @@ The first step -- as with any PHPUnit project -- is to create a `phpunit.xml.dis
 </phpunit>
 ```
 
-At a minimum, the `bootstrap.php` script should register CiviCRM's class-loader. One mighty initially write:
+At a minimum, the `bootstrap.php` script should register CiviCRM's class-loader. One might initially write:
 
 ```php
 require_once '/var/www/sites/all/modules/civicrm/CRM/Core/ClassLoader.php';
@@ -249,8 +249,7 @@ However, this faces several problems:
 * There is no simple, portable formula for the file-path. Between various CMS configuration options and Civi configuration options, it can be quite difficult to predict the file paths (whether using absolute or relative paths).
 * It only sets up the classloader. For many tests, you'll also want to bootstrap a CMS (or pseudo-CMS), setup database credentials, etc.
 
-The simplest way to bootstrap Civi is to use [cv](https://github.com/civicrm/cv). `cv` autodetects many environments, and it accepts configuration (environment variables)
-for more difficult environments.
+The simplest way to bootstrap Civi is to use [cv](https://github.com/civicrm/cv).  `cv` scans the directory tree to autodetect the Civi+CMS environment. The scan works in many stock environments; for more difficult environments, you can set environment variables to configure bootstrap.
 
 The `bootstrap.php` file just needs one line:
 
