@@ -40,7 +40,7 @@ If you have [Docker](https://www.docker.com/) running, you can use one of the fo
 
 !!! Note
 
-    There different version of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with. 
+    There different version of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with on Linux. There is an [outstanding issue](https://github.com/michaelmcandrew/civicrm-buildkit-docker/issues/15) that needs to be resolved before getting set up on a Mac is as straight forward.
 
 #### Install buildkit on docker on ubuntu
 
