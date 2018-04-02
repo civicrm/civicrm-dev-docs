@@ -156,7 +156,18 @@ If you want your extension to store data in the database, then you will need to 
     
     Even though you're not yet creating any upgrades for your extension, you need to do this step now so that CiviCRM will pick up `auto_install.sql` and `auto_uninstall.sql` later on.
     
-1. Check your `myextension.php` file to ensure that it's using the civix-generated `hook_civicrm_entityTypes` implementation. Look for code like this:
+1. Re-install your extension.
+
+    ```bash
+    $ cv ext:uninstall org.example.myextension
+    $ cv ext:enable org.example.myextension
+    ```
+    
+Now your entity should be ready to use. Try it out with `cv api MyEntity.create` and `cv api MyEntity.get`. Then [add some tests](#generate-test).
+
+!!! note "Troubleshooting"
+
+    If you've generated an entity within an extension that you created with `civix` v18.01.0 or earlier, then you'll need to add this hook to your `myextension.php` file (changing `myextension` to your extension's short name).
 
     ```php
     /**
@@ -170,19 +181,8 @@ If you want your extension to store data in the database, then you will need to 
       _myextension_civix_civicrm_entityTypes($entityTypes);
     }
     ```
-    
-    Starting from `civix` v18.02.0, this hook is automatically added when you generate a new extension.
-    
-    But if you began your extension before v18.02.0 then you'll need to manually implement this hook by adding the code above (and changing `myextension` to your extension's short name).
-    
-1. Re-install your extension.
-
-    ```bash
-    $ cv ext:uninstall org.example.myextension
-    $ cv ext:enable org.example.myextension
-    ```
-    
-Now your entity should be ready to use. Try it out with `cv api MyEntity.create` and `cv api MyEntity.get`. Then [add some tests](#generate-test).
+        
+    (Starting from `civix` v18.02.0, this hook is automatically added when you generate a new extension.)
 
 ### Add a database upgrader, installer and uninstaller {:#generate-upgrader}
 
