@@ -156,6 +156,25 @@ If you want your extension to store data in the database, then you will need to 
     
     Even though you're not yet creating any upgrades for your extension, you need to do this step now so that CiviCRM will pick up `auto_install.sql` and `auto_uninstall.sql` later on.
     
+1. Check your `myextension.php` file to ensure that it's using the civix-generated `hook_civicrm_entityTypes` implementation. Look for code like this:
+
+    ```php
+    /**
+     * Implements hook_civicrm_entityTypes().
+     *
+     * Declare entity types provided by this module.
+     *
+     * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes
+     */
+    function myextension_civicrm_entityTypes(&$entityTypes) {
+      _myextension_civix_civicrm_entityTypes($entityTypes);
+    }
+    ```
+    
+    Starting from `civix` v18.02.0, this hook is automatically added when you generate a new extension.
+    
+    But if you began your extension before v18.02.0 then you'll need to manually implement this hook by adding the code above (and changing `myextension` to your extension's short name).
+    
 1. Re-install your extension.
 
     ```bash
