@@ -22,7 +22,7 @@ Help is available on individual commands, e.g.,:
 civix help civicrm:ping
 ```
 
-## Generating a skeletal extension {:#generate-module}
+## Generate a skeletal extension {:#generate-module}
 
 To generate a skeletal extension module, we will use `civix generate:module` and pass in the name for our extension. See [here](/extensions/index.md#extension-names) for details of naming conventions.
 
