@@ -24,3 +24,8 @@ Q: I've tried to generate a page/report/search/upgrader/etc with civix but it's 
 
 A: For all of the various types, you must first run [generate:module](http://generatemodule), and then \`cd\` into the folder (e.g. com.example.myextension) before running one of the other \`generate:\` commands.
 
+## Out-of-date templates
+
+Many of the generators in `civix` rely on helpers and stubs defined in `<mymodule>.php` or `<mymodule>.civix.php`. If you
+run `civix generate:*` on an older extension, you could have issues. Review [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md)
+for (a) general upgrade procedures and (b) a list of specific changes that could require manual attention.
