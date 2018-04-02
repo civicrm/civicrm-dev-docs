@@ -489,3 +489,13 @@ The skeletal test class does not do anything useful. For more details on how to 
 
 To run the tests see the instructions [for running PHPUnit tests](/testing/phpunit.md#running-tests).
 
+## Upgrade civix {:#upgrade}
+
+What happens when a new version of `civix` comes out? Your extension should continue to work as-is -- after all, `civix` is just a code-generator.
+
+However, if you generate an extension with one version of `civix` (e.g. v16.03), and if you upgrade (e.g. v18.03), and if you run a new generator,
+then you *could* encounter problems. This is because generators and templates evolve over time -- in particular, new templates may rely on new
+helpers and stubs in `<mymodule>.php` and `<mymodule>.civix.php`.
+
+Fortunately, these changes are rare; they tend to have limited impact; and there's documentation for them. From time-to-time, you should check
+[UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md) for suggestions on updating your code to match the current templates.
