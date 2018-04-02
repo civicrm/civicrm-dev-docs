@@ -117,66 +117,53 @@ The auto-generated code for the controller and view demonstrate a few basic oper
 
 ### Add a new entity {:#generate-entity}
 
-!!! caution 
-    This functionality is considered "experimental and incomplete".
-
-If you want your extension to store data in the database, then you will need to create a new entity. For this, you can use the command `civix generate:entity`.
+If you want your extension to store data in the database, then you will need to create a new entity.
 
 1. Pick a name for your entity.
 
-    * In some places, CiviCRM expects a *CamelCaseName*, in others, an *snake_case_name*. Be absolutely consistent in your naming, because CiviCRM needs to translate between those two naming conventions.
+    * In some places, CiviCRM expects a `CamelCaseName`, in others, an `snake_case_name`. Be absolutely consistent in your naming, because CiviCRM needs to translate between those two naming conventions.
 
     * Also consider that all entity names (including yours) should be unique across all core entities as well as all extension entities (for all installed extensions). Thus in many cases it's best to prefix your entity name with the short name of your extension.
 
     * For the remainder of this tutorial, we will use `MyEntity` as the name of the entity.
 
-1. Run `civix generate:entity MyEntity` (use CamelCase here). This creates a skeletal file for your XML schema, your BAO, and your API. It does NOT create a skeletal SQL file to create your table or DAO files at this time.
+1. Generate the skeletal files 
 
-1. Edit the [XML schema definitions](/framework/database/schema-definition.md) in the `xml` folder to define your desired fields.
+    ```bash
+    $ civix generate:entity MyEntity
+    ```
 
-1. Generate a [DAO file](/framework/codebase.md#dao) and SQL to create your table. *(For now, civix does not handle this part. Hopefully these steps will become easier at some point in the future.)*
+    Make sure to use CamelCase here.
+    
+    This creates a skeletal file for your XML schema, your BAO, and your API.
 
-    1. Begin with a *development* installation of CiviCRM core.
+1. Edit the [XML schema definitions](/framework/database/schema-definition.md) that you just generated (in the `xml` folder). Define your desired fields.
 
-        !!! caution
-            A "development installation" is not a normal installation. To obtain a *development* installation, you must install CiviCRM with the [`civibuild` command](/tools/civibuild.md) included within [buildkit](/tools/buildkit.md).
+1. Generate your [DAO](/framework/codebase.md#dao) and SQL files.
 
-        * Ensure that this CiviCRM installation has a clean git status.
-        * We will henceforth refer to the CiviCRM root directory within this installation as `<civiroot>`.
-        * This core installation can actually be any installation, not necessarily the one you're using to develop your extension. We're basically just temporarily hijacking its environment to generate DAO and SQL.
 
-    1. Copy your custom XML schema file (e.g. `MyEntity.xml`) into `<civiroot>/xml/schema/`.
+    ```bash
+    $ civix generate:entity-boilerplate
+    ```
 
-    1. Edit `<civiroot>/xml/schema/Schema.xml` and add the following lines *before* the final `</database>` line, making sure to replace `MyEntity` with the name of your entity.
-        ```xml
-        <tables xmlns:xi="http://www.w3.org/2001/XInclude">
-            <xi:include href="MyEntity.xml" parse="xml"/>
-        </tables>
-        ```
+    You can safely re-run this command after you make changes to your XML schema definition. But if your schema changes require database migrations for existing installations, then you'll need to write a migration manually in addition to re-generating your boilerplate.
+    
+1. Generate a database upgrader.
 
-    1. Run `<civiroot>/bin/setup.sh -g` to re-generate DAO and SQL files. (Note that if you use git to see which files changed after this step you won't see the SQL since it's ignored by git.)
+    ```bash
+    $ civix generate:upgrader
+    ```
+    
+    Even though you're not yet creating any upgrades for your extension, you need to do this step now so that CiviCRM will pick up `auto_install.sql` and `auto_uninstall.sql` later on.
+    
+1. Re-install your extension.
 
-        * *Prior to CiviCRM 4.7.12, you would instead run `php ./GenCode.php` from the `xml` folder.*
-
-    1. Copy the DAO file `<civiroot>/CRM/MyExtension/DAO/MyEntity.php` into your extension at `CRM/MyExtension/DAO/MyEntity.php`.
-
-    1. Within your extension, create an `sql` directory and create two empty files within it: `auto_install.sql` and `auto_uninstall.sql`.
-
-    1. Open `<civiroot>/sql/civicrm.mysql` and search for the name of your entity to the find relevant queries.
-
-        1. Copy the `DROP TABLE` query into `auto_install.sql` and `auto_uninstall.sql`.
-
-        1. Copy the `CREATE TABLE` query into `auto_install.sql`.
-
-    1. Clean up the mess you created in the CiviCRM core installation.
-
-        1. In `<civiroot>` run `git clean -df && git checkout -- .` to throw away all the changes there.
-
-        1. Run `./bin/setup.sh -g` again to re-generate DAO and SQL (DAO should remain un-changed after this step but the SQL, which is ignored in git, will now go back to its state before you started).
-
-1. Run `civix generate:upgrader` from within your extension. (Even though you're not yet creating any upgrades for your extension, you need to do this step now so that CiviCRM will pick up `auto_install.sql` and `auto_uninstall.sql`
-
-1. Define your entity using [hook_civicrm_entityTypes](/hooks/hook_civicrm_entityTypes.md).
+    ```bash
+    $ cv ext:uninstall org.example.myextension
+    $ cv ext:enable org.example.myextension
+    ```
+    
+Now your entity should be ready to use. Try it out with `cv api MyEntity.create` and `cv api MyEntity.get`. Then [add some tests](#generate-test).
 
 ### Add a database upgrader, installer and uninstaller {:#generate-upgrader}
 
