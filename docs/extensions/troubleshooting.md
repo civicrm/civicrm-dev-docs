@@ -27,5 +27,5 @@ A: For all of the various types, you must first run [generate:module](http://gen
 ## Out-of-date templates
 
 Many of the generators in `civix` rely on helpers and stubs defined in `<mymodule>.php` or `<mymodule>.civix.php`. If you
-run `civix generate:*` on an older extension, you could have issues. Review [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md)
+run `civix generate:*` on an older extension and have trouble with the generated code, then review [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md)
 for (a) general upgrade procedures and (b) a list of specific changes that could require manual attention.
