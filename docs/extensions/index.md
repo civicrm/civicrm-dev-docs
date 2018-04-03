@@ -33,9 +33,9 @@ to help decide.
 ### 1. Install civix
 Some tasks in the process of writing an extension require boilerplate code. To reduce the amount of work required to find, understand, and adapt the boilerplate code, one should install the CiviCRM extension builder, civix. Civix is a command-line tool which generates code for some common development tasks.
 
->> See [https://github.com/totten/civix/](https://github.com/totten/civix/)
+> See [https://github.com/totten/civix/](https://github.com/totten/civix/)
 
->> For more information on the boilerplate civix generates for you, in particular the extension manifest file (info.xml), [read on](/extensions/info-xml.md).
+> For more information on the boilerplate civix generates for you, in particular the extension manifest file (info.xml), [read on](/extensions/info-xml.md).
 
 ### 2. Develop
 To get started with development, one should usually follow the steps in "[Create a Module Extension.](/extensions/civix.md#generate-module)". A module extension is the most flexible type of extension – it can define any mix of new reports, custom search screens, payment processors, and web pages; it can listen for hooks, override page-templates, and more. The coding
@@ -46,9 +46,9 @@ The CiviCRM ecosystem is built on the belief that non-profit organizations can s
 
 Extension authors may make their extensions available to the larger CiviCRM community by publishing them in the [Extensions Directory](https://civicrm.org/extensions).
 
->> See: [Publish](/extensions/publish.md)
+> See: [Publish](/extensions/publish.md)
 
 Extensions which undergo a [formal review](/extensions/lifecycle.md#formal-review) may be distributed in-app. Approved extensions can be [installed directly](https://docs.civicrm.org/user/en/master/introduction/extensions/#installing-extensions) into CiviCRM via the user interface, lowering the barrier to entry for many users.
 
->> See: [Automated Distribution](/extensions/publish.md#automated-distribution)
+> See: [Automated Distribution](/extensions/publish.md#automated-distribution)
 
