@@ -218,4 +218,7 @@ git pull
 
 See the [buildkit changelog](https://github.com/civicrm/civicrm-buildkit/blob/master/CHANGELOG.md) for info about specific changes to buildkit.
 
+!!! tip "When upgrading `civix`, check upgrade instructions."
 
+    If you see an upgrade to `civix` in the changelog, and if you maintain extensions with `civix`,
+    then check the general [civix upgrade documentation](/extensions/civix.md#upgrade-templates) and [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md).
