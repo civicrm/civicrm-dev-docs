@@ -2,7 +2,7 @@
 
 To *read* documentation, go to [docs.civicrm.org](https://docs.civicrm.org) for the most high-level list of all active documentation.
 
-This page describes the details of the documentation systems within CiviCRM and how to contribute. We also have a more [basic overview](https://docs.civicrm.org/user/en/latest/the-civicrm-community/contributing-to-this-manual/) on how to contribute to this guide or the user guide. 
+This page describes the details of the documentation systems within CiviCRM and how to contribute. We also have a more [basic overview](https://docs.civicrm.org/user/en/latest/the-civicrm-community/contributing-to-this-manual/) on how to contribute to this guide or the user guide.
 
 !!! note "Note: the wiki is not covered here"
     The [wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) has historically been CiviCRM's documentation system but is being phased out as of 2017. The rest of this page describes MkDocs guides only and does not cover documentation processes that involve the wiki.
@@ -11,7 +11,7 @@ This page describes the details of the documentation systems within CiviCRM and 
 
 If you are [contributing to core](/core/contributing.md), updating documenting along with your changes is an important step to ensure the long-term usability and maintainability of CiviCRM.
 
-Not all changes require documentation updates. Here are some guidelines: 
+Not all changes require documentation updates. Here are some guidelines:
 
 * Documentation should almost always accompany **new features**.
     * Keep in mind that some features are user-facing (and thus require new documentation in the User Guide) whereas some features are *developer*-facing (and thus require new documentation in the Developer Guide.)
@@ -19,9 +19,9 @@ Not all changes require documentation updates. Here are some guidelines:
 
 !!! tip
     Try writing documentation *before* writing your code! Then you have a way to organize your thoughts and measure whether the feature works.
-    
+
 If you are [submitting a core pull request](/tools/git.md#pr) and would like to submit accompanying doc changes, please provide comments in both pull requests for cross reference. Your docs PR will not be merged until your core PR is merged first.
- 
+
 
 ## Guides in MkDocs
 
@@ -73,31 +73,31 @@ The most advanced way to work on a guide is to use git to download all the markd
     1.  Find the repository on GitHub *(see "repository" links above, or the "GitHub" link on the bottom left of screen of the documentation you are reading)*
     1.  Fork the repository on GitHub.
     1.  Clone *your fork* of the repository to your computer
-				
+
         ```bash
         git clone https://github.com/YourGitHubUserName/civicrm-dev-docs.git
         cd civicrm-dev-docs
         ```
-        
+
 1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "view the guide locally ..." step below.
 	1. For folks who have a full Docker for Windows / Mac / Linux environment, run this command:
 
 		```
 		docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
 		```
-		
+
 		and skip to the "view the guide" step below.
-		
+
 	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  Follow these steps:
 		1.  Check that GitHub folder is in the path:  ```c:\Users\<username>\Documents\...```.  If it is, all is good; if not, move it there, and edit your GitHub configuration to reflect the changed location.
-		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM Box), and check that it is functioning properly (Hello-world container works). 
+		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM Box), and check that it is functioning properly (Hello-world container works).
 		1.  Run this command:
-		
+
 		```
 		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
 		```
 		and skip to the "view the guide locally ..." step below.
-	
+
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
     - OS X: `brew install python`
@@ -126,6 +126,8 @@ The most advanced way to work on a guide is to use git to download all the markd
     refresh your browser.
 
 1.  When you are happy with your edits, use git to commit and push your changes up to your fork.  Then submit a  pull request on GitHub.
+
+1.  `Ctrl`-`C` will stop the MkDocs server.
 
 
 ### Adding a new page {:#new-page}
@@ -176,7 +178,7 @@ Our editing workflow currently requires someone to manually run this command aft
 
 ## Content attribution guidelines {:#attribution}
 
-All CiviCRM documentation content is licensed [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). This means that if you want to copy content out of our docs and use it elsewhere, you're welcome to do so as long as your give attribution to the author. 
+All CiviCRM documentation content is licensed [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). This means that if you want to copy content out of our docs and use it elsewhere, you're welcome to do so as long as your give attribution to the author.
 
 ### How to obtain author information for content within our guides {:#attributing-exports}
 
@@ -196,7 +198,7 @@ When migrating content into our docs guides which requires attribution, display 
 ## Credits
 
 Some content from this page was migrated from other sources
-and contributed by the following authors: 
+and contributed by the following authors:
 
 * Mickey Mouse
 * Lisa Simpson
@@ -204,4 +206,3 @@ and contributed by the following authors:
 ```
 
 Commit messages should also reference the URL of the original content.
-
