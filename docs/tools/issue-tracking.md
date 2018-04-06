@@ -5,21 +5,33 @@ As of 2017 CiviCRM uses three different system for tracking and managing issues 
 
 ## Systems
 
-### Jira {:#jira}
+### GitLab {:#gitlab}
 
-**[issues.civicrm.org](https://issues.civicrm.org/jira)**
+**[lab.civicrm.org](http://lab.civicrm.org)**
 
-Used as an issue-tracking system for: 
+Used as an issue-tracking system for:
 
-* **[CiviCRM (`CRM`)](https://issues.civicrm.org/jira/browse/CRM)**  (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
-* [CiviVolunteer (`VOL`)](https://issues.civicrm.org/jira/browse/VOL)
-* [Extension Review Queue (`EXT`)](https://issues.civicrm.org/jira/browse/EXT)
+* **[CiviCRM](https://lab.civicrm.org/groups/dev/-/issues)** (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
+* [civicrm.org website issues](https://lab.civicrm.org/marketing-team/civicrm-website)
+* [infrastructure issues](https://lab.civicrm.org/infrastructure/ops/issues)
+* *...and some [other projects](https://lab.civicrm.org/explore/projects)*
+
+GitLab is divided into *groups* containing *projects* which may have *issues*.  Issues about CiviCRM itself are opened under projects within the Development Team group.
+
+!!! info "GitLab Issue References"
+    With all the groups, projects, and issues, you may wonder how to consistently and clearly refer to a GitLab issue in a commit message, pull request, or other conversation.  GitLab has a standard style of `group/project#issue`, where `group` is the slug of the group, `project` is the name of the project, and `issue` is the issue number.
+
+    For example, `dev/mail#1` refers to issue 1 from the Mailing project of the Development Team.
+
+    GitLab displays the issue reference at the bottom of the right-hand column along with a link that copies the reference to your clipboard:
+
+    ![Screenshot of GitLab issue reference](/img/gitlab-reference.png)
 
 ### GitHub {:#github}
 
 **[github.com/civicrm](https://github.com/civicrm)**
 
-Used as an issue-tracking system for:
+Besides being a code repository for most CiviCRM projects, GitHub is used as an issue-tracking system for:
 
 * [buildkit](https://github.com/civicrm/civicrm-buildkit/issues)
 * [cv](https://github.com/civicrm/cv/issues)
@@ -27,20 +39,17 @@ Used as an issue-tracking system for:
 * *...and many [other projects](https://github.com/civicrm)*
 
 !!! note
-    Some projects (e.g. CiviCRM core) have their repository hosted on GitHub but do *not* use the GitHub issue-tracking functionality. For these projects you will notice there is no "Issues" tab. 
+    Some projects (e.g. CiviCRM core) have their repository hosted on GitHub but do *not* use the GitHub issue-tracking functionality. For these projects you will notice there is no "Issues" tab.
 
- 
-### GitLab {:#gitlab}
+### Jira {:#jira} (deprecated)
 
-**[lab.civicrm.org](http://lab.civicrm.org)**
+**[issues.civicrm.org](https://issues.civicrm.org/jira)**
 
-Used as an issue-tracking system for:
+Used as an issue-tracking system until early 2018 for:
 
-* [civicrm.org website issues](https://lab.civicrm.org/marketing-team/civicrm-website)
-* [infrastructure issues](https://lab.civicrm.org/infrastructure/ops/issues)
-* *...and some [other projects](https://lab.civicrm.org/explore/projects)*
-
-In 2017, CiviCRM began to use a private GitLab installation for *some* projects.
+* **[CiviCRM (`CRM`)](https://issues.civicrm.org/jira/browse/CRM)**  (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
+* [CiviVolunteer (`VOL`)](https://issues.civicrm.org/jira/browse/VOL)
+* [Extension Review Queue (`EXT`)](https://issues.civicrm.org/jira/browse/EXT)
 
 
 ## Guidelines for creating issues {:#guidelines}
