@@ -29,7 +29,7 @@ Add a comment to the PR like "Reviewing this now" to let others know that you in
 
 ## Read about the issue
 
-Every PR *should* have an issue ID for [JIRA](https://issues.civicrm.org) linked from the PR's page on GitHub. Read the original issue and understand how to reproduce the problem and what the solution looks like as well.
+Many PRs will have an issue tracking ticket linked from the PR's page on GitHub. Read the original issue and understand how to reproduce the problem and what the solution looks like as well.
 
 ## Read the code changes
 
@@ -41,7 +41,7 @@ On the PR, click over to “Files Changed” and understand what the code is doi
 
 ## Reproduce the problem
 
-Confirm which branch the PR was created against. This is probably either `master` or the LTS. Setup an instance locally from that branch (e.g. with [buildkit](https://github.com/civicrm/civicrm-buildkit)), or test on the [public demo site if possible](https://civicrm.org/demo). Repeat the steps to reproduce described in the Jira Issue.
+Confirm which branch the PR was created against. This is probably either `master` or the LTS. Setup an instance locally from that branch (e.g. with [buildkit](https://github.com/civicrm/civicrm-buildkit)), or test on the [public demo site if possible](https://civicrm.org/demo). Repeat the steps to reproduce described in the ticket or PR.
 
 Confirm that the issue was a problem and a problem “worth solving”, generally worthy of being in core.
 

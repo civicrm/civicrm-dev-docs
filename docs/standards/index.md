@@ -41,8 +41,7 @@ You can also [set up your IDE](/tools/phpstorm.md) to lint your code.
 ## Improving code conformance
 
 If you find code that is not meeting the standards, we encourage you to improve it! But please follow these guidelines when doing so: 
-
-* Create a Jira issue for your coding standards improvements which is separate from any other code changes you happen to be making at the time. 
+ 
 * Isolate your coding standards improvements into commits which do not contain otherwise unrelated changes.
 
 ### Orange Light code

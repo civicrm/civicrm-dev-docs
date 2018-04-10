@@ -2,7 +2,7 @@
 
 <!-- In each category, choose the option that most applies. Delete the others. Optionally, provide more details or explanation in the "Comments". -->
 
-* JIRA ([`r-explain`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-explain))
+* Explain ([`r-explain`](https://docs.civicrm.org/dev/en/latest/standards/review/#r-explain))
     * __UNREVIEWED__
     * __PASS__ : The goal/problem/solution have been adequately explained in the PR.
     * __PASS__ : The goal/problem/solution have been adequately explained with a link (JIRA, Github, Gitlab, StackExchange).

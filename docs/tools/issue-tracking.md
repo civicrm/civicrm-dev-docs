@@ -1,25 +1,49 @@
 # Issue-tracking systems
 
-As of 2017 CiviCRM uses three different system for tracking and managing issues (aka tickets). This page offers a brief summary of the systems and helps developers understand when and how to use them.
+As of 2018 CiviCRM uses three different system for tracking and managing issues (aka tickets). This page offers a brief summary of the systems and helps developers understand when and how to use them.
 
 
 ## Systems
 
-### Jira {:#jira}
+### GitLab {:#gitlab}
 
-**[issues.civicrm.org](https://issues.civicrm.org/jira)**
+**[lab.civicrm.org](http://lab.civicrm.org)**
 
-Used as an issue-tracking system for: 
+Used as an issue-tracking system for:
 
-* **[CiviCRM (`CRM`)](https://issues.civicrm.org/jira/browse/CRM)**  (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
-* [CiviVolunteer (`VOL`)](https://issues.civicrm.org/jira/browse/VOL)
-* [Extension Review Queue (`EXT`)](https://issues.civicrm.org/jira/browse/EXT)
+* **[CiviCRM](https://lab.civicrm.org/groups/dev/-/issues)** (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
+* [civicrm.org website issues](https://lab.civicrm.org/marketing-team/civicrm-website)
+* [infrastructure issues](https://lab.civicrm.org/infrastructure/ops/issues)
+* *...and many [other projects](https://lab.civicrm.org/explore/projects)*
+
+#### How GitLab organizes things {:#gitlab-organizing}
+
+* At the top level, GitLab is divided into [_groups_](https://lab.civicrm.org/dashboard/groups) (which are mostly analogous to _GitHub's_ concept of "organizations"). 
+* Groups own *projects* (and individual users can own projects, too).
+* Projects often contain *issues*.
+
+Issues about CiviCRM itself are opened within the [Development Team's projects](https://lab.civicrm.org/dev/).
+
+#### Referencing GitLab issues {:#gitlab-reference}
+
+Use text like `dev/core#1` to reference specific issues in your [commit messages](/tools/git.md#commit-messages), [pull request subjects](/tools/git.md#pr-subject), and other communication.
+
+In the above example:
+
+* `dev` is the *group*
+* `core` is the *project*
+* `1` is the *issue number*
+
+!!! tip
+    GitLab displays the issue reference at the bottom of the right-hand column along with a link that copies the reference to your clipboard:
+    
+    ![Screenshot of GitLab issue reference](/img/gitlab-reference.png)
 
 ### GitHub {:#github}
 
 **[github.com/civicrm](https://github.com/civicrm)**
 
-Used as an issue-tracking system for:
+Besides being a code repository for most CiviCRM projects, GitHub is used as an issue-tracking system for:
 
 * [buildkit](https://github.com/civicrm/civicrm-buildkit/issues)
 * [cv](https://github.com/civicrm/cv/issues)
@@ -27,29 +51,26 @@ Used as an issue-tracking system for:
 * *...and many [other projects](https://github.com/civicrm)*
 
 !!! note
-    Some projects (e.g. CiviCRM core) have their repository hosted on GitHub but do *not* use the GitHub issue-tracking functionality. For these projects you will notice there is no "Issues" tab. 
+    Some projects (e.g. CiviCRM core) have their repository hosted on GitHub but do *not* use the GitHub issue-tracking functionality. For these projects you will notice there is no "Issues" tab.
 
- 
-### GitLab {:#gitlab}
+### Jira (deprecated) {:#jira}
 
-**[lab.civicrm.org](http://lab.civicrm.org)**
+**[issues.civicrm.org](https://issues.civicrm.org/jira)**
 
-Used as an issue-tracking system for:
+Used as an issue-tracking system until early 2018 for:
 
-* [civicrm.org website issues](https://lab.civicrm.org/marketing-team/civicrm-website)
-* [infrastructure issues](https://lab.civicrm.org/infrastructure/ops/issues)
-* *...and some [other projects](https://lab.civicrm.org/explore/projects)*
-
-In 2017, CiviCRM began to use a private GitLab installation for *some* projects.
+* **[CiviCRM (`CRM`)](https://issues.civicrm.org/jira/browse/CRM)**  (including `civicrm-core`, `civicrm-packages`, `civicrm-drupal`, `civicrm-joomla`, and `civicrm-wordpress`)
+* [CiviVolunteer (`VOL`)](https://issues.civicrm.org/jira/browse/VOL)
+* [Extension Review Queue (`EXT`)](https://issues.civicrm.org/jira/browse/EXT)
 
 
 ## Guidelines for creating issues {:#guidelines}
 
 ### When to create an issue {:#when-to-create}
 
-All changes to CiviCRM *Core*, however small, must receive a Jira issue. Among other things, this helps us assemble the [release notes](https://github.com/civicrm/civicrm-core/tree/master/release-notes).
+If you are ready to make a change to CiviCRM, you can [submit a pull request](/tools/git.md#pr) *without* creating an issue first.
 
-For other (non-core) ancillary projects, it's okay [submit a pull request](/tools/git.md#pr) *without* first creating an issue.
+Otherwise, you'll want to create an issue in order to track work that might need to be done at some point in the future.
 
 ### Check the latest version {:#check-version}
 
@@ -77,15 +98,23 @@ If you are able to coherently explain the problem and resolution&mdash;and reaso
 
 ### Research existing issues {:#research}
 
-It's now time to get your issue into [Jira](https://issues.civicrm.org/).  To start, search for existing issues that may be the same as or related to yours.  Jira's search will order by relevance, but you are searching over a decade of issues, so you may get overwhelmed with old items.  Consider filtering Created Date to two years ago or newer.
+Search for existing issues that may be the same as or related to yours. Because CiviCRM transitioned from [Jira](#jira) to [GitLab](#gitlab) in early 2018, you'll need to search in both systems for existing issues. Jira's search will order by relevance, but you are searching over a decade of issues, so you may get overwhelmed with old items.  Consider filtering Created Date to two years ago or newer.
 
 If an issue directly describes your situation, your job will be different: read it over, and edit or comment as necessary.  If the issue is marked as closed and completed, you should create a new issue indicating a regression, and you should link to the original issue you found.
 
 If issues you find are related but not quite the same, you should still record them so that you can mention them in the issue you create.
 
+### Open a blank issue {:#new}
+
+Begin creating your issue as follows:
+
+1. Sign in to [GitLab](https://lab.civicrm.org/)
+1. Navigate to the appropriate GitLab project. For CiviCRM core, look in the [Development Team's projects](https://lab.civicrm.org/dev/).
+1. Click the `+` button at the top of the screen and choose **New Issue**.
+
 ### Describe the issue {:#describe}
 
-Now's the time to create your issue.  Give it a title that describes your issue concisely, and explain the issue in the details.  In writing your issue, remember that your audience includes a variety of people:
+Give it a title that describes your issue concisely, and explain the issue in the details.  In writing your issue, remember that your audience includes a variety of people:
 
 -   Other users encountering the same problem now
 -   Maintainers deciding whether to include your code
@@ -109,7 +138,7 @@ The best leave no question as to what was going wrong or what has changed: somet
 
 #### Issue scope {:#scope}
 
-*It's important to keep your issue snappy and closeable.*  A Jira issue that stays open long after commits have been merged into core is confusing to users and demoralizing for contributors.  The way to prevent this is to make issues distinct and coherent so they're clearly done or not done.
+*It's important to keep your issue snappy and closeable.*  A issue that stays open long after commits have been merged into core is confusing to users and demoralizing for contributors.  The way to prevent this is to make issues distinct and coherent so they're clearly done or not done.
 
 Better yet, describe the issue distinctly and coherently yourself.  If you find an existing issue that was reported vaguely, there's no reason not to revise the description.  If the original issue involves several things, don't be shy about closing it and opening new ones--just document what you've done.
 
@@ -119,14 +148,6 @@ See also: [pull request scope](/tools/git.md#pr-scope)
 
 #### Categorization {:#categorization}
 
-Categorization is useful for finding issues in Jira, and it also determines how issues appear in the release notes.
+Categorization is useful for finding issues, and it also determines how issues appear in the release notes.
 
-When setting the issue **Type**, "Bug" results in it being listed among Bugs Resolved in the release notes.  Otherwise, issues appear in Features.  
-
-The **Component/s** field determines where the issue goes in the notes, but it will only go one place.  There's no value in saying something is "Accounting Integration", "CiviContribute", "CiviEvent", and "WordPress Integration": the editor will pick the most relevant one for the notes.
-
-The **Priority** field can get contentious, but use your best sense as to the impact that your issue will have.  Think of it as the product of the breadth (the size of the user base that may notice) and depth (how much those users are affected) of the issue.
-
-**Affects Version/s** doesn't need to be each and every version that the problem affects, but it is helpful to indicate the extent of it.  Include the latest version you tested it on, and include the earliest version in the stable and long-term support series you know it to affect.
-
-You might wonder what the **Funding Source** means.  If you plan on writing code yourself, mark it as "Contributed Code".  Otherwise, mark it as "Needs Funding".
+Use the Labels field to apply any relevant labels to your issue.

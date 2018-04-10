@@ -18,7 +18,7 @@ CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid unde
 * GitLab
     * [Official documentation](https://docs.gitlab.com/ce/README.html)
 
-   
+
 ## Repositories
 
 * GitHub - **[github.com/civicrm](https://github.com/civicrm/)**
@@ -40,9 +40,9 @@ CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid unde
 
 ## Git workflow overview {:#contributing}
 
-Whether you are contributing to civicrm-core or an ancillary project (using GitHub or GitLab) the process generally goes somewhat like this: 
+Whether you are contributing to civicrm-core or an ancillary project (using GitHub or GitLab) the process generally goes somewhat like this:
 
-1. (If working on core) [open an issue on Jira](/tools/issue-tracking.md#jira) to describe the change you'd like to make.
+1. Consider [opening an issue on GitLab](/tools/issue-tracking.md#gitlab) to describe the change you'd like to make.  Not all changes need GitLab issues, but opening an issue is recommended if you are making significant changes, expect discussion, or expect your changes to be grouped into more than one [pull request](#pr).
 1. Find the page on GitHub or GitLab for the project to which you would like to contribute. We will call this repository the **upstream repository**.
 1. **Clone** the upstream repository to your local machine. (If you are working on core, you should use [civibuild](/tools/civibuild.md) for this step.)
 1. On the web page for the upstream repository, **fork** the upstream repository to your personal user account.
@@ -60,7 +60,7 @@ Whether you are contributing to civicrm-core or an ancillary project (using GitH
 1. Once your changes are merged, delete your local branch
 
 See also: [reviewing someone else's pull request](/core/pr-review.md)
- 
+
 
 ## Pull requests {:#pr}
 
@@ -71,7 +71,7 @@ See also: [reviewing someone else's pull request](/core/pr-review.md)
 
 1.  In the web browser, navigate to the web page for your fork (e.g. `https://github.com/myuser/civicrm-core` )
 1.  Click **Pull Request**
-1.  There will be two branches specified – the (first) left should be "civicrm" (i.e. where the code is going to). The second (right) should be your branch. 
+1.  There will be two branches specified – the (first) left should be "civicrm" (i.e. where the code is going to). The second (right) should be your branch.
 1.  Add a [good subject](#pr-subject) and explanation, and submit.
 
 ### Writing a pull request subject {:#pr-subject}
@@ -80,24 +80,26 @@ Pull request titles don't need to be identical to issue titles, and in particula
 
 When filing a pull-request, use a descriptive subject. These are good examples:
 
+ * `dev/core#5555 - Add "It's complicated" relationship type to defaults`
  * `CRM-12345 - Fix Paypal IPNs when moon is at half-crescent (waxing)`
- * `(WIP) CRM-67890 - Refactor SMS callback endpoint`
+ * `(WIP) dev/mail#67890 - Refactor SMS callback endpoint`
  * `(NFC) CRM_Utils_PDF - Improve docblocks`
 
 A few elements to include:
 
- * **Acronyms** - Use zero or more of the [acronyms](#acronymns) below to flag your PR with certain characteristics.
- * **CRM-_XXXXX_** - This is a reference to the [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will setup crosslinks between JIRA and GitHub.
+ * **Acronyms** - You're welcome to use the [acronyms](#acronyms) below to flag your PR with certain characteristics.
+ * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](/tools/issue-tracking.md#gitlab-reference).
+ * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
  * **Description** - Provide a brief description of what the pull-request does.
 
-### Acronyms within PR subjects {:#acronymns}
+### Acronyms within PR subjects {:#acronyms}
 
 You can put these acronyms at the beginning of your PR subject to flag it as such.
 
 #### (WIP) - "Work in Progress" {:#wip}
 
 If you are still developing a set of changes, it may be useful to submit a pull-request and flag it as `(WIP)`. This allows you to have discussion with other developers and check test results. Once the change is ready, update the subject line to remove `(WIP)`.
-   
+
 #### (NFC) - "Non-Functional Change" {:#nfc}
 
 Most patches are designed to change functionality (e.g. fix an error message or add a new button). However, some changes are non-functional -- they presumptively have no impact on users or integrations at runtime.
@@ -146,10 +148,10 @@ A person may be granted the privilege/responsibility of reviewing and merging pu
 
 ### Cloning {:#cloning}
 
-When you want to set up a local copy of a git repo hosted on GitHub or GitLab, you *clone* it. Here are two ways: 
+When you want to set up a local copy of a git repo hosted on GitHub or GitLab, you *clone* it. Here are two ways:
 
 * Using the SSH protocol
-    
+
     ```bash
     $ git clone git@github.com:civicrm/civicrm-core.git
     ```
@@ -166,7 +168,7 @@ Using SSH is a little bit better because you won't need to enter your password a
 
 Your local git repo is typically set up to track at least one *remote* git repo for operations like `fetch`, `pull`, and `push`. But it can be helpful to set up multiple remotes when contributing to repos which you don't own.
 
-Common terminology: 
+Common terminology:
 
 * **Upstream repository** - a repo hosted on GitHub or GitLab which *you don't own* but would like to contribute to
 * **Fork repository** - a repo hosted on GitHub or GitLab which *you own* and have created by "forking" an upstream repo
@@ -193,25 +195,25 @@ Read about [how to use `git remote`](https://git-scm.com/docs/git-remote) to pro
 
 ### Branching {:#branching}
 
-Git uses branches to separate independent sets of changes. When creating a new branch, here are some things to keep in mind: 
- 
+Git uses branches to separate independent sets of changes. When creating a new branch, here are some things to keep in mind:
+
 * [Choose an appropriate base branch](#base-branch)
 * You'll need to keep your local branch until its changes are merged. Sometimes this can take several months. After it's merged, you can delete it.
 * Give your branch a good name
     * The name of your branch is up to you.
     * It should be unique among your other outstanding branches.
     * It should only contain letters, numbers, dashes, and underscores.
-    * If you have a Jira issue, you can use its number (e.g `CRM-1234`) as the name of the branch.
+    * If you have a GitLab or Jira issue, you can use its number (e.g `mail-111` or `CRM-1234`) as the name of the branch.
 
 Create a new branch and switch your local repository to it:
 
 ```bash
-$ git checkout upstream/master -b CRM-1234
+$ git checkout upstream/master -b mail-111
 ```
 
-* `upstream` is your local name for the [git remote](#remotes) which represents the upstream repository (e.g. `https://github.com/civicrm/civicrm-core`) to which you are contributing changes. Depending on how you have set up your local repo, this remote might have a different name, like `origin` or `civicrm`. 
+* `upstream` is your local name for the [git remote](#remotes) which represents the upstream repository (e.g. `https://github.com/civicrm/civicrm-core`) to which you are contributing changes. Depending on how you have set up your local repo, this remote might have a different name, like `origin` or `civicrm`.
 * `master` is the name of the branch in the upstream repository on which you would like to base your changes
-* `CRM-1234` is the name of your new branch
+* `mail-111` is the name of your new branch
 
 ### Choosing a base branch {:#base-branch}
 
@@ -237,14 +239,14 @@ When making commits, remember that this isn't just a small personal project: you
 Follow these guidelines to write a good commit messages:
 
 * The first line should be a meaningful **subject**, which should:
-    * be prefixed with a Jira issue number (if the commit is to CiviCRM core)
+    * be prefixed with a GitLab or Jira issue reference (if the commit is to CiviCRM core)
     * mention a "subsystem" after the issue number
     * be 72 characters or less, in total
     * be in "Sentence case"
     * use the imperative mood
     * not end in a period
-    * examples: 
-        * `CRM-20600 - Civi\Angular - Generate modules via AssetBuilder`
+    * examples:
+        * `dev/core#999 - Civi\Angular - Generate modules via AssetBuilder`
         * `CRM-19417 - distmaker - Change report to JSON`
 * (optionally but recommended) After the subject, include a short **body**, which should:
     * have a blank line above it (below the subject)
@@ -260,7 +262,7 @@ Sometimes when you [make a pull request](#pr) someone else merges a change into 
 
     * `upstream` which tracks the upstream repo
     * `myusername` which tracks the fork repo
-    
+
     Also we are working on changes in a branch called `my-branch`
 
 1. Update your local `master` branch
@@ -276,7 +278,7 @@ Sometimes when you [make a pull request](#pr) someone else merges a change into 
     $ git checkout my-branch
     $ git rebase master
     ```
-    
+
 1. See which files need attention
 
     ```bash
