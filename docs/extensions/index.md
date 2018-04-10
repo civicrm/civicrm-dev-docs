@@ -52,3 +52,15 @@ Extensions which undergo a [formal review](/extensions/lifecycle.md#formal-revie
 
 > See: [Automated Distribution](/extensions/publish.md#automated-distribution)
 
+## Interacting with core
+
+There are a number of ways in which extensions can interact with core. These are supported to greater or lesser degrees.
+
+Fully supported methods are:
+
+* [API](/api/index.md)
+* [Hooks](/hooks/index.md)
+* [`Civi::cache`](/framework/cache.md)
+* `Civi::$statics`
+* [`Civi::settings`](/framework/setting.md)
+* Internal Symfony listeners (e.g. `civi.api.resolve`, `civi.api.prepare`)
