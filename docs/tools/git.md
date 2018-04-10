@@ -88,7 +88,7 @@ When filing a pull-request, use a descriptive subject. These are good examples:
 A few elements to include:
 
  * **Acronyms** - You're welcome to use the [acronyms](#acronyms) below to flag your PR with certain characteristics.
- * **dev/_project_#_XXXX_** - This is a reference to the [GitLab issue tracker](/tools/issue-tracking.md#gitlab).
+ * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](/tools/issue-tracking.md#gitlab-reference).
  * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
  * **Description** - Provide a brief description of what the pull-request does.
 

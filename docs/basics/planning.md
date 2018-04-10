@@ -32,7 +32,7 @@ Once you've written the requirements and specification document, you should go a
 
 ## Bugs
 
-Before starting work on a bug your first step should be to check  [JIRA](https://issues.civicrm.org/), the issue tracking system for CiviCRM for any open issues before creating one yourself or working on a pull request.
+Before starting work on a bug, your first step should be to check the [issue tracking systems](/tools/issue-tracking.md) for any open issues before creating one yourself or working on a pull request.
 
 In order to reproduce the bug you can reproduce the issue in the appropriate [CiviCRM Sandbox](https://civicrm.org/sandboxes). Enabling debugging can help to get more details.
 

@@ -49,7 +49,7 @@ Read about [creating a pull request](/tools/git.md#pr) which includes informatio
 
 Once you submit your pull request, CiviCRM's [Jenkins server](/tools/jenkins.md) will build a copy of CiviCRM and run tests against it, beginning with `PHP_CodeSniffer`.  If tests fail, you will be able to follow a link to view details.
 
-Other developers may comment on your code, raising questions or concerns or marking the changes as approved.  This is fine, but it is important not to hide important discussion.  If substantive discussion occurs in a pull request, note it in Jira.  If a pull request is closed in favor of another, explain that in Jira and mention the old pull request in the new one.
+Other developers may comment on your code, raising questions or concerns or marking the changes as approved.  This is fine, but it is important not to hide important discussion.  If substantive discussion occurs in a pull request which has a separate ticket, make note of the discussion in the ticket.  If a pull request is closed in favor of another, explain that in the ticket and mention the old pull request in the new one.
 
 The goal is that the next person working on this feature area shouldn't have to do a lot of archeology to figure out the motivations, concerns, and impact of your changes.
 
@@ -65,4 +65,4 @@ Alternatively, you can use a custom PHP or template override directory.  While t
 
 CiviCRM works through the generosity of its users and the organizations that employ them.  Now that you have a pull request open (and some experience working with the CiviCRM codebase), why not take some time to [review another pull request](/core/pr-review.md)?  
 
-Pick one from the list of open pull requests, review the corresponding Jira ticket, merge the changes into your development copy of CiviCRM, and see how it works.  Share your thoughts on the pull request.  You'll notice that the time you spend reviewing others' code and interacting with the rest of the community will serve you well: you'll be a better CiviCRM developer, and you'll have a better product.
+You'll notice that the time you spend reviewing others' code and interacting with the rest of the community will serve you well: you'll be a better CiviCRM developer, and you'll have a better product.

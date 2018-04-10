@@ -12,9 +12,9 @@ Developers from around the globe use the following systems to communicate and co
 -   [Documentation](https://docs.civicrm.org)
 -   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall.
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
--   [Jira](https://issues.civicrm.org/jira) - Issue tracking
+-   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for issue tracking community-based project management.
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
--   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for community-based project management.
+-   [Jira](https://issues.civicrm.org/jira) - _(deprecated) Issue tracking_
 
 !!! tip "Before you begin"
 
@@ -25,8 +25,8 @@ Developers from around the globe use the following systems to communicate and co
 
         The following communities provide a single sign-on once your CiviCRM.org account is approved.
 
-         -   Jira
          -   GitLab
+         -   Jira
          -   CiviCRM Wiki - *account can also be requested via the infrastructure channel on Mattermost*
 
     2.  [Mattermost](https://chat.civicrm.org/signup_email) - Create an account and join a team on this open-source version of Slack.

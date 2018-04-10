@@ -3,7 +3,7 @@
 !!! note "See also"
     This page is about verifying a fix after it has been merged into CiviCRM core. Also see instructions on [reviewing a core pull request](/core/pr-review.md) to learn how to review fixes *before* they are merged.
 
-Suppose you (or some like-minded spirit) report a bug on the [Jira](/tools/issue-tracking.md#jira). With a bit of luck, someone from the community (perhaps a core developer) reproduces the bug, writes a fix, and announces gleefully: "It's fixed! It took four hours, but I did it!" Hooray! Now what? How do you get the fix running on your system? How do you verify that the fix fixed exactly your problem?
+Suppose you (or some like-minded spirit) [report a bug](/tools/issue-tracking.md#guidelines). With a bit of luck, someone from the community (perhaps a core developer) reproduces the bug, writes a fix, and announces gleefully: "It's fixed! It took four hours, but I did it!" Hooray! Now what? How do you get the fix running on your system? How do you verify that the fix fixed exactly your problem?
  
 ## Step 1. Check the "Fix Version" in JIRA
 
