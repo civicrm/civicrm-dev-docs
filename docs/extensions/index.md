@@ -60,7 +60,7 @@ Fully supported methods are:
 
 * [API](/api/index.md)
 * [Hooks](/hooks/index.md)
-* [`Civi::cache`](https://docs.civicrm.org/dev/en/latest/framework/cache/)
+* [`Civi::cache`](/framework/cache.md)
 * `Civi::$statics`
-* [`Civi::settings`](https://docs.civicrm.org/dev/en/latest/framework/setting/)
+* [`Civi::settings`](/framework/setting.md)
 * Internal Symfony listeners (e.g. `civi.api.resolve`, `civi.api.prepare`)
