@@ -77,6 +77,7 @@ pages:
     - hook_civicrm_custom: hooks/hook_civicrm_custom.md
     - hook_civicrm_managed: hooks/hook_civicrm_managed.md
     - hook_civicrm_merge: hooks/hook_civicrm_merge.md
+    - hook_civicrm_alterLocationMergeData: hooks/hook_civicrm_alterLocationMergeData.md
     - hook_civicrm_post: hooks/hook_civicrm_post.md
     - hook_civicrm_postSave_table_name: hooks/hook_civicrm_postSave_table_name.md
     - hook_civicrm_pre: hooks/hook_civicrm_pre.md

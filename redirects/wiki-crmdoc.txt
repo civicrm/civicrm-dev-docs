@@ -11,6 +11,7 @@ hook_civicrm_copy hooks/hook_civicrm_copy
 hook_civicrm_custom hooks/hook_civicrm_custom
 hook_civicrm_managed hooks/hook_civicrm_managed
 hook_civicrm_merge hooks/hook_civicrm_merge
+hook_civicrm_alterLocationMergeData hooks/hook_civicrm_alterLocationMergeData
 hook_civicrm_post hooks/hook_civicrm_post
 hook_civicrm_pre hooks/hook_civicrm_pre
 hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
