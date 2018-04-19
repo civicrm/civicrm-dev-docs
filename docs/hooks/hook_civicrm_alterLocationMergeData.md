@@ -28,7 +28,7 @@ The $blocksDAO contains a list of 'location blocks' (eg: emails, phones,
 addresses) which will be updated or deleted as part of the merge. This is
 formatted like:
 
-````
+```php
 [
   email
     delete
@@ -41,4 +41,4 @@ formatted like:
     update
       id => object
 ]
-````
+```
