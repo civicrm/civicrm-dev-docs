@@ -17,28 +17,21 @@ hook_civicrm_alterLocationMergeData(&$blocksDAO, $mainId, $otherId, $migrationIn
 
 ## Parameters
 
-   * array $blocksDAO: Array of location DAO to be saved. These are arrays in 2 keys 'update' & 'delete'.
-   * int $mainId: Contact ID of the contact that survives the merge.
-   * int $otherId: Contact ID of the contact that will be absorbed and deleted.
-   * array $migrationInfo: Calculated migration info.
+* array `$blocksDAO`: Array of location DAO objects. Formatted as follows:
 
-## Details
-
-The $blocksDAO contains a list of 'location blocks' (eg: emails, phones,
-addresses) which will be updated or deleted as part of the merge. This is
-formatted like:
-
-```php
-[
-  email
-    delete
-      id => object
-    update
-      id => object
-  address
-    delete
-      id => object
-    update
-      id => object
-]
-```
+    ```php
+    [
+      'email' => [
+        'delete' => ['id' => object],
+        'update' => ['id' => object],
+      ],
+      'address' => [
+        'delete' => ['id' => object],
+        'update' => ['id' => object],
+      ],
+    ]
+    ```
+    
+* int `$mainId`: Contact ID of the contact that survives the merge.
+* int `$otherId`: Contact ID of the contact that will be absorbed and deleted.
+* array `$migrationInfo`: Calculated migration info.
