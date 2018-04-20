@@ -8,7 +8,10 @@ When someone [opens a pull request](/tools/git.md#pr) (aka "PR") on CiviCRM Core
 
 ## Video walk-through
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s7Tt5PGfHl4?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+<div style="position:relative;padding-top:63%;">
+  <iframe src="https://www.youtube.com/embed/s7Tt5PGfHl4?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
 
 ## Pick a PR
 
