@@ -19,7 +19,11 @@ independent deployments with independent configurations).
 
 ...
 
-## tldr
+## Hooks
+
+* **[hook_civicrm_alterAngular](/hooks/hook_civicrm_alterAngular.md)** - Alter the definition of some Angular HTML partials.
+
+## Example
 
 ```php
 function mailwords_civicrm_alterAngular(\Civi\Angular\Manager $angular) {
