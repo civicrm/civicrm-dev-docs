@@ -74,6 +74,31 @@ Replace an old set of records with a new or modified set of records.
 Warning - REPLACE includes an implicit delete - use with care & test well
 before using in productions
 
+## getunique
+
+Returns all unique fields (other than 'id' field) for a given entity.
+```php
+civicrm_api3('Contribution', 'getunique');
+```
+
+return 
+
+```php
+{
+    "is_error": 0,
+    "version": 3,
+    "count": 2,
+    "values": {
+        "UI_contrib_trxn_id": [
+            "trxn_id"
+        ],
+        "UI_contrib_invoice_id": [
+            "invoice_id"
+        ]
+    }
+}
+```
+
 ## <del>setvalue</del>
 
 **Deprecated.** Use the create action with the param 'id' instead.
