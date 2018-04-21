@@ -6,7 +6,12 @@ When someone [opens a pull request](/tools/git.md#pr) (aka "PR") on CiviCRM Core
 * A [CiviCRM Development Environment](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md) (this might be optional, but good to have). One benefit is the ability to check out the PR in your environment.
 * Comfort reading code and patches
 
-Follow the remaining the steps below to review a pull request.
+## Video walk-through
+
+<div style="position:relative;padding-top:63%;">
+  <iframe src="https://www.youtube.com/embed/s7Tt5PGfHl4?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
 
 ## Pick a PR
 
