@@ -7,7 +7,8 @@ Note that civilint may be invoked a few different ways:
 ```bash
 civilint # (no arguments) – Check style of any uncommitted changes.
 civilint some/file.php # Check style of a specific file (or list of files).
-git diff --name-only origin/4.6.. | civilint - # Check changed files
+git diff --name-only HEAD~1 | civilint - # Check your last commit
+git diff --name-only master | civilint - # Check for changes in your branch (compared to master)
 ```
 
 See also:
