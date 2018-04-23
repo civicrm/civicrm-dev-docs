@@ -2,7 +2,7 @@
 
 ## Summary
 
-Alter the definition of some Angular HTML partials; allows the injection of [Changesets](/framework/angular/changeset/).
+This hook alters the definition of some AngularJS HTML partials and allows you to inject [AngularJS changesets](/framework/angular/changeset/).
 
 ## Availability
 
