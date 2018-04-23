@@ -51,6 +51,7 @@ This is an overview list of all available hooks, listed by category.
 
 ## Form Hooks
 
+* **[hook_civicrm_alterAngular](/hooks/hook_civicrm_alterAngular.md)** - alters the definition of some AngularJS HTML partials and allows you to inject [AngularJS changesets](/framework/angular/changeset/).
 * **[hook_civicrm_alterContent](/hooks/hook_civicrm_alterContent.md)** - invoked after all the content of a CiviCRM form or page is generated and allows for direct manipulation of the generated content.
 * **[hook_civicrm_alterTemplateFile](/hooks/hook_civicrm_alterTemplateFile.md)** - invoked while selecting the tpl file to use to render the page.
 * **[hook_civicrm_buildForm](/hooks/hook_civicrm_buildForm.md)** - invoked when building a form. It can be used to set the default values of a form element, to change form elements attributes, and to add new fields to a form.

@@ -93,6 +93,7 @@ pages:
     - hook_civicrm_uninstall: hooks/hook_civicrm_uninstall.md
     - hook_civicrm_upgrade: hooks/hook_civicrm_upgrade.md
   - Form Hooks:
+    - hook_civicrm_alterAngular: hooks/hook_civicrm_alterAngular.md
     - hook_civicrm_alterContent: hooks/hook_civicrm_alterContent.md
     - hook_civicrm_alterTemplateFile: hooks/hook_civicrm_alterTemplateFile.md
     - hook_civicrm_buildForm: hooks/hook_civicrm_buildForm.md
