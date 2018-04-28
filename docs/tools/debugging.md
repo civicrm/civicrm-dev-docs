@@ -52,6 +52,8 @@ The following values can be added to your site's settings file `civicrm.settings
 
 - `define('CIVICRM_MAIL_LOG', '/dev/null');` causes all outbound emails to be discarded. No email is sent and emails are not written to disk.
 
+- `define('CIVICRM_MAIL_LOG_AND_SEND', 1);` causes all outbound CiviCRM email to be written to a log file if `CIVICRM_MAIL_LOG` is set. Email will ALSO be sent using the configured method if this is set.
+
 - `define('CIVICRM_DEBUG_LOG_QUERY', 1);` outputs all SQL queries to a log file.
 
 - `define('CIVICRM_DEBUG_LOG_QUERY', 'backtrace');` will include a backtrace of the PHP functions that led to the query.
