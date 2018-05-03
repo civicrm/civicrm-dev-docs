@@ -2,7 +2,7 @@
 
 Creating a full development environment for CiviCRM requires a lot of work, e.g.,
 
- * Downloading / installing / configuring a CMS (Drupal, Joomla, WordPress).
+ * Downloading / installing / configuring a CMS (Backdrop, Drupal, Joomla, WordPress).
  * Downloading / installing / configuring CiviCRM.
  * Configuring Apache and MySQL.
  * Configuring file permissions on data folders.
