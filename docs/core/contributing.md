@@ -9,7 +9,7 @@ This chapter assumes that you have identified a bug or improvement for CiviCRM w
 
 ## Create an issue
 
-Creating a good issue is an important first step and often involves research, discussion, and thoughtful description.
+Creating a good issue is an important first step and often involves research, discussion, and thoughtful description.  Identify your "use case" and share the budget and/or skills you plan on contributing.
 
 [Following these comprehensive steps](/tools/issue-tracking.md#guidelines) to create your issue.
 
