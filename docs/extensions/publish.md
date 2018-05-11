@@ -72,3 +72,11 @@ The best way to reap the benefits of publishing your extension is to make it as 
 It is strongly recommended that you [write unit tests](https://github.com/civicrm/org.civicrm.testapalooza) for the extension and include them in the extension's repository. For an example, see the extension [org.civicrm.exampletests](https://github.com/totten/org.civicrm.exampletests).
 
 Once an extension release meets these criteria, the extension will be approved for automated distribution by a CiviCRM community extension moderator. 
+
+## Translation
+
+When an extension is approved for automatic distribution, it will automatically be added to Transifex under the [civicrm_extensions](https://www.transifex.com/civicrm/civicrm_extensions/) project so that any strings in the interface (if there are any) may be translated.
+
+This synchronisation task is run nightly. It also generates the translation files, which may be downloaded with the [l10nupdate](https://github.com/cividesk/com.cividesk.l10n.update) extension or by guessing the URL using the form:
+
+    https://download.civicrm.org/civicrm-l10n-extensions/mo/i18nexample/fr_FR/i18nexample.mo
