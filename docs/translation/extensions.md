@@ -8,6 +8,8 @@ There is a separate project on Transifex to translate extensions. Each extension
 
 See: <https://www.transifex.com/projects/p/civicrm_extensions/>
 
+Translation strings are sent to Transifex when the extension is "ready for automatic distribution". See: [Publishing Extensions](/extensions/publish.md).
+
 ## For administrators: Download translation files for extensions
 
 The easiest way to download translations for extensions is to use the [l10nupdate](https://github.com/cividesk/com.cividesk.l10n.update/) extension.
