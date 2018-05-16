@@ -90,6 +90,8 @@ In your conversation, think about some of the following questions:
 
 -   Has this feature's behavior changed recently?  Is a bug a regression, or has it always been this way?  Is this a new feature that doesn't handle all situations properly?
 
+-   What skills, time and/or money are you able to contribute to this issue?  Will you need the skills and/or money of others as well?
+
 -   Who might like things the way they are?  Are there ways to resolve the issue that meet their needs as well as yours?
 
 -   Will your change be self-explanatory, or will other users need an explanation?
