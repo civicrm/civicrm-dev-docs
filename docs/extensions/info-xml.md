@@ -318,8 +318,10 @@ Elements acceptable within `<urls>`
 * Contains: text
 * Example: `4.7`
 
-!!! note
+!!! note "Point releases"
     It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
+
+!!! note "Forward compatibility (4.7/5.x)"
     In CiviCRM 5.x `<ver>` tags imply forward compatibility, to bridge this change `<ver>4.7</ver>` is forward compatible with CiviCRM 5.x.
 
 ### `<version>` {:#version}
