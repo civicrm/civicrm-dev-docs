@@ -42,6 +42,7 @@ Here is an example of a full `info.xml` file from [CiviVolunteer](https://github
 
 | CiviCRM Version | Description |
 | -- | -- |
+| 5.0.0 | [`<ver>`](#ver) tag values now imply forward compatibility. (e.g. an extension declaring `<ver>5.1</ver>` is displayed on 5.2, 5.3 etc. but *not* on 5.0.) To bridge this change `<ver>4.7</ver>` is forward compatible with 5.x. |
 | 4.7.27 | Added [`<requires>`](#requires) and [`<ext>`](#ext) | 
 | 4.5 | [`<develStage>`](#develStage) is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
 | 4.2 | Most extensions should be packaged as generic *module* rather than type-specific extensions.
@@ -319,6 +320,7 @@ Elements acceptable within `<urls>`
 
 !!! note
     It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
+    In CiviCRM 5.x `<ver>` tags imply forward compatibility, to bridge this change `<ver>4.7</ver>` is forward compatible with CiviCRM 5.x.
 
 ### `<version>` {:#version}
 
