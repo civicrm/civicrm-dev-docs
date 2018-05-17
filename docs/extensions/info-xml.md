@@ -314,7 +314,7 @@ Elements acceptable within `<urls>`
 ### `<ver>` {:#ver}
 
 * Containing element: [`<compatibility>`](#compatibility)
-* Description: a version of CiviCRM with which this extension is compatible
+* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits
 * Contains: text
 * Example: `4.7`
 
