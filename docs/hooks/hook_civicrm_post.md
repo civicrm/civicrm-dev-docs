@@ -31,8 +31,7 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
     -   'create' : The CiviCRM object is created (or contacts are being added to a group)
     -   'edit' : The CiviCRM object is edited
     -   'delete' : The CiviCRM object is being deleted (or contacts are being removed from a group)
-    -   'trash': The contact is being moved to trash (Contact objects only)
-    -   'restore': The contact is being restored from trash (Contact objects only)
+    -   'update': The contact is being moved to trash or restored (Contact objects only)
 
 -   `$objectName` - can have the following values:
     -   'Activity'
