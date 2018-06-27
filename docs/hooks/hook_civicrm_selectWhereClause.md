@@ -8,7 +8,9 @@ This hook is called when executing a SELECT query.
 
 The hook is called
 once for each entity in the query, allowing you to add (or remove)
-restrictions specific to that entity.
+restrictions specific to that entity. Note that this hook will only be
+invoked for API calls if check_permissions is set to 1. It will be
+bypassed for API calls that do not set this parameter.
 
 This hook is new in 4.7 and coverage is limited. The Case entity is
 fully covered by this hook; selecting cases via api, ui, or searches
