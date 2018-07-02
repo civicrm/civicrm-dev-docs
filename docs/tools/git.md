@@ -108,7 +108,7 @@ The aim of flagging a PR as "(NFC)" is to streamline review on trivial changes.
 Here are some examples and counter-examples of NFC:
 
 * _Non-Functional Change_:
-    * Modify whitepsace in PHP code.
+    * Modify whitespace in PHP code.
     * Update a code comment.
     * Fix a typo or grammatical error in a help dialog.
     * (*Maybe*) Add a new unit-test where there was no coverage before.
