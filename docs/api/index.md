@@ -17,6 +17,7 @@ BAO arguments inevitably occur.
 The best place to begin working with the API is your own ***test*** install of
 CiviCRM, using the API explorer and the API parameter list.
 
+For help creating your own API custom calls, see [civix generate:api](/extensions/civix.md#generate-api)
 
 ## API explorer
 

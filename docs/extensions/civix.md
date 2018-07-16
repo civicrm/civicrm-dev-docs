@@ -426,7 +426,7 @@ See this (somewhat outdated) [wiki page](https://wiki.civicrm.org/confluence/dis
 
 ### Add an API function {:#generate-api}
 
-The [CiviCRM API](/api/index.md) provides a way to expose functions for use by other developers. API functions allow implementing AJAX interfaces (using the cj().crmAPI() helper), and they can also be called via REST, PHP, Smarty, Drush CLI, and more. Each API requires a two-part name: an entity name (such as "Contact", "Event", or "MyEntity") and an action name (such as "Create" or "MyAction").
+The [CiviCRM API](/api/index.md) provides a way to expose functions for use by other developers. API functions allow implementing AJAX interfaces (using the CRM.$().crmAPI() helper), and they can also be called via REST, PHP, Smarty, Drush CLI, and more. Each API requires a two-part name: an entity name (such as "Contact", "Event", or "MyEntity") and an action name (such as "Create" or "Myaction").
 
 Get started by accessing the `civix` help:
 
@@ -437,19 +437,32 @@ civix help generate:api
 !!! note
     Action names must be lowercase. The javascript helpers `CRM.api()` and `CRM.api3()` force actions to be lowercase. This issue does not present itself in the API Explorer or when the api action is called via PHP, REST, or SMARTY.
 
+!!! note
+    The API loader is very sensitive to case on some platforms.  Be careful with capitalization, underscores and multiword action names.  API calls can work in one context (Mac OSX filesystem, case-insensitive) and fail in another (Linux filesystem, case-sensitive).
+
 You can make your API code with a command in this pattern:
 
 ```bash
-civix generate:api NewEntity NewAction
+civix generate:api NewEntity Newaction
 ```
 
 This creates one file:
 
--   `api/v3/NewEntity/NewAction.php` provides the API function.  Note that the parameters and return values must be processed in a particular way (as demonstrated by the auto-generated file).
+-   `api/v3/NewEntity/Newaction.php` provides the API function `civicrm_api3_new_entity_Newaction()` and the specification function `_civicrm_api3_new_entity_Newaction_spec()`.  Note that the parameters and return values must be processed in a particular way (as demonstrated by the auto-generated file).
 
 For use with CiviCRM 4.3 and later, you can also add the `–schedule` option (e.g., `–schedule Hourly`). This will create another file: 
 
--   `api/v3/NewEntity/NewAction.mgd.php` provides the scheduling record that will appear in the CiviCRM's job-manager.
+-   `api/v3/NewEntity/Newaction.mgd.php` provides the scheduling record that will appear in the CiviCRM's job-manager.
+
+When calling the API, the entity is case sensitive except for the first letter. The action name is case insensitive. So the following work:
+
+- `cv api NewEntity.Newaction`
+- `cv api newEntity.newaction`
+- `cv api newEntity.NeWaCtIoN`
+
+Case combinations of the entity name other than `NewEntity` and `newEntity` may fail depending on your operating system.
+
+The recommended form is `NewEntity.newaction`
     
 !!! tip
     Read more about the [API architecture](/framework/api-architecture.md) for help writing your custom API.
