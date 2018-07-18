@@ -448,7 +448,7 @@ civix generate:api NewEntity newaction
 
 This creates one file:
 
--   `api/v3/NewEntity/Newaction.php` provides the API function `civicrm_api3_new_entity_Newaction()` and the specification function `_civicrm_api3_new_entity_Newaction_spec()`.  Note that the parameters and return values must be processed in a particular way (as demonstrated by the auto-generated file).
+-   `api/v3/NewEntity/Newaction.php` provides the API function `civicrm_api3_new_entity_newaction()` and the specification function `_civicrm_api3_new_entity_newaction_spec()`.  Note that the parameters and return values must be processed in a particular way (as demonstrated by the auto-generated file).
 
 For use with CiviCRM 4.3 and later, you can also add the `--schedule` option (e.g., `--schedule Hourly`). This will create another file:
 
