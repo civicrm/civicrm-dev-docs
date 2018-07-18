@@ -426,7 +426,7 @@ See this (somewhat outdated) [wiki page](https://wiki.civicrm.org/confluence/dis
 
 ### Add an API function {:#generate-api}
 
-The [CiviCRM API](/api/index.md) provides a way to expose functions for use by other developers. API functions allow implementing AJAX interfaces (using the CRM.$().crmAPI() helper), and they can also be called via REST, PHP, Smarty, Drush CLI, and more. Each API requires a two-part name: an entity name (such as "Contact", "Event", or "MyEntity") and an action name (such as "Create" or "Myaction").
+The [CiviCRM API](/api/index.md) provides a way to expose functions for use by other developers. API functions allow implementing AJAX interfaces (using the CRM.$().crmAPI() helper), and they can also be called via REST, PHP, Smarty, Drush CLI, and more. Each API requires a two-part name: an entity name (such as "Contact", "Event", or "MyEntity") and an action name (such as "create" or "myaction").
 
 Get started by accessing the `civix` help:
 
@@ -443,26 +443,24 @@ civix help generate:api
 You can make your API code with a command in this pattern:
 
 ```bash
-civix generate:api NewEntity Newaction
+civix generate:api NewEntity newaction
 ```
 
 This creates one file:
 
 -   `api/v3/NewEntity/Newaction.php` provides the API function `civicrm_api3_new_entity_Newaction()` and the specification function `_civicrm_api3_new_entity_Newaction_spec()`.  Note that the parameters and return values must be processed in a particular way (as demonstrated by the auto-generated file).
 
-For use with CiviCRM 4.3 and later, you can also add the `–schedule` option (e.g., `–schedule Hourly`). This will create another file: 
+For use with CiviCRM 4.3 and later, you can also add the `--schedule` option (e.g., `--schedule Hourly`). This will create another file:
 
 -   `api/v3/NewEntity/Newaction.mgd.php` provides the scheduling record that will appear in the CiviCRM's job-manager.
 
-When calling the API, the entity is case sensitive except for the first letter. The action name is case insensitive. So the following work:
+When calling the API, follow these rules:
 
-- `cv api NewEntity.Newaction`
-- `cv api newEntity.newaction`
-- `cv api newEntity.NeWaCtIoN`
+-    Entity-names are UpperCamelCase
+-    Action-names are lowersmashedcase
+-    Other variations may work when you call them. Some docs/explorers may show these in cases which work. However, if you try to do the same in new code, you may get a headache.
 
-Case combinations of the entity name other than `NewEntity` and `newEntity` may fail depending on your operating system.
-
-The recommended form is `NewEntity.newaction`
+For example: `cv api NewEntity.newaction`  `civicrm_api3('NewEntity', 'newaction')`
     
 !!! tip
     Read more about the [API architecture](/framework/api-architecture.md) for help writing your custom API.
