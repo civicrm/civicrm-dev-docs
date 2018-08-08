@@ -62,7 +62,53 @@ The CiviCRM system is composed of several `git` repositories and several [test-s
 
 ## Proposal Testing for Extensions {:#pr-ext}
 
-FIXME
+!!! caution "Work in progress"
+
+    This describes a service which is currently in alpha.
+
+The basic ideas are the same -- whenever a *pull-request* (PR) is submitted or revised on Github, Jenkins will be notified. There's a whitelist that determines which repos/PRs/authors will be tested. The test outcome is posted to Github.
+
+However, unlike core testing, the extension testing uses a "convention over configuration" philosophy. Tests can be enabled with a few clicks as long as the extension follows these conventions:
+
+* The extension lives in its own public git repository.
+* The root folder includes `info.xml` and `phpunit.xml.dist`.
+* If the extension requires any other extensions, these are listed in `info.xml` and published in [the Extension Directory](https://civicrm.org/extensions/).
+* The PHPUnit tests are organized into two `@group`s -- `headless` and `e2e`.
+* The extension is compatible with the `drupal-clean` build type in [civibuild](/tools/civibuild.md).
+
+The [civix](/extensions/civix.md) code-generator produces compliant code by default.
+
+!!! tip "Availability"
+
+    The test bot supports extensions in the official `civicrm` organization and some paid partner projects. If you'd like to use it on other projects, please consult with the [core team](https://civicrm.org/teams/core-team).
+
+!!! tip "Registration for Github repositories"
+
+    To enable testing on a Github repository, visit [https://github.com/apps/civibot](https://github.com/apps/civibot) and proceed to "Configure". You can install `civibot` for any user/organization -- and then authorize it to access some repositories:
+
+    ![Github Repository Access Screen](/img/repository-access.png)
+
+    You *may* enable for "All repositories" (current *and* future), even if you have unrelated repositories. Civibot autodetects extensions and ignores other projects.
+
+!!! tip "Registration for Gitlab repositories"
+
+    At time of writing, we have not yet setup a registration process for Gitlab repositories. However, it has an actively considered requirement.
+
+!!! tip "Whitelist"
+
+    To prevent abuse of the testbot, `civibot` checks if you are an owner/collaborator/member of the Github repository:
+
+    * If you have access, it will autotest your pull-requests.
+    * If you have access, it will respect manual commands like `/test`.
+    * If you do not have access, then you must wait for someone else to issue the `/test` command.
+
+!!! tip "Re-running tests"
+
+    When reviewing a PR, you may request a new test-run with the command `/test`. The command may be interleaved with other discussion as long as it fits on its own line. For example:
+
+    > We should re-test this PR because it's been sitting around for a month.
+    >
+    > /test
 
 ## Full Matrix Testing {:#matrix}
 
