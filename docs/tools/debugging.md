@@ -32,7 +32,7 @@ After enabling debugging, append any of the following name-value pairs to the UR
 
 ### Displaying a backtrace
 
-The backtrace can be enabled independently of debugging. If this option is selected, a backtrace will be displayed even if debugging is disabled.
+The backtrace can be enabled independently of debugging. If this option is selected, a backtrace will be displayed even if debugging is disabled. **A backtrace is normally displayed only when an error is encountered.** To manually trigger a backtrace in your custom code, see "Changing source code" (below).
 
 A backtrace is a list of all the functions that were run in the execution of the page, and the PHP files that contain these functions. It can be really useful in understanding the path that was taken through code, what gets executed where, etc.
 
