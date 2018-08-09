@@ -32,10 +32,8 @@ changing between the old and new data.
     -   'edit' : The CiviCRM object is edited
     -   'delete' : The CiviCRM object is being deleted (or contacts are
         being removed from a group)
-    -   'trash': The contact is being moved to trash (Contact objects
+    -   'update': The contact is being moved to trash or restored(Contact objects
         only)
-    -   'restore': The contact is being restored from trash (Contact
-        objects only)
 
 -   $objectName - can have the following values:
     -   'Activity'
