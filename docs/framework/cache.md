@@ -32,6 +32,13 @@ The `CRM_Utils_Cache_Interface` class lays out the methods for saving and retrie
     Civi::cache()->flush();
     ```
 
+!!! tip "PSR-16 Compliance (v5.4+)"
+
+    In CiviCRM v5.4+, the cache complies with the PHP-FIG standard [PSR-16](https://www.php-fig.org/psr/psr-16/). `CRM_Utils_Cache_Interface` extends the simple `CacheInterface`, although the implementations differ in a couple small ways:
+
+    * The flush function has two names -- `clear()` (per PSR-16) and `flush()` (which predates PSR-16). These are synonyms.
+    * Cache keys in PSR-16 are prohibited from using certain characters.  However, some of these characters were supported in previous versions of CiviCRM's cache interface.  To enable a transition, these restrictions are *not* enforced in a default runtime. However, they *are* enforced during testing, and they can be enabled in `civicrm.settings.php` by toggling `CIVICRM_PSR16_STRICT`.
+
 ### Example
 
 ```php
