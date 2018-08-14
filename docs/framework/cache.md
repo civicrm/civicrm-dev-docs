@@ -49,16 +49,10 @@ function findMagicNumber() {
 }
 ```
 
-## Cache types
+### Configuration
 
-This is selected in `civicrm.settings.php`, where `CIVICRM_DB_CACHE_CLASS` is defined.
+In a stock configuration, the `Civi::cache()` object stores data in a local PHP variable (`ArrayCache`).  This allows frequent, high-speed I/O, but
+it only retains data for the scope of one page-request -- which reduces the potential performance gains.
 
-* "ArrayCache" - This is the default, using an in-memory array.
-
-* "Memcache" - This is for the PHP Memcache extension.
-
-* "Memcached" - This is for the PHP Memcached extension.
-
-* "APCcache" - This is for the PHP APC extension.
-
-* "NoCache" - This caches nothing
+System administrators may configure the default cache to use a more long-term backend, such as `Memcached` or `Redis`.  For more information about
+configuring the default cache driver, see [System Administrator Guide => Setup => Caches](https://docs.civicrm.org/sysadmin/en/latest/setup/cache/).
