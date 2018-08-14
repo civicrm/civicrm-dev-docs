@@ -1,10 +1,12 @@
 # Cache Reference
 
-## Using the cache
+## Using the default cache {:#default}
 
-`Civi::cache()` is the simplest way to access the cache, automatically using the default cache type (described below). The `CRM_Utils_Cache_Interface` class lays out the methods for saving and retrieving cached items.
+`Civi::cache()` is the simplest way to access the cache, automatically using the default cache type (described in [Configuration](#configuration)).
 
 ### Methods
+
+The `CRM_Utils_Cache_Interface` class lays out the methods for saving and retrieving cached items.
 
 * Set a cache value
 
@@ -56,3 +58,11 @@ it only retains data for the scope of one page-request -- which reduces the pote
 
 System administrators may configure the default cache to use a more long-term backend, such as `Memcached` or `Redis`.  For more information about
 configuring the default cache driver, see [System Administrator Guide => Setup => Caches](https://docs.civicrm.org/sysadmin/en/latest/setup/cache/).
+
+### Aliases
+
+In reading code, you may find these three notations -- which all refer to the same thing:
+
+* `Civi::cache()`
+* `Civi::cache('default')`
+* `CRM_Utils_Cache::singleton()`
