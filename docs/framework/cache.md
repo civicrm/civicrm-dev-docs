@@ -79,14 +79,14 @@ In reading code, you may find these three notations -- which all refer to the sa
 Generally, it's best to store caches in a memory-backed service like Redis or Memcached. But what happens if the system-configuration doesn't support that?
 Perhaps you store the cache in a MySQL table? Or a data-file? Or a PHP array?
 
-The answers are not the same for all data. For example:
+The answers should not be the same for all data. For example:
 
 * If the cache is tracking metadata derived from `civicrm_option_value`, then you can get the original data pretty quickly (by querying MySQL).
-  Writing the cache to another MySQL table or a data-file would just slow things down.
+  Writing the cache to another MySQL table or data-file would serve little benefit.
 * If the cache is tracking a remote feed (fetched from another continent via HTTPS), then it's much more expensive to get the original data. In absence of
   Redis/Memcached, you might put the cache in a MySQL table or a data-file.
 
-With a *custom cache object*, a developer gets the same interface (`CRM_Utils_Cache_Interface`), but they can define different preferences
+With a *custom cache object*, a developer gets the same interface (`CRM_Utils_Cache_Interface` / PSR-16), but they can define different preferences
 for how to store the cache-data. In particular, you can define a fallback list. Compare these examples:
 
 * `['SqlGroup', 'ArrayCache']` means "If MySQL is available, use that. Otherwise, use a local PHP array."
@@ -112,7 +112,7 @@ A few things to notice here:
     * Ex: In `Memcached`/`Redis`, the `name` becomes part of the cache-key.
     * Ex: In `SqlGroup`, the `name` corresponds to the field `civicrm_cache.group_name`.
 
-Once you have the `$cache` object, it supports all the methods of `CRM_Utils_Cache_Interface`.
+Once you have the `$cache` object, it supports all the methods of `CRM_Utils_Cache_Interface` and PSR-16.
 
 ```php
 // Use the cache object
@@ -143,7 +143,7 @@ As before, notice that:
 
 * The `type` parameter is an array of preferred storage systems. It will choose the first valid driver.
 * The `name` will be passed down to the storage system.
-* The service is an instance of `CRM_Utils_Cache_Interface`.
+* The service is an instance of `CRM_Utils_Cache_Interface` (PSR-16).
 
 Once the service is declared, we can get a reference to the cache in several ways:
 
