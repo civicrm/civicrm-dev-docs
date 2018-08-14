@@ -70,7 +70,7 @@ In reading code, you may find these three notations -- which all refer to the sa
 ## Using a custom cache {:#custom}
 
 Generally, it's best to store caches in a memory-backed service like Redis or Memcached. But what happens if the system-configuration doesn't support that?
-Perhaps you store the cache in a MySQL table? Or a data-file? Or a PHP arrray?
+Perhaps you store the cache in a MySQL table? Or a data-file? Or a PHP array?
 
 The answers are not the same for all data. For example:
 
