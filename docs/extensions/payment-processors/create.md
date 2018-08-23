@@ -579,7 +579,7 @@ return self::$_singleton;
 Insert your processing code into static function main()
 
 
-**UCMPaymentCollectionNotify.php - main()**
+**UCMPaymentCollectionIPN.php - main()**
 
 ```php
 $config = CRM_Core_Config::singleton();
