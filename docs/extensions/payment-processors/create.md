@@ -310,7 +310,7 @@ this file now. Although this file is very large there is only a small
 amount of changes needed.
 
 
-**UCMPaymentCollectionNotify.php**
+**UCMPaymentCollectionIPN.php**
 
 ```php
 <?php
