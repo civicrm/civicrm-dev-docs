@@ -126,6 +126,7 @@ pages:
     - hook_civicrm_alterMailContent: hooks/hook_civicrm_alterMailContent.md
     - hook_civicrm_alterMailer: hooks/hook_civicrm_alterMailer.md
     - hook_civicrm_alterMailParams: hooks/hook_civicrm_alterMailParams.md
+    - hook_civicrm_alterMailingRecipients: hooks/hook_civicrm_alterMailingRecipients.md
     - hook_civicrm_emailProcessor: hooks/hook_civicrm_emailProcessor.md
     - hook_civicrm_emailProcessorContact: hooks/hook_civicrm_emailProcessorContact.md
     - hook_civicrm_mailingGroups: hooks/hook_civicrm_mailingGroups.md
