@@ -27,7 +27,7 @@ Within CiviCRM Core code the upgrader classes handle making any necessary databa
 
 ## Incremental PHP Files
 
-Incremental PHP-SQL steps are preferred over the Smarty-SQL where possible. This is because it gives us a chance to query the database before running upgrades and makes upgrades are safer
+Incremental PHP-SQL steps are preferred over the Smarty-SQL where possible. This is because it gives us a chance to query the database before running upgrades and makes upgrades safer.
 
 Each class in the `CRM_Upgrade_Incremental_php` corresponds to a major release of CiviCRM (e.g. 4.1, 4.2, 4.3). The key functions that can be defined are:
 
