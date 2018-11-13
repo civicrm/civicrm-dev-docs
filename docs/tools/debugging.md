@@ -62,6 +62,8 @@ The following values can be added to your site's settings file `civicrm.settings
 
 - `define('CIVICRM_CONTAINER_CACHE', 'never');` causes Civi to rebuild the [container](http://symfony.com/doc/current/service_container.html) from the latest data on every page-load.
 
+- `define('CIVICRM_TEMP_FORCE_DURABLE', 1);` forces temp tables to be created as non temporary tables. Note that you may need to manually delete them very pro-actively while this is on as it will result in errors in some cases
+
 !!! tip
     When any sort of "logging stuff to a file" is enabled by one of the
     above settings, check the `ConfigAndLog` directory within the local files
