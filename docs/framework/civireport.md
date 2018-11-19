@@ -147,9 +147,10 @@ If the property `$this->_autoIncludeIndexedFieldsAsOrderBys` is set to `TRUE`, t
 
 These reports will use a combination of the following functions `select()`, `where()`, `from()`, `groupBy()`, `alter_display()`, `statistics()`, `formRule()`. Developers should only include one of those functions where the parent function in `CRM_Report_Form` does not meet the needs of the intended report template. Developers should try to not override functions wherever possible. If you do have to override a function then it is recommended that you put in `parent::functioname` so that the standard processing can happen as well
 
-### functions `select()` and `where()`
+### functions `select()` and `where()` and `selectClause` and `whereClause`
+You do not need any of these functions unless you have some special handling. If you do have special handling try to only
+override specific fields using `selectClause` or `whereClause` rather than overriding the maing `select` or `where` function 
 
-Most of the time you can probably copy these as is. But see note about `group_bys`.
 
 ### function `from()`
 
@@ -157,13 +158,14 @@ This is where you define the tables and joins by setting `$this->_from` to an SQ
 
 ### function `groupBy()`
 
-This is where you define the grouping clauses by setting `$this->_groupBy` to an SQL string. It is also important that if you are overriding the `groupBy` function to call the following function just as you about to generate the group by string `CRM_Contact_BAO_Query::getGroupByFromSelectColumns($this->_selectClauses, $this->_groupByArray);`. The purposes of that is to ensure that all the groupBy columns are in the Select SQL, This is important because in Mysql 5.7 it can error out if you try and group by a column that isn't in the select statement.
+This is where you define the grouping clauses by setting `$this->_groupBy` to an SQL string.
 
-### function `alter_display()`
+### function `alterDisplay()`
 
 This is where you can reformat column values to be links and such. 
 
-It also seems to be where you replace values with labels, as opposed to doing it in the SQL.
+You may also replace labels etc in this function - although the parent function will do most of that for you if your
+metadata is correct.
 
 ### function `statistics()`
 
