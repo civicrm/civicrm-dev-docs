@@ -7,7 +7,7 @@ export.
 
 ## Availability
 
-This hook was first available in CiviCRM 3.2.4
+This hook was first available in CiviCRM 3.2.4, $componentTable and $ids variables are available in CiviCRM 5.8.0
 
 ## Definition
 
@@ -19,14 +19,15 @@ This hook was first available in CiviCRM 3.2.4
     used during export
 -   @param array $headerRows - header rows for output
 -   @param array $sqlColumns - SQL columns
--   @param int $exportMode - export mode ( contact, contribution,
-    etc...)
+-   @param int $exportMode - export mode ( contact, contribution, etc...)
+-   @param string $componentTable - Name of temporary table
+-   @param array $ids - Array of object's ids
 
 ## Details
 
 ## Example
 
-    function civitest_civicrm_export( $exportTempTable, $headerRows, $sqlColumns, $exportMode ) {
+    function civitest_civicrm_export( $exportTempTable, $headerRows, $sqlColumns, $exportMode, $componentTable, $ids ) {
         $writeHeader = true;
         $offset = 0;
         $limit  = 200;
@@ -68,7 +69,7 @@ This hook was first available in CiviCRM 3.2.4
     Second example, adding columns to the export and leaving the export to do its thing
     Note example above isn't using pass by reference on the fields and hence may have been that way
 
-    function civitest_civicrm_export ( $exportTempTable, &$headerRows, &$sqlColumns, $exportMode ) {
+    function civitest_civicrm_export ( $exportTempTable, &$headerRows, &$sqlColumns, $exportMode, $componentTable, $ids ) {
 
       // Only want to do this for contribution export
       if ($exportMode==2) {
