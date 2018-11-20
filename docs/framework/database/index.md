@@ -5,3 +5,9 @@ CiviCRM has a complex Database structure which this chapter will examine in more
 ## Tools
 
 Documentation on tools to interact with the CiviCRM Database still to come.
+
+## Useful coding structures
+
+### Only full group by
+
+When writing direct Database queries sometimes they can cause issues due to the sql mode `ONLY_FULL_GROUP_BY` which aims to ensure that all columns in the group by / order by are in the select query and aggregated properly. If a query is particularly problematic that SQL mode can be temporarily disabled by putting a call in to `CRM_Core_DAO::disableFullGroupByMode()` before the DB query function then `CRM_Core_DAO::reenableFullGroupByMode()` immediately after. It is recommended that the original query is fixed rather than deploying this workaround however the workaround maybe the only real solution.
