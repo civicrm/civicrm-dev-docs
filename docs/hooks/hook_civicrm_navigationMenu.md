@@ -53,8 +53,21 @@ hook_civicrm_navigationMenu(&$params)
     -   bool `active`: whether the item is active
 
 ## Examples
+* Civix example (recomended) - adds a menu item under 'Administer/System Settings'*
 
-*Consider using the civix implementation in place of these examples (see above).*
+```
+function omnipaymultiprocessor_civicrm_navigationMenu(&$menu) {
+  _omnipaymultiprocessor_civix_insert_navigation_menu($menu, 'Administer/System Settings', [
+    'label' => E::ts('Omnipay Developer Settings'),
+    'name' => 'omnpay-dev',
+    'url' => 'civicrm/settings/omnipay-dev',
+    'permission' => 'administer payment processors',
+
+  ]);
+}
+```
+
+*Legacy method if for some reason you cannot use Civix.*
 
 ```php
 function _getMenuKeyMax($menuArray) {
@@ -104,7 +117,7 @@ function civicrm_civicrm_navigationMenu(&$params) {
 }
 ```
 
-To add your menu item to an existing menu
+Legacy example of adding your menu item to an existing menu
 
 ```php
 function donortrends_civicrm_navigationMenu(&$params) {
