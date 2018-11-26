@@ -25,12 +25,13 @@ The "Settings" system developed incrementally:
 - v4.2 – Added public Settings API. Included support for CRUD'ing data from multiple sources (`civicrm_domain` and `civicrm_setting`). Migrated more settings data from `civicrm_domain` to `civicrm_setting`.
 - v4.3 to v4.6 – Incrementally migrate more settings data.
 - v4.7 – Added `Civi::settings()` and refactored init system. Finished migrating data from `civicrm_domain` to `civicrm_setting`.
+- v5.8 - Added Generic CiviCRM settings form.
 
 ## Settings Definition
 
-Settings are defined in the /settings directory, in files ending with `.settings.php`
+Settings are defined in the /settings directory, in files ending with `.setting.php`
 
-Each file consists of a php snippet which returns an array. Array keys are strings corresponding with each setting's name. Values are an array of metadata properties for that setting. Note that for radio buttons or similar the options will be retrieved if there is an option group of the same name. An example array is as follows:
+Each file consists of a php snippet which returns an array. Array keys are strings corresponding with each setting's name. Values are an array of metadata properties for that setting. An example array is as follows:
 
 ```php
   'remote_profile_submissions' => array(
@@ -41,11 +42,10 @@ Each file consists of a php snippet which returns an array. Array keys are strin
     'default' => FALSE,
     'html_type' => 'radio',
     'add' => '4.7',
-    'title' => 'Accept profile submissions from external sites',
+    'title' => ts('Accept profile submissions from external sites'),
     'is_domain' => 1,
     'is_contact' => 0,
-    'description' => 'If enabled, CiviCRM will permit submissions from external sites to profiles. This is disabled by default to limit abuse.',
-    'help_text' => NULL,
+    'description' => ts('If enabled, CiviCRM will permit submissions from external sites to profiles. This is disabled by default to limit abuse.'),
   ),
 ```
 
@@ -53,31 +53,37 @@ The Supported Properties for settings are:
 
 | property | Usage | Example Notes |
 | --- | --- | --- |
-| group | ? | Appears to correspond with the name of the file, doesn't that make it redundant? |
-| `group_name` | Name of group this setting belongs to.  These are defined as constants in the class `CRM_Core_BAO_Setting` |  Uses a string & not a constant as it might be defined outside of core too (& the constants are particularly ugly for these). This has been deprecated as of 4.7. Since 4.7, the two main options are `domain` or `contact`. The older names such as `CiviCRM Preferences` are treated as aliases for `domain` or `contact`|
-| name | Name of this setting| This is the same as the array key. Definitely redundant! |
-| type | Data type| String, Array, Integer, Boolean |
-| default | Default value| Value to use if setting is not set. |
-| add | Version added to CiviCRM| |
-| `quick_form_type` | Widget type (admin form)| e.g YesNo, Element  |
-| `html_type` | Html type (admin form)| Used when `quick_form_type` is "Element". |
+| `name` | Name of this setting| This is the same as the array key. Required |
+| `type` | Data type| String, Integer, Boolean (Array is discouraged as current uses of it do not have full handling and String  + a serialize key addresses most uses) |
+| `title` | Title (admin form)| note: use ts() or E::ts() for extensions|
+| `description` | Description (admin form)| note: use ts() or E::ts() for extensions|
+|`serialize`|define how an array of values are stored|ie CRM_Core_DAO::SERIALIZE_JSON is recommended. Other constants exist on the CRM_Core_DAO class|
+| `default` | Default value| Value to use if setting is not set. |
+| `add` | Version added to CiviCRM| |
+| `html_type` | Html type (admin form)| This is the preferred way to describe the html type as it is not quick form specific. It will be used it present. Syntax is lower case. e.g 'select', 'radio', 'checkboxes', 'checkbox', 'text', 'textarea', 'entity_reference|
+| `quick_form_type` | Widget type (admin form)| YesNo, CheckBox, CheckBoxes, Select, EntityRef. This is not required if html_type (preferred) is set|
+|`settings_pages`|Admin Pages to render this setting on|e.g  ['event' => ['weight' => 10]]. This works if the Generic form is used (see further down)|
+|`pseudoconstant`|Provides information to build a list of available options| This is the perferred methodology for lists of options and currently supports either a callback - e.g ```['callback' => 'CRM_Core_SelectValues::geoProvider']``` or an option group name [`'optionGroupName' => 'advanced_search_options'`]. It does not currently support the full range of values for this key that the DAO schema does, by ommission rather than design|
+|`options`|provides an array of available options|This is not the preferred methodology but make make sense for very simple lists. |
+|`entity_reference_options`|extra data to pass when adding an entity reference|e.g if the entity is not contact this make be needed as in `['entity' => 'group', 'select' => array('minimumInputLength' => 0)]`|
+|`documentation_link`|Array of information to build the 'learn more' link| 'page' is required, if on the wiki 'resource' is also needed - e.g 'documentation_link' => ['page' => 'Multi Site Installation', 'resource' => 'wiki'],|
+| `help_text` | Intended to populated. Popup Help (admin form)| note: use ts(), not working as intended as of 5.8 |
 | `html_attributes` |  | size, style, class, etc. |
-| title | Title (admin form)| note: do not use ts() |
-| description | Description (admin form)| note: do not use ts()  |
-| `help_text` | Popup Help (admin form)| note: do not use ts() |
 | `validate_callback` | Function to call for checking when submitted (admin form)| e.g `CRM_Utils_Rule::url` |
 | `on_change` | Callback function when this setting is altered e.g when you enable a component or logging| |
 | `is_domain` | Domain setting| see `civicrm_setting` table |
 | `is_contact` | Contact setting| see `civicrm_setting` table |
-| prefetch | Legacy support - will store the setting in the $config object| We need to migrate away from this |
 
 Deprecated settings properties are :
 
-| property | Usage | Example Notes |
+| property | Usage | Example /Notes |
 | --- | --- | --- |
 |`config_only` | Super legacy support - only store in the `$config` object (Removed/unnecessary in v4.7+) | And this |
 |`config_key` | If the config key differs from the settings key (rarely used) (Removed/unnecessary in v4.7+) | used in conversions & for 'debug' where the config key name can't be used in the api |
 | `legacy_key` | Used for conversions when upgrading and moving data from existing config array to being a setting (Removed/unnecessary in v4.7+) | This happens on upgrade and when `civicrm_api3('system','flush')` is called |
+| `prefetch` | Legacy support - will store the setting in the $config object| We need to migrate away from this |
+| `group` | none | This is redundant now |
+| `group_name` |  Name of group this setting belongs to.| This has been deprecated as of 4.7. Since 4.7, the two main options are `domain` or `contact`. The older names such as `CiviCRM Preferences` are treated as aliases for `domain` or `contact`.|
 
 ## Setting Storage and Retrieval
 
@@ -112,6 +118,7 @@ crmAPI will interact with settings but a specific option exists. This will acces
 ```
 {crmSetting name="search_autocomplete_count" group="Search Preferences"}
 ```
+(Group is still required here but .... fixing that)
 
 ## Multiple Domains
 
@@ -126,24 +133,39 @@ It is desirable to make this api handling of domain id part of the api layer for
 
 ## Adding a new Setting to CiviCRM Core.
 
-1. Choose a group of settings to add the new setting to
-2. Add metadata to the appropriate `.settings.php` file about the new setting
-3. Choose an admin setting page to add the configuration option to.
-4. Add the name and group to the `$_settings` array at the top of the file. The rest happens automatically.
-5. If the template for that form is not set up to handle new items automatically, add the necessary markup.
-6. Your setting will not be active until you run `bin/regen.sh` - run it and commit the changes to git.
+1. Add metadata to the appropriate `.setting.php` file about the new setting
+2. Add it to the appropriate setting page per below
+3. Your setting will not be active until you run flush all caches (e.g `cv flush` or `drush cvapi System.flush`)
 
 !!! warning
     Do not use the "URL Preferences" group to store any setting that is not a url string.
+    
+## Adding a new Setting to an admin form
 
-## Converting a config object to a setting
+The preferred way of doing this is by using the Generic form. To do this the xml that declares
+the path should be like this
+```
+  <item>
+     <path>civicrm/admin/setting/preferences/event</path>
+     <title>CiviEvent Component Settings</title>
+     <page_callback>CRM_Admin_Form_Generic</page_callback>
+  </item>
+```
 
-1. remove `config_only` from the settings - this is simply a case of removing the flag - e.g. [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/a5617bcc7dc59065dcf5309a9c62aafe25d2ec77) The upgrade process will do the conversion when it next runs. Probably calling `civicrm_api3('system', 'flush', ())` or rebuilding menus will too. You might need to ensure the civicrm_cache table is truncated first.
-2.  fix the admin form to still set the setting -  you need to declare the settings on the form
-    - the parent class should add them appropriately e.g [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/8f0551201883036cac63d720149953c007d4f10d)
-    - you may need to do other fixups - e.g fix the metadata on the setting e.g. [Core Example](https://github.com/eileenmcnaughton/civicrm-core/commit/fd0e547bffc97e7acfc90e280cfe6fceb00d3a29)
-3.  As long as the 'prefetch' key is set you don't need to alter how the setting is accessed or used as it will still be cached in the `$config` object. If it's not really appropriate for the setting to be cached into config & it really is legacy you can grep for it & change how it is retrieved to use the api or setting retrieval functions above. Note that if you use getvalue api if will work on all stages on the conversion - ie. getvalue will retrieve 'config_only' settings as well as those that are 'prefetch' or simply settings. Using getvalue can be a migration strategy. If you do this you should also remove the property declaration from the config object.
-4. If you think a setting should be removed from config but are not going to take the time to do it at this stage think about adding a phpdoc comment to the relevant comment block in the config object to that effect.
+The last parameter of the path is the designated form and it will pick up any settings
+with that parameter in their metadata - e.g to place an item on that page it should have 
+the following in it's metadata.
+
+```
+`settings_pages` => ['event' => ['weight' => 10]]
+
+```
+
+- If you are adding to an existing form and that form is not yet using the generic form (
+see below) attempt to convert it. Failing that you may have to follow the protocol already 
+in place on that form - generally add it to the $_settings array. Usually you should try
+to at least progress the form conversion. See the legacy method at the bottom.
+- If the template for that form is not set up to handle new items automatically, add the necessary markup, after attempting to progress the conversion first
 
 ## Creating a new setting in an Extension
 
@@ -153,15 +175,20 @@ To avoid naming conflicts, it makes sense to prefix settings defined in an exten
 
 1. Ensure that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L347).
 2. Declare settings as in the same standard as CiviCRM Core [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/settings/Multisite.setting.php).
-3. Create Settings form, a [good example of generic metadata based settings form in an extension](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/CRM/Civixero/Form/XeroSettings.php) - note that only the setting filter is non-generic
-4. Add [routing for your settings form](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/xml/Menu/xerosync.xml).
-5. Add [a template for your settings form](https://github.com/eileenmcnaughton/nz.co.fuzion.civixero/blob/master/templates/CRM/Civixero/Form/XeroSettings.tpl).
-6. Add a menu item by implementing [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
-7. Use `cv api system.flush` or `Admin → System Settings → Cleanup Caches` to flush CiviCRM caches and register your new settings metadata.
+3. Create the admin page for the settings using xml similar to
+```
+  <item>
+     <path>civicrm/admin/setting/myextension</path>
+     <title>Really important settings</title>
+     <page_callback>CRM_Admin_Form_Generic</page_callback>
+  </item>
+```
 
-## Adding Setting Config to Admin Forms.
+4. Add a menu item by implementing [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
+5. Use `cv api system.flush` or `Admin → System Settings → Cleanup Caches` to flush CiviCRM caches and register your new settings metadata.
 
-We are working towards it being sufficient to simply declare the settings on the relevant form & have the rest be done by the metadata - e.g if adding your setting like this doesn't work then try diagnosing & fixing so it wil in future
+## Legacy method Adding Setting Config to Admin Forms.
+
 
 ```php
 /**  
