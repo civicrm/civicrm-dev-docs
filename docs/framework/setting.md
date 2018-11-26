@@ -29,7 +29,7 @@ The "Settings" system developed incrementally:
 
 ## Settings Definition
 
-Settings are defined in the /settings directory, in files ending with `.settings.php`
+Settings are defined in the /settings directory, in files ending with `.setting.php`
 
 Each file consists of a php snippet which returns an array. Array keys are strings corresponding with each setting's name. Values are an array of metadata properties for that setting. An example array is as follows:
 
@@ -76,7 +76,7 @@ The Supported Properties for settings are:
 
 Deprecated settings properties are :
 
-| property | Usage | Example Notes |
+| property | Usage | Example /Notes |
 | --- | --- | --- |
 |`config_only` | Super legacy support - only store in the `$config` object (Removed/unnecessary in v4.7+) | And this |
 |`config_key` | If the config key differs from the settings key (rarely used) (Removed/unnecessary in v4.7+) | used in conversions & for 'debug' where the config key name can't be used in the api |
@@ -133,7 +133,7 @@ It is desirable to make this api handling of domain id part of the api layer for
 
 ## Adding a new Setting to CiviCRM Core.
 
-1. Add metadata to the appropriate `.settings.php` file about the new setting
+1. Add metadata to the appropriate `.setting.php` file about the new setting
 2. Add it to the appropriate setting page per below
 3. Your setting will not be active until you run flush all caches (e.g `cv flush` or `drush cvapi System.flush`)
 
