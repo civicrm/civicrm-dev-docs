@@ -180,6 +180,8 @@ pages:
     - hook_civicrm_membershipTypeValues: hooks/hook_civicrm_membershipTypeValues.md
     - hook_civicrm_notePrivacy: hooks/hook_civicrm_notePrivacy.md
     - <del>hook_civicrm_optionValues</del>: hooks/hook_civicrm_optionValues.md
+    - hook_civicrm_postJob: hooks/hook_civicrm_postJob.md
+    - hook_civicrm_preJob: hooks/hook_civicrm_preJob.md
     - hook_civicrm_postIPNProcess: hooks/hook_civicrm_postIPNProcess.md
     - hook_civicrm_queryObjects: hooks/hook_civicrm_queryObjects.md
     - hook_civicrm_recent: hooks/hook_civicrm_recent.md
