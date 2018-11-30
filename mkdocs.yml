@@ -58,12 +58,12 @@ pages:
   - APIv3 Changes: api/changes.md
 - Hooks:
   - Using Hooks: hooks/index.md
-  - All Hooks: hooks/list.md
   - Setup:
     - Hooks with Symfony: hooks/setup/symfony.md
     - Hooks with Joomla: hooks/setup/joomla.md
     - Hooks with Drupal: hooks/setup/drupal.md
     - Hooks with WordPress: hooks/setup/wordpress.md
+  - All Hooks: hooks/list.md
   - Batch Hooks:
     - hook_civicrm_batchItems: hooks/hook_civicrm_batchItems.md
     - hook_civicrm_batchQuery: hooks/hook_civicrm_batchQuery.md
