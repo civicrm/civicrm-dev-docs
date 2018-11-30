@@ -47,6 +47,10 @@ action or complete your create or update action.
 
 From the API explorer, you can click on the **Examples** tab to find examples of API calls which are based on automated tests within the source code. You can also [explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples).
 
+### API Examples in your extensions
+
+From CiviCRM v5.8 the APIv3 explorer will now be able to show examples that are stored in your extension. The only requirement is that they are found in the same sort of directory structure as core e.g. in `<yourextension>/api/v3/examples/<entity>/<file>`
+
 ## Changelog
 
 All important changes made to the API are recorded in [API changes](/api/changes.md).

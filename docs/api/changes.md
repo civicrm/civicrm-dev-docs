@@ -4,6 +4,10 @@ This page lists changes to CiviCRM core which affect the ways in which developer
 
 ## APIv3: Framework
 
+### 5.8 Support for Extension Examples in the API Explorer.
+
+From 5.8 it is now possible for Extension authors to store examples for their API entities in a folder `<extensiondir>/api/v3/examples/<entity>/<file>` in the same structure as is in core. They will now be displayed in the API Explorer just like the core examples.
+
 ### 5.0 Support for custom data on any entity via the api
 It is now possible to add any (almost) entity to the cg_group_extends option group and create / retrieve custom data for that field via the api (also custom entities). Ones that do not work as of 5.0 release are       
       'CaseContact',
