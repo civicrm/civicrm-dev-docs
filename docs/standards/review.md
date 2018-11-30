@@ -16,7 +16,7 @@ You may conduct a structured review, checking each standard in turn. Doing this 
 * When conducting your first or second structured review, copy [template-del-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-del-1.0.md) or [template-mc-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-mc-1.0.md). It provides several examples.
 * Once you're familiar with the criteria, copy [template-word-1.0.md](https://raw.githubusercontent.com/civicrm/civicrm-dev-docs/master/docs/standards/review/template-word-1.0.md). It's a bit shorter and quicker.
 
-## Common standards
+## General standards
 
 ### Explanation {:#r-explain}
 
@@ -35,17 +35,17 @@ __Exception__:
 * [WIP](/tools/git.md#wip) PRs do not need a detailed explanation until they're ready for earnest review.
 * Genuine [NFC](/tools/git.md#nfc) PRs do not need a detailed explanation. 
 
-### Test results {:#r-test}
+### User impact {:#r-user}
 
-_Standard code: `r-test`_
+_Standard code: `r-user`_
 
-If the [automated tests](/testing/continuous-integration.md) come back with any failures, look into why. Hopefully, Jenkins provides an itemized list of failures. If not, dig further into the "Console" output for PHP-fatals or build-failures.
+If a user was comfortable using the old revision, would they upgrade and assimilate naturally and unthinkingly to the new revision? If not, has there been commensurate effort to provide a fair transition-path and communication?
 
-### Code quality {:#r-code}
+### Documentation {:#r-doc}
 
-_Standard code: `r-code`_
+_Standard code: `r-doc`_
 
-Is it understandable? Does it follow common conventions? Does it fit in context? If it changes a difficult section of code -- does it tend to make that section better or worse?
+Some changes require adding or updating documentation. Consider the impact of this change on users, system administrators, and developers. Do they need additional instructions in order to reap the benefits of this change? If so, [update documentation](/documentation/index.md) as necessary by making a corresponding PR on one of the guides.
 
 ### Run it {:#r-run}
 
@@ -53,11 +53,7 @@ _Standard code: `r-run`_
 
 Use the code somehow. You don’t need to attack every imaginable scenario in every PR, but you should do something to try it out. Be proportionate.
 
-### User impact {:#r-user}
-
-_Standard code: `r-user`_
-
-If a user was comfortable using the old revision, would they upgrade and assimilate naturally and unthinkingly to the new revision? If not, has there been commensurate effort to provide a fair transition-path and communication?
+## Developer standards
 
 ### Technical impact {:#r-tech}
 
@@ -73,17 +69,23 @@ _Standard code: `r-tech`_
     * Is there a simple alternative?
     * Has there been commensurate effort to communicate change and provide a fair transition path?
 
+### Code quality {:#r-code}
+
+_Standard code: `r-code`_
+
+Is it understandable? Does it follow common conventions? Does it fit in context? If it changes a difficult section of code -- does it tend to make that section better or worse?
+
 ### Maintainability {:#r-maint}
 
 _Standard code: `r-maint`_
 
 Many changes should introduce some kind of automated test or protective measure to ensure maintainability. However, there can be tricky cost/benefit issues, and the author and reviewer must exercise balanced judgment.
 
-### Documentation {:#r-doc}
+### Test results {:#r-test}
 
-_Standard code: `r-doc`_
+_Standard code: `r-test`_
 
-Some changes require adding or updating documentation. Consider the impact of this change on users, system administrators, and developers. Do they need additional instructions in order to reap the benefits of this change? If so, [update documentation](/documentation/index.md) as necessary by making a corresponding PR on one of the guides.
+If the [automated tests](/testing/continuous-integration.md) come back with any failures, look into why. Hopefully, Jenkins provides an itemized list of failures. If not, dig further into the "Console" output for PHP-fatals or build-failures.
 
 ## Gotchas
 
