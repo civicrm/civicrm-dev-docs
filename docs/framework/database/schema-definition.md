@@ -105,8 +105,8 @@ Tags acceptable within `<table>` / `<field>`
 | `<html>` | [tags](#table-field-html) |  | 0 or 1 | Settings for the form element to use for this field |
 | `<pseudoconstant>` | [tags](#table-field-pseudoconstant) |  | 0 or 1 | See [notes below](#table-field-pseudoconstant) |
 | `<serialize>` | text| | 0 or 1  | Method to serialize array data. For new fields use JSON |
-| `<crmType>` | text | 0 or 1 | Primarily used by extensions to specify an acceptable for type as under the `CRM_Utils_Type` class where the MySQL column type doesn't match directly to one. |
-| `<phpType` | text | 0 or 1 | Extensions can override this with a specific format of PHP type of data. |
+| `<crmType>` | text | `CRM_Utils_Type::T_STRING` | 0 or 1 | Primarily used by extensions to specify an acceptable for type as under the `CRM_Utils_Type` class where the MySQL column type doesn't match directly to one. |
+| `<phpType` | text | `string` | 0 or 1 | Extensions can override this with a specific format of PHP type of data. |
 
 `<type>` should be one of the following values which correspond to [MySQL data types](https://dev.mysql.com/doc/refman/en/data-types.html)
 
