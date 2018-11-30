@@ -84,6 +84,7 @@ When filing a pull-request, use a descriptive subject. These are good examples:
  * `CRM-12345 - Fix Paypal IPNs when moon is at half-crescent (waxing)`
  * `(WIP) dev/mail#67890 - Refactor SMS callback endpoint`
  * `(NFC) CRM_Utils_PDF - Improve docblocks`
+ * `(REF) CRM_Foo_Form_Edit - Extract method checkFooBar()`
 
 A few elements to include:
 
@@ -100,6 +101,18 @@ You can put these acronyms at the beginning of your PR subject to flag it as suc
 
 If you are still developing a set of changes, it may be useful to submit a pull-request and flag it as `(WIP)`. This allows you to have discussion with other developers and check test results. Once the change is ready, update the subject line to remove `(WIP)`.
 
+#### (REF) - "Refactor" {:#ref}
+
+Refactoring is a technique of making small, behavior-preserving changes (see, e.g. [Martin Fowler's *Refactoring*](https://martinfowler.com/books/refactoring.html)).
+
+Because refactoring preserves behavior, it doesn't require as much scrutiny with regard to user-experience or product-scope.  Rather, one merely verifies that the change preserves behavior.
+
+Examples:
+
+* Extract a method or field
+* Pull-up a method from child-class to parent-class
+* Encapsulate a field
+
 #### (NFC) - "Non-Functional Change" {:#nfc}
 
 Most patches are designed to change functionality (e.g. fix an error message or add a new button). However, some changes are non-functional -- they presumptively have no impact on users or integrations at runtime.
@@ -113,6 +126,7 @@ Here are some examples and counter-examples of NFC:
     * Fix a typo or grammatical error in a help dialog.
     * (*Maybe*) Add a new unit-test where there was no coverage before.
 * _Functional Change_:
+    * Refactoring
     * Replace 20 lines of redundant code with a call to a helper function.
         * (__Why?__ A reviewer would consider whether the helper is truly equivalent, better, or worse.)
     * Fix a typo in a *symbol* (PHP class-name, PHP function-name, HTML field name, etc).
