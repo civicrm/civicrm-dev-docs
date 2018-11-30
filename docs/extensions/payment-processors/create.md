@@ -310,7 +310,7 @@ this file now. Although this file is very large there is only a small
 amount of changes needed.
 
 
-**UCMPaymentCollectionNotify.php**
+**UCMPaymentCollectionIPN.php**
 
 ```php
 <?php
@@ -579,7 +579,7 @@ return self::$_singleton;
 Insert your processing code into static function main()
 
 
-**UCMPaymentCollectionNotify.php - main()**
+**UCMPaymentCollectionIPN.php - main()**
 
 ```php
 $config = CRM_Core_Config::singleton();
