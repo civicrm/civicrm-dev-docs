@@ -49,6 +49,8 @@ Each file consists of a php snippet which returns an array. Array keys are strin
   ),
 ```
 
+### Supported Properties
+
 The Supported Properties for settings are:
 
 | property | Usage | Example Notes |
@@ -73,6 +75,8 @@ The Supported Properties for settings are:
 | `on_change` | Callback function when this setting is altered e.g when you enable a component or logging| |
 | `is_domain` | Domain setting| see `civicrm_setting` table |
 | `is_contact` | Contact setting| see `civicrm_setting` table |
+
+### Deprecated Properties
 
 Deprecated settings properties are :
 
