@@ -43,7 +43,7 @@ function myextension_civicrm_buildForm($formName, &$form) {
 
 This works well in many cases but has its limitations.  For example, if two extensions call the same hook there is no way to determine which runs first.
 
-For details, see [Tradtional Hooks](/hooks/traditional.md)
+For details, see [Tradtional Hooks](/hooks/usage/extension.md)
 
 ### Symfony method
 
@@ -59,7 +59,7 @@ function myextension_buildForm($event) {
 }
 ```
 
-For more details see [Hooks with Symfony](/hooks/symfony.md)
+For more details see [Hooks with Symfony](/hooks/usage/symfony.md)
 
 ## Targeting Certain Events
 
