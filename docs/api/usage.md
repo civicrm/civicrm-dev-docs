@@ -161,9 +161,7 @@ For more details, see [REST interface](/api/interfaces.md#rest). 
 CRM.api3('entity', 'action', [params], [statusMessage]);
 ```
 
-For more details, see [AJAX Interface].
-
-[AJAX Interface](/api/interfaces.md#ajax)
+For more details, see [AJAX Interface](/api/interfaces.md#ajax).
 
 The AJAX interface is automatically available for web-pages generated through
 CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions,
