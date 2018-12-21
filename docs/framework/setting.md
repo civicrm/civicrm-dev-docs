@@ -69,7 +69,7 @@ The Supported Properties for settings are:
 |`documentation_link`|Array of information to build the 'learn more' link| 'page' is required, if on the wiki 'resource' is also needed - e.g 'documentation_link' => ['page' => 'Multi Site Installation', 'resource' => 'wiki'],|
 | `help_text` | Intended to populated. Popup Help (admin form)| note: use ts(), not working as intended as of 5.8 |
 | `html_attributes` |  | size, style, class, etc. |
-| `validate_callback` | Function to call for checking when submitted (admin form)| e.g `CRM_Utils_Rule::url` |
+| `validate_callback` | A string, the name of a callback function to validate the setting value. | The callback is fired whether the setting is updated via admin form or API. The callback should accept the proposed setting value as its only argument. It should return TRUE if the value is valid, otherwise FALSE. In the latter case the API request will fail (`is_error` will be set to 1 in the result). If the callback takes the value by reference, it can modify the setting value before it is saved -- it remains to be seen whether this is wise. Example: 'CRM_Utils_Rule::url' |
 | `on_change` | Callback function when this setting is altered e.g when you enable a component or logging| |
 | `is_domain` | Domain setting| see `civicrm_setting` table |
 | `is_contact` | Contact setting| see `civicrm_setting` table |
