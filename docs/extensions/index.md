@@ -19,7 +19,7 @@ All extension names follow the same convention as Java package names – they lo
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming.
 -   Install ***civix v14.01*** or newer. For instructions, see [Civix Documentation](/extensions/civix.md/). This page assumes that "civix" is installed and registered in the PATH.
--   Configure an extensions directory. For instructions, see [Extensions](/extensions/index.md). This page assumes the directory is `/var/www/extensions`, but you should adapt as appropriate. Your extensions directory must be under the CMS root directory so that civix can find and bootstrap the CMS. Otherwise, it will fail with an error like "Sorry, could not locate bootstrap.inc" on most operations.
+-   Configure an extensions directory. For instructions, see [Extensions](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/#installing-a-new-extension). This page assumes the directory is `/var/www/extensions`, but you should adapt as appropriate. Your extensions directory must be under the CMS root directory so that civix can find and bootstrap the CMS. Otherwise, it will fail with an error like "Sorry, could not locate bootstrap.inc" on most operations.
 -   The user account you use to develop the module must have permission to read all CMS files, including configuration files, and write to the extensions directory. For example, Debian's drupal7 package saves database configuration to `/etc/drupal/7/sites/default/dbconfig.php`, which is only readable by the www-data user. You will need to make this file readable by your development user account for civix to work.
 
 ### 0. Decide
