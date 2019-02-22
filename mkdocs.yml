@@ -73,16 +73,19 @@ pages:
     - hook_civicrm_post_case_merge: hooks/hook_civicrm_post_case_merge.md
     - hook_civicrm_pre_case_merge: hooks/hook_civicrm_pre_case_merge.md
   - Database Hooks:
+    - hook_civicrm_alterLocationMergeData: hooks/hook_civicrm_alterLocationMergeData.md
     - hook_civicrm_copy: hooks/hook_civicrm_copy.md
     - hook_civicrm_custom: hooks/hook_civicrm_custom.md
     - hook_civicrm_managed: hooks/hook_civicrm_managed.md
     - hook_civicrm_merge: hooks/hook_civicrm_merge.md
-    - hook_civicrm_alterLocationMergeData: hooks/hook_civicrm_alterLocationMergeData.md
     - hook_civicrm_post: hooks/hook_civicrm_post.md
     - hook_civicrm_postSave_table_name: hooks/hook_civicrm_postSave_table_name.md
     - hook_civicrm_pre: hooks/hook_civicrm_pre.md
-    - hook_civicrm_triggerInfo: hooks/hook_civicrm_triggerInfo.md
     - hook_civicrm_referenceCounts: hooks/hook_civicrm_referenceCounts.md
+    - hook_civicrm_triggerInfo: hooks/hook_civicrm_triggerInfo.md
+  - Dedupe Hooks:
+    - hook_civicrm_dupeQuery: hooks/hook_civicrm_dupeQuery.md
+    - hook_civicrm_findDuplicates: hooks/hook_civicrm_findDuplicates.md
   - Entity Hooks:
     - hook_civicrm_entityTypes: hooks/hook_civicrm_entityTypes.md
   - Extension Lifecycle Hooks:
@@ -133,10 +136,14 @@ pages:
     - hook_civicrm_postEmailSend: hooks/hook_civicrm_postEmailSend.md
     - hook_civicrm_postMailing: hooks/hook_civicrm_postMailing.md
     - hook_civicrm_unsubscribeGroups: hooks/hook_civicrm_unsubscribeGroups.md
+  - Membership Hooks:
+    - hook_civicrm_alterCalculatedMembershipStatus: hooks/hook_civicrm_alterCalculatedMembershipStatus.md
+    - hook_civicrm_membershipTypeValues: hooks/hook_civicrm_membershipTypeValues.md
   - Permission Hooks:
     - hook_civicrm_aclGroup: hooks/hook_civicrm_aclGroup.md
     - hook_civicrm_aclWhereClause: hooks/hook_civicrm_aclWhereClause.md
     - hook_civicrm_alterAPIPermissions: hooks/hook_civicrm_alterAPIPermissions.md
+    - hook_civicrm_notePrivacy: hooks/hook_civicrm_notePrivacy.md
     - hook_civicrm_permission: hooks/hook_civicrm_permission.md
     - hook_civicrm_permission_check: hooks/hook_civicrm_permission_check.md
     - hook_civicrm_selectWhereClause: hooks/hook_civicrm_selectWhereClause.md
@@ -151,10 +158,13 @@ pages:
     - hook_civicrm_alterReportVar: hooks/hook_civicrm_alterReportVar.md
   - SMS Hooks:
     - hook_civicrm_inboundSMS: hooks/hook_civicrm_inboundSMS.md
+  - Scheduled Job / cron Hooks:
+    - hook_civicrm_cron: hooks/hook_civicrm_cron.md
+    - hook_civicrm_preJob: hooks/hook_civicrm_preJob.md
+    - hook_civicrm_postJob: hooks/hook_civicrm_postJob.md
   - Uncategorized Hooks:
     - hook_civicrm_alterBadge: hooks/hook_civicrm_alterBadge.md
     - hook_civicrm_alterBarcode: hooks/hook_civicrm_alterBarcode.md
-    - hook_civicrm_alterCalculatedMembershipStatus: hooks/hook_civicrm_alterCalculatedMembershipStatus.md
     - hook_civicrm_alterLogTables: hooks/hook_civicrm_alterLogTables.md
     - hook_civicrm_alterMailingLabelParams: hooks/hook_civicrm_alterMailingLabelParams.md
     - hook_civicrm_alterPaymentProcessorParams: hooks/hook_civicrm_alterPaymentProcessorParams.md
@@ -169,19 +179,13 @@ pages:
     - <del>hook_civicrm_contactListQuery</del>: hooks/hook_civicrm_contactListQuery.md
     - hook_civicrm_container: hooks/hook_civicrm_container.md
     - hook_civicrm_coreResourceList: hooks/hook_civicrm_coreResourceList.md
-    - hook_civicrm_cron: hooks/hook_civicrm_cron.md
     - hook_civicrm_crudLink: hooks/hook_civicrm_crudLink.md
-    - hook_civicrm_dupeQuery: hooks/hook_civicrm_dupeQuery.md
     - hook_civicrm_eventDiscount: hooks/hook_civicrm_eventDiscount.md
     - hook_civicrm_export: hooks/hook_civicrm_export.md
     - hook_civicrm_fileSearches: hooks/hook_civicrm_fileSearches.md
     - hook_civicrm_geocoderFormat: hooks/hook_civicrm_geocoderFormat.md
     - hook_civicrm_import: hooks/hook_civicrm_import.md
-    - hook_civicrm_membershipTypeValues: hooks/hook_civicrm_membershipTypeValues.md
-    - hook_civicrm_notePrivacy: hooks/hook_civicrm_notePrivacy.md
     - <del>hook_civicrm_optionValues</del>: hooks/hook_civicrm_optionValues.md
-    - hook_civicrm_postJob: hooks/hook_civicrm_postJob.md
-    - hook_civicrm_preJob: hooks/hook_civicrm_preJob.md
     - hook_civicrm_postIPNProcess: hooks/hook_civicrm_postIPNProcess.md
     - hook_civicrm_queryObjects: hooks/hook_civicrm_queryObjects.md
     - hook_civicrm_recent: hooks/hook_civicrm_recent.md
