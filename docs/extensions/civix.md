@@ -240,6 +240,10 @@ This creates two files:
 
 Your extension can create one or more sets of custom fields at installation. There are two methods depending on whether the custom data set extends an entity (e.g. "Individual" – without any specific subtype) or extends a specific subtype of an entity, (e.g. Activities of type 'Volunteer').
 
+*{from CiviCRM v.5.0}*
+
+If you wish to create custom fields for an entity that does not support custom fields out of the box you will need to add a new option value to the cg_group_extends option group. It will then be possible to create custom fields for this entity per above or via the UI. However, for most fields you will only be able to interact with these fields via the UI. Exceptions are those like RelationshipType that use an Entity Form in core.
+
 #### Extending a base entity
 
 This is the simplest scenario. Start by creating a custom fields using the web interface and then export them for use with the extension:
