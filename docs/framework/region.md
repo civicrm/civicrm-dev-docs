@@ -203,10 +203,10 @@ At time of writing, tags are outputted as plain HTML markup.
 | --- | --- | --- | --- |
 | contribution-confirm-recur-membership| (FIXME)| CRM/Contribute/Form/Contribution/Confirm.tpl |  4.3.0+ | 
 | contribution-confirm-recur| (FIXME)| CRM/Contribute/Form/Contribution/Confirm.tpl |  4.3.0+ | 
-| contribution-confirm-billing-block| (FIXME)| CRM/Contribute/Form/Contribution/Confirm.tpl |  4.3.0+ | 
+| contribution-confirm-billing-block| Information related to the payment method used (eg. credit card last 4 digits/expiry date)| CRM/Contribute/Form/Contribution/Confirm.tpl |  4.3.0+ | 
 | contribution-thankyou-recur-membership| (FIXME)| CRM/Contribute/Form/Contribution/ThankYou.tpl |  4.3.0+ | 
 | contribution-thankyou-recur| (FIXME)| CRM/Contribute/Form/Contribution/ThankYou.tpl |  4.3.0+ | 
-| contribution-thankyou-billing-block| (FIXME)| CRM/Contribute/Form/Contribution/ThankYou.tpl |  4.3.0+ | 
+| contribution-thankyou-billing-block| Information related to the payment method used (eg. credit card last 4 digits/expiry date)| CRM/Contribute/Form/Contribution/ThankYou.tpl |  4.3.0+ | 
 | contribution-main-pledge-block | Pledge block on contribution page| CRM/Contribute/Form/Contribution/Main.tpl |  4.7 |
 
 ### Contribution Page Administration
@@ -234,6 +234,8 @@ At time of writing, tags are outputted as plain HTML markup.
 | --- | --- | --- | --- |
 | event-page-eventinfo-actionlinks-top| (FIXME)| CRM/Event/Page/EventInfo.tpl |  4.4.0+ | 
 | event-page-eventinfo-actionlinks-bottom| (FIXME)| CRM/Event/Page/EventInfo.tpl |  4.4.0+ |
+| event-confirm-billing-block| Information related to the payment method used (eg. credit card last 4 digits/expiry date)| CRM/Event/Form/Registration/Confirm.tpl |  5.13+ | 
+| event-thankyou-billing-block| Information related to the payment method used (eg. credit card last 4 digits/expiry date)| CRM/Event/Form/Registration/ThankYou.tpl |  5.13+ |
 
 ### Personal Campaign Pages
 
