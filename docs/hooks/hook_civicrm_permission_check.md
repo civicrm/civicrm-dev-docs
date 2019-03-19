@@ -18,12 +18,10 @@ and above.
 
     hook_civicrm_permission_check($permission, &$granted)
 
-## \
- Parameters {#hook_civicrm_permission_check-Parameters}
+## Parameters {:#hook_civicrm_permission_check-Parameters}
 
 -   $permission: a string representing the name of an atomic
-    permission, ie. 'access deleted contacts'\
-     \
+    permission, ie. 'access deleted contacts'
 
 -   $granted: a boolean reflecting whether this permission is currently
     granted. Change this value to alter the permission.
