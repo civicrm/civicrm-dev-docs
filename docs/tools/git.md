@@ -244,7 +244,9 @@ Most of the time, your base branch should be `master`.  In special circumstances
 
 ### Committing {:#committing}
 
-As much as possible, separate your changes into distinct commits that each make sense on their own. Using smaller commits will make your changes easier for others to review.
+As much as possible, separate your changes into distinct commits that each make sense on their own. Using smaller commits will make your changes easier for others to review. You can [clean up your commits](#rebasing-interactive) once you have finished getting your code right.
+
+It is often helpful to put your commits in separate smaller PRs as a reviewer might spare 30 minutes to review a function extraction of a variable cleanup and merge the PR fairly quickly but if you put 5 in the same PR they might not be able to find a block of 2 hours to review them all and it might languish. Doing preliminary cleanup PRs while you are still working on a problem can be helpful as you are improving the code as you go rather than creating a huge amount of change that will be hard and/or risky to review. While you are still working on a problem is also a great time to start adding tests for the code around it to core.
 
 #### Writing a commit message {:#commit-messages}
 
@@ -320,3 +322,18 @@ Sometimes when you [make a pull request](#pr) someone else merges a change into 
     ```
 
 1. Now, if you go to back to the page for your pull request it should no longer show merge conflicts
+
+## Rebasing for cleanup {:#rebasing-interactive}
+
+When you are working on a PR you will often make lots of commits in order to get to the right change - these are your workings. However, when we merge we want the commit history to show the final change - not the workings so we will often ask you to rebase. It's fine to have multiple commits in a PR but each commit should be complete in itself and a logical change in itself. If you make a mistake in one commit it shouldn't be fixed in another (unless the mistake is already merged).
+
+The trick to a cleanup rebase is to do it in interactive mode. The process is similar to above and it's usually easier to do the above first and THEN the interactive rebase to make sure you have a nice clean start before starting your interactive rebase.
+
+Assuming the upstream repo is called 'upstream' the command is
+
+```
+git rebase -i upstream/master
+```
+
+You then get to squash or remove commits are fix up the history. Do a force push (per above) when you have finished
+
