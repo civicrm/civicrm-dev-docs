@@ -233,14 +233,13 @@ $ git checkout upstream/master -b mail-111
 
 When creating a new branch, you should explicitly declare a starting point.
 
-Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, *Stable*, or *LTS* branch. The table below summarizes the policies for each branch.
+Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, or *Stable* branch. The table below summarizes the policies for each branch.
 
 | Name | Git branch (example) | Version number (example) | Acceptable patches |
 | --- | ---- | --- | --- |
 | Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
 | Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
 | Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
-| LTS | 4.6 | 4.6.36 | Backports of fixes for very critical issues. |
 
 ### Committing {:#committing}
 
