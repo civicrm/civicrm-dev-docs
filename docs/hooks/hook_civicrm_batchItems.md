@@ -24,5 +24,5 @@ hook_civicrm_batchItems(&$results, &$items)
 
 ## Hints
 
--   This hook can be used together with `hook_civicrm_batchQuey` to add/modify the information in CSV batch exports
+-   This hook can be used together with `hook_civicrm_batchQuery` to add/modify the information in CSV batch exports
 -   You can loop through the two parameters to modify per financial item. This can even be used to filter financial items.

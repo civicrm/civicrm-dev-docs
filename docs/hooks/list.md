@@ -25,16 +25,21 @@ This is an overview list of all available hooks, listed by category.
 
 ## Database Hooks
 
+* **[hook_civicrm_alterLocationMergeData](/hooks/hook_civicrm_alterLocationMergeData.md)** - allows you to alter the location information that will be moved from the duplicate contact to the master contact.
 * **[hook_civicrm_copy](/hooks/hook_civicrm_copy.md)** - called after a CiviCRM object (Event, ContributionPage, Profile) has been copied.
 * **[hook_civicrm_custom](/hooks/hook_civicrm_custom.md)** - called *after* the database write on a custom table.
 * **[hook_civicrm_managed](/hooks/hook_civicrm_managed.md)** - allows a module to declare a list of managed entities using the API.
 * **[hook_civicrm_merge](/hooks/hook_civicrm_merge.md)** - allows modification of the data used to perform merging of duplicates. It can be useful if your custom module has added its own tables related to CiviCRM contacts.
-* **[hook_civicrm_alterLocationMergeData](/hooks/hook_civicrm_alterLocationMergeData.md)** - allows you to alter the location information that will be moved from the duplicate contact to the master contact.
 * **[hook_civicrm_post](/hooks/hook_civicrm_post.md)** - called after a db write on some core objects.
 * **[hook_civicrm_postSave_table_name](/hooks/hook_civicrm_postSave_table_name.md)** - called after writing to a database table that has an associated DAO, including core tables but not custom tables or log tables.
 * **[hook_civicrm_pre](/hooks/hook_civicrm_pre.md)** - called before a db write on some core objects.
-* **[hook_civicrm_triggerInfo](/hooks/hook_civicrm_triggerInfo.md)** - allows you to define MySQL triggers.
 * **[hook_civicrm_referenceCounts](/hooks/hook_civicrm_referenceCounts.md)** - called to determine the reference-count for a record.
+* **[hook_civicrm_triggerInfo](/hooks/hook_civicrm_triggerInfo.md)** - allows you to define MySQL triggers.
+
+## Dedupe Hooks
+
+* **[hook_civicrm_dupeQuery](/hooks/hook_civicrm_dupeQuery.md)** - called during the dedupe lookup process, and can be used to alter the parameters and queries used to determine if two contacts are duplicates.
+* **[hook_civicrm_findDuplicates](/hooks/hook_civicrm_findDuplicates.md)** - called when contacts are added/updated via profiles, event registration pages, contribution pages etc. When a form is submitted CiviCRM checks if a contact already exists using one of the built-in deduplication rules and returns a contact ID if a match is found. allows you to override the contact matching rules to implement more complex rules.
 
 ## Entity Hooks
 
@@ -88,7 +93,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_alterMailContent](/hooks/hook_civicrm_alterMailContent.md)** - called after getting the content of the mail and before tokenizing it.
 * **[hook_civicrm_alterMailer](/hooks/hook_civicrm_alterMailer.md)** - called when CiviCRM prepares an email driver class to handle outbound message delivery.
 * **[hook_civicrm_alterMailParams](/hooks/hook_civicrm_alterMailParams.md)** - called when an email is about to be sent by CiviCRM.
-* **[hook_civicrm_alterMailingRecipients](/hooks/hook_civicrm_alterMailingRecipients.md)** - called twice, once before and once after constructing mail recipients.
+* **[hook_civicrm_alterMailingRecipients](/hooks/hook_civicrm_alterMailingRecipients.md)** - called to allow the user to alter the mailing recipients after they have been constructed.
 * **[hook_civicrm_emailProcessor](/hooks/hook_civicrm_emailProcessor.md)** - called after *each* email has been processed by the script `bin/EmailProcessor.php`.
 * **[hook_civicrm_emailProcessorContact](/hooks/hook_civicrm_emailProcessorContact.md)** - called by the Email Processor when deciding to which contact and activity will be attached.
 * **[hook_civicrm_mailingGroups](/hooks/hook_civicrm_mailingGroups.md)** - called when composing a mailing allowing you to include or exclude other groups as needed.
@@ -96,11 +101,17 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_postMailing](/hooks/hook_civicrm_postMailing.md)** - called at the successful completion of a bulk mailing done through CiviMail.
 * **[hook_civicrm_unsubscribeGroups](/hooks/hook_civicrm_unsubscribeGroups.md)** - called when CiviCRM receives a request to unsubscribe a user from a mailing.
 
+## Membership Hooks
+
+* **[hook_civicrm_alterCalculatedMembershipStatus](/hooks/hook_civicrm_alterCalculatedMembershipStatus.md)** - called when calculating the membership status.
+* **[hook_civicrm_membershipTypeValues](/hooks/hook_civicrm_membershipTypeValues.md)** - called when composing the array of membership types and their costs during a membership registration (new or renewal).
+
 ## Permission Hooks
 
 * **[hook_civicrm_aclGroup](/hooks/hook_civicrm_aclGroup.md)** - called when composing the ACL to restrict access to civicrm entities (civicrm groups, profiles and events).
 * **[hook_civicrm_aclWhereClause](/hooks/hook_civicrm_aclWhereClause.md)** - called when composing the ACL where clause to restrict visibility of contacts to the logged in user.
 * **[hook_civicrm_alterAPIPermissions](/hooks/hook_civicrm_alterAPIPermissions.md)** - called when API 3 permissions are checked.
+* **[hook_civicrm_notePrivacy](/hooks/hook_civicrm_notePrivacy.md)** - provides a way to override the default privacy behavior for notes.
 * **[hook_civicrm_permission](/hooks/hook_civicrm_permission.md)** - called to allow custom permissions to be defined.
 * **[hook_civicrm_permission_check](/hooks/hook_civicrm_permission_check.md)** - called to dynamically alter permissions based on conditions or external criteria.
 * **[hook_civicrm_selectWhereClause](/hooks/hook_civicrm_selectWhereClause.md)** - called when executing a SELECT query.
@@ -122,11 +133,16 @@ This is an overview list of all available hooks, listed by category.
 
 * **[hook_civicrm_inboundSMS](/hooks/hook_civicrm_inboundSMS.md)** - called when an inbound SMS has been received, processed by the provider extension, but not matched or processed by CiviSMS.
 
+## Scheduled Job / cron Hooks
+
+* **[hook_civicrm_cron](/hooks/hook_civicrm_cron.md)** - called every time the CiviCRM scheduler is polled.
+* **[hook_civicrm_preJob](/hooks/hook_civicrm_preJob.md)** - called before a scheduled job is executed.
+* **[hook_civicrm_postJob](/hooks/hook_civicrm_postJob.md)** - called after a scheduled job is executed or was interrupted by an exception.
+
 ## Uncategorized Hooks
 
 * **[hook_civicrm_alterBadge](/hooks/hook_civicrm_alterBadge.md)** - allows you to modify the content and format of name badges.
 * **[hook_civicrm_alterBarcode](/hooks/hook_civicrm_alterBarcode.md)** - allows you to modify the content that is encoded in barcode.
-* **[hook_civicrm_alterCalculatedMembershipStatus](/hooks/hook_civicrm_alterCalculatedMembershipStatus.md)** - called when calculating the membership status.
 * **[hook_civicrm_alterLogTables](/hooks/hook_civicrm_alterLogTables.md)** - allows you to amend the specification of the log tables to be created when logging is turned on.
 * **[hook_civicrm_alterMailingLabelParams](/hooks/hook_civicrm_alterMailingLabelParams.md)** - called to alter the parameters used to generate mailing labels.
 * **[hook_civicrm_alterPaymentProcessorParams](/hooks/hook_civicrm_alterPaymentProcessorParams.md)** - allows you to modify parameters passed to the payment processor.
@@ -141,19 +157,14 @@ This is an overview list of all available hooks, listed by category.
 * **[<del>hook_civicrm_contactListQuery</del>](/hooks/hook_civicrm_contactListQuery.md)** - Deprecated in favor of [hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md).
 * **[hook_civicrm_container](/hooks/hook_civicrm_container.md)** - modifies the CiviCRM container allowing you to add new services, parameters, extensions, etc.
 * **[hook_civicrm_coreResourceList](/hooks/hook_civicrm_coreResourceList.md)** - called when the list of core js/css resources is about to be processed, giving you the opportunity to modify the list prior to the resources being added, or add your own.
-* **[hook_civicrm_cron](/hooks/hook_civicrm_cron.md)** - called every time the CiviCRM scheduler is polled.
 * **[hook_civicrm_crudLink](/hooks/hook_civicrm_crudLink.md)** - Generate a default CRUD URL for an entity.
-* **[hook_civicrm_dupeQuery](/hooks/hook_civicrm_dupeQuery.md)** - called during the dedupe lookup process, and can be used to alter the parameters and queries used to determine if two contacts are duplicates.
 * **[hook_civicrm_eventDiscount](/hooks/hook_civicrm_eventDiscount.md)** - allows you to apply a customized discount to an event registration.
 * **[hook_civicrm_export](/hooks/hook_civicrm_export.md)** - allows to manipulate or change the output of CSV during export.
 * **[hook_civicrm_fileSearches](/hooks/hook_civicrm_fileSearches.md)** - allows you to add a reference to a file search service (e.g. Solr).
 * **[hook_civicrm_geocoderFormat](/hooks/hook_civicrm_geocoderFormat.md)** - allows you to manipulate the Address object during geocoding, for instance to extract additional fields from the geocoder's returned XML.
 * **[hook_civicrm_import](/hooks/hook_civicrm_import.md)** - called after contacts have been imported into the system, and before the temp import table has been destroyed.
-* **[hook_civicrm_membershipTypeValues](/hooks/hook_civicrm_membershipTypeValues.md)** - called when composing the array of membership types and their costs during a membership registration (new or renewal).
-* **[hook_civicrm_notePrivacy](/hooks/hook_civicrm_notePrivacy.md)** - provides a way to override the default privacy behavior for notes.
 * **[<del>hook_civicrm_optionValues</del>](/hooks/hook_civicrm_optionValues.md)** - deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md).
-* **[hook_civicrm_preJob](/hooks/hook_civicrm_preJob.md)** - called before executing a scheduled job.
-* **[hook_civicrm_postJob](/hooks/hook_civicrm_postJob.md)** - called after executing a scheduled job.
+* **[hook_civicrm_postIPNProcess](/hooks/hook_civicrm_postIPNProcess.md)** - allows you to do custom processing of IPN Data following CiviCRM processing.
 * **[hook_civicrm_queryObjects](/hooks/hook_civicrm_queryObjects.md)** - called while building the core search query, allowing you to provide your own query objects which alter or extend the core search.
 * **[hook_civicrm_recent](/hooks/hook_civicrm_recent.md)** - called before storing recently viewed items.
 * **[hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md)** - called to allow custom tokens to be defined.
