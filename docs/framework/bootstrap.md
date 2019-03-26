@@ -35,7 +35,7 @@ If you are writting an independent script you can download the [cv](https://gith
 eval(`cv php:boot`);
 
 // Call CiviCRM function e.g. API
-$contact = civicrm_api3('contact', 'get' array(
+$contact = civicrm_api3('contact', 'get', array(
   'first_name' => 'Mr',
   'last_name' => 'T',
 ));
@@ -51,7 +51,7 @@ If you are writing a module in Drupal, Backdrop or WordPress, use the "civicrm_i
 civicrm_initialize();
 
 // Call CiviCRM function e.g. API
-$contact = civicrm_api3('contact', 'get' array(
+$contact = civicrm_api3('contact', 'get', array(
   'first_name' => 'Mr',
   'last_name' => 'T',
 ));
@@ -68,7 +68,7 @@ require_once CIVICRM_CORE_PATH .'CRM/Core/Config.php';
 $config = CRM_Core_Config::singleton();
 
 // Call CiviCRM function e.g. API
-$contact = civicrm_api3('contact', 'get' array(
+$contact = civicrm_api3('contact', 'get', array(
   'first_name' => 'Mr',
   'last_name' => 'T',
 ));
@@ -88,7 +88,7 @@ $config = CRM_Core_Config::singleton();
 // CRM_Utils_System::loadBootStrap(array(), FALSE);
 
 // Call CiviCRM function e.g. API
-$contact = civicrm_api3('contact', 'get' array(
+$contact = civicrm_api3('contact', 'get', array(
   'first_name' => 'Mr',
   'last_name' => 'T',
 ));
