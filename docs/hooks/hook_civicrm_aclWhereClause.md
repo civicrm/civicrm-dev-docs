@@ -21,7 +21,14 @@ query is performed. Those will join onto the
 
 ## Parameters
 
--   $type - type of permission needed
+-   $type - Integer type of permission needed, matching these class constants:
+    - `CRM_Core_Permission::EDIT`
+    - `CRM_Core_Permission::VIEW`
+    - `CRM_Core_Permission::DELETE`
+    - `CRM_Core_Permission::CREATE`
+    - `CRM_Core_Permission::SEARCH`
+    - `CRM_Core_Permission::ALL`
+    - `CRM_Core_Permission::ADMIN`
 -   array $tables - (reference ) add the tables that are needed for the
     select clause
 -   array $whereTables - (reference ) add the tables that are needed
