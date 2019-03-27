@@ -26,7 +26,8 @@ query is performed. Those will join onto the
     select clause
 -   array $whereTables - (reference ) add the tables that are needed
     for the where clause
--   int $contactID - the contactID for whom the check is made
+-   int $contactID - the contactID for whom the check is made, i.e. the ContactID of
+    the user trying to access the contacts.
 -   string $where - the currrent where clause
 
 ## Returns
