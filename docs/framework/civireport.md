@@ -85,6 +85,7 @@ filters is a list of filters related to the table that the user can use to filte
 | `options` | array | For widgets that have a selection of values. Pass in an array with value as the key and label as the value, e.g. `array('1'=>'Low', '2'=>'Medium', '3'=>'High')` |
 | `group` | true/false | Used for group related form fields for e.g `group_id`. A true value for this flag, makes the query include the condition inside the main `WHERE` clause like a normal query. If false, condition is excluded from main clause. | 
 | `no_display` | true/false | When set for a filter makes the filter hidden but can still be used in the query. Required for cases when filter is expected from url and not be present on the form |
+| `pseudofield` | true/false | A true value for this flag causes the filter to be excluded from automatic processing by the form's `WHERE`-clause-building logic. Example usage: to build a form control that doesn't directly correspond to a field but whose value somehow (other than by addition to the `WHERE` clause) affects how the query is built. |
 | `type` | `CRM_Utils_Type::T_XXX` | The type of data to expect in this filter. Default is `T_STRING`. See `CRM_Utils_Type` for possible values. |
 
 ### `group_bys`
