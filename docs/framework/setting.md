@@ -73,8 +73,8 @@ The Supported Properties for settings are:
 | `html_attributes` |  | size, style, class, etc. |
 | `validate_callback` | A string, the name of a callback function to validate the setting value. | The callback is fired whether the setting is updated via admin form or API. The callback should accept the proposed setting value as its only argument. It should return TRUE if the value is valid, otherwise FALSE. In the latter case the API request will fail (`is_error` will be set to 1 in the result). If the callback takes the value by reference, it can modify the setting value before it is saved -- it remains to be seen whether this is wise. Example: 'CRM_Utils_Rule::url' |
 | `on_change` | Callback function when this setting is altered e.g when you enable a component or logging| |
-| `is_domain` | Domain setting| see `civicrm_setting` table |
-| `is_contact` | Contact setting| see `civicrm_setting` table |
+| `is_domain` | Domain setting| Setting is_domain to 1 indicates that the setting applies to the entire installation (in single site mode) or to a single domain in multi-site mode. If is_domain is set to 1, then is_contact must be set to 0. |
+| `is_contact` | Contact setting| Setting is_contact to 1 indicates that the setting applies to a single contact and can be different for each contact. If is_contact is set to 1, is_domain must be set to 0. |
 
 ### Deprecated Properties
 
