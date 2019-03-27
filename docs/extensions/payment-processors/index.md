@@ -30,7 +30,8 @@ fields in the user form.
 
 **Billing Mode** is a CiviCRM-specific classification of different types
 of payment processing: 'form', 'button', or 'notify'. These determine
-the user workflow required and how the CiviCRM code works.
+the user workflow required and how the CiviCRM code works. The concept is
+mostly obsolete now.
 
 ## Processors
 
@@ -84,9 +85,8 @@ the directory `CRM/Core/Payment` that subclasses this abstract class. Any
 extensions that provide a payment processor have to provide a
 corresponding subclass file in their own `CRM/Core/Payment directory`.
 
-The key method defined by the payment-processor-specific payment class
-depends on the [billing mode](/extensions/payment-processors/types.md).
-This is roughly documented in the page on [creating a payment processor](/extensions/payment-processors/create.md)
+The key methods are roughly documented in the page on [creating a payment processor](/extensions/payment-processors/create.md)
+but the main method for all processors to implement is `doPayment`
 
 The payment object is used in several places in the CiviCRM code base.
 It's intention is to encapsulate all the details of processing a
@@ -95,32 +95,12 @@ donations, a payment for a membership, a payment for an event, and some
 combination of those (e.g. a recurring series of payments for an
 auto-renewed membership).
 
-The way that payment objects get created is a bit convoluted. The
-payment objects are not created with the typical `new ClassName()`
-command, but use a mangled version of the singleton pattern to create
-new payment objects, with no more than one per mix of mode, payment
-processor, and whether it's attached to a form. Specifically, they get
-created with this kind of thing:
+The way that payment objects get created historically was a bit convoluted. 
+They are mostly now created by the \Civi\Payment\System
 
-`$paymentObject = CRM_Core_Payment::singleton($mode, $paymentProcessor, $paymentForm);`
-
-Inside the singleton function,
-`$cacheKey = "{$mode}_{$paymentProcessor['id']}_" . (int)isset($paymentForm);`
-
-So that means we are creating unique payment objects per distinct value
-of: `mode + payment processor id + <is it associated with a payment
-form>`, where 'mode' in this case just means test or not (not the
-"billing mode"!).
-
-The paymentProcessor object is just the simple BAO object of fields from
-the corresponding database table, and the singleton function then finds
-the classname of the processor, and runs the singleton function of that
-class to create the actual payment object that subclasses the abstract
-CRM_Core_Payment class.
-
-At the end of this process, you have a payment object that includes
-payment processor specific methods and a reasonably simple payment
-processor object attached to it.
+Due to the historical complexity we sometimes use the id of the
+live processor in test mode for the test processor although
+where possible we use the id of the test processor itself.
 
 ## Payment Processor Objects, and in the Database
 
