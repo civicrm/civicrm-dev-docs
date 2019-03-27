@@ -83,7 +83,7 @@ function _getMenuKeyMax($menuArray) {
 function civicrm_civicrm_navigationMenu(&$params) {
 
   //  Get the maximum key of $params
-  $maxKey = getMenuKeyMax($params);
+  $maxKey = _getMenuKeyMax($params);
 
   $params[$maxKey+1] = array(
     'attributes' => array(
