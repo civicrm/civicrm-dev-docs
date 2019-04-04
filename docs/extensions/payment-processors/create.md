@@ -85,17 +85,7 @@ It should have this basic template.
 ```php
 <?php
 
-require_once 'CRM/Core/Payment.php';
-
 class edu_ucmerced_payment_ucmpaymentcollection extends CRM_Core_Payment {
-  /**
-   * We only need one instance of this object. So we use the singleton
-   * pattern and cache the instance in this variable
-   *
-   * @var object
-   * @static
-   */
-  static private $_singleton = null;
 
   /**
    * mode of operation: live or test
@@ -116,23 +106,6 @@ class edu_ucmerced_payment_ucmpaymentcollection extends CRM_Core_Payment {
     $this->_mode             = $mode;
     $this->_paymentProcessor = $paymentProcessor;
     $this->_processorName    = ts('UC Merced Payment Collection');
-  }
-
-  /**
-   * singleton function used to manage this object
-   *
-   * @param string $mode the mode of operation: live or test
-   *
-   * @return object
-   * @static
-   *
-   */
-  static function &singleton( $mode, &$paymentProcessor ) {
-      $processorName = $paymentProcessor['name'];
-      if (self::$_singleton[$processorName] === null ) {
-          self::$_singleton[$processorName] = new edu_ucmerced_payment_ucmpaymentcollection( $mode, $paymentProcessor );
-      }
-      return self::$_singleton[$processorName];
   }
 
   /**
@@ -158,10 +131,6 @@ class edu_ucmerced_payment_ucmpaymentcollection extends CRM_Core_Payment {
     }
   }
 
-  function doDirectPayment(&$params) {
-    CRM_Core_Error::fatal(ts('This function is not implemented'));
-  }
-
   /**
    * Sets appropriate parameters for checking out to UCM Payment Collection
    *
@@ -171,7 +140,7 @@ class edu_ucmerced_payment_ucmpaymentcollection extends CRM_Core_Payment {
    * @access public
    *
    */
-  function doTransferCheckout( &$params, $component ) {
+  function doPayment(&$params, $component) {
 
   }
 }
@@ -197,17 +166,6 @@ function __construct( $mode, &$paymentProcessor ) {
 }
 ```
 
-This method should call your class name
-
-```php
-static function &singleton( $mode, &$paymentProcessor ) {
-    $processorName = $paymentProcessor['name'];
-    if (self::$_singleton[$processorName] === null ) {
-        self::$_singleton[$processorName] = new edu_ucmerced_payment_ucmpaymentcollection( $mode, $paymentProcessor );
-    }
-    return self::$_singleton[$processorName];
-}
-```
 
 You need to process the data given to you in the doTransferCheckout()
 method. Here is an example of how it's done in this processor
@@ -216,7 +174,7 @@ method. Here is an example of how it's done in this processor
 **UCMPaymentCollection.php-doTransferCheckout**
 
 ```php
-function doTransferCheckout( &$params, $component ) {
+function doPayment( &$params, $component ) {
     // Start building our paramaters.
     // We get this from the user_name field even though in our info.xml file we specified it was called "Purchase Item ID"
     $UCMPaymentCollectionParams['purchaseItemId'] = $this->_paymentProcessor['user_name'];
@@ -314,8 +272,6 @@ amount of changes needed.
 
 ```php
 <?php
-
-require_once 'CRM/Core/Payment/BaseIPN.php';
 
 class edu_ucmerced_payment_ucmpaymentcollection_UCMPaymentCollectionIPN extends CRM_Core_Payment_BaseIPN {
 
