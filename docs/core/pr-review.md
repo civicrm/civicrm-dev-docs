@@ -64,8 +64,8 @@ Our test server automatically creates a dedicated CiviCRM installation for every
 1. Go to: "Show all checks" > "Details" > "Console Output" > "Full Log"
 1. Search in page for `CMS_URL`
 1. The first result should bring you to a URL which points to an installation for the build of this PR.
-1. Click on the URL to go to the built site and log in with username = `pradmin` and password = `pradmin1234`
-
+1. Click on the URL to go to the built site 
+1. To get login credentials click on "test sites" link from Civibot's (Standard links) comment on the PR
 ### Reviewing locally
 
 For more complicated PRs it is sometimes helpful or necessary to manually test them within a local development installation.
