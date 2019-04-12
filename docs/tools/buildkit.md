@@ -75,12 +75,14 @@ You may install buildkit in other environments. The main pre-requisites are:
 
 * Linux or OS X
 * Git
-* PHP 7.0+ (Extensions: `bcmath curl gd gettext imap intl imagick json mbstring mcrypt openssl pdo_mysql phar posix soap zip`)
-* NodeJS (v8 recommended)
+* PHP 5.6+ (7.2+ recommended), including the following extensions: `bcmath curl gd gettext imap intl imagick json mbstring mcrypt openssl pdo_mysql phar posix soap zip`
+* NodeJS 8+
 * NPM
-* Recommended (_for [amp](https://github.com/totten/amp) and [civibuild](/tools/civibuild.md)_)
-    * Apache 2.2 or 2.4 (Modules: `mod_rewrite`. On SUSE, possibly `mod_access_compat`. This list may not be exhaustive.)
-    * MySQL 5.6+ (client and server)
+
+[amp](https://github.com/totten/amp) and [civibuild](/tools/civibuild.md) also require:
+
+* Apache 2.2 or 2.4, including the `mod_rewrite` module and, on SUSE, possibly `mod_access_compat` (This list may not be exhaustive.)
+* MySQL 5.5+ (5.6+ recommended), including both client and server
 
 All pre-requisites must support command-line access using the standard command names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments, you may need to enable these commands by configuring `PATH` -- this is especially true for MAMP, XAMPP, and other downloaded packages. (See, e.g., [Setup Command-Line PHP](/standards/php.md).)
 
