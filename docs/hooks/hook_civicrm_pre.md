@@ -41,6 +41,7 @@ changing between the old and new data.
     -   'Batch'
     -   'Campaign' (from 4.6)
     -   'Case'
+    -   'CaseContact' (from 5.14.0)
     -   'CaseType'
     -   'Contribution'
     -   'ContributionPage'
