@@ -16,7 +16,7 @@ don't want to store this in the database.
 
 ## Parameters
 
--   &$disply_name - the current display name, you can change the
+-   &$display_name - the current display name, you can change the
     display name by changing the contents of this parameter
 -   $contactId - Contact ID
 -   $objContact - The contact BAO
