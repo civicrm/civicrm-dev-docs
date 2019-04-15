@@ -38,9 +38,10 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
     -   'ActionLog'
     -   'Address'
     -   'Batch'
-    -   'Case'
-    -   'CaseType'
     -   'Campaign' (from 4.6)
+    -   'Case'
+    -   'CaseContact' (from 5.14.0)
+    -   'CaseType'
     -   'Contribution'
     -   'ContributionRecur'
     -   'CustomField'
