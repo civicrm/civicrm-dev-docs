@@ -73,7 +73,7 @@ For new object-oriented code:
 1. For DAO properties, use underscores. (These correspond to the DB schema - which uses underscores.)
 2. For everything else, use camelCase. [See Forum Discussion](http://forum.civicrm.org/index.php/topic,35519.0.html)
 
-**Rational for Change**
+**Rationale for Change**
 
 The codebase includes many examples of both "lowerCamelCase" and "snake_case" for function and variable names. Changing these can be quite difficult and can break interfaces consumed by downstream.
 
@@ -95,7 +95,7 @@ Classes and interfaces in Civi take one of two forms:
 * For the `CRM_` namespace, follow the PEAR convention (using underscores for pseudo-namespaces; e.g. `CRM_Foo_BarWhiz`).
 * For the `Civi\` namespace, follow the PHP 5.3 convention (using backslashes for namespaces; e.g. `Civi\Foo\BarWhiz`).
 
-**Rational for Change**
+**Rationale for Change**
 
 Changing these can be quite difficult and can break interfaces consumed by downstream. For more discussion of `CRM_` and `Civi\`, see [The Codebase](/framework/filesystem.md).
 
