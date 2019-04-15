@@ -29,7 +29,7 @@ The `CRM_Utils_Cache_Interface` class lays out the methods for saving and retrie
 * Flush the entire cache
 
     ```php
-    Civi::cache()->flush();
+    Civi::cache()->clear();
     ```
 
 !!! tip "PSR-16 Compliance (v5.4+)"
