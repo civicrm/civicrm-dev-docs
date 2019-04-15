@@ -176,7 +176,7 @@ In `myextension.php`:
  */
 function myextension_civicrm_buildAsset($asset, $params, &$mimetype, &$content) {
   // Check for the asset of interest
-  if ($asset !== 'mycss') return;
+  if ($asset !== 'mycss.css') return;
 
   // Find the path to our template css file
   $path = \Civi::resources()->getPath('org.example.myextension', 'css/my_css_template.css');
@@ -200,12 +200,12 @@ function myextension_civicrm_buildAsset($asset, $params, &$mimetype, &$content) 
 
 Check it is functioning correctly:
 ```
-$ cv ev '$x = \Civi::service("asset_builder")->render("mycss"); echo $x["content"];'
+$ cv ev '$x = \Civi::service("asset_builder")->render("mycss.css"); echo $x["content"];'
 ```
 
 Get the generated URL:
 ```
-$ cv ev 'return \Civi::service("asset_builder")->getUrl("mycss");'
+$ cv ev 'return \Civi::service("asset_builder")->getUrl("mycss.css");'
 ```
 
 Now we can use our newly defined asset in place of a static css file in `myextension.php`:
@@ -220,8 +220,8 @@ function myextension_civicrm_coreResourceList(&$list, $region) {
    // CRM_Core_Resources::singleton()->addStyleFile('org.example.myextension', 'css/my_css.css');
    // replace that with the following:
 
-   // use the asset_builder service to get the url of an asset labeled 'mycss'
-   $url = \Civi::service('asset_builder')->getUrl('mycss');
+   // use the asset_builder service to get the url of an asset labeled 'mycss.css'
+   $url = \Civi::service('asset_builder')->getUrl('mycss.css');
 
    // load the processed style on the page
    CRM_Core_Resources::singleton()->addStyleUrl($url);
