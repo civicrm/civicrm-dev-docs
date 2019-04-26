@@ -153,3 +153,54 @@ See also: [pull request scope](/tools/git.md#pr-scope)
 Categorization is useful for finding issues, and it also determines how issues appear in the release notes.
 
 Use the Labels field to apply any relevant labels to your issue.
+
+## Guidelines for triaging issues {:#triage}
+
+*This is the outcome of a meeting on 'how we do triage now we are in gitlab'*
+
+### Identifying bugs - aka triage
+
+Triage is how we deal with incoming bug reports &
+
+    * Categorise them
+
+    * Escalate any new critical bugs or regressions
+
+    * Provide first level support and / or ask additional questions / add additional information
+
+
+Triage needs to be a fairly quick task in most instances & then depending on the extent to which the original submitter engages some tasks might not get much more attention.
+
+Triage is done from this screen https://lab.civicrm.org/groups/dev/-/boards and in general the goal of 'product-maintenance' is to keep the first three columns clear - ie. triage, regressions & critical bugs.
+
+### Categorisation
+
+During triage the following labels may be added:
+
+_Critical_
+If the bug is a critical bug this label will be added. UPDATE- we don't really add this any more since by definition if a bug has been present for the entire 5.x series it's not critical. It would need to be something really big to get this
+
+_Regression_
+If the bug is a recent regression this label will be added
+
+_type: proposal | type:request_
+This is intended to identify whether the submitter is proposing to do something (if agreed it would be acceptable) or requesting that a change be made for them
+
+_needs:Concept approval| Concept approved_
+In most cases the Concept needs approval label will be added in triage as the triager will normally only spend a brief time on each issue and may not be the correct person to assess the proposal. The triager will ping people from the issue or on chat who might be able to comment and / or approve if they have an idea as to who that might be.
+
+_sig:accessibilty|sig:bug|sig:compatibility_
+If the bug is significant due to it relating to an area we are trying to focus on (currently bugs, compatibility with Wordpress, Drupal8, and accessibility html compliance) then a label will be added.
+
+_triaged_
+Indicates the issue has been triaged & removes it from the triage queue
+
+### Escalate any new critical bugs or regressions
+
+Part of the triage process is figuring out if a bug is critical or a regression. Where they are they will be tagged and relevant people will be pinged on chat and from the issue.
+
+### Provide first level support and / or ask additional questions / add additional information
+
+The triager should ask questions if the issue is unclear or it is not clear how to replicate. Optionally the triager can try to replicate the bug (which has the benefit of testing the rc). The triager does not need to wait for responses before triaging the issue but if there is any possibility the bug is critical or a regression then they should add those tags so the issue does not lose visibility once triaged (they can be removed later after analysis)
+
+
