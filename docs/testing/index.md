@@ -101,6 +101,7 @@ $ cv vars:show
 This should display a number of properties, including:
 
 * Credentials for an empty test database (`TEST_DB_DSN`)
+  * (The database user requires SUPER privilege in order to set innodb_flush_log_at_trx_commit.)
 * Credentials for an administrative CMS user (`ADMIN_USER`, `ADMIN_PASS`, `ADMIN_EMAIL`)
 * Credentials for a non-administrative CMS user (`DEMO_USER`, `DEMO_PASS`, `DEMO_EMAIL`)
 
