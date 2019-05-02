@@ -14,7 +14,7 @@ Developers from around the globe use the following systems to communicate and co
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for issue tracking community-based project management.
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
--   [Jira](https://issues.civicrm.org/jira) - _(deprecated) Issue tracking_
+-   [Jira](https://issues.civicrm.org) - _(deprecated) Issue tracking_
 
 !!! tip "Before you begin"
 
