@@ -8,12 +8,6 @@ search.
 
 ## Notes
 
-Depending on your version of CiviCRM & the search you are overriding you may need
-to hack the template file to be able to show the columns. As of writing the latest
-4.7 did not require it due to [this patch](https://github.com/aydun/civicrm-core/commit/4fb5fcf3b17af6c9f5bf49ecc69902c5b0b78c24). If you are wishing to update
-another search results you should contribute a similar patch to core for those
-results before proceeding.
-
 The result files are
 `CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl`. 
 
@@ -29,7 +23,7 @@ column values and therefore appear to be sorting incorrectly.
 ## Parameters
 
 -   $objectName - the object for this search - activity, campaign,
-    case, contact, contribution, event, grant, membership, and pledge
+    case, contact, contribution, event, grant, membership, relationship and pledge
     are supported.
 -   $headers - array (reference) - the list of column headers, an
     associative array with keys: ( name, sort, order )
@@ -74,8 +68,6 @@ column values and therefore appear to be sorting incorrectly.
                 $values[$id]['source'] = $result['contact_source'];
                 $values[$id]['job_title'] = $result['job_title'];
             }
-
-            // remember to modify CRM/Contact/Form/Selector.tpl to see the changes
         }
 
         if ( $objectName == 'Contribute' ) {
