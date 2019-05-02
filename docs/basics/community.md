@@ -51,7 +51,7 @@ Optional lists you may also want to register for:
 
 ## Falling out of use
 
--   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - still used for some older documentation
+-   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived, but still useful for some older documentation*
 -   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
         *but now mostly replaced by Mattermost*
 
