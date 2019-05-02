@@ -54,7 +54,9 @@ Optional lists you may also want to register for:
 -   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - still used for some older documentation
 -   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
         *but now mostly replaced by Mattermost*
--   [Forum](https://forum.civicrm.org/) - *now mostly replaced by
-        StackExchange*
+
+## Out of use
+
+-   [Forum](https://forum.civicrm.org/) - *archived*
 
 The developer community is full of friendly people, eager to welcome newcomers. Mattermost and in-person events are great starting points if you're looking to get involved!
