@@ -55,7 +55,7 @@ Optional lists you may also want to register for:
 
 -   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived in November 2017, but still useful for some older documentation. Developer and admin docs have been moved to [MkDocs](https://docs.civicrm.org/). Other documentation should be moved to their respective [Gitlab wiki spaces](https://lab.civicrm.org/explore/groups).*
 
--   [Forum](https://forum.civicrm.org/) - *Archived*
+-   [Forum](https://forum.civicrm.org/) - *Archived on November 25, 2017*
 
 -   [Jira](https://issues.civicrm.org) - *Archived on December 27, 2018. You can still access old (read-only) JIRA issues if you know their issue number and you can also browse the archived issues for a specific project.*
 
