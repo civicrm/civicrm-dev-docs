@@ -26,8 +26,6 @@ Developers from around the globe use the following systems to communicate and co
         The following communities provide a single sign-on once your CiviCRM.org account is approved.
 
          -   GitLab
-         -   Jira
-         -   CiviCRM Wiki - *account can also be requested via the infrastructure channel on Mattermost*
 
     2.  [Mattermost](https://chat.civicrm.org/signup_email) - Create an account and join a team on this open-source version of Slack.
 
