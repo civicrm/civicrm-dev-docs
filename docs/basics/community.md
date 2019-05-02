@@ -56,7 +56,7 @@ Optional lists you may also want to register for:
 -   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived, but still useful for some older documentation*
 -   [Forum](https://forum.civicrm.org/) - *Archived*
 
--   [Jira](https://issues.civicrm.org) - *Archived, issue tracker*
+-   [Jira](https://issues.civicrm.org) - *Archived on December 27, 2018. You can still access old (read-only) JIRA issues if you know their issue number and you can also browse the archived issues for a specific project.*
 
 
 The developer community is full of friendly people, eager to welcome newcomers. Mattermost and in-person events are great starting points if you're looking to get involved!
