@@ -14,7 +14,6 @@ Developers from around the globe use the following systems to communicate and co
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for issue tracking community-based project management.
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
--   [Jira](https://issues.civicrm.org) - _(deprecated) Issue tracking_
 
 !!! tip "Before you begin"
 
@@ -55,6 +54,9 @@ Optional lists you may also want to register for:
 ## Out of use
 
 -   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived, but still useful for some older documentation*
--   [Forum](https://forum.civicrm.org/) - *archived*
+-   [Forum](https://forum.civicrm.org/) - *Archived*
+
+-   [Jira](https://issues.civicrm.org) - *Archived, issue tracker*
+
 
 The developer community is full of friendly people, eager to welcome newcomers. Mattermost and in-person events are great starting points if you're looking to get involved!
