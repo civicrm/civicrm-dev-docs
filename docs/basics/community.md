@@ -42,11 +42,11 @@ Developers from around the globe use the following systems to communicate and co
 
 Optional lists you may also want to register for:
 
-1.  [CiviCRM Groups](https://lists.civicrm.org/lists/firstpasswd/)  (listservs)
-
-2.  [Newsletters](https://civicrm.org/civicrm/mailing/subscribe) (after your CiviCRM account is active)
+-   [Newsletters](https://civicrm.org/civicrm/mailing/subscribe) (after your CiviCRM account is active)
 
 ## Falling out of use
+
+-   [CiviCRM Groups](https://lists.civicrm.org/lists/firstpasswd/) - (listservs)   *but now mostly replaced by Mattermost*
 
 -   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
         *but now mostly replaced by Mattermost*
@@ -54,6 +54,7 @@ Optional lists you may also want to register for:
 ## Out of use
 
 -   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived in November 2017, but still useful for some older documentation. Developer and admin docs have been moved to [MkDocs](https://docs.civicrm.org/). Other documentation should be moved to their respective [Gitlab wiki spaces](https://lab.civicrm.org/explore/groups).*
+
 -   [Forum](https://forum.civicrm.org/) - *Archived*
 
 -   [Jira](https://issues.civicrm.org) - *Archived on December 27, 2018. You can still access old (read-only) JIRA issues if you know their issue number and you can also browse the archived issues for a specific project.*
