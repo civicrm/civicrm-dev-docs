@@ -219,7 +219,7 @@ cv api contact.get first_name=Alice last_name=Roberts
 
 ## API Security
 
-API has security mesasures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](/security/permissions.md).
+API has security measures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](/security/permissions.md).
 
 ## API Lookups by Username
 
