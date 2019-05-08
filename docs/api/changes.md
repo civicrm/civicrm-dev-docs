@@ -4,6 +4,10 @@ This page lists changes to CiviCRM core which affect the ways in which developer
 
 ## APIv3: Framework
 
+### 5.12 Support for string 'NULL' as an accepted value for custom data fields
+
+The API has now been changed such that when setting the value of a custom field using the API if you pass the string 'NULL' then it will set the field value to be the String NULL not the database NULL. If you want the value to be truely NULL then you need to either not pass in the value or use 'null' instead
+
 ### 5.8 Support for Extension Examples in the API Explorer.
 
 From 5.8 it is now possible for Extension authors to store examples for their API entities in a folder `<extensiondir>/api/v3/examples/<entity>/<file>` in the same structure as is in core. They will now be displayed in the API Explorer just like the core examples.
