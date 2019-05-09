@@ -10,7 +10,7 @@ Developers from around the globe use the following systems to communicate and co
     -   [Events](https://civicrm.org/events) - meetups, conferences, camps, sprints, webinars
     -   [Job Board](https://civicrm.org/jobs) - Post and find paid work
 -   [Documentation](https://docs.civicrm.org)
--   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall.
+-   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall. New developers can check out the [dev-newcomers](https://chat.civicrm.org/civicrm/channels/dev-newcomers) channel for discussion on getting started with developing for CiviCRM.
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for issue tracking community-based project management.
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
