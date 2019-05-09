@@ -48,7 +48,6 @@ Optional lists you may also want to register for:
 
 -   [CiviCRM Groups](https://lists.civicrm.org/lists/firstpasswd/) - (listservs)   *but now mostly replaced by Mattermost*
 
-
 ## Out of use
 
 -   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net *No longer officially supported by the CiviCRM organization, and functionally replaced by Mattermost*
