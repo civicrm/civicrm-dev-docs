@@ -51,7 +51,7 @@ Optional lists you may also want to register for:
 
 ## Out of use
 
--   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net *No longer officially supported by CiviCRM, and essentially replaced by Mattermost*
+-   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net *No longer officially supported by the CiviCRM organization, and essentially replaced by Mattermost*
 
 -   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived in November 2017, but still useful for some older documentation. Developer and admin docs have been moved to [MkDocs](https://docs.civicrm.org/). Other documentation should be moved to their respective [Gitlab wiki spaces](https://lab.civicrm.org/explore/groups).*
 
