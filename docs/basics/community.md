@@ -10,11 +10,10 @@ Developers from around the globe use the following systems to communicate and co
     -   [Events](https://civicrm.org/events) - meetups, conferences, camps, sprints, webinars
     -   [Job Board](https://civicrm.org/jobs) - Post and find paid work
 -   [Documentation](https://docs.civicrm.org)
--   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall.
+-   [Mattermost](https://chat.civicrm.org) offers live discussion in chat rooms and direct messages. It's a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall. New developers can check out the [dev-newcomers](https://chat.civicrm.org/civicrm/channels/dev-newcomers) channel for discussion on getting started with developing for CiviCRM.
 -   [Stack Exchange](http://civicrm.stackexchange.com/) - Question & answer site covering a range of topics relevant to developers and users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.
 -   [GitLab](https://lab.civicrm.org) - CiviCRM's tool for issue tracking community-based project management.
 -   [GitHub](https://github.com/civicrm) - Hosted git repositories for the entire CiviCRM codebase, as well as many smaller tools focused on developing CiviCRM.
--   [Jira](https://issues.civicrm.org/jira) - _(deprecated) Issue tracking_
 
 !!! tip "Before you begin"
 
@@ -26,8 +25,6 @@ Developers from around the globe use the following systems to communicate and co
         The following communities provide a single sign-on once your CiviCRM.org account is approved.
 
          -   GitLab
-         -   Jira
-         -   CiviCRM Wiki - *account can also be requested via the infrastructure channel on Mattermost*
 
     2.  [Mattermost](https://chat.civicrm.org/signup_email) - Create an account and join a team on this open-source version of Slack.
 
@@ -45,16 +42,21 @@ Developers from around the globe use the following systems to communicate and co
 
 Optional lists you may also want to register for:
 
-1.  [CiviCRM Groups](https://lists.civicrm.org/lists/firstpasswd/)  (listservs)
-
-2.  [Newsletters](https://civicrm.org/civicrm/mailing/subscribe) (after your CiviCRM account is active)
+-   [Newsletters](https://civicrm.org/civicrm/mailing/subscribe) (after your CiviCRM account is active)
 
 ## Falling out of use
 
--   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - still used for some older documentation
--   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net
-        *but now mostly replaced by Mattermost*
--   [Forum](https://forum.civicrm.org/) - *now mostly replaced by
-        StackExchange*
+-   [CiviCRM Groups](https://lists.civicrm.org/lists/firstpasswd/) - (listservs)   *but now mostly replaced by Mattermost*
+
+## Out of use
+
+-   [IRC](http://irc.civicrm.org/) - #civicrm on irc.freenode.net *No longer officially supported by the CiviCRM organization, and functionally replaced by Mattermost*
+
+-   [Wiki](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+Documentation) - *Archived in November 2017, but still useful for some older documentation. Developer and admin docs have been moved to [MkDocs](https://docs.civicrm.org/). Other documentation should be moved to their respective [Gitlab wiki spaces](https://lab.civicrm.org/explore/groups).*
+
+-   [Forum](https://forum.civicrm.org/) - *Archived on November 25, 2017*
+
+-   [Jira](https://issues.civicrm.org) - *Archived on December 27, 2018. You can still access old (read-only) JIRA issues if you know their issue number and you can also browse the archived issues for a specific project.*
+
 
 The developer community is full of friendly people, eager to welcome newcomers. Mattermost and in-person events are great starting points if you're looking to get involved!
