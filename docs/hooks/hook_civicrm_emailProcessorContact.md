@@ -2,8 +2,8 @@
 
 ## Summary
 
-This hook is called by the Email Processor when deciding to which
-contact and activity will be attached.
+This hook is called by the Email Processor when deciding which
+contact to create an activitity for recording an inbound email.
 
 ## Notes
 
@@ -12,27 +12,18 @@ contact or decide whether it should create contacts.
 
 ## Definition
 
-    hook_civicrm_emailProcessorContact( $email, $contactID, &$result )
+    hook_civicrm_emailProcessorContact($email, $contactID, &$result)
 
 ## Parameters
 
--   @param string $email     the email address
--   @param int      $contactID the contactID that matches this email
-    address, IF it exists
--   @param array  $result (reference) has two fields
--                                                contactID - the new (or
-    same) contactID
--                                                action - 3 possible
-    values:
--
-    CRM_Utils_Mail_Incoming::EMAILPROCESSOR_CREATE_INDIVIDUAL -
-    create a new contact record
--                                                               CRM_Utils_Mail_Incoming::EMAILPROCESSOR_OVERRIDE
-    - use the new contactID
--
-    CRM_Utils_Mail_Incoming::EMAILPROCESSOR_IGNORE   - skip this
-    email address\
-     \
+-   @param string $email - the email address
+-   @param int $contactID - the contactID that matches this email address, IF it exists
+-   @param array  $result (reference) has two fields:
+    - contactID - the new (or same) contactID
+    - action - 3 possible values:
+      - `CRM_Utils_Mail_Incoming::EMAILPROCESSOR_CREATE_INDIVIDUAL` - create a new contact record
+      - `CRM_Utils_Mail_Incoming::EMAILPROCESSOR_OVERRIDE` - use the new contactID
+      - `CRM_Utils_Mail_Incoming::EMAILPROCESSOR_IGNORE` - skip this email address
 
 ## Returns
 
@@ -45,7 +36,7 @@ This hook was first available in CiviCRM 4.1.0
 ## Example
 
 ```php
-function civitest_civicrm_emailProcessorContact( $email, $contactID, &$result ) {
+function civitest_civicrm_emailProcessorContact($email, $contactID, &$result) {
   require_once 'CRM/Utils/Mail/Incoming.php';
 
   // first split the email into name and domain
