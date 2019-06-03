@@ -1,6 +1,6 @@
 # Issue-tracking systems
 
-As of 2018 CiviCRM uses three different system for tracking and managing issues (aka tickets). This page offers a brief summary of the systems and helps developers understand when and how to use them.
+As of 2018, CiviCRM uses three different systems for tracking and managing issues (aka tickets) - GitLab, GitHub and Jira. This page offers a brief summary of the systems and helps developers understand when and how to use them.
 
 
 ## Systems
