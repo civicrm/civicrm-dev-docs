@@ -248,6 +248,7 @@ pages:
     - Templates: framework/templates/index.md
     - Customizing Templates: framework/templates/customizing.md
     - Extending Smarty: framework/templates/extending-smarty.md
+  - Theme Reference: framework/theme.md
   - Token Reference: framework/token.md
   - UI Reference: framework/ui.md
   - Upgrade Reference: framework/upgrade.md
