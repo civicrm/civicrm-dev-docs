@@ -117,12 +117,12 @@ To become an extensions reviewer, please take the following steps:
 
 1. Set up accounts on these sites *(if you need help, reach out through the [community resources](/basics/community.md))*
     1.  [civicrm.org](https://civicrm.org/user/)
-    1.  [issues.civicrm.org](https://issues.civicrm.org/jira/login.jsp) - log in using your civicrm.org account
-1.  Contact the [CiviCRM Extension Ecosystem Working Group](https://civicrm.org/working-groups/extension-ecosystem) and ask to become an extension reviewer. You'll be notified when the necessary administrative steps have been completed.
+    1.  [lab.civicrm.org](https://lab.civicrm.org/) - log in using your civicrm.org account
+1.  Visit the [CiviCRM Extensions Directory project](https://lab.civicrm.org/extensions/extensions-directory) and click the "Request Access" link. You'll be notified when the necessary administrative steps have been completed.
 
 ### Selecting an Extension for Review
 
-1. Choose one of these [unassigned extension review requests](https://issues.civicrm.org/jira/issues/?filter=28711).
+1. Choose one of these [unassigned extension review requests](https://lab.civicrm.org/extensions/extensions-directory/issues?scope=all&utf8=%E2%9C%93&state=opened&assignee_id=None&label_name[]=Extension%20Review%20Request).
 
     Consider the following criteria while choosing:
 
@@ -134,16 +134,19 @@ To become an extensions reviewer, please take the following steps:
 1.  To claim a review, assign the relevant "Extension Review Request" issue to yourself so that others know you're beginning the review. When you are ready to begin the review, update the issue status to "In Progress".
 
 !!! tip
-    You can also browse [*all* extension  review requests](https://issues.civicrm.org/jira/issues/?filter=28710), including assigned ones.
+    You can also browse [*all* extension  review requests](https://lab.civicrm.org/extensions/extensions-directory/issues?scope=all&utf8=%E2%9C%93&label_name[]=Extension%20Review%20Request), including assigned ones.
 
 ### Conducting a Review
 
 Reviewers should follow these steps to conduct an extension review for automated distribution:
 
-1. Review the extension on at least one [supported CMS](https://docs.civicrm.org/user/en/latest/website-integration/choosing-your-cms/). (You don't need to test that it works on every CMS.)
+1. You will be reviewing the extension on at least one [supported CMS](https://docs.civicrm.org/user/en/latest/website-integration/choosing-your-cms/). (You don't need to test that it works on every CMS.) To that end, ensure you have such a site available, on which you can be free to experiment with untested extensions like the one you're reviewing.
 
     !!! tip
         Use [Buildkit](https://github.com/civicrm/civicrm-buildkit) to create the CMS environment on-demand.
+        
+    !!! tip
+        By definition, the extension you're reviewing is unreviewed. You probably do not want to install it on a live site.
 
 1. Download and install the most recent release of the extension.
 
@@ -167,7 +170,7 @@ Reviewers should follow these steps to conduct an extension review for automated
 
     * Attach or link to your review document in the "Extension Review Request" issue that you assigned to yourself.
 
-    * Here is an [example review document](https://issues.civicrm.org/jira/secure/attachment/57472/ExtensionreviewUnsubscribeEmailDataEntryScreenEXT-27.odt) &mdash; *but don't copy-paste from this example document (use the criteria table below for the most up-to-date criteria).*
+    * Here is an [example review document](https://docs.google.com/spreadsheets/d/1-dJmHBYjZDPMB3F69axUH6OCjWgvbv0zzKkUjDL1YRM/edit#gid=0) &mdash; *but don't copy-paste from this example document (use the criteria table below for the most up-to-date criteria).*
 
 
 1. Use all of the information gained in the review to decide whether to approve the extension.
@@ -241,4 +244,4 @@ Based on a project's maturity and stewardship, it may be eligible to use resourc
 | Marketing	| The project is included in official marketing literature about CiviCRM	| "Stable", "Official" projects
 | QA	| The `civicrm.org` build-bot runs extension tests for PRs (own repo)	| "Official" projects (regardless of stability)
 | QA	| The `civicrm.org` build-bot runs extension tests for PRs (civicrm-core repo)	| "Official" projects ("Stable" or "Incubation")
-| Support	| The project may have its own space or component on "issues.civicrm.org" (JIRA)	| "Official" projects (regardless of stability)
+| Support	| The project may have its own space or component on "lab.civicrm.org"	| "Official" projects (regardless of stability)
