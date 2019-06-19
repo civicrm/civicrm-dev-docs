@@ -48,9 +48,10 @@ This Hook is called when building a list of available themes for use within Civi
      */
 
     function civitest_civicrm_themes( &$themes ) {
-      $themes[] = [
+      $themes['civielection'] = [
         'name' => 'civielection',
         'title' => 'civielection theme',
+        'ext' => 'au.org.greens.civielection',
         'prefix' => NULL,
         'url_callback' => '\\Civi\\Core\\Themes\\Resolvers::simple',
         'search_order' => [
