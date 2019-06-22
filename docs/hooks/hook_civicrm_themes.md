@@ -46,19 +46,32 @@ This Hook is called when building a list of available themes for use within Civi
      /*
      * A theme is a set of CSS files which are loaded on CiviCRM pages.
      */
-
     function civitest_civicrm_themes( &$themes ) {
       $themes['civielection'] = [
-        'name' => 'civielection',
         'title' => 'civielection theme',
         'ext' => 'au.org.greens.civielection',
-        'prefix' => NULL,
+      ];
+    }
+```
+
+a more detailed example
+
+```php
+     /*
+     * A theme is a set of CSS files which are loaded on CiviCRM pages.
+     */
+    function civitest_civicrm_themes( &$themes ) {
+      $themes['civielection'] = [
+        'title' => 'civielection theme',
+        'ext' => 'au.org.greens.civielection',
+        'name' => 'civielection',
         'url_callback' => '\\Civi\\Core\\Themes\\Resolvers::simple',
         'search_order' => [
           0 => 'civielection',
-          1 => '_fallback_',
+          1 => Civi\Core\Themes::FALLBACK,
         ],
-        'excludes' => [],
+        'prefix' => 'election',
+        'excludes' => ['bootstrap.css'],
       ];
     }
 ```
