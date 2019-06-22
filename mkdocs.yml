@@ -185,6 +185,7 @@ pages:
     - hook_civicrm_export: hooks/hook_civicrm_export.md
     - hook_civicrm_fileSearches: hooks/hook_civicrm_fileSearches.md
     - hook_civicrm_geocoderFormat: hooks/hook_civicrm_geocoderFormat.md
+    - hook_civicrm_getAssetUrl: hooks/hook_civicrm_getAssetUrl.md
     - hook_civicrm_import: hooks/hook_civicrm_import.md
     - <del>hook_civicrm_optionValues</del>: hooks/hook_civicrm_optionValues.md
     - hook_civicrm_postIPNProcess: hooks/hook_civicrm_postIPNProcess.md
