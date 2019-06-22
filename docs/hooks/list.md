@@ -95,7 +95,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_alterMailParams](/hooks/hook_civicrm_alterMailParams.md)** - called when an email is about to be sent by CiviCRM.
 * **[hook_civicrm_alterMailingRecipients](/hooks/hook_civicrm_alterMailingRecipients.md)** - called to allow the user to alter the mailing recipients after they have been constructed.
 * **[hook_civicrm_emailProcessor](/hooks/hook_civicrm_emailProcessor.md)** - called after *each* email has been processed by the script `bin/EmailProcessor.php`.
-* **[hook_civicrm_emailProcessorContact](/hooks/hook_civicrm_emailProcessorContact.md)** - called by the Email Processor when deciding to which contact and activity will be attached.
+* **[hook_civicrm_emailProcessorContact](/hooks/hook_civicrm_emailProcessorContact.md)** - called by the Email Processor when deciding which contact to create an activitity for recording an inbound email.
 * **[hook_civicrm_mailingGroups](/hooks/hook_civicrm_mailingGroups.md)** - called when composing a mailing allowing you to include or exclude other groups as needed.
 * **[hook_civicrm_postEmailSend](/hooks/hook_civicrm_postEmailSend.md)** - called when an email has been successfully sent by CiviCRM, but not on an error.
 * **[hook_civicrm_postMailing](/hooks/hook_civicrm_postMailing.md)** - called at the successful completion of a bulk mailing done through CiviMail.
@@ -149,7 +149,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_alterSettingsFolders](/hooks/hook_civicrm_alterSettingsFolders.md)** - allows modules and extensions to scan for settings in additional folders.
 * **[hook_civicrm_alterSettingsMetaData](/hooks/hook_civicrm_alterSettingsMetaData.md)** - called when Settings have been loaded from the xml. It is an opportunity for hooks to alter the data.
 * **[hook_civicrm_angularModules](/hooks/hook_civicrm_angularModules.md)** - generates a list of AngularJS modules and allows you to register additional AngularJS modules. It is currently **experimental**.
-* **[hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md)** - allows you to add, override, or remove methods to be called before and after api calls &mdash; and to modify either the parameters or the result of the call.
+* **[hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md)** - allows you to add, override, or remove methods to be called before and after API calls &mdash; and to modify either the parameters or the result of the call.
 * **[hook_civicrm_buildAsset](/hooks/hook_civicrm_buildAsset.md)** - fires whenever the system builds a semi-dynamic asset.
 * **[hook_civicrm_buildStateProvinceForCountry](/hooks/hook_civicrm_buildStateProvinceForCountry.md)** - called during the ajax callback that is used to build the options that display in the State/Province select widget for a specific country, and can be used to alter the list of State/Province options for particular countries.
 * **[hook_civicrm_check](/hooks/hook_civicrm_check.md)** - called by the "System Check" api.
@@ -162,6 +162,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_export](/hooks/hook_civicrm_export.md)** - allows to manipulate or change the output of CSV during export.
 * **[hook_civicrm_fileSearches](/hooks/hook_civicrm_fileSearches.md)** - allows you to add a reference to a file search service (e.g. Solr).
 * **[hook_civicrm_geocoderFormat](/hooks/hook_civicrm_geocoderFormat.md)** - allows you to manipulate the Address object during geocoding, for instance to extract additional fields from the geocoder's returned XML.
+* **[hook_civicrm_getAssetUrl](/hooks/hook_civicrm_getAssetUrl.md)** - called when building a link to a semi-static asset, allowing you to modify the params the asset will be built with.
 * **[hook_civicrm_import](/hooks/hook_civicrm_import.md)** - called after contacts have been imported into the system, and before the temp import table has been destroyed.
 * **[<del>hook_civicrm_optionValues</del>](/hooks/hook_civicrm_optionValues.md)** - deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md).
 * **[hook_civicrm_postIPNProcess](/hooks/hook_civicrm_postIPNProcess.md)** - allows you to do custom processing of IPN Data following CiviCRM processing.
