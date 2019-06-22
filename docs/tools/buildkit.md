@@ -11,7 +11,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ### Ubuntu
 
-If you have a new installation of Ubuntu 12.04 or later, then you can download everything -- buildkit and the system requirements -- with one command. This command will install buildkit to `~/buildkit`:
+If you have a new installation of Ubuntu 12.04 or later, then you can download everything -- buildkit and the system requirements -- with one command. [`curl`](https://curl.haxx.se/) is required to be installed before you can run the command. You can install `curl` with `sudo apt install curl`.  This command will install buildkit to `~/buildkit`:
 
 ```bash
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
