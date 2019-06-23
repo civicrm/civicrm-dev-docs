@@ -29,7 +29,7 @@ column values and therefore appear to be sorting incorrectly.
     associative array with keys: ( name, sort, order )
 -   $rows - array (reference) - the list of values, an associate array
     with fields that are displayed for that component
--   $seletor - array (reference) - the selector object. Allows you
+-   $selector - array (reference) - the selector object. Allows you
     access to the context of the search
 
 ## Returns
