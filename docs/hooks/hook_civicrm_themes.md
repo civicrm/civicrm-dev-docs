@@ -1,8 +1,8 @@
-# hook_civicrm_import
+# hook_civicrm_themes
 
 ## Summary
 
-This Hook is called when building a list of available themes for use within CiviCRM.
+This hook is called when building a list of available themes for use within CiviCRM.
 
 ## Definition
 
@@ -42,6 +42,8 @@ This Hook is called when building a list of available themes for use within Civi
 
 ## Example
 
+A minimal example:
+
 ```php
      /*
      * A theme is a set of CSS files which are loaded on CiviCRM pages.
@@ -54,7 +56,7 @@ This Hook is called when building a list of available themes for use within Civi
     }
 ```
 
-a more detailed example
+A more detailed example
 
 ```php
      /*
