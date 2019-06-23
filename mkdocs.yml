@@ -107,7 +107,7 @@ pages:
     - <del>hook_civicrm_validate</del>: hooks/hook_civicrm_validate.md
     - hook_civicrm_validateForm: hooks/hook_civicrm_validateForm.md
   - GUI Hooks:
-    - hook_civicrm_activeThemes: hooks/hook_civicrm_activeThemes.md
+    - hook_civicrm_activeTheme: hooks/hook_civicrm_activeTheme.md
     - hook_civicrm_alterEntityRefParams: hooks/hook_civicrm_alterEntityRefParams.md
     - hook_civicrm_alterMenu: hooks/hook_civicrm_alterMenu.md
     - hook_civicrm_buildAmount: hooks/hook_civicrm_buildAmount.md
