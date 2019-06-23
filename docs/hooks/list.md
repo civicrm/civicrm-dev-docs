@@ -68,7 +68,7 @@ This is an overview list of all available hooks, listed by category.
 
 ## GUI Hooks
 
-* **[hook_civicrm_activeThemes](/hooks/hook_civicrm_activeThemes.md)** - The activeTheme hook determines which theme is active.
+* **[hook_civicrm_activeTheme](/hooks/hook_civicrm_activeTheme.md)** - The activeTheme hook determines which theme is active.
 * **[hook_civicrm_alterEntityRefParams](/hooks/hook_civicrm_alterEntityRefParams.md)** - called when an `entityRef` field is rendered in a form, which allows you to modify the parameters used to fetch options for this kind of field.
 * **[hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md)** - called when building CiviCRM's list of HTTP routes and should be used when you want to register custom paths or URLS.
 * **[hook_civicrm_buildAmount](/hooks/hook_civicrm_buildAmount.md)** - called when building the amount structure for a Contribution or Event Page, allowing you to modify the set of radio buttons representing amounts for contribution levels and event registration fees.
@@ -85,7 +85,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_searchTasks](/hooks/hook_civicrm_searchTasks.md)** - called to display the list of actions allowed after doing a search, allowing you to inject additional actions or to remove existing actions.
 * **[hook_civicrm_summary](/hooks/hook_civicrm_summary.md)** - called when the contact summary is rendered, allowing you to modify the summary with your own content.
 * **[hook_civicrm_summaryActions](/hooks/hook_civicrm_summaryActions.md)** - allows you to customize the context menu actions on the Contact Summary Page.
-* **[hook_civicrm_themes](/hooks/hook_civicrm_themes.md)** - This Hook is called when building a list of available themes for use within CiviCRM.
+* **[hook_civicrm_themes](/hooks/hook_civicrm_themes.md)** - called when building a list of available themes for use within CiviCRM.
 * **[<del>hook_civicrm_tabs</del>](/hooks/hook_civicrm_tabs.md)** - deprecated in 4.7 in favor of [hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md).
 * **[hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md)** - called when composing the tabs interface used for contacts, contributions and events.
 * **[hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md)** - called when building CiviCRM's menu structure, which is used to render urls in CiviCRM.
