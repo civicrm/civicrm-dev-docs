@@ -63,7 +63,7 @@ If you develop new version(s) of your extension, you can submit additional relea
 The best way to reap the benefits of publishing your extension is to make it as easy as possible for others to install it. With just a few clicks, CiviCRM site administrators can view and install CiviCRM extension releases which meet certain criteria. To be eligible for automated distribution: 
 
 -   The extension must be published in the Extensions Directory.
--   One of the extension's maintainers must [request an extension review](https://lab.civicrm.org/extensions/extensions-directory/issues/new?issue[title]=Request%20review%20for%20[FIXME_COM.FIXME_VENDOR.FIXME_NAME]&issue[description]=/label%20%22Extension%20Review%20Request%22).
+-   One of the extension's maintainers must [request an extension review](https://lab.civicrm.org/extensions/extension-review-requests/issues/new?issue[title]=Request%20review%20for%20[FIXME_COM.FIXME_VENDOR.FIXME_NAME]&issue[description]=Extension%20is%20listed%20in%20the%20directory%20at%20this%20URL:).
 -   The extension manifest must flag the release as "stable."
 -   The extension manifest must flag the release as compatible with CiviCRM version 4.2 or greater.
 -   The release must be CMS-agnostic, and it must install without errors or notices from the Manage Extensions page of a site running a stable release of CiviCRM. Errors installing in any of the supported CMSes are grounds for holding an extension back from automated distribution.
