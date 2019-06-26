@@ -180,7 +180,7 @@ Reviewers should follow these steps to conduct an extension review for automated
 | Category	| Criterion | Required for<br>*contributed*<br>extensions? | Required for<br>*official*<br>extensions? |
 |------ | ----- | :-----------------------------: | :---------------------: |
 | Admin	| Code is licensed under AGPLv3+, GPLv2+, LGPLv2+, MIT/X11, or BSD-2c	| **Required**	| **Required** |
-| Admin	| Code is published on github.com 	| **Required**	| **Required** |
+| Admin	| Code is published on github.com or lab.civicrm.org 	| **Required**	| **Required** |
 | Admin	| Extension name uses "org.civicrm.*" namespace	| No	| *Suggested* |
 | Admin	| Bus factor >= 2	| No	| *Suggested* |
 | Admin	| Access to project is granted to infra team	| No	| *Suggested* |
