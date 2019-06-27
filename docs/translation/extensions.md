@@ -2,6 +2,8 @@
 
 For developing a CiviCRM extension in a way that can be translated, all the best practices described in the [Internationalisation for Developers](/translation/index.md) page apply. This page describes special considerations that need to be taken into account for extensions.
 
+See also: ["Extension translation" wiki in the Translation project](https://lab.civicrm.org/dev/translation/wikis/extension-translation).
+
 ## For translators: Translating strings on Transifex
 
 There is a separate project on Transifex to translate extensions. Each extension has its own "resource". Therefore, when a translator joins a translation team, they can translate all extensions. We didn't see a need to separate each extension in a separate project, because each extension should have only one translation (`.po`) file.
