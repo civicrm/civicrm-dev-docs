@@ -21,27 +21,38 @@ For a list of available build-types as well as documentation on writing build sc
 
 For example, at time of writing, it includes:
 
-* `backdrop-clean`: A bare, "out-of-the-box" installation of Backdrop+CiviCRM.
-* `backdrop-demo`: A demo site running Backdrop and CiviCRM.
-* `backdrop-empty`: An empty Backdrop site (without CiviCRM). Useful for testing tarball installation.
-* `drupal8-clean`: A bare, "Out of the box" Installation of Drupal8+CiviCRM.
-* `drupal8-demo` : A demo site running Drupal8 and CiviCRM.
-* `drupal-clean`: A bare, "out-of-the-box" installation of Drupal+CiviCRM.
-* `drupal-demo`: A demo site running Drupal and CiviCRM.
-* `drupal-empty`: An empty Drupal site (without CiviCRM). Useful for testing tarball installation.
-* `joomla-empty`: An empty Joomla site (without CiviCRM). Useful for testing tarball installation.
-* `wp-demo`: A demo site running WordPress and CiviCRM.
-* `wp-empty`: An empty WordPress site (without CiviCRM). Useful for testing tarball installation.
-* `hrdemo` A demo site running Drupal, CiviCRM, and CiviHR.
-* `symfony`: An experimental hybrid site running Drupal 7, Symfony 2, and CiviCRM.
-* `cxnapp`: A self-signed CiviConnect app based on the reference implementation.
-* `messages`: A backend service for delivering in-app messages (eg "Getting Started").
-* `extdir`: A mock website akin to civicrm.org/extdir/ . Useful for testing the extension download process.
-* `dist`: A website containing nightly builds akin to dist.civicrm.org. Useful for preparing CiviCRM tarballs.
-* `distmgr`: A service which manages redirects and report-backs for the download site.
-* [`universe`](/tools/universe.md): A broad collection of publicly visible repos, extensions, infrastructure, etc.
-* `l10n`: WIP - A build environment for creating translation files.
-* `joomla-demo`: WIP/incomplete/broken.
+* CMS builds
+    * Backdrop
+        * `backdrop-clean`: A clean "out of the box" installation of CiviCRM.
+        * `backdrop-demo`: A demo site running CiviCRM.
+        * `backdrop-empty`: An empty site without CiviCRM. Useful for testing tarball installation.
+    * Drupal 7
+        * `drupal-clean`: Drupal 7 CMS: A clean "out of the box" installation of CiviCRM.
+        * `drupal-demo`: Drupal 7 CMS: A demo site running CiviCRM.
+        * `drupal-empty`: Drupal 7 CMS: An empty site without CiviCRM. Useful for testing tarball installation.
+    * Drupal 8 - Standard file-layout, per tarball and drush (`vendor` **within** web root)
+        * `drupal8-clean`: A clean "out of the box" installation of CiviCRM.
+        * ~~`drupal8-demo`~~: A demo site running CiviCRM.
+        * `drupal8-empty`: An empty site without CiviCRM.
+    * Drupal 8 - Contributed file-layout, per `drupal-composer/drupal-project` (`vendor` **outside of** web root)
+        * `d8prj-empty`: An empty site without CiviCRM.
+    * Joomla
+        * ~~`joomla-demo`~~: WIP/incomplete/broken.
+        * `joomla-empty`: Joomla CMS: An empty Joomla site (without CiviCRM). Useful for testing tarball installation.
+    * WordPress
+        * `wp-demo`: WordPress CMS: A demo site running WordPress and CiviCRM.
+        * `wp-empty`: WordPress CMS: An empty without CiviCRM. Useful for testing tarball installation.
+    * Other
+        * ~~`hrdemo`~~: A demo site running Drupal, CiviCRM, and CiviHR.
+        * ~~`symfony`~~: An experimental hybrid site running Drupal 7, Symfony 2, and CiviCRM.
+* Special builds
+    * `cxnapp`: A self-signed CiviConnect app based on the reference implementation.
+    * `dist`: A website containing nightly builds akin to dist.civicrm.org. Useful for preparing CiviCRM tarballs.
+    * `distmgr`: A service which manages redirects and report-backs for the download site.
+    * `extdir`: A mock website akin to civicrm.org/extdir/ . Useful for testing the extension download process.
+    * `l10n`: WIP - A build environment for creating translation files.
+    * `messages`: A backend service for delivering in-app messages (eg "Getting Started").
+    * [`universe`](/tools/universe.md): A broad collection of publicly visible repos, extensions, infrastructure, etc.
 
 Build types can be mixed/matched with different versions of Civi, e.g.,
 
