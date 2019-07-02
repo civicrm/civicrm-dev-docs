@@ -22,8 +22,8 @@ for usage examples.
 -   $tokens: reference to the associative array of custom tokens that
     are available to be used in mailings and other contexts. This will
     be an empty array unless an implementation of hook_civicrm_tokens
-    adds items to it. Items should be added in the format:\
-     \
+    adds items to it. Items should be added in this format:
+     
 
         $tokens['date'] = array(
             'date.date_short' => ts("Today's Date: short format"),
