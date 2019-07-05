@@ -44,6 +44,7 @@ The XML will contain a structure made up of the following elements.
 * Contains: Text
 * Notes:
     * If you want the permissions to be an "or" situation i.e. User needs either access CiviCRM or administer CiviCRM put a `;` between the permissions. If you want it so that users need multiple permissions put a `,` between
+    * This value will be inherited from the parent path if not defined.
 
 ### `<access_callback>` {:#access_callback}
 
@@ -53,6 +54,7 @@ The XML will contain a structure made up of the following elements.
 * Contains: Text
 * Notes:
     * If you wish for this route to be public you can set it to be 1.
+    * This value will be inherited from the parent path if not defined.
 
 ### `<adminGroup>` {:#adminGroup}
 
@@ -102,6 +104,8 @@ The XML will contain a structure made up of the following elements.
 * Containing element: [`<item>`](#item)
 * Description: If `true`, HTTP visitors will be redirected to HTTPS when they visit this path if the site has "Force Secure URLs (SSL)" set to "Yes".  The visitors will not be redirected if this element is set to `false` or omitted.
 * Contains: `true` or `false`
+* Notes:
+  * This value will be inherited from the parent path if not defined.
 
 ### `<item>` {:#item}
 
@@ -149,6 +153,8 @@ Elements acceptable within `<menu>`
 * Description: Arguments passed to the function generating the content of the route
 * Example: `addSequence=1`
 * Contains: Text
+* Notes:
+  * This value will be inherited from the parent path if not defined.
 
 ### `<page_callback>` {:#page_callback}
 
@@ -156,6 +162,8 @@ Elements acceptable within `<menu>`
 * Description: Function called to generate the content of the route
 * Example: `CRM_Contact_Page_Dashboard`
 * Contains: Text
+* Notes:
+  * This value will be inherited from the parent path if not defined.
 
 ### `<page_type>` {:#page_type}
 
