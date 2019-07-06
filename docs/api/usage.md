@@ -189,6 +189,11 @@ actions don't make sense in this case.
 For more details, see
 [Smarty API interface](/api/interfaces.md#smarty-api-interface).
 
+## Scheduled jobs
+Any api can be configured to be run as a scheduled job. These can be configured in the UI under Administer->System Settings->Scheduled jobs. Usually the api run this way are written with the intent that they be run as scheduled jobs - e.g those with the Job entity or provided by payment processors to run recurring payments.
+
+
+
 ## Command line
 
 ### drush
