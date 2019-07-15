@@ -111,6 +111,7 @@ A few things to notice here:
 * The `name` will be passed down to the storage system -- ensuring that different caches are stored separately.
     * Ex: In `Memcached`/`Redis`, the `name` becomes part of the cache-key.
     * Ex: In `SqlGroup`, the `name` corresponds to the field `civicrm_cache.group_name`.
+* There is an optional `withArray` parameter which if set to `fast` then the cache is wrapped in the `CRM_Utils_Cache_FastArrayDecorator` if type is memory and you have set to use memcache or redis.
 
 Once you have the `$cache` object, it supports all the methods of `CRM_Utils_Cache_Interface` and PSR-16.
 
@@ -144,6 +145,7 @@ As before, notice that:
 * The `type` parameter is an array of preferred storage systems. It will choose the first valid driver.
 * The `name` will be passed down to the storage system.
 * The service is an instance of `CRM_Utils_Cache_Interface` (PSR-16).
+* There is an optional `withArray` parameter which if set to `fast` then the cache is wrapped in the `CRM_Utils_Cache_FastArrayDecorator` if type is memory and you have set to use memcache or redis.
 
 Once the service is declared, we can get a reference to the cache in several ways:
 
