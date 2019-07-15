@@ -64,3 +64,5 @@ Fully supported methods are:
 * `Civi::$statics`
 * [`Civi::settings`](/framework/setting.md)
 * Internal Symfony listeners (e.g. `civi.api.resolve`, `civi.api.prepare`)
+
+See also this [blog post](https://civicrm.org/blog/totten/the-static-is-dead-long-live-the-static) describing the `Civi::` facade in more detail.
