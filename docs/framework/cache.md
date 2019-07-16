@@ -1,8 +1,18 @@
 # Cache Reference
 
-## Using the default cache {:#default}
+## Using a builtin cache {:#default}
 
-`Civi::cache()` is the simplest way to access the cache, automatically using the default cache type (described in [Configuration](#configuration)).
+The easiest way to access a cache is to call `Civi::cache()` and request a built-in cache. There are two useful built-in caches:
+
+* `Civi::cache('long')`: This is for things which are more expensive to refresh. By default, it stores data in a SQL table.
+* `Civi::cache('short')`: This is for things which are less expensive to refresh. By default, it stores data in a local `array`, but it may use a memory-backed cache if [configured](#configuration).
+
+On systems which are [configured with a memory-cache service](#configuration) like Redis or Memcached, the two options are equivalent. The choice between them depeneds on the performance in a vanilla/non-optimized environment. To wit:
+
+* If refreshing the data is relatively expensive (*comparable to a remote HTTP request*), use `long`. It's better to have a SQL-based cache than array-based cache. *Sending a SQL query to the cache is preferrable to sending a remote HTTP query.*
+    * __Example__: If a dashlet displays a remote HTTP feed, it could use `long` cache.
+* If refreshing the data is relatively cheap (*comparable to an on-premises SQL request*), use `short`. It's silly to use SQL-based cache - because *there's no performance gain, but there's increased risk of cache-coherence bugs.*
+    * __Example__: If some data-import code needs to frequently consult the list of `SELECT id, name FROM some_meta_table`, then it could use `short` cache.
 
 ### Methods
 
