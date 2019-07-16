@@ -11,7 +11,7 @@ On systems which are [configured with a memory-cache service](#configuration) li
 
 * If refreshing the data is relatively expensive (*comparable to a remote HTTP request*), use `long`. It's better to have a SQL-based cache than array-based cache. *Sending a SQL query to the cache is preferrable to sending a remote HTTP query.*
     * __Example__: If a dashlet displays a remote HTTP feed, it could use `long` cache.
-* If refreshing the data is relatively cheap (*comparable to an on-premises SQL request*), use `short`. It's silly to use SQL-based cache - because *there's no performance gain, but there's increased risk of cache-coherence bugs.*
+* If refreshing the data is relatively cheap (*comparable to an on-premises SQL request*), use `short`. It would be silly to use SQL-based cache - because *a cache-hit is no faster than a direct read, and a cache-miss is more expensive than a direct read.* For short-lived caches, you only want a low-latency driver.
     * __Example__: If some data-import code needs to frequently consult the list of `SELECT id, name FROM some_meta_table`, then it could use `short` cache.
 
 ### Methods
