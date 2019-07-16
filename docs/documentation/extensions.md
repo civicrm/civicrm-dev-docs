@@ -9,7 +9,7 @@ So you've written an [extension](/extensions/index.md). Awesome! Now you want to
     * Inspect the following source code to see how it's made:
         * [/docs/](https://github.com/civicrm/org.civicrm.volunteer/tree/master/docs) within the project repo (to store all the content in markdown files)
         * [/mkdocs.yml](https://github.com/civicrm/org.civicrm.volunteer/blob/master/mkdocs.yml) within the project repo (to specify guide structure)
-        * [/books/volunteer.yml](https://lab.civicrm.org/documentation/docs-publisher/blob/master/books/volunteer.yml) within the `civicrm-docs` repo (to specify how the guide is to be published)
+        * [volunteer.yml](https://lab.civicrm.org/documentation/docs-books/blob/master/volunteer.yml) within the `docs-books` repo (to specify how the guide is to be published)
 
 ## Overview
 
@@ -20,8 +20,8 @@ Here are the basic steps (and each one is explained in more detail later on this
 * You use git branches just like you normally would, with that `docs` directory sitting there in every branch.
 * You put one file at the root level of your project, `mkdocs.yml` to configure some of the high-level details of your book.
 * You use MkDocs locally to preview your guide.
-* When you're ready, you make a pull request on our [publishing system](https://lab.civicrm.org/documentation/docs-publisher) to add the necessary configuration for your guide, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
-* You configure GitHub to tell our publishing system when to publish updates to your guide.
+* When you're ready, you make a pull request on our [publishing system's books repository](https://lab.civicrm.org/documentation/docs-books) to add the necessary configuration for your guide, so that it gets published to [docs.civicrm.org](https://docs.civicrm.org).
+* You configure GitLab or GitHub to tell our publishing system when to publish updates to your guide.
 
 Follow along in the steps below to get a guide up and running for your extension.
 
@@ -31,7 +31,7 @@ Create a new file called `mkdocs.yml` in the root level of your project with the
 
 ```yaml
 site_name: Your Extension Name
-repo_url: https://github.com/yourusername/org.civicrm.yourproject
+repo_url: https://lab.civicrm.org/extensions/yourproject
 theme: material
 
 pages:
@@ -55,7 +55,7 @@ Replace values on the first two lines with your own. Leave everything else as-is
 
 ## Decide what to do with your README file {:#readme}
 
-The README file at the root of your repository is great for keeping some simple documentation that people will see when they visit your repo. But non-technical users can become confused when seeking docs landing on GitHub.
+The README file at the root of your repository is great for keeping some simple documentation that people will see when they visit your repo. But non-technical users can become confused when seeking docs landing on GitLab/GitHub.
 
 When creating a docs guide, you have two options for how to deal with your README file:
 
@@ -78,8 +78,8 @@ With this option, you basically keep documentation content in the README file, a
 With this option you have a very small README file and a separate MkDocs guide which can have multiple pages.
 
 1. Add a `docs` directory at the root of your project.
-1. Within that, add a new file `index.md` to use for your content.
-1. Keep your README file, but don't store documentation in it. Just have it explain the bare bones of your project and *link* to your documentation (once it's published on docs.civicrm.org.)
+2. Within that, add a new file `index.md` to use for your content.
+3. Keep your README file, but don't store documentation in it. Just have it explain the bare bones of your project and *link* to your documentation (once it's published on docs.civicrm.org.)
 
 
 ## Add content
@@ -113,7 +113,7 @@ Once your guide is in good shape it's time to get it up on [docs.civicrm.org](ht
     description: Provides a baz for every contact's bat
     langs:
       en:
-        repo: 'https://github.com/username/org.civicrm.foobar'
+        repo: 'https://lab.civicrm.org/extensions/foobar'
     ```
 
     * There are lots of other settings you can put here if you want to have multiple languages or versions. Look at `user.yml` as an example of a guide (the User Guide) which takes advantage of all the possible settings.
@@ -145,20 +145,13 @@ Publishing your guide manually is fine at first, but once you update the guide l
 
 ## Set up automatic publishing {:#automatic-publishing}
 
-*(Currently only possible if your repo is on GitHub.)*
+When you set up automatic publishing, GitLab or GitHub will tell the publishing system when content within your repo has changed, and the publishing system will re-publish your guide as necessary.
 
-When you set up automatic publishing, GitHub will tell the publishing system when content within your repo has changed, and the publishing system will re-publish your guide as necessary.
-
-1. Go to your repo on GitHub.
-1. Go to the **Settings** tab at the far right.
-1. Go to **Webhooks > Add webhook**.
-1. Set the **Payload URL** to `https://docs.civicrm.org/admin/listen`
-1. Set the **Content type** to `application/json`
-1. Set **Which events would you like to trigger this webhook?** to "Just send the push event".
+    https://lab.civicrm.org/documentation/docs-publisher
 
 Now when you make changes to your docs, those changes will be published automatically *and* you'll receive an email notification from the publishing system informing you of the status (including any errors) of the publishing process.
 
-## Make your documentation discoverable {:descoverable}
+## Make your documentation discoverable {:discoverable}
 
 Hey, you're not done yet! Don't forget to to add links to your new guide in all the places where your users might look. This includes this following:
 
@@ -170,5 +163,5 @@ Hey, you're not done yet! Don't forget to to add links to your new guide in all 
         <url desc="Documentation">http://docs.civicrm.org/foobar/en/latest</url>
     </urls>
     ```
-* Other places from within your extension's UI, as necessary
+* Other places from within your extension's UI, as necessary.
 * Anywhere else that you previously had documentation (e.g. CiviCRM wiki, dedicated site, etc.)
