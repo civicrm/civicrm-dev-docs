@@ -1,6 +1,6 @@
 # Jenkins continuous integration
 
-Pull-requests are tested automatically with build-bot software called [Jenkins](https://jenkins.io/) which runs on [tests.civicrm.org](http://tests.civicrm.org/). Key things to know:
+Pull-requests are tested automatically with build-bot software called [Jenkins](https://jenkins.io/) which runs on [test.civicrm.org](http://test.civicrm.org/). Key things to know:
 
 * If you are a new contributor, the tests may be placed on hold pending a cursory review. One of the administrators will post a comment like `jenkins, ok to test` or `jenkins, add to whitelist`.
 * The pull-request will have a colored dot indicating its status:
