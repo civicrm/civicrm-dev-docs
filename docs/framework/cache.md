@@ -111,7 +111,12 @@ A few things to notice here:
 * The `name` will be passed down to the storage system -- ensuring that different caches are stored separately.
     * Ex: In `Memcached`/`Redis`, the `name` becomes part of the cache-key.
     * Ex: In `SqlGroup`, the `name` corresponds to the field `civicrm_cache.group_name`.
-* There is an optional `withArray` parameter which if set to `fast` then the cache is wrapped in the `CRM_Utils_Cache_FastArrayDecorator` if type is memory and you have set to use memcache or redis.
+* There is an optional `withArray` parameter with the following acceptable options.
+    * FALSE (default): Reads+writes go directly to the underlying cache
+    * TRUE: There's an extra array-based cache-tier in front of the underlying cache. It uses `CRM_Utils_Cache_ArrayDecorator`.
+        * This variant is more correct/compliant with PSR-16 in that TTL should be consistent between the front-tier cache and the underlying-cache. It requires a more verbose storage-format, which slightly reduces performance. (Not measurable for 1-4 reads; would be measureable for 1000 reads.)
+    * fast: There's an extra array-based cache-tier in front of the underlying cache. It uses `CRM_Utils_Cache_FastArrayDecorator`.
+        * This variant is more performant and uses a cleaner/simpler storage-format; however, you're more likely to get stale reads from the front-tier cache. It's not much of practical drawback in typical usage (where the PHP interpreter only runs for <1s; stale info in the front-cache doesn't hang around long anyway). However, the (in)correctness could be an issue in long-run jobs.
 
 Once you have the `$cache` object, it supports all the methods of `CRM_Utils_Cache_Interface` and PSR-16.
 
@@ -145,7 +150,7 @@ As before, notice that:
 * The `type` parameter is an array of preferred storage systems. It will choose the first valid driver.
 * The `name` will be passed down to the storage system.
 * The service is an instance of `CRM_Utils_Cache_Interface` (PSR-16).
-* There is an optional `withArray` parameter which if set to `fast` then the cache is wrapped in the `CRM_Utils_Cache_FastArrayDecorator` if type is memory and you have set to use memcache or redis.
+* There is an optional `withArray` parameter as described above as well
 
 Once the service is declared, we can get a reference to the cache in several ways:
 
