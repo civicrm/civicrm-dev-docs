@@ -68,11 +68,19 @@ configuring the default cache driver, see [System Administrator Guide => Setup =
 
 ### Aliases
 
-In reading code, you may find these three notations -- which all refer to the same thing:
+In reading code, you may find these three notations -- which all refer to the same thing which is essentially a 'short' cache as described below:
 
 * `Civi::cache()`
 * `Civi::cache('default')`
 * `CRM_Utils_Cache::singleton()`
+
+## long and short caches
+
+In CiviCRM Codebase there are generally 2 types of caches discussed 'long' and 'short' caches. Both Long and Short caches can be stored in a cache aggregation system such as Memcached or Redis or APC. For most CiviCRM users that do not implement such caching mechanisms, Long caches are stored in the SQL Database in the `civicrm_cache` table and short caches are stored in an ArrayCache which is just a PHP array instance.
+
+When calling code such as `Civi::cache()->` This resolves to the default cache which is an instance of short cache. This basically around about way is the equivalent of calling `CRM_Utils_Cache::create` with the storage `type` parameter set to `['*memory*', 'ArrayCache']` where as calling `Civi::cache('long')->` or `Civi::cache('settings')` or `Civi::cache('session')` as some examples of 'long' caches this sets the storage type to be `['*memory*', 'SqlGroup', 'ArrayCache']`.
+
+By default neither short or long caches use the withArray parameter which would allow some PHP Thread optimisation. This may change in the future however at present to utilisation a PHP arrayCache in front of say Redis or Memcached etc, then the cache would have to be defined with `withArray => TRUE` or `withArray => fast`.
 
 ## Using a custom cache {:#custom}
 
