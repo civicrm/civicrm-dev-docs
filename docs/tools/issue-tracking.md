@@ -154,6 +154,14 @@ Categorization is useful for finding issues, and it also determines how issues a
 
 Use the Labels field to apply any relevant labels to your issue.
 
+#### Confidentiality {:#confidentiality}
+
+Issues can be marked Confidential, this is a useful "middle ground" status for issues which perhaps shouldn't be public but which are **not** security issues. If you have a security issue please report it as described at [Reporting a Security Vulnerability](/security/reporting/).
+
+In GitLab a user can be either anonymous (no account), have a GitLab account but not be a project member, or be a project member. The confidential checkbox on issues will hide it from anonymous users and non-project members.
+
+Anyone with an account can create confidential issues, but non-project members will only see their own. Please use confidential issues only where appropriate - transparency is important in our development processes and most development/code-related issues should be public.
+
 ## Guidelines for triaging issues {:#triage}
 
 *This is the outcome of a meeting on 'how we do triage now we are in gitlab'*
