@@ -90,47 +90,70 @@ See the [internal link standards](#internal-url-standards) above for examples of
 
 A basic external hyperlink in a sentence:
 
-```
+``` md
 Try [CiviCRM](https://civicrm.org) for your database.
 ```
+
+***Result:***
+
+> Try [CiviCRM](https://civicrm.org) for your database.
 
 ### Named hyperlinks
 
 If you're using a one external link in many places throughout a page, you can define the URL in one place as follows
 
-```
-See [CRM-1234] for more details.
+``` md
+See [#123] for more details.
 
-My favorite issue is [CRM-1234].
+My favorite issue is [#123].
 
-[CRM-1234]: https://issues.civicrm.org/jira/browse/CRM-1234
+[#123]: https://lab.civicrm.org/dev/core/issues/123
 ```
+
+***Result:***
+
+> See [#123] for more details.
+>
+> My favorite issue is [#123].
+>
+> [#123]: https://lab.civicrm.org/dev/core/issues/123
 
 (The third line can be placed anywhere in the file.)
 
 You can also use custom text for a named hyperlink, as shown below:
 
-```
+``` md
 After learning [how to foo a bar][foobar], then you can party!
 
 [foobar]: https://example.com/foobar
 ```
 
+***Result:***
+
+> After learning [how to foo a bar][foobar], then you can party!
+>
+> [foobar]: https://example.com/foobar
+
 !!! caution "For external links only"
     Per our [standards](#internal-url-standards), named hyperlinks should only be used for *external* links
-
-
 
 ## Line breaks and whitespace
 
 **Single line breaks** in markdown code are eliminated in display:
 
-```
+``` md
 This text will all show up
 on the
 same
 line.
 ```
+
+***Result:***
+
+>This text will all show up
+>on the
+>same
+>line.
 
 This makes it easy to avoid very long lines in markdown code. As a rule of
 thumb, keep your markdown code free of lines longer than 80 characters
@@ -138,17 +161,23 @@ where possible.
 
 **Double line breaks** create separate paragraphs:
 
-```
+``` md
 This is
 one paragraph.
 
 This is a second.
 ```
 
+***Result:***
+
+>This is
+>one paragraph.
+>
+>This is a second.
 
 ## Headings
 
-```md
+``` md
 # Heading 1
 
 ## Heading 2
@@ -158,13 +187,23 @@ This is a second.
 #### Heading 4
 ```
 
+***Result:***
+
+> # Heading 1
+>
+> ## Heading 2
+>
+> ### Heading 3
+>
+> #### Heading 4
+
 The above syntax is [called](http://pandoc.org/MANUAL.html#headers)
 "ATX style headers" in markdown terminology, and is the [preferred](#standards)
 syntax within the CiviCRM community.
 An alternate syntax called "setext style headers" works for h1 and h2 as
 follows (but please avoid creating new content with this syntax).
 
-```
+``` md
 Heading 1
 =========
 
@@ -172,12 +211,20 @@ Heading 2
 ---------
 ```
 
+***Result:***
+
+> Heading 1
+> =========
+>
+> Heading 2
+> ---------
+
 ### Custom heading IDs
 
 !!! tip "Extension required"
     To use custom heading IDs in MkDocs, insert the following code in `mkdocs.yml` to enable the [Attribute Lists](https://pythonhosted.org/Markdown/extensions/attr_list.html) extension:
 
-    ```yml
+    ``` yml
     markdown_extensions:
       - markdown.extensions.attr_list
     ```
@@ -186,9 +233,13 @@ Custom heading IDs allow you to link to specific sections in a page by appending
 
 Setting a custom ID:
 
-```
+``` md
 ## How to foo a bar {:#foo}
 ```
+
+***Result:***
+
+> ## How to foo a bar {:#foo}
 
 This is helpful when you think that readers are likely to frequently link
 to this section in the future.
@@ -196,12 +247,11 @@ to this section in the future.
 * Custom heading IDs will remain the same (thus preserving incoming links) even after the text of the heading is edited.
 * Custom heading IDs create shorter URLs.
 
-
 ## Lists
 
 ### Unordered lists
 
-```text
+``` md
 Here is my paragraph (with a blank line after).
 
 * My first item is here.
@@ -210,33 +260,46 @@ Here is my paragraph (with a blank line after).
 * Then, a third.
 ```
 
+***Result:***
+
+> Here is my paragraph (with a blank line after).
+>
+> * My first item is here.
+> * My second item is here and a
+> bit longer than the first.
+> * Then, a third.
+
 !!! note
     If you don't **include a blank line before your first list item**, then the list will become part of the previous element (paragraph, heading, etc).
 
-Alternate syntax:
+Alternate syntaxes:
 
 * Unordered lists also recognize `-` and `+` as item delimiters.
 * Markdown is somewhat flexible with the quantity and position of spaces when making lists.
 
-
 ### Ordered lists
 
-```
+``` md
 1. Item
 1. Item
 1. Item
 ```
 
-Alternate syntax:
+***Result:***
+
+> 1. Item
+> 1. Item
+> 1. Item
+
+Alternate syntaxes:
 
 * Ordered lists items are automatically re-numbered sequentially upon display which means all items can begin with `1`, or they can be ordered sequentially in code.
-
 
 ### Nested lists
 
 List sub-items must be indented 4 spaces:
 
-```
+``` md
 1.  Item
     1.  Item
     1.  Item
@@ -247,6 +310,16 @@ List sub-items must be indented 4 spaces:
 1. Item
 ```
 
+***Result:***
+
+> 1.  Item
+>     1.  Item
+>     1.  Item
+> 1.  Item
+>     * Item
+>     * Item
+>     * Item
+> 1. Item
 
 ## Code
 
@@ -254,67 +327,91 @@ List sub-items must be indented 4 spaces:
 
 Use backticks to create inline monospace text:
 
-```
+``` md
 Some `monospace text` amid a paragraph.
 ```
+
+***Result:***
+
+> Some `monospace text` amid a paragraph.
 
 And if you need to put a backtick inside your monospace text, begin and end
 with two backticks:
 
-```
+``` md
 Some ``monospace text with `backticks` inside``, and all amid a paragraph.
 ```
 
+***Result:***
+
+> Some ``monospace text with `backticks` inside``, and all amid a paragraph.
 
 ### Code blocks
 
 A block of **"fenced code"** with three or more backticks on their own line.
 
-````
+```` md
 ```
 CODE
 BLOCK
 ```
 ````
 
+***Result:***
+
+> ```
+> CODE
+> BLOCK
+> ```
+
 *Fenced code can use more than three backticks when necessary to represent code that contains 3 backticks (which is what you'd see in the source for this page).*
 
 Alternate syntax: For fenced code, the tilde `~` character also works
 in place of the backtick character but should be avoided for consistency.
 
-
 A block of **"indented code"** with four spaces at the start of each line:
 
+```` md
 ```
     CODE
     BLOCK
 ```
+````
 
+***Result:***
+
+> ```
+>     CODE
+>     BLOCK
+> ```
 
 ### Syntax highlighting for code
+For code blocks, some platforms (e.g. GitHub) will guess the language of the code and automatically apply syntax highlighting to the display.
 
-*   For code blocks, some platforms (e.g. GitHub) will guess the language of the code and automatically apply syntax highlighting to the display.
-*   To force a particular type of syntax highlighting, use fenced code with a keyword (like `javascript` in this case) as follows:
+To force a particular type of syntax highlighting, use fenced code with a keyword (like `javascript` in this case) as follows:
 
-    ````
-    ```javascript
-    var cj = CRM.$ = jQuery;
-    ```
-    ````
+```` md
+```javascript
+var cj = CRM.$ = jQuery;
+```
+````
 
-*   Available language keywords:
-    *   Differ slightly by markdown platform
-    *   Common language keywords that work on most platforms: `bash`, `css`, `docker`, `html`, `javascript`, `js`, `json`, `markdown`, `md`, `perl`, `php`, `python`, `ruby`, `scss`, `sh`, `smarty`, `sql`, `xhtml`, `xml`, `yaml`
-    *   The Material theme for MkDocs will use the Pygments python library when possible, and in this case provide syntax highlighting for [over 300 languages](http://pygments.org/docs/lexers).
+***Result:***
 
-*   Syntax highlighting cannot be forced for indented code.
-*   Syntax highlighting for inline code is possible with [InlineHilite](http://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/) but not recommended.
-*   [Stack Exchange syntax highlighting][stack exchange syntax highlighting] is
-    done differently.
+> ```javascript
+> var cj = CRM.$ = jQuery;
+> ```
 
-[stack exchange syntax highlighting]: http://stackoverflow.com/editing-help#syntax-highlighting
+Available language keywords:
+ *   Differ slightly by markdown platform
+ *   Common language keywords that work on most platforms: `bash`, `css`, `docker`, `html`, `javascript`, `js`, `json`, `markdown`, `md`, `perl`, `php`, `python`, `ruby`, `scss`, `sh`, `smarty`, `sql`, `xhtml`, `xml`, `yaml`
+ *   The Material theme for MkDocs will use the Pygments python library when possible, and in this case provide syntax highlighting for [over 300 languages](http://pygments.org/docs/lexers).
 
+Syntax highlighting cannot be forced for indented code.
 
+Syntax highlighting for inline code is possible with [InlineHilite](http://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/) but not recommended.
+
+[Stack Exchange syntax highlighting](http://stackoverflow.com/editing-help#syntax-highlighting) is done differently.
 
 ### Code blocks within lists
 
@@ -323,14 +420,14 @@ A block of **"indented code"** with four spaces at the start of each line:
 !!! tip "Extension required"
     To use fenced code within lists in MkDocs, install [PyMdown Extensions](http://facelessuser.github.io/pymdown-extensions) and then insert the following code in `mkdocs.yml` to enable the [Superfences](http://facelessuser.github.io/pymdown-extensions/extensions/superfences/) extension:
 
-    ```yml
+    ``` yml
     markdown_extensions:
       - pymdownx.superfences
     ```
 
 Then insert fenced code into a list as follows:
 
-````md
+```` md
 *   First item
 *   Look at this code:
 
@@ -342,11 +439,23 @@ Then insert fenced code into a list as follows:
 *   More list items
 ````
 
+***Result:***
+
+> * First item
+> * Look at this code:
+>
+>     ```
+>     code
+>     block
+>     ```
+>
+> *   More list items
+
 #### Indented code within lists
 
 You can use indented code within lists without needing any markdown extensions. Keep a blank line above and below the code and indent the code *4 spaces more than your list content*, like this:
 
-```md
+``` md
 *   First item
 *   Look at this code:
 
@@ -366,14 +475,32 @@ You can use indented code within lists without needing any markdown extensions. 
 *   Fun, right?
 ```
 
+***Result:***
 
+> *   First item
+> *   Look at this code:
+>
+>         CODE BLOCK WITHIN
+>         TOP LEVEL LIST ITEM
+> 
+> *   More list items
+> *   A nested list is here:
+>     1.  Alpha
+>     1.  Beta, with some code
+>
+>             CODE BLOCK WITHIN
+>             SUB-LIST ITEM
+> 
+>     1. Gamma
+>
+> *   Fun, right?
 
 ## Admonitions
 
 !!! tip "Extension required"
     To use admonitions in MkDocs, insert the following code in `mkdocs.yml` to enable the [Admonitions](https://pythonhosted.org/Markdown/extensions/admonition.html) extension:
 
-    ```yml
+    ``` yml
     markdown_extensions:
       - markdown.extensions.admonition
     ```
@@ -382,17 +509,27 @@ You can use indented code within lists without needing any markdown extensions. 
 
 Simple example:
 
-```md
+``` md
 !!! note
     Here is a note for you.
 ```
 
+***Result:***
+
+> !!! note
+>     Here is a note for you.
+
 Add a custom title (make sure to quote the title):
 
-```md
+``` md
 !!! danger "Don't try this at home!"
     Stand back. I'm about to try science!
 ```
+
+***Result:***
+
+> !!! danger "Don't try this at home!"
+>     Stand back. I'm about to try science!
 
 (You can also add an admonition *without* a title by passing an empty string `""` in place of the title.)
 
@@ -431,8 +568,12 @@ Images function mostly the same as hyperlinks, but preceded by an exclamation
 point and with alt text in place of the link text.
 
 ```
-![Alt text](/directory/image.png)
+![Alt text](/img/CiviCRM.png)
 ```
+
+***Result:***
+
+> ![Alt text](/img/CiviCRM.png)
 
 Note:
 
@@ -444,10 +585,18 @@ Note:
 *   [Tables] (to be avoided when possible)
 *   [Emojis] (great for Mattermost)
 *   Blockquotes
-
+    
+    ``` md
         > This text is a blockquote, typically used
-          to represent prose written by a person. It
-          will be displayed slightly indented.
+        >  to represent prose written by a person. It
+        >  will be displayed slightly indented.
+    ```
+    
+    ***Result:***
+    
+    > This text is a blockquote, typically used
+    >  to represent prose written by a person. It
+    >  will be displayed slightly indented.
 
 [Emojis]: http://www.webpagefx.com/tools/emoji-cheat-sheet/
 [Tables]: https://help.github.com/articles/organizing-information-with-tables
