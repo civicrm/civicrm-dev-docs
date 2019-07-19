@@ -24,7 +24,7 @@ standards-compliant way 4.3+.
 
 ## CiviCRM vs Drupal
 
-In general, CiviCRM follow's the [Drupal Coding Standards](https://www.drupal.org/docs/develop/standards), but we have some minor modifications which are noted specifically in the other pages in this chapter.
+In general, CiviCRM follows the [Drupal Coding Standards](https://www.drupal.org/docs/develop/standards), but we have some minor modifications which are noted specifically in the other pages in this chapter.
 
 ## Continuous integration
 
@@ -48,27 +48,26 @@ If you find code that is not meeting the standards, we encourage you to improve 
 
 Orange light code is code that has the feel that it is wrong and should be refactored. Developers who are looking to contribute to this effort may want to consider doing any amount self-contained work on the following code. 
 
-* Using joins on `civicrm_option_value` rather than using PseudoConstants - this has performance iplications
+* Using joins on `civicrm_option_value` rather than using PseudoConstants - this has performance implications
 * Removing as much as possible passing by reference to functions.
 * Increasing code complexity, this has two issues firstly it increase the fragility of the code and also makes it harder to test
-* Where ever `$session = CRM_Core_Session(); $userid = $session->get('UserID');` or very similar these calls should be replaced with `CRM_Core_Session::singleton()->getLoggedInContactID();`
+* Wherever `$session = CRM_Core_Session(); $userid = $session->get('UserID');` or very similar these calls should be replaced with `CRM_Core_Session::singleton()->getLoggedInContactID();`
 * Replace `CRM_Core_Resources->singleton()->add...` and similar with `Civi::resources()->add...`
-* Clean up messy code, see if code can be refactored and moved into parent classes and make them more generic, Also elimiate any duplicate code
+* Clean up messy code, see if code can be refactored and/or moved into parent classes. Make parent classes more generic and eliminate any duplicate code.
 * Increase the usage of Doc blocks to help with auto generation of code
-* Move more business logic out from the Froms and API if possible to the BAO level
+* Move more business logic out of the Forms/API layers to the BAO level wherever possible.
 * Remove eval() instances
 * Develop & confirm standards listed above (incl decide on smarty coding templates, separation of tpl and js)
-* Move business logic from the forms to the BAO
 * Cleanup and centralize the token code.
-* Code duplication should be addressed - e.g the introduction of a select function in CRM/Report/Form.php around 3.3 made identical functions in child classes obsolete. This is a good taks for someone wanting to learn
+* Code duplication should be addressed - e.g the introduction of a select function in CRM/Report/Form.php around 3.3 made identical functions in child classes obsolete. This is a good task for someone wanting to learn
 * Look at repurposing the coder module to keep CiviCRM tidy
 * Git rid of unused functions
 * Look through the "todo" "fixme" and "hack" comments and see about fixing them
-* As CiviCRM now requires PHP 5.3, modify code to use the Drupal 8 coding standard of using the PHP keyword const in place of define();
+* Modify code to use the Drupal coding standard of using the PHP keyword const in place of define();
 
 In CiviCRM we aim to compile SQL in the following order of preference
 
-1. API - Predicatble well tested
+1. API - Predictable, well tested
 3. DAO / BAO - `CRM_Core_DAO()->fetch()` `CRM_Core_DAO->copyValues()`
 2. `CRM_Utils_Select`
 4. Compiled SQL
