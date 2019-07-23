@@ -1,8 +1,18 @@
 # Cache Reference
 
-## Using the default cache {:#default}
+## Using a builtin cache {:#default}
 
-`Civi::cache()` is the simplest way to access the cache, automatically using the default cache type (described in [Configuration](#configuration)).
+The easiest way to access a cache is to call `Civi::cache()` and request a built-in cache. There are two useful built-in caches:
+
+* `Civi::cache('long')`: This is for things which are more expensive to refresh. By default, it stores data in a SQL table. The data will be long-lived.
+* `Civi::cache('short')`: This is for things which are less expensive to refresh. By default, it stores data in a local `array`. The data will be short-lived.
+
+In some environments, the sysadmin [configures with a memory-cache service](#configuration) like Redis or Memcached -- in which case both `short` and `long` will use the memory-cache. The choice between them depeneds on the preferred lifespan in a vanilla/non-optimized environment. To wit:
+
+* If refreshing the data is relatively expensive (*comparable to a remote HTTP request*), use `long`. It's better to have a SQL-based cache than array-based cache. *Sending a SQL query to the cache is preferrable to sending a remote HTTP query.* 
+    * __Example__: If a dashlet displays a remote HTTP feed of recent blog posts, it could use `long` cache.
+* If refreshing the data is relatively cheap (*comparable to a single on-premises SQL request*), use `short`. It would be silly to use SQL-based cache - because *a cache-hit is no faster than a direct read, and a cache-miss is more expensive than a direct read.* 
+    * __Example__: If some data-import code needs to frequently consult the list of `SELECT id, name FROM some_meta_table`, then it could use `short` cache.
 
 ### Methods
 
@@ -68,11 +78,19 @@ configuring the default cache driver, see [System Administrator Guide => Setup =
 
 ### Aliases
 
-In reading code, you may find these three notations -- which all refer to the same thing:
+In reading code, you may find these three notations -- which all refer to the same thing which is essentially a 'short' cache as described below:
 
 * `Civi::cache()`
 * `Civi::cache('default')`
 * `CRM_Utils_Cache::singleton()`
+
+## long and short caches
+
+In CiviCRM Codebase there are generally 2 types of caches discussed 'long' and 'short' caches. Both Long and Short caches can be stored in a cache aggregation system such as Memcached or Redis or APC. For most CiviCRM users that do not implement such caching mechanisms, Long caches are stored in the SQL Database in the `civicrm_cache` table and short caches are stored in an ArrayCache which is just a PHP array instance.
+
+When calling code such as `Civi::cache()->` This resolves to the default cache which is an instance of short cache. This basically around about way is the equivalent of calling `CRM_Utils_Cache::create` with the storage `type` parameter set to `['*memory*', 'ArrayCache']` where as calling `Civi::cache('long')->` or `Civi::cache('settings')` or `Civi::cache('session')` as some examples of 'long' caches this sets the storage type to be `['*memory*', 'SqlGroup', 'ArrayCache']`.
+
+By default neither short or long caches use the withArray parameter which would allow some PHP Thread optimisation. This may change in the future however at present to utilisation a PHP arrayCache in front of say Redis or Memcached etc, then the cache would have to be defined with `withArray => TRUE` or `withArray => fast`.
 
 ## Using a custom cache {:#custom}
 
