@@ -137,8 +137,8 @@ upgrades.
 
 CiviCRM provides two main file storage helpers:
 
-* [civicrm.files] - Intended to store files which can safely live within the files directory of your CMS, within your webroot.
-* [civicrm.private] - Intended to store files which could be stored outside of your webroot for enhanced security.
+* `[civicrm.files]` - Intended to store files which can safely live within the files directory of your CMS, within your webroot.
+* `[civicrm.private]` - Intended to store files which could be stored outside of your webroot for enhanced security.
 
 The actual path is chosen to align with the conventions of each CMS and typically [civicrm.private] will refer to the same directory as [civicrm.files] while providing the ability to manage paths in a more granular fashion should the need arise.
 
