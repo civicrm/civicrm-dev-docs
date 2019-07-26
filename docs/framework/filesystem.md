@@ -160,7 +160,7 @@ Newly-installed CiviCRM sites on WordPress have their local files at
 
 ### Tip: Sub-directories
 
-The `[civicrm.files]` and `[civicrm.private]` are file bases which contains several sub-directories. 
+The `[civicrm.files]` and `[civicrm.private]` are CiviCRM's base directories for files storage, each will contain several sub-directories. 
 These folders include:
 
 
