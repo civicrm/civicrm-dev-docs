@@ -191,7 +191,7 @@ For the time being,`CIVICRM_TEMPLATE_COMPILEDIR` can be set in `civicrm.settings
 $civicrm_paths['civicrm.files']['path'] = '/srv/example.com/htdocs/sites/default/files/civicrm';
 $civicrm_paths['civicrm.private']['path'] = '/srv/example.com/htdocs/sites/default/files/civicrm';
 ```
-The constant `CIVICRM_TEMPLATE_COMPILEDIR` is never consulted. Updating `civicrm.files` changes only public data folders. Updating `civicrm.private` changes only private data folders (e.g. `templates_c` and `ConfigAndLogDir`).
+The constant `CIVICRM_TEMPLATE_COMPILEDIR` is never consulted. Updating `civicrm.files` changes only public data folders. Updating `civicrm.private` changes only private data folders (e.g. `templateCompileDir` and `ConfigAndLogDir`).
 
 
 #### Example 2: The public and private data are stored in separate places, akin to Drupal's public and private folders.
