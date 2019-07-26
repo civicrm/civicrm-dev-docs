@@ -439,6 +439,38 @@ function _newyork_css_url($themes, $themeKey, $cssExt, $cssFile) {
 }
 ```
 
+In our most sophisticated example, the `newyork` theme generates the
+`civicrm.css` content dynamically - by combining various CSS files and
+evaluating some inline variables (`{{NEWYORK_URL}}`).  This uses the
+[asset builder](/framework/asset-builder.md) for caching.
+
+```php
+function _newyork_civicrm_css_url($themes, $themeKey, $cssExt, $cssFile) {
+  switch ("{$cssExt}/{$cssFile}") {
+    case 'civicrm/css/civicrm.css':
+      return [\Civi::service("asset_builder")->getUrl("newyork-civicrm.css", ['themeKey' => $themeKey])];
+    default:
+      return \Civi\Core\Themes\Resolvers::simple($themes, $themeKey, $cssExt, $cssFile);
+
+  }
+}
+
+function newyork_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
+  if ($asset !== 'newyork-civicrm.css') return;
+
+  $rawCss = file_get_contents(Civi::resources()->getPath('civicrm', 'css/civicrm.css'))
+    . "\n" . file_get_contents(E::path('newyork-part-1.css'))
+    . "\n" . file_get_contents(E::path('newyork-part-2.css'));
+
+  $vars = [
+    '{{CIVICRM_URL}}'=> Civi::paths()->getUrl('[civicrm.root]/.'),
+    '{{NEWYORK_URL}}' => E::url(),
+  ];
+  $mimeType = 'text/css';
+  $content = strtr($rawCss, $vars);
+}
+```
+
 ### Extension CSS files
 
 Generally, one should only override the `civicrm.css` and `bootstrap.css`
