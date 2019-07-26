@@ -13,7 +13,7 @@ This section covers how to write extensions.
 
 ## Extension Names
 
-Pick a unique single word for your extension's name. Note that this name is used throughout the extension's code, e.g. function names so it should only include characters that can be safely used in that way.
+Pick a unique single word for your extension's name. Note that this name is used throughout the extension's code, e.g. function names, so it should only include characters that can be safely used in that way.
 
 ``` info
     Historically, extension names used to follow the same convention as Java package names – they look like reversed domain names. (e.g.  `com.example.myextension`), but this is no longer the recommendation.
