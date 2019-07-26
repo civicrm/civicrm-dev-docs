@@ -422,15 +422,15 @@ The logic in `_newyork_css_url()` is fairly open-ended. A few tricks that may be
  * Locate files in an extension using `Civi::resources()->getPath(...)` or `Civi::resources()->getUrl(...)`
  * Generate files in a datadir using `Civi::paths()->getPath(...)` or `Civi::paths()->getUrl(...)`
 
-### Non-standard CSS files
+### Extension CSS files
 
 Generally, one should only override the `civicrm.css` and `bootstrap.css`
 files.  If some styling issue cannot be addressed well through those files,
-then you should have some discussion about how to improve the coding-conventions
-or the style-guide.
+then you should probably have some discussion about how to improve the coding-conventions
+or the style-guide so that the standard CSS is good enough.
 
 However, there may be edge-cases where you wish to override other CSS files.
-Your file structure should match the original file structure.  If you wish
+The file structure should match the original file structure.  If you wish
 to override a CSS file defined by another extension, then include the
 extension as part of the name.
 
