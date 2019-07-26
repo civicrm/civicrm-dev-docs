@@ -422,6 +422,23 @@ The logic in `_newyork_css_url()` is fairly open-ended. A few tricks that may be
  * Locate files in an extension using `Civi::resources()->getPath(...)` or `Civi::resources()->getUrl(...)`
  * Generate files in a datadir using `Civi::paths()->getPath(...)` or `Civi::paths()->getUrl(...)`
 
+In this example, the `newyork` theme *supplements* the `civicrm.css` file (adding its own content afterward)
+instead of *overriding*. All other CSS files work as normal overrides.
+
+```php
+function _newyork_css_url($themes, $themeKey, $cssExt, $cssFile) {
+  $urls = \Civi\Core\Themes\Resolvers::simple($themes, $themeKey, $cssExt, $cssFile);
+  switch ("{$cssExt}/{$cssFile}") {
+    case 'civicrm/css/civicrm.css':
+      $urls = array_merge(
+        Civi::service('themes')->resolveUrls('greenwich', $cssExt, $cssFile),
+        $urls
+      );
+  }
+  return $urls;
+}
+```
+
 ### Extension CSS files
 
 Generally, one should only override the `civicrm.css` and `bootstrap.css`
