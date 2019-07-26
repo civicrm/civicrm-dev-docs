@@ -132,7 +132,7 @@ echo Civi::resources()->addScriptFile('civicrm.bower', 'jquery/dist/jquery.min.j
 
 CiviCRM also needs directories for storing volatile data files, such as 
 logs, caches, and uploads. These directories are located outside
-the main codebase -- in a location that can be safely preserved during
+the main codebase, in a location that can be safely preserved during
 upgrades.
 
 Public data folders use `[civicrm.files]` and public data folders use 
