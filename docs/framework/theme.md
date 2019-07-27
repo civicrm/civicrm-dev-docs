@@ -422,15 +422,64 @@ The logic in `_newyork_css_url()` is fairly open-ended. A few tricks that may be
  * Locate files in an extension using `Civi::resources()->getPath(...)` or `Civi::resources()->getUrl(...)`
  * Generate files in a datadir using `Civi::paths()->getPath(...)` or `Civi::paths()->getUrl(...)`
 
-### Non-standard CSS files
+In this example, the `newyork` theme *supplements* the `civicrm.css` file (adding its own content afterward)
+instead of *overriding*. All other CSS files work as normal overrides.
+
+```php
+function _newyork_css_url($themes, $themeKey, $cssExt, $cssFile) {
+  $urls = \Civi\Core\Themes\Resolvers::simple($themes, $themeKey, $cssExt, $cssFile);
+  switch ("{$cssExt}/{$cssFile}") {
+    case 'civicrm/css/civicrm.css':
+      $urls = array_merge(
+        Civi::service('themes')->resolveUrls('greenwich', $cssExt, $cssFile),
+        $urls
+      );
+  }
+  return $urls;
+}
+```
+
+In our most sophisticated example, the `newyork` theme generates the
+`civicrm.css` content dynamically - by combining various CSS files and
+evaluating some inline variables (`{{NEWYORK_URL}}`).  This uses the
+[asset builder](/framework/asset-builder.md) for caching.
+
+```php
+function _newyork_civicrm_css_url($themes, $themeKey, $cssExt, $cssFile) {
+  switch ("{$cssExt}/{$cssFile}") {
+    case 'civicrm/css/civicrm.css':
+      return [\Civi::service("asset_builder")->getUrl("newyork-civicrm.css", ['themeKey' => $themeKey])];
+    default:
+      return \Civi\Core\Themes\Resolvers::simple($themes, $themeKey, $cssExt, $cssFile);
+
+  }
+}
+
+function newyork_civicrm_buildAsset($asset, $params, &$mimeType, &$content) {
+  if ($asset !== 'newyork-civicrm.css') return;
+
+  $rawCss = file_get_contents(Civi::resources()->getPath('civicrm', 'css/civicrm.css'))
+    . "\n" . file_get_contents(E::path('newyork-part-1.css'))
+    . "\n" . file_get_contents(E::path('newyork-part-2.css'));
+
+  $vars = [
+    '{{CIVICRM_URL}}'=> Civi::paths()->getUrl('[civicrm.root]/.'),
+    '{{NEWYORK_URL}}' => E::url(),
+  ];
+  $mimeType = 'text/css';
+  $content = strtr($rawCss, $vars);
+}
+```
+
+### Extension CSS files
 
 Generally, one should only override the `civicrm.css` and `bootstrap.css`
 files.  If some styling issue cannot be addressed well through those files,
-then you should have some discussion about how to improve the coding-conventions
-or the style-guide.
+then you should probably have some discussion about how to improve the coding-conventions
+or the style-guide so that the standard CSS is good enough.
 
 However, there may be edge-cases where you wish to override other CSS files.
-Your file structure should match the original file structure.  If you wish
+The file structure should match the original file structure.  If you wish
 to override a CSS file defined by another extension, then include the
 extension as part of the name.
 
