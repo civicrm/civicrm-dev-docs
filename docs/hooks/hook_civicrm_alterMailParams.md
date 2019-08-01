@@ -42,7 +42,6 @@ You can add custom headers by appending to `$params['headers']`. Example:
     ```
 
 Note: the `headers` key may not exist in the `$params` array when passed into
-the hook.
 
 For CiviMail based emails you can also add headers by simply adding a key
 directly to the `$params` array, however as CiviMail also supports the above, so
