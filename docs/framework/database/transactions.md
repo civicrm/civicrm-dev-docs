@@ -10,6 +10,11 @@ some background material like:
 -   <http://en.wikipedia.org/wiki/Database_transaction>
 -   <http://dev.mysql.com/doc/refman/5.1/en/commit.html>
 
+Generally, managing transactions is about:
+
+* Marking the start and end of the transaction
+* Handling errors and rolling back the transaction
+
 ## Examples
 
 ### Wrapping code in a transaction
