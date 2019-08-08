@@ -10,6 +10,11 @@ some background material like:
 -   <http://en.wikipedia.org/wiki/Database_transaction>
 -   <http://dev.mysql.com/doc/refman/5.1/en/commit.html>
 
+Generally, managing transactions is about:
+
+* Marking the start and end of the transaction
+* Handling errors and rolling back the transaction
+
 ## Examples
 
 ### Wrapping code in a transaction
@@ -277,6 +282,20 @@ static function abend($code) {
 ```
 
 ## Special Topics
+
+### APIv3
+
+Some APIs are transactional. What does that mean?
+
+* If an API is transactional, then an error in the API will cause a rollback.
+* If an API is NOT transactional, then an error in the API will NOT cause a rollback.
+
+At time of writing, the API [TransactionSubscriber](https://github.com/civicrm/civicrm-core/blob/master/Civi/API/Subscriber/TransactionSubscriber.php) 
+determines whether a specific API-call is transactional. It follows these rules:
+
+* If the API caller specifically passes `is_transactional` (`TRUE` or `FALSE`), then that takes precedence.
+* If the API action is `create`, `delete`, or `submit`, then the API is transactional.
+* If the API action is anything else (`get`, `getsingle`, etc), then the API is NOT transactional.
 
 ### `TRUNCATE` and `ALTER` force immediate commit
 
