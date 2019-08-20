@@ -83,6 +83,9 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
     -   'UFMatch' *(when an object is linked to a CMS user record, at the
         request of GordonH. A UFMatch object is passed for both the pre
         and post hooks)*
+    -   'PriceField'
+    -   'PriceFieldValue'
+    -   'PriceSet'
 
 -   `$objectId` - the unique identifier for the object. `tagID` in case of `EntityTag`
 -   `$objectRef` - the reference to the object if available. For case of `EntityTag` it is an array of (`entityTable`, `entityIDs`)
