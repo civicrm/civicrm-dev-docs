@@ -23,6 +23,9 @@ In PHP, Smarty, and JS code, the convention is to perform translations using the
 !!! note "New in civix 17.08"
     `E::ts()` was added to civix 17.08. The civix file may need to be regenerated. You can read more about it in the [civix upgrade notes](https://github.com/totten/civix/blob/master/UPGRADE.md#upgrade-to-v17081-the-big-e). Extensions may still use the old syntax using `ts()` with the `domain` argument.
 
+!!! note "`E::ts()` and `ts()`"
+     `E::ts()` is recommended, but it won't fallback to core. (it might in JS, but not in PHP because we don't have a way to detect if gettext translated or not)
+    
 PHP:
 
 ```php
