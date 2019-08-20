@@ -88,6 +88,9 @@ changing between the old and new data.
         request of GordonH. A UFMatch object is passed for both the pre
         and post hooks)
     -   'Website'
+    -   'PriceField'
+    -   'PriceFieldValue'
+    -   'PriceSet'
 
 **
 
