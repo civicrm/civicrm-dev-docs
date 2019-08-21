@@ -112,6 +112,10 @@ function MODULENAME_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
              // old extensions using 'title' will still work
           );
           break;
+        case 'view.report.links':
+          // disable copy & delete links.
+          unset($links['copy']);
+          unset($links['delete']);
       }
   }
   return $myLinks;
