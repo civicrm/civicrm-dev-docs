@@ -113,7 +113,7 @@ function MODULENAME_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
           );
           break;
         case 'view.report.links':
-          // disable copy,delete links.
+          // disable copy & delete links.
           unset($links['copy']);
           unset($links['delete']);
       }
