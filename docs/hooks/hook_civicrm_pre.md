@@ -49,6 +49,7 @@ changing between the old and new data.
     -   'CustomGroup'
     -   'CustomField'
     -   'Dashboard'
+    -   'Domain' (from 5.18.0)
     -   'Email'
     -   'EntityBatch'
     -   'EntityTag' (from 4.7.16)

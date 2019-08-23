@@ -94,7 +94,7 @@ This is an overview list of all available hooks, listed by category.
 
 * **[hook_civicrm_alterMailContent](/hooks/hook_civicrm_alterMailContent.md)** - called after getting the content of the mail and before tokenizing it.
 * **[hook_civicrm_alterMailer](/hooks/hook_civicrm_alterMailer.md)** - called when CiviCRM prepares an email driver class to handle outbound message delivery.
-* **[hook_civicrm_alterMailParams](/hooks/hook_civicrm_alterMailParams.md)** - called when an email is about to be sent by CiviCRM.
+* **[hook_civicrm_alterMailParams](/hooks/hook_civicrm_alterMailParams.md)** - called when an email is being prepared for sending by CiviCRM.
 * **[hook_civicrm_alterMailingRecipients](/hooks/hook_civicrm_alterMailingRecipients.md)** - called to allow the user to alter the mailing recipients after they have been constructed.
 * **[hook_civicrm_emailProcessor](/hooks/hook_civicrm_emailProcessor.md)** - called after *each* email has been processed by the script `bin/EmailProcessor.php`.
 * **[hook_civicrm_emailProcessorContact](/hooks/hook_civicrm_emailProcessorContact.md)** - called by the Email Processor when deciding which contact to create an activitity for recording an inbound email.

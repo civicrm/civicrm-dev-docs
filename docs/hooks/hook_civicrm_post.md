@@ -47,6 +47,7 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
     -   'CustomField'
     -   'CustomGroup'
     -   'CRM_Mailing_DAO_Spool'
+    -   'Domain' (from 5.18.0)
     -   'Email'
     -   'Event'
     -   'EntityTag'
