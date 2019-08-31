@@ -13,7 +13,7 @@ The *civibuild* command automates this process. It includes different build-type
 
 Note: There are a number of build tools on the market which can, e.g., create a Drupal web site (like [drush](http://drush.ws/)) or WordPress web site (like [wp-cli](http://wp-cli.org/)).  Civibuild does not aim to replace these.  Unfortunately, such tools generally require extra work for a Civi developer environment.  Civibuild works with these tools and and fills in missing parts.
 
-## Build Types
+## Build types
 
 `civibuild` includes a small library of build scripts for different configurations.
 
@@ -76,7 +76,7 @@ The `--civi-ver` argument will accept any branch or version tag.  *Note: the 4.7
 
 You can also specify `--patch` with a pull request URL to apply those changes on top of your CiviCRM version.
 
-## Build Aliases
+## Build aliases
 
 For developers who work with several CMSs and several versions of Civi, it's useful to have a naming convention and shorthand for the most common configurations.  Civibuild includes aliases (in `src/civibuild.aliases.sh`) like "d44" and "wpmaster":
 
