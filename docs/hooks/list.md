@@ -77,6 +77,7 @@ This is an overview list of all available hooks, listed by category.
 * **[<del>hook_civicrm_customFieldOptions</del>](/hooks/hook_civicrm_customFieldOptions.md)** - Deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md). Use that instead for modifying all option lists, not limited to custom fields.
 * **[hook_civicrm_dashboard](/hooks/hook_civicrm_dashboard.md)** - called when rendering the dashboard page and can be used to add content to the dashboard page.
 * **[hook_civicrm_dashboard_defaults](/hooks/hook_civicrm_dashboard_defaults.md)** - called while a contact views their dashboard for the first time and can be used to enable or disable the set of default dashlets.
+* **[hook_civicrm_entityRefFilters](/hooks/hook_civicrm_entityRefFilters.md)** - called when filters and create links for entityRef field is build.
 * **[hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md)** - allows you to dynamically modify the option list for any field (including custom fields).
 * **[hook_civicrm_links](/hooks/hook_civicrm_links.md)** - allows you to modify action links including: the actions at the end of a search result row, the Create New dropdown, and the Actions dropdown at the top of a contact record.
 * **[hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md)** - called after the menus are rebuilt.
