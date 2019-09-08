@@ -19,7 +19,7 @@ curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildki
 
 !!! note
 
-    * When executing the above command, you should *not* run as `root`, as it *will* cause failures. However, you *should*     have `sudo` permissions.
+    * When executing the above curl/install command, you should *not* run it as `root` - including via `sudo`, as doing so *will* cause failures. However, you *should* have `sudo` permissions as the script includes several `sudo` statements where these are required.
     * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
     * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
 
