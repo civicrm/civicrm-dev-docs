@@ -101,10 +101,9 @@ Now you should be able to run `mkdocs serve` from within your project directory 
 
 Once your guide is in good shape it's time to get it up on [docs.civicrm.org](https://docs.civicrm.org).
 
-1. Go to the [repository for our publishing system](https://lab.civicrm.org/documentation/docs-publisher/)
-1. Click **Fork**, and if necessary choose your user as the destination of the fork.
-1. Within your fork, navigate to the `books` directory. 
-1. Click on the `+` button to add a new file to that directory within your fork.
+1. Go to the [repository for docs books](https://lab.civicrm.org/documentation/docs-books/)
+1. Click **Fork**, and if necessary choose your user as the destination of the fork. 
+1. Click on the `+` button to add a new file to the root directory within your fork.
 1. For the file name, use something like `foobar.yml`, where "foobar" is your extension's **short name**. This is the name that will be used in the URL for your docs.
 1. Copy paste the following content into the file editor (note that the leading whitespace is important for lines in this file since it communicates structure in yaml):
 
