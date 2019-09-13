@@ -116,6 +116,7 @@ pages:
     - <del>hook_civicrm_customFieldOptions</del>: hooks/hook_civicrm_customFieldOptions.md
     - hook_civicrm_dashboard: hooks/hook_civicrm_dashboard.md
     - hook_civicrm_dashboard_defaults: hooks/hook_civicrm_dashboard_defaults.md
+    - hook_civicrm_entityRefFilters: hooks/hook_civicrm_entityRefFilters.md
     - hook_civicrm_fieldOptions: hooks/hook_civicrm_fieldOptions.md
     - hook_civicrm_links: hooks/hook_civicrm_links.md
     - hook_civicrm_navigationMenu: hooks/hook_civicrm_navigationMenu.md
