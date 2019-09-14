@@ -11,7 +11,7 @@ This hook was first available in CiviCRM 3.2.4, $componentTable and $ids variabl
 
 ## Definition
 
-     hook_civicrm_export (&$exportTempTable, &$headerRows, &$sqlColumns, &$exportMode, &$componentTable, &$ids)
+     hook_civicrm_export ($exportTempTable, &$headerRows, &$sqlColumns, $exportMode, $componentTable, $ids)
 
 ## Parameters
 
