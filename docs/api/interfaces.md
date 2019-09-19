@@ -222,6 +222,9 @@ Response to creating a new contact
 
 Before being able to use the REST Interface you will need to have set up the `CIVICRM_SITE_KEY` and the users `API_KEY`. There are three methods of creating API keys for users
 
+!!! warning
+    API keys need to be unique and set on a user with appropriate [permissions](/security/permissions.md).
+
 #### Manual Method
 
 You can enter the key directly in the database. This would be done by the following
