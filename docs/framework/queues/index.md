@@ -49,7 +49,6 @@ $queue = CRM_Queue_Service::singleton()->create([
       'type'  => 'Sql',
       'name'  => 'my-own-queue',
     ]);
-
 ```
 
 ## 2. Create items/tasks on the queue
