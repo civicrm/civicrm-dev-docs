@@ -14,6 +14,7 @@ extension that shows how to use an SQL-based queue.
 ## Definitions
 
 - *Queue*: An object representing a queue, which may be new or existing.
+- *Queue type*: A storage backend for the list of queue items.
 - *Queue runner*: A class for processing the queued items.
 - *Item*: A single job on a queue
 - *Task*: A particular type of item, as expected by CiviCRM's queue runner.
@@ -24,20 +25,50 @@ extension that shows how to use an SQL-based queue.
 
 ## 1. Creating a queue
 
-Two implementations of the [Queue interface](https://lab.civicrm.org/dev/core/blob/master/CRM/Queue/Queue.php) are included, one that keeps the queue in memory, one that uses SQL.
+Before we can read and write items in our queue, we must create a `$queue` object using [CRM_Queue_Service](https://lab.civicrm.org/dev/core/blob/master/CRM/Queue/Service.php).
+Each `$queue` is an instance of [CRM_Queue_Queue](https://lab.civicrm.org/dev/core/blob/master/CRM/Queue/Queue.php).
 
-A Queue has a unique string name and a type. By default, creating a queue with the same name as an existing queue will remove the existing queue, this behaviour can be changed by passing FALSE as the `reset` parameter.
-
-The queue *type* is translated directly into the class name, so `Sql` expects a class called `CRM_Queue_Queue_Sql`. Also note that the codebase gives lots of examples for type (beanstalk, immediate, interactive...), none of which are implemented(!). You can have `Memory` or `Sql`.
-
-Example:
+A convenient way to produce a `$queue` is to use the create-or-load pattern. This example will create a queue (if it doesn't exist) or load an existing queue (if it already exists).
 
 ```php
+// Create or load a SQL-based queue.
 $queue = CRM_Queue_Service::singleton()->create([
-      'type'  => 'Sql',
-      'name'  => 'my-own-queue',
-    ]);
+  'type'  => 'Sql',
+  'name'  => 'my-own-queue',
+  'reset' => FALSE,
+]);
 ```
+
+The `create()` operation accepts these parameters:
+
+* `type` (*required*): Determines how data is written and read from the queue.
+    * CiviCRM includes these queue types:
+        * `Sql`: Stores the queue data in CiviCRM's SQL database. This is useful for persistent or multi-process queues.
+        * `Memory`: Stores the queue data in PHP's memory. This is useful for short-lived queues.
+    * Each type corresponds to a class named `CRM_Queue_Queue_{$type}`. To support an additional queue type (such as "STOMP" or "Beanstalk"), one must implement a new driver class.
+* `name` (*required*): Identifies the queue. If two processes instantiate a `Sql` queue with the same name, then they will be working with the same data.
+* `reset`: Determines whether `create()` should reset the content of a queue.
+    * `TRUE` (*default*): Create a new, empty queue. If there's an existing queue, it is destroyed and re-created.
+    * `FALSE`: Only create the queue if needed. If the queue already exists, then load it.
+
+The create-or-load pattern is convenient, but it's not appropriate if you need to ensure that the operation starts with clean slate. In such cases, you may explicitly distinguish between creating and loading a queue:
+
+```php
+// Create an empty SQL-based queue. If an existing queue exists, then reset/destroy/recreate it.
+$queue = CRM_Queue_Service::singleton()->create([
+  'type'  => 'Sql',
+  'name'  => 'my-own-queue',
+  'reset' => TRUE,
+]);
+
+// Load an existing SQL-based queue. If it does not exist yet, then you may encounter an error (driver-dependent).
+$queue = CRM_Queue_Service::singleton()->load([
+  'type'  => 'Sql',
+  'name'  => 'my-own-queue',
+]);
+```
+
+Any of the three examples can produce a `$queue` object - which we will need in the subsequent steps.
 
 ## 2. Create items/tasks on the queue
 
