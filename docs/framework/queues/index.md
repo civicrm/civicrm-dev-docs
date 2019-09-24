@@ -13,14 +13,14 @@ extension that shows how to use an SQL-based queue.
 
 ## Definitions
 
-- *queue*: an object representing a queue, which may be new or existing.
-- *queue runner*: a class for processing the queued items.
-- *item*: a single job on a queue
-- *task*: a particular type of item, as expected by CiviCRM's queue runner.
-- *release time*: the time at which a job can be considered to have crashed if it is not completed (defaults to 1 hour). Note that it may well not have crashed and could still actually be running, especially in PHP FPM environments!
-- *claim item*: refers to fetching the first item in a queue (if one exists) unless that item's release time has not been reached (typically meaning that item is currently being processed).
-- *steal item*: refers to fetching the first item in a queue regardless and setting a new release time.
-- *release item*: refers to leaving a failed queue item on the queue (e.g. for later retry)
+- *Queue*: An object representing a queue, which may be new or existing.
+- *Queue runner*: A class for processing the queued items.
+- *Item*: A single job on a queue
+- *Task*: A particular type of item, as expected by CiviCRM's queue runner.
+- *Release time*: The time at which a job can be considered to have crashed if it is not completed (defaults to 1 hour). Note that it may well not have crashed and could still actually be running, especially in PHP FPM environments!
+- *Claim item*: Refers to fetching the first item in a queue (if one exists) unless that item's release time has not been reached (typically meaning that item is currently being processed).
+- *Steal item*: Refers to fetching the first item in a queue regardless and setting a new release time.
+- *Release item*: Refers to leaving a failed queue item on the queue (e.g. for later retry)
 
 ## 1. Creating a queue
 
