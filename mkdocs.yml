@@ -243,6 +243,7 @@ pages:
   - QuickForm Reference:
      - QuickForm: framework/quickform/index.md
      - Entity Reference Field: framework/quickform/entityref.md
+  - Queue Reference: framework/queues/index.md
   - Region Reference: framework/region.md
   - Routing: framework/routing.md
   - Resources Reference: framework/resources.md
