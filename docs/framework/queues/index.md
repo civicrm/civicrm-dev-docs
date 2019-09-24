@@ -1,6 +1,6 @@
 # Queues Reference
 
-CiviCRM has a system for splitting big jobs into smaller tasks on a queue, and
+CiviCRM has a system for splitting big jobs into smaller tasks on a queue, and provides a couple of ways to process queues.
 provides a couple of ways to process queues.
 
 ## Overview
