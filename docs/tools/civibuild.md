@@ -11,7 +11,7 @@ Creating a full development environment for CiviCRM requires a lot of work, e.g.
 
 The *civibuild* command automates this process. It includes different build-types that are useful for core development, such as *drupal-clean* (a barebones Drupal+Civi site) and *wp-demo* (a WordPress+Civi site with some example content).
 
-Note: There are a number of build tools on the market which can, e.g., create a Drupal web site (like [drush](http://drush.ws/)) or WordPress web site (like [wp-cli](http://wp-cli.org/)).  Civibuild does not aim to replace these.  Unfortunately, such tools generally require extra work for a Civi developer environment.  Civibuild works with these tools and and fills in missing parts.
+Note: There are a number of build tools on the market which can, e.g., create a Drupal web site (like [drush](http://drush.org/)) or WordPress web site (like [wp-cli](http://wp-cli.org/)).  Civibuild does not aim to replace these.  Unfortunately, such tools generally require extra work for a Civi developer environment.  Civibuild works with these tools and and fills in missing parts.
 
 ## Build types
 
