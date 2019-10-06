@@ -1,5 +1,7 @@
 # CiviCRM Developer Guide
 
+A documentation guide for people who develop with/for [CiviCRM](https://civicrm.org).
+
 -   [Read published version](http://docs.civicrm.org/dev/en/master)
 -   [Learn how to edit](https://docs.civicrm.org/dev/en/master/documentation/#how-to-edit)
 
