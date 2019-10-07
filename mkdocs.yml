@@ -30,6 +30,8 @@ pages:
   - Reviewing a PR: core/pr-review.md
   - Verifying a Bug Fix: core/verify-fix.md
   - Release Process: core/release-process.md
+- Financial:
+  - Overview: financial/overview.md
 - Extensions:
   - Basics: extensions/index.md
   - Packaging Options: extensions/packaging.md
