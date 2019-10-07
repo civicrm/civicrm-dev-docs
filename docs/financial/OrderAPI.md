@@ -14,4 +14,22 @@ Do not try to update the status of a contribution, for example to Completed to r
 
 As a best practice which we intend to require going forward, the OrderAPI.create should be called with a status of Pending. Then a PaymentAPI.create should be called to record a payment.
 
+Sample Order.create for Simple Contribution
+
+Here is how to create an order for a contribution with a quick config price set. [Rich to provide drawing inspiration from https://github.com/civicrm/civicrm-core/blob/master/tests/phpunit/api/v3/OrderTest.php and https://wiki.civicrm.org/confluence/display/CRM/Order+API]
+[Rich: we want to create with Contribution status of Pending, not specify the contribution total
+
+Sample Order.create for Single Membership
+
+Here is how to create an order for a single membership. [Rich to provide]
+
+
+Sample Order.create for Single Event Registration
+
+Here is how to create an order for a single ticket purchase for an event. [Rich to provide]
+
+
+Sample Order.create for 4 line items
+
+Here is how to create an order for a membership, an event registration, and two separate contribution line items. [ Rich to provide]
 
