@@ -1,9 +1,10 @@
 # hook_civicrm_contact_get_displayname
 
-## Description
+## Summary
 
-This hook is called to retrieve the display name of a contact. You can
-use this hook to return a custom display name.
+This hook is called to retrieve the display name of a contact, allowing you to return a custom display name.
+
+## Notes
 
 Probably you won't need this hook but in some case it might be useful.
 For example you want to show who is a manager of an organisation but you
@@ -15,7 +16,7 @@ don't want to store this in the database.
 
 ## Parameters
 
--   &$disply_name - the current display name, you can change the
+-   &$display_name - the current display name, you can change the
     display name by changing the contents of this parameter
 -   $contactId - Contact ID
 -   $objContact - The contact BAO

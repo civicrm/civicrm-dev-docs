@@ -1,17 +1,19 @@
 # hook_civicrm_aclWhereClause
 
-## Description
+## Summary
 
 This hook is called when composing the ACL where clause to restrict
 visibility of contacts to the logged in user.
 
-Note that this hook is called only when filling up the
-civicrm_acl_contact_cache table, and not every time a contact SELECT
-query is performed. Those will join onto the
-civicrm_acl_contact_cache table.
+## Notes
 
-*NB: This hook will not be called at all if the logged in user has
-access to the "edit all contacts" permission.*
+This hook is called only when filling up the
+`civicrm_acl_contact_cache` table, and not every time a contact `SELECT`
+query is performed. Those will join onto the
+`civicrm_acl_contact_cache` table.
+
+!!! caution "Caveat"
+    It will not be called at all if the logged in user has access to the "edit all contacts" permission.
 
 ## Definition
 
@@ -19,12 +21,20 @@ access to the "edit all contacts" permission.*
 
 ## Parameters
 
--   $type - type of permission needed
+-   $type - Integer type of permission needed, matching these class constants:
+    - `CRM_Core_Permission::EDIT`
+    - `CRM_Core_Permission::VIEW`
+    - `CRM_Core_Permission::DELETE`
+    - `CRM_Core_Permission::CREATE`
+    - `CRM_Core_Permission::SEARCH`
+    - `CRM_Core_Permission::ALL`
+    - `CRM_Core_Permission::ADMIN`
 -   array $tables - (reference ) add the tables that are needed for the
     select clause
 -   array $whereTables - (reference ) add the tables that are needed
     for the where clause
--   int $contactID - the contactID for whom the check is made
+-   int $contactID - the contactID for whom the check is made, i.e. the ContactID of
+    the user trying to access the contacts.
 -   string $where - the currrent where clause
 
 ## Returns

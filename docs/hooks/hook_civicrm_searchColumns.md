@@ -1,15 +1,15 @@
 # hook_civicrm_searchColumns
 
-## Description
+## Summary
 
-This hook is called after a search is done. This allows the developer to
-modify the headers and/or the values that are displayed as part of this
-search. The BIGGEST drawback with this hook is that you may need to
-modify the result template to include your fields. The result files are
-CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl. However, if
-you use the same number of columns, you can overwrite the existing
-columns with the values that you want displayed. This is a HACK, but
-avoids template modification.
+This hook is called after a search is done, allowing you to
+modify the headers and/or the values that are displayed as part of the
+search.
+
+## Notes
+
+The result files are
+`CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl`. 
 
 Sorting: as shown in the examples, if you are replacing columns with
 different values then you should unset the 'sort' parameter.  Leaving it
@@ -23,24 +23,24 @@ column values and therefore appear to be sorting incorrectly.
 ## Parameters
 
 -   $objectName - the object for this search - activity, campaign,
-    case, contact, contribution, event, grant, membership, and pledge
+    case, contact, contribution, event, grant, membership, relationship and pledge
     are supported.
 -   $headers - array (reference) - the list of column headers, an
     associative array with keys: ( name, sort, order )
 -   $rows - array (reference) - the list of values, an associate array
     with fields that are displayed for that component
--   $seletor - array (reference) - the selector object. Allows you
+-   $selector - array (reference) - the selector object. Allows you
     access to the context of the search
 
 ## Returns
 
 -   null
 
-## **Example**
+## Example
 
     function civitest_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
 
-        if ( $objectName == 'Contact' ) {
+        if ( $objectName == 'contact' ) {
 
             // Lets move a few header around, and overwrite stuff we dont need
 
@@ -68,8 +68,6 @@ column values and therefore appear to be sorting incorrectly.
                 $values[$id]['source'] = $result['contact_source'];
                 $values[$id]['job_title'] = $result['job_title'];
             }
-
-            // remember to modify CRM/Contact/Form/Selector.tpl to see the changes
         }
 
         if ( $objectName == 'Contribute' ) {
@@ -95,3 +93,42 @@ column values and therefore appear to be sorting incorrectly.
                 $values[$id]['contribution_type'] = $values[$id]['total'];
             }
         }
+
+### Example to add new column header at desired place
+
+    function civitest_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
+
+      if ($objectName == 'contribution') {
+
+        // if you want to place your new column say 'Balance Due' after 'Total Amount'
+        foreach ($columnHeaders as $index => $column) {
+
+          // search for the machine name of 'Total Amount' column
+          if (!empty($column['field_name']) && $column['field_name'] == 'total_amount') {
+
+            // if you want to insert after 'total_amount' header then
+            //  increase the weight by N (here 4)
+            $weight = $column['weight'] + 4;
+            $columnHeaders[] = array(
+              'name' => ts('Balance Due'),
+              'field_name' => 'balance_due',
+              'weight' => $weight,
+              );
+
+              // set the values for 'Balance Due' column
+              foreach ($values as $key => $value) {
+                $balanceDue = CRM_Core_BAO_FinancialTrxn::getPartialPaymentWithType(
+                  $value['contribution_id'],
+                  'contribution',
+                  FALSE,
+                  $value['total_amount']
+                );
+                $values[$key]['balance_due'] = sprintf("<b>%s</b>", CRM_Utils_Money::format($balanceDue));
+              }
+              break;
+            }
+
+          } // end of foreach
+        }
+
+      }

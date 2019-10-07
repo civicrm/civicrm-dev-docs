@@ -1,20 +1,24 @@
 # hook_civicrm_permission
 
-## Description
+## Summary
 
 This hook is called to allow custom permissions to be defined.
 
+## Notes
+
 Available starting in 4.3, with permission descriptions supported
-starting in 4.6.  Version 4.6.0 [may cause
-trouble](https://issues.civicrm.org/jira/browse/CRM-16230), even without
-descriptions.
+starting in 4.6.
+
+Before 4.7.21, extension permissions did not work properly in Joomla (see
+[CRM-12059](https://issues.civicrm.org/jira/browse/CRM-12059)). CiviCRM
+would recognize the permission but not give site administrators any way
+to grant it to users.
 
 ## Definition
 
     hook_civicrm_permission(&$permissions)
 
-## \
- Parameters {#hook_civicrm_permission-Parameters}
+## Parameters
 
 -   $permissions: reference to an associative array of custom
     permissions that are implemented by extensions, modules and other
@@ -28,9 +32,6 @@ descriptions.
             $prefix = ts('CiviCRM Grant Program') . ': '; // name of extension or module
             $permissions['edit grant programs'] = $prefix . ts('edit grant programs');
             $permissions['delete in Grant Program'] = $prefix . ts('delete grant program');
-
-        \
-         \
 
     -   A multidimensional array in the format "permission string =>
         array(label, description)".  Compatible with CiviCRM 4.6+.  The
@@ -62,11 +63,6 @@ permissions, such as "create new item".
 
 Like in Drupal 6's hook_perm, there is no automatic namespacing for
 permissions, so one should adopt unique permission names.
-
-Extension permissions do not currently work properly in Joomla (see
-[CRM-12059](https://issues.civicrm.org/jira/browse/CRM-12059)).  CiviCRM
-will recognize the permission, but you will have no way to grant it to
-users.
 
 ## Example
 

@@ -1,18 +1,17 @@
 # hook_civicrm_searchTasks
 
-## Description
+## Summary
 
 This hook is called to display the list of actions allowed after doing a
-search. This allows the module developer to inject additional actions or
-to remove existing actions.
+search, allowing you to inject additional actions or to remove existing actions.
 
 ## Definition
 
-    hook_civicrm_searchTasks( $objectName, &$tasks )
+    hook_civicrm_searchTasks( $objectType, &$tasks )
 
 ## Parameters
 
--   $objectName - the object for this search - activity, campaign,
+-   $objectType - the object for this search - activity, campaign,
     case, contact, contribution, event, grant, membership, and pledge
     are supported.
 -   $tasks - the current set of tasks for that custom field. You can
@@ -28,7 +27,7 @@ to remove existing actions.
 
 -   null
 
-## **Example**
+## Example (Disable an existing task)
 
     function civitest_perm () {
       return array(
@@ -41,8 +40,18 @@ to remove existing actions.
         if ( $objectType == 'contact' ) {
             // remove the action from the contact search results if the user doesn't have the permission
             if (! user_access( 'access add contacts to group search action' )) {
-                // in real life, you'd want to find your task by searching the tasks by title or class
-                unset($tasks[1]);
+                unset($tasks[CRM_Core_Task::GROUP_ADD]);
             }
         }
+    }
+
+## Example (Add a new task)
+
+    function smsconversation_civicrm_searchTasks( $objectName, &$tasks ){
+      if($objectName == 'contact'){
+        $tasks[] = [
+          'title' => 'SMS - schedule a conversation',
+          'class' => 'CRM_SmsConversation_Form_ScheduleMultiple'
+        ];
+      }
     }

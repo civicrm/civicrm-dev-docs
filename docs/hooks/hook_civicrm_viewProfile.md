@@ -1,16 +1,16 @@
 # hook_civicrm_viewProfile
 
-## Description
+## Summary
 
 This hook is called while preparing a read-only profile screen.
 
 ## Definition
 
-    viewProfile($name)
+    viewProfile($profileName)
 
 ## Parameters
 
--   $name - the (machine readable) name of the profile.
+-   $profileName - the (machine readable) name of the profile.
 
 ## Returns
 

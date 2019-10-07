@@ -1,9 +1,9 @@
 # hook_civicrm_buildAmount
 
-## Description
+## Summary
 
 This hook is called when building the amount structure for a
-Contribution or Event Page. It allows you to modify the set of radio
+Contribution or Event Page, allowing you to modify the set of radio
 buttons representing amounts for contribution levels and event
 registration fees.
 
@@ -22,68 +22,51 @@ registration fees.
 -   null
 
 ## Example
+For an extension that implements this hook see: https://github.com/mattwire/uk.org.som.proratamembership
 
-     function civitest_civicrm_buildAmount(
-      $pageType,
-      &$form,
-      &$amount
-    ) {
+    function proratamembership_civicrm_buildAmount($pageType, &$form, &$amount) {
+      if (!empty($form->get('mid'))) {
+        // Don't apply pro-rated fees to renewals
+        return;
+      }
       //sample to modify priceset fee
-      $priceSetId = $form->get( 'priceSetId' );
-      if ( !empty( $priceSetId ) ) {
-        $feeBlock =& $amount;
-        // if you use this in sample data, u'll see changes in
-        // contrib page id = 1, event page id = 1 and
-        // contrib page id = 2 (which is a membership page
-        if (!is_array( $feeBlock ) || empty( $feeBlock ) ) {
+      $priceSetId = $form->get('priceSetId');
+      if (!empty($priceSetId)) {
+        $feeBlock = &$amount;
+        if (!is_array($feeBlock) || empty($feeBlock)) {
           return;
-        }
-        //in case of event we get eventId,
-        //so lets apply hook for eventId = 1
-        if ( $pageType == 'event' && $form->_eventId != 1 ) {
-          return;
-        }
-        //in case of contrbution
-        //for online case we get page id so we could apply for specific
-        if ( $pageType == 'contribution' ) {
-          if ( !in_array(
-              get_class( $form ),
-              array( 'CRM_Contribute_Form_Contribution', 'CRM_Contribute_Form_Contribution_Main')
-              )
-          ) {
-            return;
-          }
         }
         if ($pageType == 'membership') {
-          // give a discount of 20% to everyone
-          foreach ( $feeBlock as &$fee ) {
-            if ( !is_array( $fee['options'] ) ) {
+          // pro-rata membership per month
+          // membership year is from 1st Jan->31st Dec
+          // Subtract 1/12 per month so in Jan you pay full amount,
+          //  in Dec you pay 1/12
+          // 12 months in year, min 1 month so subtract current numeric month from 13 (gives 12 in Jan, 1 in December)
+          $monthNum = date('n');
+          $monthsToPay = 13-$monthNum;
+          foreach ($feeBlock as &$fee) {
+            if (!is_array($fee['options'])) {
               continue;
             }
-            foreach ( $fee['options'] as &$option ) {
-              //for sample lets modify first option from all fields.
-              $option['amount']  = $option['amount'] * 0.8;
-              $option['label']  .= ' - ' . ts( 'Get a 20% discount since you know this hook' );
+            foreach ($fee['options'] as &$option) {
+              // We only have one amount for each membership, so this code may be overkill,
+              // as it checks every option displayed (and there is only one).
+              if ($option['amount'] > 0) {
+                // Only pro-rata paid memberships!
+                $option['amount'] = $option['amount'] * ($monthsToPay / 12);
+                if ($monthsToPay == 1) {
+                  $option['label'] .= ' - Pro-rata: Dec only';
+                }
+                elseif ($monthsToPay < 12) {
+                  $dateObj = DateTime::createFromFormat('!m', $monthNum);
+                  $monthName = $dateObj->format('M');
+                  $option['label'] .= ' - Pro-rata: ' . $monthName . ' to Dec';
+                }
+              }
             }
           }
-        } else {
-          // unconditionally modify the first option to be a $100 fee
-          // to show our power!
-          foreach ( $feeBlock as &$fee ) {
-            if ( !is_array( $fee['options'] ) ) {
-              continue;
-            }
-            foreach ( $fee['options'] as &$option ) {
-              //for sample lets modify first option from all fields.
-              $option['amount'] = 100;
-              $option['label']  = ts( 'Power of hooks' );
-              break;
-            }
-          }
+          // FIXME: Somewhere between 4.7.15 and 4.7.23 the above stopped working and we have to do the following to make the confirm page show the correct amount.
+          $form->_priceSet['fields'] = $feeBlock;
         }
       }
     }
-
-It may be me... but I'm pretty sure that this documentation needs to be
-updated because since 4.2 everything is in a price set... This code
-doesn't actually work to my knowledge.

@@ -1,12 +1,16 @@
 # hook_civicrm_pre_case_merge
 
-## Description
+## Summary
 
-This hook is called just before a case merge happens. A case merge is
+This hook is called before a case merge happens.
+
+## Notes
+
+A case merge is
 when two cases are merged or when a case is reassigned to another
 client.
 
-Added in CIviCRM 4.5
+Added in CiviCRM 4.5
 
 ## Definition
 
@@ -28,8 +32,8 @@ Added in CIviCRM 4.5
 ## Example
 
 See for an example the documentation of the
-[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge)
+[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge.md)
 
 ## See also
 
-[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge)
+[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge.md)

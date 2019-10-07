@@ -1,8 +1,8 @@
 # hook_civicrm_caseSummary
 
-## Description
+## Summary
 
-This hook is called when the manage case screen is displayed. It allows
+This hook is called when the manage case screen is displayed, and it allows
 the injection of label/value pairs which are rendered inside divs
 underneath the existing summary table.
 
@@ -25,13 +25,18 @@ underneath the existing summary table.
      <?php
     function myModule_civicrm_caseSummary($caseID) {
         /* Quick way to test what some results look like.
-        return array('some_unique_id' => array( 'label' => ts('Some Date'),
-                                        'value' => '2009-02-11',
-                                       ),
-                     'some_other_id' => array( 'label' => ts('Some String'),
-                                        'value' => ts('Coconuts'),
-                                       ),
-                     );
+        return array(
+            array(
+                'some_unique_id' => array(
+                    'label' => ts('Some Date'),
+                    'value' => '2009-02-11',
+                 ),
+                'some_other_id' => array(
+                    'label' => ts('Some String'),
+                    'value' => ts('Coconuts'),
+                ),
+            ),
+        );
         */
 
         // More realistic example, but will return nothing unless you have these activities in your database.
@@ -83,13 +88,17 @@ underneath the existing summary table.
 
         $mcstat = CRM_Core_DAO::singleValueQuery( $sql, $params );
 
-        return array('modrtw' => array( 'label' => ts('Mod RTW:'),
-                                        'value' => $modrtw,
-                                       ),
-                     'mcstat' => array( 'label' => ts('Consent Status:'),
-                                        'value' => ts($mcstat),
-                                       ),
-                     );
+        return array(
+            array(
+                'modrtw' => array(
+                    'label' => ts('Mod RTW:'),
+                    'value' => $modrtw,
+                ),
+                'mcstat' => array( 'label' => ts('Consent Status:'),
+                    'value' => ts($mcstat),
+                ),
+            ),
+        );
 
     Put this in css/extras.css:
 

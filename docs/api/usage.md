@@ -7,14 +7,12 @@ with the supported actions and parameters:
 
 | Entity                   | Description              | Actions |  Parameters       |
 |--------------------------|--------------------------|---------|-------------------|
-| <code>Contact</code>     | An individual, <br /> organization, or <br />house-hold.         |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_type</code><br /> <code>nick\_name</code>  <br /><code>preferred\_language</code>       |
-| <code>Activity</code>    | An phone call, meeting,<br /> or email message. that <br /> has occurred (or will <br /> occur) at a specific <br /> date and time|<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>activity\_type\_id</code> <br /> <code>source\_contact\_id</code> <br /> <code>assignee\_contact\_id</code>    |
+| <code>Contact</code>     | An individual, <br /> organization, or <br />household.         |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_type</code><br /> <code>nick\_name</code>  <br /><code>preferred\_language</code>       |
+| <code>Activity</code>    | A phone call, meeting,<br /> or email message. that <br /> has occurred (or will <br /> occur) at a specific <br /> date and time|<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>activity\_type\_id</code> <br /> <code>source\_contact\_id</code> <br /> <code>assignee\_contact\_id</code>    |
 | <code>Address</code>     | A street-address related <br /> to a contact. |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_id</code>,  <br /> <code>street\_address</code> <br /> <code>city</code>  <br /> <code>state\_province\_id</code> <br /> <code>country\_id</code>     |
 
 (*For full, up-to-date details about specific entities and parameters, use the
-[API Explorer].*)
-
-[API Explorer]: /api/general/#api-explorer
+[API Explorer](/api/index.md#api-explorer).*)
 
 The API is available in many different environments (such as PHP, REST, and
 Javascript), and the notation differs slightly in each environment.
@@ -53,8 +51,8 @@ array(
 )
 ```
 
-(**Note**: A few specialized actions like `getsingle` or `getvalue` may
-return success in a different format.)
+!!! note
+    A few specialized actions like `getsingle` or `getvalue` may return success in a different format.
 
 
 ## PHP (civicrm_api3)
@@ -86,7 +84,7 @@ for usability:
 plugin, or a standalone script, then you may need to **bootstrap** CiviCRM
 before using the API.  See the examples in [Bootstrap Reference].
 
-[Bootstrap Reference]: https://wiki.civicrm.org/confluence/display/CRMDOC/Bootstrap+Reference
+[Bootstrap Reference](/framework/bootstrap.md)
 
 ## PHP (class.api.php)
 
@@ -150,13 +148,11 @@ http://www.example.com/civicrm/ajax/rest
 ```
 
 Obviously you should substitute your site in! You can explore the syntax
-and options available using the [API Explorer].
+and options available using the [API Explorer](/api/index.md#api-explorer).
 
-Please note that the REST interface is subject to
-[API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security).
+Please note that the REST interface is subject to [API Security](/security/permissions.md#api-permissions).
 
-For more details, see [REST
-interface](http://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface). 
+For more details, see [REST interface](/api/interfaces.md#rest). 
 
 
 ## AJAX
@@ -165,9 +161,7 @@ interface](http://wiki.civicrm.org/confluence/display/CRMDOC/REST+interface). 
 CRM.api3('entity', 'action', [params], [statusMessage]);
 ```
 
-For more details, see [AJAX Interface].
-
-[AJAX Interface]: https://wiki.civicrm.org/confluence/display/CRMDOC/AJAX+Interface
+For more details, see [AJAX Interface](/api/interfaces.md#ajax).
 
 The AJAX interface is automatically available for web-pages generated through
 CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions,
@@ -177,7 +171,7 @@ The AJAX interface could be made available to other parts of the same website
 (e.g. a drupal module or wordpress widget) by calling
 `CRM_Core_Resources::singleton()->addCoreResources()`
 from php. Please note that the AJAX interface is subject to
-[API Security](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Security)
+[API Security](/security/permissions.md#api-permissions)
 and
 [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy).
 To use it from an external site or application, see REST interface documentation.
@@ -193,7 +187,12 @@ The smarty call is to add extra information, therefore *create* or *delete*
 actions don't make sense in this case.
 
 For more details, see
-[Smarty API interface](https://wiki.civicrm.org/confluence/display/CRMDOC/Smarty+API+interface).
+[Smarty API interface](/api/interfaces.md#smarty-api-interface).
+
+## Scheduled jobs
+Any API call can be configured to be run as a scheduled job. These can be configured in the UI under Administer->System Settings->Scheduled jobs. Usually API calls run this way are written with the intent that they be run as scheduled jobs - e.g those with the Job entity or provided by payment processors to run recurring payments.
+
+
 
 ## Command line
 
@@ -221,4 +220,17 @@ wp civicrm-api contact.get first_name=Alice last_name=Roberts
 
 ```bash
 cv api contact.get first_name=Alice last_name=Roberts
+```
+
+## API Security
+
+API has security measures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](/security/permissions.md).
+
+## API Lookups by Username
+
+You can use a CMS username in lieu of a contact ID by prefacing it with `@user:`.  For instance, if the user "james" has a CiviCRM contact ID of 123, these statements are identical:
+
+```bash
+cv api contact.get id=123
+cv api contact.get id=@user:james
 ```

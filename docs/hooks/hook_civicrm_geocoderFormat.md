@@ -1,6 +1,6 @@
 # hook_civicrm_geocoderFormat
 
-## Description
+## Summary
 
 This hook allows you to manipulate the Address object during geocoding,
 for instance to extract additional fields from the geocoder's returned

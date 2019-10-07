@@ -1,6 +1,6 @@
 # hook_civicrm_tabset
 
-## Description
+## Summary
 
 This hook is called when composing the tabs interface used for contacts,
 contributions and events.
@@ -99,8 +99,7 @@ contributions and events.
         // return an html snippet etc.
         $url = CRM_Utils_System::url( 'civicrm/contact/view/contribution',
                                       "reset=1&snippet=1&force=1&cid=$contactID" );
-        // $url should return in 4.4 and prior an HTML snippet e.g. '<div><p>....';
-        // in 4.5 and higher this needs to be encoded in json. E.g. json_encode(array('content' => <html form snippet as previously provided>));
+        // this needs to be encoded in json. E.g. json_encode(array('content' => <html form snippet>));
         // or CRM_Core_Page_AJAX::returnJsonResponse($content) where $content is the html code
         // in the first cases you need to echo the return and then exit, if you use CRM_Core_Page method you do not need to worry about this.
         $tabs[] = array( 'id'    => 'mySupercoolTab',

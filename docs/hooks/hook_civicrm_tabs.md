@@ -1,12 +1,10 @@
 # hook_civicrm_tabs
 
-## Description
+## Summary
 
-!!! warning "Deprecation Notice"
-    This hook has been deprecated in 4.7.
+This hook was deprecated in 4.7 in favor of [hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md).
 
-    For a substitute, see [hook_civicrm_tabset](/hooks/hook_civicrm_tabset)
-
+## Notes
 
 This hook is called when composing the tabs to display when viewing a
 contact

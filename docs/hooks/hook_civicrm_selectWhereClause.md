@@ -1,10 +1,16 @@
 # hook_civicrm_selectWhereClause
 
-## Description
+## Summary
 
-This hook is called when executing a SELECT query. The hook is called
+This hook is called when executing a SELECT query.
+
+## Notes
+
+The hook is called
 once for each entity in the query, allowing you to add (or remove)
-restrictions specific to that entity.
+restrictions specific to that entity. Note that this hook will only be
+invoked for API calls if check_permissions is set to 1. It will be
+bypassed for API calls that do not set this parameter.
 
 This hook is new in 4.7 and coverage is limited. The Case entity is
 fully covered by this hook; selecting cases via api, ui, or searches
@@ -15,7 +21,7 @@ This hook is part of a general permissions refactoring which is not yet
 complete.
 
 The Contact entity is fully covered
-by [hook_civicrm_aclWhereClause](/hooks/hook_civicrm_aclWhereClause)
+by [hook_civicrm_aclWhereClause](/hooks/hook_civicrm_aclWhereClause.md)
 and that is the recommended hook for limiting access to contacts. For
 other entities, we need to increase coverage of this hook by using the
 api internally instead of directly executing sql, and by standardizing

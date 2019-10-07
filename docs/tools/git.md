@@ -1,0 +1,338 @@
+# Git, GitHub, and GitLab
+
+CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid understanding of these tools (especially git) is important for developing CiviCRM. This page provides some information about *how CiviCRM uses these tools* &mdash; but, due to the wealth of resources already available elsewhere online, this page does *not* attempt to teach you everything you need know about how to use these tools for CiviCRM development.
+
+!!! tip
+    If you are new to git, a great way to get started using it within the CiviCRM community is to [contribute to documentation](/documentation/index.md). The editing workflow involves git in the same was that core coding does &mdash; but the stakes are much lower!
+
+## External resources {:#resources}
+
+* Git
+    * [Official documentation](https://git-scm.com/documentation)
+    * [15 minute interactive tutorial](https://try.github.io/levels/1/challenges/1)
+    * [Another site with more interactive tutorials](http://learngitbranching.js.org/)
+* GitHub
+    * [Official help site](https://help.github.com/)
+    * [20 minute GitHub tutorial video](https://www.youtube.com/watch?v=0fKg7e37bQE)
+    * [hub](https://hub.github.com/) - a useful commandline tool for GitHub which can speed up your workflow
+* GitLab
+    * [Official documentation](https://docs.gitlab.com/ce/README.html)
+
+
+## Repositories
+
+* GitHub - **[github.com/civicrm](https://github.com/civicrm/)**
+    * As of 2017, most of CiviCRM's repositories are hosted on GitHub
+    * Most of the repositories hosted on GitHub are owned by the "CiviCRM" organization.
+    * Here are some of the most important repositories hosted on GitHub
+        * [civicrm-core](https://github.com/civicrm/civicrm-core/) - Core application which can be embedded in different systems (Drupal, Joomla, etc).
+        * [civicrm-drupal](https://github.com/civicrm/civicrm-drupal/) - Drupal integration modules, with branches for each CiviCRM release & Drupal major version (e.g. 7.x-4.6, 7.x-4.7, 6.x-4.4, 6.x-4.6).
+        * [civicrm-joomla](https://github.com/civicrm/civicrm-joomla/) - Joomla integration modules.
+        * [civicrm-wordpress](https://github.com/civicrm/civicrm-wordpress/) - WordPress integration modules.
+        * [civicrm-backdrop](https://github.com/civicrm/civicrm-backdrop/) - Backdrop integration module.
+        * [civicrm-packages](https://github.com/civicrm/civicrm-packages/) - External dependencies required by CiviCRM.
+        * [civicrm-l10n](https://github.com/civicrm/civicrm-l10n/) - Localization data.
+        * *...and [many others](https://github.com/civicrm/) too!*
+
+* GitLab - **[lab.civicrm.org/explore/projects](http://lab.civicrm.org/explore/projects)**
+    * CiviCRM also has some repositories hosted on this self-hosted installation of GitLab
+
+
+## Git workflow overview {:#contributing}
+
+Whether you are contributing to civicrm-core or an ancillary project (using GitHub or GitLab) the process generally goes somewhat like this:
+
+1. Consider [opening an issue on GitLab](/tools/issue-tracking.md#gitlab) to describe the change you'd like to make.  Not all changes need GitLab issues, but opening an issue is recommended if you are making significant changes, expect discussion, or expect your changes to be grouped into more than one [pull request](#pr).
+1. Find the page on GitHub or GitLab for the project to which you would like to contribute. We will call this repository the **upstream repository**.
+1. **Clone** the upstream repository to your local machine. (If you are working on core, you should use [civibuild](/tools/civibuild.md) for this step.)
+1. On the web page for the upstream repository, **fork** the upstream repository to your personal user account.
+1. Within your local repository **add your fork** as a second git *remote*. *[Learn more...](#remotes)*
+1. **Choose the correct base branch** in the upstream repository as the starting point for your changes. (Usually this will be `master`.) *[Learn more...](#base-branch)*
+1. (If it's been some time since you've cloned) **pull or fetch** the latest changes from the *upstream repository* into the appropriate branch of your local repository. *(You might also need to  [upgrade your civibuild site](/tools/civibuild.md#upgrade-site).)*
+1. Create (and checkout) a **new branch** for your changes, based on the correct branch (chosen above) in the upstream repository. *[Learn more...](#branching)*
+1. Make your changes. (Take care to follow the guidelines in [contributing to core](/core/contributing.md).)
+1. **Commit** your changes. *[Learn more...](#commiting)*
+1. **Push** your changes *to your fork*.
+1. **Open a pull request**. *[Learn more...](#pr)*
+1. Wait for someone else to [review your pull request](/core/pr-review.md).
+1. If you need to make more changes later, commit them on the same branch and push your new commits to your fork. The new commits the will automatically appear in the pull request.
+1. If other people commit changes to the upstream repository which create *merge conflicts* in your pull request, then **rebase** your branch. *[Learn more...](#rebasing)*
+1. Once your changes are merged, delete your local branch
+
+See also: [reviewing someone else's pull request](/core/pr-review.md)
+
+
+## Pull requests {:#pr}
+
+!!! note "terminology"
+    The terms "pull request", "merge request", "PR", and "MR" all effectively synonymous. GitHub uses "pull request", and GitLab uses "merge request".
+
+### Creating a pull request {:#pr-submit}
+
+1.  In the web browser, navigate to the web page for your fork (e.g. `https://github.com/myuser/civicrm-core` )
+1.  Click **Pull Request**
+1.  There will be two branches specified – the (first) left should be "civicrm" (i.e. where the code is going to). The second (right) should be your branch.
+1.  Add a [good subject](#pr-subject) and explanation, and submit.
+
+### Writing a pull request subject {:#pr-subject}
+
+Pull request titles don't need to be identical to issue titles, and in particular, you may want to focus more positively on the changes in code than on the broader feature changes. Here are some guidelines for writing a good subject line:
+
+When filing a pull-request, use a descriptive subject. These are good examples:
+
+ * `dev/core#5555 - Add "It's complicated" relationship type to defaults`
+ * `CRM-12345 - Fix Paypal IPNs when moon is at half-crescent (waxing)`
+ * `(WIP) dev/mail#67890 - Refactor SMS callback endpoint`
+ * `(NFC) CRM_Utils_PDF - Improve docblocks`
+ * `(REF) CRM_Foo_Form_Edit - Extract method checkFooBar()`
+
+A few elements to include:
+
+ * **Acronyms** - You're welcome to use the [acronyms](#acronyms) below to flag your PR with certain characteristics.
+ * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](/tools/issue-tracking.md#gitlab-reference).
+ * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
+ * **Description** - Provide a brief description of what the pull-request does.
+
+### Acronyms within PR subjects {:#acronyms}
+
+You can put these acronyms at the beginning of your PR subject to flag it as such.
+
+#### (WIP) - "Work in Progress" {:#wip}
+
+If you are still developing a set of changes, it may be useful to submit a pull-request and flag it as `(WIP)`. This allows you to have discussion with other developers and check test results. Once the change is ready, update the subject line to remove `(WIP)`.
+
+#### (REF) - "Refactor" {:#ref}
+
+Refactoring is a technique of making small, behavior-preserving changes (see, e.g. [Martin Fowler's *Refactoring*](https://martinfowler.com/books/refactoring.html)).
+
+Because refactoring preserves behavior, it doesn't require as much scrutiny with regard to user-experience or product-scope.  Rather, one merely verifies that the change preserves behavior.
+
+Examples:
+
+* Extract a method or field
+* Pull-up a method from child-class to parent-class
+* Encapsulate a field
+
+#### (NFC) - "Non-Functional Change" {:#nfc}
+
+Most patches are designed to change functionality (e.g. fix an error message or add a new button). However, some changes are non-functional -- they presumptively have no impact on users or integrations at runtime.
+The aim of flagging a PR as "(NFC)" is to streamline review on trivial changes.
+
+Here are some examples and counter-examples of NFC:
+
+* _Non-Functional Change_:
+    * Modify whitespace in PHP code.
+    * Update a code comment.
+    * Fix a typo or grammatical error in a help dialog.
+    * (*Maybe*) Add a new unit-test where there was no coverage before.
+* _Functional Change_:
+    * Refactoring
+    * Replace 20 lines of redundant code with a call to a helper function.
+        * (__Why?__ A reviewer would consider whether the helper is truly equivalent, better, or worse.)
+    * Fix a typo in a *symbol* (PHP class-name, PHP function-name, HTML field name, etc).
+        * (__Why?__ A reviewer would consider dangling references to the symbol.)
+    * Change the general wording of a help dialog or menu item.
+        * (__Why?__ A reviewer would consider impact on the user's comprehension.)
+    * Alter the substance of an existing unit-test.
+        * (__Why?__ A reviewer would consider whether the change improves the correctness of the test.)
+    * Alter the build process.
+        * (__Why?__ A reviewer would consider whether the new build will work correctly.)
+
+### Pull request scope {:#pr-scope}
+
+A good pull request addresses a clearly-defined problem. There should be a detailed description logged in the [issue tracker](http://issues.civicrm.org/). Excellent PRs also increase test coverage. If you are tempted to do additional tweaks or code cleanup outside the scope of that issue, you could make a separate commit and include them in the PR if they are minor & non-controversial, or create a separate PR if they are more complex.
+
+There is no size limit for PRs as long as they are focused on completely solving a discreet problem. As a practical matter, though, bigger PRs may take longer to review and merge. When possible, split "epic" issues into bite-sized chunks as long as each seperate PR is functionally complete and does not cause merge conflicts with your other PRs. In the latter case, add commits to an existing PR.
+
+### Reviewing a pull request
+
+See [How to review a core pull request](/core/pr-review.md)
+
+### Who merges pull requests? {:#pr-merge}
+
+A person may be granted the privilege/responsibility of reviewing and merging pull requests who:
+
+* is an active contributor to the CiviCRM project
+* responds to communications in a timely fashion
+* is familiar with current CiviCRM coding standards and best practices
+* is a careful proofreader and tester, and who gives thorough constructive feedback
+
+
+## Git tasks
+
+### Cloning {:#cloning}
+
+When you want to set up a local copy of a git repo hosted on GitHub or GitLab, you *clone* it. Here are two ways:
+
+* Using the SSH protocol
+
+    ```bash
+    $ git clone git@github.com:civicrm/civicrm-core.git
+    ```
+
+* Using the HTTP protocol
+
+    ```bash
+    $ git clone https://github.com/civicrm/civicrm-core.git
+    ```
+
+Using SSH is a little bit better because you won't need to enter your password all the time, but it does require some [extra steps](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+
+### Managing multiple git remotes {:#remotes}
+
+Your local git repo is typically set up to track at least one *remote* git repo for operations like `fetch`, `pull`, and `push`. But it can be helpful to set up multiple remotes when contributing to repos which you don't own.
+
+Common terminology:
+
+* **Upstream repository** - a repo hosted on GitHub or GitLab which *you don't own* but would like to contribute to
+* **Fork repository** - a repo hosted on GitHub or GitLab which *you own* and have created by "forking" an upstream repo
+* **Local repository** - the repo that lives on your local computer after [cloning](#cloning)
+
+Show the remotes which your local repo is tracking:
+
+```bash
+$ git remote -v                                                                          
+upstream  https://github.com/civicrm/civicrm-core.git (fetch)
+upstream  https://github.com/civicrm/civicrm-core.git (push)
+myusername      git@github.com:myusername/civicrm-core.git (fetch)
+myusername      git@github.com:myusername/civicrm-core.git (push)
+```
+
+The first column shown in the output is the *name* of the remote. You can rename your remotes however you want. Assuming your GitHub user name is `myusername`, the above output looks pretty good because we have two remotes: one named `upstream` (an *upstream repo*), and another named `myusername` (a *fork repo*). When you first [clone](#cloning) a repository, git will set up a remote called `origin` which refers to the repo you initially cloned. In the above example we don't see `origin`, so that remote has been removed or renamed.
+
+Read about [how to use `git remote`](https://git-scm.com/docs/git-remote) to properly set up your remotes.
+
+!!! tip
+    If you use [hub](https://hub.github.com/), the command `hub clone` can help with this
+
+
+
+### Branching {:#branching}
+
+Git uses branches to separate independent sets of changes. When creating a new branch, here are some things to keep in mind:
+
+* [Choose an appropriate base branch](#base-branch)
+* You'll need to keep your local branch until its changes are merged. Sometimes this can take several months. After it's merged, you can delete it.
+* Give your branch a good name
+    * The name of your branch is up to you.
+    * It should be unique among your other outstanding branches.
+    * It should only contain letters, numbers, dashes, and underscores.
+    * If you have a GitLab or Jira issue, you can use its number (e.g `mail-111` or `CRM-1234`) as the name of the branch.
+
+Create a new branch and switch your local repository to it:
+
+```bash
+$ git checkout upstream/master -b mail-111
+```
+
+* `upstream` is your local name for the [git remote](#remotes) which represents the upstream repository (e.g. `https://github.com/civicrm/civicrm-core`) to which you are contributing changes. Depending on how you have set up your local repo, this remote might have a different name, like `origin` or `civicrm`.
+* `master` is the name of the branch in the upstream repository on which you would like to base your changes
+* `mail-111` is the name of your new branch
+
+### Choosing a base branch {:#base-branch}
+
+When creating a new branch, you should explicitly declare a starting point.
+
+Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, or *Stable* branch. The table below summarizes the policies for each branch.
+
+| Name | Git branch (example) | Version number (example) | Acceptable patches |
+| --- | ---- | --- | --- |
+| Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
+| Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
+| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
+
+### Committing {:#committing}
+
+As much as possible, separate your changes into distinct commits that each make sense on their own. Using smaller commits will make your changes easier for others to review. You can [clean up your commits](#rebasing-interactive) once you have finished getting your code right.
+
+It is often helpful to put your commits in separate smaller PRs as a reviewer might spare 30 minutes to review a function extraction of a variable cleanup and merge the PR fairly quickly but if you put 5 in the same PR they might not be able to find a block of 2 hours to review them all and it might languish. Doing preliminary cleanup PRs while you are still working on a problem can be helpful as you are improving the code as you go rather than creating a huge amount of change that will be hard and/or risky to review. While you are still working on a problem is also a great time to start adding tests for the code around it to core.
+
+#### Writing a commit message {:#commit-messages}
+
+When making commits, remember that this isn't just a small personal project: your audience is hundreds of other developers &mdash; now and ten years from now &mdash; as well as end users trying to understand features and bugs. By leaving a commit history that makes sense &mdash; both in content and in commit messages &mdash; you will make the code more legible for everyone.
+
+Follow these guidelines to write a good commit messages:
+
+* The first line should be a meaningful **subject**, which should:
+    * be prefixed with a GitLab or Jira issue reference (if the commit is to CiviCRM core)
+    * mention a "subsystem" after the issue number
+    * be 72 characters or less, in total
+    * be in "Sentence case"
+    * use the imperative mood
+    * not end in a period
+    * examples:
+        * `dev/core#999 - Civi\Angular - Generate modules via AssetBuilder`
+        * `CRM-19417 - distmaker - Change report to JSON`
+* (optionally but recommended) After the subject, include a short **body**, which should:
+    * have a blank line above it (below the subject)
+    * be wrapped at 72 characters
+    * explain *what*, *why*, and *how*
+
+### Rebasing {:#rebasing}
+
+Sometimes when you [make a pull request](#pr) someone else merges a change into the upstream repository that *conflicts* with your change. The best way to resolve this conflict is to rebase. It's a good idea to [read about rebasing](https://git-scm.com/docs/git-rebase) so you understand the theory. Here's the practice:
+
+!!! note
+    In this example we have two [remotes](#remotes) set up:
+
+    * `upstream` which tracks the upstream repo
+    * `myusername` which tracks the fork repo
+
+    Also we are working on changes in a branch called `my-branch`
+
+1. Update your local `master` branch
+
+    ```bash
+    $ git checkout master
+    $ git pull upstream master
+    ```
+
+1. Checkout the branch that has conflicts you'd like to resolve
+
+    ```bash
+    $ git checkout my-branch
+    $ git rebase master
+    ```
+
+1. See which files need attention
+
+    ```bash
+    $ git status
+    ```
+
+1. Make changes to the files which resolve the merge conflicts
+
+1. "Add" the files to tell git you have resolved the conflicts
+
+    ```bash
+    $ git add CRM/Utils/String.php
+    ```
+
+1. Continue the rebase
+
+    ```bash
+    $ git rebase --continue
+    ```
+
+1. Force-push your changes back up to your fork
+
+    ```bash
+    $ git push -f myusername my-branch
+    ```
+
+1. Now, if you go to back to the page for your pull request it should no longer show merge conflicts
+
+## Rebasing for cleanup {:#rebasing-interactive}
+
+When you are working on a PR you will often make lots of commits in order to get to the right change - these are your workings. However, when we merge we want the commit history to show the final change - not the workings so we will often ask you to rebase. It's fine to have multiple commits in a PR but each commit should be complete in itself and a logical change in itself. If you make a mistake in one commit it shouldn't be fixed in another (unless the mistake is already merged).
+
+The trick to a cleanup rebase is to do it in interactive mode. The process is similar to above and it's usually easier to do the above first and THEN the interactive rebase to make sure you have a nice clean start before starting your interactive rebase.
+
+Assuming the upstream repo is called 'upstream' the command is
+
+```
+git rebase -i upstream/master
+```
+
+You then get to squash or remove commits are fix up the history. Do a force push (per above) when you have finished
+

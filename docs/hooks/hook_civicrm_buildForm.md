@@ -1,10 +1,10 @@
 # hook_civicrm_buildForm
 
-## Description
+## Summary
 
-This hook is invoked when building a CiviCRM form. This hook should also
-be used to set the default values of a form element, to change form
-elements attributes, or even to add new fields to a form.
+This hook is invoked when building a form. It can be used to set
+the default values of a form element, to change form
+elements attributes, and to add new fields to a form.
 
 ## Definition
 
@@ -36,10 +36,6 @@ elements attributes, or even to add new fields to a form.
       }
     }
 
-
-
-
-
 !!! tip
     To access useful values in your hook_civicrm_buildForm function, consider the following:
 
@@ -48,8 +44,6 @@ elements attributes, or even to add new fields to a form.
         $form->getVar( '_gid' );
         $form->setVar( '_gid', VALUE ); // sets the variable
 
-
-\
  Change a price set field to be required for a specific event.
 
     function example_civicrm_buildForm($formName, &$form) {
@@ -62,17 +56,18 @@ elements attributes, or even to add new fields to a form.
 
 !!! tip
     With the QuickForms system that CiviCRM uses, you need to do two things to make fields appear:
-     1. You need to create the element in the form, which is what you can do in the buildForm() hook,\
-     2. You need to modify the Smarty template used to display the form so it contains the generated HTML for the new form element.
+    
+    1. You need to create the element in the form, which is what you can do in the buildForm() hook,
+    2. You need to modify the Smarty template used to display the form so it contains the generated HTML for the new form element.
 
     The later can be achieved by:
 
     -   overriding the core CiviCRM template with a new one (either in the custom templates directory, or within the templates directory of an extension),
-    -   or dynamically inserting a template part in the page through the Regions API.\
+    -   or dynamically inserting a template part in the page through the Regions API.
 
     This is demonstrated in the next example.
 
-    NOTE: the Regions API is only available if the template contains Regions in the first place - this is not the case with the Inline edit forms! You will then need to either add fake form elements, or modify existing elements' attributes to reach your goals.\
+    NOTE: the Regions API is only available if the template contains Regions in the first place - this is not the case with the Inline edit forms! You will then need to either add fake form elements, or modify existing elements' attributes to reach your goals.
 
 
 

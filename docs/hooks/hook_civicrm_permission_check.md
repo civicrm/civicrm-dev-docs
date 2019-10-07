@@ -1,9 +1,13 @@
 # hook_civicrm_permission_check
 
-## Description
+## Summary
 
-This hook is called to allow to dynamically alter permissions based on
-conditions or external criteria. See
+This hook is called to dynamically alter permissions based on
+conditions or external criteria.
+
+## Notes
+
+See
 [https://issues.civicrm.org/jira/browse/CRM-19256](https://issues.civicrm.org/jira/browse/CRM-19256)
 for some use cases.
 
@@ -14,12 +18,10 @@ and above.
 
     hook_civicrm_permission_check($permission, &$granted)
 
-## \
- Parameters {#hook_civicrm_permission_check-Parameters}
+## Parameters {:#hook_civicrm_permission_check-Parameters}
 
 -   $permission: a string representing the name of an atomic
-    permission, ie. 'access deleted contacts'\
-     \
+    permission, ie. 'access deleted contacts'
 
 -   $granted: a boolean reflecting whether this permission is currently
     granted. Change this value to alter the permission.
@@ -27,6 +29,12 @@ and above.
 ## Returns
 
 -   null
+
+## Limitations
+
+-   This hook is implemented for forms (eg Add, Edit) but not yet for
+    reports and viewing of objects like Activities on the Contact
+    Summary page as of 4.7.17
 
 ## Examples
 

@@ -1,10 +1,12 @@
 # hook_civicrm_batchQuery
 
-## Description
+## Summary
 
-This hook is called when the query of CSV batch export is generated,\
- so hook implementers can provide their own query objects which
-alters/extends original query.
+This hook is called when the query of CSV batch export is generated
+
+## Notes
+
+With this hook you can provide your own query objects which alter or extend the original query.
 
 ## Definition
 
@@ -12,8 +14,7 @@ alters/extends original query.
 
 ## Parameters
 
--   $query - A string of SQL Query\
-     \
+-   $query - A string of SQL Query
 
 ## Example
 

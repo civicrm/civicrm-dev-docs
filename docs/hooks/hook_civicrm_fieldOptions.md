@@ -1,9 +1,8 @@
 # hook_civicrm_fieldOptions
 
-## Description
+## Summary
 
-Dynamically modify the option list for any core or custom field in
-CiviCRM.
+This hook allows you to dynamically modify the option list for any field (including custom fields).
 
 ## Definition
 
@@ -22,8 +21,7 @@ CiviCRM.
 
 ## See Also
 
-See [Pseudoconstant (option list)
-Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Pseudoconstant+%28option+list%29+Reference)
+See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
 for more information about how option lists work and the *context*
 parameter.
 

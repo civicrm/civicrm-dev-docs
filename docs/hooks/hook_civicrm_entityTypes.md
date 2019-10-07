@@ -1,50 +1,83 @@
 # hook_civicrm_entityTypes
 
-## Description
+## Summary
 
-This hook is called for declaring managed entities via API. [See
-here](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+a+Module+Extension#CreateaModuleExtension-Addanewentity)
-for a more complete description of creating a managed entity.
+This hook is called for declaring managed entities via API.
+
+## Notes
+
+[See this tutorial](/extensions/civix.md#generate-entity) for a more complete description of creating a managed entity.
 
 ## Definition
 
+```php
+hook_civicrm_entityTypes(&$entityTypes)
+```
 
+## Parameters
 
-  ----------------------------------------------------------
-  `hook_civicrm_`{.java .plain}entityTypes(&$entityTypes)
-  ----------------------------------------------------------
+* `$entityTypes` is a two-dimensional associative array. Each element in the array has:
 
+    * A **key** which is the DAO name of the entity as a string (e.g. `'CRM_Report_DAO_Instance'`), although this has not always been enforced.
 
+    * A **value** which is an associative with the following elements:
 
-The *$entityTypes* is an array, where each item has the properties:
+        * `'name'`: *string, required* - a unique short name (e.g. `"ReportInstance"`)
 
--   **name**: *string, required* – a unique short name (e.g.
-    "ReportInstance")
--   **class**: *string, required* – a PHP DAO class (e.g.
-    "CRM_Report_DAO_Instance")
--   **table**: *string, required* – a SQL table name (e.g.
-    "civicrm_report_instance")
--   **fields_callback**: *array, optional* – a list of callback
-    functions which can modify the DAO field metadata.
-    (*function($class, &$fields)*) Added circa 4.7.11+
--   **items_callback**: *array, optional* – a list of callback
-    functions which can modify the DAO foreign-key metadata.
-    (*function($class, &$links)*) Added circa 4.7.11+
+        * `'class'`: *string, required* - a PHP DAO class (e.g.`"CRM_Report_DAO_Instance"`)
 
-The main key for *$entityTypes* should be a DAO name (e.g.
-*$entityTypes['CRM_Report_DAO_Instance']*), although this has not
-always been enforced.
+        * `'table'`: *string, required* - a SQL table name (e.g. `"civicrm_report_instance"`)
+
+        * `'fields_callback'`: *array, optional* - a list of callback functions which can modify the DAO field metadata. `function($class, &$fields)` Added circa 4.7.11+
+
+        * `'items_callback'`: *array, optional* - a list of callback functions which can modify the DAO foreign-key metadata. `function($class, &$links)` Added circa 4.7.11+
+
 
 ## Returns
 
--   null
+* null
 
-## Example: Add new entities
+## Examples
 
-    /** * Implements hook_civicrm_entityTypes. * * @param array $entityTypes *   Registered entity types. */function volunteer_civicrm_entityTypes(&$entityTypes) { $entityTypes['CRM_Volunteer_DAO_Need'] = array(   'name' => 'VolunteerNeed',   'class' => 'CRM_Volunteer_DAO_Need',   'table' => 'civicrm_volunteer_need', ); $entityTypes['CRM_Volunteer_DAO_Project'] = array(   'name' => 'VolunteerProject',   'class' => 'CRM_Volunteer_DAO_Project',   'table' => 'civicrm_volunteer_project', ); $entityTypes['CRM_Volunteer_DAO_ProjectContact'] = array(   'name' => 'VolunteerProjectContact',   'class' => 'CRM_Volunteer_DAO_ProjectContact',   'table' => 'civicrm_volunteer_project_contact', );}
+### Add new entities
 
+This example is taken from CiviVolunteer [here](https://github.com/civicrm/org.civicrm.volunteer/blob/eafc2b0c3966a492a3080ac70abe06cbd960a00e/volunteer.php#L333).
 
+```php
+/**
+ * Implements hook_civicrm_apiWrappers().
+ */
+function volunteer_civicrm_entityTypes(&$entityTypes) {
+  $entityTypes[] = array(
+    'name'  => 'VolunteerNeed',
+    'class' => 'CRM_Volunteer_DAO_Need',
+    'table' => 'civicrm_volunteer_need',
+  );
+  $entityTypes[] = array(
+    'name'  => 'VolunteerProject',
+    'class' => 'CRM_Volunteer_DAO_Project',
+    'table' => 'civicrm_volunteer_project',
+  );
+  $entityTypes[] = array(
+    'name'  => 'VolunteerProjectContact',
+    'class' => 'CRM_Volunteer_DAO_ProjectContact',
+    'table' => 'civicrm_volunteer_project_contact',
+  );
+}
+```
 
-## Example: Alter entity metadata (v4.7.11?+)
+### Alter metadata for existing entities
 
-    /** * Implements hook_civicrm_entityTypes. * * @param array $entityTypes *   Registered entity types. */function example_civicrm_entityTypes(&$entityTypes) {  $entityTypes['CRM_Contact_DAO_Contact']['fields_callback'][] = function($class, &$fields) {    unset($fields['created_date']['export']);  };}
+This functionality was added in (approximately) v4.7.11.
+
+```php
+/**
+ * Implements hook_civicrm_apiWrappers().
+ */
+function apilogging_civicrm_entityTypes(&$entityTypes) {
+  $entityTypes['CRM_Contact_DAO_Contact']['fields_callback'][]
+    = function ($class, &$fields) {
+      unset($fields['created_date']['export']);
+    };
+}
+```

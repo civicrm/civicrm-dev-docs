@@ -1,9 +1,13 @@
 # hook_civicrm_alterMailingLabelParams
 
-## Description
+## Summary
 
 This hook is called to alter the parameters used to generate mailing
-labels. To be added in CiviCRM 4.1 or later.
+labels.
+
+## Availability
+
+CiviCRM 4.1 or later
 
 ## Definition
 

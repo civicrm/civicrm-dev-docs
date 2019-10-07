@@ -1,10 +1,13 @@
 # hook_civicrm_membershipTypeValues
 
-## Description
+## Summary
 
 This hook is called when composing the array of membership types and
-their costs during a membership registration (new or renewal). Note the
-hook is called on initial page load and also reloaded after submit ([PRG
+their costs during a membership registration (new or renewal).
+
+## Notes
+
+The hook is called on initial page load and also reloaded after submit ([PRG
 pattern](https://en.wikipedia.org/wiki/Post/Redirect/Get)). You can use it to alter the membership types when first
 loaded, or after submission (for example if you want to gather data in
 the form and use it to alter the fees).

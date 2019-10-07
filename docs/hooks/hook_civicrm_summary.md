@@ -1,9 +1,8 @@
 # hook_civicrm_summary
 
-## Description
+## Summary
 
-This hook is called when contact summary is rendered and you can add on
-top, below or replace summary with your own html content.
+This hook is called when the contact summary is rendered, allowing you to modify the summary with your own content.
 
 ## Definition
 
@@ -23,7 +22,7 @@ top, below or replace summary with your own html content.
 
     function civitest_civicrm_summary( $contactID, &$content, &$contentPlacement ) {
         // REPLACE default Contact Summary with your customized content
-        $contentPlacement = 3;
+        $contentPlacement = CRM_Utils_Hook::SUMMARY_REPLACE;
         $content = "
     <table>
     <tr><th>Hook Data</th></tr>

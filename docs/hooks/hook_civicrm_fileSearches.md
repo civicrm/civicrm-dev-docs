@@ -1,8 +1,8 @@
 # hook_civicrm_fileSearches
 
-## Description
+## Summary
 
-Add a reference to a file search service (e.g. Solr).
+This hook allows you to add a reference to a file search service (e.g. Solr).
 
 ## Availability
 

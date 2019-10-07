@@ -1,11 +1,14 @@
 # hook_civicrm_eventDiscount
 
-## Description
+## Summary
 
 This hook allows you to apply a customized discount to an event
 registration.
 
-This hook is outdated - notable, CiviDiscount does not make use of it.
+## Notes
+
+!!! caution
+    This hook is outdated - notable, CiviDiscount does not make use of it.
 
 ## Definition
 

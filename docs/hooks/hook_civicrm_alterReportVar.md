@@ -1,8 +1,8 @@
 # hook_civicrm_alterReportVar
 
-## Description
+## Summary
 
-This hook is used to add / modify display columns, filters ..etc
+This hook is used to add or modify display columns and filters.
 
 ## Definition
 

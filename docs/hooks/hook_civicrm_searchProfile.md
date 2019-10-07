@@ -1,17 +1,17 @@
 # hook_civicrm_searchProfile
 
-## Description
+## Summary
 
 This hook is called while preparing a list of contacts (based on a
 profile).
 
 ## Definition
 
-    searchProfile($name)
+    searchProfile($profileName)
 
 ## Parameters
 
--   $name - the (machine readable) name of the profile.
+-   $profileName - the (machine readable) name of the profile.
 
 ## Returns
 

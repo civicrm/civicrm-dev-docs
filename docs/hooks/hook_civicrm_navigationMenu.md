@@ -1,10 +1,22 @@
 # hook_civicrm_navigationMenu
 
-## Description
+## Summary
 
-This hook is called after the menus are rebuild. You can use this hook
-to add new menu, add children to new menu and get the list of menu items
-for any parent.
+This hook is called after the menus are rebuilt.
+
+## Notes
+
+!!! note "Comparison of Related Hooks"
+    This is one of three related hooks. The hooks:
+
+    -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
+    -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
+    -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
+
+You can use this hook to add new menu, add children to new menu and get the list of menu items for any parent.
+
+!!! warning "Use the Civix implementation"
+    [Civix](/extensions/civix.md) comes with helper functions `_EXTENSION_NAME_civix_insert_navigation_menu` and `_EXTENSION_NAME_civix_navigation_menu` that simplify the process of inserting menu items. Consider using these functions rather than using the examples below or writing your own implementation of this hook.
 
 ## Definition
 
@@ -41,6 +53,21 @@ hook_civicrm_navigationMenu(&$params)
     -   bool `active`: whether the item is active
 
 ## Examples
+* Civix example (recomended) - adds a menu item under 'Administer/System Settings'*
+
+```
+function omnipaymultiprocessor_civicrm_navigationMenu(&$menu) {
+  _omnipaymultiprocessor_civix_insert_navigation_menu($menu, 'Administer/System Settings', [
+    'label' => E::ts('Omnipay Developer Settings'),
+    'name' => 'omnpay-dev',
+    'url' => 'civicrm/settings/omnipay-dev',
+    'permission' => 'administer payment processors',
+
+  ]);
+}
+```
+
+*Legacy method if for some reason you cannot use Civix.*
 
 ```php
 function _getMenuKeyMax($menuArray) {
@@ -56,7 +83,7 @@ function _getMenuKeyMax($menuArray) {
 function civicrm_civicrm_navigationMenu(&$params) {
 
   //  Get the maximum key of $params
-  $maxKey = getMenuKeyMax($params);
+  $maxKey = _getMenuKeyMax($params);
 
   $params[$maxKey+1] = array(
     'attributes' => array(
@@ -90,7 +117,7 @@ function civicrm_civicrm_navigationMenu(&$params) {
 }
 ```
 
-To add your menu item to an existing menu
+Legacy example of adding your menu item to an existing menu
 
 ```php
 function donortrends_civicrm_navigationMenu(&$params) {

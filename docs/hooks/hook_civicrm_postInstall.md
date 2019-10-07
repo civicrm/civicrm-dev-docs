@@ -1,10 +1,10 @@
 # hook_civicrm_postInstall
 
-## Description
+## Summary
 
 This hook is called immediately after an extension is installed.
 
-Notes:
+## Notes
 
 -   Unlike most CiviCRM hooks, hook_civicrm_postInstall is defined not
     in CRM_Utils_Hook but in CRM_Extension_Manager_Module.

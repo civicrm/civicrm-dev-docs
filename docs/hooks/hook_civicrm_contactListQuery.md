@@ -1,12 +1,13 @@
 # hook_civicrm_contactListQuery
 
-## Description
+## Summary
+
+Deprecated in favor of [hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md).
+
+## Notes
 
 !!! warning "Deprecation Notice"
     This hook is called in very few places in version 4.5+ because most contact reference fields have been migrated to go through the api instead of constructing an ad-hoc query. It will be removed in a future version.
-
-    For a substitute, see [hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers).
-
 
 Use this hook to populate the list of contacts returned by Contact
 Reference custom fields. By default, Contact Reference fields will
@@ -18,7 +19,7 @@ the list of contacts to display.
 
 ## Definition
 
-    hook_civicrm_contactListQuery( &$query, $name, $context, $id )
+    hook_civicrm_contactListQuery( &$query, $queryText, $context, $id )
 
 ## Parameters
 
@@ -29,7 +30,7 @@ the list of contacts to display.
     -   the contact 'data' to display in the autocomplete dropdown
         (usually contact.sort_name - aliased as 'data')
     -   the contact IDs
--   $name - the name string to execute the query against (this is the
+-   $queryText - the name string to execute the query against (this is the
     value being typed in by the user)
 -   $context - the context in which this ajax call is being made (for
     example: 'customfield', 'caseview')
@@ -56,7 +57,7 @@ This example limits contacts in my contact reference field lookup
             $query = "
     SELECT c.sort_name as data, c.id
     FROM civicrm_contact c, civicrm_group_contact cg
-    WHERE c.sort_name LIKE '$name%'
+    WHERE c.sort_name LIKE '$queryText%'
     AND   cg.group_id IN ( 5 )
     AND   cg.contact_id = c.id
     AND   cg.status = 'Added'

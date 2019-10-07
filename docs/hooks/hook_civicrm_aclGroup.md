@@ -1,10 +1,13 @@
 # hook_civicrm_aclGroup
 
-## Description
+## Summary
 
 This hook is called when composing the ACL to restrict access to civicrm
-entities (civicrm groups, profiles and events). NOTE: In order to use
-this hook you must uncheck "View All Contacts" AND "Edit All Contacts"
+entities (civicrm groups, profiles and events).
+
+## Notes
+
+In order to use this hook you must uncheck "View All Contacts" AND "Edit All Contacts"
 in Drupal Permissions for the user role you want to limit. You can then
 go into CiviCRM and grant permission to Edit or View "All Contacts" or
 "Certain Groups". See the Forum Topic at:

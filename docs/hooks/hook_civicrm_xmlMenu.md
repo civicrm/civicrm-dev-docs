@@ -1,20 +1,22 @@
 # hook_civicrm_xmlMenu
 
-## Description
+## Summary
 
 This hook is called when building CiviCRM's menu structure, which is
-used to render urls in CiviCRM. This hook should be used when you want
-to register your custom module url's in CiviCRM. You will need to visit
-<your_site>/civicrm/menu/rebuild?reset=1 to pick up your additions.
+used to render urls in CiviCRM.
+
+## Notes
 
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
-    -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu) manipulates the navigation bar at the top of every screen
-    -    [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu) manipulates the list of HTTP routes (using PHP arrays)
-    -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu) manipulates the list of HTTP routes (using XML files)
+    -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
+    -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
+    -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
 
+!!! tip "Applying changes"
 
+    Menu data is cached. After making a change to the menu data, [clear the system cache](/tools/debugging.md#clearing-the-cache).
 
 ## Definition
 
@@ -22,43 +24,79 @@ to register your custom module url's in CiviCRM. You will need to visit
 
 ## Parameters
 
--   $files the array for files used to build the menu. You can append
+-   `$files` the array for files used to build the menu. You can append
     or delete entries from this file. You can also override menu items
     defined by CiviCRM Core.
 
 ## Returns
 
--   null
+-   `null`
 
 ## Example
 
-Here's how you can override an existing menu item. First create an XML
-file like this, and place it in the same folder as your hook
-implementation:
+To define a new route, create an XML file (`my_route.xml`) in your extension or module:
 
-    <?xml version="1.0" encoding="iso-8859-1" ?>
-    <menu>
-      <item>
-         <path>civicrm/ajax/contactlist</path>
-         <page_callback>CRM_Contact_Page_AJAX::getContactList</page_callback>
-         <access_arguments>my custom permission</access_arguments>
-      </item>
-    </menu>
+```xml
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<menu>
+  <item>
+     <path>civicrm/ajax/my-page</path>
+     <page_callback>CRM_Example_Page_AJAX::runMyPage</page_callback>
+     <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
+```
 
-    <?xml version="1.0" encoding="iso-8859-1" ?>
-    <menu>
-      <item>
-         <path>civicrm/ajax/contactlist</path>
-         <page_callback>CRM_Contact_Page_AJAX::getContactList</page_callback>
-         <access_arguments>access CiviCRM AJAX contactlist</access_arguments>
-      </item>
-    </menu>
+and register this using `hook_civicrm_xmlMenu`:
 
-\
- Drupal developers can define 'my custom permission' using
-[hook_perm](http://api.drupal.org/api/function/hook_perm) . Then create
-a hook implementation like this:
+```php
+function EXAMPLE_civicrm_xmlMenu(&$files) {
+    $files[] = dirname(__FILE__) . '/my_route.xml';
+}
+```
 
-    function EXAMPLE_civicrm_xmlMenu( &$files ) {
-        $files[] = dirname(__FILE__)."/my_file_name_above.xml";
-    }
+## XML Structure
+
+See the [routing](/framework/routing.md) page for details on the XML schema.
+
+## XML: IDS
+
+[PHPIDS](https://github.com/PHPIDS/PHPIDS) provides an extra layer of
+security to mitigate the risk of cross-site scripting vulnerabilities, SQL
+injection vulnerabilities, and so on.  In CiviCRM, PHPIDS scans all inputs
+for suspicious data (such as complex Javascriptor SQL code) before allowing
+the page-controller to execute.
+
+However, in some rare occasions, it is expected that the page-controller
+will accept otherwise suspicious data -- for example, a REST endpoint may
+accept JSON which superfically resembles complex XSS Javascript code; or an
+administrative form may allow admins to customize the HTML of a screen.
+When processing these page-requests, PHPIDS may generate false alarms.
+
+In the following example, we provide hints to PHPIDS indicating that the
+page `civicrm/my-form` accepts some inputs (`field_1`, `field_2`, `field_3`,
+and `field_4`) which may ordinarily look suspicious.
+
+```xml
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<menu>
+  <item>
+    <path>civicrm/my-form</path>
+    ...
+    <ids_arguments>
+      <!-- Fields #1 and #2 accept JSON input. These are partially exempt from PHPIDS -- they use less aggressive heuristics. -->
+      <json>field_1</json>
+      <json>field_2</json>
+      <!-- Field #3 accepts HTML input. It is  partially exempt from PHPIDS -- they use less aggressive heuristics. -->
+      <html>field_3</html>
+      <!-- Field #4 accepts anything; it is not protected by PHPIDS heuristics. -->
+      <exception>field_4</exception>
+    </ids_arguments>
+  </item>
+</menu>
+```
+
+!!! tip "Tip: Narrow exceptions are better than blanket exceptions"
+    The `<ids_arguments>` element allows you to define a narrow exception for a specific field on a specific page.
+    [hook_civicrm_idsException](/hooks/hook_civicrm_idsException.md) supports a blanket exemption for the entire page.
+    When possible, it is better to use a narrow exception.
