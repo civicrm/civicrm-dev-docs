@@ -338,7 +338,7 @@ When creating a new Case record, the "create" API previously accepted `case_type
 
 ### 4.3.0: Deprecate Constant API
 
-Most `CRM_*_Pseudoconstant methods` (which the 'constant' api is a wrapper for) are deprecated in 4.3 and many are removed in 4.4. To future-proof your code, use the [api.getoptions](/api/actions.md#getoptions) method instead of the constant api. See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
+Most `CRM_*_Pseudoconstant methods` (which the 'constant' api is a wrapper for) are deprecated in 4.3 and many are removed in 4.4. To future-proof your code, use the [api.getoptions](/api/v3/actions.md#getoptions) method instead of the constant api. See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
 
 ### 4.3.0: Contact get API now respects ACLS
 

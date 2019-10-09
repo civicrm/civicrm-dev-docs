@@ -53,4 +53,4 @@ From CiviCRM v5.8 the APIv3 explorer will now be able to show examples that are 
 
 ## Changelog
 
-All important changes made to the API are recorded in [API changes](/api/changes.md).
+All important changes made to the APIv3 are recorded in [APIv3 changes](/api/v3/changes.md).

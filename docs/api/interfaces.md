@@ -75,7 +75,7 @@ The recommended AJAX interface has changed between CiviCRM versions as follows:
 * version 4.3.x - `CRM.api(...)`
 * version 4.4.x onwards - `CRM.api3()`
 
-For details see [API changes](/api/changes.md).
+For details see [APIv3 changes](/api/v3/changes.md).
 
 ### Javascript AngularJS crmAPI {:#angularjs}
 
