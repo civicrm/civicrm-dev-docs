@@ -161,20 +161,48 @@ For more details, see [REST interface](/api/interfaces.md#rest). 
 CRM.api3('entity', 'action', [params], [statusMessage]);
 ```
 
-For more details, see [AJAX Interface](/api/interfaces.md#ajax).
+If you pass `true` in as the `StatusMessage` param, it will display the default status message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
 
-The AJAX interface is automatically available for web-pages generated through
-CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions,
-and custom CiviCRM templates).
+```javascript
+CRM.api3('entity_tag', 'create', {contact_id:123, tag_id:42})
+  .done(function(result) {
+    console.log(result);
+  });
+```
 
-The AJAX interface could be made available to other parts of the same website
-(e.g. a drupal module or wordpress widget) by calling
-`CRM_Core_Resources::singleton()->addCoreResources()`
-from php. Please note that the AJAX interface is subject to
-[API Security](/security/permissions.md#api-permissions)
-and
-[Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy).
-To use it from an external site or application, see REST interface documentation.
+Using the CRM.api3 method you can pass multiple requests through at once e.g.
+
+```javascript
+var params = [
+  ['email', 'get', {contact_id: 123}],
+  ['phone', 'get', {phone: '555-5555'}]
+];
+CRM.api3(params).done(function(result) {
+  console.log('email result is:', result[0]);
+  console.log('phone result is:', result[1]);
+});
+```
+
+You can also use associative objects in your API call as follows:
+
+``` javascript
+var params = {
+  one: ['email', 'getoptions', {field: 'location_type_id'}],
+  two: ['phone', 'getoptions', {field: 'phone_type_id', sequential: 1}],
+  three: ['phone', 'get']
+};
+CRM.api3(params).done(function(result) {
+  console.log('email result is:', result.one);
+  console.log('phone options are:', result.two);
+  console.log('phone get result is:', result.three);
+});
+```
+
+The AJAX interface is automatically available for web-pages generated through CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions and custom CiviCRM templates).
+
+The AJAX interface could be made available to other parts of the same website (e.g. a Drupal module or WordPress widget) by calling `CRM_Core_Resources::singleton()->addCoreResources()`
+from php. Please note that the AJAX interface is subject to [API Security](/security/permissions.md#api-permissions)
+and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see the REST interface documentation.
 
 ## Smarty
 

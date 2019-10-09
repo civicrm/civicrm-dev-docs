@@ -1,6 +1,6 @@
-# APIv3 Interfaces
+# API Interfaces
 
-The APIv3 has three main interfaces along with the PHP Code that can be used to access the API. 
+The API has three main interfaces along with the PHP Code that can be used to access the API. 
 
 ## Javascript {#javascript}
 
@@ -10,56 +10,9 @@ CiviCRM provides a number of different methods to interact with the API when in 
 
 The AJAX interface is one of the more common interfaces used within CiviCRM code. The AJAX interface is most commonly seen when used in javascript code. You can get example AJAX interface code out of the [API Explorer](/api/index.md#api-explorer) as needed.
 
-#### CRM.api3
+#### CRM.api3 / CRM.api4
 
-`CRM.api3` is a javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of a `CRM.api3` call would be
-
-```javascript
-CRM.api3('entity', 'action', [params], [statusMessage]);
-```
-
-If you pass `true` in as the `StatusMessage` param, it will display the default status Message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
-
-```javascript
-CRM.api3('entity_tag', 'create', {contact_id:123, tag_id:42})
-  .done(function(result) {
-    console.log(result);
-  });
-```
-
-Using the CRM.api3 method you can pass multiple requests through at once e.g. 
-
-```javascript
-var params = [
-  ['email', 'get', {contact_id: 123}],
-  ['phone', 'get', {phone: '555-5555'}]
-];
-CRM.api3(params).done(function(result) {
-  console.log('email result is:', result[0]);
-  console.log('phone result is:', result[1]);
-});
-```
-
-You can also use associative objects in your API call as follows:
-
-```
-var params = {
-  one: ['email', 'getoptions', {field: 'location_type_id'}],
-  two: ['phone', 'getoptions', {field: 'phone_type_id', sequential: 1}],
-  three: ['phone', 'get']
-};
-CRM.api3(params).done(function(result) {
-  console.log('email result is:', result.one);
-  console.log('phone options are:', result.two);
-  console.log('phone get result is:', result.three);
-});
-```
-
-These requests are different to doing a Chained API call as they are making simultaneous API requests and they are not related or dependent on each other.
-
-!!! note
-    Javascript does not guarantee the *ordering* of associative objects. To ensure the API calls execute in a specific order, use the array syntax instead. 
-
+`CRM.api3` and `CRM.api4` is a javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of such an API call can be found under the relevant usage sub-chapter of this documentation
 
 #### Tests
 
