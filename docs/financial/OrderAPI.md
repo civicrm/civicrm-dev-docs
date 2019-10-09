@@ -32,14 +32,14 @@ Call `Order.create` with a structure like the below. Note that we always create 
   "line_items" : [
     {
       "line_item": [
+        "params": { },
         {
           "qty": 1,
           "unit_price": 1.23,
           "line_total": 1.23,
           "price_field_id" : 1,
         }
-      ],
-      "params": { }
+      ]
     }
   ]
 }
@@ -160,15 +160,57 @@ Behind the scenes these API calls have created lots of financial records as list
 
 ## Sample Order.create for Single Membership
 
-Here is how to create an order for a single membership. [Rich to provide]
+Here is how to create an order for a single membership of type "General".
+Again, we follow the 2 steps: Create the order, then complete the order with
+the Payment API.
+
+Here's the parameters for the `Order.create` call, which will create a Pending
+Contribution, with a Pending Membership.
+
+```json
+{
+  "contact_id": 202,
+  "total_amount": 100.00,
+  "financial_type_id": "Member Dues",
+  "receive_date": "2019-10-08",
+  "contribution_status_id": "Pending",
+  "line_items" : [
+    {
+      "params": {
+        "membership_type_id": "General",
+        "contact_id": 202,
+        "skipStatusCal": 1,
+        "status_id": "Pending"
+      },
+      "line_item": [
+        {
+          "entity_table":"civicrm_membership",
+
+          "price_field_id":"4",
+          "price_field_value_id":"7",
+          "qty":"1",
+          "unit_price":"100.00",
+          "line_total":"100.00"
+        }
+      ]
+    }
+  ]
+}
+```
+
+After this, when we call `Payment.create` to complete the transaction the membership status will be recalculated to 'New';
 
 
-Sample Order.create for Single Event Registration
+## Sample Order.create for Single Event Registration
+
+@todo
 
 Here is how to create an order for a single ticket purchase for an event. [Rich to provide]
 
 
-Sample Order.create for 4 line items
+## Sample Order.create for 4 line items
+
+@todo
 
 Here is how to create an order for a membership, an event registration, and two separate contribution line items. [ Rich to provide]
 
