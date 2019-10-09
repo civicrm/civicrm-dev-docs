@@ -12,7 +12,7 @@ The AJAX interface is one of the more common interfaces used within CiviCRM code
 
 #### CRM.api3 / CRM.api4
 
-`CRM.api3` and `CRM.api4` is a javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of such an API call can be found under the relevant usage sub chapter of this docuemtation
+`CRM.api3` and `CRM.api4` is a javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of such an API call can be found under the relevant usage sub-chapter of this documentation
 
 #### Tests
 

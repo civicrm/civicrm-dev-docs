@@ -25,7 +25,7 @@ The result of a successful API call typically looks like this:
 
 ```php
 [
- { /* DAO Object */
+ { /* DAO Object */ }
 ]
 ```
 
@@ -44,9 +44,9 @@ array(
 
 ## PHP
 
-This is the most common way to call the API. There are 2 formats of API calls a proceedural approach and the more traditional approach
+This is the most common way to call the API. There are 2 formats of API calls a procedural approach and the more traditional approach
 
-Object Oriented Proceedural approach:
+Object Oriented Procedural approach:
 
 ```php
 $contacts = \Civi\Api4\Contact::get()
@@ -78,9 +78,7 @@ This format matches canonical format almost exactly, with a few improvements for
 -  Errors are reported as PHP exceptions. You may catch the exceptions or (by default) allow them to bubble up.
 - You can immediately iterate over the contacts returned
 
-*Note*: If you're writing a Drupal module, a Joomla extension, a WordPress plugin, or a standalone script, then you may need to **bootstrap** CiviCRM before using the API.  See the examples in [Bootstrap Reference].
-
-[Bootstrap Reference](/framework/bootstrap.md)
+*Note*: If you're writing a Drupal module, a Joomla extension, a WordPress plugin, or a standalone script, then you may need to **bootstrap** CiviCRM before using the API.  See the examples in [Bootstrap Reference](/framework/bootstrap.md).
 
 ## REST
 
@@ -125,7 +123,7 @@ For more details, see [REST interface](/api/interfaces.md#rest). 
 CRM.api4('entity', 'action', [params], [statusMessage]);
 ```
 
-If you pass `true` in as the `StatusMessage` param, it will display the default status Message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
+If you pass `true` in as the `StatusMessage` param, it will display the default Status Message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
 
 ```javascript
 CRM.api4('EntityTag', 'create', {
@@ -137,9 +135,9 @@ CRM.api4('EntityTag', 'create', {
 });
 ```
 
-The AJAX interface is automatically available for web-pages generated through CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions, and custom CiviCRM templates).
+The AJAX interface is automatically available for web-pages generated through CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions and custom CiviCRM templates).
 
-The AJAX interface could be made available to other parts of the same website (e.g. a drupal module or wordpress widget) by calling `CRM_Core_Resources::singleton()->addCoreResources()`
+The AJAX interface could be made available to other parts of the same website (e.g. a Drupal module or WordPress widget) by calling `CRM_Core_Resources::singleton()->addCoreResources()`
 from php. Please note that the AJAX interface is subject to [API Security](/security/permissions.md#api-permissions)
 and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see REST interface documentation.
 
@@ -157,7 +155,7 @@ For more details, see
 [Smarty API interface](/api/interfaces.md#smarty-api-interface).
 
 ## Scheduled jobs
-Any API call can be configured to be run as a scheduled job. These can be configured in the UI under Administer->System Settings->Scheduled jobs. Usually API calls run this way are written with the intent that they be run as scheduled jobs - e.g those with the Job entity or provided by payment processors to run recurring payments.
+Any API call can be configured to be run as a scheduled job. These can be configured in the UI under **Administer -> System Settings -> Scheduled Jobs**. Usually API calls run this way are written with the intent that they be run as scheduled jobs - e.g those with the Job entity or provided by payment processors to run recurring payments.
 
 
 
