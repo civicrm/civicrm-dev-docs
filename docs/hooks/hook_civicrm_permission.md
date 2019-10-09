@@ -29,7 +29,7 @@ to grant it to users.
     -   Simple associative array in the format "permission string =>
         label".  Compatible with CiviCRM 4.3+.
 
-            $prefix = ts('CiviCRM Grant Program') . ': '; // name of extension or module
+            $prefix = ts('CiviCRM Grant Program:') . ' ';
             $permissions['edit grant programs'] = $prefix . ts('edit grant programs');
             $permissions['delete in Grant Program'] = $prefix . ts('delete grant program');
 
@@ -39,14 +39,14 @@ to grant it to users.
         array item is present, it will appear as a description beneath
         the permission.
 
-            $prefix = ts('CiviCRM Grant Program') . ': '; // name of extension or module
-            $permissions['edit grant programs'] = array(
+            $prefix = ts('CiviCRM Grant Program:') . ' ';
+            $permissions['edit grant programs'] = [
               $prefix . ts('edit grant programs'),                     // label
               ts('Create or edit grant programs and their criteria'),  // description
-            );
-            $permissions['delete in Grant Program'] = array(
+            ];
+            $permissions['delete in Grant Program'] = [
               $prefix . ts('delete grant program'),                    // if no description, just give an array with the label
-            );
+            ];
 
 ## Returns
 
@@ -66,26 +66,28 @@ permissions, so one should adopt unique permission names.
 
 ## Example
 
-The following is an excerpt from [the CiviCRM Monitoring for
+The following is an excerpt based on [the CiviCRM Monitoring for
 Nagios](https://github.com/aghstrategies/com.aghstrategies.civimonitor/blob/bc1993fd07e2c730847e5fda6bf3958d41a51341/civimonitor.php#L132)
 extension, including a check for the CiviCRM version in order to ensure
 backwards compatibility while providing a description to versions that
 support it.
 
+    use CRM_Civimonitor_ExtensionUtil as E;
+
     function civimonitor_civicrm_permission(&$permissions) {
       $version = CRM_Utils_System::version();
       if (version_compare($version, '4.6.1') >= 0) {
-        $permissions += array(
-          'access CiviMonitor' => array(
-            ts('Access CiviMonitor', array('domain' => 'com.aghstrategies.civimonitor')),
-            ts('Grants the necessary API permissions for a monitoring user without Administer CiviCRM', array('domain' => 'com.aghstrategies.civimonitor')),
-          ),
-        );
+        $permissions += [
+          'access CiviMonitor' => [
+            E::ts('Access CiviMonitor'),
+            E::ts('Grants the necessary API permissions for a monitoring user without Administer CiviCRM'),
+          ],
+        ];
       }
       else {
-        $permissions += array(
-          'access CiviMonitor' => ts('Access CiviMonitor', array('domain' => 'com.aghstrategies.civimonitor')),
-        );
+        $permissions += [
+          'access CiviMonitor' => E::ts('Access CiviMonitor'),
+        ];
       }
     }
 
