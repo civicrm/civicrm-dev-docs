@@ -82,39 +82,7 @@ This format matches canonical format almost exactly, with a few improvements for
 
 ## REST
 
-For external services:
-
-```text
-http://www.example.com/sites/all/modules/civicrm/extern/rest.php
-  ?api_key=t0ps3cr3t
-  &key=an07h3rs3cr3t
-  &json=1
-  &debug=1
-  &version=4
-  &entity=Contact
-  &action=get
-  &first_name=Alice
-  &last_name=Roberts
-```
-
-For sessions already authenticated by the CMS (e.g. AJAX)
-
-```text
-http://www.example.com/civicrm/ajax/rest
-  ?json=1
-  &debug=1
-  &version=3
-  &entity=Contact
-  &action=get
-  &first_name=Alice
-  &last_name=Roberts
-```
-
-Obviously you should substitute your site in! You can explore the syntax and options available using the [API Explorer](/api/index.md#api-explorer).
-
-Please note that the REST interface is subject to [API Security](/security/permissions.md#api-permissions).
-
-For more details, see [REST interface](/api/interfaces.md#rest). 
+To be implemented
 
 
 ## AJAX
@@ -143,17 +111,6 @@ and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To us
 
 ## Smarty
 
-```smarty
-{crmAPI var="myContactList" entity="Contact" action="get" version="3" first_name="Alice" last_name="Roberts" }
-Found {$myContactList.count} item(s).
-```
-
-The smarty call is to add extra information, therefore *create* or *delete*
-actions don't make sense in this case.
-
-For more details, see
-[Smarty API interface](/api/interfaces.md#smarty-api-interface).
-
 ## Scheduled jobs
 Any API call can be configured to be run as a scheduled job. These can be configured in the UI under **Administer -> System Settings -> Scheduled Jobs**. Usually API calls run this way are written with the intent that they be run as scheduled jobs - e.g those with the Job entity or provided by payment processors to run recurring payments.
 
@@ -163,25 +120,11 @@ Any API call can be configured to be run as a scheduled job. These can be config
 
 ### drush
 
-To run on the default Drupal site: @todo
-
-```bash
-drush civicrm-api contact.get first_name=Alice last_name=Roberts version=4
-```
-
-To run on Drupal multisite, specify the site name:
-
-```bash
-drush -l www.example.com civicrm-api contact.get first_name=Alice last_name=Roberts
-```
+To be Implemented
 
 ### wp-cli
 
-Todo
-
-```bash
-wp civicrm-api contact.get first_name=Alice last_name=Roberts
-```
+To be Implemented
 
 ### cv
 
