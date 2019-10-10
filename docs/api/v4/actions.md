@@ -20,7 +20,7 @@ Search for records
 
 ## getfields
 
-Fetch entity metadata, i.e. the list of fields supported by the entity
+Fetch entity metadata, i.e. the list of fields supported by the entity. There is now an option that you can pass in for get fields which is `loadOptions`. This is the equivilant of the apiv3 getoptions API call. When used for any field that specifies a pseudoconstant it will return the relevant options in an options key. You can also pass in an option `IncludeCustom` which will specifiy whether to include the relevant custom fields for that entity or not.
 
 ## replace
 
