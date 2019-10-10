@@ -50,7 +50,7 @@ pages:
   - API Interfaces: api/interfaces.md
   - APIv4:
     - APIv4 Usage: api/v4/usage.md
-  #  - APIv4 Actions: api/v4/actions.md
+    - APIv4 Actions: api/v4/actions.md
   #  - APIv4 Options: api/v4/options.md
   #  - APIv4 Joins: api/v4/joins.md
   #  - APIv4 Chaining: api/v4/chaining.md
