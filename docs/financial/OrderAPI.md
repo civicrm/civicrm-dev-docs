@@ -37,7 +37,7 @@ Call `Order.create` with a structure like the below. Note that we always create 
           "qty": 1,
           "unit_price": 1.23,
           "line_total": 1.23,
-          "price_field_id" : 1,
+          "price_field_id": 1,
         }
       ]
     }
