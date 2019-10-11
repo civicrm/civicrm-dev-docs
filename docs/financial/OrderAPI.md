@@ -49,7 +49,7 @@ Things to note:
 
 1. The outer array keys mostly refer to the Contribution record. We set the `contribution_status_id` to `Pending` when we create an order.
 
-2. The `line_items` is an array of objects each having `params` which describes an entity that needs to be created, and a `line_item` key, described next.
+2. The `line_items` value is an array of objects each having `params` which describes an entity that needs to be created, and a `line_item` key, described next.
 
 3. The `line_item` structure is also an array of line items that all belong to the entity described in the `params` structure. In this example the `params` structure is empty, and we have a single item under `line_item` which therefore is not related to anything other than the contribution.
 
