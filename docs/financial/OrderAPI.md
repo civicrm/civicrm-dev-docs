@@ -4,7 +4,7 @@ An 'order' is a non-CiviCRM term that corresponds to how CiviCRM uses its contri
 
 Donations, memberships and event registrations are all potential line items in an order/contribution. Pledge payments via a contribution's line item are a potential future enhancement.
 
-The Order API wraps the creation of associated objects like memberships and event registrations. In other words, don't create the objects first before adding them as an array of `line_item`.create parameters; instead rely on the Order API to create them for you.
+The Order API wraps the creation of associated objects like memberships and event registrations. In other words, don't create the objects first before adding them as an array of `line_item.create` parameters; instead rely on the Order API to create them for you.
 
 On creation, the status of contribution and any related memberships or event registrations is Pending if the contribution is pending.
 
