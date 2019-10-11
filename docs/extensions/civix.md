@@ -165,6 +165,8 @@ If you want your extension to store data in the database, then you will need to 
     
 Now your entity should be ready to use. Try it out with `cv api MyEntity.create` and `cv api MyEntity.get`. Then [add some tests](#generate-test).
 
+By default when you generate an entity you will be generating an APIv4 entity. To generate an APIv3 (or both) interface you need to specify `--api-version 3,4` or just `--api-version 3`
+
 !!! note "Troubleshooting"
 
     If you've generated an entity within an extension that you created with `civix` v18.01.0 or earlier, then you'll need to add this hook to your `myextension.php` file (changing `myextension` to your extension's short name).
