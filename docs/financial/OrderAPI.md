@@ -78,7 +78,7 @@ The Payment API works with the Order API to update the records, and an `Order.ge
 
 ```json
 {
-  "contact_id": "202",
+   "contact_id": "202",
     "contact_type": "Individual",
     "contact_sub_type": "",
     "sort_name": "admin@example.com",
