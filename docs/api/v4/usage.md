@@ -11,8 +11,8 @@ Canonically, an API call is processed by the API kernel.  The `$entity`, `$actio
 
 A couple of significant differences between APIv4 and APIv3 is that in v4 the `check_permissions` flag is set to true by default and on get actions especially but more generally the limit of 25 items returned that v3 has has been removed in favour of coders specifying the limit if they want to in their code calls.
 
-!!! note
-   As of October 2019 Not all core entities have been added to apiv4. You should check the API explorer to see what entities are avaliable. If there is not one then please open a pull request to `civicrm-core` repository to add the entity in.
+!!! info
+   As of CiviCRM version 5,18 not all core entities have been added to APIv4. You should check the API explorer to see which entities are available. If the entity you require is not available then please open a pull request against the [`civicrm-core` repository](https://github.com/civicrm/civicrm-core) to add the entity in or open an (issue)[https://lab.civicrm.org/dev/core] and request that the entity is added.
 
 ```php
 $result = Civi::service('civi_api_kernel')->run('Contact', 'get', [
