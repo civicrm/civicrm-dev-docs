@@ -10,7 +10,7 @@ $values['custom_field_reference'] = 'value';
 
 To return custom data for an entity just include the machine name of the custom data in the select array.
 
-For setting custom date fields, (ie CustomValue create), date format is `YmdHis`, for example: `20050425000000`.
+For setting custom date fields, date format is anything understood by `strtotime`, e.g. "now" or "-1 week" or "2020-12-25"
 
 This is just a brief introduction; each API may have different requirements and allow different formats for accessing the custom data. See the [API function documentation](/api/index.md) and also read the comments and documentation in each API php file (under `civicrm/CRM/api/v3` in your CiviCRM installation) for exact details,
 which vary for each API entity and function.
