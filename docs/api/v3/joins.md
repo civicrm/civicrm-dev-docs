@@ -43,7 +43,7 @@ $result = civicrm_api3('Event', 'get', array(
 ));
 ```
 !!! tip
-    Joins are available only with the [get](/api/v3/actions.md#getfields),
+    Joins are available only with the [get](/api/v3/actions.md#get),
     [getsingle](/api/v3/actions.md#getsingle), and [getcount](/api/v3/actions.md#getcount)
     actions.
 
