@@ -1,24 +1,12 @@
 # APIv3 Chaining
 
-It is now possible to do two API calls at once with the first call feeding into
-the second. E.g. to create a contact with a contribution you can nest the
-contribution create into the contact create. Once the contact has been created
-it will action the contribution create using the id from the contact create as
-`contact_id`. Likewise you can ask for all activities or all contributions to
-be returned when you do a get.
+It is possible to do two API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as `contact_id`. Likewise you can ask for all activities or all contributions to be returned when you do a `get`.
 
-See [api/v3/examples] within the core source code for a plethora of examples
-(from unit tests) that use chaining. To start, look at these examples:
+See [api/v3/examples](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples) within the core source code for a plethora of examples (from unit tests) that use chaining. To start, look at these examples:
 
--   [APIChainedArray.php]
--   [APIChainedArrayFormats.php]
--   [APIChainedArrayValuesFromSiblingFunction.php]
-
-[api/v3/examples]: https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples
-[APIChainedArray.php]: https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArray.php
-[APIChainedArrayFormats.php]: https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayFormats.php
-[APIChainedArrayValuesFromSiblingFunction.php]: https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayValuesFromSiblingFunction.php
-
+-   [APIChainedArray.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArray.ex.php)
+-   [APIChainedArrayFormats.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayFormats.ex.php)
+-   [APIChainedArrayValuesFromSiblingFunction.php](https://github.com/civicrm/civicrm-core/blob/master/api/v3/examples/Contact/APIChainedArrayValuesFromSiblingFunction.ex.php)
 
 Note that there are a few supported syntaxes:
 
@@ -71,6 +59,4 @@ civicrm_api('Contact', 'create', array(
 
 The format you use on the way in will dictate the format on the way out.
 
-Currently this supports any entity and it will convert to `entity_id` -
-i.e. a PledgePayment inside a contribution will receive the `contribution_id`
-from the outer call.
+Currently this supports any entity and it will convert to `entity_id` - i.e. a PledgePayment inside a contribution will receive the `contribution_id` from the outer call.

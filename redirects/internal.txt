@@ -8,7 +8,7 @@ hooks/hook_civicrm_trigger_info hooks/hook_civicrm_triggerInfo
 testing/setup testing
 testing/javascript testing/karma
 framework/schema-definition framework/database/schema-definition
-api/params api/options
+api/params api/v3/options
 testing/selinium testing/selenium
 core/develop tools/git
 basics/filesystem framework/filesystem

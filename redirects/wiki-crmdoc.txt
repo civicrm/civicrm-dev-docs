@@ -112,7 +112,7 @@ hook_civicrm_alterReportVar hooks/hook_civicrm_alterReportVar
 Hook+Reference hooks
 Hooks hooks
 Extension+Review extensions/lifecycle/#formal-review
-Call+the+CiviCRM+API+from+a+custom+template api/usage/#smarty
+Call+the+CiviCRM+API+from+a+custom+template api/v3/usage/#smarty
 Using+the+API api
 Hook+examples hooks
 Database+hooks hooks
@@ -137,7 +137,7 @@ API+Architecture+Standards framework/api-architecture
 How+to+migrate+or+write+an+api framework/api-architecture
 Javascript+Reference standards/javascript
 Resource+Reference framework/resources
-API+Examples api/examples
+API+Examples api/v3/examples
 REST+interface api/interfaces#rest-interface
 AJAX+Interface api/interfaces#ajax-interface
 Smarty+API+interface api/interfaces#smarty-api-interface
@@ -146,16 +146,16 @@ Extension+Reference extensions/info-xml
 Settings+Reference framework/setting
 Region+Reference framework/region
 HTML+Header+Region framework/region#header
-Chaining api/chaining
+Chaining api/v3/chaining
 Add-on+Formats extensions/packaging
 IDE+Settings+to+Meet+Coding+Standards tools/phpstorm
-API+changes api/changes
+API+changes api/v3/changes
 Ajax+Pages+and+Forms framework/ajax
 Coding+Standards standards
 QuickForm+Reference framework/quickform
 EntityRef+Fields framework/quickform/entityref
 Pseudoconstant+option+list+Reference framework/pseudoconstant
-API+Security api/usage/#api-security
+API+Security api/v3/usage/#api-security
 UI+Elements+Reference framework/ui
 Accordions framework/ui
 Buttons framework/ui
@@ -165,7 +165,7 @@ In-Place+Field+Editing framework/ui
 Notifications+and+Confirmations framework/ui
 Section+elements framework/ui
 Database+layer standards/database
-Using+Custom+Data+with+the+API api/custom-data
+Using+Custom+Data+with+the+API api/v3/custom-data
 CiviReport+Reference framework/civireport
 Manual+testing testing/manual
 Dedupe+and+merge+testing testing/manual/#dedupe
