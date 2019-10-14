@@ -18,5 +18,8 @@ which vary for each API entity and function.
 !!! note 
     When retrieving custom data from a multiple record custom group set the custom data will be returned as an array of custom fields which contains the value and the id of the row in the custom field table.
 
-!!! note
-  Setting of multivalue custom data fields is still a work in progress.
+Multiple record custom data sets are treated as an entity for the purposes of creating records. So you can just specify the values in the same way as for any other create. e.g.
+
+```php
+civicrm_api4('Custom_My_Cool_Fields', 'create, $params)
+```
