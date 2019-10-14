@@ -10,9 +10,7 @@ Object Oriented way
 $results = \Civi\Api4\Contact::create()
   ->addValue('contact_id', 'Individual')
   ->addValue('display_name', 'BA Baracus')
-  ->setChain([
-    'create_website' => ['Website', 'create', ['values' => ['contact_id' => '$id', 'url' => 'example.com']]],
-  ])
+  ->addChain('create_website', \Civi\Api4\Website::create()->setValues(['contact_id' => '$id', 'url' => 'example.com']))
   ->execute();
 ```
 
@@ -39,10 +37,8 @@ Object Oriented way
 $results = \Civi\Api4\Contact::create()
   ->addValue('contact_id', 'Individual')
   ->addValue('display_name', 'BA Baracus')
-  ->setChain([
-    'create_first_website' => ['Website', 'create', ['values' => ['contact_id' => '$id', 'url' => 'example.com']]],
-    'create_second_website' => ['Website', 'create', ['values' => ['contact_id' => '$id', 'url' => 'example.org']]],
-  ])
+  ->addChain('first_website', \Civi\Api4\Website::create()->setValues(['contact_id' => '$id', 'url' => 'example1.com']))
+  ->addChain('second_website', \Civi\Api4\Website::create()->setValues(['contact_id' => '$id', 'url' => 'example2.com']))
   ->execute();
 ```
 
@@ -56,10 +52,10 @@ civicrm_api('Contact', 'create', [
     'display_name' => 'BA Baracus',
   ],
   'chain' => [
-    'create_first website', ['Website', 'create', ['values' => ['url' => 'example.com', 'contact_id' => '$id']]],
-    'create_second_website', ['Website', 'create', ['values' => ['url' => 'example.org', 'contact_id' => '$id']]],
+    'create_first website', ['Website', 'create', ['values' => ['url' => 'example1.com', 'contact_id' => '$id']]],
+    'create_second_website', ['Website', 'create', ['values' => ['url' => 'example2.com', 'contact_id' => '$id']]],
   ],
 ]);
 ```
 
-Currently this supports any entity and it will convert to `entity_id` - i.e. a PledgePayment inside a contribution will receive the `contribution_id` from the outer call.
+Note the use of "$id" in the examples above - any field returned by the outer call can be passed down to a chained call by prefixing it with a dollar sign. Even the results of other chains can be accessed in this way.
