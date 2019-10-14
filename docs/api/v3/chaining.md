@@ -1,6 +1,6 @@
 # APIv3 Chaining
 
-It is now possible to do two API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as `contact_id`. Likewise you can ask for all activities or all contributions to be returned when you do a get.
+It is possible to do two API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as `contact_id`. Likewise you can ask for all activities or all contributions to be returned when you do a `get`.
 
 See [api/v3/examples](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples) within the core source code for a plethora of examples (from unit tests) that use chaining. To start, look at these examples:
 

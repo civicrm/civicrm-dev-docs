@@ -10,7 +10,7 @@ To use a join in an API call, specify the name of the field on which the join ha
 
 For instance, to search for all primary emails, returning the email and joining to also return the contact's display name:
 
-Object oreinted way:
+Object Oriented way:
 
 ```php
 $result \Civi\Api4\Email::get()
@@ -38,7 +38,7 @@ $result = civicrm_api4('Email', 'get', [
 
 Alternatively, to return email addresses of everyone whose last name is Smith by joining to the Contact entity:
 
-Object oreinted way:
+Object Oriented way:
 
 ```php
 $result \Civi\Api4\Email::get()
@@ -61,7 +61,7 @@ $result = civicrm_api4('Email', 'get', [
 
 You can join multiple times in one query.  For instance, to return a list of events, displaying their name, the name of the related campaign, and that campaign's type:
 
-Object oreinted way:
+Object Oriented way:
 
 ```php
 $result \Civi\Api4\Email::get()

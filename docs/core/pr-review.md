@@ -46,7 +46,7 @@ On the PR, click over to “Files Changed” and understand what the code is doi
 
 ## Reproduce the problem
 
-Confirm which branch the PR was created against. This is probably either `master` or an Release Candidate branch. Setup an instance locally from that branch (e.g. with [buildkit](https://github.com/civicrm/civicrm-buildkit)), or test on the [public demo site if possible](https://civicrm.org/demo). Repeat the steps to reproduce described in the ticket or PR.
+Confirm which branch the PR was created against. This is probably either `master` or a Release Candidate branch. Setup an instance locally from that branch (e.g. with [buildkit](https://github.com/civicrm/civicrm-buildkit)), or test on the [public demo site if possible](https://civicrm.org/demo). Repeat the steps to reproduce described in the ticket or PR.
 
 Confirm that the issue was a problem and a problem “worth solving”, generally worthy of being in core.
 

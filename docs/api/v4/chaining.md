@@ -1,6 +1,6 @@
 # APIv4 Chaining
 
-It is now possible to do two API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as `contact_id`. Likewise you can ask for all activities or all contributions to be returned when you do a get.
+It is possible to do two API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as `contact_id`. Likewise you can ask for all activities or all contributions to be returned when you do a `get`.
 
 Note that there are a few supported syntaxes:
 
@@ -31,7 +31,7 @@ civicrm_api('Contact', 'create', [
 ]);
 ```
 
-If you have 2 websites to create you can pass them as separate key => array pairs just specifiy a unique array key in the chain array
+If you have 2 websites to create you can pass them as separate key => array pairs just specify a unique array key in the chain array
 
 Object Oriented way
 
