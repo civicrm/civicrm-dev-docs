@@ -4,7 +4,7 @@ An 'order' is a non-CiviCRM term that corresponds to how CiviCRM uses its contri
 
 Donations, memberships and event registrations are all potential line items in an order/contribution. Pledge payments via a contribution's line item are a potential future enhancement.
 
-The Order API wraps the creation of associated objects like memberships and event registrations. In other words, don't create the objects first before adding them as an array of `line_item`.create parameters; instead rely on the Order API to create them for you.
+The Order API wraps the creation of associated objects like memberships and event registrations. In other words, don't create the objects first before adding them as an array of `line_item.create` parameters; instead rely on the Order API to create them for you.
 
 On creation, the status of contribution and any related memberships or event registrations is Pending if the contribution is pending.
 
@@ -37,7 +37,7 @@ Call `Order.create` with a structure like the below. Note that we always create 
           "qty": 1,
           "unit_price": 1.23,
           "line_total": 1.23,
-          "price_field_id" : 1,
+          "price_field_id": 1,
         }
       ]
     }
@@ -49,7 +49,7 @@ Things to note:
 
 1. The outer array keys mostly refer to the Contribution record. We set the `contribution_status_id` to `Pending` when we create an order.
 
-2. The `line_items` is an array of objects each having `params` which describes an entity that needs to be created, and a `line_item` key, described next.
+2. The `line_items` value is an array of objects each having `params` which describes an entity that needs to be created, and a `line_item` key, described next.
 
 3. The `line_item` structure is also an array of line items that all belong to the entity described in the `params` structure. In this example the `params` structure is empty, and we have a single item under `line_item` which therefore is not related to anything other than the contribution.
 
@@ -78,7 +78,7 @@ The Payment API works with the Order API to update the records, and an `Order.ge
 
 ```json
 {
-  "contact_id": "202",
+   "contact_id": "202",
     "contact_type": "Individual",
     "contact_sub_type": "",
     "sort_name": "admin@example.com",
