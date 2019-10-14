@@ -1,3 +1,8 @@
+!!! abstract
+    This area of CiviCRM code and documentation is a work-in-progress. Not all features
+    will be documented and the core code underlying this area may change from version
+    to version.
+
 The financial subsystem in civicrm encompasses:
 
 - contributions

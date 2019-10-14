@@ -1,4 +1,9 @@
-Payment API
+!!! abstract
+    This area of CiviCRM code and documentation is a work-in-progress. Not all features
+    will be documented and the core code underlying this area may change from version
+    to version.
+
+## Payment API
 
 Historically, one recorded a payment against a contribution by changing its payment status, for example from Pending to Completed. 
 
