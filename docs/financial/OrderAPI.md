@@ -1,3 +1,8 @@
+!!! abstract
+    This area of CiviCRM code and documentation is a work-in-progress. Not all features
+    will be documented and the core code underlying this area may change from version
+    to version.
+
 The Order API is intended to be used as the primary API for adding, updating, and deleting orders.
 
 An 'order' is a non-CiviCRM term that corresponds to how CiviCRM uses its contribution object in terms of handling the full life-cycle of a purchase of memberships, event registrations or making a donation. Unlike most APIs, there is no table directly associated with the Order API.
