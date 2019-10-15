@@ -11,7 +11,7 @@ The financial subsystem in civicrm encompasses:
 - refunds
 - prices
 - discounts
-- premiums (things given away to contacts who donate alot)
+- premiums (things given away to contacts who donate a lot)
 - accounting information
 - integrations with payment processors
 - integrations with accounting systems
