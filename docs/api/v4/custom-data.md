@@ -1,25 +1,21 @@
 # APIv4 and Custom Data
 
-Custom data attached to entities is referenced in the format of `custom_group_machine_name.custom_field_machine_name`.
+CiviCRM has a flexible custom data system which allows nearly any entity to be extended. It comes in two distinct flavors: Single-record and Multi-record. For more background see the user guide chapter: [Creating Custom Fields](https://docs.civicrm.org/user/en/latest/organising-your-data/creating-custom-fields/).
 
-To set a custom field, or find entities with custom fields of a particular value, you typically use a parameter like this:
+## Single-record custom data
 
-```php
-$values['custom_field_reference'] = 'value';
-```
+Because single-record fields extend an entity 1-to-1, the api treats the custom fields as an extension of the regular fields. For example, normally an Event has fields like `id`, `title`, `start_date`, `end_date`, etc. Adding a custom group named "Event_Extra" and a field named "Room_number" would be accessable from the api as "Event_Extra.Room_number". You would retrieve it and set it as if it were any other field. Note that the `name` of a field is not to be confused with the `label` The api refers to custom groups/fields by name and not user-facing labels which are subject to translation and alteration.
 
-To return custom data for an entity just include the machine name of the custom data in the select array.
+For setting custom date fields, date format is anything understood by `strtotime`, e.g. "now" or "-1 week" or "2020-12-25".
 
-For setting custom date fields, date format is anything understood by `strtotime`, e.g. "now" or "-1 week" or "2020-12-25"
+## Multi-record custom data
 
-This is just a brief introduction; each API may have different requirements and allow different formats for accessing the custom data. See the [API function documentation](/api/index.md) and also read the comments and documentation in each API php file (under `civicrm/CRM/api/v3` in your CiviCRM installation) for exact details,
-which vary for each API entity and function.
-
-!!! note 
-    When retrieving custom data from a multiple record custom group set the custom data will be returned as an array of custom fields which contains the value and the id of the row in the custom field table.
-
-Multiple record custom data sets are treated as an entity for the purposes of creating records. So you can just specify the values in the same way as for any other create. e.g.
+Multiple record custom data sets are treated by the api as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_history" could then be accessed via the api as an entity named "Custom_Work_history". Creating a record would be done like so:
 
 ```php
-civicrm_api4('Custom_My_Cool_Fields', 'create, $params)
+civicrm_api4('Custom_Work_history', 'create', $params);
 ```
+
+## Try it out
+
+Once you have created some custom data in your system, look for it in the api explorer. Single-record data will appear as fields on the entities they extend, and multi-record data will appear in the list of entities (look under "C" alphabetically as they all start with the prefix "Custom_".
