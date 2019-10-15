@@ -63,7 +63,7 @@ Things to note:
 5. The `line_total` *must* equal the `unit_price` × `qty`
 
 !!! info
-    If you provide a value to `total_amount` as we have above, it *must* equal the sum of all the `line_total` values. Before 5.20 there was [a bug](https://lab.civicrm.orog/dev/financial/issues/73) that required the top-level `total_amount` was provided, but from 5.20 onward you can ommit this and it will be calculated automatically from the sum of the `line_items`.
+    If you provide a value to `total_amount` as we have above, it *must* equal the sum of all the `line_total` values. Before 5.20 there was [a bug](https://lab.civicrm.orog/dev/financial/issues/73) that required the top-level `total_amount` was provided, but from 5.20 onward you can omit this and it will be calculated automatically from the sum of the `line_items`.
 
 
 Currently the data returned from `Order.create` shows only the fields from the created Contribution. However an `Order.get` API call for the ID will also include an array of `line_items` (see below for example).
