@@ -17,7 +17,7 @@ If you later remove a line item for a membership or event registration on an upd
 
 Do not try to update the status of a contribution, for example to Completed to reflect a payment, either directly or through the Order API. Instead, do a call to the Payment API for an amount that will complete the required payment. This will transition the status of the contribution to Completed and related membership(s) to New or Current and event registration(s).
 
-As a best practice which we intend to require going forward, the `Order.create` should be called with a status of Pending. Then a `Payment.create` should be called to record a payment.
+As a best practice the `Order.create` should be called with a status of Pending. Then a `Payment.create` should be called to record a payment. Calling Order.create without  "contribution_status_id": "Pending" id deprecated.
 
 ## Sample `Order.create` for Simple Contribution
 
@@ -317,8 +317,8 @@ Notes:
 3. The `line_item` entry defines the price field and its value.
 4. On calling `Payment.create` for this order, the participant's status would be changed to Registered.
 
-!!! bug
-    Curently you must pass in `"status_id": "Pending from incomplete transaction"` otherwise the participant is created as Registered even before the paymnet has been made.
+!!! info
+    Before 5.20 there was a bug such that you had to pass in `"status_id": "Pending from incomplete transaction"` otherwise the participant was created as Registered even before the paymnet has been made.
 
 
 ## Sample Order.create for 4 line items
