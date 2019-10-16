@@ -10,10 +10,30 @@ For setting custom date fields, date format is anything understood by `strtotime
 
 ## Multi-Record Custom Data
 
-Multiple record custom data sets are treated by the API as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_History" could then be accessed via the API as an entity named "Custom_Work_History". Creating a record would be done like so:
+Multiple record custom data sets are treated by the API as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_History" could then be accessed via the API as an entity named "Custom_Work_History" when accessing it via all forms except for in the PHP Object Oriented format, in that format the class you will be accessing is `CustomValue`. Creating a record would be done like so:
+
+Object Oriented format:
+```php
+$results = \Civi\Api4\CustomValue::create('Test_Multi_record_custom_fields')
+  ->addValue('entity_id', 202)
+  ->addValue('Test_Field', 555)
+  ->execute();
+```
+
+Traditional:
 
 ```php
 civicrm_api4('Custom_Work_history', 'create', $params);
+```
+
+```javascript
+CRM.api4('Custom_Test_Multi_record_custom_fields', 'create', {
+  values: {"entity_id":202, "Test_Field":555}
+}).then(function(results) {
+  // do something with results array
+}, function(failure) {
+  // handle failure
+});
 ```
 
 ## Try It Out
