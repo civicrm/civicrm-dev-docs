@@ -17,7 +17,8 @@ tokenizing it.
 
 $content - fields include: html, text, subject, groupName, valueName, messageTemplateID, mailingID
 Note that this hook is fired when: 
-- creating mailings through the traditional BAO mailer (standard CiviMail)
+
+* creating mailings through the traditional BAO mailer (standard CiviMail)
 - creating mailings through FlexMailer (used by Mosaico)
 - sending emails using message templates, in CRM_Core_BAO_MessageTemplate
 
