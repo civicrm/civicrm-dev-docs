@@ -20,7 +20,7 @@ Note that this hook is fired when:
 
 * creating mailings through the traditional BAO mailer (standard CiviMail)
 * creating mailings through FlexMailer (used by Mosaico)
-- sending emails using message templates, in CRM_Core_BAO_MessageTemplate
+* sending emails using message templates, in CRM_Core_BAO_MessageTemplate
 
 In the latter case there is inherently no mailingID, so this will not be supplied. Similarly in the 2 former cases the messageTemplateID is not supplied.
 
