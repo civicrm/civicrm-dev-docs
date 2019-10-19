@@ -3,21 +3,14 @@
     will be documented and the core code underlying this area may change from version
     to version.
 
-The Order API is intended to be used as the primary API for adding, updating, and deleting orders.
+An 'order' is our developer term for a pseudo-entity that maps to the CiviCRM contribution object but also encompasses related entities like memberships, event registrations and unlying financial entities. There is no single 'order' table but the top level order information is stored in the civicrm_contribution table.
 
-An 'order' is a non-CiviCRM term that corresponds to how CiviCRM uses its contribution object in terms of handling the full life-cycle of a purchase of memberships, event registrations or making a donation. Unlike most APIs, there is no table directly associated with the Order API.
+The Order API is intended to be used as the primary API for adding, updating, and deleting orders. When using the order api you should
 
-Donations, memberships and event registrations are all potential line items in an order/contribution. Pledge payments via a contribution's line item are a potential future enhancement.
-
-The Order API wraps the creation of associated objects like memberships and event registrations. In other words, don't create the objects first before adding them as an array of `line_item.create` parameters; instead rely on the Order API to create them for you.
-
-On creation, the status of contribution and any related memberships or event registrations is Pending if the contribution is pending.
-
-If you later remove a line item for a membership or event registration on an update to an order, the Order API will look after changing the status for the related membership and event registration objects.
-
-Do not try to update the status of a contribution, for example to Completed to reflect a payment, either directly or through the Order API. Instead, do a call to the Payment API for an amount that will complete the required payment. This will transition the status of the contribution to Completed and related membership(s) to New or Current and event registration(s).
-
-As a best practice the `Order.create` should be called with a status of Pending. Then a `Payment.create` should be called to record a payment. Calling Order.create without  "contribution_status_id": "Pending" id deprecated.
+1. Rely on the Order API to create related objects like like memberships and event registrations. (Don't pre-create them)
+2. Always create orders in a pending state (unfortunately you need to pass contribution_status_id = Pending in for historical reasons).
+3. Expect the status of contribution and any related memberships or event registrations to be Pending.
+4. Call Payment.create to record any payments that have been made against the order.
 
 ## Sample `Order.create` for Simple Contribution
 
