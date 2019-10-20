@@ -5,7 +5,7 @@
 
 An 'order' is our developer term for a pseudo-entity that maps to the CiviCRM contribution object but also encompasses related entities like line items, memberships, event registrations and underlying financial entities. There is no single 'order' table but the top level order information is stored in the civicrm_contribution table.
 
-The Order API is intended to be used as the primary API for adding, updating, and deleting orders. When using the order api you should
+The Order API is intended to be used as the primary API for adding, updating, and deleting orders. When using the Order API you should:
 
 1. Rely on the Order API to create related objects like line items, memberships and event registrations. (Don't pre-create them)
 2. Always create orders in a pending state (unfortunately you need to pass contribution_status_id = Pending in for historical reasons).
