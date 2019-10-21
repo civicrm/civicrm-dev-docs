@@ -1,31 +1,32 @@
-# Differences between Api v3 and v4
+# Differences between API v3 and v4
 
-If you are already familiar with Api v3, here are the key differences to help you get started using v4.
+If you are already familiar with APIv3, here are the key differences to help you get started using APIv4.
 
-## Api wrapper
-- In addition to the familiar style of `civicrm_api4('Entity', 'action', $params)` there is now an OO style in php `\Civi\Api4\Entity::action()->...->execute()`.
-- When chaining api calls together, backreferences to values from the main api call must be explicitly given (discoverable in the api explorer).
-- `$checkPermissions` always defaults to `TRUE`. In api3 it defaulted to `TRUE` in REST/Javascript but `FALSE` in php.
+## API wrapper
+- In addition to the familiar style of `civicrm_api4('Entity', 'action', $params)`, there is now an object-oriented style in PHP: `\Civi\Api4\Entity::action()->...->execute()`
+- When chaining API calls together, back-references to values from the main API call must be explicitly given (discoverable in the API Explorer).
+- `$checkPermissions` always defaults to `TRUE`. In APIv3, the default depended on the environment (`TRUE` in REST/Javascript; `FALSE` in PHP).
 - A 4th param `index` controls how results are returned:
-  Passing a string will index all results by that key e.g. `civicrm_api4('Contact', 'get', $params, 'id')` will index by id.
-  Passing a number will return the result at that index e.g. `civicrm_api4('Contact', 'get', $params, 0)` will return the first result and is the same as `\Civi\Api4\Contact::get()->execute()->first()`. `-1` is the equivalent of `$result->last()`.
+    - Passing a string will index all results by that key e.g. `civicrm_api4('Contact', 'get', $params, 'id')` will index by id.
+    - Passing a number will return the result at that index e.g. `civicrm_api4('Contact', 'get', $params, 0)` will return the first result and is the same as `\Civi\Api4\Contact::get()->execute()->first()`. `-1` is the equivalent of `$result->last()`.
 
 ## Actions 
-- `Get` no longer sets a default limit of 25 outside the api explorer.
-- The `Create` action is now only used for creating new items (no more implicit update by passing an id to v3 `create`).
+- For `Get`, the default `limit` has changed. If you send an API call without an explicit limit, then it will return *all* records. (In v3, it would silently apply a default of 25.) However, if you use the API Explorer, it will *recommend* a default limit of 25.
+- The `Create` action is now only used for creating *new* items (no more implicit update by passing an id to v3 `create`).
 - The `Save` action in v4 is most similar to v3's `create` - it accepts one or more records to create or update, infering the action based on the presence of `id` in each record.
 - `Update` and `Delete` can be performed on multiple items at once by specifying a `where` clause, vs a single item by id in v3.
 - `getsingle` is gone, use `$result->first()` or `index` `0`.
 - `getoptions` is no longer a standalone action, but part of `getFields`.
 
 ## Output  
-- Output is an array with object properties rather than a nested array.
-- In PHP, you can `foreach` the results arrayObject directly, or you can call methods on it like `$result->first()` or `$result->indexBy('foo')`.
-- By default, results are indexed sequentially like api3 `sequential => 1`, but the `index` param or `indexBy()` method let you change that.
-  e.g. `civicrm_api4('Contact', 'get', $params, 'id')` or `\Civi\Api4\Contact::get()->execute()->indexBy('id')` will index results by id.
+- Output is an object (`Result` aka [`ArrayObject`](https://www.php.net/manual/en/class.arrayobject.php)) rather than a plain `array`.
+- In PHP, you can iterate over the `ArrayObject` (`foreach ($myResult as $record)`), or you can call methods like `$result->first()` or `$result->indexBy('foo')`.
+- By default, results are indexed sequentially (`0,1,2,3,...` - like APIv3's `sequential => 1`). You may optionally index by `id`, `name`, or any other field, as in:
+    - (Procedural-style; use `$index` parameter): `civicrm_api4('Contact', 'get', [], 'id')`
+    - (OOP-style; use `indexBy()` method): `\Civi\Api4\Contact::get()->execute()->indexBy('id')`
 
 ## Input
-- Instead of a single `$params` array containing a mishmash of fields, options and parameters, each api4 parameters is distinct (see section on Params below).
+- Instead of a single `$params` array containing a mishmash of fields, options and parameters, each APIv4 parameter is distinct (see section on Params below).
 - Custom fields are refered to by name rather than id. E.g. use `constituent_information.Most_Important_Issue` instead of `custom_4`.
 
 ## Params
