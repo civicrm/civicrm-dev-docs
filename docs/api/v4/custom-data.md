@@ -8,17 +8,17 @@ Because single-record fields extend an entity 1-to-1, the API treats the custom 
 
 ## Multi-Record Custom Data
 
-Multiple record custom data sets are treated by the API as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_History" could then be accessed via the API as an entity named "Custom_Work_History". Creating a record would be done like so:
+Multiple record custom data sets are treated by the API as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_History" could then be accessed via the API as an entity named "Custom_Work_History" (traditional style) or via the `CustomValue` php class (OO style). Creating a record would be done like so:
 
 **PHP (traditional):**
 ```php
-civicrm_api4('Custom_Work_history', 'create', [
+civicrm_api4('Custom_Work_History', 'create', [
   'values': ['entity_id': 202, 'Test_Field': 555]
 ]);
 ```
 **Javascript:**
 ```javascript
-CRM.api4('Custom_Work_history', 'create', {
+CRM.api4('Custom_Work_History', 'create', {
   values: {"entity_id":202, "Test_Field":555}
 });
 ```
@@ -26,7 +26,7 @@ CRM.api4('Custom_Work_history', 'create', {
 **PHP (OO):** Note that the object-oriented style uses the `CustomValue` class:
 
 ```php
-\Civi\Api4\CustomValue::create('Custom_Work_history')
+\Civi\Api4\CustomValue::create('Work_History')
   ->addValue('entity_id', 202)
   ->addValue('Test_Field', 555)
   ->execute();
