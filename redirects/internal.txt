@@ -9,6 +9,14 @@ testing/setup testing
 testing/javascript testing/karma
 framework/schema-definition framework/database/schema-definition
 api/params api/v3/options
+api/usage api/v3/usage
+api/actions api/v3/actions
+api/options api/v3/options
+api/joins api/v3/joins
+api/chaining api/v3/chaining
+api/custom-data api/v3/custom-data
+api/examples api/v3/examples
+api/changes api/v3/changes
 testing/selinium testing/selenium
 core/develop tools/git
 basics/filesystem framework/filesystem
