@@ -1,0 +1,87 @@
+# Differences between Api v3 and v4
+
+If you are already familiar with Api v3, here are the key differences to help you get started using v4.
+
+## Api wrapper
+- In addition to the familiar style of `civicrm_api4('Entity', 'action', $params)` there is now an OO style in php `\Civi\Api4\Entity::action()->...->execute()`.
+- When chaining api calls together, backreferences to values from the main api call must be explicitly given (discoverable in the api explorer).
+- `$checkPermissions` always defaults to `TRUE`. In api3 it defaulted to `TRUE` in REST/Javascript but `FALSE` in php.
+- A 4th param `index` controls how results are returned:
+  Passing a string will index all results by that key e.g. `civicrm_api4('Contact', 'get', $params, 'id')` will index by id.
+  Passing a number will return the result at that index e.g. `civicrm_api4('Contact', 'get', $params, 0)` will return the first result and is the same as `\Civi\Api4\Contact::get()->execute()->first()`. `-1` is the equivalent of `$result->last()`.
+
+## Actions 
+- `Get` no longer sets a default limit of 25 outside the api explorer.
+- The `Create` action is now only used for creating new items (no more implicit update by passing an id to v3 `create`).
+- The `Save` action in v4 is most similar to v3's `create` - it accepts one or more records to create or update, infering the action based on the presence of `id` in each record.
+- `Update` and `Delete` can be performed on multiple items at once by specifying a `where` clause, vs a single item by id in v3.
+- `getsingle` is gone, use `$result->first()` or `index` `0`.
+- `getoptions` is no longer a standalone action, but part of `getFields`.
+
+## Output  
+- Output is an array with object properties rather than a nested array.
+- In PHP, you can `foreach` the results arrayObject directly, or you can call methods on it like `$result->first()` or `$result->indexBy('foo')`.
+- By default, results are indexed sequentially like api3 `sequential => 1`, but the `index` param or `indexBy()` method let you change that.
+  e.g. `civicrm_api4('Contact', 'get', $params, 'id')` or `\Civi\Api4\Contact::get()->execute()->indexBy('id')` will index results by id.
+
+## Input
+- Instead of a single `$params` array containing a mishmash of fields, options and parameters, each api4 parameters is distinct (see section on Params below).
+- Custom fields are refered to by name rather than id. E.g. use `constituent_information.Most_Important_Issue` instead of `custom_4`.
+
+## Params
+
+If you used early versions of APIv3, then you might have written some code like this:
+
+```php
+civicrm_api3('Contact', 'get', array(
+  'check_permissions' => FALSE,
+  'first_name' => 'Elizabeth',
+  'return' => 'id,display_name',
+  'rowCount' => 2,
+  'offset' => 2,
+));
+```
+
+You may notice that there are no subordinate arrays -- everything goes into one flat list of parameters.
+As the system grew, this became a bit awkward:
+
+* What happens if you want to filter on a field named `return` or `action` or `rowCount`?
+* How do you ensure that the same option gets the same name across all entities (`rowCount` vs `limit`)?
+* Why does `first_name` use snake_case while `rowCount` uses lowerCamelCase?
+* Why is `Contact.get` the only API to support `rowCount`?
+
+Over time, APIv3 evolved so that this example would be more typical:
+
+```php
+civicrm_api3('Contact', 'get', [
+  'check_permissions' => FALSE,
+  'first_name' => 'Elizabeth',
+  'return' => ['id','display_name'],
+  'options' => ['limit' => 1000, 'offset' => 2],
+]);
+```
+
+Observe:
+
+* The `options` adds a place where you can define parameters without concern for conflicts.
+* The new generation of `options` are more standardized - they often have generic implementations that work with multiple entities/actions.
+* The top-level still contains a mix of *option* fields (like `return`) and *data* or *query* fields (like `first_name`).
+* The old options at the top-level are still around.
+
+APIv4 presented an opportunity to *break backward compatibility* and thereby *become more consistent*. In APIv4, a typical call would look like:
+
+```php
+civicrm_api4('Contact', 'get', [
+  'checkPermissions' => FALSE,
+  'where' => [['first_name', '=', 'Elizabeth']],
+  'select' => ['id', 'display_name'],
+  'limit' => 2,
+  'offset' => 2,
+]);
+```
+
+Key things to note:
+
+* The `options` array is completely gone. The params array *is* the list of options.
+* Most of the options in the params array have shared/generic implementations - ensuring consistent naming and behavior.
+* The *data* fields (e.g. `id`, `display_name`, and `first_name`) no longer appear at the top. They always appear beneath some other option, such as `where` or `select`.
