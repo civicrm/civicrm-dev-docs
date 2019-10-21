@@ -6,36 +6,39 @@ CiviCRM has a flexible custom data system which allows nearly any entity to be e
 
 Because single-record fields extend an entity 1-to-1, the API treats the custom fields as an extension of the regular fields. For example, normally an Event has fields like `id`, `title`, `start_date`, `end_date`, etc. Adding a custom group named "Event_Extra" and a field named "Room_number" would be accessible from the API as "Event_Extra.Room_number". You would retrieve it and set it as if it were any other field. Note that the `name` of a field is not to be confused with the `label` The API refers to custom groups/fields by name and not user-facing labels which are subject to translation and alteration.
 
-For setting custom date fields, date format is anything understood by `strtotime`, e.g. "now" or "-1 week" or "2020-12-25".
-
 ## Multi-Record Custom Data
 
-Multiple record custom data sets are treated by the API as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_History" could then be accessed via the API as an entity named "Custom_Work_History" when accessing it via all forms except for in the PHP Object Oriented format, in that format the class you will be accessing is `CustomValue`. Creating a record would be done like so:
+Multiple record custom data sets are treated by the API as entities, which work similarly to other entities attached to contacts (Phone, Email, Address, etc.). For example, creating a multi-record set named "Work_History" could then be accessed via the API as an entity named "Custom_Work_History". Creating a record would be done like so:
 
-Object Oriented format:
+**PHP (traditional):**
 ```php
-$results = \Civi\Api4\CustomValue::create('Test_Multi_record_custom_fields')
+civicrm_api4('Custom_Work_history', 'create', [
+  'values': ['entity_id': 202, 'Test_Field': 555]
+]);
+```
+**Javascript:**
+```javascript
+CRM.api4('Custom_Work_history', 'create', {
+  values: {"entity_id":202, "Test_Field":555}
+});
+```
+
+**PHP (OO):** Note that the object-oriented style uses the `CustomValue` class:
+
+```php
+\Civi\Api4\CustomValue::create('Custom_Work_history')
   ->addValue('entity_id', 202)
   ->addValue('Test_Field', 555)
   ->execute();
 ```
 
-Traditional:
+## Field Types and I/O Formats
 
-```php
-civicrm_api4('Custom_Work_history', 'create', $params);
-```
+New custom fields can be configured to store different types of data (Text, Date, Number, URL, etc.). In most cases the I/O format via the api will be a string, however there are a few exceptions:
 
-```javascript
-CRM.api4('Custom_Test_Multi_record_custom_fields', 'create', {
-  values: {"entity_id":202, "Test_Field":555}
-}).then(function(results) {
-  // do something with results array
-}, function(failure) {
-  // handle failure
-});
-```
+- **Date fields:** Input format is anything understood by `strtotime`, e.g. "now" or "-1 week" or "2020-12-25". Output format is the ISO string "YYYY-MM-DD HH:MM:SS".
+- **Checkbox/multi-select fields:** I/O format is an array of option values.
 
 ## Try It Out
 
-Once you have created some custom data in your system, look for it in the API explorer. Single-record data will appear as fields on the entities they extend, and multi-record data will appear in the list of entities (look under "C" alphabetically as they all start with the prefix "Custom_".
+Once you have created some custom data in your system, look for it in the API Explorer. Single-record data will appear as fields on the entities they extend, and multi-record data will appear in the list of entities (look under "C" alphabetically as they all start with the prefix "Custom_".
