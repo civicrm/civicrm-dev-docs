@@ -1,16 +1,16 @@
 # The CiviCRM API
 
-CiviCRM has a stable comprehensive **API** (Application Programming Interface) that can be used to access and manage data in CiviCRM. The API is the recommended way for any CiviCRM extension, CMS module, or external program to interact with CiviCRM.
+CiviCRM has a stable, comprehensive **API** (Application Programming Interface) that can be used to access and manage data in CiviCRM. The API is the recommended way for any CiviCRM extension, CMS module, or external program to interact with CiviCRM.
 
 Utilizing the API is superior to accessing core functions directly (e.g.calling raw SQL, or calling functions within the BAO files) because the API offers a consistent interface to CiviCRM's features. It is designed to function predictably with every new release so as to preserve backwards compatibility of the API for several versions of CiviCRM. If you decide to use other ways to collect data (like your own SQL statements), you risk running into future problems when changes to the schema and BAO arguments inevitably occur.
 
 The best place to begin working with the API is your own *test* install of CiviCRM, using the API explorer and the API parameter list.
 
-Extensions can provide additional api functionality. For help creating your own additions to the api, see [civix generate:api](/extensions/civix.md#generate-api).
+Extensions can provide additional API functionality. For help creating your own additions to the API, see [civix generate:api](/extensions/civix.md#generate-api).
 
 ## API versions
 
-CiviCRM's api version is different than the version of CiviCRM itself. The api version is incremented more slowly in order to maintain stability within the extension ecosystem. Typically 2 versions of the api are maintained concurrently (currently v3 and v4) to allow gradual adoption of a new api version. New releases of CiviCRM may add features to the api but will not break backward-compatibility within an api version.
+CiviCRM's API has major versions (APIv2, APIv3, APIv4) which are independent of the CiviCRM version. The API version is incremented more slowly in order to maintain stability within the extension ecosystem. Typically, two versions of the API are maintained concurrently (currently v3 and v4) to allow gradual transitions. New releases of CiviCRM may add features to the API but will not break backward-compatibility within an API version.
 
 ## API explorer
 
@@ -33,9 +33,9 @@ From the API explorer, you can get documentation on how to construct your API qu
 
 Within the API Explorer you will be able to attain an example of the code that you should write to call the API. In APIv3, you can also access epscific examples of some API calls from the Examples tab within the explorer. You can also [explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples).
 
-### API Examples in your extensions
+### API examples in your extensions
 
-From CiviCRM v5.8 the APIv3 explorer will now be able to show examples that are stored in your extension. The only requirement is that they are found in the same sort of directory structure as core e.g. in `<yourextension>/api/v3/examples/<entity>/<file>`
+Beginning in CiviCRM v5.8, the APIv3 explorer will now be able to show examples that are stored in your extension. The only requirement is that they are found in the same sort of directory structure as core e.g. in `<yourextension>/api/v3/examples/<entity>/<file>`
 
 ## Changelog
 
