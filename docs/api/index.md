@@ -31,7 +31,7 @@ From the API explorer, you can get documentation on how to construct your API qu
 
 ## API Examples (APIv3 Only)
 
-Within the API Explorer you will be able to attain an example of the code that you should write to call the API. In APIv3, you can also access epscific examples of some API calls from the Examples tab within the explorer. You can also [explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples).
+Within the API Explorer you will be able to attain an example of the code that you should write to call the API. In APIv3, you can also access specific examples of some API calls from the Examples tab within the explorer. You can also [explore these examples on GitHub](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples).
 
 ### API examples in your extensions
 
