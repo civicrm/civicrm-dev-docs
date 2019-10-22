@@ -1,14 +1,92 @@
 # Differences between API v3 and v4
 
-If you are already familiar with APIv3, here are the key differences to help you get started using APIv4.
+APIv4 is broadly similar to APIv3. Both are designed for reading and writing data.
+Both use *entities*, *actions*, and *parameters*. However, APIv4 is specifically a
+breaking-change which aims to reduce *ambiguity* and improve *flexibility* and *consistency*.
+
+This document walks through a list of specific differences.  As you consider
+them, it may help to have a concrete example expressed in both APIv3 and
+APIv4:
+
+<!-- Would be nice if Markdown made it easier to do side-by-side comparison... -->
+<table>
+  <thead>
+    <tr>
+      <th>APIv3</th>
+      <th>APIv4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+<td>
+  <em>Procedural-array style:</em><br/>
+  <div class="codehilite"><pre>
+ 1: $res = civicrm_api3('Contact', 'get', [
+ 2:   'check_permissions' => FALSE,
+ 3:   'first_name' => 'Bob',
+ 4:   'return' => 'id,display_name',
+ 5:   'options' => [
+ 6:     'limit' => 2,
+ 7:     'offset' => 2,
+ 8:   ],
+ 9: ]);
+10:
+11: foreach ($res['values'] as $row) {
+12:   echo $row['display_name'];
+13: }
+</pre></div>
+</td>
+<td>
+  <em>Procedural-array style:</em><br/>
+  <div class="codehilite"><pre>
+ 1: $res = civicrm_api4('Contact', 'get', [
+ 2:   'checkPermissions' => FALSE,
+ 3:   'where' => [['first_name', '=', 'Bob']],
+ 4:   'select' => ['id', 'display_name'],
+&nbsp;
+ 6:   'limit' => 2,
+ 7:   'offset' => 2,
+&nbsp;
+ 9: ]);
+10:
+11: foreach ($res as $row) {
+12:   echo $row['display_name'];
+13: }
+</pre></div>
+
+  <em>Object-oriented style:</em><br/>
+  <div class="codehilite"><pre>
+ 1: $res = \Civi\Api4\Contact::get()
+ 2:  ->setCheckPermissions(FALSE)
+ 3:  ->addWhere(['first_name', '=', 'Bob'])
+ 4:  ->addSelect(['id', 'display_name'])
+&nbsp;
+ 6:  ->setLimit(2)
+ 7:  ->setOffset(2)
+&nbsp;
+ 9:  ->execute();
+10:
+11: foreach ($res as $row) {
+12:   echo $row['display_name'];
+13: }
+</pre></div>
+</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## API wrapper
-- In addition to the familiar style of `civicrm_api4('Entity', 'action', $params)`, there is now an object-oriented style in PHP: `\Civi\Api4\Entity::action()->...->execute()`
-- When chaining API calls together, back-references to values from the main API call must be explicitly given (discoverable in the API Explorer).
+
+- APIv4 supports two notations in PHP:
+    - Procedural/array style: `civicrm_api4('Entity', 'action', $params)`
+    - Object-oriented style: `\Civi\Api4\Entity::action()->...->execute()`
+- When using OOP style in an IDE, most actions and parameters can benefit from auto-completion and type-checking.
 - `$checkPermissions` always defaults to `TRUE`. In APIv3, the default depended on the environment (`TRUE` in REST/Javascript; `FALSE` in PHP).
 - A 4th param `index` controls how results are returned:
     - Passing a string will index all results by that key e.g. `civicrm_api4('Contact', 'get', $params, 'id')` will index by id.
     - Passing a number will return the result at that index e.g. `civicrm_api4('Contact', 'get', $params, 0)` will return the first result and is the same as `\Civi\Api4\Contact::get()->execute()->first()`. `-1` is the equivalent of `$result->last()`.
+- When chaining API calls together, back-references to values from the main API call must be explicitly given (discoverable in the API Explorer).
 
 ## Actions 
 - For `Get`, the default `limit` has changed. If you send an API call without an explicit limit, then it will return *all* records. (In v3, it would silently apply a default of 25.) However, if you use the API Explorer, it will *recommend* a default limit of 25.
