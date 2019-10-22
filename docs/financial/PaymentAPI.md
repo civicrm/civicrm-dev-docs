@@ -14,7 +14,7 @@ Note that paymentprocessor.pay handles the communication with a payment processo
 After a contribution has been created, for example using the best practice Order.create API call, use the Payment.create API action to
 
 - record a payment against the contribution - either fully or partially paying the contribution amount
-- record a refund against the contribution
+* record a refund against the contribution
 
 Use the Payment.cancel api to reverse a refunded payment.
 
