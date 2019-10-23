@@ -326,3 +326,37 @@ Notes:
 
 Here is how to create an order for a membership, an event registration, and two separate contribution line items. [ Rich to provide]
 
+
+## Transitioning from Contribution.transact api to Order api
+
+Contribution.transact api was a v2 api that we left in place in v3. It has never had unit tests & has never been supported. Unfortunately by not being more aggressive about deprecating it some sites have adopted it.
+
+The Contribution.transact api will create a 'simple' contribution and process a payment. It will not create the line items correctly for anything other than a straight forward donation and does not follow our practice of creating a pending contribution and then adding a payment. It's likely there are other unknown gaps in how it works.
+
+The simplest first step to migrate off it is to replace the order api call with a call that follows the recommended flow but still does not address the line item creation gaps & it is recommended you  look at the patterns above to do that. This first step looks like
+
+```
+# start with the same parameters as Contribution.transact.
+$params = $transactParams;
+# it would be  better just  to include the relevant params but....
+$paymentParams = $transactParams;
+$params['contribution_status_id'] = 'Pending';
+if (!isset($params['invoice_id')) {
+  // Set an invoice_id here if you have not already done so.
+  // Potentially Order api should do this https://lab.civicrm.org/dev/financial/issues/78
+}
+if (!isset($params['invoiceID']) {
+  // This would be required prior to https://lab.civicrm.org/dev/financial/issues/77
+  $params['invoiceID'] = $params['invoice_id'];
+}
+$order = civicrm_api3('Order', 'create' $params);
+try {
+  civicrm_api3('PaymentProcessor', 'pay', ['contribution_id' => $order['id']]);
+  civicrm_api3('Payment', 'create', ['contribution_id' => $order['id'], 'amount' => $params['amount']]);
+}
+catch  {
+  // it failed
+}
+```
+
+The above is a few more lines  but  it is an important step towards transitioning  to a supported method and away from a flawed api.
