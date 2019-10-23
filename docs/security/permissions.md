@@ -25,7 +25,17 @@ When you write code, you can look at `CRM_Core_Permission::check` to see if the 
 
 ## API Permissions
 
-Depending on how the API is called, it is either called with a `check_permissions` flag turned off or turned on. When it is turned off, it will run the API without checking if the user has the necessary permissions to perform the action needed. If you turn `check_permissions` on then there will be tests done. By default code in CLI tools e.g. drush or WP-cli or within core code or extension code that is done at run time, the default in CiviCRM APIv3 is that the `check_permissions` flag is turned off. If you call the CiviCRM APIv3 through the rest interface then by default the `check_permissions` flag will be turned on. The permissions needed to make various API calls are defined in `CRM_Core_Permission::getEntityActionPermissions()`. By default in APIv4 `check_permissions` flag is turned on no matter the environment see also [API Wrapper in APIv4 chapter](/api/v4/differences-with-v3.md#api-wrapper).
+Depending on how the API is called, it is either called with a `check_permissions` flag turned on or turned off. When it is turned off, it will run the API call without checking if the user has the necessary permissions to perform the action(s) needed.
+
+If the API call is made with `check_permissions` turned on then the permissions of the user making the API call will be evaluated to ensure the user has the correct permissions to perform the action(s) they are attempting to. 
+
+The **APIv3** interfaces (JavaScript/PHP API interfaces) used by CLI tools (e.g: drush or WP-cli), CiviCRM Core and extensions by default run with the `check_permissions` flag turned off.
+
+The **APIv3** rest interface, however, defaults to running with the `check_permissions` flag turned on. 
+
+The permissions required to make various API calls are defined in [`CRM_Core_Permission::getEntityActionPermissions()`](https://lab.civicrm.org/dev/core/blob/master/CRM/Core/Permission.php#L935). 
+
+By default in **APIv4** the `check_permissions` flag is turned on regardless of the API interface being used, for further details see the [API wrapper differences between API v3 and APIv4](/api/v4/differences-with-v3.md#api-wrapper).
 
 ## Extending and Implementing Permission Structure {:#extensions}
 
