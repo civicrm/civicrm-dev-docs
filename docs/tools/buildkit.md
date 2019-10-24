@@ -8,7 +8,9 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ## Supported Operating Systems
 
-Currently BuildKit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
+Currently BuildKit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column. 
+
+There are no specific installer steps for MacOS but BuildKit itself is fully usable on a Mac. BuildKit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
 
 !!! note
     Versions of Ubuntu and Debian running on Windows Subsystem for Linux (WSL) and WSL2 are not currently compatible with BuildKit.
