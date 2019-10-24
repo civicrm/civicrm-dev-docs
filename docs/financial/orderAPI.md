@@ -3,21 +3,20 @@
     will be documented and the core code underlying this area may change from version
     to version.
 
-The Order API is intended to be used as the primary API for adding, updating, and deleting orders.
+An 'order' is our developer term for a pseudo-entity that maps to the CiviCRM contribution object but also encompasses related entities like line items, memberships, event registrations and underlying financial entities. There is no single 'order' table but the top level order information is stored in the civicrm_contribution table.
 
-An 'order' is a non-CiviCRM term that corresponds to how CiviCRM uses its contribution object in terms of handling the full life-cycle of a purchase of memberships, event registrations or making a donation. Unlike most APIs, there is no table directly associated with the Order API.
+The Order API is intended to be used as the primary API for adding, updating, and deleting orders. When using the Order API you should:
 
-Donations, memberships and event registrations are all potential line items in an order/contribution. Pledge payments via a contribution's line item are a potential future enhancement.
+1. Rely on the Order API to create related objects like line items, memberships and event registrations. (Don't pre-create them)
+2. Always create orders in a pending state (unfortunately you need to pass contribution_status_id = Pending in for historical reasons).
+3. Expect the status of contribution and any related memberships or event registrations to be Pending.
+4. Call Payment.create to record any payments that have been made against the order.
+5. Rely on adding  payments to transition any relate entities to completed.
 
-The Order API wraps the creation of associated objects like memberships and event registrations. In other words, don't create the objects first before adding them as an array of `line_item.create` parameters; instead rely on the Order API to create them for you.
+You should NOT
 
-On creation, the status of contribution and any related memberships or event registrations is Pending if the contribution is pending.
-
-If you later remove a line item for a membership or event registration on an update to an order, the Order API will look after changing the status for the related membership and event registration objects.
-
-Do not try to update the status of a contribution, for example to Completed to reflect a payment, either directly or through the Order API. Instead, do a call to the Payment API for an amount that will complete the required payment. This will transition the status of the contribution to Completed and related membership(s) to New or Current and event registration(s).
-
-As a best practice the `Order.create` should be called with a status of Pending. Then a `Payment.create` should be called to record a payment. Calling Order.create without  "contribution_status_id": "Pending" id deprecated.
+1. Pre-create line items memberships  or event registrations
+1. Update the status of  an order to Completed using any  method OTHER than adding payments to it (Payment.create api)
 
 ## Sample `Order.create` for Simple Contribution
 
@@ -327,3 +326,37 @@ Notes:
 
 Here is how to create an order for a membership, an event registration, and two separate contribution line items. [ Rich to provide]
 
+
+## Transitioning from Contribution.transact api to Order api
+
+Contribution.transact api was a v2 api that we left in place in v3. It has never had unit tests & has never been supported. Unfortunately by not being more aggressive about deprecating it some sites have adopted it.
+
+The Contribution.transact api will create a 'simple' contribution and process a payment. It will not create the line items correctly for anything other than a straight forward donation and does not follow our practice of creating a pending contribution and then adding a payment. It's likely there are other unknown gaps in how it works.
+
+The simplest first step to migrate off it is to replace the order api call with a call that follows the recommended flow but still does not address the line item creation gaps & it is recommended you  look at the patterns above to do that. This first step looks like
+
+```
+# start with the same parameters as Contribution.transact.
+$params = $transactParams;
+# it would be  better just  to include the relevant params but....
+$paymentParams = $transactParams;
+$params['contribution_status_id'] = 'Pending';
+if (!isset($params['invoice_id')) {
+  // Set an invoice_id here if you have not already done so.
+  // Potentially Order api should do this https://lab.civicrm.org/dev/financial/issues/78
+}
+if (!isset($params['invoiceID']) {
+  // This would be required prior to https://lab.civicrm.org/dev/financial/issues/77
+  $params['invoiceID'] = $params['invoice_id'];
+}
+$order = civicrm_api3('Order', 'create' $params);
+try {
+  civicrm_api3('PaymentProcessor', 'pay', ['contribution_id' => $order['id']]);
+  civicrm_api3('Payment', 'create', ['contribution_id' => $order['id'], 'amount' => $params['amount']]);
+}
+catch  {
+  // it failed
+}
+```
+
+The above is a few more lines  but  it is an important step towards transitioning  to a supported method and away from a flawed api.

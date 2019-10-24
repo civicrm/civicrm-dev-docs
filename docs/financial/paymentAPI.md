@@ -11,10 +11,10 @@ It is now best practice to use the Payment.create API call.
 
 Note that paymentprocessor.pay handles the communication with a payment processor to instigate a payment. Similarly, paymentprocessor.refund handles the communication with a payment processor to instigate a refund.
 
-After a contribution has been created, for example using the best practice Order.create api call, use the Payment API to:
+After a contribution has been created, for example using the best practice Order.create API call, use the Payment.create API action to
 
-- record a full payment
-- record a partial payment or subsequent payment
-- record that a payment was cancelled (not the same as cancelling the whole contribution)
-- record the refund of a payment
+* record a payment against the contribution - either fully or partially paying the contribution amount
+* record a refund against the contribution
+
+Use the Payment.cancel api to reverse a refunded payment.
 
