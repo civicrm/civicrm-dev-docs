@@ -10,6 +10,9 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 Currently BuildKit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
 
+!!! note
+    Versions of Ubuntu and Debian running on Windows Subsystem for Linux (WSL) and WSL2 are not currently compatible with BuildKit.
+
 ### Ubuntu
  Version | Codename | Release Date | EoL Date | Buildkit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------------- |
