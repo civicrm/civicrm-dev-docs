@@ -11,7 +11,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 Currently BuildKit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
 
 ### Ubuntu
- Version | Codename | Release Date | EOL Date | Buildkit Removal |
+ Version | Codename | Release Date | EoL Date | Buildkit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------------- |
 19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
 18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 |
@@ -23,19 +23,19 @@ Currently BuildKit includes [specific, tested install steps](https://github.com/
 14.04 | Trusty Tahr | April 2014 | April 2019 <sup>&#x1F534;</sup> | October 2019 <sup>&#x2705;</sup> |
 12.04 | Precise Pangolin | April 2012 | April 2017 <sup>&#x1F534;</sup> | October 2017 <sup> &#x2705;</sup> |
 
-<sup>*</sup> = Reuses installation steps for Xenial Xerus.
-<sup>&#x1F534;</sup> = Is currently EOL
-<sup>&#x2705;</sup> = Has been removed from BuildKit
+<sup>*</sup> = Reuses installation steps for Xenial Xerus.  
+<sup>&#x1F534;</sup> = Is currently EoL.  
+<sup>&#x2705;</sup> = Has been removed from BuildKit  
 
 ### Debian
-Version | Codename | Release Date | EOL Date | BuildKit Removal |
+Version | Codename | Release Date | EoL Date | BuildKit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------ |
 10 | Buster | July 2019 | 202x | Unknown |
 9 | Stretch | June 2017 | 2022 | Unknown |
 8 | Jessie | April 2015 | June 2020 | September 2020 |
 
 !!! warning
-    Our current policy is that these specific install steps will be removed from BuildKit when they reach their End Of Live (EoL) date       plus 6 months. See [this issue](https://github.com/civicrm/civicrm-buildkit/issues/432) for discussion/information.
+    Our current policy is that these specific install steps will be removed from BuildKit when they reach their End Of Life (EoL) date       plus 6 months. See [this issue](https://github.com/civicrm/civicrm-buildkit/issues/432) for discussion/information.
 
 ## Installation
 
