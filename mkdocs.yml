@@ -32,8 +32,9 @@ pages:
   - Release Process: core/release-process.md
 - Financial:
   - Overview: financial/overview.md
-  - Order API: financial/OrderAPI.md
-  - Payments API: financial/PaymentAPI.md
+  - Order API: financial/orderAPI.md
+  - Payment API: financial/paymentAPI.md
+  - Entities: financial/financialentities.md
 - Extensions:
   - Basics: extensions/index.md
   - Packaging Options: extensions/packaging.md
