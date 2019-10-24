@@ -1,3 +1,5 @@
+!!! abstract This area of CiviCRM code and documentation is a work-in-progress. Not all features will be documented and the core code underlying this area may change from version to version.
+
 This file exists to give an overview of the Financial entities involved in recording Financial data in CiviCRM.
 
 You should only interact with the Financial entities through the relevant apis - 
