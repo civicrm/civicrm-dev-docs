@@ -10,7 +10,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 Currently BuildKit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
 
-## Ubuntu
+### Ubuntu
  Version | Codename | Release Date | EOL Date | Buildkit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------------- |
 19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
@@ -27,7 +27,7 @@ Currently BuildKit includes [specific, tested install steps](https://github.com/
 <sup>&#x1F534;</sup> = Is currently EOL
 <sup>&#x2705;</sup> = Has been removed from BuildKit
 
-## Debian
+### Debian
 Version | Codename | Release Date | EOL Date | BuildKit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------ |
 10 | Buster | July 2019 | 202x | Unknown |
@@ -39,9 +39,14 @@ Version | Codename | Release Date | EOL Date | BuildKit Removal |
 
 ## Installation
 
-### Ubuntu
+### Ubuntu / Debian
 
-If you have a new installation of Ubuntu 12.04 or later, then you can download everything -- buildkit and the system requirements -- with one command. [`curl`](https://curl.haxx.se/) is required to be installed before you can run the command. You can install `curl` with `sudo apt install curl`.  This command will install buildkit to `~/buildkit`:
+If you have a new installation of:
+ 
+ * Ubuntu 16.04 or later.
+ * Debian 8 or later.
+ 
+You can download everything, buildkit and the system requirements with one command. [`curl`](https://curl.haxx.se/) is required to be installed before you can run the command. You can install `curl` with `sudo apt install curl`.  The below command will install buildkit to `~/buildkit`:
 
 ```bash
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
