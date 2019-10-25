@@ -6,42 +6,6 @@ Many of these tools are commonly used by web developers, so you may have already
 
 This is the same collection of tools which manages the test/demo/release infrastructure for civicrm.org.
 
-## Supported Operating Systems
-
-Currently Buildkit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
-
-There are no specific installer steps for MacOS but Buildkit itself is fully usable on a Mac. Buildkit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
-
-!!! note
-    Versions of Ubuntu and Debian running on Windows Subsystem for Linux (WSL) and WSL2 are not currently compatible with Buildkit.
-
-### Ubuntu
- Version | Codename | Release Date | EoL Date | Buildkit Removal |
---------- | ------------ | -------------- | ---------- | ------------------------- |
-19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
-18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 |
-18.04 | Bionic Beaver | April 2018 | April 2023 | October 2023 |
-17.10 | Artful Aardvark | October 2017 | July 2018 <sup>&#x1F534;</sup> | January 2019 <sup>&#x2705;</sup> |
-17.04 | Zesty Zapus<sup>*</sup> | April 2017 | January 2018 <sup>&#x1F534;</sup> | July 2018 <sup>&#x2705;</sup> |
-16.10 | Yakkety Yak<sup>*</sup> | October 2016 | July 2017 <sup>&#x1F534;</sup> | January 2018 <sup>&#x2705;</sup> |
-16.04 | Xenial Xerus | April 2016 | April 2021 | October 2021 |
-14.04 | Trusty Tahr | April 2014 | April 2019 <sup>&#x1F534;</sup> | October 2019 <sup>&#x2705;</sup> |
-12.04 | Precise Pangolin | April 2012 | April 2017 <sup>&#x1F534;</sup> | October 2017 <sup> &#x2705;</sup> |
-
-<sup>*</sup> = Reuses installation steps for Xenial Xerus.
-<sup>&#x1F534;</sup> = Is currently EoL.
-<sup>&#x2705;</sup> = Has been removed from Buildkit
-
-### Debian
-Version | Codename | Release Date | EoL Date | Buildkit Removal |
---------- | ------------ | -------------- | ---------- | ------------------ |
-10 | Buster | July 2019 | 202x | Unknown |
-9 | Stretch | June 2017 | 2022 | Unknown |
-8 | Jessie | April 2015 | June 2020 | September 2020 |
-
-!!! warning
-    Our current policy is that these specific install steps will be removed from Buildkit when they reach their End Of Life (EoL) date       plus 6 months. See [this issue](https://github.com/civicrm/civicrm-buildkit/issues/432) for discussion/information.
-
 ## Installation
 
 ### Ubuntu / Debian
@@ -275,3 +239,39 @@ See the [buildkit changelog](https://github.com/civicrm/civicrm-buildkit/blob/ma
 
     If you see an upgrade to `civix` in the changelog, and if you maintain extensions with `civix`,
     then check the general [civix upgrade documentation](/extensions/civix.md#upgrade-templates) and [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md).
+
+## Appendix: Operating Systems {:#operating-systems}
+
+Currently Buildkit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
+
+There are no specific installer steps for MacOS but Buildkit itself is fully usable on a Mac. Buildkit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
+
+!!! note
+    Versions of Ubuntu and Debian running on Windows Subsystem for Linux (WSL) and WSL2 are not currently compatible with Buildkit.
+
+### Ubuntu
+ Version | Codename | Release Date | EoL Date | Buildkit Removal |
+--------- | ------------ | -------------- | ---------- | ------------------------- |
+19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
+18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 |
+18.04 | Bionic Beaver | April 2018 | April 2023 | October 2023 |
+17.10 | Artful Aardvark | October 2017 | July 2018 <sup>&#x1F534;</sup> | January 2019 <sup>&#x2705;</sup> |
+17.04 | Zesty Zapus<sup>*</sup> | April 2017 | January 2018 <sup>&#x1F534;</sup> | July 2018 <sup>&#x2705;</sup> |
+16.10 | Yakkety Yak<sup>*</sup> | October 2016 | July 2017 <sup>&#x1F534;</sup> | January 2018 <sup>&#x2705;</sup> |
+16.04 | Xenial Xerus | April 2016 | April 2021 | October 2021 |
+14.04 | Trusty Tahr | April 2014 | April 2019 <sup>&#x1F534;</sup> | October 2019 <sup>&#x2705;</sup> |
+12.04 | Precise Pangolin | April 2012 | April 2017 <sup>&#x1F534;</sup> | October 2017 <sup> &#x2705;</sup> |
+
+<sup>*</sup> = Reuses installation steps for Xenial Xerus.
+<sup>&#x1F534;</sup> = Is currently EoL.
+<sup>&#x2705;</sup> = Has been removed from Buildkit
+
+### Debian
+Version | Codename | Release Date | EoL Date | Buildkit Removal |
+--------- | ------------ | -------------- | ---------- | ------------------ |
+10 | Buster | July 2019 | 202x | Unknown |
+9 | Stretch | June 2017 | 2022 | Unknown |
+8 | Jessie | April 2015 | June 2020 | September 2020 |
+
+!!! warning
+    Our current policy is that these specific install steps will be removed from Buildkit when they reach their End Of Life (EoL) date       plus 6 months. See [this issue](https://github.com/civicrm/civicrm-buildkit/issues/432) for discussion/information.
