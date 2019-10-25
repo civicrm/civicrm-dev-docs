@@ -8,7 +8,7 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ## Supported Operating Systems
 
-Currently Buildkit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column. 
+Currently Buildkit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
 
 There are no specific installer steps for MacOS but Buildkit itself is fully usable on a Mac. Buildkit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
 
@@ -28,8 +28,8 @@ There are no specific installer steps for MacOS but Buildkit itself is fully usa
 14.04 | Trusty Tahr | April 2014 | April 2019 <sup>&#x1F534;</sup> | October 2019 <sup>&#x2705;</sup> |
 12.04 | Precise Pangolin | April 2012 | April 2017 <sup>&#x1F534;</sup> | October 2017 <sup> &#x2705;</sup> |
 
-<sup>*</sup> = Reuses installation steps for Xenial Xerus.  
-<sup>&#x1F534;</sup> = Is currently EoL.  
+<sup>*</sup> = Reuses installation steps for Xenial Xerus.
+<sup>&#x1F534;</sup> = Is currently EoL.
 <sup>&#x2705;</sup> = Has been removed from Buildkit
 
 ### Debian
@@ -47,10 +47,10 @@ Version | Codename | Release Date | EoL Date | Buildkit Removal |
 ### Ubuntu / Debian
 
 If you have a new installation of:
- 
+
  * Ubuntu 16.04 or later.
  * Debian 8 or later.
- 
+
 You can download everything, buildkit and the system requirements with one command. [`curl`](https://curl.haxx.se/) is required to be installed before you can run the command. You can install `curl` with `sudo apt install curl`.  The below command will install buildkit to `~/buildkit`:
 
 ```bash
@@ -80,8 +80,8 @@ If you have [Docker](https://www.docker.com/) running, you can use one of the fo
 
 !!! Note
 
-    There are different versions of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with on Linux. 
-    
+    There are different versions of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with on Linux.
+
 #### Install buildkit on docker on ubuntu
 
 Follow the official installation instructions from https://docs.docker.com/compose/install/ to install docker compose on your linux machine.
