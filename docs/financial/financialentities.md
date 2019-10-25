@@ -70,7 +70,7 @@ this item will have a status of 'Unpaid'.
     For historical reasons this may not always be true but [it's the goal](https://github.com/civicrm/civicrm-dev-docs/issues/712).
 
 When a payment is made it might either pay off the line items, or a specific line item, in full. In that case the line item
-status is updated to Paid and an EntityFinancialTrxn record is created in the civicrm_entity_financial_trxn table linking
+status is updated to Paid and an `EntityFinancialTrxn` record is created in the `civicrm_entity_financial_trxn` table linking
 the line item to the payment and specifying the amount paid.
 
 If the line item is paid in part then the status is not updated and the `EntityFinancialTrxn` record specifies the portion
