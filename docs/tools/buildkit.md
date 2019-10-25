@@ -8,22 +8,23 @@ This is the same collection of tools which manages the test/demo/release infrast
 
 ## Installation
 
+Buildkit supports several Unix-style environments. It may be installed on [a fresh workstation or virtual machine running Ubuntu/Debian](#ubuntu-debian). It can also be used in a [Vagrant VM](#vagrant) or [Docker container](#docker). If you wish to install in any other Unix-style system (such as macOS or RedHat), then follow the [generic instructions](#other-platforms).
+
 ### Ubuntu / Debian
 
-If you have a new installation of:
-
- * Ubuntu 16.04 or later.
- * Debian 8 or later.
-
-You can download everything, buildkit and the system requirements with one command. [`curl`](https://curl.haxx.se/) is required to be installed before you can run the command. You can install `curl` with `sudo apt install curl`.  The below command will install buildkit to `~/buildkit`:
+If you have a fresh system install of Ubuntu or Debian (with a [recent version](#operating-systems) like Ubuntu 18.04 LTS), then you can download everything using the `get-buildkit.sh` script.
 
 ```bash
+sudo apt-get install curl
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
 ```
 
-!!! note
+This creates a personal workspace folder (`~/buildkit`) for helper scripts, caches, and builds. It also uses `--full` mode to download a complete set of system packages (PHP, MySQL, Apache, etc).
 
-    * When executing the above curl/install command, you should *not* run it as `root` - including via `sudo`, as doing so *will* cause failures. However, you *should* have `sudo` permissions as the script includes several `sudo` statements where these are required.
+!!! tip "Usage tips"
+
+    * You should *not* use `root`, `su`, or `sudo` except where specifically noted. Buildkit is generally designed to run as your regular user, and unnecessary `root` privileges *will* cause problems. If the installer needs elevated privileges, it will call `sudo` on a case-by-case basis.
+    * The install script will only execute `--full` mode on a supported release of Ubuntu / Debian. See also: [Appendix: Operating Systems](#operating-systems).
     * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
     * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
 
@@ -72,8 +73,7 @@ docker-compose exec -u buildkit civicrm bash
 
 More information is in the Readme: https://github.com/michaelmcandrew/civicrm-buildkit-docker/blob/master/README.md
 
-
-### Other platforms
+### Generic {:#other-platforms}
 
 You may install buildkit in other environments. The main pre-requisites are:
 
@@ -242,9 +242,9 @@ See the [buildkit changelog](https://github.com/civicrm/civicrm-buildkit/blob/ma
 
 ## Appendix: Operating Systems {:#operating-systems}
 
-Currently Buildkit includes [specific, tested install steps](https://github.com/civicrm/civicrm-buildkit/blob/e278123c2a5edb525a01c816283d30b882aa8fab/bin/civi-download-tools#L329) for the following Ubuntu and Debian operating system releases - note that recently removed versions are shown in this list for information and are marked in the final column.
+Currently Buildkit includes specific, tested install steps for the following Ubuntu and Debian operating system releases.  Note that recently removed versions are shown in this list for information and are marked in the final column.
 
-There are no specific installer steps for MacOS but Buildkit itself is fully usable on a Mac. Buildkit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
+There are no specific installer steps for macOS but Buildkit itself is fully usable on a Mac. Buildkit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
 
 !!! note
     Versions of Ubuntu and Debian running on Windows Subsystem for Linux (WSL) and WSL2 are not currently compatible with Buildkit.
