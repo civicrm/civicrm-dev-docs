@@ -80,7 +80,7 @@ If the line items change then the items financial items have to be updated. Gene
 old line item, reverse the financial items and then create a new line item with new financial items. However, this is not
 always  possible as there are some scenarios where the schema does not permit this. The has led to
 adjustment line items being created in these cases. The issue is that the civicrm_line_item table has a unique index for
-entity_table + entity_id + contribution_id + price_field_value_id + price_field_id.
+`entity_table + entity_id + contribution_id + price_field_value_id + price_field_id`.
 
 This means that if a line item with no price_field_values (ie a text / enter quantity line item) is altered it is not possible
 to create a reversal line and a new line within the schema. The same problem occurs when changing a line item with price_field_values
