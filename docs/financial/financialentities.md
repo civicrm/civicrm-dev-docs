@@ -79,7 +79,7 @@ of the line item that has been paid by that payment.
 If the line items change then the items financial items have to be updated. Generally the rule is to alter the zero out the
 old line item, reverse the financial items and then create a new line item with new financial items. However, this is not
 always  possible as there are some scenarios where the schema does not permit this. The has led to
-adjustment line items being created in these cases. The issue is that the civicrm_line_item table has a unique index for
+adjustment line items being created in these cases. The issue is that the `civicrm_line_item` table has a unique index for
 `entity_table + entity_id + contribution_id + price_field_value_id + price_field_id`.
 
 This means that if a line item with no `price_field_values` (i.e: a text / enter quantity line item) is altered it is not possible
