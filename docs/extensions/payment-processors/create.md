@@ -66,7 +66,7 @@ Checkout - the info is entered at the processors' site.
 
 
 
-## Create the default payment processor file
+### Create the default payment processor file
 
 Depending on your billing mode there are different considerations. The file
 will live in `CRM/Core/Payment` and have the same name as entered into
