@@ -82,7 +82,7 @@ always  possible as there are some scenarios where the schema does not permit th
 adjustment line items being created in these cases. The issue is that the civicrm_line_item table has a unique index for
 `entity_table + entity_id + contribution_id + price_field_value_id + price_field_id`.
 
-This means that if a line item with no price_field_values (ie a text / enter quantity line item) is altered it is not possible
+This means that if a line item with no `price_field_values` (i.e: a text / enter quantity line item) is altered it is not possible
 to create a reversal line and a new line within the schema. The same problem occurs when changing a line item with price_field_values
 BACK to a price_field_value it previously held. In both these scenarios the work around is to have more than one 'valid' financial_item
 against the resulting line item with an 'adjustment' entry -  ie an additional financial_item.
