@@ -73,7 +73,7 @@ When a payment is made it might either pay off the line items, or a specific lin
 status is updated to Paid and an EntityFinancialTrxn record is created in the civicrm_entity_financial_trxn table linking
 the line item to the payment and specifying the amount paid.
 
-If the line item is paid in part then the status is not updated and the EntityFinancialTrxn table specifies the portion
+If the line item is paid in part then the status is not updated and the `EntityFinancialTrxn` record specifies the portion
 of the line item that has been paid by that payment.
 
 If the line items change then the items financial items have to be updated. Generally the rule is to alter the zero out the
