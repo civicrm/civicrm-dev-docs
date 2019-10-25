@@ -613,6 +613,28 @@ else {
 
 CRM_Utils_System::redirect( $finalURL );
 ```
+### Populate Help Text on the Payment Processor Administrator Screen
+To populate the blue help icons for the settings fields needed for your payment processor on the  "Settings - Payment Processor" form (`CiviCRM Admin bar -> Adminster -> System Settings -> Payment Processors`) follow the steps below:
+
+1. Add a template file to your extension with a `{htxt id='$ppTypeName-live-$fieldname'}` section for each settings field you are using for example, help text for the user-name filed for a payment processor with the name 'AuthNet' would look like:
+
+```
+{htxt id='AuthNet-live-user-name'}
+{ts}Generate your API Login and Transaction Key by logging in to your Merchant Account and navigating to <strong>Settings &raquo; General Security Settings</strong>.{/ts}</p>
+{/htxt}
+```
+
+see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civicrm/civicrm-core/blob/master/templates/CRM/Admin/Page/PaymentProcessor.hlp) for examples.
+2. Add that template to the `CRM_Admin_Form_PaymentProcessor` form using a buildForm hook like so:
+
+```php
+ if ($formName == 'CRM_Admin_Form_PaymentProcessor') {
+    $templatePath = realpath(dirname(__FILE__) . "/templates");
+    CRM_Core_Region::instance('form-buttons')->add(array(
+      'template' => "{$templatePath}/{TEMPLATE FILE NAME}.tpl",
+    ));
+  }
+ ```
 
 ## Add any additional libraries needed
 
