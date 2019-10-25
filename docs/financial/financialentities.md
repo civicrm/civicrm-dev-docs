@@ -61,3 +61,25 @@ Negative payments (or refunds) will have the bank or processor account on the **
 
 Financial items exist to track how much has been paid against the various line items within an order / contribution.
 In an accounting system this might be called credit-matching.
+
+Each line item will have one or more financial items denoting payments made against it. On creation of the order there
+will be a financial item for each line item and an additional item for every fee amount. Where the preferred flow is used
+this item will have a status of 'Unpaid'. (Note that for historical reasons this may not always be true but it's the goal - [see](https://github.com/civicrm/civicrm-dev-docs/issues/712))
+
+When a payment is made it might either pay off the line items, or a specific line item, in full. In that case the line item
+status is updated to Paid and an EntityFinancialTrxn record is created in the civicrm_entity_financial_trxn table linking
+the line item to the payment and specifying the amount paid.
+
+If the line item is paid in part then the status is not updated and the EntityFinancialTrxn table specifies the portion
+of the line item that has been paid by that payment.
+
+If the line items change then the items financial items have to be updated. Generally the rule is to alter the zero out the
+old line item, reverse the financial items and then create a new line item with new financial items. However, this is not
+always  possible as there are some scenarios where the schema does not permit this. The has led to
+adjustment line items being created in these cases. The issue is that the civicrm_line_item table has a unique index for
+entity_table + entity_id + contribution_id + price_field_value_id + price_field_id.
+
+This means that if a line item with no price_field_values (ie a text / enter quantity line item) is altered it is not possible
+to create a reversal line and a new line within the schema. The same problem occurs when changing a line item with price_field_values
+BACK to a price_field_value it previously held. In both these scenarios the work around is to have more than one 'valid' financial_item
+against the resulting line item with an 'adjustment' entry -  ie an additional financial_item.
