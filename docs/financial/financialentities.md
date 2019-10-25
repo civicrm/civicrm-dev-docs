@@ -64,7 +64,10 @@ In an accounting system this might be called credit-matching.
 
 Each line item will have one or more financial items denoting payments made against it. On creation of the order there
 will be a financial item for each line item and an additional item for every fee amount. Where the preferred flow is used
-this item will have a status of 'Unpaid'. (Note that for historical reasons this may not always be true but it's the goal - [see](https://github.com/civicrm/civicrm-dev-docs/issues/712))
+this item will have a status of 'Unpaid'.
+
+!!! note
+    For historical reasons this may not always be true but [it's the goal](https://github.com/civicrm/civicrm-dev-docs/issues/712).
 
 When a payment is made it might either pay off the line items, or a specific line item, in full. In that case the line item
 status is updated to Paid and an EntityFinancialTrxn record is created in the civicrm_entity_financial_trxn table linking
