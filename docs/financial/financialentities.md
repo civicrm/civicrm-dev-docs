@@ -83,6 +83,6 @@ adjustment line items being created in these cases. The issue is that the civicr
 `entity_table + entity_id + contribution_id + price_field_value_id + price_field_id`.
 
 This means that if a line item with no `price_field_values` (i.e: a text / enter quantity line item) is altered it is not possible
-to create a reversal line and a new line within the schema. The same problem occurs when changing a line item with price_field_values
+to create a reversal line and a new line within the schema. The same problem occurs when changing a line item with `price_field_values`
 ***back*** to a `price_field_value` it previously held. In both these scenarios the work around is to have more than one *valid* `financial_item`
 against the resulting line item with an *adjustment* entry -  i.e: an additional `financial_item`.
