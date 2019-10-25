@@ -66,14 +66,14 @@ Checkout - the info is entered at the processors' site.
 
 
 
-### Create the default payment processor file
+### Create the Default Payment Processor File
 
 Depending on your billing mode there are different considerations. The file
 will live in `CRM/Core/Payment` and have the same name as entered into
 your `processor_type` table.
 
 
-### Create initial processing file
+### Create Initial Processing File
 
 In our example our file name is UCMPaymentCollection so the name of the
 file we are going to create is UCMPaymentCollection.php
@@ -236,7 +236,7 @@ function doPayment( &$params, $component ) {
 ```
 
 
-### Create return processing file
+### Create Return Processing File
 
 This is the file that is called by the payment processor after it
 returns from processing the payment. Let's call it
@@ -614,7 +614,7 @@ else {
 CRM_Utils_System::redirect( $finalURL );
 ```
 
-## Add any additional libraries needed
+### Add Any Additional Libraries Needed
 
 In the case of this payment processor we needed nusoap. So in the
 extension directory we created a libraries directory and put it there.
