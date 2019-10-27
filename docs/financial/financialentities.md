@@ -1,10 +1,9 @@
-!!! abstract This area of CiviCRM code and documentation is a work-in-progress. Not all features will be documented and the core code underlying this area may change from version to version.
+!!! abstract
+    This area of CiviCRM code and documentation is a work-in-progress. Not all features will be documented and the core code underlying this area may change from version to version.
 
 This file exists to give an overview of the Financial entities involved in recording Financial data in CiviCRM.
 
 You should only interact with the Financial entities through the relevant apis - generally Order & Payment apis.
-
-It is a work in progress!
 
 The original file for tracking these is [on the old CiviCRM Wik](https://wiki.civicrm.org/confluence/display/CRM/CiviAccounts+Data+Flow).
 
@@ -62,17 +61,17 @@ Negative payments (or refunds) will have the bank or processor account on the **
 Financial items exist to track how much has been paid against the various line items within an order / contribution.
 In an accounting system this might be called credit-matching.
 
-Each line item will have one financial item denoting payments made against it or a transaction transferring the money to
-accounts receivable. On creation of the order there
-will be a financial item for each line item and an additional item for every fee amount.
+Each line item will have one financial item denoting payments made against the line item, or a transaction transferring the money to
+accounts receivable.
+On creation of the order there will be a financial item for each line item and an additional item for every fee amount.
 
-!!! The created financial item should have a status of 'Unpaid' but it seems that may not always be the case and it may be
-partially paid instead - further auditing needed as this seems to be linked to use of an old method to create partial payments.
-Financial item statuses are potentially used for reporting but are not used in any functional calculations.
+!!! The created financial item should have a status of 'Unpaid' but it seems that this may not always be the case and it may be
+    partially paid instead - further auditing is needed as this seems to be linked to use of an old method to create partial payments.
+    Financial item statuses are potentially used for reporting but are not used in any functional calculations.
 
 !!! note
     For historical reasons this may not always be true but [it's the goal](https://github.com/civicrm/civicrm-dev-docs/issues/712). Financial items
-    may not always be present in practice for Pending contributions.
+    may not always be present in practice for pending contributions.
 
 When a payment is made it might either pay off all the line items, some of each of the line items, specific line items, in part or in full.
 Where a line item is now fully paid the status of the related financial item is updated o Paid. An `EntityFinancialTrxn` record is created
@@ -81,17 +80,17 @@ in the `civicrm_entity_financial_trxn` table linking the payment to any line ite
 If the line item is paid in part then the financial item status should be 'Partly Paid' and the `EntityFinancialTrxn` record specifies the portion
 of the line item that has been paid by that payment.
 
-
 For example if we have the scenario that an Order (Contribution) with 2 line items (values $100 & $200) is created then we will get
-- the order
-- 1 financial trxn record transferring the cost to accounts payable
-- 2 financial items (one for each line item for the full amount)
-- 2 financial entity transaction records linking the financial items to the accounts receivable transaction
+
+* the order
+* 1 financial trxn record transferring the cost to accounts payable
+* 2 financial items (one for each line item for the full amount)
+* 2 financial entity transaction records linking the financial items to the accounts receivable transaction
 
 If we later get a payment for $100 we will see the following changes
-- 1 financial trxn record with is_payment. From account is accounts receivable, to account is the payment asset account (e.g Bank account)
-- 2 financial entity transaction records linking the financial items payment to the payment transaction.
 
+* 1 financial trxn record with is_payment. From account is accounts receivable, to account is the payment asset account (e.g Bank account)
+* 2 financial entity transaction records linking the financial items payment to the payment transaction.
 
 If the line items change then the items financial items have to be updated. Generally the rule is to alter the zero out the
 old line item, reverse the financial items and then create a new line item with new financial items. However, this is not
