@@ -632,7 +632,7 @@ To populate the blue help icons for the settings fields needed for your payment 
 1. Add that template to the `CRM_Admin_Form_PaymentProcessor` form using a buildForm hook like so:
 
     ```php
- if ($formName == 'CRM_Admin_Form_PaymentProcessor') {
+    if ($formName == 'CRM_Admin_Form_PaymentProcessor') {
     $templatePath = realpath(dirname(__FILE__) . "/templates");
         CRM_Core_Region::instance('form-buttons')->add(array(
           'template' => "{$templatePath}/{TEMPLATE FILE NAME}.tpl",
