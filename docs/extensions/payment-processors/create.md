@@ -632,7 +632,7 @@ see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civ
     $templatePath = realpath(dirname(__FILE__) . "/templates");
     CRM_Core_Region::instance('form-buttons')->add(array(
           'template' => "{$templatePath}/{TEMPLATE FILE NAME}.tpl",
-    ));
+        ));
   }
  ```
 
