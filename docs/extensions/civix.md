@@ -385,7 +385,8 @@ For example, this command will copy the activity report in the class `CRM_Report
 civix generate:report --copy CRM_Report_Form_Activity MyActivity Contact
 ```
 
-Note that copying a report like this and modifying it is likely to lead to maintenance issues similar to those related to overriding core files in an extension. In particular, bug fixes or other changes to code that you have copied will not automatically be applied to the copied code your new report. Often a better approach is to extend the class of the core report in your extension (eg CRM_myExtension_Form_Report_ExtendContributionDetails extends CRM_Report_Form_Contribute_Detail), then selectively override its functions. In the functions that you override, if possible run the original code and then just tweak the behaviour afterwards, ie at the beginning of thisFn(), call parent::thisFn() then add your code.
+!!! note
+    Copying a report like this and modifying it is likely to lead to maintenance issues similar to those related to overriding core files in an extension. In particular, bug fixes or other changes to code that you have copied will not automatically be applied to the copied code your new report. Often a better approach is to extend the class of the core report in your extension (eg `CRM_myExtension_Form_Report_ExtendContributionDetails` extends `CRM_Report_Form_Contribute_Detail`), then selectively override its functions. In the functions that you override, if possible run the original code and then just tweak the behaviour afterwards, i.e: at the beginning of `thisFn()`, call `parent::thisFn()` then add your code.
 
 ### Add a custom search {:#generate-search}
 
