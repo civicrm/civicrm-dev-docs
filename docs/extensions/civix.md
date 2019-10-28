@@ -354,9 +354,13 @@ To include static resources such as stylesheets, Javascript files, or images pla
 
 ### Add a report {:#generate-report}
 
-CiviReport enables developers to define new business reports using customizable SQL logic and form layouts. If another existing report is close to your needs you may copy and modify it.
+CiviReport enables developers to define new business reports using customizable SQL logic and form layouts. 
 
-To to see the available report generation options activate the `civix` help:
+In many cases you can take advantage of the [alterReportVar hook](/hooks/hook_civicrm_alterReportVar) to adjust the columns, sql, or event rows of an existing report to modify it to suit your needs. 
+
+This civix command is available if you want to create a new report. It also provides an option, if another existing report is close to your needs, to easily copy and modify it.
+
+To see the available report generation options activate the `civix` help:
 
 ```bash
 civix generate:report --help
@@ -382,6 +386,8 @@ For example, this command will copy the activity report in the class `CRM_Report
 ```bash
 civix generate:report --copy CRM_Report_Form_Activity MyActivity Contact
 ```
+
+Note that copying a report like this and modifying it is likely to lead to maintenance issues similar to those related to overriding core files in an extension. In particular, bug fixes or other changes to code that you have copied will not automatically be applied to your new report. There are a few ways to avoid this maintenance headache. First, if you are not going to change a function in the report you have subclassed (ie made a copy of), just delete those functions and the original code will run. Second, if possible run the original code and then just tweak the behaviour afterwards, ie at the beginning of thisFn(), call parent::thisFn() then add your code.
 
 ### Add a custom search {:#generate-search}
 
