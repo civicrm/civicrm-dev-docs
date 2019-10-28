@@ -623,7 +623,7 @@ To populate the blue help icons for the settings fields needed for your payment 
     The help text for the `user-name` field for a payment processor with the name 'AuthNet' would be implemented with code like this:
 
     ```twig
-{htxt id='AuthNet-live-user-name'}
+    {htxt id='AuthNet-live-user-name'}
     {ts}Generate your API Login and Transaction Key by logging in to your Merchant Account and navigating to <strong>Settings &raquo; General Security Settings</strong>.{/ts}</p>
 {/htxt}
 ```
