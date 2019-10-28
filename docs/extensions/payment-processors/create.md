@@ -630,7 +630,7 @@ see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civ
 ```php
  if ($formName == 'CRM_Admin_Form_PaymentProcessor') {
     $templatePath = realpath(dirname(__FILE__) . "/templates");
-    CRM_Core_Region::instance('form-buttons')->add(array(
+        CRM_Core_Region::instance('form-buttons')->add(array(
           'template' => "{$templatePath}/{TEMPLATE FILE NAME}.tpl",
         ));
       }
