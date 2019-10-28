@@ -1,3 +1,8 @@
+!!! abstract
+    This area of CiviCRM code and documentation is a work-in-progress. Not all features
+    will be documented and the core code underlying this area may change from version
+    to version.
+
 The financial subsystem in civicrm encompasses:
 
 - contributions
@@ -6,7 +11,7 @@ The financial subsystem in civicrm encompasses:
 - refunds
 - prices
 - discounts
-- premiums (things given away to contacts who donate alot)
+- premiums (things given away to contacts who donate a lot)
 - accounting information
 - integrations with payment processors
 - integrations with accounting systems

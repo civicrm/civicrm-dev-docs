@@ -32,7 +32,9 @@ pages:
   - Release Process: core/release-process.md
 - Financial:
   - Overview: financial/overview.md
-  - OrderAPI: financial/OrderAPI.md
+  - Order API: financial/orderAPI.md
+  - Payment API: financial/paymentAPI.md
+  - Entities: financial/financialentities.md
 - Extensions:
   - Basics: extensions/index.md
   - Packaging Options: extensions/packaging.md
@@ -49,16 +51,25 @@ pages:
     - Creating a Payment Processor: extensions/payment-processors/create.md
   - CMS-specific development: extensions/cms-specific.md
 - API:
-  - APIv3 Intro: api/index.md
-  - APIv3 Usage: api/usage.md
-  - APIv3 Actions: api/actions.md
-  - APIv3 Options: api/options.md
-  - APIv3 Joins: api/joins.md
-  - APIv3 Chaining: api/chaining.md
-  - APIv3 Custom Data: api/custom-data.md
-  - APIv3 Examples: api/examples.md
-  - APIv3 Interfaces: api/interfaces.md
-  - APIv3 Changes: api/changes.md
+  - API Intro: api/index.md
+  - API Interfaces: api/interfaces.md
+  - APIv4:
+    - APIv4 Usage: api/v4/usage.md
+    - APIv4 Actions: api/v4/actions.md
+    - APIv4 Joins: api/v4/joins.md
+    - APIv4 Chaining: api/v4/chaining.md
+    - APIv4 Custom Data: api/v4/custom-data.md
+    - Differences Between Api v3 and v4: api/v4/differences-with-v3.md
+    - APIv4 Changes: api/v4/changes.md
+  - APIv3:
+    - APIv3 Usage: api/v3/usage.md
+    - APIv3 Actions: api/v3/actions.md
+    - APIv3 Options: api/v3/options.md
+    - APIv3 Joins: api/v3/joins.md
+    - APIv3 Chaining: api/v3/chaining.md
+    - APIv3 Custom Data: api/v3/custom-data.md
+    - APIv3 Examples: api/v3/examples.md
+    - APIv3 Changes: api/v3/changes.md
 - Hooks:
   - Hooks Introduction: hooks/index.md
   - Usage:

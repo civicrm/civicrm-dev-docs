@@ -159,11 +159,13 @@ If you want your extension to store data in the database, then you will need to 
 1. Re-install your extension.
 
     ```bash
-    $ cv ext:uninstall org.example.myextension
-    $ cv ext:enable org.example.myextension
+    $ cv ext:uninstall myextension
+    $ cv ext:enable myextension
     ```
     
 Now your entity should be ready to use. Try it out with `cv api MyEntity.create` and `cv api MyEntity.get`. Then [add some tests](#generate-test).
+
+By default when you generate an entity you will be generating an APIv4 entity. To generate an APIv3 (or both) interface you need to specify `--api-version 3,4` or just `--api-version 3`
 
 !!! note "Troubleshooting"
 

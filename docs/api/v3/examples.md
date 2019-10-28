@@ -4,7 +4,7 @@ All the APIv3 Examples are generated through Tests in the CodeBase and are auto-
 
 ## Location of Examples
 
-The most current examples can be found in CiviCRM's GitHub Repo on the [Master Branch](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples). In the GitHub Repo can you also find examples that relate to the LTS version as well in the [4.6 Branch](https://github.com/civicrm/civicrm-core/tree/4.6/api/v3/examples). When you install CiviCRM the Examples that come with the particular version of CiviCRM you have installed can be found in `<civicrm_root>/api/v3/examples`. You will also be able to view them through the [API Explorer](/api/index.md#api-explorer) by clicking on the **Examples** tab in the Explorer.
+The most current examples can be found in CiviCRM's GitHub Repo on the [Master Branch](https://github.com/civicrm/civicrm-core/tree/master/api/v3/examples). When you install CiviCRM the Examples that come with the particular version of CiviCRM you have installed can be found in `<civicrm_root>/api/v3/examples`. You will also be able to view them through the [API Explorer](/api/index.md#api-explorer) by clicking on the **Examples** tab in the Explorer.
 
 ## Creating a New Example
 
