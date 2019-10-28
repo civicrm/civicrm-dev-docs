@@ -633,7 +633,7 @@ see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civ
     CRM_Core_Region::instance('form-buttons')->add(array(
           'template' => "{$templatePath}/{TEMPLATE FILE NAME}.tpl",
         ));
-  }
+      }
      ```
 
 ## Add any additional libraries needed
