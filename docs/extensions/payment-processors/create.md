@@ -625,7 +625,7 @@ To populate the blue help icons for the settings fields needed for your payment 
     ```twig
     {htxt id='AuthNet-live-user-name'}
     {ts}Generate your API Login and Transaction Key by logging in to your Merchant Account and navigating to <strong>Settings &raquo; General Security Settings</strong>.{/ts}</p>
-{/htxt}
+    {/htxt}
 ```
 
 see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civicrm/civicrm-core/blob/master/templates/CRM/Admin/Page/PaymentProcessor.hlp) for examples.
