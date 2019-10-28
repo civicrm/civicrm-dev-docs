@@ -20,6 +20,12 @@ This hook is used to add or modify display columns and filters.
 
 -   null
 
+## Note
+
+It is often more performant to change the report query on $varType == 'sql' than
+to do database lookups on each row in the rows in the $var array on 
+$varType == 'rows'. 
+
 ## Example
 
 From the [Mandrill Transaction
