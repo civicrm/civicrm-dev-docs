@@ -634,7 +634,7 @@ see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civ
           'template' => "{$templatePath}/{TEMPLATE FILE NAME}.tpl",
         ));
   }
- ```
+     ```
 
 ## Add any additional libraries needed
 
