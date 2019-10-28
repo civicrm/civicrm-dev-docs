@@ -629,7 +629,7 @@ To populate the blue help icons for the settings fields needed for your payment 
 ```
 
     see [core /templates/CRM/Admin/Page/PaymentProcessor.hlp](https://github.com/civicrm/civicrm-core/blob/master/templates/CRM/Admin/Page/PaymentProcessor.hlp) for further examples.
-2. Add that template to the `CRM_Admin_Form_PaymentProcessor` form using a buildForm hook like so:
+1. Add that template to the `CRM_Admin_Form_PaymentProcessor` form using a buildForm hook like so:
 
 ```php
  if ($formName == 'CRM_Admin_Form_PaymentProcessor') {
