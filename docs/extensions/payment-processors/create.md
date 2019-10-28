@@ -614,7 +614,7 @@ else {
 CRM_Utils_System::redirect( $finalURL );
 ```
 ### Populate Help Text on the Payment Processor Administrator Screen
-To populate the blue help icons for the settings fields needed for your payment processor on the  "Settings - Payment Processor" form (`CiviCRM Admin bar -> Adminster -> System Settings -> Payment Processors`) follow the steps below:
+To populate the blue help icons for the settings fields needed for your payment processor at **Administer -> System Settings -> Payment Processors** follow the steps below:
 
 1. Add a template file to your extension with a `{htxt id='$ppTypeName-live-$fieldname'}` section for each settings field you are using for example, help text for the user-name filed for a payment processor with the name 'AuthNet' would look like:
 
