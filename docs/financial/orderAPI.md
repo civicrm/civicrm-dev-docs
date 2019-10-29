@@ -359,8 +359,10 @@ try {
 
   // Assuming the payment was taken, record it which will mark the Contribution
   // as Completed and update related entities.
-  civicrm_api3('Payment', 'create',
-    ['contribution_id' => $order['id'], 'amount' => $params['amount']]);
+  civicrm_api3('Payment', 'create', [
+    'contribution_id' => $order['id'],
+    'total_amount' => $params['amount'],
+    ]);
 }
 catch  {
   // it failed
