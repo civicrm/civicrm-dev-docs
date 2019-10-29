@@ -6,20 +6,25 @@ Many of these tools are commonly used by web developers, so you may have already
 
 This is the same collection of tools which manages the test/demo/release infrastructure for civicrm.org.
 
-
 ## Installation
 
-### Ubuntu
+Buildkit supports several Unix-style environments. It may be installed on [a fresh workstation or virtual machine running Ubuntu/Debian](#ubuntu-debian). It can also be used in a [Vagrant VM](#vagrant) or [Docker container](#docker). If you wish to install in any other Unix-style system (such as macOS or RedHat), then follow the [generic instructions](#other-platforms).
 
-If you have a new installation of Ubuntu 12.04 or later, then you can download everything -- buildkit and the system requirements -- with one command. [`curl`](https://curl.haxx.se/) is required to be installed before you can run the command. You can install `curl` with `sudo apt install curl`.  This command will install buildkit to `~/buildkit`:
+### Ubuntu / Debian
+
+If you have a fresh system install of Ubuntu or Debian (with a [recent version](#operating-systems) like Ubuntu 18.04 LTS), then you can download everything using the `get-buildkit.sh` script.
 
 ```bash
+sudo apt-get install curl
 curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
 ```
 
-!!! note
+This creates a personal workspace folder (`~/buildkit`) for helper scripts, caches, and builds. It also uses `--full` mode to download a complete set of system packages (PHP, MySQL, Apache, etc).
 
-    * When executing the above curl/install command, you should *not* run it as `root` - including via `sudo`, as doing so *will* cause failures. However, you *should* have `sudo` permissions as the script includes several `sudo` statements where these are required.
+!!! tip "Usage tips"
+
+    * You should *not* use `root`, `su`, or `sudo` except where specifically noted. Buildkit is generally designed to run as your regular user, and unnecessary `root` privileges *will* cause problems. If the installer needs elevated privileges, it will call `sudo` on a case-by-case basis.
+    * The install script will only execute `--full` mode on a supported release of Ubuntu / Debian. See also: [Appendix: Operating Systems](#operating-systems).
     * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
     * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
 
@@ -40,8 +45,8 @@ If you have [Docker](https://www.docker.com/) running, you can use one of the fo
 
 !!! Note
 
-    There are different versions of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with on Linux. 
-    
+    There are different versions of Buildkit on Docker. Michael McAndrew's seems to be the easiest to get started with on Linux.
+
 #### Install buildkit on docker on ubuntu
 
 Follow the official installation instructions from https://docs.docker.com/compose/install/ to install docker compose on your linux machine.
@@ -68,8 +73,7 @@ docker-compose exec -u buildkit civicrm bash
 
 More information is in the Readme: https://github.com/michaelmcandrew/civicrm-buildkit-docker/blob/master/README.md
 
-
-### Other platforms
+### Generic {:#other-platforms}
 
 You may install buildkit in other environments. The main pre-requisites are:
 
@@ -235,3 +239,39 @@ See the [buildkit changelog](https://github.com/civicrm/civicrm-buildkit/blob/ma
 
     If you see an upgrade to `civix` in the changelog, and if you maintain extensions with `civix`,
     then check the general [civix upgrade documentation](/extensions/civix.md#upgrade-templates) and [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md).
+
+## Appendix: Operating Systems {:#operating-systems}
+
+Currently Buildkit includes specific, tested install steps for the following Ubuntu and Debian operating system releases.  Note that recently removed versions are shown in this list for information and are marked in the final column.
+
+There are no specific installer steps for macOS but Buildkit itself is fully usable on a Mac. Buildkit does not natively support running on Windows at this time but other options are available (e.g: Vagrant/Docker).
+
+!!! note
+    Versions of Ubuntu and Debian running on Windows Subsystem for Linux (WSL) and WSL2 are not currently compatible with Buildkit.
+
+### Ubuntu
+ Version | Codename | Release Date | EoL Date | Buildkit Removal |
+--------- | ------------ | -------------- | ---------- | ------------------------- |
+19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
+18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 |
+18.04 | Bionic Beaver | April 2018 | April 2023 | October 2023 |
+17.10 | Artful Aardvark | October 2017 | July 2018 <sup>&#x1F534;</sup> | January 2019 <sup>&#x2705;</sup> |
+17.04 | Zesty Zapus<sup>*</sup> | April 2017 | January 2018 <sup>&#x1F534;</sup> | July 2018 <sup>&#x2705;</sup> |
+16.10 | Yakkety Yak<sup>*</sup> | October 2016 | July 2017 <sup>&#x1F534;</sup> | January 2018 <sup>&#x2705;</sup> |
+16.04 | Xenial Xerus | April 2016 | April 2021 | October 2021 |
+14.04 | Trusty Tahr | April 2014 | April 2019 <sup>&#x1F534;</sup> | October 2019 <sup>&#x2705;</sup> |
+12.04 | Precise Pangolin | April 2012 | April 2017 <sup>&#x1F534;</sup> | October 2017 <sup> &#x2705;</sup> |
+
+<sup>*</sup> = Reuses installation steps for Xenial Xerus.
+<sup>&#x1F534;</sup> = Is currently EoL.
+<sup>&#x2705;</sup> = Has been removed from Buildkit
+
+### Debian
+Version | Codename | Release Date | EoL Date | Buildkit Removal |
+--------- | ------------ | -------------- | ---------- | ------------------ |
+10 | Buster | July 2019 | 202x | Unknown |
+9 | Stretch | June 2017 | 2022 | Unknown |
+8 | Jessie | April 2015 | June 2020 | September 2020 |
+
+!!! warning
+    Our current policy is that these specific install steps will be removed from Buildkit when they reach their End Of Life (EoL) date       plus 6 months. See [this issue](https://github.com/civicrm/civicrm-buildkit/issues/432) for discussion/information.
