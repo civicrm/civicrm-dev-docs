@@ -35,8 +35,8 @@ Call `Order.create` with a structure like the below. Note that we always create 
   "contribution_status_id": "Pending",
   "line_items" : [
     {
+      "params": { },
       "line_item": [
-        "params": { },
         {
           "qty": 1,
           "unit_price": 1.23,
