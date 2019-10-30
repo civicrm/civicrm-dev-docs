@@ -355,13 +355,19 @@ $order = civicrm_api3('Order', 'create' $params);
 try {
   // Use the Payment Processor to attempt to take the actual payment. You may
   // pass in other params here, too.
-  civicrm_api3('PaymentProcessor', 'pay', ['contribution_id' => $order['id']]);
+  civicrm_api3('PaymentProcessor', 'pay', [
+    'payment_processor_id' => $params['payment_processor_id'],
+    'contribution_id' => $order['id'],
+    'amount' => $params['total_amount'],
+    ]);
 
   // Assuming the payment was taken, record it which will mark the Contribution
   // as Completed and update related entities.
   civicrm_api3('Payment', 'create', [
     'contribution_id' => $order['id'],
     'total_amount' => $params['amount'],
+    'payment_processor_id' => $params['payment_processor_id'],
+    'payment_instrument_id' => $params['payment_instrument_id'],
     ]);
 }
 catch  {
