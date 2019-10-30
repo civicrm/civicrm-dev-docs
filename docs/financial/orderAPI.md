@@ -366,8 +366,9 @@ try {
   civicrm_api3('Payment', 'create', [
     'contribution_id' => $order['id'],
     'total_amount' => $params['amount'],
-    'payment_processor_id' => $params['payment_processor_id'],
     'payment_instrument_id' => $params['payment_instrument_id'],
+    // If there is a processor, provide it:
+    'payment_processor_id' => $params['payment_processor_id'],
     ]);
 }
 catch  {
