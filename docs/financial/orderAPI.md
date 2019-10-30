@@ -339,7 +339,7 @@ The simplest first step to migrate off it is to replace the order api call with 
 // Start with the same parameters as Contribution.transact.
 $params = $transactParams;
 
-// It would be  better just  to include the relevant params but....
+// It would be better just to include the relevant params but....
 $paymentParams = $transactParams;
 
 $params['contribution_status_id'] = 'Pending';
