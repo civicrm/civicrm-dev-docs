@@ -35,8 +35,8 @@ Call `Order.create` with a structure like the below. Note that we always create 
   "contribution_status_id": "Pending",
   "line_items" : [
     {
+      "params": { },
       "line_item": [
-        "params": { },
         {
           "qty": 1,
           "unit_price": 1.23,
@@ -62,7 +62,7 @@ Things to note:
 5. The `line_total` *must* equal the `unit_price` × `qty`
 
 !!! info
-    If you provide a value to `total_amount` as we have above, it *must* equal the sum of all the `line_total` values. Before 5.20 there was [a bug](https://lab.civicrm.orog/dev/financial/issues/73) that required the top-level `total_amount` was provided, but from 5.20 onward you can omit this and it will be calculated automatically from the sum of the `line_items`.
+    If you provide a value to `total_amount` as we have above, it *must* equal the sum of all the `line_total` values. Before 5.20 there was [a bug](https://lab.civicrm.org/dev/financial/issues/73) that required the top-level `total_amount` was provided, but from 5.20 onward you can omit this and it will be calculated automatically from the sum of the `line_items`.
 
 
 Currently the data returned from `Order.create` shows only the fields from the created Contribution. However an `Order.get` API call for the ID will also include an array of `line_items` (see below for example).
@@ -335,11 +335,13 @@ The Contribution.transact api will create a 'simple' contribution and process a 
 
 The simplest first step to migrate off it is to replace the order api call with a call that follows the recommended flow but still does not address the line item creation gaps & it is recommended you  look at the patterns above to do that. This first step looks like
 
-```
-# start with the same parameters as Contribution.transact.
+```php
+// Start with the same parameters as Contribution.transact.
 $params = $transactParams;
-# it would be  better just  to include the relevant params but....
+
+// It would be better just to include the relevant params but....
 $paymentParams = $transactParams;
+
 $params['contribution_status_id'] = 'Pending';
 if (!isset($params['invoice_id')) {
   // Set an invoice_id here if you have not already done so.
@@ -351,8 +353,23 @@ if (!isset($params['invoiceID']) {
 }
 $order = civicrm_api3('Order', 'create' $params);
 try {
-  civicrm_api3('PaymentProcessor', 'pay', ['contribution_id' => $order['id']]);
-  civicrm_api3('Payment', 'create', ['contribution_id' => $order['id'], 'amount' => $params['amount']]);
+  // Use the Payment Processor to attempt to take the actual payment. You may
+  // pass in other params here, too.
+  civicrm_api3('PaymentProcessor', 'pay', [
+    'payment_processor_id' => $params['payment_processor_id'],
+    'contribution_id' => $order['id'],
+    'amount' => $params['total_amount'],
+    ]);
+
+  // Assuming the payment was taken, record it which will mark the Contribution
+  // as Completed and update related entities.
+  civicrm_api3('Payment', 'create', [
+    'contribution_id' => $order['id'],
+    'total_amount' => $params['amount'],
+    'payment_instrument_id' => $params['payment_instrument_id'],
+    // If there is a processor, provide it:
+    'payment_processor_id' => $params['payment_processor_id'],
+    ]);
 }
 catch  {
   // it failed
