@@ -1,8 +1,8 @@
 # APIv4 Chaining
 
-It is possible to do two API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Once the contact has been created it will action the contribution create using the id from the contact create as `contact_id`. Likewise you can ask for all activities or all contributions to be returned when you do a `get`.
+Chaining lets you perform multiple API calls at once with the first call feeding into the second. E.g. to create a contact with a contribution you can nest the contribution create into the contact create. Likewise you can ask for all activities or all contributions to be returned when you do a `get`.
 
-Note that there are a few supported syntaxes:
+## Supported Syntaxes:
 
 Object Oriented way
 
@@ -29,7 +29,7 @@ civicrm_api('Contact', 'create', [
 ]);
 ```
 
-If you have 2 websites to create you can pass them as separate key => array pairs just specify a unique array key in the chain array
+If you have 2 websites to create you can pass them as separate key => array pairs just specify a unique array key in the chain array.
 
 Object Oriented way
 
@@ -52,10 +52,12 @@ civicrm_api('Contact', 'create', [
     'display_name' => 'BA Baracus',
   ],
   'chain' => [
-    'create_first website', ['Website', 'create', ['values' => ['url' => 'example1.com', 'contact_id' => '$id']]],
-    'create_second_website', ['Website', 'create', ['values' => ['url' => 'example2.com', 'contact_id' => '$id']]],
+    'first website', ['Website', 'create', ['values' => ['url' => 'example1.com', 'contact_id' => '$id']]],
+    'second_website', ['Website', 'create', ['values' => ['url' => 'example2.com', 'contact_id' => '$id']]],
   ],
 ]);
 ```
 
-Note the use of "$id" in the examples above - any field returned by the outer call can be passed down to a chained call by prefixing it with a dollar sign. Even the results of other chains can be accessed in this way.
+## Back-references
+
+Note the use of '$id' in the examples above. Any field returned by the outer call can be passed down to a chained call by prefixing it with a dollar sign. Even the results of other chains can be accessed in this way.
