@@ -386,8 +386,38 @@ civix generate:report --copy CRM_Report_Form_Activity MyActivity Contact
 ```
 
 !!! note
-    Copying a report like this and modifying it is likely to lead to maintenance issues similar to those related to overriding core files in an extension. In particular, bug fixes or other changes to code that you have copied will not automatically be applied to the copied code your new report. Often a better approach is to extend the class of the core report in your extension (eg `CRM_myExtension_Form_Report_ExtendContributionDetails` extends `CRM_Report_Form_Contribute_Detail`), then selectively override its functions. In the functions that you override, if possible run the original code and then just tweak the behaviour afterwards, i.e: at the beginning of `thisFn()`, call `parent::thisFn()` then add your code.
+    Copying a report like this and modifying it is likely to lead to maintenance issues similar to those related to overriding core files in an extension. In particular, bug fixes or other changes to code that you have copied will not automatically be applied to the copied code your new report. Often a better approach is to extend the class of the core report in your extension, then selectively override its functions. In the functions that you override, if possible run the original code and then just tweak the behaviour afterwards, i.e: at the beginning of `thisFn()`, call `parent::thisFn()` then add your code. For example:
+    
+    ```php
+    class CRM_myExtension_Form_Report_ExtendContributionDetails extends CRM_Report_Form_Contribute_Detail {
+      public function from() {
+        parent::from();
+        // your code
+      }
+      ...
+    }
+    ```
 
+!!! note
+    To have your extension create an instance of your report template with configurations for columns, groups, filtering, etc. and then put it into the menu system, you need to make an additional entry in the `CRM/Myextension/Form/Report/MyReport.mgd.php` file. The additional entry needs some serialized data that is not easy to code but is easy to lookup for a configured report instance. So manually configure a report instance appropriately on a CiviCRM install running your extension (ie go to Administer > CiviReport > Create New Report from Template, then configure and save the instance). Then use APIv3 to get the ReportInstance values you need for your .mgd.php entry. Note that you need to specify the return fields as navigation_id is not returned by default. If you are not emailing the report, then the following should be sufficient, substituting the id for your report for 8 below:
+    ```php
+    $result = civicrm_api3('ReportInstance', 'get', [
+      'sequential' => 1,
+      'return' => ["title", "report_id", "name", "description", "permission", "grouprole", "is_active", "navigation_id", "is_reserved", "form_values"],
+      'id' => 8,
+    ]);
+    ```
+    Add an additional array entry into your .mgd.php that includes the elements of values array, adding a module entry, eg:
+    
+    ```
+    array(
+    'module' => 'com.example.myextension',
+    'name' => 'My Enhanced Contribution Detail',
+    ...
+      'is_reserved' =>  0,
+    ),
+    ```
+    
 ### Add a custom search {:#generate-search}
 
 CiviCRM enables developers to define new search forms using customizable SQL logic and form layouts. Use this command to get started:
