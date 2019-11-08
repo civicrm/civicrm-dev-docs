@@ -28,26 +28,24 @@ to grant it to users.
 
     -   Simple associative array in the format "permission string =>
         label".  Compatible with CiviCRM 4.3+.
-
-            $prefix = ts('CiviCRM Grant Program:') . ' ';
-            $permissions['edit grant programs'] = $prefix . ts('edit grant programs');
-            $permissions['delete in Grant Program'] = $prefix . ts('delete grant program');
-
+        ```php
+            $permissions['edit grant programs'] = ts('CiviCRM Grant Program: edit grant programs');
+            $permissions['delete in Grant Program'] = ts('CiviCRM Grant Program: delete grant program');
+        ```
     -   A multidimensional array in the format "permission string =>
         array(label, description)".  Compatible with CiviCRM 4.6+.  The
         first array item is the label for the permission.  If a second
         array item is present, it will appear as a description beneath
         the permission.
-
-            $prefix = ts('CiviCRM Grant Program:') . ' ';
+        ```php
             $permissions['edit grant programs'] = [
-              $prefix . ts('edit grant programs'),                     // label
-              ts('Create or edit grant programs and their criteria'),  // description
+              ts('CiviCRM Grant Program: edit grant programs'),                     // label
+              ts('CiviCRM Grant Program: Create or edit grant programs and their criteria'),  // description
             ];
             $permissions['delete in Grant Program'] = [
-              $prefix . ts('delete grant program'),                    // if no description, just give an array with the label
+              ts('CiviCRM Grant Program: delete grant program'),                    // if no description, just give an array with the label
             ];
-
+         ```
 ## Returns
 
 -   null
@@ -71,7 +69,7 @@ Nagios](https://github.com/aghstrategies/com.aghstrategies.civimonitor/blob/bc19
 extension, including a check for the CiviCRM version in order to ensure
 backwards compatibility while providing a description to versions that
 support it.
-
+```php
     use CRM_Civimonitor_ExtensionUtil as E;
 
     function civimonitor_civicrm_permission(&$permissions) {
@@ -90,6 +88,6 @@ support it.
         ];
       }
     }
-
+```
 See
 [http://issues.civicrm.org/jira/browse/CRM-11946](http://issues.civicrm.org/jira/browse/CRM-11946)
