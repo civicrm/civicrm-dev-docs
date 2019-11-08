@@ -11,7 +11,7 @@ This hook was first available in CiviCRM 3.2.4, $componentTable and $ids variabl
 
 ## Definition
 
-     hook_civicrm_export (&$exportTempTable, &$headerRows, &$sqlColumns, &$exportMode, &$componentTable, &$ids)
+     hook_civicrm_export (&$exportTempTable, &$headerRows, &$sqlColumns, $exportMode, $componentTable, $ids)
 
 ## Parameters
 
@@ -26,7 +26,7 @@ This hook was first available in CiviCRM 3.2.4, $componentTable and $ids variabl
 ## Details
 
 ## Example
-
+```php
     function civitest_civicrm_export( $exportTempTable, $headerRows, $sqlColumns, $exportMode, $componentTable, $ids ) {
         $writeHeader = true;
         $offset = 0;
@@ -110,3 +110,4 @@ This hook was first available in CiviCRM 3.2.4, $componentTable and $ids variabl
         $sqlColumns['psf_cost_centre'] = 'psf_cost_centre varchar(255)';
       }
     }
+```
