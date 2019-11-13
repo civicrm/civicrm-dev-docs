@@ -1,5 +1,8 @@
 # Extension Life cycle
 
+!!! tip "Abandoned Extension Process"
+    Are you looking for information on the process for adopting an abandoned extension? See this [GitLab wiki page](https://lab.civicrm.org/extensions/extensions-directory/wikis/extension-removal-process).
+
 This document describes the process of publishing extensions within the CiviCRM ecosystem.
 
 ## Background
