@@ -183,25 +183,25 @@ Triage is done from this screen https://lab.civicrm.org/groups/dev/-/boards and 
 
 ### Categorisation
 
-During triage the following labels may be added:
+In Gitlab, issues are categorized by "Label", and multiple labels may be applied.  A few of the most important labels are standalone terms:
 
-_Critical_
-If the bug is a critical bug this label will be added. UPDATE- we don't really add this any more since by definition if a bug has been present for the entire 5.x series it's not critical. It would need to be something really big to get this
+* __`regression`__ - A problem which was demonstrably introduced by a recent change (*last few months*).
+* __`triaged`__ - The issue has received an initial evaluation/categorization.
+* __`prioritised`__ - The issue was designated by the product maintenance team as a priority.
 
-_Regression_
-If the bug is a recent regression this label will be added
+Additionally, there are [a number of specific labels](https://lab.civicrm.org/dev/core/-/labels) organized with prefixes. This list is easier to navigate if you know the prefixes:
 
-_type: proposal | type:request_
-This is intended to identify whether the submitter is proposing to do something (if agreed it would be acceptable) or requesting that a change be made for them
+* __`comp:{$X}`__ - The *component* or *subsystem* or [functional area](https://stackoverflow.com/questions/16475979/what-is-the-difference-between-functional-and-non-functional-requirement).
+    * __Example__: The CiviMail component addresses the functional requirements to compose, send, and track email-blasts.  Any bug, feature, or improvement relating to email-blasts would be `comp:CiviMail`.
+* __`sig:{$X}`__: The *signficance* or *quality* or [non-functional requirement](https://stackoverflow.com/questions/16475979/what-is-the-difference-between-functional-and-non-functional-requirement).
+    * __Example__: If a screen unexpectedly terminates after pressing the letter "p", then it is not functioning correctly. That screen has a bug (`sig:bug`).
+    * __Example__: If a screen runs too slowly or consumes too many resources (CPU/RAM/disk), then the functionality is correct, but the screen has a `sig:performance` issue.
+* __`needs:{$X}`__ - The next step that needs work/action.
+    * __Example__: Suppose an issue has been investigated and a patch was approved for the next release. The patch adds a new field, and this field needs to be explained in the "CiviCRM User Guide". The issue `needs:documentation`.
+* __`type:{$X}`__ - The *type* indicates how this issue is being shepherded.
+    * __Example__: Suppose someone filed an issue because they believed it was important - but they did not have any specific capacity or resources allocated to fixing it. They're looking for other people to help with understanding/resolving it. This is a `type:request`.
 
-_needs:Concept approval| Concept approved_
-In most cases the Concept needs approval label will be added in triage as the triager will normally only spend a brief time on each issue and may not be the correct person to assess the proposal. The triager will ping people from the issue or on chat who might be able to comment and / or approve if they have an idea as to who that might be.
-
-_sig:accessibilty|sig:bug|sig:compatibility_
-If the bug is significant due to it relating to an area we are trying to focus on (currently bugs, compatibility with Wordpress, Drupal8, and accessibility html compliance) then a label will be added.
-
-_triaged_
-Indicates the issue has been triaged & removes it from the triage queue
+For the most complete, current list of labels, see [Gitlab: Development > Core > Labels](https://lab.civicrm.org/dev/core/-/labels).
 
 ### Escalate any new critical bugs or regressions
 
