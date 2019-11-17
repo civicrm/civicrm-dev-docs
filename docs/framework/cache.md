@@ -154,6 +154,8 @@ $cache->flush();
 First, we define the service in `Civi\Core\Container` or `hook_civicrm_container`:
 
 ```php
+use Symfony\Component\DependencyInjection\Definition;
+
 $container->setDefinition("cache.hello", new Definition(
   'CRM_Utils_Cache_Interface',
   [[
