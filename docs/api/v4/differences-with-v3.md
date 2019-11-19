@@ -83,7 +83,7 @@ them, it may help to have a concrete example expressed in both APIv3 and APIv4:
     * Object-oriented style: `\Civi\Api4\Entity::action()->...->execute()`
 * When using OOP style in an IDE, most actions and parameters can benefit from auto-completion and type-checking.
 * `$checkPermissions` always defaults to `TRUE`. In APIv3, the default depended on the environment (`TRUE` in REST/Javascript; `FALSE` in PHP).
-* Instead of APIv3's `sequenaial` param, a more flexible `index` controls how results are returned. In traditional style is is the 4th parameter to the api function:
+* Instead of APIv3's `sequential` param, a more flexible `index` controls how results are returned. In traditional style is is the 4th parameter to the api function:
     * Passing a string will index all results by that key e.g. `civicrm_api4('Contact', 'get', $params, 'id')` will index by id.
     * Passing a number will return the result at that index e.g. `civicrm_api4('Contact', 'get', $params, 0)` will return the first result and is the same as `\Civi\Api4\Contact::get()->execute()->first()`. `-1` is the equivalent of `$result->last()`.
 * When [chaining](/api/v4/chaining.md) API calls together, back-references to values from the main API call must be explicitly given (discoverable in the API Explorer).
