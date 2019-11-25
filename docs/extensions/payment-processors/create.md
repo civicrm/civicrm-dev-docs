@@ -21,7 +21,7 @@ A payment processor object extends `CRM_Core_Payment`. This class provides CiviC
 
 The class handles data to do with the third party processor's needs and it should not have much need to store or alter core CiviCRM objects like Contributions or Financial Transaction records - that logic should be handled by CiviCRM's APIs, not the payment processor code.
 
-CiviCRM's Contribution and Event pages will use the processor but the class should not assume that those are the only consumers; it should be able to be used by other processes too, e.g. Drupal webform or an entirely bespoke process.
+CiviCRM's Contribution and Event pages will use the processor but the class should not assume that those are the only consumers; it should be able to be used by other processes too, e.g. Drupal webform or an entirely bespoke process. **Therefore they should not call functions which assume a user context** such as redirects, exits, or setting status messages like `CRM_Core_Error::statusBounce`. Most methods should throw a `PaymentProcessorException` when they are unable to proceed.
 
 ### Responsibilities
 
