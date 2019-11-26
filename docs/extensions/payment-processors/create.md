@@ -4,24 +4,158 @@ This page explains how to develop a payment processor extension.
 
 ## Intro
 
-A payment processor extension typically includes:
+A payment processor integration extension typically includes:
 
 1. a Payment Processor class (required) - this provides CiviCRM with a standard interface/API bridge to the third party processor, and a way for CiviCRM to know which features are supported. This must extend `CRM_Core_Payment`.
-2. an IPN class - optional, IPN = Instant Payment Notification, although they are often asynchronous and not "instant". Many third parties talk instead about *Webhooks*. It refers to the processing data sent from the third party on various events (e.g. completed/confirmed payment, cancellation of recurring payment, and often many more situations - depends heavily on the third party, often configurable in their account administration facilities). CiviCRM provides a base class for IPN classes `CRM_Core_Payment_BaseIPN`, and a menu route at `civicrm/payment/ipn/<N>` where `<N>` is the payment processor ID.
+
+2. an IPN class - optional, IPN means *Instant Payment Notification*, although they are usually asynchronous and not "instant". Many third parties talk instead about *Webhooks*.
+
+    It refers to the data sent from the third party on various events e.g.:
+
+    - completed/confirmed payment,
+    - cancellation of recurring payment,
+    - often many more situations - depends heavily on the third party, often configurable in their account administration facilities
+
+    CiviCRM provides a base class for IPN classes `CRM_Core_Payment_BaseIPN`, and a menu route at `civicrm/payment/ipn/<N>` where `<N>` is the payment processor ID.
+
 3. Customisations and additions to the settings. e.g. might use an private *API key instead* of a *password*.
 
+4. Other libraries and helpers for the particular Payment Processor service.
 
-## The Payment Processor Object
 
-A payment processor object extends `CRM_Core_Payment`. This class provides CiviCRM with a standard interface/API bridge to the third party processor. It should be in the directory:
+## The Payment Class
+
+A payment processor object extends `CRM_Core_Payment`. This class provides CiviCRM with a standard interface/API bridge to the third party processor. It should be found at:
 
 ```
 <myextension>/CRM/Core/Payment/MyExtension.php
 ```
 
-The class handles data to do with the third party processor's needs and it should not have much need to store or alter core CiviCRM objects like Contributions or Financial Transaction records - that logic should be handled by CiviCRM's APIs, not the payment processor code.
+The class handles data to do with the third party processor's needs. Different methods will require different data from CiviCRM, e.g. from Contribution or ContributionRecur records, and configuration data for the Payment Processor Service.
 
-CiviCRM's Contribution and Event pages will use the processor but the class should not assume that those are the only consumers; it should be able to be used by other processes too, e.g. Drupal webform or an entirely bespoke process. **Therefore they should not call functions which assume a user context** such as redirects, exits, or setting status messages like `CRM_Core_Error::statusBounce`. Most methods should throw a `PaymentProcessorException` when they are unable to proceed.
+!!!important
+    Try to avoid infringing on CiviCRM's logic. The methods in your extension should take inputs, communicate with the third party, and return output data that CiviCRM can use to perform its logic. If you find your extension is sending emails, duplicating logic, updating or creating records in CiviCRM, outputting user content (e.g. status messages) then stop, check and consider separating out your code into different methods.
+
+Because things get complex and because `CRM_Core_Payment` is a bridge between CiviCRM's logic and the payment processor service's needs, it's all too easy to end up combining business logic (like updating membership end dates, or deciding whether to send a receipt email) with your calls to the external service. If you do need to do this try to separate out your class methods.
+
+CiviCRM's Contribution and Event pages are obvious users of your `CRM_Core_Paymnet` class but you should not assume that those are the only consumers; it should be able to be used by other processes too, e.g. Drupal webform or an entirely bespoke process. **Therefore they should not call functions that assume a user context** such as redirects, exits, or setting status messages like `CRM_Core_Error::statusBounce`.
+
+!!! note
+    Most methods should throw a `Civi\Payment\Exception\PaymentProcessorException` when they are unable to fulfill the expectations of a method.
+
+## Introducing `PropertyBag` objects
+
+Currently as of 5.19 `$params` is a sprawling array with who-knows-what keys. From 5.21, a better way is to pass in a `Civi\Payment\PropertyBag` object instead.
+
+!!! danger "todo"
+    update 5.21 to actual value
+
+This object has getters and setters that enforce standardised property names and a certain level of validation and type casting. For example, the property `contactID` (note capitalisation) has `getContactID()` and `setContactID()`.
+
+For backwards compatibility, this class implements `ArrayAccess` which means if old code does `$propertyBag['contact_id'] = '123'` or `$propertyBag['contactID'] = 123` it will translate this to the new `contactID` property and use that setter which will ensure that accesing the property returns the integer value *123*. When this happens deprecation messages are emitted to the log file. New code should not use array access.
+
+### Checking for existence of a property
+
+Calling a getter for a property that has not been set will throw a `BadMethodCall` exception.
+
+Code can require certain properties by calling
+`$propertyBag->require(['contactID', 'contributionID'])` which will throw an `InvalidArgumentException` if any property is missing. These calls should go at the top of your methods so that it's clear to a developer.
+
+You can check whether a property has been set using `$propertyBag->has('contactID')` which will return `TRUE` or `FALSE`.
+
+### Multiple values, e.g. changing amounts
+
+All the getters and setters take an optional extra parameter called `$label`. This can be used to store two (or more) different versions of a property, e.g. 'old' and 'new'
+
+```php
+<?php
+use Civi\Payment\PropertyBag;
+//...
+$propertyBag = new PropertyBag();
+$propertyBag->setAmount(1.23, 'old');
+$propertyBag->setAmount(2.46, 'new');
+//...
+$propertyBag->getAmount('old'); // 1.23
+$propertyBag->getAmount('new'); // 2.46
+$propertyBag->getAmount(); // throws BadMethodCall
+```
+
+This means the value is still validated and type-cast as an amount (in this example).
+
+### Custom payment processor-specific data
+
+!!! danger "todo"
+    This is not yet implemented in core.
+
+Sometimes a payment processor will requrie custom data. e.g. Stripe may use a `paymentMethodID` and a `paymentIntentID` on its `doPayment()` method.
+
+Property names should be prefixed, e.g. `stripe_paymentMethodID` and set using `PropertyBag->setCustomProperty($prop, $value, $label = 'default')`.
+
+The payment class is responsible for validating such data; anything is allowed by `setCustomProperty`, including `NULL`.
+
+Where support for custom properties is needed for a method, e.g. `doPayment()`, you should implement a method as follows:
+
+```php
+<?php
+use Civi\Payment\PropertyBag;
+use Civi\Payment\Exception\PaymentProcessorException;
+
+class CRM_Core_Payment_MyExtension extends CRM_Core_Payment {
+...
+  /**
+   * Copy our custom properties from the form data.
+   *
+   * @param PropertyBag
+   * @param Array form values
+   * @param String $component as for doPayment()
+   */
+  public function extractCustomPropertiesForDoPayment(PropertyBag $propertyBag, Array $input, $component = 'contribute') {
+
+    // We require a paymentIntentID
+    if (empty($input['paymentIntentID'])) {
+      throw new PaymentProcessorException("paymentIntentID missing");
+    }
+    // (possible validation of the value goes here since it could be malicious)
+    $propertyBag->setCustomProperty( 'stripe_paymentIntentID', $input['paymentIntentID']);
+
+    // We might need a paymentMethodID but sometimes not.
+    if (!empty($input['paymentMethodID'])) {
+      $propertyBag->setCustomProperty( 'stripe_paymentMethodID', $input['paymentMethodID']);
+    }
+  }
+  ...
+}
+```
+
+
+## The `doPayment()` method
+
+`doPayment()` will be called with the following data on the `PropertyBag` in `$params`:
+
+- `contactID`
+- `contributionID` (See [dev/financial#53](https://lab.civicrm.org/dev/financial/issues/53))
+- `amount` e.g. *1.23*
+- `isRecur`
+- `email` A billing address *foo@example.com* that should be used by the external processor (if it uses it at all)
+
+!!! danger
+    The following is a proposal
+
+
+I propose that the following changes are made throughout core: old: `$paymentProcessor->doPayment($params);` new:
+
+```php
+<?php
+$propertyBag = $this->getPropertyBagFromFormData($params);
+$paymentProcessor->extractCustomPropertiesForDoPayment($propertyBag, $params, 'contribute');
+$result = $paymentProcessor->doPayment($propertyBag, 'contribute');
+```
+
+Where `getPropertyBagFromFormData()` deals with all the `setAmount()` etc. as needed, and also handles all the quick-form-specific logic - e.g. getting the correct billing email (see MJWShared trait for example).
+
+----------------------------
+**stop reading here, not done the rest yet.**
+
 
 ### Responsibilities
 
