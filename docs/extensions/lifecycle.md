@@ -1,10 +1,9 @@
 # Extension Life cycle
 
 !!! tip "Abandoned Extension Process"
-    Are you looking for information on the process handling abandoned extensions for CiviCRM?
-    The current process that the CiviCRM community use for handling abandoned or unmaintained extensions is [documented on GitLab](https://lab.civicrm.org/extensions/extensions-directory/wikis/extension-maintainer-transfer-process).
+    Are you looking for information on the process handling abandoned extensions for CiviCRM? See [Abandoned Extensions](#abandoned-extensions).
 
-This document describes the process of publishing extensions within the CiviCRM ecosystem.
+This document describes the process of publishing extensions within the CiviCRM ecosystem and reporting abandoned extensions.
 
 ## Background
 
@@ -102,7 +101,6 @@ Based on these rules, we can fill out a full table of the workflow:
 | Stable	| Official	| Formal Review (heavy)	| As above. *Additionally* FormalReview criteria are more detailed. Announce to a high-visibility medium. At least one reviewer must be a senior member of the core team.	| In app, go to "Add New" and choose the extension.
 | Deprecated	| Contributed	| Self-Assessment	| In `civicrm.org`, the author marks the "extension" node as deprecated and announce to a high-visibility medium.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
 | Deprecated	| Official	| Informal Discussion	| The author announces intent to deprecate in a high-visibility medium. If discussion is persuasive and no alternative maintainer comes forward, a senior member of core team flags the project as official.	| Locate the extension on the website. View a block which says, "Install Instructions", which includes drush/wp-cli commands.
-
 
 ## Formal Review Process {:#formal-review}
 
@@ -249,3 +247,36 @@ Based on a project's maturity and stewardship, it may be eligible to use resourc
 | QA	| The `civicrm.org` build-bot runs extension tests for PRs (own repo)	| "Official" projects (regardless of stability)
 | QA	| The `civicrm.org` build-bot runs extension tests for PRs (civicrm-core repo)	| "Official" projects ("Stable" or "Incubation")
 | Support	| The project may have its own space or component on "lab.civicrm.org"	| "Official" projects (regardless of stability)
+
+## Abandoned Extensions {:#abandoned-extensions}
+
+A CiviCRM Extension may be abandoned when the project author is no longer releasing updates and/or is not responding to support requests within 14 days or has expressly stated that they are no longer actively maintaining the project.
+
+The CiviCRM community has two options for managing an abandoned extension.
+
+### Transfer Ownership to a New Maintainer
+
+When an extension author has stopped being responsive:
+* and there are important bugs in the extension
+* and someone else has offered to take over maintenance.
+
+#### Procedure
+
+1. Open an issue on the issue tracker of the project. [See example request](https://github.com/futurefirst/Email-Amender/pull/1#issuecomment-530755565)
+2. Wait 14 days for a response.
+3. If no response, or if a response clearly indicates the author has no intention to maintain the project going forward:
+   1. Change the node author for the extension from civicrm.org
+   2. Change the Git URL for the extension
+   3. Add the new author as a co-maintainer on civicrm.org
+   4. If the extension is on Gitlab, add the new maintainer on the project.
+
+### Request Removal of the Extension
+
+* When an extension is superseded by another extension, or
+* When an extension has critical bugs and is not being updated by the maintainer.
+
+#### Procedure
+
+1. Open an issue on the issue tracker of the project. [See example request](https://github.com/ChrisChinchilla/CiviCRM-eWay-recurring-payment-processor/issues/59)
+2. Wait 14 days for a response.
+3. If no response (or if the author confirms it is abandoned), create a ticket in the [Extensions Review Request issues queue](https://lab.civicrm.org/extensions/extension-review-requests/issues) asking for the extension to be either a) de-listed for in-app installation, or b) unpublished from civicrm.org
