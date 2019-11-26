@@ -257,6 +257,7 @@ The CiviCRM community has two options for managing an abandoned extension.
 ### Transfer Ownership to a New Maintainer
 
 When an extension author has stopped being responsive:
+
 * and there are important bugs in the extension
 * and someone else has offered to take over maintenance.
 
