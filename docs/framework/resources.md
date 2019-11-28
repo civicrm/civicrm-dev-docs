@@ -62,7 +62,7 @@ If you need to reference any other kind of resource (such as image or sound file
 PHP | Get an image URL | `CRM_Core_Resources::singleton()->getUrl('com.example.foo', 'bar.png');` |
 PHP | Get an extension's base URL | `CRM_Core_Resources::singleton()->getUrl('com.example.bar');` |
 Smarty | Get an image URL | `{crmResURL ext=com.example.foo file=bar.png}` |
-Smarty | Get an extension's base URL | `crmResURL ext=com.example.foo }` |
+Smarty | Get an extension's base URL | `{crmResURL ext=com.example.foo }` |
 
 !!! note "Note about `{crmResURL}` vs `{crmURL}`"
     `{crmResURL}` sounds similar to another Smarty tag, `{crmURL}`, but they are functionally distinct: `{crmURL}` constructs the URL of a dynamic web page, adjusting the path and query parameters of the URL based on the CMS. By contrast, `{crmResURL}` constructs the URL of a static resource file; because the file is static, one may link directly without using the CMS or manipulating query parameters.
