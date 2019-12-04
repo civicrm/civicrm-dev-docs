@@ -45,7 +45,7 @@ to grant it to users.
             $permissions['delete in Grant Program'] = [
               ts('CiviCRM Grant Program: delete grant program'),                    // if no description, just give an array with the label
             ];
-         ```
+        ```
 ## Returns
 
 -   null
