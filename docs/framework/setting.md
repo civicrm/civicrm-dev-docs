@@ -25,7 +25,9 @@ The "Settings" system developed incrementally:
 - v4.2 – Added public Settings API. Included support for CRUD'ing data from multiple sources (`civicrm_domain` and `civicrm_setting`). Migrated more settings data from `civicrm_domain` to `civicrm_setting`.
 - v4.3 to v4.6 – Incrementally migrate more settings data.
 - v4.7 – Added `Civi::settings()` and refactored init system. Finished migrating data from `civicrm_domain` to `civicrm_setting`.
+- v5.7 - Added `Civi::contactSettings()` as a facade to allow for managing of Contact Settings rather than domain level settings.
 - v5.8 - Added Generic CiviCRM settings form.
+- v5.21 - Deprecated the usage of `CRM_Contact_BAO_Setting::setItem` in favour of the `Civi::settings` and `Civi::contactSettings` functionality and the Setting API to set settings
 
 ## Settings Definition
 
@@ -90,7 +92,13 @@ Deprecated settings properties are :
 
 ## Setting Storage and Retrieval
 
-To set a setting, developers can use either the Setting.Create API or use `Civi::settings()->set()` to set the value e.g. `Civi::settings()->set('editor_id', 'CKEditor');`. To Retrieve a setting value, developers can use the Setting.Get API or use `Civi::settings()->get()` e.g. `Civi::settings()->get('max_attachments');`
+### Domain Settings
+
+To set a setting for a whole domain, developers can use either the Setting.Create API or use `Civi::settings()->set()` to set the value e.g. `Civi::settings()->set('editor_id', 'CKEditor');`. To Retrieve a setting value, developers can use the Setting.Get API or use `Civi::settings()->get()` e.g. `Civi::settings()->get('max_attachments');`
+
+### Contact Settings
+
+After 5.7.0 developers are able to use the `Civi::contactSettings` facade to set contact specific settings. You can also use the API to set it but must pass in a contact_id parameter. To set a contact setting it would be like `Civi::contactSettings($contact_id)->set('navigation', $value)`. To retrieve the setting developers can use `Civi::contactSettings($contact_id)->get('navigation')`
 
 ## API actions
 
@@ -130,7 +138,7 @@ The settings api supports the following values for `domain_id` :
 - `current_domain` (default)
 - integer
 - array of integers
-- all
+- `all`
 
 It is desirable to make this api handling of domain id part of the api layer for all api that involve domains
 
@@ -147,7 +155,8 @@ It is desirable to make this api handling of domain id part of the api layer for
 
 The preferred way of doing this is by using the Generic form. To do this the xml that declares
 the path should be like this
-```
+
+```xml
   <item>
      <path>civicrm/admin/setting/preferences/event</path>
      <title>CiviEvent Component Settings</title>
@@ -159,9 +168,8 @@ The last parameter of the path is the designated form and it will pick up any se
 with that parameter in their metadata - e.g to place an item on that page it should have 
 the following in it's metadata.
 
-```
+```php
 `settings_pages` => ['event' => ['weight' => 10]]
-
 ```
 
 - If you are adding to an existing form and that form is not yet using the generic form (
@@ -179,7 +187,8 @@ To avoid naming conflicts, it makes sense to prefix settings defined in an exten
 1. Ensure that the settings folder is declared [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/multisite.php#L347).
 2. Declare settings as in the same standard as CiviCRM Core [Multisite extension example](https://github.com/eileenmcnaughton/org.civicrm.multisite/blob/master/settings/Multisite.setting.php).
 3. Create the admin page for the settings using xml similar to
-```
+
+```xml
   <item>
      <path>civicrm/admin/setting/myextension</path>
      <title>Really important settings</title>
