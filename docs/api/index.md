@@ -18,7 +18,7 @@ The API explorer is a powerful GUI tool for building and executing API calls. To
 
 1. Log in to a CiviCRM site as an administrator.
     * This can even be the [demo site](http://dmaster.demo.civicrm.org/).
-2. Within the CivCRM menu, go to **Support > Developer** and either **API Explorer v3** or **API Explorer v4** (URL `/civicrm/api` or `/civicrm/api4`).
+2. Within the CivCRM menu, go to **Support > Developer** and either **API Explorer v3** or **API Explorer v4** (URL `/civicrm/api3` or `/civicrm/api4`).
 
 !!! warning
     The API explorer executes real API calls. It can modify data! So if you execute a `Contact` `delete` call, it will really delete the contact. As such, any experimenting is best done within a test site.
