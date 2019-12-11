@@ -27,7 +27,7 @@ The "Settings" system developed incrementally:
 - v4.7 – Added `Civi::settings()` and refactored init system. Finished migrating data from `civicrm_domain` to `civicrm_setting`.
 - v5.7 - Added `Civi::contactSettings()` as a facade to allow for managing of Contact Settings rather than domain level settings.
 - v5.8 - Added Generic CiviCRM settings form.
-- v5.21 - Deprecated the usage of `CRM_Contact_BAO_Setting::setItem` in favour of the `Civi::settings` and `Civi::contactSettings` functionality and the Setting API to set settings
+- v5.21 - `CRM_Contact_BAO_Setting::setItem()` will now emit deprecation warnings. Use `Civi::settings()`, `Civi::contactSettings()`, or the Setting API instead.
 
 ## Settings Definition
 
@@ -221,4 +221,3 @@ class CRM_Admin_Form_Setting_Miscellaneous extends CRM_Admin_Form_Setting {
   );
 }
 ```
-
