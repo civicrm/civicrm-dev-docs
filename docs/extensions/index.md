@@ -17,6 +17,7 @@ Pick a unique single word for your extension's name. Note that this name is used
 
 ``` info
     Historically, extension names used to follow the same convention as Java package names – they look like reversed domain names. (e.g.  `com.example.myextension`), but this is no longer the recommendation.
+```
 
 ## Pre-Requisites
 
