@@ -166,11 +166,19 @@ a contact and you should get an email!
 Here is an example that calls a function `updateMembershipCustomField()` every time a membership is created (or updated).
 
 ```php
+
 function example_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+  if (CRM_Core_Transaction::isActive()) {
+    CRM_Core_Transaction::addCallback(CRM_Core_Transaction::PHASE_POST_COMMIT, 'example_civicrm_post_callback', [$op, $objectName, $objectId, $objectRef]);
+  }
+  else {
+    example_civicrm_post_callback($op, $objectName, $objectId, $objectRef);
+  }
+}
+
+function example_civicrm_post_callback( $op, $objectName, $objectId, $objectRef) {
   if ($objectName == 'Membership' && $op == 'create') {
-    CRM_Core_Transaction::addCallback(CRM_Core_Transaction::PHASE_POST_COMMIT,
-      'updateMembershipCustomField', array($objectRef->id));
-    break;
+    updateMembershipCustomField($objectRef->id);
   }
 }
 ```
