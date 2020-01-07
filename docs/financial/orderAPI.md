@@ -343,15 +343,15 @@ $params = $transactParams;
 $paymentParams = $transactParams;
 
 $params['contribution_status_id'] = 'Pending';
-if (!isset($params['invoice_id')) {
+if (!isset($params['invoice_id'])) {
   // Set an invoice_id here if you have not already done so.
   // Potentially Order api should do this https://lab.civicrm.org/dev/financial/issues/78
 }
-if (!isset($params['invoiceID']) {
+if (!isset($params['invoiceID'])) {
   // This would be required prior to https://lab.civicrm.org/dev/financial/issues/77
   $params['invoiceID'] = $params['invoice_id'];
 }
-$order = civicrm_api3('Order', 'create' $params);
+$order = civicrm_api3('Order', 'create', $params);
 try {
   // Use the Payment Processor to attempt to take the actual payment. You may
   // pass in other params here, too.
