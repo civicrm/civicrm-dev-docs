@@ -371,7 +371,7 @@ try {
     'payment_processor_id' => $params['payment_processor_id'],
     ]);
 }
-catch  {
+catch (Exception $e) {
   // it failed
 }
 ```
