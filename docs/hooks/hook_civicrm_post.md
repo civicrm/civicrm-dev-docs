@@ -44,6 +44,7 @@ hook_civicrm_post($op, $objectName, $objectId, &$objectRef)
     -   'CaseType'
     -   'Contribution'
     -   'ContributionRecur'
+    -   'ContributionSoft' (from 5.23.0)
     -   'CustomField'
     -   'CustomGroup'
     -   'CRM_Mailing_DAO_Spool'

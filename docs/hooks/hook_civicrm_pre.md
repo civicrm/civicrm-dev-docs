@@ -46,6 +46,7 @@ changing between the old and new data.
     -   'Contribution'
     -   'ContributionPage'
     -   'ContributionRecur'
+    -   'ContributionSoft' (from 5.23.0)
     -   'CustomGroup'
     -   'CustomField'
     -   'Dashboard'
