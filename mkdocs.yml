@@ -183,6 +183,7 @@ pages:
   - Uncategorized Hooks:
     - hook_civicrm_alterBadge: hooks/hook_civicrm_alterBadge.md
     - hook_civicrm_alterBarcode: hooks/hook_civicrm_alterBarcode.md
+    - hook_civicrm_alterExternUrl: hooks/hook_civicrm_alterExternUrl.md
     - hook_civicrm_alterLogTables: hooks/hook_civicrm_alterLogTables.md
     - hook_civicrm_alterMailingLabelParams: hooks/hook_civicrm_alterMailingLabelParams.md
     - hook_civicrm_alterPaymentProcessorParams: hooks/hook_civicrm_alterPaymentProcessorParams.md
