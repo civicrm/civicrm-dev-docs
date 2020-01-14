@@ -25,7 +25,7 @@ A payment processor integration extension typically includes:
 
 ## The Payment Class
 
-A payment processor object extends `CRM_Core_Payment`. This class provides CiviCRM with a standard interface/API bridge to the third party processor. It should be found at:
+A payment processor object *extends* `CRM_Core_Payment`. This class provides CiviCRM with a standard interface/API bridge to the third party processor. It should be found at:
 
 ```
 <myextension>/CRM/Core/Payment/MyExtension.php
@@ -36,9 +36,9 @@ The class handles data to do with the third party processor's needs. Different m
 !!!important
     Try to avoid infringing on CiviCRM's logic. The methods in your extension should take inputs, communicate with the third party, and return output data that CiviCRM can use to perform its logic. If you find your extension is sending emails, duplicating logic, updating or creating records in CiviCRM, outputting user content (e.g. status messages) then stop, check and consider separating out your code into different methods.
 
-Because things get complex and because `CRM_Core_Payment` is a bridge between CiviCRM's logic and the payment processor service's needs, it's all too easy to end up combining business logic (like updating membership end dates, or deciding whether to send a receipt email) with your calls to the external service. If you do need to do this try to separate out your class methods.
+Because things get complex and because `CRM_Core_Payment` is a bridge between CiviCRM's logic and the payment processor service's needs, it's all too easy to end up combining business logic (like updating membership end dates, or deciding whether to send a receipt email) with your calls to the external service. Your extended `CRM_Core_Payment` class should **not** alter business logic. If you find yourself needing to then first discuss this e.g. on the dev channel at <https://chat.civicrm.org> to check if there's a better way.
 
-CiviCRM's Contribution and Event pages are obvious users of your `CRM_Core_Paymnet` class but you should not assume that those are the only consumers; it should be able to be used by other processes too, e.g. Drupal webform or an entirely bespoke process. **Therefore they should not call functions that assume a user context** such as redirects, exits, or setting status messages like `CRM_Core_Error::statusBounce`.
+CiviCRM's Contribution and Event pages are obvious users of your extended `CRM_Core_Payment` class but you should not assume that those are the only consumers; it should be able to be used by other processes too, e.g. Drupal webform or an entirely bespoke process. **Therefore they should not call functions that assume a user context** such as redirects, exits, or setting status messages like `CRM_Core_Error::statusBounce`.
 
 !!! note
     Most methods should throw a `Civi\Payment\Exception\PaymentProcessorException` when they are unable to fulfill the expectations of a method.
