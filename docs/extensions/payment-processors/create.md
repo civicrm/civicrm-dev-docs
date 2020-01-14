@@ -87,13 +87,15 @@ This means the value is still validated and type-cast as an amount (in this exam
 !!! danger "todo"
     This is not yet implemented in core.
 
-Sometimes a payment processor will requrie custom data. e.g. Stripe may use a `paymentMethodID` and a `paymentIntentID` on its `doPayment()` method.
+Sometimes a payment processor will requrie custom data. e.g. A company called <em>Stripe</em> offers payment processing gateway services with its own API which requires some extra parameters called `paymentMethodID` and `paymentIntentID` parameters - these are what that particular 3rd party requires and separate to anything in CiviCRM (CiviCRM also uses the concept of "payment methods" and these have IDs, but here we're talking about something Stripe needs).
 
-Property names should be prefixed, e.g. `stripe_paymentMethodID` and set using `PropertyBag->setCustomProperty($prop, $value, $label = 'default')`.
+In order for us to be able to implement the `doPayment()` method for Stripe, we'll need data for these custom, bespoke-to-the-third-party parameters passing in, via the `PropertyBag`.
+
+So that any custom, non-CiviCRM data is handled unambiguously, these property names should be prefixed, e.g. `stripe_paymentMethodID` and set using `PropertyBag->setCustomProperty($prop, $value, $label = 'default')`.
 
 The payment class is responsible for validating such data; anything is allowed by `setCustomProperty`, including `NULL`.
 
-Where support for custom properties is needed for a method, e.g. `doPayment()`, you should implement a method as follows:
+Where support for custom properties is needed for a method, e.g. `doPayment()`, you should implement a method as follows. This example assumes that the third party requires a special parameter called `paymentIntentID` - your payment processor might require one called `customerToken`, `destinationAccountID`, `looksFriendlyButErodesDemocracyCode` or anything else - here we use `paymentIntentID` as a real world example from Stripe.
 
 ```php
 <?php
@@ -111,14 +113,21 @@ class CRM_Core_Payment_MyExtension extends CRM_Core_Payment {
    */
   public function extractCustomPropertiesForDoPayment(PropertyBag $propertyBag, Array $input, $component = 'contribute') {
 
-    // We require a paymentIntentID
+    // In our example, we require a paymentIntentID is collected by the form
+    // (we will have made this available elsewhere in our code, e.g. by injecting
+    // javascript into the form)
     if (empty($input['paymentIntentID'])) {
       throw new PaymentProcessorException("paymentIntentID missing");
     }
     // (possible validation of the value goes here since it could be malicious)
+
+    // Now store this special custom property on the property bag for use by us in doPayment
     $propertyBag->setCustomProperty( 'stripe_paymentIntentID', $input['paymentIntentID']);
 
-    // We might need a paymentMethodID but sometimes not.
+    // Following our example of Stripe, the third party might require a parameter called
+    // paymentMethodID but only if we don't have a paymentMethodID - this logic is dictated
+    // by the third party API, and is included here just as an example. We can store this on
+    // another prefixed custom property, if it's set/needed:
     if (!empty($input['paymentMethodID'])) {
       $propertyBag->setCustomProperty( 'stripe_paymentMethodID', $input['paymentMethodID']);
     }
