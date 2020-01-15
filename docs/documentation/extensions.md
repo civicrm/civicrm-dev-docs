@@ -146,7 +146,7 @@ Publishing your guide manually is fine at first, but once you update the guide l
 
 When you set up automatic publishing, GitLab or GitHub will tell the publishing system when content within your repo has changed, and the publishing system will re-publish your guide as necessary.
 
-    https://lab.civicrm.org/documentation/docs-publisher
+See the [docs-publisher instructions](https://lab.civicrm.org/documentation/docs-publisher#setting-up-automatic-publishing) for how to set up automatic publishing on GitHub and GitLab.
 
 Now when you make changes to your docs, those changes will be published automatically *and* you'll receive an email notification from the publishing system informing you of the status (including any errors) of the publishing process.
 
