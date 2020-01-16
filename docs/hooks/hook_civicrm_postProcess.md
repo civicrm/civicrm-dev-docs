@@ -21,12 +21,12 @@ a form or an API, use the pre and post hooks instead.
      * @param string $formName
      * @param CRM_Core_Form $form
      */
-    hook_civicrm_postProcess($formName, &$form)
+    hook_civicrm_postProcess($formName, $form)
 
 ## Parameters
 
 -   string $formName - the name of the form
--   object $form - reference to the form object
+-   CRM_Core_Form $form - form object
 
 ## Returns
 
@@ -59,7 +59,7 @@ a form or an API, use the pre and post hooks instead.
      * @param string $formName
      * @param CRM_Core_Form $form
      */
-    function drupalptsav2_civicrm_postProcess($formName, &$form) {
+    function drupalptsav2_civicrm_postProcess($formName, $form) {
         if ( is_a( $form, 'CRM_Profile_Form_Contact' ) ) {
             $gid = $form->getVar( '_gid' );
     //      Get your profile id from Administer CiviCRM >> Profile; I'm using  3 and 4
@@ -77,7 +77,7 @@ a form or an API, use the pre and post hooks instead.
     }
 
 
-    function drupalptsav2_civicrm_postProcess_CRM_Profile_Form_Edit_3($formName, &$form, $gid) {
+    function drupalptsav2_civicrm_postProcess_CRM_Profile_Form_Edit_3($formName, $form, $gid) {
 
         $userID   = $form->getVar( '_id' );
 
@@ -99,7 +99,7 @@ a form or an API, use the pre and post hooks instead.
     }
 
 
-    function drupalptsav2_civicrm_postProcess_CRM_Profile_Form_Edit_4($formName, &$form, $gid) {
+    function drupalptsav2_civicrm_postProcess_CRM_Profile_Form_Edit_4($formName, $form, $gid) {
 
         $userID   = $form->getVar('_id');
 
