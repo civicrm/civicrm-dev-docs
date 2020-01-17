@@ -5,7 +5,6 @@
 This hook allows you to modify extern urls such as click tracking, tracked opens urls
 
 
-
 ## Definition
 
 ```php
@@ -22,9 +21,9 @@ hook_civicrm_alterExternUrl(\GuzzleHttp\Psr7\UriInterface &$url, $path, $query, 
 
 - string `$fragment` - A fragment identifier (anchor) to append to the link)
 
-- bool `$absolute` Whether to force the output to be an absolute link (beginning with a URI-scheme such as 'http:').
+- bool `$absolute` - Whether to force the output to be an absolute link (beginning with a URI-scheme such as 'http:').
 
-- bool `$isSSL` Whether to redirect to SSL or not format of the URL, NULL to autodetect, TRUE to force to SSL.
+- bool `$isSSL` - Whether to redirect to an HTTPS or an HTTP URL, NULL allows CiviCRM to autodetect, TRUE forces an HTTPS URL.
 
 ## Returns
 
