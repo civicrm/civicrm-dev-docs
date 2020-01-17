@@ -3,8 +3,8 @@
 ## Languages and Services
 
 -   Unix-like environment (Linux, OS X, or a virtual machine)
--   [PHP v5.3+](http://php.net/)
--   [MySQL v5.1+](http://mysql.com/)
+-   [PHP v7.0+](http://php.net/)
+-   [MySQL v5.7.5+](http://mysql.com/) or [MariaDB 10.0.2+](https://mariadb.org/)
 -   [NodeJS](https://nodejs.org/)
 -   [Git](https://git-scm.com/)
 -   Recommended: Apache HTTPD v2.2+
