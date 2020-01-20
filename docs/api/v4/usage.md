@@ -1,14 +1,16 @@
 # APIv4 Usage
 
-Every API call consists of three elements: the *entity*, *action*, and *parameters*. Some commonly used entities in CiviCRM include the following:
+Every API call consists of three elements: the *entity*, *action*, and *parameters*:
 
-| Entity     | Description                                |
-|------------|--------------------------------------------|
-| `Contact`  | An individual, organization, or household. |
-| `Activity` | A phone call, meeting, or email message. that has occurred (or will occur) at a specific date and time. |
-| `Address`  | A street-address related to a contact.     |
+**Entity:** The "name" of the API.
+CiviCRM entities include Contacts, Activities, Contributions, Events, etc.
+Each API entity usually (but not always) corresponds to a table in the database (e.g. the Contact entity is the `civicrm_contact` table).
 
-Each entity supports a number of actions. Consider these samples with commonly-used actions and parameters for the `Contact` entity:
+**Action:** The "verb" of the API. Each entity supports a number of actions, such as `get`, `create`, `update`, `delete`.
+ 
+**Parameters:** Settings or data to pass to the api function. Each action accepts a different set of parameters.
+
+Consider these samples with commonly-used actions and parameters for the `Contact` entity:
 
 | Action   | Parameters                           | Description                     |
 |----------|--------------------------------------|---------------------------------|
@@ -16,86 +18,69 @@ Each entity supports a number of actions. Consider these samples with commonly-u
 | `get`    | `#!json {"where":[["last_name", "=", "Doe"]], "limit":25}`                | Fetch the first 25 contacts with the last name "Doe" |
 | `delete` | `#!json {"where":[["id", "=", 42]]}` | Delete the contact with id "42" |
 
-(*For full, up-to-date details about specific entities and parameters, use the [API Explorer](/api/index.md#api-explorer).*)
+!!! tip
+    For full, up-to-date details about specific entities and parameters, use the [API Explorer](/api/index.md#api-explorer).
 
 !!! info
     As of CiviCRM version 5.18, not all core entities have been added to APIv4. You should check the API Explorer to see which entities are available. If the entity you require is not available then please open a pull request against the [`civicrm-core` repository](https://github.com/civicrm/civicrm-core) to add the entity or open an [issue](https://lab.civicrm.org/dev/core) and request that the entity is added.
 
-The API is available in many different environments (such as PHP, REST, and JavaScript), and the notation differs slightly in each environment.
-However, if you understand the canonical notation, then other environments will appear as small adaptations.
-
-Canonically, an API call is processed by the API kernel. The `$entity`, `$action`, and `$params` are passed as inputs, and an `arrayObject` is returned as output.
-
-```php
-$result = Civi::service('civi_api_kernel')->run('Contact', 'get', [
-  'version' => 4,
-  'where' => [
-    ['first_name', '=', 'Alice'],
-    ['last_name', '=', 'Roberts'],
-  ],
-]);
-```
-
-The result of a successful API call typically looks like this:
-
-```json
-[
-  { /* DAO Object */ }
-]
-```
-
-The result of a failed API call typically looks like this:
-
-```json
-{
-  "error_code": 0
-}
-```
-
 !!! info
     Some parts of APIv4 differ significantly from APIv3, including the handling of `check_permissions` and the default limit for returned objects being removed. For details, refer to [Differences Between APIv3 and APIv4](/api/v4/differences-with-v3.md).
 
+The API is available in many different environments (such as PHP, CLI, and JavaScript), and the notation differs slightly in each environment. However, if you understand the canonical notation, then other environments will appear as small adaptations.
+
 ## PHP
 
-This is the most common way to call the API. There are two formats of API calls: an object-oriented approach and the more traditional procedural style.
+This is the canonical API; all other environments are essentially wrappers around the PHP API.
+
+There are two ways to call the api from PHP - which one you choose is a matter of convenience and personal preference.
+For example you may prefer OOP syntax because IDE code editors provide autocompletion.
+Or if you need to work with the parameters as an array, traditional syntax will be more convenient.   
+
+### Traditional (Procedural)
+
+*The function `civicrm_api4($entity, $action, [$params], [$index])` accepts an array of parameters and returns the Result.*
+
+```php
+$result = civicrm_api4('Contact', 'get', [
+  'where' => [
+    ['last_name', '=', 'Adams'],
+  ],
+  'limit' => 25,
+]);
+```
+
+`$index` provides a convenient shorthand for reformatting the Result array. It has different modes depending on the variable type passed:
+
+* Integer: return a single result array; e.g. `$index = 0` will return the first result, 1 will return the second, and -1 will return the last.
+* String: index the results by a field value; e.g. `$index = "name"` will return an associative array with the field 'name' as keys.
+* Non-associative array: return a single value from each result; e.g. `$index = ['title']` will return a non-associative array of strings - the 'title' field from each result.
+* Associative array: a combination of the previous two modes; e.g. `$index = ['name' => 'title']` will return an array of strings - the 'title' field keyed by the 'name' field.
 
 ### Object-Oriented (OOP)
 
+*An `Action` class provides setter methods for each parameter. The `execute()` method returns the Result.*
+
 ```php
-$contacts = \Civi\Api4\Contact::get()
+$result = \Civi\Api4\Contact::get()
   ->addWhere('last_name', '=', 'Adams')
   ->setLimit(25)
   ->execute();
 ```
 
-The API is first invoked using a static method in the form of `#!php Entity::action()`.
-The returned object implements a number of helper methods like `#!php addWhere()`.
-These helper methods use method chaining, which allows multiple methods to be chained together in one statement as shown above.
+### Result
 
-### Traditional (Procedural)
+Both OOP and traditional APIs return a **Result** ArrayObject, which can be accessed like an array using e.g. `$result[0]` or `foreach ($result as ...)`. It also has the following methods:
 
-```php
-try {
-  $contacts = civicrm_api4('Contact', 'get', array(
-    'where' => [
-      ['first_name', '=', 'Alice'],
-      ['last_name', '=', 'Roberts'],
-    ],
-  ]);
-}
-catch (\API_Exception $e) {
-  $error = $e->getMessage();
-}
-printf("Found %d item(s)\n", count($contacts));
-```
+- `$result->first()`: returns the first item, or NULL if not found.
+- `$result->last()`: returns the last item, or NULL if not found.
+- `$result->itemAt($index)`: returns the item at a given index, or NULL if not found.
+- `$result->indexBy($field)`: reindexes the array by the value of a field.
+- `$result->column($field)`: reduces the array to a single field.
+- `$result->count()`: counts the results.
 
-This format matches the canonical format almost exactly, with a few improvements for usability:
-
-- The `version => 4` parameter is not required.
-- Errors are reported as PHP exceptions. You may catch the exceptions or (by default) allow them to bubble up.
-- You can immediately iterate over the contacts returned.
-
-*Note*: If you're writing a Drupal module, a Joomla extension, a WordPress plugin, or a standalone script, then you may need to **bootstrap** CiviCRM before using the API.  See the examples in [Bootstrap Reference](/framework/bootstrap.md).
+!!! note
+    If you're writing a Drupal module, a Joomla extension, a WordPress plugin, or a standalone script, then you may need to **bootstrap** CiviCRM before using the API.  See the examples in [Bootstrap Reference](/framework/bootstrap.md).
 
 ## REST
 
@@ -103,15 +88,24 @@ APIv4 is not yet available via REST. This is being tracked in [dev/core#1310](ht
 
 ## AJAX
 
+The AJAX interface is automatically available for web-pages generated through CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions and custom CiviCRM templates).
+
+Inputs are identical to the traditional PHP syntax:
+
 ```javascript
-CRM.api4('entity', 'action', [params], [index]);
+CRM.api4('entity', 'action', [params], [index])
 ```
 
-If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
+From an Angular app, use the service `crmApi4()` which is identical but works within the `$scope.digest` lifecycle.
+
+Both functions return a Promise, which resolves to a Result array.
 
 ```javascript
-CRM.api4('EntityTag', 'create', {
-  values: {"entity_id":5, "tag_id":3}
+CRM.api4('Contact', 'get', {
+  where: [
+    ['last_name', '=', 'Adams'],
+  ],
+  limit: 25
 }).then(function(results) {
   // do something with results array
 }, function(failure) {
@@ -119,11 +113,10 @@ CRM.api4('EntityTag', 'create', {
 });
 ```
 
-The AJAX interface is automatically available for web-pages generated through CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions and custom CiviCRM templates).
-
-The AJAX interface could be made available to other parts of the same website (e.g. a Drupal module or WordPress widget) by calling `#!php CRM_Core_Resources::singleton()->addCoreResources()`
-from PHP. Please note that the AJAX interface is subject to [API Security](/security/permissions.md#api-permissions)
-and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see REST interface documentation.
+!!! tip
+    The AJAX interface could be made available to other parts of the same website (e.g. a Drupal module or WordPress widget) by calling `#!php CRM_Core_Resources::singleton()->addCoreResources()`
+    from PHP. Please note that the AJAX interface is subject to [API Security](/security/permissions.md#api-permissions)
+    and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see REST interface documentation.
 
 ## Smarty
 
@@ -134,14 +127,6 @@ APIv4 is not yet available as a Smarty function.
 APIv4 is not yet available for scheduled jobs.
 
 ## Command line
-
-### drush
-
-APIv4 is not yet available as a drush command.
-
-### wp-cli
-
-APIv4 is not yet available as a wp-cli command.
 
 ### cv
 
@@ -158,6 +143,14 @@ cv api4 Contact.get +w 'first_name = "Alice"' +w 'last_name = "Roberts"'
 ```
 
 For more examples, refer to the output of `cv --help api4`.
+
+### drush
+
+APIv4 is not yet available as a drush command.
+
+### wp-cli
+
+APIv4 is not yet available as a wp-cli command.
 
 ## API Security
 
