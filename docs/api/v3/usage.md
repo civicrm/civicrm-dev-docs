@@ -161,11 +161,11 @@ For more details, see [REST interface](/api/interfaces.md#rest). 
 CRM.api3('entity', 'action', [params], [statusMessage]);
 ```
 
-If you pass `true` in as the `StatusMessage` param, it will display the default status message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [done method](http://api.jquery.com/deferred.done/) to listen for the event. For example:
+If you pass `true` in as the `StatusMessage` param, it will display the default status message. This is useful when doing things such as adding tags to contacts or similar. If you wish to do further work based on the result of the API call (e.g use the results from a GET call) you will need to use the [then method](http://api.jquery.com/deferred.then/) to listen for the event. For example:
 
 ```javascript
 CRM.api3('entity_tag', 'create', {contact_id:123, tag_id:42})
-  .done(function(result) {
+  .then(function(result) {
     console.log(result);
   });
 ```
@@ -177,7 +177,7 @@ var params = [
   ['email', 'get', {contact_id: 123}],
   ['phone', 'get', {phone: '555-5555'}]
 ];
-CRM.api3(params).done(function(result) {
+CRM.api3(params).then(function(result) {
   console.log('email result is:', result[0]);
   console.log('phone result is:', result[1]);
 });
@@ -191,7 +191,7 @@ var params = {
   two: ['phone', 'getoptions', {field: 'phone_type_id', sequential: 1}],
   three: ['phone', 'get']
 };
-CRM.api3(params).done(function(result) {
+CRM.api3(params).then(function(result) {
   console.log('email result is:', result.one);
   console.log('phone options are:', result.two);
   console.log('phone get result is:', result.three);
