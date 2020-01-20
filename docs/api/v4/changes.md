@@ -10,11 +10,11 @@ See https://github.com/civicrm/civicrm-core/pull/15624
 
 ### 5.23 $index param supports array input
 
-CiviCRM 5.23 supports two new modes for the `$index` param - associative and non-associative array. See https://github.com/civicrm/civicrm-core/pull/16257
+CiviCRM 5.23 supports two new modes for the `$index` param - associative and non-associative array. See [CiviCRM Core PR #16257](https://github.com/civicrm/civicrm-core/pull/16257) 
 
 ### 5.23 Converts field values to correct data type
 
-The api historically returns everything as a raw string from the query instead of converting it to the correct variable type (bool, int, float). As of CiviCRM 5.23 this is fixed for all DAO-based entities. See https://github.com/civicrm/civicrm-core/pull/16274
+The api historically returns everything as a raw string from the query instead of converting it to the correct variable type (bool, int, float). As of CiviCRM 5.23 this is fixed for all DAO-based entities. See [CiviCRM Core PR #16274](https://github.com/civicrm/civicrm-core/pull/16274)
 
 ### 5.23 Selects only relevant contact fields by default
 
@@ -29,4 +29,4 @@ as those will always be `null`.
 ### 5.23 Get actions support selecting fields by * wildcard
 
 The `select` param now supports the `*` wildcard character for matching field names.
-See https://github.com/civicrm/civicrm-core/pull/16302
+See [CiviCRM Core PR #16302](https://github.com/civicrm/civicrm-core/pull/16302)
