@@ -6,7 +6,7 @@ Utilizing the API is superior to accessing core functions directly (e.g.calling 
 
 The best place to begin working with the API is your own *test* install of CiviCRM, using the API explorer and the API parameter list.
 
-Extensions can provide additional API functionality. For help creating your own additions to the API, see [civix generate:api](/extensions/civix.md#generate-api).
+Extensions can provide additional API functionality. For help creating your own additions to the API, see [API Architecture](/api/v4/architecture.md).
 
 ## API Versions
 

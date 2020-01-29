@@ -37,6 +37,8 @@ There are two ways to call the api from PHP - which one you choose is a matter o
 For example you may prefer OOP syntax because IDE code editors provide autocompletion.
 Or if you need to work with the parameters as an array, traditional syntax will be more convenient.   
 
+[APIv4 PHP Examples](/img/Api4-PHP-Styles.svg)
+
 ### Traditional (Procedural)
 
 *The function `civicrm_api4($entity, $action, [$params], [$index])` accepts an array of parameters and returns the Result.*
