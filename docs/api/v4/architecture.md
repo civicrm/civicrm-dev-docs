@@ -7,7 +7,7 @@
 Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEntity`]((https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php)). Each class serves two purposes:
 
 1.  Declare the API entity by its existance.
-    - You can declare a new api (e.g. FooBar) simply by placing the class `\Civi\Api4\FooBar` in the `/Civi/Api4` directory of your extension, as long as it inherits from `\Civi\Api4\Generic\AbstractEntity`.
+    - You can declare a new API (e.g. FooBar) simply by placing the class `\Civi\Api4\FooBar` in the `/Civi/Api4` directory of your extension, as long as it inherits from `\Civi\Api4\Generic\AbstractEntity`.
     
 2.  Provide factory functions for that entity's **Actions**.
 
@@ -17,11 +17,11 @@ Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAct
 
 1.  Store the parameters of the API call.
     - Every `protected` class var is considered a parameter (unless it starts with an underscore).
-    - The `$version` parameter refers to the api version (4) and cannot be changed.
+    - The `$version` parameter refers to the API version (4) and cannot be changed.
     - The `$_entityName` and `$_actionName` vars are set when the Action object is constructed (by the Entity class factory fn, see above). The underscore makes them hidden parameters as they cannot be changed. 
     - Adding a `protected` var to your Action named e.g. `$thing` will automatically:
         - Provide a getter/setter (via `__call` MagicMethod) named `getThing()` and `setThing()`.
-        - Expose the param in the Api Explorer (be sure to add a doc-block as it displays in the help panel).
+        - Expose the param in the API Explorer (be sure to add a doc-block as it displays in the help panel).
         - Require a value for the param if you add the `@required` annotation.
 
 2.  Define a `_run()` function to execute the call and return the results.
@@ -33,10 +33,8 @@ Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAct
 An API [`Result`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/Result.php) is a PHP ArrayObject. It has three functions:
 
 1.  Store the results of the API call (accessible via ArrayAccess).
-
 2.  Store metadata like the Entity & Action names.
     - Some actions extend the Result object to store extra metadata. For example [`BasicReplaceAction`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/BasicReplaceAction.php) returns [`\Civi\Api4\Result\ReplaceResult`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Result/ReplaceResult.php) which includes the additional `$deleted` property to list any items deleted by the operation.
-
 3.  Provide convenience methods like `$result->first()` and `$result->indexBy($field)`.
 
 ## Class Inheritance
@@ -81,7 +79,7 @@ class Website extends Generic\DAOEntity {
 ---
 
 These are typical CRUD APIs using generic functions to perform actions on the `civicrm_website` table.
-The v3 file needed a function for each action, resulting in a lot of duplicate code across api files.
+The v3 file needed a function for each action, resulting in a lot of duplicate code across API files.
 By taking advantage of class inheritance, APIv4 reduces this boilerplate to nothing; factory functions for the standard set of actions are inherited from `Civi\Api4\Generic\DAOEntity`.
 
 
@@ -95,7 +93,7 @@ There are two categories of APIv4 entities: "standard" (aka DAO) entities, and a
 `CRM_Conatact_DAO_Contact` entity and the `civicrm_contact` database table. These classes extend from `Civi\Api4\Generic\DAOEntity` and thus inherit the standard set of DAO actions. 
 - Ad-hoc entities extend the [`\Civi\Api4\Generic\AbstractEntity`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php) class directly. They have the flexibility to implement any actions, using any datasource.
   They are not required to implement any action except `GetFields`.
-  See the [Api4 example extension](https://lab.civicrm.org/extensions/api4example/) for a working demonstration.
+  See the [APIv4 example extension](https://lab.civicrm.org/extensions/api4example/) for a working demonstration.
   
 ### Action Class Hierarchy
 
@@ -133,7 +131,7 @@ They are designed to be used in 1 of 2 ways:
 2. You can override the basic action class (e.g. for customizing the parameters). See [`Example::create()`](https://lab.civicrm.org/extensions/api4example/blob/master/Civi/Api4/Action/Example/Create.php).
 
 - [**`AbstractAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php):
-  The base class for all api actions. Every action must, at minimum, extend this class.
+  The base class for all API actions. Every action must, at minimum, extend this class.
   For example, the [`Example::random()`]() action extends this class directly.
   Before doing so, however, consider if your action could benefit from the features provided by one of the Basic actions:
 
