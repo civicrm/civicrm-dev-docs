@@ -241,7 +241,6 @@ pages:
     - AngularJS File Names: framework/angular/files.md
     - AngularJS Loader: framework/angular/loader.md
     - AngularJS Changesets:  framework/angular/changeset.md
-  - API Architecture: framework/api-architecture.md
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
   - Backbone Reference: framework/backbone.md
