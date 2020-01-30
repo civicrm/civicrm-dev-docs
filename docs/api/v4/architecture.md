@@ -43,11 +43,19 @@ An API [`Result`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/
 
 To reduce code duplication and enforce consistency, APIv4 uses PHP class inheritance extensively. Compare these examples:
 
-<div markdown="1" class="two-column">
+<!-- Would be nice if Markdown made it easier to do side-by-side comparison... -->
+<table>
+  <thead>
+    <tr>
+      <th>APIv3 Website.php</th>
+      <th>APIv4 Website.php</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+<td>
 
-**APIv3 Website.php**
-
-```php
+<pre class="codehilite">
 function civicrm_api3_website_get($params) {
   return _civicrm_api3_basic_get(_civicrm_api3_get_BAO(__FUNCTION__), $params, TRUE, 'Website');
 }
@@ -59,24 +67,21 @@ function civicrm_api3_website_create($params) {
 function civicrm_api3_website_delete($params) {
   return _civicrm_api3_basic_delete(_civicrm_api3_get_BAO(__FUNCTION__), $params);
 }
-```
+</pre>
+</td>
+<td>
 
-</div>
-<div markdown="1" class="two-column">
-
-**APIv4 Website.php**
-
-```php
+<pre class="codehilite">
 namespace Civi\Api4;
 
 class Website extends Generic\DAOEntity {
 
 }
-```
-
-</div>
-
----
+</pre>
+</td>
+    </tr>
+  </tbody>
+</table>
 
 These are typical CRUD APIs using generic functions to perform actions on the `civicrm_website` table.
 The v3 file needed a function for each action, resulting in a lot of duplicate code across API files.
