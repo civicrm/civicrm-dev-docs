@@ -41,7 +41,8 @@ An API [`Result`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/
 
 ![Inheritance](/img/inheritance-community-chest.jpg)
 
-To reduce code duplication and enforce consistency, APIv4 uses PHP class inheritance extensively. Compare these examples:
+To reduce code duplication and enforce consistency, APIv4 uses PHP class inheritance extensively.
+Compare these (slightly simplified) examples:
 
 <!-- Would be nice if Markdown made it easier to do side-by-side comparison... -->
 <table>
@@ -57,15 +58,15 @@ To reduce code duplication and enforce consistency, APIv4 uses PHP class inherit
 
 <pre class="codehilite">
 function civicrm_api3_website_get($params) {
-  return _civicrm_api3_basic_get(_civicrm_api3_get_BAO(__FUNCTION__), $params, TRUE, 'Website');
+  return _civicrm_api3_basic_get('Website', $params);
 }
 
 function civicrm_api3_website_create($params) {
-  return _civicrm_api3_basic_create(_civicrm_api3_get_BAO(__FUNCTION__), $params, 'Website');
+  return _civicrm_api3_basic_create('Website', $params);
 }
 
 function civicrm_api3_website_delete($params) {
-  return _civicrm_api3_basic_delete(_civicrm_api3_get_BAO(__FUNCTION__), $params);
+  return _civicrm_api3_basic_delete('Website', $params);
 }
 </pre>
 </td>
