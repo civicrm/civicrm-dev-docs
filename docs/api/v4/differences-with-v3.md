@@ -93,6 +93,7 @@ them, it may help to have a concrete example expressed in both APIv3 and APIv4:
 * The `Create` action is now only used for creating *new* items (no more implicit update by passing an id to v3 `create`).
 * The `Save` action in v4 is most similar to v3's `create` - it accepts one or more records to create or update, infering the action based on the presence of `id` in each record.
 * `Update` and `Delete` can be performed on multiple items at once by specifying a `where` clause, vs a single item by id in v3.
+  Unlike v3, they will not complain if no matching items are found to update/delete and will return an empty result instead of an error.
 * `getsingle` is gone, use `$result->first()` or `index` `0`.
 * `getoptions` is no longer a standalone action, but part of `getFields`.
 

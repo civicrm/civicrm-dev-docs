@@ -29,4 +29,11 @@ as those will always be `null`.
 ### 5.23 Get actions support selecting fields by * wildcard
 
 The `select` param now supports the `*` wildcard character for matching field names.
-See [CiviCRM Core PR #16302](https://github.com/civicrm/civicrm-core/pull/16302)
+See [CiviCRM Core PR #16302](https://github.com/civicrm/civicrm-core/pull/16302).
+
+### 5.23 Delete/Update do not throw error when 0 items found
+
+For consistency across all "batch-style" actions that update/delete records based on a query,
+the `Delete` and `Update` actions now simply return an empty result if no matches are found to act upon.
+Previously they would throw an exception, which was similar to APIv3 behavior but inconsistent with other
+APIv4 batch actions and SQL in general. See [CiviCRM Core PR #16374](https://github.com/civicrm/civicrm-core/pull/16374).
