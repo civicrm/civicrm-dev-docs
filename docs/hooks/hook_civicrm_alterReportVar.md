@@ -6,7 +6,7 @@ This hook is used to add or modify display columns and filters.
 
 ## Definition
 
-    alterReportVar($varType, &$var, &$object) {
+    alterReportVar($varType, &$var, $object) {
 
 ## Parameters
 
@@ -14,7 +14,7 @@ This hook is used to add or modify display columns and filters.
     "sql", depending on where the hook is called.
 -   &$var - a mixed var containing the columns, rows, or SQL, depending
     on where the hook is called
--   &$object - a reference to the CRM_Report_Form object.
+-   $object - a reference to the CRM_Report_Form object.
 
 ## Returns
 
@@ -32,7 +32,7 @@ columns appropriately.
     /**
      * Implementation of hook_civicrm_alterReportVar
      */
-    function mte_civicrm_alterReportVar($varType, &$var, &$object) {
+    function mte_civicrm_alterReportVar($varType, &$var, $object) {
       $instanceValue = $object->getVar('_instanceValues');
       if (!empty($instanceValue) &&
         in_array(
