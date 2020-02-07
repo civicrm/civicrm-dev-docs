@@ -6,7 +6,7 @@ This hook is used to add or modify display columns and filters.
 
 ## Definition
 
-    alterReportVar($varType, &$var, $object) {
+    alterReportVar($varType, &$var, $reportForm) {
 
 ## Parameters
 
@@ -14,7 +14,7 @@ This hook is used to add or modify display columns and filters.
     "sql", depending on where the hook is called.
 -   &$var - a mixed var containing the columns, rows, or SQL, depending
     on where the hook is called
--   $object - a reference to the CRM_Report_Form object.
+-   $reportForm - a reference to the CRM_Report_Form object.
 
 ## Returns
 
@@ -32,8 +32,8 @@ columns appropriately.
     /**
      * Implementation of hook_civicrm_alterReportVar
      */
-    function mte_civicrm_alterReportVar($varType, &$var, $object) {
-      $instanceValue = $object->getVar('_instanceValues');
+    function mte_civicrm_alterReportVar($varType, &$var, $reportForm) {
+      $instanceValue = $reportForm->getVar('_instanceValues');
       if (!empty($instanceValue) &&
         in_array(
           $instanceValue['report_id'],
@@ -78,7 +78,7 @@ columns appropriately.
           $mail->auto_responder = FALSE;
           $mail->open_tracking = TRUE;
           $mail->find(true);
-          if (array_key_exists('civicrm_mailing_mailing_name', $object->_columnHeaders)) {
+          if (array_key_exists('civicrm_mailing_mailing_name', $reportForm->_columnHeaders)) {
             foreach ($var as $key => $value) {
               if (!empty($value['civicrm_mandrill_activity_id']) && $mail->id == $value['civicrm_mailing_id']) {
                 $var[$key]['civicrm_mailing_mailing_name_link'] = CRM_Utils_System::url(
@@ -88,7 +88,7 @@ columns appropriately.
                 $var[$key]['civicrm_mailing_mailing_name_hover'] = ts('View Transactional Email');
               }
             }
-            unset($object->_columnHeaders['civicrm_mandrill_activity_id'], $object->_columnHeaders['civicrm_mailing_id']);
+            unset($reportForm->_columnHeaders['civicrm_mandrill_activity_id'], $reportForm->_columnHeaders['civicrm_mailing_id']);
           }
         }
       }
