@@ -73,6 +73,7 @@ pages:
     - APIv3 Changelog: api/v3/changes.md
 - Hooks:
   - Hooks Introduction: hooks/index.md
+  - Hooks Changelog: hooks/changes.md
   - Usage:
     - Hooks in Extensions: hooks/usage/extension.md
     - Hooks in Symfony: hooks/usage/symfony.md
