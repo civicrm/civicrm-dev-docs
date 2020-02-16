@@ -1,4 +1,4 @@
-# API changes
+# APIv3 Changelog
 
 This page lists changes to CiviCRM core which affect the ways in which developers use the API.
 

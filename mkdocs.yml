@@ -61,7 +61,7 @@ pages:
     - APIv4 Custom Data: api/v4/custom-data.md
     - APIv4 Architecture: api/v4/architecture.md
     - Differences Between Api v3 and v4: api/v4/differences-with-v3.md
-    - APIv4 Changes: api/v4/changes.md
+    - APIv4 Changelog: api/v4/changes.md
   - APIv3:
     - APIv3 Usage: api/v3/usage.md
     - APIv3 Actions: api/v3/actions.md
@@ -70,7 +70,7 @@ pages:
     - APIv3 Chaining: api/v3/chaining.md
     - APIv3 Custom Data: api/v3/custom-data.md
     - APIv3 Examples: api/v3/examples.md
-    - APIv3 Changes: api/v3/changes.md
+    - APIv3 Changelog: api/v3/changes.md
 - Hooks:
   - Hooks Introduction: hooks/index.md
   - Usage:
