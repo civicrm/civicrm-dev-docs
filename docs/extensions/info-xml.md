@@ -291,7 +291,7 @@ Elements acceptable within `<requires>`
 ### `<tags>` {:#tags}
 
 * Containing element: [`<extension>`](#extension)
-* Description: Freeform tags. By convention, tag-names should be "snake-case" (all lower-case alphanumeric with dashes for separate words). If namespaces or prefixes are required, tag-names may use a colon (`:`) delimiter. Tag-names should be documented in this file. (*If you need to use a new/unknown tag, then please submit an update PR to this documentation with a description/purpose.*)
+* Description: Freeform tags. By convention, tag-names should be "snake-case" (all lower-case alphanumeric with dashes for separate words). If namespaces or prefixes are required, tag-names may use a colon (`:`) delimiter. Tag-names should be documented in this page. (*If you need to use a new/unknown tag, then please submit an update PR to this documentation with a description/purpose.*)
 * Contains: elements
 * Example:
 
