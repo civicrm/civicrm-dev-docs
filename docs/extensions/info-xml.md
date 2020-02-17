@@ -291,7 +291,7 @@ Elements acceptable within `<requires>`
 ### `<tags>` {:#tags}
 
 * Containing element: [`<extension>`](#extension)
-* Description: Freeform tags -but not that there are guideline as to what to assign
+* Description: Freeform tags. By convention, tag-names should be "snake-case" (all lower-case alphanumeric with dashes for separate words). If namespaces or prefixes are required, tag-names may use a colon (`:`) delimiter. Tag-names should be documented in this file. (*If you need to use a new/unknown tag, then please submit an update PR to this documentation with a description/purpose.*)
 * Contains: elements
 * Example:
 
@@ -304,16 +304,20 @@ Elements acceptable within `<requires>`
       </tags>
     </extension>
     ```
-    
-* Notes:
-Tags may imply functionality and as that is developed that functionality / expectations will be documented here. It is not recommended to add tags without ensuring they are reflected here as functionality may be adding tags. These docs will be consulted at that point - but not any ad hoc tags in the wil.
 
-Currently implemented tags:
- - hidden - this will prevent the extension being displayed in the UI.
- 
-Agreed for future use (we recommend you add these tags as appropriate for a future ui implementation)
- - component : civicontribute, civigrant, civicase, civievent, civicase
- - functionality : payment-processor, civireport
+The following tags are currently defined:
+
+| Tag | Description |
+| --- | ----------- |
+| `hidden` | Do not display the extension in the administrative UI. (*Note: Pending implementation circa v5.24.*) |
+| `civicase` | The extension improves or alters CiviCase |
+| `civicontribute` |  The extension improves or alters CiviContribute |
+| `civigrant` | The extension improves or alters CiviGrant |
+| `civievent` | The extension improves or alters CiviEvent |
+| `civimail` | The extension improves or alters CiviMail |
+| `civireport` | The extension improves or alters CiviReport |
+| `civirules` | The extension improves or alters CiviRules |
+| `payment-processor` | The extension defines a payment-processor |
 
 ### `<url>` {:#url}
 
