@@ -42,7 +42,7 @@ Here is an example of a full `info.xml` file from [CiviVolunteer](https://github
 
 | CiviCRM Version | Description |
 | -- | -- |
-|5.24.0|[`<tags>`](#tags) Tags introduced as part of schema|
+| 5.24.0 | [`<tags>`](#tags) Tags introduced as part of schema |
 | 5.0.0 | [`<ver>`](#ver) tags now imply forward compatibility when the version specified is 4.7 or higher. (e.g. an extension declaring `<ver>5.1</ver>` is displayed on 5.2, 5.3 etc. but *not* on 5.0.) Because 4.7.x and 5.x are substantively the same series, `<ver>4.7</ver>` implies forward compatiblity with 5.x. If you want to specify multiple version compatibility for both lower than 4.7 and higher, then you need to specify multiple `<ver>` tags for all of the lower versions and at least one of 4.7 or higher, e.g. `<ver>4.5</ver> <ver>4.6</ver> <ver>4.7</ver>`.|
 | 4.7.27 | Added [`<requires>`](#requires) and [`<ext>`](#ext) | 
 | 4.5 | [`<develStage>`](#develStage) is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
@@ -367,4 +367,3 @@ Elements acceptable within `<urls>`
 * Contains: text
 
 Valid version formats include: `1`, `1.1`, `1.2.3.4`, `1.2-3`, `1.2.alpha2` , `1.2.rc2`, `2012-01-01-1`, `2012-01-01`, `r456 `, `r5000`
-
