@@ -291,33 +291,47 @@ Elements acceptable within `<requires>`
 ### `<tags>` {:#tags}
 
 * Containing element: [`<extension>`](#extension)
-* Description: Freeform tags. By convention, tag-names should be "snake-case" (all lower-case alphanumeric with dashes for separate words). If namespaces or prefixes are required, tag-names may use a colon (`:`) delimiter. Tag-names should be documented on this page. (*If you need to use a new/unknown tag, then please submit an [update PR](https://docs.civicrm.org/dev/en/latest/documentation/) to this documentation with a description/purpose.*)
+* Description: Freeform tags allow extensions to be organized into categories or selected as subgroups. Tags MUST contain only letters, numbers, dashes,and colons. Tags are case-sensitive. Tags MUST follow the structure `<prefix>:<some-tag-name>`. Tags SHOULD be documented in the table below. (*If you need to use a new/unknown tag, then please submit a [documentation update](https://docs.civicrm.org/dev/en/latest/documentation/) with a description.*)
 * Contains: elements
 * Example:
 
     ```xml
     <extension key="org.civicrm.foo" type="module">
       <tags>
-        <tag>civicontribute</tag>
-        <tag>payment-processor</tag>
-        <tag>hidden</tag>
+        <tag>comp:CiviContribute</tag>
+        <tag>topic:payment-processor</tag>
+        <tag>mgmt:hidden</tag>
       </tags>
     </extension>
     ```
 
-The following tags are currently defined:
+The `topic:*` tags relate to a general topic/business area/problem area. Topics must use "snake-case" (lowercase/hyphenated).
 
-| Tag | Description |
-| --- | ----------- |
-| `hidden` | Do not display the extension in the administrative UI. (*Note: Pending implementation circa v5.24.*) |
-| `civicase` | The extension improves or alters CiviCase |
-| `civicontribute` |  The extension improves or alters CiviContribute |
-| `civigrant` | The extension improves or alters CiviGrant |
-| `civievent` | The extension improves or alters CiviEvent |
-| `civimail` | The extension improves or alters CiviMail |
-| `civireport` | The extension improves or alters CiviReport |
-| `civirules` | The extension improves or alters CiviRules |
-| `payment-processor` | The extension defines a payment-processor |
+| Tag name | Description |
+|--|--|
+| `topic:reporting` | Provides reporting functionality |
+| `topic:search` | Provides search functionality |
+| `topic:email` | Provides email functionality |
+
+The `comp:*` tags relate to specific implementations (components/extensions/modules). Components may use capitalization that matches the original component.  Where applicable, tags SHOULD match counterparts in the [Gitlab labels](https://lab.civicrm.org/dev/core/-/labels).
+
+| Tag name | Description |
+|--|--|
+| `comp:CiviCampaign` | Improves or alters the CiviCase component |
+| `comp:CiviCase` | Improves or alters the CiviCase component |
+| `comp:CiviContribute` | Improves or alters the CiviContribute component |
+| `comp:CiviEvent` | Improves or alters the CiviEvent component |
+| `comp:CiviGrant` | Improves or alters the CiviGrant component |
+| `comp:CiviMail` | Improves or alters the CiviMail component |
+| `comp:CiviReport` | Improves or alters the CiviReport component |
+
+The `mgmt:*` tags relate to the management of extensions. Management tags must use "snake-case" (lowercase/hyphenated).
+
+| Tag name | Description |
+|--|--|
+| `mgmt:hidden` | The extension is not displayed in the administrative UI, but it can be managed via CLI and API. (Implemented in v5.24+.) |
+| `mgmt:mandatory` | The extension must always be enabled. (*Implementation pending*) |
+| `mgmt:autoinstall` | The extension is installed by default on  new sites. (*Implementation pending*) |
 
 ### `<url>` {:#url}
 
