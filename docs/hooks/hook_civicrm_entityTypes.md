@@ -2,7 +2,7 @@
 
 ## Summary
 
-This hook is used to declare new type of entity, for example a booking extension might want to declare a *Resource* entity.
+This hook is used to declare a new type of entity, for example a booking extension might want to declare a *Resource* entity.
 
 ## Notes
 
