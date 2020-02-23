@@ -263,6 +263,12 @@ pages:
   - Routing: framework/routing.md
   - Resources Reference: framework/resources.md
   - Setting Reference: framework/setting.md
+  - Setup Reference:
+    - Overview: framework/setup/index.md
+    - Getting Started: framework/setup/getting-started.md
+    - New Installer: framework/setup/new-installer.md
+    - New Plugin: framework/setup/new-plugin.md
+    - Manage Plugins: framework/setup/plugins.md
   - Template Reference:
     - Templates: framework/templates/index.md
     - Customizing Templates: framework/templates/customizing.md
