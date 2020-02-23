@@ -6,35 +6,34 @@ first need to initialize the runtime and get a reference to the `$setup` object.
 * Bootstrap the CMS/host environment.
     * __Tip__: You may not need to do anything here -- this is often implicitly handled by the host environment.
     * __Tip__: Initializing this first ensures that we can *automatically discover* information about the host environment.
-* (Optional) Check for `civicrm/.use-civicrm-setup`
-    * If you're incrementally replacing the old installer with the new installer, you can check for a signal that allows the system-builder to toggle between the old/new installers. Specifically, in the `civicrm-core` folder, look for a file named `.use-civicrm-setup`.
-    * If you're writing an installer for a new build/channel, then you probably don't need to worry about this.
 * Load the class-loader.
     * __Ex__: If you use `civicrm` as a distinct sub-project (with its own `vendor` and autoloader), then you may need to load `CRM/Core/ClassLoader.php` and call `register()`.
     * __Ex__: If you use `composer` to manage the full site-build (with CMS+Civi+dependencies), then you may not need to take any steps.
 * Initialize the `\Civi\Setup` subsystem.
     * Call `\Civi\Setup::init($modelValues = array(), $pluginCallback = NULL)`.
-    * The `$modelValues` provides an opportunity to seed the configuration options, such as DB credentials and file-paths. See the fields defined for the [Model](src/Setup/Model.php).
+    * The `$modelValues` provides an opportunity to seed the configuration options. This is usually just the `cms` and `srcPath`.
+      Additionally values will be autodetected via plugin.
     * The `$pluginCallback` (`function(array $files) => array $files`) provides an opportunity to add/remove/override plugin files.
     * __Tip__: During initialization, some values may be autodetected. After initialization, you can inspect or revise these with `Civi\Setup::instance()->getModel()`.
 * Get a reference to the `$setup` API.
     * Call `$setup = Civi\Setup::instance()`.
+* (Optional) Customize the model
+    * __Ex__: During initialization, the auto-detection may use the CMS DB credentials for the Civi DB. If you'd prefer to use different credentials, then update `$setup->getModel()->db`.
+    * __Tip__: For details, see the documentation in [Civi\Setup\Model](https://github.com/civicrm/civicrm-core/tree/master/setup/src/Setup/Model.php).
 
 For example:
 
 ```php
 <?php
 $civicrmCore = '/path/to/civicrm';
-if (file_exists($civicrmCore . DIRECTORY_SEPARATOR . '.use-civicrm-setup')) {
-  require_once implode(DIRECTORY_SEPARATOR, [$civicrmCore, 'CRM', 'Core', 'ClassLoader.php']);
-  CRM_Core_ClassLoader::singleton()->register();
-  \Civi\Setup::assertProtocolCompatibility(1.0);
-  \Civi\Setup::init([
-    'cms' => 'WordPress',
-    'srcPath' => $civicrmCore,
-  ]);
-  $setup = Civi\Setup::instance();
-}
+require_once implode(DIRECTORY_SEPARATOR, [$civicrmCore, 'CRM', 'Core', 'ClassLoader.php']);
+CRM_Core_ClassLoader::singleton()->register();
+\Civi\Setup::assertProtocolCompatibility(1.0);
+\Civi\Setup::init([
+  'cms' => 'WordPress',
+  'srcPath' => $civicrmCore,
+]);
+$setup = Civi\Setup::instance();
 ```
 
 Once you have a copy of the `$setup` API, there are a few ways to work with it. For example, you might load
