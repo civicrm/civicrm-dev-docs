@@ -32,7 +32,7 @@ Key features:
 
 ## Documentation
 
-* [Getting started](docs/getting-started.md)
-* [Writing an installer](docs/new-installer.md)
-* [Writing a plugin](docs/new-plugin.md)
-* [Managing plugins](docs/plugins.md)
+* [Getting started](getting-started.md)
+* [Writing an installer](new-installer.md)
+* [Writing a plugin](new-plugin.md)
+* [Managing plugins](plugins.md)
