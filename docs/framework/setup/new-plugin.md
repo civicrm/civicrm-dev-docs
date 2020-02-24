@@ -1,53 +1,79 @@
-# Writing a plugin
+# Basics
 
-A plugin is a PHP file with these characteristics:
+A `setup` plugin is a PHP file with these characteristics:
 
-* The file's name ends in `*.civi-setup.php`. (Plugins in `civicrm-setup/plugins/*.civi-setup.php` are autodetected.)
-* The file has a guard at the top (`defined('CIVI_SETUP')`). If this constant is missing, then bail out. In case the file becomes accessible on the web, this prevents direct execution.
-* The file's logic locates the event-dispatcher and registers listeners, e.g. `\Civi\Setup::disptacher()->addListener($eventName, $callback)`.
+* The file's name ends in `*.civi-setup.php`.
+* The file has a guard at the top (`if (!defined('CIVI_SETUP'))...`).
+* The file defines events-listeners (`\Civi\Setup::disptacher()->addListener($eventName, $callback)`).
 
-For example, here is a basic plugin that logs a message during database installation:
+Plugins are conventionally autoloaded from `civicrm/setup/plugins/**.civi-setup.php` (although some installers may [load custom plugins](plugins.md)).
+
+For example, let's create a plugin that logs a message during database installation:
 
 ```php
 <?php
+// FILE: civicrm/setup/plugins/installDatabase/MySpecialLogger.civi-setup.php
+use Civi\Setup\Event\InstallDatabaseEvent;
+
 if (!defined('CIVI_SETUP')) {
   exit("Installation plugins must only be loaded by the installer.\n");
 }
 
-\Civi\Setup::dispatcher()
-  ->addListener('civi.setup.installDatabase', function (\Civi\Setup\Event\InstallDatabaseEvent $event) {
+\Civi\Setup::dispatcher()->addListener(
+  'civi.setup.installDatabase',
+  function (InstallDatabaseEvent $event) {
     \Civi\Setup::log()->info("I like to run the plugin during installation.");
-  });
+  }
+);
 ```
 
-Observe that the primary way for a plugin to interact with the system is to register for events (using Symfony's
-`EventDispatcher`). Most methods in the `Civi\Setup` API have a corresponding event name and event class:
+All events provide access to the setup data-model. For example, this will
+provide the path to `civicrm.settings.php`:
 
-* `\Civi\Setup::init()` => `civi.setup.init` => `Civi\Setup\Event\InitEvent`
-* `\Civi\Setup::checkAuthorized()` => `civi.setup.checkAuthorized` => `Civi\Setup\Event\CheckAuthorizedEvent`
-* `\Civi\Setup::checkInstalled()` => `civi.setup.checkInstalled` => `Civi\Setup\Event\CheckInstalledEvent`
-* `\Civi\Setup::checkRequirements()` => `civi.setup.checkRequirements` => `Civi\Setup\Event\CheckRequirementsEvent`
-* `\Civi\Setup::installFiles()` => `civi.setup.installFiles` => `Civi\Setup\Event\InstallFilesEvent`
-* `\Civi\Setup::installDatabase()` => `civi.setup.installDatabase` => `Civi\Setup\Event\InstallDatabaseEvent`
-* `\Civi\Setup::uninstallFiles()` => `civi.setup.uninstallFiles` => `Civi\Setup\Event\UninstallFilesEvent`
-* `\Civi\Setup::uninstallDatabase()` => `civi.setup.uninstallDatabase` => `Civi\Setup\Event\UninstallDatabaseEvent`
+```php
+$event->getModel()->settingsPath
+```
 
-For events related to the built-in web UI, the names are slightly different:
+Observe that the primary way for a plugin to interact with the system is to register for events (using 
+[Symfony's EventDispatcher](https://symfony.com/doc/3.4/components/event_dispatcher.html)). The events
+determine when the plugin runs and what data it can access.
 
-* `\Civi\Setup::createController()` => `civi.setupui.construct` => `Civi\Setup\UI\Event\UIConstructEvent`
-* `\Civi\Setup\UI\SetupController::run()` => `civi.setupui.run` => `Civi\Setup\UI\Event\UIRunEvent`
-* `\Civi\Setup\UI\SetupController::boot()` => `civi.setupui.boot` => `Civi\Setup\UI\Event\UIBootEvent`
+## Events: General installation
 
-All events provide access to the setup data-model.
+Most methods in the `Civi\Setup` API have a corresponding event name (`civi.setup.{myEvent}`) and event class (`Civi\Setup\Event\MyEvent`).
+Most plugins will register for one of these events:
 
-> __Ex__: To get the path to the `civicrm.settings.php` file, read `$event->getModel()->settingsPath`.
+| \Civi\Setup Method | Event Name | Event Class |
+| -- | -- | -- |
+| `init()` | `civi.setup.init` | `InitEvent` |
+| `checkAuthorized()` | `civi.setup.checkAuthorized` | `CheckAuthorizedEvent` |
+| `checkInstalled()` | `civi.setup.checkInstalled` | `CheckInstalledEvent` |
+| `checkRequirements()` | `civi.setup.checkRequirements` | `CheckRequirementsEvent` |
+| `installFiles()` | `civi.setup.installFiles` | `InstallFilesEvent` |
+| `installDatabase()` | `civi.setup.installDatabase` | `InstallDatabaseEvent` |
+| `uninstallFiles` | `civi.setup.uninstallFiles` | `UninstallFilesEvent` |
+| `uninstallDatabase` | `civi.setup.uninstallDatabase` | `UninstallDatabaseEvent` |
 
-Some events provide additional methods for relaying additional information. For example:
+Some events provide additional methods and properties. For example:
 
 * For `civi.setup.checkRequirements`, use `$event->addError(...)` to record an error that prevents installation.  Similarly, use
   `addWarning(...)` and `addInfo(...)` to report less critical issues.
 * For `civi.setup.checkAuthorized`, use `$event->setAuthorized(bool $authorized)` to indicate whether authorization is permitted,
   and use `$event->isAuthorized()` to see if authorization has been permitted.
+
+## Events: Web installation
+
+For methods related to the built-in web UI, the event-names and event-classes live in a
+different namespace (`civi.setupui.{myEvent}` and `Civi\Setup\UI\Event`, respectively).
+
+| Method | Event Name | Event Class |
+| -- | -- | -- |
+| `\Civi\Setup::createController()` | `civi.setupui.construct` | `Civi\Setup\UI\Event\UIConstructEvent` |
+| `\Civi\Setup\UI\SetupController::run()` | `civi.setupui.run` | `Civi\Setup\UI\Event\UIRunEvent` |
+| `\Civi\Setup\UI\SetupController::boot()` | `civi.setupui.boot` | `Civi\Setup\UI\Event\UIBootEvent` |
+
+Some events provide additional methods and properties. For example:
+
 * For `civi.setupui.run`, the list of HTTP inputs is available as `$event->getFields()`.
 
 ## What's in a file name?
@@ -75,7 +101,11 @@ Most plugins only handle one event, so it's a convenient way to organize them.  
 * `common/LogEvents.civi-setup.php` listens to many events.
 * `blocks/*` define visible blocks for the built-in web UI. Many of these listen to 2-3 events.
 
-Tips:
+!!! faq "Should a plugin only handle one event?"
 
-* If you write a new plugin, should it handle one event or multiple? Do whatever is best (on the whole) for improving the concept/coupling/cohesion. This *usually* means writing a small/narrow plugin, but it doesn't necessarily.
-* Browsing the folders provides a high-level skim. Try to respect this in framing new plugins, but don't assume that it's perfect. For detailed inspection or debugging, use `cv core:install --debug-event`.
+    If you write a new plugin, should it handle one event or multiple? Do whatever is best (on the whole) for improving the concept/coupling/cohesion.
+    This *usually* means writing a small/narrow plugin, but it doesn't necessarily.
+
+!!! tip "Browsing for high-level overview"
+
+    Browse the plugin folders for a high-level skim of the plugins. Try to respect this in framing new plugins, but don't assume that it's perfect. For detailed inspection or debugging, use `cv core:install --debug-event`.
