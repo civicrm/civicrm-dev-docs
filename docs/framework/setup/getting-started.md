@@ -1,34 +1,12 @@
 # Getting started
 
-Whether your goal is to improve the `civicrm-setup` library, write a new
+Whether your goal is to improve the `setup` subsystem, write a new
 installer, or write a new plugin, it will help to start out by running the
-command-line installer. This can help you understand and experiment with
-the library.
-
-## Get the `civicrm-setup` code
-
-Let's a get a copy of the library.
-
-```
-$ mkdir $HOME/src
-$ git clone https://github.com/civicrm/civicrm-setup $HOME/src/civicrm-setup
-```
-
-Note that this is our developmental copy of the library -- it is not a
-default location that's generally recognized by the software.  However, you
-can set an environment variable to ensure that it's used in subsequent
-commands:
-
-```
-$ export CV_SETUP_PATH=$HOME/src/civicrm-setup 
-```
-
-> __Tip__: If you start a new terminal, you may need to set `CV_SETUP_PATH`
-> again.
+command-line installer. This can help you inspect and experiment.
 
 ## Create a CMS+Civi build
 
-You'll need a copy of WordPress, Drupal, or another Civi-supported CMS. 
+You'll need a copy of WordPress, Drupal, or another Civi-supported CMS.
 Create this by whatever you means you prefer, e.g.
 
  * `drush dl ... drush site-install ...`
@@ -38,6 +16,13 @@ Create this by whatever you means you prefer, e.g.
 The build should include a copy of the CiviCRM source-code in a standard
 location (e.g. `sites/all/modules/civicrm` or `wp-content/plugins/civicrm`).
 If necessary, download the tarball/zipball or clone the git repos.
+
+!!! tip "Using the uninstaller"
+
+    If you used `civibuild` to create a full site with Civi+CMS, then it does
+    everything needed... and little more. We want a build where the
+    configuration files and database tables don't exist yet.
+    Use `cv core:uninstall` to rollback to this stage.
 
 For the rest of this tutorial, you'll want to be in the root folder of the
 CMS build.
@@ -53,12 +38,12 @@ discovered automatically. To inspect them, use the `--debug-model` option, as in
 
 ```
 $ cv core:install --debug-model
-Found code for civicrm-core in /home/myuser/buildkit/build/hydra-wp/wp-content/plugins/civicrm/civicrm
-Found code for civicrm-setup in /home/myuser/src/civicrm-setup
+Found code for civicrm-core in /var/www/wp-content/plugins/civicrm/civicrm
+Found code for civicrm-setup in /var/www/wp-content/plugins/civicrm/civicrm/setup
 {
-    "srcPath": "/home/myuser/buildkit/build/hydra-wp/wp-content/plugins/civicrm/civicrm",
-    "setupPath": "/home/myuser/src/civicrm-setup",
-    "settingsPath": "/home/myuser/buildkit/build/hydra-wp/wp-content/uploads/civicrm/civicrm.settings.php",
+    "srcPath": "/var/www/wp-content/plugins/civicrm/civicrm",
+    "setupPath": "/var/www/wp-content/plugins/civicrm/civicrm/setup",
+    "settingsPath": "/var/www/wp-content/uploads/civicrm/civicrm.settings.php",
     "cms": "WordPress",
     "cmsBaseUrl": "http://hydra-wp.l",
     "db": {
@@ -86,6 +71,16 @@ $ cv core:install --debug-model --db=mysql://otheruser:secret@mysql.example.org/
 
 To browse a more complete list of options, run `cv core:install --help`.
 
+!!! tip "Improvising with `-m`"
+
+    Several common options, such as `--db`, are documented in the help for `cv core:install`.
+    If you need to update the model with a less visible option, then use `--model` (`-m`)
+    For example, this will load sample data:
+
+    ```
+    $ cv core:install -m loadGenerated=1
+    ```
+
 ## Inspect the plugins and events
 
 Most changes are accomplished by adding or patching plugins, and each plugin subscribes to events.
@@ -96,15 +91,15 @@ You can inspect the list of plugins and events with the `--debug-event` option. 
 $ cv core:install --debug-event
 ...
 [Event] civi.setup.installFiles
-+-------+------------------------------------------------------------------------------------------------------------+
-| Order | Callable                                                                                                   |
-+-------+------------------------------------------------------------------------------------------------------------+
-| #1    | closure(/home/myuser/src/civicrm-setup/plugins/common.d/LogEvents.civi-setup.php@30)                       |
-| #2    | closure(/home/myuser/src/civicrm-setup/plugins/installFiles.d/GenerateSiteKey.civi-setup.php@13)           |
-| #3    | closure(/home/myuser/src/civicrm-setup/plugins/installFiles.d/CreateTemplateCompilePath.civi-setup.php@33) |
-| #4    | closure(/home/myuser/src/civicrm-setup/plugins/installFiles.d/InstallSettingsFile.civi-setup.php@43)       |
-| #5    | closure(/home/myuser/src/civicrm-setup/plugins/common.d/LogEvents.civi-setup.php@38)                       |
-+-------+------------------------------------------------------------------------------------------------------------+
++-------+------------------------------------------------------------------------------------------------+
+| Order | Callable                                                                                       |
++-------+------------------------------------------------------------------------------------------------+
+| #1    | closure(/var/www/.../setup/plugins/common.d/LogEvents.civi-setup.php@30)                       |
+| #2    | closure(/var/www/.../setup/plugins/installFiles.d/GenerateSiteKey.civi-setup.php@13)           |
+| #3    | closure(/var/www/.../setup/plugins/installFiles.d/CreateTemplateCompilePath.civi-setup.php@33) |
+| #4    | closure(/var/www/.../setup/plugins/installFiles.d/InstallSettingsFile.civi-setup.php@43)       |
+| #5    | closure(/var/www/.../setup/plugins/common.d/LogEvents.civi-setup.php@38)                       |
++-------+------------------------------------------------------------------------------------------------+
 ...
 ```
 
@@ -114,8 +109,8 @@ CiviCRM has a number of system requirements that should be met before installati
 
 ```
 $ cv core:check-req
-Found code for civicrm-core in /home/myuser/buildkit/build/hydra-wp/wp-content/plugins/civicrm/civicrm
-Found code for civicrm-setup in /home/myuser/src/civicrm-setup
+Found code for civicrm-core in /var/www/wp-content/plugins/civicrm/civicrm
+Found code for civicrm-setup in /var/www/wp-content/plugins/civicrm/civicrm/setup
 +----------+----------+--------------------------------------+-----------------------------------------------------+
 | severity | section  | name                                 | message                                             |
 +----------+----------+--------------------------------------+-----------------------------------------------------+
@@ -132,7 +127,7 @@ Notice that the `severity` indicates the importance of the message. The severiti
 * `warning`: The requirement is partially met. Installation may proceed, but there is some limitation or risk.
 * `error`: The requirement is not met. Installation cannot proceed.
 
-> __Tip__: If you want to focus on warnings and errors, add the `-we` option.
+> __Tip__: If you want to focus on warnings and errors, use `-we` as in `cv core:check-req -we`
 
 ## Run the installer
 
@@ -140,9 +135,9 @@ If all the auto-detection works and all the requirements are met, then installat
 
 ```
 $ cv core:install
-Found code for civicrm-core in /home/myuser/buildkit/build/hydra-wp/wp-content/plugins/civicrm/civicrm
-Found code for civicrm-setup in /home/myuser/src/civicrm-setup
-Creating file /home/myuser/buildkit/build/hydra-wp/wp-content/uploads/civicrm/civicrm.settings.php
+Found code for civicrm-core in /var/www/wp-content/plugins/civicrm/civicrm
+Found code for civicrm-setup in /var/www/wp-content/plugins/civicrm/civicrm/setup
+Creating file /var/www/wp-content/uploads/civicrm/civicrm.settings.php
 Creating civicrm_* database tables in hydrawpcms_p7urq
 ```
 
@@ -152,12 +147,12 @@ hasn't been met.
 
 ```
 $ cv core:install
-Found code for civicrm-core in /home/myuser/buildkit/build/dmaster/sites/all/modules/civicrm
-Found code for civicrm-setup in /home/myuser/src/civicrm-setup
+Found code for civicrm-core in /var/www/sites/all/modules/civicrm
+Found code for civicrm-setup in /var/www/sites/all/modules/civicrm/setup
 (cmsBaseUrl) The "cmsBaseUrl" (http://localhost/home/myuser/src/cv/bin/home/myuser/src/cv/bin/) is unavailable or malformed. Consider setting it explicitly.
-                              
-  [Exception]                 
-  Requirements check failed.  
+
+  [Exception]
+  Requirements check failed.
 ```
 
 You can resolve this by passing `--cms-base-url`, as in:
@@ -169,12 +164,13 @@ $ cv core:install --cms-base-url=http://mysite.localhost
 ## Run the dev loop
 
 When writing a patch to the installer logic, you may want to alternately
-update the code, re-run the installer, and inspect what happens. This
-can be distilled into a single CLI call, which inclues a few elements:
+update the code, re-run the installer, and inspect what happens. Try to
+distill this into a single CLI call that can be quickly repeated; it
+will likely include:
 
-* Use `cv core:install -f` to force-install. This will remove any old settings-files or database-tables.
-* Use `cv core:install -vvv` to enable very-verbose output. This will log more details about the execution.
-* Use `drush` or `wp-cli` to enable or disable the `civicrm` module.
+* Using `cv core:install -f` to force-install. This will remove any old settings-files or database-tables.
+* Using `cv core:install -vvv` to enable very-verbose output. This will log more details about the execution.
+* Using `drush` or `wp-cli` to enable or disable the `civicrm` module.
 
 For example, on WordPress, this single command will uninstall and reinstall:
 
