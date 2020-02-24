@@ -1,6 +1,6 @@
 # Writing an installer
 
-# Bootstrap
+## Bootstrap
 
 For a CMS integration (e.g. `civicrm-drupal` or `civicrm-wordpress`) which aims to incorporate an installer, you'll
 first need to initialize the runtime and get a reference to the `$setup` object. The general steps are:
