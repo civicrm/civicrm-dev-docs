@@ -1,6 +1,4 @@
-# Managing plugins
-
-Plugins in `civicrm-setup/plugins/*/*.civi-setup.php` are automatically
+Plugins in `civicrm/setup/plugins/*/*.civi-setup.php` are automatically
 detected and loaded.  The simplest way to manage plugins is adding and
 removing files from this folder.
 
@@ -13,12 +11,14 @@ integration might refine the installation process by:
 
 To programmatically manage plugins, take note of the
 `\Civi\Setup::init(...)` function.  It accepts an argument,
-`$pluginCallback`, which can edit the plugin list. For example:
+`$pluginCallback`, which can edit the plugin list.
+
+For example, this would add a custom plugin named `ExtraJoompralInstallPlugin`:
 
 ```php
 <?php
 function myPluginCallback($files) {
-  $files['ExtraWordPressInstallPlugin'] = '/path/to/ExtraWordPressInstallPlugin.php';
+  $files['ExtraJoompralInstallPlugin'] = '/path/to/ExtraJoompralInstallPlugin.php';
   ksort($files);
   return $files;
 }
