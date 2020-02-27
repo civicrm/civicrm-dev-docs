@@ -18,7 +18,7 @@ In addition, civix creates some empty directories. These directories are reminis
 -   ***xml/*** stores XML configuration files (such as URL routes and schema xml).
 -   ***build/*** stores exportable .zip files.
 
-When adding files into these directories it is advisable to follow similar patterns to that in CiviCRM Core e.g. BAO files should go in "CRM\_Myextension\BAO\", likewise with Form and Page. This ensures that for developers that seek to modify or improve the extension files can be found in standard locations.
+When adding files into these directories it is advisable to follow similar patterns to that in CiviCRM Core e.g. BAO files should go in "CRM\Myextension\BAO\", likewise with Form and Page. This ensures that for developers that seek to modify or improve the extension files can be found in standard locations.
 
 ## The Big `E`
 
