@@ -9,6 +9,10 @@ Todo:
 
 **CiviCRM Extensions** are packaged pieces of functionality that extend CiviCRM's out-of-the-box functionality, independent of CMS plaform.
 
+As of CiviCRM version 5.24.0 extensions are also used internally within CiviCRM to organise chunks of functionality that implement a specific feature. These extensions are part of the main CiviCRM repo and sit inside the ext folder. It is anticipated that over time more chunks of functionality will be moved into these core extensions, as part of our goal to make the code more readable and maintainable. Core extensions cannot be seen in the extensions UI and the structure is invisible to the end user.
+
+There is not currently a clear guideline as to when a feature should be re-organised into a core extension but one useful guideline is whether it can be fully implemented using the extension framework. In some cases we expect to move code over to an extension over a period of time, as we disentangle the functionality from deeper in the main codebase. While it IS possible to disable a core extension through the API it is not currently a supported configuration and site builders should understand this is at their own risk.
+
 This section covers how to write extensions.
 
 ## Extension Names
