@@ -504,7 +504,7 @@ When calling the API, follow these rules:
 For example: `cv api NewEntity.newaction`  `civicrm_api3('NewEntity', 'newaction')`
     
 !!! tip
-    Read more about the [API architecture](/framework/api-architecture.md) for help writing your custom API.
+    Read more about [APIv4 architecture](/api/v4/architecture.md) for help writing custom APIv4 implementations.
 
 ### Add a unit-test class {:#generate-test}
 
