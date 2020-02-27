@@ -1,14 +1,16 @@
-# API v4 Changelog
+# APIv4 Changelog
 
-*This page lists additions to the v4 api with each new release of CiviCRM Core.*
+*This page lists additions to the APIv4 with each new release of CiviCRM Core.*
 
-Also see: [Differences Between Api v3 and v4](/api/v4/differences-with-v3.md).
+Also see: [Differences Between Api v3 and v4](/api/v4/differences-with-v3.md) and [Hooks Changelog](hooks/changes.md).
+
+## CiviCRM 5.23
 
 ### 5.23 Added PaymentProcessor and PaymentProcessorType APIv4 Entities
 
 See https://github.com/civicrm/civicrm-core/pull/15624
 
-### 5.23 $index param supports array input
+### 5.23 `$index` param supports array input
 
 CiviCRM 5.23 supports two new modes for the `$index` param - associative and non-associative array. See [CiviCRM Core PR #16257](https://github.com/civicrm/civicrm-core/pull/16257) 
 
