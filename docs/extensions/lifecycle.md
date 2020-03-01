@@ -248,6 +248,22 @@ Based on a project's maturity and stewardship, it may be eligible to use resourc
 | QA	| The `civicrm.org` build-bot runs extension tests for PRs (civicrm-core repo)	| "Official" projects ("Stable" or "Incubation")
 | Support	| The project may have its own space or component on "lab.civicrm.org"	| "Official" projects (regardless of stability)
 
+## Obsolete Extensions
+
+Sometimes an extension's functionality becomes part of CiviCRM Core, or is otherwise redundant, and the extension *should no longer be used*.
+
+At that point it can be added to the [Extension Compatibility List](https://github.com/civicrm/civicrm-core/blob/master/extension-compatibility.json)
+with one or more of the following flags:
+
+- **`"obsolete"`** - extension will not be installable, and will be labeled "Obsolete" in the in-app *Manage Extensions* page. Any dependencies to an obsolete extension will be ignored.
+- **`"disable"`** - extension will be automatically disabled by the CiviCRM upgrader.
+- **`"uninstall"`** - extension will be automatically uninstalled by the CiviCRM upgrader.
+- **`"force-uninstall"`** - extension code will be prevented from loading at all (necessary if the extension's presence would cause a fatal error such as a redeclared class).
+
+For example, APIv4 was moved from [an extension](https://github.com/civicrm/org.civicrm.api4) into core in 5.19.
+The extension was marked `"obsolete": 5.19` and `"force-uninstall": true` to prevent php fatal errors due to the same classes now being in core.
+Any extensions declaring `org.civicrm.api4` as a dependency in their `info.xml` would continue to work without it, as the dependency would be ignored as of 5.19. 
+
 ## Abandoned Extensions {:#abandoned-extensions}
 
 A CiviCRM Extension may be abandoned when the project author is no longer releasing updates and/or is not responding to support requests within 14 days or has expressly stated that they are no longer actively maintaining the project.
