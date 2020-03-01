@@ -161,18 +161,18 @@ You can resolve this by passing `--cms-base-url`, as in:
 $ cv core:install --cms-base-url=http://mysite.localhost
 ```
 
-## Run the dev loop
+## Dev loop
 
-When writing a patch to the installer logic, you may want to alternately
-update the code, re-run the installer, and inspect what happens. Try to
-distill this into a single CLI call that can be quickly repeated; it
-will likely include:
+When writing an installer, patch, or plugin using the `setup` subsystem, you may want
+to alternately update the code, re-run the installation, and inspect what happens.
+Try to distill the install/uninstall/reinstall process into a single CLI call that can be quickly repeated.
+It would likely include:
 
 * Using `cv core:install -f` to force-install. This will remove any old settings-files or database-tables.
 * Using `cv core:install -vvv` to enable very-verbose output. This will log more details about the execution.
 * Using `drush` or `wp-cli` to enable or disable the `civicrm` module.
 
-For example, on WordPress, this single command will uninstall and reinstall:
+For example, on WordPress, this command will uninstall and reinstall:
 
 ```
 wp plugin deactivate civicrm ; cv core:install -f -vvv ; wp plugin activate civicrm
