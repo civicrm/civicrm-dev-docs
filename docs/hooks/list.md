@@ -43,7 +43,7 @@ This is an overview list of all available hooks, listed by category.
 
 ## Entity Hooks
 
-* **[hook_civicrm_entityTypes](/hooks/hook_civicrm_entityTypes.md)** - called for declaring managed entities via API.
+* **[hook_civicrm_entityTypes](/hooks/hook_civicrm_entityTypes.md)** - used to declare a new type of entity, for example a booking extension might want to declare a *Resource* entity.
 
 ## Extension Lifecycle Hooks
 
@@ -151,6 +151,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_alterPaymentProcessorParams](/hooks/hook_civicrm_alterPaymentProcessorParams.md)** - allows you to modify parameters passed to the payment processor.
 * **[hook_civicrm_alterSettingsFolders](/hooks/hook_civicrm_alterSettingsFolders.md)** - allows modules and extensions to scan for settings in additional folders.
 * **[hook_civicrm_alterSettingsMetaData](/hooks/hook_civicrm_alterSettingsMetaData.md)** - called when Settings have been loaded from the xml. It is an opportunity for hooks to alter the data.
+* **[hook_civicrm_alterUFFIelds](/hooks/hook_civicrm_alterUFFields.md)** - allows for the modification of the available fields that are permissible for use within a profile. This might be useful for when you have an extension that has defined it's own entities or it is seeking to permit a core component that doesn't show up in profiles by default e.g. Grants.
 * **[hook_civicrm_angularModules](/hooks/hook_civicrm_angularModules.md)** - generates a list of AngularJS modules and allows you to register additional AngularJS modules. It is currently **experimental**.
 * **[hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md)** - allows you to add, override, or remove methods to be called before and after API calls &mdash; and to modify either the parameters or the result of the call.
 * **[hook_civicrm_buildAsset](/hooks/hook_civicrm_buildAsset.md)** - fires whenever the system builds a semi-dynamic asset.
