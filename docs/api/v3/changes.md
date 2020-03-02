@@ -2,7 +2,7 @@
 
 *This page lists additions to the APIv3 with each new release of CiviCRM Core.*
 
-Also see: [Differences Between Api v3 and v4](/api/v4/differences-with-v3.md) and [Hooks Changelog](hooks/changes.md).
+Also see: [Differences Between Api v3 and v4](/api/v4/differences-with-v3.md) and [Hooks Changelog](/hooks/changes.md).
 
 ## APIv3: Framework
 
