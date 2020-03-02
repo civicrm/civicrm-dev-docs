@@ -16,7 +16,7 @@ Key features:
 
 General design:
 
-* Installers call a high-level API ([Civi\Setup](src/Setup.php)) which supports all major installation tasks/activities -- such as:
+* Installers call a high-level API ([Civi\Setup](https://github.com/civicrm/civicrm-core/tree/master/setup/src/Setup.php)) which supports all major installation tasks/activities -- such as:
     * Check system requirements (`$setup->checkRequirements()`)
     * Check installation status (`$setup->checkInstalled()`)
     * Install data files (`$setup->installFiles()`)

@@ -4,7 +4,7 @@
 
 ## API Entity Classes
 
-Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEntity`]((https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php)). Each class serves two purposes:
+Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEntity`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php). Each class serves two purposes:
 
 1.  Declare the API entity by its existance.
     - You can declare a new API (e.g. FooBar) simply by placing the class `\Civi\Api4\FooBar` in the `/Civi/Api4` directory of your extension, as long as it inherits from `\Civi\Api4\Generic\AbstractEntity`.
@@ -13,7 +13,7 @@ Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEnt
 
 ## API Action Classes
 
-Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAction`]((https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php)). It has two functions:
+Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAction`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php). It has two functions:
 
 1.  Store the parameters of the API call.
     - Every `protected` class var is considered a parameter (unless it starts with an underscore).
