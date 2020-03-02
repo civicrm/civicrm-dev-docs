@@ -17,9 +17,9 @@ There are many ways to install MySQL, PHP, and other dependencies -- for example
 
 Civi development should work with most packages -- with a priviso: ***the command-line must support standard command names*** (eg `git`, `php`, `node`, `mysql`, `mysqldump`, etc).
 
-Some environments (e.g. most Linux distributions) are configured properly out-of-the-box.
+Some environments (e.g. most Linux distributions) are configured properly out-of-the-box. Other environments (e.g. MAMP and XAMPP) may require configuring the `PATH`.
 
-Other environments (e.g. MAMP and XAMPP) may require configuring the `PATH`. (See, e.g., [Setup Command-Line PHP](/standards/php.md).)
+<!-- FIXME: There should be a link about diagnosing/fixing paths for third-party binaries. TLDR: `find / -name php -executable` and then update `PATH` via bashrc/bash_profile/whatever -->
 
 ## Buildkit
 
