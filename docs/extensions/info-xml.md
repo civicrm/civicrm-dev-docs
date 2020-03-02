@@ -42,6 +42,7 @@ Here is an example of a full `info.xml` file from [CiviVolunteer](https://github
 
 | CiviCRM Version | Description |
 | -- | -- |
+| 5.24.0 | [`<tags>`](#tags) Tags introduced as part of schema |
 | 5.0.0 | [`<ver>`](#ver) tags now imply forward compatibility when the version specified is 4.7 or higher. (e.g. an extension declaring `<ver>5.1</ver>` is displayed on 5.2, 5.3 etc. but *not* on 5.0.) Because 4.7.x and 5.x are substantively the same series, `<ver>4.7</ver>` implies forward compatiblity with 5.x. If you want to specify multiple version compatibility for both lower than 4.7 and higher, then you need to specify multiple `<ver>` tags for all of the lower versions and at least one of 4.7 or higher, e.g. `<ver>4.5</ver> <ver>4.6</ver> <ver>4.7</ver>`.|
 | 4.7.27 | Added [`<requires>`](#requires) and [`<ext>`](#ext) | 
 | 4.5 | [`<develStage>`](#develStage) is not always required; when using civicrm.org's automated release management, this value is inferred from the version; for manual or private releases, the field should still be defined.
@@ -287,6 +288,51 @@ Elements acceptable within `<requires>`
 | -- | -- |
 | [`<ext>`](#ext) | 1+ |
 
+### `<tags>` {:#tags}
+
+* Containing element: [`<extension>`](#extension)
+* Description: Freeform tags allow extensions to be organized into categories or selected as subgroups. Tags MUST contain only letters, numbers, dashes,and colons. Tags are case-sensitive. Tags MUST follow the structure `<prefix>:<some-tag-name>`. Tags SHOULD be documented in the table below. (*If you need to use a new/unknown tag, then please submit a [documentation update](https://docs.civicrm.org/dev/en/latest/documentation/) with a description.*)
+* Contains: elements
+* Example:
+
+    ```xml
+    <extension key="org.civicrm.foo" type="module">
+      <tags>
+        <tag>comp:CiviContribute</tag>
+        <tag>topic:payment-processor</tag>
+        <tag>mgmt:hidden</tag>
+      </tags>
+    </extension>
+    ```
+
+The `topic:*` tags relate to a general topic/business area/problem area. Topics must use "snake-case" (lowercase/hyphenated).
+
+| Tag name | Description |
+|--|--|
+| `topic:reporting` | Provides reporting functionality |
+| `topic:search` | Provides search functionality |
+| `topic:email` | Provides email functionality |
+
+The `comp:*` tags relate to specific implementations (components/extensions/modules). Components may use capitalization that matches the original component.  Where applicable, tags SHOULD match counterparts in the [Gitlab labels](https://lab.civicrm.org/dev/core/-/labels).
+
+| Tag name | Description |
+|--|--|
+| `comp:CiviCampaign` | Improves or alters the CiviCase component |
+| `comp:CiviCase` | Improves or alters the CiviCase component |
+| `comp:CiviContribute` | Improves or alters the CiviContribute component |
+| `comp:CiviEvent` | Improves or alters the CiviEvent component |
+| `comp:CiviGrant` | Improves or alters the CiviGrant component |
+| `comp:CiviMail` | Improves or alters the CiviMail component |
+| `comp:CiviReport` | Improves or alters the CiviReport component |
+
+The `mgmt:*` tags relate to the management of extensions. Management tags must use "snake-case" (lowercase/hyphenated).
+
+| Tag name | Description |
+|--|--|
+| `mgmt:hidden` | The extension is not displayed in the administrative UI, but it can be managed via CLI and API. (Implemented in v5.24+.) |
+| `mgmt:mandatory` | The extension must always be enabled. (*Implementation pending*) |
+| `mgmt:autoinstall` | The extension is installed by default on  new sites. (*Implementation pending*) |
+
 ### `<url>` {:#url}
 
 * Containing element: [`<urls>`](#urls)
@@ -335,4 +381,3 @@ Elements acceptable within `<urls>`
 * Contains: text
 
 Valid version formats include: `1`, `1.1`, `1.2.3.4`, `1.2-3`, `1.2.alpha2` , `1.2.rc2`, `2012-01-01-1`, `2012-01-01`, `r456 `, `r5000`
-
