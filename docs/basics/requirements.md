@@ -2,23 +2,24 @@
 
 ## Languages and Services
 
--   Unix-like environment (Linux, OS X, or a virtual machine)
--   [PHP v7.0+](http://php.net/)
--   [MySQL v5.7.5+](http://mysql.com/) or [MariaDB 10.0.2+](https://mariadb.org/)
--   [NodeJS](https://nodejs.org/)
--   [Git](https://git-scm.com/)
--   Recommended: Apache HTTPD v2.2+
--   Recommended: Ruby/Rake
+* Required
+    - Unix-like environment (Linux, OS X, or a virtual machine)
+    - [PHP v7.0+](http://php.net/) including the following extensions: `bcmath curl gd gettext imap intl imagick json mbstring openssl pdo_mysql phar posix soap zip`
+    - [MySQL v5.7.5+](http://mysql.com/) or [MariaDB 10.0.2+](https://mariadb.org/), including both client and server
+    - [NodeJS v8+](https://nodejs.org/)
+    - [Git](https://git-scm.com/)
+* Recommended (for `civibuild` / `amp`):
+    - Apache HTTPD v2.2 or v2.4 including the `mod_rewrite` module and, on SUSE, possibly `mod_access_compat` (This list may not be exhaustive.)
 
 ## Command Line
 
 There are many ways to install MySQL, PHP, and other dependencies -- for example, `apt-get` and `yum` can download packages automatically; `php.net` and `mysql.com` provide standalone installers; and MAMP/XAMPP provide bundled installers.
 
-Civi development should work with most packages -- but there's one proviso: ***the command-line must support standard commands***  (`php`, `mysql`, `node`, `git`, `bash`, etc).
+Civi development should work with most packages -- with a priviso: ***the command-line must support standard command names*** (eg `git`, `php`, `node`, `mysql`, `mysqldump`, etc).
 
-Some packages are configured properly out-of-the-box. (Linux distributions do a pretty good job of this.) Other packages require extra configuration steps.
+Some environments (e.g. most Linux distributions) are configured properly out-of-the-box.
 
-In subsequent steps, the download script will attempt to identify misconfigurations and display an appropriate message.
+Other environments (e.g. MAMP and XAMPP) may require configuring the `PATH`. (See, e.g., [Setup Command-Line PHP](/standards/php.md).)
 
 ## Buildkit
 
