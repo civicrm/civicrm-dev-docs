@@ -18,7 +18,7 @@ are not used functionally in CiviCRM but are available in various reports.
 * contact id (not used in core but can be used in extensions - e.g. this is used in the [connectors](https://github.com/eileenmcnaughton/nz.co.fuzion.connectors) extension to link some accounts to one Xero account & others to a different one).
 * is_header_account
 
-In addition there are some functional fields that affect how Salex Taxes are calculated:
+In addition there are some functional fields that affect how Sales Taxes are calculated:
 
 * tax_rate
 * is_tax
