@@ -22,3 +22,4 @@ core/develop tools/git
 basics/filesystem framework/filesystem
 core/architecture framework/codebase
 framework/civimail/tokens https://docs.civicrm.org/user/en/latest/common-workflows/tokens-and-mail-merge/
+framework/api-architecture api/v4/architecture
