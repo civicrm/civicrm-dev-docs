@@ -6,13 +6,13 @@ For API changes, see [APIv4 Changelog](/api/v4/changes.md) and [APIv3 Changelog]
 
 ## CiviCRM 5.x
 
-### 5.11 hook_civicrm_pageRun invocation removed from CRM_Core_Page_Inline_Help
+### 5.11: hook_civicrm_pageRun invocation removed from CRM_Core_Page_Inline_Help
 
 `CRM_Core_Page_Inline_Help` is the class that fetches inline documentation from `.hlp` templates to be shown in help baloons. `hook_civicrm_pageRun` normally does not run when fetching help, except in the (very rare) case that a site has been customized with an `.extra.hlp` file, which potentially causes problems because the class `CRM_Core_Page_Inline_Help` does not extend `CRM_Core_Page`. The inconsistent hook invocation [has been removed](https://github.com/civicrm/civicrm-core/commit/87bf0ec4c246b03e3e6c2ab2fb0c14664473c52b).
 
 ## CiviCRM 4.7
 
-### 4.7.14 hook_civicrm_pre & hook_civicrm_post supports CustomField
+### 4.7.14: hook_civicrm_pre & hook_civicrm_post supports CustomField
 
 Pre and post hooks now fire when adding, updating or deleting custom fields.
 
