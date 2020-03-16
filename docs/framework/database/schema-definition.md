@@ -18,6 +18,8 @@ folder which contain the DAOs and BAOs.
     the DAO PHP classes and the database table creation SQL scripts
     `civicrm.mysql` and `civicrm_data.mysql` in the
     [`/sql`](https://github.com/civicrm/civicrm-core/blob/master/sql) folder.
+    To update any DAO file you need to update the relevant xml and then run php Gencode.php from the xml directory
+    (civibuild create will also do this, albeit rebuilding your whole dev site)
 
 
 Looking in [`/xml/schema/Pledge`](https://github.com/civicrm/civicrm-core/blob/master/xml/schema/Pledge)
