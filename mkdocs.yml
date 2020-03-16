@@ -96,6 +96,7 @@ pages:
     - hook_civicrm_managed: hooks/hook_civicrm_managed.md
     - hook_civicrm_merge: hooks/hook_civicrm_merge.md
     - hook_civicrm_post: hooks/hook_civicrm_post.md
+    - hook_civicrm_postCommit: hooks/hook_civicrm_postCommit.md
     - hook_civicrm_postSave_table_name: hooks/hook_civicrm_postSave_table_name.md
     - hook_civicrm_pre: hooks/hook_civicrm_pre.md
     - hook_civicrm_referenceCounts: hooks/hook_civicrm_referenceCounts.md
