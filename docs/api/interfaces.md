@@ -1,6 +1,6 @@
 # API Interfaces
 
-The API has three main interfaces along with the PHP Code that can be used to access the API. 
+The API has three main interfaces along with the PHP Code that can be used to access the API.
 
 ## Javascript {#javascript}
 
@@ -14,6 +14,10 @@ The AJAX interface is one of the more common interfaces used within CiviCRM code
 
 `CRM.api3` and `CRM.api4` is a javascript method produced by CiviCRM as a thin wrapper around a call to `http://example.org/civicrm/ajax/rest`. The standard format of such an API call can be found under the relevant usage sub-chapter of this documentation
 
+#### WP REST API
+
+`WP REST API` is a method introduced in version 5.25 that uses the WordPress REST API to expose the extern scripts.  [This method is documented here](/api/v3/wp-rest.md)
+
 #### Tests
 
 [QUnit](/testing/qunit.md) tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
@@ -22,7 +26,7 @@ You can run the tests within a web browser by visiting `/civicrm/dev/qunit/civic
 
 #### Changes
 
-The recommended AJAX interface has changed between CiviCRM versions as follows: 
+The recommended AJAX interface has changed between CiviCRM versions as follows:
 
 * version 4.2.x - `cj().crmAPI(...)`
 * version 4.3.x - `CRM.api(...)`
@@ -93,9 +97,9 @@ More information can be found on the [project page](https://github.com/TechToThe
 
 ## REST Interface {:#rest}
 
-The REST interface examples can also be found in the API Explorer as with the AJAX interface. The REST interface works very much like the AJAX interface however there is one major difference. The REST interface requires an `api_key` which is attached to the user that will be performing the action against the system and a `site_key` which is the key stored in `civicrm.settings.php`. There must also be a user account in the relevant content management system for the user associated with the API Key. The main reason for this is that the REST interface unlike the AJAX interface is designed for being accessed from an external site. The REST interface defaults to returning XML data however in your API calls you can request to have it return a JSON formatted version. When calling the REST interface you should do it as a `POST` not as a `GET` request. The only API actions that will work over the GET call would be get actions. 
+The REST interface examples can also be found in the API Explorer as with the AJAX interface. The REST interface works very much like the AJAX interface however there is one major difference. The REST interface requires an `api_key` which is attached to the user that will be performing the action against the system and a `site_key` which is the key stored in `civicrm.settings.php`. There must also be a user account in the relevant content management system for the user associated with the API Key. The main reason for this is that the REST interface unlike the AJAX interface is designed for being accessed from an external site. The REST interface defaults to returning XML data however in your API calls you can request to have it return a JSON formatted version. When calling the REST interface you should do it as a `POST` not as a `GET` request. The only API actions that will work over the GET call would be get actions.
 
-To use the REST interface use something along the line of 
+To use the REST interface use something along the line of
 
 ```
 https://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?entity=thething&action=doit&key=your_site_key&api_key=the_user_api_key
@@ -105,7 +109,7 @@ Or if you wish to have it return json do the following
 ```
 https://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?entity=thething&action=doit&key=your_site_key&api_key=the_user_api_key&json=1
 ```
-You can also access the AJAX Interface from the REST function but only as an XHR call through the browser not as a regular page 
+You can also access the AJAX Interface from the REST function but only as an XHR call through the browser not as a regular page
 
 ```
 http://www.example.org/civicrm/ajax/rest?entity=contact&action=get&json=1
@@ -192,9 +196,9 @@ WHERE id = "id_of_the_contact_you_want_to_update"
 
 There is now an [API Key Extension](https://civicrm.org/extensions/api-key) which can help manage API Keys of users. If you have enough permissions after installing the extension you will see an API Key Tab appear on the contact screens. You can then add / edit / delete API keys as necessary. To delete a key just blank the value
 
-#### Using the API Explorer. 
+#### Using the API Explorer.
 
-As per the [Stack Echange Thread](http://civicrm.stackexchange.com/questions/9945/how-do-i-set-up-an-api-key-for-a-user) It is possible to set the users API Key through the explorer. 
+As per the [Stack Echange Thread](http://civicrm.stackexchange.com/questions/9945/how-do-i-set-up-an-api-key-for-a-user) It is possible to set the users API Key through the explorer.
 
 ### Options Parameters and Chaining in the REST Interface.
 
@@ -210,7 +214,7 @@ http://example.org/civicrm/extern/rest.php?entity=Contact&action=create&group_id
 
 ## Smarty API Interface
 
-When building smarty templates you might find you may want to do lookups from the database for some reason. This maybe to get most recent contribution or other information from a contact's record if you adding templates on. The format of the Smarty API call is very similar to that of the APIv3 calls. 
+When building smarty templates you might find you may want to do lookups from the database for some reason. This maybe to get most recent contribution or other information from a contact's record if you adding templates on. The format of the Smarty API call is very similar to that of the APIv3 calls.
 
 ```smarty
 {crmAPI entity="nameobject" method="namemethod" var="namevariable" extraparam1="aa" extraparam2="bb" sequential="1"}
