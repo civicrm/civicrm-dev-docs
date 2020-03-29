@@ -124,17 +124,19 @@ Here are some examples and counter-examples of NFC:
     * Modify whitespace in PHP code.
     * Update a code comment.
     * Fix a typo or grammatical error in a help dialog.
-    * (*Maybe*) Add a new unit-test where there was no coverage before.
+    * (*Maybe*) Add a new unit-test where there was no coverage before (see below).
+    * (*Maybe*) Update a PHP doc block (see below).
 * _Functional Change_:
-    * Refactoring
-    * Replace 20 lines of redundant code with a call to a helper function.
+    * Refactoring, e.g. replacing 20 lines of redundant code with a call to a helper function.
         * (__Why?__ A reviewer would consider whether the helper is truly equivalent, better, or worse.)
     * Fix a typo in a *symbol* (PHP class-name, PHP function-name, HTML field name, etc).
         * (__Why?__ A reviewer would consider dangling references to the symbol.)
     * Change the general wording of a help dialog or menu item.
         * (__Why?__ A reviewer would consider impact on the user's comprehension.)
-    * Alter the substance of an existing unit-test.
+    * Add or alter an existing unit-test.
         * (__Why?__ A reviewer would consider whether the change improves the correctness of the test.)
+    * Update annotations in a PHP doc block.
+        * (__Why?__ Some annotations affect functionality, e.g. the `@required` annotation on an APIv4 param.)
     * Alter the build process.
         * (__Why?__ A reviewer would consider whether the new build will work correctly.)
 
