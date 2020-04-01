@@ -147,6 +147,7 @@ This is an overview list of all available hooks, listed by category.
 
 * **[hook_civicrm_alterBadge](/hooks/hook_civicrm_alterBadge.md)** - allows you to modify the content and format of name badges.
 * **[hook_civicrm_alterBarcode](/hooks/hook_civicrm_alterBarcode.md)** - allows you to modify the content that is encoded in barcode.
+* **[hook_civicrm_alterExternUrl](/hooks/hook_civicrm_alterExternUrl.md)** - allows you to modify extern urls such as click tracking, tracked opens urls.
 * **[hook_civicrm_alterLogTables](/hooks/hook_civicrm_alterLogTables.md)** - allows you to amend the specification of the log tables to be created when logging is turned on.
 * **[hook_civicrm_alterMailingLabelParams](/hooks/hook_civicrm_alterMailingLabelParams.md)** - called to alter the parameters used to generate mailing labels.
 * **[hook_civicrm_alterPaymentProcessorParams](/hooks/hook_civicrm_alterPaymentProcessorParams.md)** - allows you to modify parameters passed to the payment processor.
