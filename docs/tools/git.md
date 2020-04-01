@@ -235,13 +235,17 @@ $ git checkout upstream/master -b mail-111
 
 When creating a new branch, you should explicitly declare a starting point.
 
-Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, or *Stable* branch. The table below summarizes the policies for each branch.
+Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate* (RC), or *Stable* branch. The table below summarizes the policies for each branch.
 
 | Name | Git branch (example) | Version number (example) | Acceptable patches |
 | --- | ---- | --- | --- |
 | Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
 | Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
-| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
+| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. This is usually only done by the project maintainers. Make your PR against the RC instead and they will backport if necessary. |
+
+If you are unsure about which is the current RC or master branch, you can refer to https://download.civicrm.org/latest/, and look at the numbers in brackets to the right of the filename, e.g. if you see `civicrm-RC-drupal.tar.gz (5.24.beta1-...)` it means the current release candidate branch is the 5.24 branch.
+
+Don't make multiple PRs against multiple branches for the same thing even if the bug is present in both versions, e.g. both the RC and master. Consult the table above and just pick one branch.
 
 ### Committing {:#committing}
 
