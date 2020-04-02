@@ -25,7 +25,8 @@ In addition there are some functional fields that affect how Sales Taxes are cal
 
 Use this field to indiciate whether a financial type is tax deductible for Income Tax purposes:
 * is_deductible 
-[note: CiviCRM itself does not calculate Charitable Tax Receipts - but extension like https://civicrm.org/extensions/cdn-tax-receipts do]
+!!! note
+CiviCRM itself does not calculate Charitable Tax Receipts - but extensions like [CDN Tax Receipts](https://civicrm.org/extensions/cdn-tax-receipts) do.
 
 ![Example financial accounts](/img/financial/FinancialAccount.png)
 
