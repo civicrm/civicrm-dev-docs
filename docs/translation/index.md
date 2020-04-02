@@ -99,7 +99,21 @@ The general rules for avoiding errors may be summed up like this:
     ```smarty
     <p>{ts}Hello, world!{/ts}</p>
     ```
-    
+
+Hyperlinks within larger blocks of text are an exception to this rule, where you should place the `<a>` tags within the `ts`. Any link parameters should be provided as arguments to the ts. For example:
+
+!!! failure "Bad"
+
+    ```smarty
+    {ts}Here is a block of text with a link to the <a href="https://www.civicrm.org" target="_blank">CiviCRM Web Site</a>.{/ts}
+    ```
+
+!!! success "Less bad"
+
+    ```smarty
+    {ts 1='href="https://www.civicrm.org" target="_blank"'}Here is a block of text with a link to the <a %1>CiviCRM Web Site</a>.{/ts}
+    ```
+
 ### Avoid multi-line strings
 
 Even if your code editor may not like it, long strings should be on a single line since a change in indentation might change where the line breaks are, which would then require re-translating the string.
