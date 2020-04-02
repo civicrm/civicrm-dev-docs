@@ -19,9 +19,6 @@ This hook is used to add or modify display columns and filters.
 ## Returns
 
 -   null
-
-markdown_extensions:
-  - markdown.extensions.admonition
   
 !!! note "Performance Considerations"
 It is often more performant to change the report query on $varType == 'sql' than
