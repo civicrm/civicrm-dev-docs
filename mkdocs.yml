@@ -192,6 +192,7 @@ pages:
     - hook_civicrm_alterPaymentProcessorParams: hooks/hook_civicrm_alterPaymentProcessorParams.md
     - hook_civicrm_alterSettingsFolders: hooks/hook_civicrm_alterSettingsFolders.md
     - hook_civicrm_alterSettingsMetaData: hooks/hook_civicrm_alterSettingsMetaData.md
+    - hook_civicrm_alterUFFIelds: hooks/hook_civicrm_alterUFFields.md
     - hook_civicrm_angularModules: hooks/hook_civicrm_angularModules.md
     - hook_civicrm_apiWrappers: hooks/hook_civicrm_apiWrappers.md
     - hook_civicrm_buildAsset: hooks/hook_civicrm_buildAsset.md
