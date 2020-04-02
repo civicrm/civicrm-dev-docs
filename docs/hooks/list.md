@@ -69,6 +69,7 @@ This is an overview list of all available hooks, listed by category.
 ## GUI Hooks
 
 * **[hook_civicrm_activeTheme](/hooks/hook_civicrm_activeTheme.md)** - The activeTheme hook determines which theme is active.
+* **[hook_civicrm_alterCustomFieldDisplayValue](/hooks/hook_civicrm_alterCustomFieldDisplayValue.md)** - allows modification of custom field value for an entity eg Individual, Contribution etc before its displayed on screen. This might be useful if you want to alter the value of the custom field that's being displayed on the screen based on some condition.
 * **[hook_civicrm_alterEntityRefParams](/hooks/hook_civicrm_alterEntityRefParams.md)** - called when an `entityRef` field is rendered in a form, which allows you to modify the parameters used to fetch options for this kind of field.
 * **[hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md)** - called when building CiviCRM's list of HTTP routes and should be used when you want to register custom paths or URLS.
 * **[hook_civicrm_buildAmount](/hooks/hook_civicrm_buildAmount.md)** - called when building the amount structure for a Contribution or Event Page, allowing you to modify the set of radio buttons representing amounts for contribution levels and event registration fees.
@@ -146,6 +147,7 @@ This is an overview list of all available hooks, listed by category.
 
 * **[hook_civicrm_alterBadge](/hooks/hook_civicrm_alterBadge.md)** - allows you to modify the content and format of name badges.
 * **[hook_civicrm_alterBarcode](/hooks/hook_civicrm_alterBarcode.md)** - allows you to modify the content that is encoded in barcode.
+* **[hook_civicrm_alterExternUrl](/hooks/hook_civicrm_alterExternUrl.md)** - allows you to modify extern urls such as click tracking, tracked opens urls.
 * **[hook_civicrm_alterLogTables](/hooks/hook_civicrm_alterLogTables.md)** - allows you to amend the specification of the log tables to be created when logging is turned on.
 * **[hook_civicrm_alterMailingLabelParams](/hooks/hook_civicrm_alterMailingLabelParams.md)** - called to alter the parameters used to generate mailing labels.
 * **[hook_civicrm_alterPaymentProcessorParams](/hooks/hook_civicrm_alterPaymentProcessorParams.md)** - allows you to modify parameters passed to the payment processor.

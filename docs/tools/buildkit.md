@@ -75,22 +75,9 @@ More information is in the Readme: https://github.com/michaelmcandrew/civicrm-bu
 
 ### Generic {:#other-platforms}
 
-You may install buildkit in other environments. The main pre-requisites are:
+You may download buildkit in an existing Unix-style environment if it meets the [system requirements](/basics/requirements.md).
 
-* Linux or OS X
-* Git
-* PHP 5.6+ (7.2+ recommended), including the following extensions: `bcmath curl gd gettext imap intl imagick json mbstring openssl pdo_mysql phar posix soap zip`
-* NodeJS 8+
-* NPM
-
-[amp](https://github.com/totten/amp) and [civibuild](/tools/civibuild.md) also require:
-
-* Apache 2.2 or 2.4, including the `mod_rewrite` module and, on SUSE, possibly `mod_access_compat` (This list may not be exhaustive.)
-* MySQL 5.5+ (5.7+ recommended), including both client and server
-
-All pre-requisites must support command-line access using the standard command names (`git`, `php`, `node`, `mysql`, `mysqldump`, etc). In some environments, you may need to enable these commands by configuring `PATH` -- this is especially true for MAMP, XAMPP, and other downloaded packages. (See, e.g., [Setup Command-Line PHP](/standards/php.md).)
-
-Once the pre-requisites are met, download buildkit to `~/buildkit`:
+Simply clone the `civicrm-buildkit.git` repo and run `civi-download-tools`, as in:
 
 ```bash
 $ git clone https://github.com/civicrm/civicrm-buildkit.git ~/buildkit
@@ -98,6 +85,17 @@ $ cd ~/buildkit
 $ ./bin/civi-download-tools
 ```
 
+In the above example, all tools are downloaded under `~/buildkit`.
+
+!!! tip "Evaluating system requirements"
+
+    When using the generic steps, a primary consideration will be meeting the [system requirements](/basics/requirements.md).
+    It is common for personal/bespoke environments to have a couple of issues meeting these requirements.
+
+    `civi-download-tools` will attempt to identify and report common issues (such as missing/unknown commands).
+
+    For purposes of this developer documentation, we will assume that *one* development environment (host or VM or container) meets *all* system requirements.
+    This is not strictly required - as CiviCRM can be used in distributed deployments - but the constraint allows simpler workflows and documentation.
 
 ## Post-install configuration {:#config}
 
@@ -253,7 +251,7 @@ There are no specific installer steps for macOS but Buildkit itself is fully usa
  Version | Codename | Release Date | EoL Date | Buildkit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------------- |
 19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
-18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 |
+18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 <sup>&#x2705;</sup> |
 18.04 | Bionic Beaver | April 2018 | April 2023 | October 2023 |
 17.10 | Artful Aardvark | October 2017 | July 2018 <sup>&#x1F534;</sup> | January 2019 <sup>&#x2705;</sup> |
 17.04 | Zesty Zapus<sup>*</sup> | April 2017 | January 2018 <sup>&#x1F534;</sup> | July 2018 <sup>&#x2705;</sup> |

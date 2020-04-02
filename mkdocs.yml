@@ -61,7 +61,7 @@ pages:
     - APIv4 Custom Data: api/v4/custom-data.md
     - APIv4 Architecture: api/v4/architecture.md
     - Differences Between Api v3 and v4: api/v4/differences-with-v3.md
-    - APIv4 Changes: api/v4/changes.md
+    - APIv4 Changelog: api/v4/changes.md
   - APIv3:
     - APIv3 Usage: api/v3/usage.md
     - APIv3 Actions: api/v3/actions.md
@@ -70,9 +70,10 @@ pages:
     - APIv3 Chaining: api/v3/chaining.md
     - APIv3 Custom Data: api/v3/custom-data.md
     - APIv3 Examples: api/v3/examples.md
-    - APIv3 Changes: api/v3/changes.md
+    - APIv3 Changelog: api/v3/changes.md
 - Hooks:
   - Hooks Introduction: hooks/index.md
+  - Hooks Changelog: hooks/changes.md
   - Usage:
     - Hooks in Extensions: hooks/usage/extension.md
     - Hooks in Symfony: hooks/usage/symfony.md
@@ -123,6 +124,7 @@ pages:
     - hook_civicrm_validateForm: hooks/hook_civicrm_validateForm.md
   - GUI Hooks:
     - hook_civicrm_activeTheme: hooks/hook_civicrm_activeTheme.md
+    - hook_civicrm_alterCustomFieldDisplayValue: hooks/hook_civicrm_alterCustomFieldDisplayValue.md
     - hook_civicrm_alterEntityRefParams: hooks/hook_civicrm_alterEntityRefParams.md
     - hook_civicrm_alterMenu: hooks/hook_civicrm_alterMenu.md
     - hook_civicrm_buildAmount: hooks/hook_civicrm_buildAmount.md
@@ -184,6 +186,7 @@ pages:
   - Uncategorized Hooks:
     - hook_civicrm_alterBadge: hooks/hook_civicrm_alterBadge.md
     - hook_civicrm_alterBarcode: hooks/hook_civicrm_alterBarcode.md
+    - hook_civicrm_alterExternUrl: hooks/hook_civicrm_alterExternUrl.md
     - hook_civicrm_alterLogTables: hooks/hook_civicrm_alterLogTables.md
     - hook_civicrm_alterMailingLabelParams: hooks/hook_civicrm_alterMailingLabelParams.md
     - hook_civicrm_alterPaymentProcessorParams: hooks/hook_civicrm_alterPaymentProcessorParams.md
@@ -241,7 +244,6 @@ pages:
     - AngularJS File Names: framework/angular/files.md
     - AngularJS Loader: framework/angular/loader.md
     - AngularJS Changesets:  framework/angular/changeset.md
-  - API Architecture: framework/api-architecture.md
   - Asset Builder: framework/asset-builder.md
   - Bootstrap Process: framework/bootstrap.md
   - Backbone Reference: framework/backbone.md
@@ -264,6 +266,12 @@ pages:
   - Routing: framework/routing.md
   - Resources Reference: framework/resources.md
   - Setting Reference: framework/setting.md
+  - Setup Reference:
+    - Overview: framework/setup/index.md
+    - Getting Started: framework/setup/getting-started.md
+    - New Installer: framework/setup/new-installer.md
+    - New Plugin: framework/setup/new-plugin.md
+    - Manage Plugins: framework/setup/plugins.md
   - Template Reference:
     - Templates: framework/templates/index.md
     - Customizing Templates: framework/templates/customizing.md

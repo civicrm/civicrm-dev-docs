@@ -47,11 +47,7 @@ You can now update your `info.xml`. This file initially contains some examples a
 
 Now that you have created your extension, you need to activate it by navigating to:
 
-**Administer » System Settings » Manage Extensions**
-
-or
-
-**Administer » Customize Data and Screens » Manage Extensions.**
+**Administer » System Settings » Extensions**
 
 For more detailed instructions, see [Extensions](/extensions/index.md).
 
@@ -504,7 +500,7 @@ When calling the API, follow these rules:
 For example: `cv api NewEntity.newaction`  `civicrm_api3('NewEntity', 'newaction')`
     
 !!! tip
-    Read more about the [API architecture](/framework/api-architecture.md) for help writing your custom API.
+    Read more about [APIv4 architecture](/api/v4/architecture.md) for help writing custom APIv4 implementations.
 
 ### Add a unit-test class {:#generate-test}
 

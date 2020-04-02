@@ -124,17 +124,19 @@ Here are some examples and counter-examples of NFC:
     * Modify whitespace in PHP code.
     * Update a code comment.
     * Fix a typo or grammatical error in a help dialog.
-    * (*Maybe*) Add a new unit-test where there was no coverage before.
+    * (*Maybe*) Add a new unit-test where there was no coverage before (see below).
+    * (*Maybe*) Update a PHP doc block (see below).
 * _Functional Change_:
-    * Refactoring
-    * Replace 20 lines of redundant code with a call to a helper function.
+    * Refactoring, e.g. replacing 20 lines of redundant code with a call to a helper function.
         * (__Why?__ A reviewer would consider whether the helper is truly equivalent, better, or worse.)
     * Fix a typo in a *symbol* (PHP class-name, PHP function-name, HTML field name, etc).
         * (__Why?__ A reviewer would consider dangling references to the symbol.)
     * Change the general wording of a help dialog or menu item.
         * (__Why?__ A reviewer would consider impact on the user's comprehension.)
-    * Alter the substance of an existing unit-test.
+    * Add or alter an existing unit-test.
         * (__Why?__ A reviewer would consider whether the change improves the correctness of the test.)
+    * Update annotations in a PHP doc block.
+        * (__Why?__ Some annotations affect functionality, e.g. the `@required` annotation on an APIv4 param.)
     * Alter the build process.
         * (__Why?__ A reviewer would consider whether the new build will work correctly.)
 
@@ -233,13 +235,17 @@ $ git checkout upstream/master -b mail-111
 
 When creating a new branch, you should explicitly declare a starting point.
 
-Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, or *Stable* branch. The table below summarizes the policies for each branch.
+Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate* (RC), or *Stable* branch. The table below summarizes the policies for each branch.
 
 | Name | Git branch (example) | Version number (example) | Acceptable patches |
 | --- | ---- | --- | --- |
 | Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
 | Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
-| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
+| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. This is usually only done by the project maintainers. Make your PR against the RC instead and they will backport if necessary. |
+
+If you are unsure about which is the current RC or master branch, you can refer to https://download.civicrm.org/latest/, and look at the numbers in brackets to the right of the filename, e.g. if you see `civicrm-RC-drupal.tar.gz (5.24.beta1-...)` it means the current release candidate branch is the 5.24 branch.
+
+Don't make multiple PRs against multiple branches for the same thing even if the bug is present in both versions, e.g. both the RC and master. Consult the table above and just pick one branch.
 
 ### Committing {:#committing}
 

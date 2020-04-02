@@ -99,7 +99,7 @@ The general rules for avoiding errors may be summed up like this:
     ```smarty
     <p>{ts}Hello, world!{/ts}</p>
     ```
-
+    
 For `title` attributes in `<a>` links, within CiviCRM these usually only appear in links that aren't within a larger block of text or where there is no clickable text, such as a datepicker icon. In this situation, the title text needs to be translated:
 
 !!! failure "Bad"

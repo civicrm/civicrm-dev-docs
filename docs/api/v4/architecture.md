@@ -4,7 +4,7 @@
 
 ## API Entity Classes
 
-Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEntity`]((https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php)). Each class serves two purposes:
+Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEntity`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php). Each class serves two purposes:
 
 1.  Declare the API entity by its existance.
     - You can declare a new API (e.g. FooBar) simply by placing the class `\Civi\Api4\FooBar` in the `/Civi/Api4` directory of your extension, as long as it inherits from `\Civi\Api4\Generic\AbstractEntity`.
@@ -13,7 +13,7 @@ Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEnt
 
 ## API Action Classes
 
-Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAction`]((https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php)). It has two functions:
+Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAction`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php). It has two functions:
 
 1.  Store the parameters of the API call.
     - Every `protected` class var is considered a parameter (unless it starts with an underscore).
@@ -26,7 +26,7 @@ Every API action is a class which inherits from [`\Civi\Api4\Generic\AbstractAct
 
 2.  Define a `_run()` function to execute the call and return the results.
     - The `_run()` function is invoked by `execute()`
-    - It gets passed a `Result` object into which it places an array of values from whatever logic it executes.
+    - It gets passed a `Result` object into which it places an array of values to be returned.
     
 ## The Result Class
 
@@ -84,7 +84,7 @@ class Website extends Generic\DAOEntity {
   </tbody>
 </table>
 
-These are typical CRUD APIs using generic functions to perform actions on the `civicrm_website` table.
+*Website* is a typical CRUD API using generic functions to perform actions on the `civicrm_website` table.
 The v3 file needed a function for each action, resulting in a lot of duplicate code across API files.
 By taking advantage of class inheritance, APIv4 reduces this boilerplate to nothing; factory functions for the standard set of actions are inherited from `Civi\Api4\Generic\DAOEntity`.
 
@@ -93,11 +93,11 @@ By taking advantage of class inheritance, APIv4 reduces this boilerplate to noth
 
 ![Entity Inheritance Diagram](/img/APIv4-entity-inheritance.svg)
 
-There are two categories of APIv4 entities: "standard" (aka DAO) entities, and ad-hoc entities.
+There are two categories of APIv4 entities: *standard* (aka DAO) entities, and *ad-hoc* entities.
 
-- Standard entities correspond to a database table and `DAO` class. E.g. the *Contact* API entity corresponds to the
-`CRM_Conatact_DAO_Contact` entity and the `civicrm_contact` database table. These classes extend from `Civi\Api4\Generic\DAOEntity` and thus inherit the standard set of DAO actions. 
-- Ad-hoc entities extend the [`\Civi\Api4\Generic\AbstractEntity`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php) class directly. They have the flexibility to implement any actions, using any datasource.
+- **Standard entities** correspond to a database table and `DAO` class. E.g. the *Contact* API entity corresponds to the
+`CRM_Conatact_DAO_Contact` class and the `civicrm_contact` database table. They extend from `Civi\Api4\Generic\DAOEntity` and thus inherit the standard set of DAO actions. 
+- **Ad-hoc entities** extend the [`\Civi\Api4\Generic\AbstractEntity`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php) class directly. They have the flexibility to implement any actions, using any datasource.
   They are not required to implement any action except `GetFields`.
   See the [APIv4 example extension](https://lab.civicrm.org/extensions/api4example/) for a working demonstration.
   
@@ -122,30 +122,40 @@ The Get action uses schema metadata to query the database and perform joins with
 
 In most cases the action classes are used as-is, but it's also possible to override a DAO action to add/modify parameters or functionality.
 
-It is also possible to add other ad-hoc actions to any entity.
+It is also possible to add other ad-hoc actions to any entity;
+e.g. [`getChecksum`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Action/Contact/GetChecksum.php) is an ad-hoc action added to the Contact entity.
 
-### Basic (ad-hoc) Actions
+### Building Your Own Actions
+
+You can add arbitrary actions to any entity simply by defining a class which extends [`AbstractAction`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php)
+or one of the Basic actions.
+
+#### AbstractAction
+
+[**`AbstractAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php)
+is the base class for all API actions. Every action must, at minimum, extend this class.
+For example, the [`Example::random()`]() action extends this class directly.
+Your custom action will define parameters as protected class properties, and implement a `_run` function to execute the action.
+
+Before extending `AbstractAction` directly, consider if your action could benefit from the features provided by one of the Basic actions:
+
+#### Basic Actions
 
 These classes provide a framework for building custom API actions. 
 See the [Example entity](https://lab.civicrm.org/extensions/api4example/) for a working demonstration.
 
-Each basic action is implemented by supplying a callback function to perform logic and return data,
-and the basic action handles details like validating param input and formatting & filtering the result.
-They are designed to be used in 1 of 2 ways:
+Each basic action is implemented by supplying a callback function to perform logic and return data;
+the basic action class handles details like validating param input and formatting & filtering the result.
+
+Basic Actions are designed to be used in 1 of 2 ways:
 
 1. Your Entity's action function can construct the basic action directly, passing the callback into the constructor.
 2. You can override the basic action class (e.g. for customizing the parameters). See [`Example::create()`](https://lab.civicrm.org/extensions/api4example/blob/master/Civi/Api4/Action/Example/Create.php).
 
-- [**`AbstractAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php):
-  The base class for all API actions. Every action must, at minimum, extend this class.
-  For example, the [`Example::random()`]() action extends this class directly.
-  Before doing so, however, consider if your action could benefit from the features provided by one of the Basic actions:
-
 - [**`BasicGetAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/BasicGetAction.php):
   Used to build actions whose purpose is fetching records. Parameters are `select`, `where`, `offset`, `limit`, and `orderBy`.
-  It includes a sophisticated array-query engine that takes the raw data returned by your callback and filters/sorts it according to the parameters.
-  Your callback does not need to be concerned with any of that and can simply return an array of all records.
-  If performance is a concern, the functions `_itemsToGet()` and `_isFieldSelected()` can help you optimize your callback to only return results that are actually called for.
+  Its built-in array-query engine automatically filters/sorts the raw data returned by your callback according to the parameters.
+  Normally your callback can simply return an array of all existing records, but if performance is a concern, the functions `_itemsToGet()` and `_isFieldSelected()` can help you optimize your callback to only return results that are needed.
   
 - [**`BasicCreateAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/BasicCreateAction.php): 
   Used to create a new record. Parameters are `values`. Values will be passed into the callback via `writeRecord`, or you can override the `writeRecord` method in your custom create class.
@@ -169,3 +179,6 @@ They are designed to be used in 1 of 2 ways:
 - [**`BasicReplaceAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/BasicReplaceAction.php): 
   Used to replace a set of records. Parameters are `records`, `default`, `reload`, `where`, `offset`, `limit`, and `orderBy`.
   Internally calls `Get` to obtain records and `Save` to write them, so your entity must implement those actions.
+  
+- [**`BasicGetFieldsAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/BasicGetFieldsAction.php): 
+  Metadata action returns a list of fields for your entity.
