@@ -71,6 +71,7 @@ pages:
     - APIv3 Custom Data: api/v3/custom-data.md
     - APIv3 Examples: api/v3/examples.md
     - APIv3 Changelog: api/v3/changes.md
+    - WordPress REST Interface: api/v3/wp-rest.md
 - Hooks:
   - Hooks Introduction: hooks/index.md
   - Hooks Changelog: hooks/changes.md
