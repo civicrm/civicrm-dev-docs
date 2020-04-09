@@ -44,7 +44,15 @@ Message templates that need upgrading should be declared under `CRM_Upgrade_Incr
 
 ## Tips: Prefer simple SQL semantics over API/BAO/DAO
 
-When writing upgrade steps in PHP its preferable to use direct sql queries rather than relying on BAOs and DAOs as they may change between versions. Whereas writing SQL is more rigorous. Further it is preferable to write SQL statements especially if it involves adding or removing columns, indexes from database tables. There are helper functions such as `CRM_Core_BAO_SchemaHandler::dropIndexIfExists()`, `CRM_Upgrade_Form::addColumn()`, `CRM_Upgrade_Form::dropColumn()`. These helper functions don't depend on version specific business logic and also help protect against hard database fails by checking if what your trying to add or drop exists already.
+When writing upgrade steps in PHP, it's preferable to use lower-level SQL semantics rather than higher-level services (eg metadata, public APIs, BAOs, DAOs). Higher-level services are more complex and often have indirect dependencies; thus, higher-level services are more likely to fail in future upgrade environments. Lower-level SQL tends to provide a more reliable upgrade path.
+
+The upgrader may use basic SQL APIs (eg `CRM_Core_DAO::executeQuery()` and `CRM_Utils_SQL*`). Additionally, there are several SQL-oriented helper functions specifically for common upgrade tasks, e.g.
+
+* `CRM_Upgrade_Form::addColumn()`
+* `CRM_Upgrade_Form::dropColumn()`
+* `CRM_Core_BAO_SchemaHandler::dropIndexIfExists()`
+
+Compared to raw SQL, these SQL helper functions reduce unnecessary upgrade failures for early-adopters who previously applied a backport or pre-release patch.
 
 ## Tip: Write upgrades in small chunks
 
