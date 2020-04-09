@@ -135,7 +135,7 @@ function donortrends_civicrm_navigationMenu(&$params) {
       'parentID' => $reportID,
       'navID' => $navId,
       'active' => 1,
-      'attr' => ['target' => '_blank'],   // if you want to open this menu link in a new page, then add '_target' attribute
+      'attr' => ['target' => '_blank'],
     ),
   );
 }
