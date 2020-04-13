@@ -4,7 +4,7 @@ site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
 theme: material
 
-pages:
+nav:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md
