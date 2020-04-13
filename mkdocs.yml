@@ -2,7 +2,29 @@ site_name: Developer Guide
 repo_url: https://github.com/civicrm/civicrm-dev-docs
 site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
-theme: material
+theme: 
+  name: material
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      guess_lang: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.superfences:
+      css_class: codehilite
+  - pymdownx.inlinehilite:
+      css_class: codehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
 
 nav:
 - Home: index.md
@@ -298,25 +320,4 @@ nav:
   - Documenting Extensions: documentation/extensions.md
   - Markdown: documentation/markdown.md
   - Style Guide: documentation/style-guide.md
-
-
-markdown_extensions:
-  - attr_list
-  - admonition
-  - def_list
-  - toc:
-      permalink: true
-  - pymdownx.highlight:
-      guess_lang: true
-      extend_pygments_lang:
-        - name: php
-          lang: php
-          options:
-            startinline: true
-  - pymdownx.superfences:
-      css_class: codehilite
-  - pymdownx.inlinehilite:
-      css_class: codehilite
-  - pymdownx.tilde
-  - pymdownx.betterem
-  - pymdownx.mark
+  
