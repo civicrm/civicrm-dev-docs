@@ -45,10 +45,7 @@ CiviCRM's Contribution and Event pages are obvious users of your extended `CRM_C
 
 ## Introducing `PropertyBag` objects
 
-Currently as of 5.19 `$params` is a sprawling array with who-knows-what keys. From 5.21, a better way is to pass in a `Civi\Payment\PropertyBag` object instead.
-
-!!! danger "todo"
-    update 5.21 to actual value
+Currently as of CiviCRM v5.24 `$params` is a sprawling array with who-knows-what keys. However, we are moving to a more prescriptive, typed way to pass in parameters by using a `Civi\Payment\PropertyBag` object instead of an array.
 
 This object has getters and setters that enforce standardised property names and a certain level of validation and type casting. For example, the property `contactID` (note capitalisation) has `getContactID()` and `setContactID()`.
 
@@ -84,10 +81,10 @@ This means the value is still validated and type-cast as an amount (in this exam
 
 ### Custom payment processor-specific data
 
-!!! danger "todo"
-    This is not yet implemented in core.
+!!! warning "Warning"
+    This is currently holding back a fuller adoption of PropertyBag.
 
-Sometimes a payment processor will requrie custom data. e.g. A company called <em>Stripe</em> offers payment processing gateway services with its own API which requires some extra parameters called `paymentMethodID` and `paymentIntentID` parameters - these are what that particular 3rd party requires and separate to anything in CiviCRM (CiviCRM also uses the concept of "payment methods" and these have IDs, but here we're talking about something Stripe needs).
+Sometimes a payment processor will requrie custom data. e.g. A company called <em>Stripe</em> offers payment processing gateway services with its own API which requires some extra parameters called `paymentMethodID` and `paymentIntentID` - these are what that particular 3rd party requires and separate to anything in CiviCRM (CiviCRM also uses the concept of "payment methods" and these have IDs, but here we're talking about something Stripe needs).
 
 In order for us to be able to implement the `doPayment()` method for Stripe, we'll need data for these custom, bespoke-to-the-third-party parameters passing in, via the `PropertyBag`.
 
@@ -95,102 +92,16 @@ So that any custom, non-CiviCRM data is handled unambiguously, these property na
 
 The payment class is responsible for validating such data; anything is allowed by `setCustomProperty`, including `NULL`.
 
-Where support for custom properties is needed for a method, e.g. `doPayment()`, you should implement a method as follows. This example assumes that the third party requires a special parameter called `paymentIntentID` - your payment processor might require one called `customerToken`, `destinationAccountID`, `looksFriendlyButErodesDemocracyCode` or anything else - here we use `paymentIntentID` as a real world example from Stripe.
+**However**, payment classes are rarely responsible for passing data in, this responsibility is for core and custom implementations. Core's contribution forms and other UIs need a way to take the data POSTed by the forms, and arrange it into a standard format for payment classes. They will also have to pass the rest of the data to the payment class so that the payment class can extract and validate anything that is bespoke to that payment processor; i.e. only Stripe is going to know to expect a `paymentMethodID` in this data because this does not exist for other processors. **As of 5.24, this does not exist** and data is still passed into a PropertyBag as an array, which means that unrecognised keys will be added as custom properties, but emit a deprecation warning in your logs.
 
-```php
-<?php
-use Civi\Payment\PropertyBag;
-use Civi\Payment\Exception\PaymentProcessorException;
+Best practice right now would be to:
 
-class CRM_Core_Payment_MyExtension extends CRM_Core_Payment {
-...
-  /**
-   * Copy our custom properties from the form data.
-   *
-   * @param PropertyBag
-   * @param Array form values
-   * @param String $component as for doPayment()
-   */
-  public function extractCustomPropertiesForDoPayment(PropertyBag $propertyBag, Array $input, $component = 'contribute') {
+- use PropertyBag getters for the data you want, whether that's a core field or use `getCustomProperty` for anything else.
 
-    // In our example, we require a paymentIntentID is collected by the form
-    // (we will have made this available elsewhere in our code, e.g. by injecting
-    // javascript into the form)
-    if (empty($input['paymentIntentID'])) {
-      throw new PaymentProcessorException("paymentIntentID missing");
-    }
-    // (possible validation of the value goes here since it could be malicious)
-
-    // Now store this special custom property on the property bag for use by us in doPayment
-    $propertyBag->setCustomProperty( 'stripe_paymentIntentID', $input['paymentIntentID']);
-
-    // Following our example of Stripe, the third party might require a parameter called
-    // paymentMethodID but only if we don't have a paymentMethodID - this logic is dictated
-    // by the third party API, and is included here just as an example. We can store this on
-    // another prefixed custom property, if it's set/needed:
-    if (!empty($input['paymentMethodID'])) {
-      $propertyBag->setCustomProperty( 'stripe_paymentMethodID', $input['paymentMethodID']);
-    }
-  }
-  ...
-}
-```
-
-
-## The `doPayment()` method
-
-`doPayment()` will be called with the following data on the `PropertyBag` in `$params`:
-
-- `contactID`
-- `contributionID` (See [dev/financial#53](https://lab.civicrm.org/dev/financial/issues/53))
-- `amount` e.g. *1.23*
-- `isRecur`
-- `email` A billing address *foo@example.com* that should be used by the external processor (if it uses it at all)
-
-!!! danger
-    The following is a proposal
-
-
-I propose that the following changes are made throughout core: old: `$paymentProcessor->doPayment($params);` new:
-
-```php
-<?php
-$propertyBag = $this->getPropertyBagFromFormData($params);
-$paymentProcessor->extractCustomPropertiesForDoPayment($propertyBag, $params, 'contribute');
-$result = $paymentProcessor->doPayment($propertyBag, 'contribute');
-```
-
-Where `getPropertyBagFromFormData()` deals with all the `setAmount()` etc. as needed, and also handles all the quick-form-specific logic - e.g. getting the correct billing email (see MJWShared trait for example).
+- where your processor requires adding in custom data to the form, prefix it with your extension's name to avoid ambiguity with core fields. e.g. your forms might use a field called `myprocessor_weirdCustomToken` and you would access this via `$propertyBag->getCustomProperty('myprocessor_weirdCustomToken)`.
 
 ----------------------------
 **stop reading here, not done the rest yet.**
-
-
-### Responsibilities
-
-When (attempting) to take a payment:
-
-- When creating a recurring contribution, provide `trxn_id`, `invoice_id`, `processor_id` and `payment_token_id` if/where needed.
-- When attempting to take payment, or when recording a payment result (IPN), provide `trxn_id`, `invoice_id`, `total_amount`, `fee_amount`
-- On recurring payments, it is responsible for managing the following:
-   - `start_date`
-   - `modified_date` ??? Seems confusing between "last time payment received" (in schema xml) but should it be when, e.g. the amount was last changed?
-   - `failure_count`. Number of failed charge attempts since last success. Business rule could be set to deactivate on more than x failures.
-   - `failure_retry_date`
-   - `contribution_status_id`
-   - `next_sched_contribution_date`
-
-
-## Outline of payment processes
-
-1. (If recurring:) Create a Recurring Contribution record
-2. Create a Contribution record and related entities (the recurring record, memberships, events etc.) or "Order" object with status *Pending*
-3. Take, or attempt to take, the payment using the payment processor
-4. Create a Payment for the Contribution. CiviCRM will then complete the Order/Contribution, setting the contribution's status to *Completed* and triggering updates on any related entities.
-
-(UNCLEAR:) Later on, in the case of a recurring contribution, the payment processor may be involved to trigger taking a payment, or your extension's IPN code will be used to process a repeat transaction.
-
-Pre CiviCRM 5.(WHAT?) this process used `Contribution.transact`, `Contribution.completeTransaction`, `Contribution.repeatTransaction` but from CiviCRM 5.(WHAT?) these should be replaced.
 
 ## IDs galore
 
@@ -198,15 +109,15 @@ There are lots of different mostly string IDs used throughout the process.
 
 ### ContributionRecur IDs
 
-Where an ID **is bold** it is expected to, or might be, provided by your payment processor. Everything else should be handled by CiviCRM.
+Where an ID has a \* by it, the ID, it's up to your payment processor to provide this (if relevant). Everything else should be handled by CiviCRM.
 
 - `id` integer ID, the primary key for the `civicrm_contribution_recur` table.
 - `payment_processor_id` integer ID, foreign key to `civicrm_payment_processor.id` which stores the configuration data for the payment processor. Not to be confused with the next item...
-- **`processor_id`** string provided by the third party to uniquely identify this recurring payment. Many third parties might provide a *subscription ID* which might be suitable. CiviCRM does not use this internally but it may be useful to payment processors to match a recurring contribution record to the relevant object of the third party's API.
-- **`payment_token_id`** string. Optionally used to store a third party token used for administering the recurring payment arrangement.
-- **`trxn_id`** string. This is used differently by each payment processor and could be a subscription ID, bank account details, something else or not used.
-- **`invoice_id`** string. Must be unique across all ContributionRecur records. May come from the third party or be generated by your payment processor (IS THIS RIGHT?).
-- **`next_sched_contribution_date`** Next Scheduled Recurring Contribution
+- `processor_id` \* string provided by the third party to uniquely identify this recurring payment. Many third parties might provide a *subscription ID* which might be suitable. CiviCRM does not use this internally but it may be useful to payment processors to match a recurring contribution record to the relevant object of the third party's API.
+- `payment_token_id` \* string. Optionally used to store a third party token used for administering the recurring payment arrangement.
+- `trxn_id` \* string. This is used differently by each payment processor and could be a subscription ID, bank account details, something else or not used.
+- `invoice_id` \* string. Must be unique across all ContributionRecur records. May come from the third party or be generated by your payment processor (IS THIS RIGHT?).
+- `next_sched_contribution_date` \* Next Scheduled Recurring Contribution
 - `financial_type_id` integer points to one of the site's configured Contribution Types like "Donation", or "Event Fees". Payment processors should not normally have anything to do with this; it's not relevant to the third party's purposes.
 - `payment_instrument_id` integer points to one of the site's configured *Payment Methods*. **Your payment processor should normally install its own payment method**. The payment instrument for a (recurring or single) contribution is supposed to be set to the payment processor's configured payment instrument value.
 - `campaign_id` integer foreign key to a CiviCRM Campaign (if in use). The payment processor should not have much to do with this.
@@ -220,8 +131,8 @@ Where an ID **is bold** it is expected to, or might be, provided by your payment
 - `financial_type_id` integer as for recurring records.
 - `contribution_page_id` integer foreign key for payments that were generated by a CiviCRM contribution page.
 - `payment_instrument_id` integer as for recurring records.
-- **`trxn_id`** string. This is used differently by each payment processor and could be a subscription ID, account+check number, etc. Must be unique.
-- **`invoice_id`** string. Must be unique across all Contribution records. May come from the third party or be generated by your payment processor (IS THIS RIGHT?).
+- `trxn_id` \* string. This is used differently by each payment processor and could be a subscription ID, account+check number, etc. Must be unique.
+- `invoice_id` \* string. Must be unique across all Contribution records. May come from the third party or be generated by your payment processor (IS THIS RIGHT?).
 - `contribution_recur_id` integer foreign key used when this is part of a recurring contribution.
 - `address_id` Conditional foreign key to `civicrm_address.id`. We insert an address record for each contribution when we have associated billing name and address data.
 - `campaign_id` integer foreign key to a CiviCRM Campaign (if in use). The payment processor should not have much to do with this.
@@ -278,8 +189,8 @@ Checkout - the info is entered at the processors' site.
 1. Use civix to [generate an skeleton extension](../civix.md#generate-module)
 
 1. Identify the processor type {:#type}
-   
-   Read about [processor types](types.md) to find out which type you have.
+
+   Read about [processor types](/extensions/payment-processors/types.md) to find out which type you have.
 
 1. Add the processor to the database
 
@@ -295,19 +206,15 @@ Checkout - the info is entered at the processors' site.
 
     Edit your [info.xml file](../info-xml.md) and add the [typeInfo section](../info-xml.md#typeInfo) with all relevant child elements.
 
+## Example processor
 
-
-### Create the Default Payment Processor File
-
-Depending on your billing mode there are different considerations. The file
-will live in `CRM/Core/Payment` and have the same name as entered into
-your `processor_type` table.
-
+!!! warning
+    The rest of this page is not up to date and needs review. It is left here as some of it may still be helpful, but it should not be considered accurate or best practice.
 
 ### Create Initial Processing File
 
 In our example our file name is UCMPaymentCollection so the name of the
-file we are going to create is UCMPaymentCollection.php
+file we are going to create within our extension's directory is `CRM/Core/Payment/UCMPaymentCollection.php`
 
 It should have this basic template.
 
@@ -880,6 +787,9 @@ your extension with the new library.
 
 
 ## Testing Processor Plugins {:#testing}
+
+!!! warning
+    This section is still mostly valid advice but your extension should also contain a suite of PHPUnit tests that show how your code is supposed to function in all the given situations it handles.
 
 Here's some suggestions of what you might test once you have written
 your payment processor plug in.
