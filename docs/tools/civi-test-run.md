@@ -4,7 +4,7 @@
 
 ## Installation
 
-`civi-test-run` is included within [buildkit](/tools/buildkit.md).
+`civi-test-run` is included within [buildkit](tools/buildkit.md).
 
 ## Usage
 

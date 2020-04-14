@@ -9,7 +9,7 @@ This page describes the details of the documentation systems within CiviCRM and 
 
 ## When to document {:#when}
 
-If you are [contributing to core](/core/contributing.md), updating documenting along with your changes is an important step to ensure the long-term usability and maintainability of CiviCRM.
+If you are [contributing to core](core/contributing.md), updating documenting along with your changes is an important step to ensure the long-term usability and maintainability of CiviCRM.
 
 Not all changes require documentation updates. Here are some guidelines:
 
@@ -20,12 +20,12 @@ Not all changes require documentation updates. Here are some guidelines:
 !!! tip
     Try writing documentation *before* writing your code! Then you have a way to organize your thoughts and measure whether the feature works.
 
-If you are [submitting a core pull request](/tools/git.md#pr) and would like to submit accompanying doc changes, please provide comments in both pull requests for cross reference. Your docs PR will not be merged until your core PR is merged first.
+If you are [submitting a core pull request](tools/git.md#pr) and would like to submit accompanying doc changes, please provide comments in both pull requests for cross reference. Your docs PR will not be merged until your core PR is merged first.
 
 
 ## Guides in MkDocs
 
-We are using [MkDocs](http://www.mkdocs.org) to produce guides. The content for each of these guides is written in [markdown](/documentation/markdown.md), stored in text files, and hosted in a repository on GitHub. Then, the guides are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
+We are using [MkDocs](http://www.mkdocs.org) to produce guides. The content for each of these guides is written in [markdown](documentation/markdown.md), stored in text files, and hosted in a repository on GitHub. Then, the guides are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
 
 
 ### Versions
@@ -50,9 +50,9 @@ We welcome contributions, small and large, to documentation!
 
 Before diving into editing, you may find helpful information within the following resources:
 
-- [Markdown syntax](/documentation/markdown.md) - necessary (but simple) syntax to format content
-- [Markdown coding standards](/documentation/markdown.md#standards) - recommendations for markdown syntax to use
-- [Style guide](/documentation/style-guide.md) - to maintain consistent language and formatting
+- [Markdown syntax](documentation/markdown.md) - necessary (but simple) syntax to format content
+- [Markdown coding standards](documentation/markdown.md#standards) - recommendations for markdown syntax to use
+- [Style guide](documentation/style-guide.md) - to maintain consistent language and formatting
 - [Documentation chat room](https://chat.civicrm.org/civicrm/channels/documentation) - live discussion, fast (most of the time) answers to your questions
 - [Documentation mailing list](https://lists.civicrm.org/lists/info/civicrm-docs) - low traffic, mostly used for informational updates regarding documentation projects
 
@@ -121,7 +121,7 @@ The most advanced way to work on a guide is to use git to download all the markd
 
 1. View the guide locally in your browser at `http://localhost:8000`.
 
-1.  Edit the [markdown](/documentation/markdown.md) with an editor of your choice.  As you
+1.  Edit the [markdown](documentation/markdown.md) with an editor of your choice.  As you
     save your changes `mkdocs` will automatically reprocess the page and
     refresh your browser.
 
@@ -168,7 +168,7 @@ Some guides may have auto-generated content, which is summarized here.
 
 ### In the Developer Guide {:#auto-gen-dev}
 
-This Developer Guide has an automatically-generated [list of all hooks](/hooks/list.md). To re-create this list, run the following command from the root level of the repository:
+This Developer Guide has an automatically-generated [list of all hooks](hooks/list.md). To re-create this list, run the following command from the root level of the repository:
 
 ```
 ./bin/tools generate:hooks-list

@@ -121,7 +121,7 @@ foreach ($p->getRows() as $row) {
 
 ### hook_civicrm_tokens
 
-The oldest and most broadly supported way to define a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
+The oldest and most broadly supported way to define a new token is to use [hook_civicrm_tokens](hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
 
 However, these hooks have some limitations:
 

@@ -21,7 +21,7 @@ This hook is part of a general permissions refactoring which is not yet
 complete.
 
 The Contact entity is fully covered
-by [hook_civicrm_aclWhereClause](/hooks/hook_civicrm_aclWhereClause.md)
+by [hook_civicrm_aclWhereClause](hooks/hook_civicrm_aclWhereClause.md)
 and that is the recommended hook for limiting access to contacts. For
 other entities, we need to increase coverage of this hook by using the
 api internally instead of directly executing sql, and by standardizing

@@ -1,6 +1,6 @@
 # How to review a core pull request
 
-When someone [opens a pull request](/tools/git.md#pr) (aka "PR") on CiviCRM Core, it must be reviewed before we can merge it. Reviewing core PRs is a useful (and often much-needed) way of contributing to CiviCRM. You do not need any special access or merge rights. What you do need, is...
+When someone [opens a pull request](tools/git.md#pr) (aka "PR") on CiviCRM Core, it must be reviewed before we can merge it. Reviewing core PRs is a useful (and often much-needed) way of contributing to CiviCRM. You do not need any special access or merge rights. What you do need, is...
 
 * [GitHub Account](https://github.com)
 * A [CiviCRM Development Environment](https://github.com/civicrm/civicrm-buildkit/blob/master/doc/civibuild.md) (this might be optional, but good to have). One benefit is the ability to check out the PR in your environment.
@@ -94,8 +94,8 @@ An easy way to do this is:
 
 ## Write a review as a comment
 
-1. Evaluate the change against each of our [review standards](/standards/review.md) criteria.
-1. If you like, copy-paste one of the [review templates](/standards/review.md#templates) into your comment and fill out the template. 
+1. Evaluate the change against each of our [review standards](standards/review.md) criteria.
+1. If you like, copy-paste one of the [review templates](standards/review.md#templates) into your comment and fill out the template. 
     * If you choose not to use a template, then summarize your actions and findings, and recommend specific next steps (e.g. merging or otherwise).
 1. In your comment, tag [one of the active contributors](https://github.com/civicrm/civicrm-core/graphs/contributors) (e.g. `@eileenmcnaughton`) so they will see that the PR is ready for further action.
 

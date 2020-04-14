@@ -39,7 +39,7 @@ An API [`Result`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/
 
 ## Class Inheritance
 
-![Inheritance](/img/inheritance-community-chest.jpg)
+![Inheritance](img/inheritance-community-chest.jpg)
 
 To reduce code duplication and enforce consistency, APIv4 uses PHP class inheritance extensively.
 Compare these (slightly simplified) examples:
@@ -91,7 +91,7 @@ By taking advantage of class inheritance, APIv4 reduces this boilerplate to noth
 
 ### DAO vs Ad-hoc Entities
 
-![Entity Inheritance Diagram](/img/APIv4-entity-inheritance.svg)
+![Entity Inheritance Diagram](img/APIv4-entity-inheritance.svg)
 
 There are two categories of APIv4 entities: *standard* (aka DAO) entities, and *ad-hoc* entities.
 
@@ -105,7 +105,7 @@ There are two categories of APIv4 entities: *standard* (aka DAO) entities, and *
 
 To standardize parameter names and reduce code duplication, each action class inherits from an abstract parent.
 
-![Action Inheritance Diagram](/img/APIv4-action-inheritance.svg)
+![Action Inheritance Diagram](img/APIv4-action-inheritance.svg)
 
 ### DAO (standard) Actions
 

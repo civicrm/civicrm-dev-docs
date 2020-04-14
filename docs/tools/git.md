@@ -3,7 +3,7 @@
 CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid understanding of these tools (especially git) is important for developing CiviCRM. This page provides some information about *how CiviCRM uses these tools* &mdash; but, due to the wealth of resources already available elsewhere online, this page does *not* attempt to teach you everything you need know about how to use these tools for CiviCRM development.
 
 !!! tip
-    If you are new to git, a great way to get started using it within the CiviCRM community is to [contribute to documentation](/documentation/index.md). The editing workflow involves git in the same was that core coding does &mdash; but the stakes are much lower!
+    If you are new to git, a great way to get started using it within the CiviCRM community is to [contribute to documentation](documentation/index.md). The editing workflow involves git in the same was that core coding does &mdash; but the stakes are much lower!
 
 ## External resources {:#resources}
 
@@ -42,24 +42,24 @@ CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid unde
 
 Whether you are contributing to civicrm-core or an ancillary project (using GitHub or GitLab) the process generally goes somewhat like this:
 
-1. Consider [opening an issue on GitLab](/tools/issue-tracking.md#gitlab) to describe the change you'd like to make.  Not all changes need GitLab issues, but opening an issue is recommended if you are making significant changes, expect discussion, or expect your changes to be grouped into more than one [pull request](#pr).
+1. Consider [opening an issue on GitLab](tools/issue-tracking.md#gitlab) to describe the change you'd like to make.  Not all changes need GitLab issues, but opening an issue is recommended if you are making significant changes, expect discussion, or expect your changes to be grouped into more than one [pull request](#pr).
 1. Find the page on GitHub or GitLab for the project to which you would like to contribute. We will call this repository the **upstream repository**.
-1. **Clone** the upstream repository to your local machine. (If you are working on core, you should use [civibuild](/tools/civibuild.md) for this step.)
+1. **Clone** the upstream repository to your local machine. (If you are working on core, you should use [civibuild](tools/civibuild.md) for this step.)
 1. On the web page for the upstream repository, **fork** the upstream repository to your personal user account.
 1. Within your local repository **add your fork** as a second git *remote*. *[Learn more...](#remotes)*
 1. **Choose the correct base branch** in the upstream repository as the starting point for your changes. (Usually this will be `master`.) *[Learn more...](#base-branch)*
-1. (If it's been some time since you've cloned) **pull or fetch** the latest changes from the *upstream repository* into the appropriate branch of your local repository. *(You might also need to  [upgrade your civibuild site](/tools/civibuild.md#upgrade-site).)*
+1. (If it's been some time since you've cloned) **pull or fetch** the latest changes from the *upstream repository* into the appropriate branch of your local repository. *(You might also need to  [upgrade your civibuild site](tools/civibuild.md#upgrade-site).)*
 1. Create (and checkout) a **new branch** for your changes, based on the correct branch (chosen above) in the upstream repository. *[Learn more...](#branching)*
-1. Make your changes. (Take care to follow the guidelines in [contributing to core](/core/contributing.md).)
+1. Make your changes. (Take care to follow the guidelines in [contributing to core](core/contributing.md).)
 1. **Commit** your changes. *[Learn more...](#commiting)*
 1. **Push** your changes *to your fork*.
 1. **Open a pull request**. *[Learn more...](#pr)*
-1. Wait for someone else to [review your pull request](/core/pr-review.md).
+1. Wait for someone else to [review your pull request](core/pr-review.md).
 1. If you need to make more changes later, commit them on the same branch and push your new commits to your fork. The new commits the will automatically appear in the pull request.
 1. If other people commit changes to the upstream repository which create *merge conflicts* in your pull request, then **rebase** your branch. *[Learn more...](#rebasing)*
 1. Once your changes are merged, delete your local branch
 
-See also: [reviewing someone else's pull request](/core/pr-review.md)
+See also: [reviewing someone else's pull request](core/pr-review.md)
 
 
 ## Pull requests {:#pr}
@@ -89,8 +89,8 @@ When filing a pull-request, use a descriptive subject. These are good examples:
 A few elements to include:
 
  * **Acronyms** - You're welcome to use the [acronyms](#acronyms) below to flag your PR with certain characteristics.
- * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](/tools/issue-tracking.md#gitlab-reference).
- * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
+ * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](tools/issue-tracking.md#gitlab-reference).
+ * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](tools/issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
  * **Description** - Provide a brief description of what the pull-request does.
 
 ### Acronyms within PR subjects {:#acronyms}
@@ -148,7 +148,7 @@ There is no size limit for PRs as long as they are focused on completely solving
 
 ### Reviewing a pull request
 
-See [How to review a core pull request](/core/pr-review.md)
+See [How to review a core pull request](core/pr-review.md)
 
 ### Who merges pull requests? {:#pr-merge}
 

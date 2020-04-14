@@ -6,7 +6,7 @@ CiviCRM Comes with a number of standard report templates which can be useful. Ex
 
 ## Generating Report Template
 
-It is recommended that for any new CiviReport Custom templates that they be done through an Extension. Civix is the standard CiviCRM extension builder has a good tool to help generate a fair amount of the boiler plate code that is needed for a CiviCRM Report Template. See the [Civix Documentation](/extensions/civix.md#generate-report) on how to generate a generic CiviCRM Report Template. 
+It is recommended that for any new CiviReport Custom templates that they be done through an Extension. Civix is the standard CiviCRM extension builder has a good tool to help generate a fair amount of the boiler plate code that is needed for a CiviCRM Report Template. See the [Civix Documentation](extensions/civix.md#generate-report) on how to generate a generic CiviCRM Report Template. 
 
 ## Structure of a CiviCRM Report Template
 

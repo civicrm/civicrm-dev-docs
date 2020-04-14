@@ -26,7 +26,7 @@ Issues about CiviCRM itself are opened within the [Development Team's projects](
 
 #### Referencing GitLab issues {:#gitlab-reference}
 
-Use text like `dev/core#1` to reference specific issues in your [commit messages](/tools/git.md#commit-messages), [pull request subjects](/tools/git.md#pr-subject), and other communication.
+Use text like `dev/core#1` to reference specific issues in your [commit messages](tools/git.md#commit-messages), [pull request subjects](tools/git.md#pr-subject), and other communication.
 
 In the above example:
 
@@ -37,7 +37,7 @@ In the above example:
 !!! tip
     GitLab displays the issue reference at the bottom of the right-hand column along with a link that copies the reference to your clipboard:
     
-    ![Screenshot of GitLab issue reference](/img/gitlab-reference.png)
+    ![Screenshot of GitLab issue reference](img/gitlab-reference.png)
 
 ### GitHub {:#github}
 
@@ -68,7 +68,7 @@ Used as an issue-tracking system until early 2018 for:
 
 ### When to create an issue {:#when-to-create}
 
-If you are ready to make a change to CiviCRM, you can [submit a pull request](/tools/git.md#pr) *without* creating an issue first.
+If you are ready to make a change to CiviCRM, you can [submit a pull request](tools/git.md#pr) *without* creating an issue first.
 
 Otherwise, you'll want to create an issue in order to track work that might need to be done at some point in the future.
 
@@ -146,7 +146,7 @@ Better yet, describe the issue distinctly and coherently yourself.  If you find 
 
 A rule of thumb is that if an issue has more than 2 or 3 pull requests in GitHub (described below), something is wrong.  It may be a series of false starts, and that's okay, but if it's a bunch of pull requests against the same repository, you probably should have opened new issues to describe the separate features or bugs&mdash;or to document a regression or feature gap.
 
-See also: [pull request scope](/tools/git.md#pr-scope)
+See also: [pull request scope](tools/git.md#pr-scope)
 
 #### Categorization {:#categorization}
 
@@ -156,7 +156,7 @@ Use the Labels field to apply any relevant labels to your issue.
 
 #### Confidentiality {:#confidentiality}
 
-Issues can be marked Confidential, this is a useful "middle ground" status for issues which perhaps shouldn't be public but which are **not** security issues. If you have a security issue please report it as described at [Reporting a Security Vulnerability](/security/reporting/).
+Issues can be marked Confidential, this is a useful "middle ground" status for issues which perhaps shouldn't be public but which are **not** security issues. If you have a security issue please report it as described at [Reporting a Security Vulnerability](security/reporting/).
 
 In GitLab a user can be either anonymous (no account), have a GitLab account but not be a project member, or be a project member. The confidential checkbox on issues will hide it from anonymous users and non-project members.
 

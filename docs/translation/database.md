@@ -43,7 +43,7 @@ While there are many cities where street names can officially be in multiple lan
 
 Similarly, the first and last name of an individual may be written in different alphabets (ex: Latin and Cyrillic), but this is not a frequent use-case worth the complexity. Administrators can workaround this by creating custom fields.
 
-In order to define a field as localizable, the [XML schema definition](/framework/database/schema-definition.md) for that field must have the following tag:
+In order to define a field as localizable, the [XML schema definition](framework/database/schema-definition.md) for that field must have the following tag:
 
 ```
 <localizable>true</localizable>
@@ -143,7 +143,7 @@ VALUES (
 
 Two use-cases:
 
-1. An existing field in CiviCRM was not tagged in the [XML schema](/framework/database/schema-definition.md) as `<localizable>` (ex: the `title` in `civicrm_survey`, before CiviCRM 4.5). After adding the `<localize>` tag in the XML file, you must also add an upgrade snippet for existing databases. Example, from `sql/4.1.0.mysql.tpl`:
+1. An existing field in CiviCRM was not tagged in the [XML schema](framework/database/schema-definition.md) as `<localizable>` (ex: the `title` in `civicrm_survey`, before CiviCRM 4.5). After adding the `<localize>` tag in the XML file, you must also add an upgrade snippet for existing databases. Example, from `sql/4.1.0.mysql.tpl`:
 
     ```smarty
     {if $multilingual}

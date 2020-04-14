@@ -1,7 +1,7 @@
 # Upgrade Reference
 
 !!! note "Scope"
-    This document discusses upgrade conventions used in CiviCRM core code. For extensions and modules which integrate with CiviCRM, upgrade conventions are different. See [Create a Module Extension](/extensions/civix.md) for more discussion of the module-focused upgrader.
+    This document discusses upgrade conventions used in CiviCRM core code. For extensions and modules which integrate with CiviCRM, upgrade conventions are different. See [Create a Module Extension](extensions/civix.md) for more discussion of the module-focused upgrader.
 
 ## Introduction
 

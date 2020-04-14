@@ -8,8 +8,8 @@
 There are three options to create an ajax or web-service callback:
 
 -    **Full control:** Add a basic page. Remove the parent::run() call from the run() function, and at the bottom of the run() function, perform your own output (eg "*echo json\_encode($data)*") and then short-circuit processing (eg "*CRM\_Utils\_System::civiExit()*") so that neither Smarty nor the CMS modify the output.
--    **Using ajax helpers (CiviCRM 4.5 and above):** Generate a page with civix as above. Build your data in the run() function. If the client-side request includes *snippet=json* in the url, just append your data to *$this-\>ajaxResponse* array and the rest will happen automatically. If not, you can directly call CRM\_Core\_Page\_AJAX::returnJsonResponse() at the bottom of the run function. See [Ajax Pages and Forms](/framework/ajax.md) documentation.
--    **Using the API:** Add an API function using `civix`. The API function can be called with the API's [AJAX Interface](/api/interfaces.md#ajax). This automatically handles issues like encoding and decoding the request/response.
+-    **Using ajax helpers (CiviCRM 4.5 and above):** Generate a page with civix as above. Build your data in the run() function. If the client-side request includes *snippet=json* in the url, just append your data to *$this-\>ajaxResponse* array and the rest will happen automatically. If not, you can directly call CRM\_Core\_Page\_AJAX::returnJsonResponse() at the bottom of the run function. See [Ajax Pages and Forms](framework/ajax.md) documentation.
+-    **Using the API:** Add an API function using `civix`. The API function can be called with the API's [AJAX Interface](api/interfaces.md#ajax). This automatically handles issues like encoding and decoding the request/response.
 
 ## Standalone PHP scripts
 

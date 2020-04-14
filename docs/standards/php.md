@@ -97,7 +97,7 @@ Classes and interfaces in Civi take one of two forms:
 
 **Rationale for Change**
 
-Changing these can be quite difficult and can break interfaces consumed by downstream. For more discussion of `CRM_` and `Civi\`, see [The Codebase](/framework/filesystem.md).
+Changing these can be quite difficult and can break interfaces consumed by downstream. For more discussion of `CRM_` and `Civi\`, see [The Codebase](framework/filesystem.md).
 
 ## Localization
 
@@ -116,7 +116,7 @@ $string = ts("Membership for %1 has been updated. The membership End Date is %2.
 ));
 ```
 
-For more information on translation, see [Translation for Developers](/translation/index.md).
+For more information on translation, see [Translation for Developers](translation/index.md).
 
 ## Scope
 

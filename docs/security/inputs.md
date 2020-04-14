@@ -8,7 +8,7 @@ If you have a page or a form which reads parameters from the URL (aka `GET` para
 <img width="0" height="0" src="https://example.org/civicrm/page?foo=ATTACK" >
 ```
 
-This means that we can *never* trust `GET` parameters, even if the page has tight [permissions](/security/permissions.md) or [ACLs](/security/access.md)! A common security vulnerability which arises from insecure `GET` inputs is [reflected XSS](https://excess-xss.com/#reflected-xss), but `GET` inputs can also find their way into all sort of other sensitive outputs, like SQL queries.
+This means that we can *never* trust `GET` parameters, even if the page has tight [permissions](security/permissions.md) or [ACLs](security/access.md)! A common security vulnerability which arises from insecure `GET` inputs is [reflected XSS](https://excess-xss.com/#reflected-xss), but `GET` inputs can also find their way into all sort of other sensitive outputs, like SQL queries.
 
 ### Validating `GET` parameters
 
@@ -36,7 +36,7 @@ When accepting `POST` parameters through forms, it's important to validate the d
 
 ## When saving to the database
 
-Despite the [current recommended best-practices](/security/index.md#input-vs-output), CiviCRM *does* sanitize some of its *inputs*. This section describes how.
+Despite the [current recommended best-practices](security/index.md#input-vs-output), CiviCRM *does* sanitize some of its *inputs*. This section describes how.
 
 ### Input encoding {:#input-encoding}
 
@@ -44,7 +44,7 @@ For almost all inputs which are saved to the database, CiviCRM automatically use
 
 If, for some strange reason, you happen to be writing untrusted data to the database directly with SQL, you should encode this data in a fashion consistent with `CRM_Utils_API_HTMLInputCoder::encodeInput()`.
 
-Note that `CRM_Utils_API_HTMLInputCoder::encodeInput()` only encodes `<` and `>`. It does *not* encode quotes. This has some special implications for how you should [encode your HTML outputs](/security/outputs.md#html).
+Note that `CRM_Utils_API_HTMLInputCoder::encodeInput()` only encodes `<` and `>`. It does *not* encode quotes. This has some special implications for how you should [encode your HTML outputs](security/outputs.md#html).
 
 ### Input purification {:#input-purification}
 
@@ -52,4 +52,4 @@ When accepting untrusted data with rich text (uncommon), pass the data through `
 
 ## PHPIDS
 
-CiviCRM Implements the PHP Intrusion Detection System to automatically assist in preventing harmful inputs. The PHPIDS system is triggered on all fields. There are standard suite of fields that are excluded and they can be found in the `CRM_Core_IDS` class. The PHPIDS system scans the submitted content and returns a numerical value as to how dangerous the submitted content is from 0  - 100. Three type of actions can be taken based on the numerical score. Either the content is not saved and a message is given out to the user saying there is suspect content which is known as kick. The next action down is just to present a warning to the user. This indicates to the user that there may be some XSS in the content but the context gets saved to the database. The next step down is that the report is logged in the CiviCRM logs and no message is displayed to the user. The PHPIDS is implemented in a bid to assist in preventing XSS, sqli and other dangerous code being saved in the database. More information on PHPIDS can be found in the [documentation](https://github.com/PHPIDS/PHPIDS). Developers are able to alter the list of Exceptions through [hook_civicrm_idsException](/hooks/hook_civicrm_idsException.md). Fields can also be altered through the Menu hooks [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md#xml-ids) and [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md]).
+CiviCRM Implements the PHP Intrusion Detection System to automatically assist in preventing harmful inputs. The PHPIDS system is triggered on all fields. There are standard suite of fields that are excluded and they can be found in the `CRM_Core_IDS` class. The PHPIDS system scans the submitted content and returns a numerical value as to how dangerous the submitted content is from 0  - 100. Three type of actions can be taken based on the numerical score. Either the content is not saved and a message is given out to the user saying there is suspect content which is known as kick. The next action down is just to present a warning to the user. This indicates to the user that there may be some XSS in the content but the context gets saved to the database. The next step down is that the report is logged in the CiviCRM logs and no message is displayed to the user. The PHPIDS is implemented in a bid to assist in preventing XSS, sqli and other dangerous code being saved in the database. More information on PHPIDS can be found in the [documentation](https://github.com/PHPIDS/PHPIDS). Developers are able to alter the list of Exceptions through [hook_civicrm_idsException](hooks/hook_civicrm_idsException.md). Fields can also be altered through the Menu hooks [hook_civicrm_xmlMenu](hooks/hook_civicrm_xmlMenu.md#xml-ids) and [hook_civicrm_alterMenu](hooks/hook_civicrm_alterMenu.md]).

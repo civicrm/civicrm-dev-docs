@@ -26,7 +26,7 @@ Pick a unique single word for your extension's name. Note that this name is used
 ## Pre-Requisites
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming.
--   Install ***civix v14.01*** or newer. For instructions, see [Civix Documentation](/extensions/civix.md/). This page assumes that "civix" is installed and registered in the PATH.
+-   Install ***civix v14.01*** or newer. For instructions, see [Civix Documentation](extensions/civix.md/). This page assumes that "civix" is installed and registered in the PATH.
 -   Configure an extensions directory. For instructions, see [Extensions](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/#installing-a-new-extension). This page assumes the directory is `/var/www/extensions`, but you should adapt as appropriate. Your extensions directory must be under the CMS root directory so that civix can find and bootstrap the CMS. Otherwise, it will fail with an error like "Sorry, could not locate bootstrap.inc" on most operations.
 -   The user account you use to develop the module must have permission to read all CMS files, including configuration files, and write to the extensions directory. For example, Debian's drupal7 package saves database configuration to `/etc/drupal/7/sites/default/dbconfig.php`, which is only readable by the www-data user. You will need to make this file readable by your development user account for civix to work.
 
@@ -35,7 +35,7 @@ Writing an extension is a great way to implement a new feature – but it may be
 - Search the [Extensions Directory](http://civicrm.org/extensions) for an existing extension.
 - Post about your planned extension in the [Extensions Channel](https://chat.civicrm.org/civicrm/channels/extensions).
 
-Extensions provide a native, portable way to extend CiviCRM, but there are other ways to extend CiviCRM – such as implementing Drupal modules or Joomla plugins. If you're considering another way, look at the [Add-on Formats](/extensions/packaging.md)
+Extensions provide a native, portable way to extend CiviCRM, but there are other ways to extend CiviCRM – such as implementing Drupal modules or Joomla plugins. If you're considering another way, look at the [Add-on Formats](extensions/packaging.md)
 to help decide.
 
 ### 1. Install civix
@@ -43,10 +43,10 @@ Some tasks in the process of writing an extension require boilerplate code. To r
 
 > See [https://github.com/totten/civix/](https://github.com/totten/civix/)
 
-> For more information on the boilerplate civix generates for you, in particular the extension manifest file (info.xml), [read on](/extensions/info-xml.md).
+> For more information on the boilerplate civix generates for you, in particular the extension manifest file (info.xml), [read on](extensions/info-xml.md).
 
 ### 2. Develop
-To get started with development, one should usually follow the steps in "[Create a Module Extension.](/extensions/civix.md#generate-module)". A module extension is the most flexible type of extension – it can define any mix of new reports, custom search screens, payment processors, and web pages; it can listen for hooks, override page-templates, and more. The coding
+To get started with development, one should usually follow the steps in "[Create a Module Extension.](extensions/civix.md#generate-module)". A module extension is the most flexible type of extension – it can define any mix of new reports, custom search screens, payment processors, and web pages; it can listen for hooks, override page-templates, and more. The coding
 conventions closely resemble those of CiviCRM Core and of CiviCRM-Drupal modules. Module extensions are fully supported in CiviCRM 4.2+.
 
 ### 3. Publish
@@ -54,11 +54,11 @@ The CiviCRM ecosystem is built on the belief that non-profit organizations can s
 
 Extension authors may make their extensions available to the larger CiviCRM community by publishing them in the [Extensions Directory](https://civicrm.org/extensions).
 
-> See: [Publish](/extensions/publish.md)
+> See: [Publish](extensions/publish.md)
 
-Extensions which undergo a [formal review](/extensions/lifecycle.md#formal-review) may be distributed in-app. Approved extensions can be [installed directly](https://docs.civicrm.org/user/en/master/introduction/extensions/#installing-extensions) into CiviCRM via the user interface, lowering the barrier to entry for many users.
+Extensions which undergo a [formal review](extensions/lifecycle.md#formal-review) may be distributed in-app. Approved extensions can be [installed directly](https://docs.civicrm.org/user/en/master/introduction/extensions/#installing-extensions) into CiviCRM via the user interface, lowering the barrier to entry for many users.
 
-> See: [Automated Distribution](/extensions/publish.md#automated-distribution)
+> See: [Automated Distribution](extensions/publish.md#automated-distribution)
 
 ## Interacting with core
 
@@ -66,11 +66,11 @@ There are a number of ways in which extensions can interact with core. These are
 
 Fully supported methods are:
 
-* [API](/api/index.md)
-* [Hooks](/hooks/index.md)
-* [`Civi::cache`](/framework/cache.md)
+* [API](api/index.md)
+* [Hooks](hooks/index.md)
+* [`Civi::cache`](framework/cache.md)
 * `Civi::$statics`
-* [`Civi::settings`](/framework/setting.md)
+* [`Civi::settings`](framework/setting.md)
 * Internal Symfony listeners (e.g. `civi.api.resolve`, `civi.api.prepare`)
 
 See also this [blog post](https://civicrm.org/blog/totten/the-static-is-dead-long-live-the-static) describing the `Civi::` facade in more detail.

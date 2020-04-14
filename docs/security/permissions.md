@@ -35,7 +35,7 @@ The **APIv3** rest interface, however, defaults to running with the `check_permi
 
 The permissions required to make various API calls are defined in [`CRM_Core_Permission::getEntityActionPermissions()`](https://lab.civicrm.org/dev/core/blob/master/CRM/Core/Permission.php#L935). 
 
-By default in **APIv4** the `check_permissions` flag is turned on regardless of the API interface being used, for further details see the [API wrapper differences between API v3 and APIv4](/api/v4/differences-with-v3.md#api-wrapper).
+By default in **APIv4** the `check_permissions` flag is turned on regardless of the API interface being used, for further details see the [API wrapper differences between API v3 and APIv4](api/v4/differences-with-v3.md#api-wrapper).
 
 ## Extending and Implementing Permission Structure {:#extensions}
 
@@ -43,14 +43,14 @@ In an extension, authors have a wide ability to implement the same permissions s
 
 ### Implementing Permissions in extensions
 
-[hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) allows for extension providers to define new menu items and the associated permissions to that menu item. However this does not specifically grant access to the end point just decides whether the menu item or not is visible to the user based on the permissions of that user.
+[hook_civicrm_navigationMenu](hooks/hook_civicrm_navigationMenu.md) allows for extension providers to define new menu items and the associated permissions to that menu item. However this does not specifically grant access to the end point just decides whether the menu item or not is visible to the user based on the permissions of that user.
 
 To implement access to a specific url that you are creating as part of your extension. Extension authors should create a `MyExtension.xml` file in `MyExtension/xml/Menu/`. This file should be structure like the core menu XML files and this will determine the permissions to actually access the page not just whether a user can see the menu item or not.
 
 ### Extending Permissions
 
-If you want to add a permission to the list in the CMS, you can implement [hook_civicrm_permission](/hooks/hook_civicrm_permission.md). Here, you can specify new permissions that will then be available to select within the CMS permissions.
+If you want to add a permission to the list in the CMS, you can implement [hook_civicrm_permission](hooks/hook_civicrm_permission.md). Here, you can specify new permissions that will then be available to select within the CMS permissions.
 
 ### Altering API Permissions
 
-If you want to alter the permissions the API uses during its permissions check, you can implement the [hook_civicrm_alterAPIPermissions](/hooks/hook_civicrm_alterAPIPermissions.md). Note that you should be very careful when altering any permissions because they may have unintended consequences.
+If you want to alter the permissions the API uses during its permissions check, you can implement the [hook_civicrm_alterAPIPermissions](hooks/hook_civicrm_alterAPIPermissions.md). Note that you should be very careful when altering any permissions because they may have unintended consequences.

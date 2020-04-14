@@ -2,13 +2,13 @@
 
 ## HTML/Smarty {:#html}
 
-Untrusted data placed in HTML must be [encoded](/security/index.md#encoding) for HTML output at some point. The PHP function [htmlentities()](http://php.net/manual/en/function.htmlentities.php) does this, and the Smarty variable modifier [escape](https://www.smarty.net/docsv2/en/language.modifier.escape) behaves similarly.
+Untrusted data placed in HTML must be [encoded](security/index.md#encoding) for HTML output at some point. The PHP function [htmlentities()](http://php.net/manual/en/function.htmlentities.php) does this, and the Smarty variable modifier [escape](https://www.smarty.net/docsv2/en/language.modifier.escape) behaves similarly.
 
 ### Between tags {:#db-between-tags}
 
 #### Database data between tags {:#db-between-tags}
 
-Data which comes out of MySQL has already been [partially encoded for HTML output](/security/inputs.md#input-encoding). This means that when you place this data between HTML tags, you don't need to perform any output encoding. For example:
+Data which comes out of MySQL has already been [partially encoded for HTML output](security/inputs.md#input-encoding). This means that when you place this data between HTML tags, you don't need to perform any output encoding. For example:
 
 ```html
 <div>{$displayName}</div>
@@ -42,7 +42,7 @@ When placing data within attributes, always use Smarty's [escape](https://www.sm
 ```
 
 !!! note
-    HTML output encoding *is always* necessary for attribute data (but *not* always necessary for data between tags) because of the intentionally incomplete [input encoding](/security/inputs.md#input-encoding) that CiviCRM performs. 
+    HTML output encoding *is always* necessary for attribute data (but *not* always necessary for data between tags) because of the intentionally incomplete [input encoding](security/inputs.md#input-encoding) that CiviCRM performs. 
     
 ### Javascript in Smarty {:#javascript-smarty}
 

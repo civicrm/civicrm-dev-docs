@@ -20,8 +20,8 @@ git diff --name-only master | civilint -
 
 See also:
 
-- [CiviCRM Coding Standards](/standards/php.md)
-- [CiviCRM Javascript Standards](/standards/javascript.md)
+- [CiviCRM Coding Standards](standards/php.md)
+- [CiviCRM Javascript Standards](standards/javascript.md)
 - [Drupal Coding Standards](https://www.drupal.org/docs/develop/standards/coding-standards)
 - [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 - [coder](https://github.com/civicrm/coder)

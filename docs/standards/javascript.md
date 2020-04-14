@@ -4,7 +4,7 @@
 
 ### Coding standards
 
-Javascript code should follow the same standards as CiviCRM's [PHP coding standards](/standards/php.md). You can use inline tools like [JSHint](http://jshint.com/) to help with the linting of javascript files. If you have buildkit installed JSHint is included as part of [CiviLint](/tools/civilint.md). Adding hints to your code will enable jshint to check the standards: e.g.
+Javascript code should follow the same standards as CiviCRM's [PHP coding standards](standards/php.md). You can use inline tools like [JSHint](http://jshint.com/) to help with the linting of javascript files. If you have buildkit installed JSHint is included as part of [CiviLint](tools/civilint.md). Adding hints to your code will enable jshint to check the standards: e.g.
 
 Example to tell JSHint Tell jsHint about any globals in use:
 
@@ -75,7 +75,7 @@ You can also use CRM_Core_Resources to add in inline scripts such as the followi
 CRM_Core_Resources::singleton()->addScript('alert("hello");');
 ```
 
-You can also specify other regions of the page to place the script in (the most common reason for this is because jQuery plugins must be added to the "html-header" region). See [Resource Reference](/framework/resources.md) for more details.
+You can also specify other regions of the page to place the script in (the most common reason for this is because jQuery plugins must be added to the "html-header" region). See [Resource Reference](framework/resources.md) for more details.
 
 ## Using CiviCRM Javascript in non CiviCRM pages
 
@@ -121,7 +121,7 @@ If the current user has sufficient permissions (usually "Access CiviCRM") then y
 ```javascript
 CRM.api('entity', 'action', {params}, {success: function});
 ```
-For more details, see [AJAX API](/api/interfaces.md#ajax-interface) docs.
+For more details, see [AJAX API](api/interfaces.md#ajax-interface) docs.
 
 ## Server-Side Variables
 
@@ -153,16 +153,16 @@ When your script file is being added to the page by `CRM_Core_Resources` it will
 
 ## UI Elements
 
-CiviCRM ships with a number of UI widgets and plugins to create standardized "look and feel" More information can be found in [UI Elements Reference](/framework/ui.md).
+CiviCRM ships with a number of UI widgets and plugins to create standardized "look and feel" More information can be found in [UI Elements Reference](framework/ui.md).
 
 ## Automated testing
 
 CiviCRM's testing regimen includes:
 
- * (Linting) [JSHint](/standards/javascript.md#coding-standards)
- * (Unit testing) [Karma and Jasmine](/testing/karma.md)
- <!-- * (End-to-end testing, for AngularJS) [Protractor and Jasmine](/testing/protractor.md) -->
- * (Deprecated; end-to-end testing) [QUnit](/testing/qunit.md)
+ * (Linting) [JSHint](standards/javascript.md#coding-standards)
+ * (Unit testing) [Karma and Jasmine](testing/karma.md)
+ <!-- * (End-to-end testing, for AngularJS) [Protractor and Jasmine](testing/protractor.md) -->
+ * (Deprecated; end-to-end testing) [QUnit](testing/qunit.md)
 
 ## Javascript in Markup
 
@@ -197,4 +197,4 @@ CRM.$(function($) {
 
 In the past, PHP-based webapps like CiviCRM have treated javascript as little more than an extension of css. But increasingly they are realizing the potential of Javascript to handle business logic. Javascript can be used to create robust, responsive, user-friendly webapps. But with this complexity comes the need for structure. While CiviCRM has not officially adopted a clientside MVC framework, version 4.3 includes a new UI for editing profiles which was built using Underscore, Backbone and Marionette. And 4.5 includes a new case-configuration interface built on Angular. In 4.6 CiviMail User Interface was re-written in Angular.
 
-More detail can be found in the [Angular reference documents](/framework/angular/index.md)
+More detail can be found in the [Angular reference documents](framework/angular/index.md)

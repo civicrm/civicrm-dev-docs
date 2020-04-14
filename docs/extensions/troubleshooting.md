@@ -1,6 +1,6 @@
 # Troubleshooting
 
-If you are struggling, the best thing to do is reach out to the [CiviCRM community](/basics/community.md).
+If you are struggling, the best thing to do is reach out to the [CiviCRM community](basics/community.md).
 
 If you cannot find the answer in this guide or by searching in the [CiviCRM StackExchange site](http://civicrm.stackexchange.com/) then please [ask](http://civicrm.stackexchange.com/questions/ask). Asking questions on StackExchange not only helps you but may well help others who follow you.
 

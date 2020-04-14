@@ -27,4 +27,4 @@ The developer docs reference a large number of developer tools, such as `drush` 
 
 Many of these tools are commonly used by web developers, so you may have already installed a few.  You could install all the tools individually -- but that takes a lot of work.
 
-[civicrm-buildkit](/tools/buildkit.md) provides a script which downloads the full collection.
+[civicrm-buildkit](tools/buildkit.md) provides a script which downloads the full collection.

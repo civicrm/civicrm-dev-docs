@@ -1,6 +1,6 @@
 # How to document your extension
 
-So you've written an [extension](/extensions/index.md). Awesome! Now you want to add some documentation to help people use it. Great! Maybe you even want some docs for other *developers* working on it too. Very good. This page will help you set up your own documentation *guide* (just like this Developer Guide) for your extension.
+So you've written an [extension](extensions/index.md). Awesome! Now you want to add some documentation to help people use it. Great! Maybe you even want some docs for other *developers* working on it too. Very good. This page will help you set up your own documentation *guide* (just like this Developer Guide) for your extension.
 
 !!! summary "Example"
     For a fully-featured working example of extensions documentation, look at CiviVolunteer.
@@ -16,7 +16,7 @@ So you've written an [extension](/extensions/index.md). Awesome! Now you want to
 Here are the basic steps (and each one is explained in more detail later on this page.)
 
 1. You use the git repo for your extension to store its documentation.
-* You store the content in [markdown](/documentation/markdown.md) files within a `docs` directory in your project.
+* You store the content in [markdown](documentation/markdown.md) files within a `docs` directory in your project.
 * You use git branches just like you normally would, with that `docs` directory sitting there in every branch.
 * You put one file at the root level of your project, `mkdocs.yml` to configure some of the high-level details of your book.
 * You use MkDocs locally to preview your guide.
@@ -63,7 +63,7 @@ When creating a docs guide, you have two options for how to deal with your READM
 
 With this option, you basically keep documentation content in the README file, and create an MkDocs guide directly from that file. The content remains on GitHub when people visit your repo, and it also gets published on docs.civicrm.org &mdash; and you only have to edit it in one place. The downside is that you have to fit everything into one page.
 
-1. Make sure you're using [markdown](/documentation/markdown.md) formatting within the README file, and make sure the file is named `README.md`.
+1. Make sure you're using [markdown](documentation/markdown.md) formatting within the README file, and make sure the file is named `README.md`.
 1. Create an MkDocs index file which is a symbolic link to your README file:
 
     ```
@@ -84,17 +84,17 @@ With this option you have a very small README file and a separate MkDocs guide w
 
 ## Add content
 
-Add some [markdown](/documentation/markdown.md) content in `docs/index.md`.
+Add some [markdown](documentation/markdown.md) content in `docs/index.md`.
 
 You can add more pages by creating more markdown files and specifying these files under `pages` in `mkdocs.yml`.
 
 !!! note
-    We have [markdown coding standards](/documentation/markdown.md#standards) and a documentation [style guide](/documentation/style-guide.md). Adherence to these rules within your extensions docs is recommended but not required.
+    We have [markdown coding standards](documentation/markdown.md#standards) and a documentation [style guide](documentation/style-guide.md). Adherence to these rules within your extensions docs is recommended but not required.
 
 
 ## Preview your guide
 
-Now you should be able to run `mkdocs serve` from within your project directory to start previewing your content. See [instructions here](/documentation/index.md#mkdocs) to get MkDocs set up.
+Now you should be able to run `mkdocs serve` from within your project directory to start previewing your content. See [instructions here](documentation/index.md#mkdocs) to get MkDocs set up.
 
 
 ## Submit your guide to our publishing system {:#submit}

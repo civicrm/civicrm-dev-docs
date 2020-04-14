@@ -28,7 +28,7 @@ $params['return'] = 'custom_N,custom_O,custom_P';
 
 For setting custom date fields, (ie CustomValue create), date format is `YmdHis`, for example: `20050425000000`.
 
-This is just a brief introduction; each API may have different requirements and allow different formats for accessing the custom data. See the [API function documentation](/api/index.md) and also read the comments and documentation in each API php file (under civicrm/CRM/api/v3 in your CiviCRM installation) for exact details,
+This is just a brief introduction; each API may have different requirements and allow different formats for accessing the custom data. See the [API function documentation](api/index.md) and also read the comments and documentation in each API php file (under civicrm/CRM/api/v3 in your CiviCRM installation) for exact details,
 which vary for each API entity and function.
 
 ## Custom Value get

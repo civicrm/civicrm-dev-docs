@@ -7,7 +7,7 @@ addresses, you may want to return the name of the associated contact from the
 Contact entity.
 
 The CiviCRM API supports two methods of returning data from associated entities;
-API Joins and [APIv3 Chaining](/api/v3/chaining.md).  API joins provide higher
+API Joins and [APIv3 Chaining](api/v3/chaining.md).  API joins provide higher
 performance by making a single SQL query with a
 [SQL join](https://dev.mysql.com/doc/refman/5.7/en/join.html), and are
 generally preferable to API chaining where available.
@@ -43,16 +43,16 @@ $result = civicrm_api3('Event', 'get', array(
 ));
 ```
 !!! tip
-    Joins are available only with the [get](/api/v3/actions.md#get),
-    [getsingle](/api/v3/actions.md#getsingle), and [getcount](/api/v3/actions.md#getcount)
+    Joins are available only with the [get](api/v3/actions.md#get),
+    [getsingle](api/v3/actions.md#getsingle), and [getcount](api/v3/actions.md#getcount)
     actions.
 
 ## Identifying fields eligible for a join
 
 It is possible to join an entity to any other entity if the
-[xml schema](/framework/database/schema-definition.md)
-identifies a [foreign key](/framework/database/schema-definition.md#table-foreignKey) or
-a [pseudoconstant](/framework/database/schema-definition.md#table-field-pseudoconstant).  The [getfields](/api/v3/actions.md#getfields) action identifies
+[xml schema](framework/database/schema-definition.md)
+identifies a [foreign key](framework/database/schema-definition.md#table-foreignKey) or
+a [pseudoconstant](framework/database/schema-definition.md#table-field-pseudoconstant).  The [getfields](api/v3/actions.md#getfields) action identifies
 fields that are eligible for an API join.
 
 !!! warning
