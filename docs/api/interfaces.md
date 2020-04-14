@@ -8,7 +8,7 @@ CiviCRM provides a number of different methods to interact with the API when in 
 
 ### Javascript AJAX Interface {:#ajax}
 
-The AJAX interface is one of the more common interfaces used within CiviCRM code. The AJAX interface is most commonly seen when used in javascript code. You can get example AJAX interface code out of the [API Explorer](../index.md#api-explorer) as needed.
+The AJAX interface is one of the more common interfaces used within CiviCRM code. The AJAX interface is most commonly seen when used in javascript code. You can get example AJAX interface code out of the [API Explorer](./index.md#api-explorer) as needed.
 
 #### CRM.api3 / CRM.api4
 
@@ -16,13 +16,13 @@ The AJAX interface is one of the more common interfaces used within CiviCRM code
 
 #### WP REST API
 
-`WP REST API` is a method introduced in version 5.25 that uses the WordPress REST API to expose the extern scripts. [This method is documented here](../v3/wp-rest.md)
+`WP REST API` is a method introduced in version 5.25 that uses the WordPress REST API to expose the extern scripts. [This method is documented here](./v3/wp-rest.md)
 
 #### Tests
 
-[QUnit](/testing/qunit.md) tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
+[QUnit](./../testing/qunit.md) tests for `CRM.api3` can be found in [/tests/qunit/crm-api3](https://github.com/civicrm/civicrm-core/tree/master/tests/qunit/crm-api3).
 
-You can run the tests within a web browser by visiting `/civicrm/dev/qunit/civicrm/crm-api3` within a CiviCRM [development installation](../../tools/civibuild.md).
+You can run the tests within a web browser by visiting `/civicrm/dev/qunit/civicrm/crm-api3` within a CiviCRM [development installation](./../tools/civibuild.md).
 
 #### Changes
 
@@ -32,7 +32,7 @@ The recommended AJAX interface has changed between CiviCRM versions as follows:
 * version 4.3.x - `CRM.api(...)`
 * version 4.4.x onwards - `CRM.api3()`
 
-For details see [APIv3 changes](../v3/changes.md).
+For details see [APIv3 changes](./v3/changes.md).
 
 ### Javascript AngularJS crmAPI {:#angularjs}
 
@@ -114,7 +114,7 @@ You can also access the AJAX Interface from the REST function but only as an XHR
 ```
 http://www.example.org/civicrm/ajax/rest?entity=contact&action=get&json=1
 ```
-More information on the security of the AJAX interface and permissions needed can be found on the [Permissions Page](../../security/permissions.md) in Security.
+More information on the security of the AJAX interface and permissions needed can be found on the [Permissions Page](./../security/permissions.md) in Security.
 
 Example Outputs from the REST Interface are as follows:
 
@@ -180,7 +180,7 @@ Response to creating a new contact
 Before being able to use the REST Interface you will need to have set up the `CIVICRM_SITE_KEY` and the users `API_KEY`. There are three methods of creating API keys for users
 
 !!! warning
-    API keys need to be unique and set on a user with appropriate [permissions](../../security/permissions.md).
+    API keys need to be unique and set on a user with appropriate [permissions](./../security/permissions.md).
 
 #### Manual Method
 
