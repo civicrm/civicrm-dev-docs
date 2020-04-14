@@ -4,7 +4,7 @@
 
     This documentation is still a work in progress.
 
-The [Quick Start](/framework/angular/quickstart.md) and [Loader](/framework/angular/loader.md) provide examples of
+The [Quick Start](quickstart.md) and [Loader](loader.md) provide examples of
 creating *new* screens.  But what if you need to alter an *existing* screen?
 CiviCRM allows third-parties to define *changesets* which programmatically
 manipulate Angular content before sending it to the client.
@@ -21,7 +21,7 @@ independent deployments with independent configurations).
 
 ## Hooks
 
-* **[hook_civicrm_alterAngular](/hooks/hook_civicrm_alterAngular.md)** - Alter the definition of some Angular HTML partials.
+* **[hook_civicrm_alterAngular](../../hooks/hook_civicrm_alterAngular.md)** - Alter the definition of some Angular HTML partials.
 
 ## Example
 

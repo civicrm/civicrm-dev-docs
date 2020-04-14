@@ -40,7 +40,7 @@ Write ang/aboutme.css
 !!! note "Note: `ang/` folder"
     By convention, AngularJS source code is stored in the `ang/` folder, and
     each item is named after its module.  The convention is discussed in
-    more detail in [AngularJS: File Names](/framework/angular/files.md)
+    more detail in [AngularJS: File Names](files.md)
 
 The first file, `ang/aboutme.ang.php`, provides metadata for the PHP-based
 file-loader, e.g.
@@ -96,7 +96,7 @@ user's first-name and last-name.
     By default, CiviCRM aggregates AngularJS files and caches them.  You can
     flush this cache manually (`cv flush`).  However, it may be easier to
     disable some of the aggregation/caching features by [enabling debug
-    mode](/tools/debugging.md).
+    mode](../../tools/debugging.md).
 
 ## Open the page
 

@@ -28,7 +28,7 @@ Use this field to indiciate whether a financial type is tax deductible for Incom
 !!! note
 CiviCRM itself does not calculate Charitable Tax Receipts - but extensions like [CDN Tax Receipts](https://civicrm.org/extensions/cdn-tax-receipts) do.
 
-![Example financial accounts](/img/financial/FinancialAccount.png)
+![Example financial accounts](../img/financial/FinancialAccount.png)
 
 ## Financial Transactions
 

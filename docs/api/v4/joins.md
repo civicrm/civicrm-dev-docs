@@ -2,7 +2,7 @@
 
 An API "get" action will typically return only the values of the entity requested. However, there are times when it is advantageous to returned data from a related entity.  For instance, when querying the API for email addresses, you may want to return the name of the associated contact from the Contact entity.
 
-The CiviCRM API supports two methods of returning data from associated entities; APIv4 Joins and [APIv4 Chaining](/api/v4/chaining.md).  API joins provide higher performance by making a single SQL query with a [SQL join](https://dev.mysql.com/doc/refman/5.7/en/join.html), and are generally preferable to API chaining where available.
+The CiviCRM API supports two methods of returning data from associated entities; APIv4 Joins and [APIv4 Chaining](../v4/chaining.md).  API joins provide higher performance by making a single SQL query with a [SQL join](https://dev.mysql.com/doc/refman/5.7/en/join.html), and are generally preferable to API chaining where available.
 
 ## Using an API Join
 
@@ -81,9 +81,9 @@ $result = civicrm_api4('Event', 'get', [
 ```
 
 !!! tip
-    Joins are available only with the [get](/api/v4/actions.md#get) action
+    Joins are available only with the [get](../v4/actions.md#get) action
 
 ## Identifying fields eligible for a join
 
-It is possible to join an entity to any other entity if the [xml schema](/framework/database/schema-definition.md) identifies a [foreign key](/framework/database/schema-definition.md#table-foreignKey) or a [pseudoconstant](/framework/database/schema-definition.md#table-field-pseudoconstant).  The [getfields](/api/v3/actions.md#getfields) action identifies
+It is possible to join an entity to any other entity if the [xml schema](../../framework/database/schema-definition.md) identifies a [foreign key](../../framework/database/schema-definition.md#table-foreignKey) or a [pseudoconstant](../../framework/database/schema-definition.md#table-field-pseudoconstant).  The [getfields](../v3/actions.md#getfields) action identifies
 fields that are eligible for an API join.

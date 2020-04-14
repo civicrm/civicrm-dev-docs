@@ -32,8 +32,8 @@ Added in CiviCRM 4.5
 ## Example
 
 See for an example the documentation of the
-[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge.md)
+[hook_civicrm_post_case_merge](hook_civicrm_post_case_merge.md)
 
 ## See also
 
-[hook_civicrm_post_case_merge](/hooks/hook_civicrm_post_case_merge.md)
+[hook_civicrm_post_case_merge](hook_civicrm_post_case_merge.md)

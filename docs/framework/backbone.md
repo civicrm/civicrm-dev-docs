@@ -297,7 +297,7 @@ emails.save(...);
 
 ## Unit Tests
 
-The CiviCRM Backbone plugins are tested with [QUnit](/testing/qunit.md). To run the
+The CiviCRM Backbone plugins are tested with [QUnit](../testing/qunit.md). To run the
 unit-tests, use a web-browser to connect to a CiviCRM installation
 (`http://local.example.com`) and request the following:
 

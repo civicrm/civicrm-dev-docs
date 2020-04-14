@@ -12,7 +12,7 @@ $dao: The object that has been saved
 
 ## Definition
 
-    hook_civicrm_postSave_[table_name]($dao)
+    `hook_civicrm_postSave_[table_name]($dao)`
 
 ## Example
 

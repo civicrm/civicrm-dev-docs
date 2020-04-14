@@ -2,7 +2,7 @@ These review standards provide a name and description for common review tasks.
 
 ## Usage
 
-When [reviewing a pull-request](/core/pr-review.md), you may consult this list for ideas/inspiration on things to check.  If you find a problem or feel that some QA task remains to
+When [reviewing a pull-request](../core/pr-review.md), you may consult this list for ideas/inspiration on things to check.  If you find a problem or feel that some QA task remains to
 be done, then it can help to post a link to the relevant guideline.  This practice allows newcomers to understand the critique, but it doesn't require you to
 write a long, bespoke blurb.
 
@@ -26,14 +26,14 @@ Ensure the PR has an adequate explanation.
 
 If you were a site-builder reading the PR-log/release-notes and drilled into this PR, would you understand the description? If you were debugging a problem and traced the change back to this PR, would you understand why the change was made?
 
-It is strongly encouraged that PR's include URLs/hyperlinks for any explanatory material (when available) -- such as a [Gitlab issue](http://lab.civicrm.org/), [JIRA issue](/tools/issue-tracking.md#jira), [StackExchange question](https://civicrm.stackexchange.com/), related PR, or [Mattermost chat](https://chat.civicrm.org). However, hyperlinks are not a substitute for a description. The PR should still have a description.
+It is strongly encouraged that PR's include URLs/hyperlinks for any explanatory material (when available) -- such as a [Gitlab issue](http://lab.civicrm.org/), [JIRA issue](../tools/issue-tracking.md#jira), [StackExchange question](https://civicrm.stackexchange.com/), related PR, or [Mattermost chat](https://chat.civicrm.org). However, hyperlinks are not a substitute for a description. The PR should still have a description.
 
 PR descriptions should generally follow the [pull-request template](https://github.com/civicrm/civicrm-core/blob/master/.github/PULL_REQUEST_TEMPLATE.md), although this could be waived if another structure is more expressive.
 
 __Exception__: 
 
-* [WIP](/tools/git.md#wip) PRs do not need a detailed explanation until they're ready for earnest review.
-* Genuine [NFC](/tools/git.md#nfc) PRs do not need a detailed explanation. 
+* [WIP](../tools/git.md#wip) PRs do not need a detailed explanation until they're ready for earnest review.
+* Genuine [NFC](../tools/git.md#nfc) PRs do not need a detailed explanation. 
 
 ### User impact {:#r-user}
 
@@ -45,7 +45,7 @@ If a user was comfortable using the old revision, would they upgrade and assimil
 
 _Standard code: `r-doc`_
 
-Some changes require adding or updating documentation. Consider the impact of this change on users, system administrators, and developers. Do they need additional instructions in order to reap the benefits of this change? If so, [update documentation](/documentation/index.md) as necessary by making a corresponding PR on one of the guides.
+Some changes require adding or updating documentation. Consider the impact of this change on users, system administrators, and developers. Do they need additional instructions in order to reap the benefits of this change? If so, [update documentation](../documentation/index.md) as necessary by making a corresponding PR on one of the guides.
 
 ### Run it {:#r-run}
 
@@ -63,7 +63,7 @@ _Standard code: `r-tech`_
 * Would you consider the changed element to be an officially supported contract? A de-facto important contract? An obscure internal detail?
 * How might the change affect other parts of `civicrm-core`? extensions? third-party integrations?
 * If it's hard to answer, look for inspiration:
-    * Grep `civicrm-core` or [universe](/tools/universe.md) to find out where the API/hook/function/etc is called. Consider how these might be affected.
+    * Grep `civicrm-core` or [universe](../tools/universe.md) to find out where the API/hook/function/etc is called. Consider how these might be affected.
     * Look at the [Gotchas](#gotchas) for a list of issues that have been mistakenly overlooked in past reviews.
 * If there is a foreseeable problem:
     * Is there a simple alternative?
@@ -85,7 +85,7 @@ Many changes should introduce some kind of automated test or protective measure 
 
 _Standard code: `r-test`_
 
-If the [automated tests](/testing/continuous-integration.md) come back with any failures, look into why. Hopefully, Jenkins provides an itemized list of failures. If not, dig further into the "Console" output for PHP-fatals or build-failures.
+If the [automated tests](../testing/continuous-integration.md) come back with any failures, look into why. Hopefully, Jenkins provides an itemized list of failures. If not, dig further into the "Console" output for PHP-fatals or build-failures.
 
 ## Gotchas
 
@@ -108,7 +108,7 @@ If the PR changes the permissions model (by adding, removing, or repurposing a p
 
 _Standard code: `rg-sec`_
 
-If the PR passes data between different tiers (such as SQL/PHP/HTML/CLI), is this data [escaped and validated](/security/index.md) correctly? Or would it be vulnerable to SQL-injections, cross-site scripting, or similar?
+If the PR passes data between different tiers (such as SQL/PHP/HTML/CLI), is this data [escaped and validated](../security/index.md) correctly? Or would it be vulnerable to SQL-injections, cross-site scripting, or similar?
 
 ### Settings {:#rg-setting}
 
@@ -128,7 +128,7 @@ If the upgrade needs to populate or recompute data on a large table (such as `ci
 
 If the upgrade inserts new strings, should they be generated in a multilingual-friendly way?
 
-!!! seealso "See also: [Upgrade Reference](/framework/upgrade)"
+!!! seealso "See also: [Upgrade Reference](../framework/upgrade.md)"
 
 ### Hook signature {:#rg-hook}
 

@@ -85,7 +85,7 @@ the directory `CRM/Core/Payment` that subclasses this abstract class. Any
 extensions that provide a payment processor have to provide a
 corresponding subclass file in their own `CRM/Core/Payment directory`.
 
-The key methods are roughly documented in the page on [creating a payment processor](/extensions/payment-processors/create.md)
+The key methods are roughly documented in the page on [creating a payment processor](../payment-processors/create.md)
 but the main method for all processors to implement is `doPayment`
 
 The payment object is used in several places in the CiviCRM code base.

@@ -181,8 +181,7 @@ can be included with an element with the classes `crm-i` and the
 !!! tip
     Use [this extension](https://github.com/mattwire/uk.co.mjwconsult.fontawesome) if you want access to these icons in earlier versions of CiviCRM (for example, if you have an extension, that uses them).
 
-For example, to insert a [bullhorn
-icon](http://fortawesome.github.io/Font-Awesome/icon/bullhorn/),
+For example, to insert a [bullhorn icon](http://fortawesome.github.io/Font-Awesome/icon/bullhorn/),
 use the following:
 
 ```html
@@ -314,7 +313,7 @@ delete icon, which turns red)
 
 In-place field editing was added to CiviCRM circa v4.1 and is built upon
 
-* [The AJAX API](/api/interfaces.md#ajax)
+* [The AJAX API](../api/interfaces.md#ajax)
 * The [Jeditable plugin](http://www.appelsiini.net/projects/jeditable) for jQuery
 
 !!! failure "Jeditable EOL"
@@ -378,7 +377,7 @@ ajax whenever the user clicks it.
 
 As of CiviCRM v4.6 you do not need to do anything to initialize
 crmEditable, it is handled automatically on every
-[crmLoad](/framework/ajax.md)
+[crmLoad](ajax.md)
 event.
 
 In previous versions you would need to manually write out the javascript

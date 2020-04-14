@@ -147,8 +147,8 @@ Edit the file as needed and save.
 
 Then clean-up the **compiled templates directory**, usually by
 deleting all the directories under your templates_c directory. You
-can also do the cleanup by [enabling CiviCRM debugging and running
-the directory cleanup command](#){.unresolved}. (NOTE: You do NOT
+can also do the cleanup by enabling CiviCRM debugging and running
+the directory cleanup command (NOTE: You do NOT
 need to delete the standard version of the template from your main
 CiviCRM codebase. CiviCRM will look for a customized version first,
 and use that one if found.)

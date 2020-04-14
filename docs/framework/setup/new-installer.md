@@ -15,7 +15,7 @@ first need to initialize the runtime and get a reference to the `$setup` object.
     * Call `\Civi\Setup::init($modelValues = [], $pluginCallback = NULL)`.
     * The `$modelValues` provide an opportunity to seed the configuration. This is usually just the `cms` and `srcPath`.
     * During initialization, additional `$modelValues` will be autodetected. After initialization, you can inspect or override these with `\Civi\Setup::instance()->getModel()`.
-    * The `$pluginCallback` provides an opportunity to [add/remove/override plugins](/framework/setup/plugins.md).
+    * The `$pluginCallback` provides an opportunity to [add/remove/override plugins](plugins.md).
 4. Get a reference to the `$setup` API.
     * Call `$setup = Civi\Setup::instance()`.
 5. (Optional) Customize the model

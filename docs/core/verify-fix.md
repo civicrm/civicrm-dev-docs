@@ -1,9 +1,9 @@
 # Verify a bug fix
 
 !!! note "See also"
-    This page is about verifying a fix after it has been merged into CiviCRM core. Also see instructions on [reviewing a core pull request](/core/pr-review.md) to learn how to review fixes *before* they are merged.
+    This page is about verifying a fix after it has been merged into CiviCRM core. Also see instructions on [reviewing a core pull request](pr-review.md) to learn how to review fixes *before* they are merged.
 
-Suppose you (or some like-minded spirit) [report a bug](/tools/issue-tracking.md#guidelines). With a bit of luck, someone from the community (perhaps a core developer) reproduces the bug, writes a fix, and announces gleefully: "It's fixed! It took four hours, but I did it!" Hooray! Now what? How do you get the fix running on your system? How do you verify that the fix fixed exactly your problem?
+Suppose you (or some like-minded spirit) [report a bug](../tools/issue-tracking.md#guidelines). With a bit of luck, someone from the community (perhaps a core developer) reproduces the bug, writes a fix, and announces gleefully: "It's fixed! It took four hours, but I did it!" Hooray! Now what? How do you get the fix running on your system? How do you verify that the fix fixed exactly your problem?
  
 ## Step 1. Check the "Fix Version" in JIRA
 
@@ -25,7 +25,7 @@ For an example, see [CRM-16501](https://issues.civicrm.org/jira/browse/CRM-16501
 
 ## Step 2. Check the proposal status in Github
 
-When a developer prepares a fix for an issue, he submits a proposal ("PR" or "pull-request") via *github.com*. The proposal is evaluated using both [continuous integration](/testing/continuous-integration.md) and peer review. The proposal will have one of three statuses:
+When a developer prepares a fix for an issue, he submits a proposal ("PR" or "pull-request") via *github.com*. The proposal is evaluated using both [continuous integration](../testing/continuous-integration.md) and peer review. The proposal will have one of three statuses:
 
 -   Open (green): The proposal has not been accepted yet. It's waiting for peer review.
 -   Merged (purple): The proposal has been accepted.
