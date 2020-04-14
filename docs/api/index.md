@@ -6,7 +6,7 @@ Utilizing the API is superior to accessing core functions directly (e.g.calling 
 
 The best place to begin working with the API is your own *test* install of CiviCRM, using the API explorer and the API parameter list.
 
-Extensions can provide additional API functionality. For help creating your own additions to the API, see [API Architecture](/api/v4/architecture.md).
+Extensions can provide additional API functionality. For help creating your own additions to the API, see [API Architecture](./v4/architecture.md).
 
 ## API Versions
 
@@ -39,4 +39,4 @@ Beginning in CiviCRM v5.8, the APIv3 explorer will now be able to show examples 
 
 ## Changelog
 
-All important changes made to the API are recorded in [APIv3 changes](/api/v3/changes.md) and [APIv4 changes](/api/v4/changes.md).
+All important changes made to the API are recorded in [APIv3 changes](./v3/changes.md) and [APIv4 changes](./v4/changes.md).
