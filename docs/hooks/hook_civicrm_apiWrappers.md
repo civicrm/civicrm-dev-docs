@@ -1,5 +1,8 @@
 # hook_civicrm_apiWrappers
 
+!!! warning "Legacy Hook"
+    This hook implements a legacy *API Wrapper* interface. It may be deprecated in a future version of CiviCRM.
+
 ## Summary
 
 This hook allows you to add, override, or remove methods to be called before and after API calls &mdash; and to modify either the parameters or the result of the call.
