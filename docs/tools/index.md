@@ -15,7 +15,7 @@ When you install [buildkit](buildkit.md) you'll get all these tools.
     * *documentation: run `cv list`*
     * *[repository](https://github.com/civicrm/cv)*
 * `civix` - Generate skeletal code for CiviCRM extensions
-    * *[documentation](civix.md)*
+    * *[documentation](../extensions/civix.md)*
     * *[repository](https://github.com/totten/civix)*
 * `civistrings` - Scan code for translatable strings (*.pot)
     * *documentation: run `civistrings --help`*
