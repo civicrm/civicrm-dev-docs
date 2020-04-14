@@ -33,7 +33,7 @@ For browser helpers see: https://confluence.jetbrains.com/display/PhpStorm/Brows
 ## Running automated tests from within PhpStorm {:#testing}
 
 !!! note
-    These instructions assume you already have a working instance of CiviCRM running locally with [buildkit](/tools/buildkit).
+    These instructions assume you already have a working instance of CiviCRM running locally with [buildkit](buildkit).
 
 From the `Run > Edit Configurations` menu add a new PHPUnit configuration.
 

@@ -40,17 +40,17 @@ To maintain some consistency and peace of mind for documentation content editors
 
 Valid examples:
 
-1. `[Buildkit](/tools/buildkit.md)`
-1. `[the API](/api/index.md)`
-1. `[extension review process](/extensions/lifefycle.md#formal-review)`
+1. `[Buildkit](../tools/buildkit.md)`
+1. `[the API](../api/index.md)`
+1. `[extension review process](../extensions/lifefycle.md#formal-review)`
 1. `[section within this page](#that-section)`
-1. `![awesome alt text](/images/awesome-screenshot.png)`
+1. `![awesome alt text](../../images/awesome-screenshot.png)`
 
 
 Rules:
 
-* Use links which begin with a forward slash. (The root directory is the `docs` folder.)
-    * Exception: when you are linking to a section within the current page, use only the fragment which corresponds to that heading (beginning with `#`, as in example 4 above.). (Also consider [specifying a custom heading ID](#custom-heading-ids) to prevent broken links if the heading is later renamed.)
+* Your link should point directly to the markdown file in the folder tree, using `..` and/or `filename.md` as appropriate.
+    * When you are linking to a section within the current page, use only the fragment which corresponds to that heading (beginning with `#`, as in example 4 above.). (Also consider [specifying a custom heading ID](#custom-heading-ids) to prevent broken links if the heading is later renamed.)
 * Append `.md` when linking to a page.
 * If you are linking to a page which is named `index.md`, then include `index.md` in the path (even though your link will technically still work if you don't).
 * If you're linking to a section within a page (other than the current one), then do it as shown in example 3 above (even though some some other variants will also work).
@@ -61,7 +61,6 @@ Reasons for these internal link standards:
 * Following the rules above helps us avoid broken links.
 * MkDocs will detect broken links when building books, but only if the links are absolute and end with `.md`.
 * Using consistent syntax helps us to more easily find-and-replace links when moving pages.
-
 
 ## Basic inline formatting
 
@@ -568,12 +567,12 @@ Images function mostly the same as hyperlinks, but preceded by an exclamation
 point and with alt text in place of the link text.
 
 ```
-![Alt text](/img/CiviCRM.png)
+![Alt text](../img/CiviCRM.png)
 ```
 
 ***Result:***
 
-> ![Alt text](/img/CiviCRM.png)
+> ![Alt text](../img/CiviCRM.png)
 
 Note:
 

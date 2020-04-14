@@ -10,13 +10,13 @@ used to render urls in CiviCRM.
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
-    -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
-    -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
-    -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
+    -   [hook_civicrm_navigationMenu](hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
+    -   [hook_civicrm_alterMenu](hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
+    -   [hook_civicrm_xmlMenu](hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
 
 !!! tip "Applying changes"
 
-    Menu data is cached. After making a change to the menu data, [clear the system cache](/tools/debugging.md#clearing-the-cache).
+    Menu data is cached. After making a change to the menu data, [clear the system cache](../tools/debugging.md#clearing-the-cache).
 
 ## Definition
 
@@ -57,7 +57,7 @@ function EXAMPLE_civicrm_xmlMenu(&$files) {
 
 ## XML Structure
 
-See the [routing](/framework/routing.md) page for details on the XML schema.
+See the [routing](../framework/routing.md) page for details on the XML schema.
 
 ## XML: IDS
 
@@ -98,5 +98,5 @@ and `field_4`) which may ordinarily look suspicious.
 
 !!! tip "Tip: Narrow exceptions are better than blanket exceptions"
     The `<ids_arguments>` element allows you to define a narrow exception for a specific field on a specific page.
-    [hook_civicrm_idsException](/hooks/hook_civicrm_idsException.md) supports a blanket exemption for the entire page.
+    [hook_civicrm_idsException](hook_civicrm_idsException.md) supports a blanket exemption for the entire page.
     When possible, it is better to use a narrow exception.

@@ -20,7 +20,7 @@ Requirements:
     - `action` - **required**, the API action
     - `json` - **optional**, json formatted string with the API parameters/argumets, or `1` as in `json=1`
 
-    It mimics CiviCRM's REST [interface](https://docs.civicrm.org/dev/en/latest/api/interfaces/#rest), by default all calls to `civicrm/v3/rest` return XML formatted results, to get `json` formatted result pass `json=1` or a json formatted string with the API parameters, like in the example 2 below.
+    It mimics CiviCRM's REST [interface](../interfaces.md), by default all calls to `civicrm/v3/rest` return XML formatted results, to get `json` formatted result pass `json=1` or a json formatted string with the API parameters, like in the example 2 below.
 
     **Examples**:
 

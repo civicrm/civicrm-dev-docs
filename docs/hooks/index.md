@@ -43,7 +43,7 @@ function myextension_civicrm_buildForm($formName, &$form) {
 
 This works well in many cases but has its limitations.  For example, if two extensions call the same hook there is no way to determine which runs first.
 
-For details, see [Tradtional Hooks](/hooks/usage/extension.md)
+For details, see [Traditional Hooks](usage/extension.md)
 
 ### Symfony method
 
@@ -59,7 +59,7 @@ function myextension_buildForm($event) {
 }
 ```
 
-For more details see [Hooks with Symfony](/hooks/usage/symfony.md)
+For more details see [Hooks with Symfony](usage/symfony.md)
 
 ## Targeting Certain Events
 
@@ -85,7 +85,7 @@ it is very helpful to look inside those objects (especially `$objectRef`) to
 make sure you're getting what you expect.
 
 A good debugger is indispensable here. See the
-[page on debugging](/tools/debugging.md) for more information on setting up
+[page on debugging](../tools/debugging.md) for more information on setting up
  a debugger for your development environment.
 
 !!! warning
@@ -95,7 +95,7 @@ A good debugger is indispensable here. See the
 
 ## Packaging Hooks
 
-Hooks are packaged in CMS-agnostic [extensions](/extensions/index.md).
+Hooks are packaged in CMS-agnostic [extensions](../extensions/index.md).
 
 ## Organizing Your Hooks
 
@@ -106,5 +106,5 @@ You might find it helpful when implementing a hook to delegate certain
 operations to different functions instead of lumping it all in together in
 the main hook.
 
-If you're using [Civix](/extensions/civix.md) to create your extension it will
+If you're using [Civix](../extensions/civix.md) to create your extension it will
 automatically generate wrapper code for your hook.

@@ -15,7 +15,7 @@ source tree for `getContactDetails` to see how it's being used.
 
 ## Create the universe
 
-If your system is configured to support [civibuild](/tools/civibuild.md), then simply run:
+If your system is configured to support [civibuild](civibuild.md), then simply run:
 
 ```bash
 $ civibuild create universe

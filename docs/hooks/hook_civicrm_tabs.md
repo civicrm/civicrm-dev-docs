@@ -2,7 +2,7 @@
 
 ## Summary
 
-This hook was deprecated in 4.7 in favor of [hook_civicrm_tabset](/hooks/hook_civicrm_tabset.md).
+This hook was deprecated in 4.7 in favor of [hook_civicrm_tabset](hook_civicrm_tabset.md).
 
 ## Notes
 

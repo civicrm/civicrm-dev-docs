@@ -14,7 +14,7 @@ other technologies (such as PHP and Git, which are not CiviCRM-specific) are out
 -   **PHP** - the main programming language in which CiviCRM is written.
     -   [Language reference](http://php.net/manual/en/langref.php)
 -   **Git, GitHub, and GitLab** - Git is a version control system for tracking changes to source code. GitHub and GitLab are web-based tools which host git repositories and issue-tracking systems.
-    -   See [our recommended external resources](/tools/git.md#resources)
+    -   See [our recommended external resources](../tools/git.md#resources)
 -   **Command line / bash** - in general, "the command line" refers to using a text-only interface to run programs such as `civix`, `git`, and many more. Bash is the most common "shell" program used to execute these commands on Unix computers (i.e. Linux and OS X).
     -   [Unix command line tutorial](http://www.ee.surrey.ac.uk/Teaching/Unix/)
     -   *Microsoft Windows has a command line shell which functions very differently from bash. While developing CiviCRM on Windows is possible, it will be a slightly more uphill battle, for this reason and others.*

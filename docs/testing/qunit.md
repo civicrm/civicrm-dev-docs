@@ -1,8 +1,8 @@
 !!! caution "QUnit for CiviCRM is deprecated"
 
     This documentation explains the existing QUnit tests.  However, the
-    functionality overlaps a lot with [Karma](/testing/karma.md) <!-- and
-    [Protractor](/testing/protractor.md)-->. Karma and Protractor have more
+    functionality overlaps a lot with [Karma](karma.md) <!-- and
+    [Protractor](protractor.md)-->. Karma and Protractor have more
     powerful test-runners and better support for AngularJS, so the
     QUnit-CiviCRM suite is deprecated.
    

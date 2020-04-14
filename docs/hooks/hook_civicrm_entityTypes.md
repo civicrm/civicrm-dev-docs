@@ -6,7 +6,7 @@ This hook is used to declare a new type of entity, for example a booking extensi
 
 ## Notes
 
-[See this tutorial](/extensions/civix.md#generate-entity) for a more complete description of creating new types of entities.
+[See this tutorial](../extensions/civix.md#generate-entity) for a more complete description of creating new types of entities.
 
 ## Definition
 

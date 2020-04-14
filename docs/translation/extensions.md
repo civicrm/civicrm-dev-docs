@@ -1,6 +1,6 @@
 # Extensions Translation
 
-For developing a CiviCRM extension in a way that can be translated, all the best practices described in the [Internationalisation for Developers](/translation/index.md) page apply. This page describes special considerations that need to be taken into account for extensions.
+For developing a CiviCRM extension in a way that can be translated, all the best practices described in the [Internationalisation for Developers](index.md) page apply. This page describes special considerations that need to be taken into account for extensions.
 
 See also: ["Extension translation" wiki in the Translation project](https://lab.civicrm.org/dev/translation/wikis/extension-translation).
 
@@ -10,7 +10,7 @@ There is a separate project on Transifex to translate extensions. Each extension
 
 See: <https://www.transifex.com/projects/p/civicrm_extensions/>
 
-Translation strings are sent to Transifex when the extension is "ready for automatic distribution". See: [Publishing Extensions](/extensions/publish.md).
+Translation strings are sent to Transifex when the extension is "ready for automatic distribution". See: [Publishing Extensions](../extensions/publish.md).
 
 ## For administrators: Download translation files for extensions
 

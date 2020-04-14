@@ -14,7 +14,7 @@ The results of the tests are published at [test.civicrm.org](https://test.civicr
 
 Whenever a *pull-request* (PR) is submitted or revised on Github, Jenkins runs a set of tests. PR test jobs can take anywhere from 5 min to 2 hours to complete.
 
-The CiviCRM system is composed of several `git` repositories and several [test-suites](/testing/index.md).  To provide quicker results, tests are selected for relevance -- for example, a patch to `civicrm-core` will trigger almost all tests (because `core` code can be referenced directly or indirectly by any test).  However, a patch to the `civicrm-backdrop` integration will only trigger end-to-end tests (because the Backdrop integration code is relevant in E2E tests) -- it will skip the APIv3 tests (because the APIv3 tests use a mock CMS which is independent of Backdrop).
+The CiviCRM system is composed of several `git` repositories and several [test-suites](index.md).  To provide quicker results, tests are selected for relevance -- for example, a patch to `civicrm-core` will trigger almost all tests (because `core` code can be referenced directly or indirectly by any test).  However, a patch to the `civicrm-backdrop` integration will only trigger end-to-end tests (because the Backdrop integration code is relevant in E2E tests) -- it will skip the APIv3 tests (because the APIv3 tests use a mock CMS which is independent of Backdrop).
 
 | Repository         | <center>civilint</center>      | <center>PHPUnit</center> | <center>Karma</center> | <center>Upgrade</center> |
 |--------------------|--------------------------------|--------------------------|------------------------|--------------------------|
@@ -22,19 +22,19 @@ The CiviCRM system is composed of several `git` repositories and several [test-s
 | `civicrm-packages` |                                | APIv3, Civi, CRM, E2E    | <center>✅ </center>    | <center>✅ </center> |
 | `civicrm-drupal`   | <center>✅ </center>            | E2E, Drupal              | <center>✅ </center>    | <center>✅ </center> |
 | `civicrm-backdrop` | <center>✅ </center>            | E2E                      |                        |                     |
-| ***See also***     | <center>[civilint](/tools/civilint.md)</center> | [PHPUnit Tests](/testing/phpunit.md) | <center>[Karma Tests](/testing/karma.md)</center> | <center>[Upgrade Tests](/testing/upgrades.md)</center> |
+| ***See also***     | <center>[civilint](../tools/civilint.md)</center> | [PHPUnit Tests](phpunit.md) | <center>[Karma Tests](karma.md)</center> | <center>[Upgrade Tests](upgrades.md)</center> |
 
 !!! tip "Quick results for code style"
 
-    Jenkins first runs the fast code-style checks for PHP and Javascript ([civilint](/tools/civilint.md)).  If this finds any problems, it will quickly abort and skip slower tests. When a new contributor is learning the code style, this allows quick iteration.
+    Jenkins first runs the fast code-style checks for PHP and Javascript ([civilint](../tools/civilint.md)).  If this finds any problems, it will quickly abort and skip slower tests. When a new contributor is learning the code style, this allows quick iteration.
 
 !!! tip "Executing locally"
 
-    To run all the tests in one of the suites locally, you can use [civi-test-run](/tools/civi-test-run.md).
+    To run all the tests in one of the suites locally, you can use [civi-test-run](../tools/civi-test-run.md).
 
 !!! tip "Alternate CMS testing"
 
-    For PR test jobs against `civicrm-core` and `civicrm-packages`, Jenkins uses [the `drupal-clean` build type](/tools/civibuild.md). If you are fixing an issue with another CMS, you may need to build yourself a local test environment with that CMS.
+    For PR test jobs against `civicrm-core` and `civicrm-packages`, Jenkins uses [the `drupal-clean` build type](../tools/civibuild.md). If you are fixing an issue with another CMS, you may need to build yourself a local test environment with that CMS.
 
 !!! tip "Whitelist"
 
@@ -74,9 +74,9 @@ However, unlike core testing, the extension testing uses a "convention over conf
 * The root folder includes `info.xml` and `phpunit.xml.dist`.
 * If the extension requires any other extensions, these are listed in `info.xml` and published in [the Extension Directory](https://civicrm.org/extensions/).
 * The PHPUnit tests are organized into two `@group`s -- `headless` and `e2e`.
-* The extension is compatible with the `drupal-clean` build type in [civibuild](/tools/civibuild.md).
+* The extension is compatible with the `drupal-clean` build type in [civibuild](../tools/civibuild.md).
 
-The [civix](/extensions/civix.md) code-generator produces compliant code by default.
+The [civix](../extensions/civix.md) code-generator produces compliant code by default.
 
 !!! tip "Availability"
 
@@ -86,7 +86,7 @@ The [civix](/extensions/civix.md) code-generator produces compliant code by defa
 
     To enable testing on a Github repository, visit [https://github.com/apps/civibot](https://github.com/apps/civibot) and proceed to "Configure". You can install `civibot` for any user/organization -- and then authorize it to access some repositories:
 
-    ![Github Repository Access Screen](/img/repository-access.png)
+    ![Github Repository Access Screen](../img/repository-access.png)
 
     You *may* enable for "All repositories" (current *and* future), even if you have unrelated repositories. Civibot autodetects extensions and ignores other projects.
 

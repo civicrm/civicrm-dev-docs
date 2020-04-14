@@ -5,7 +5,7 @@ This chapter provides a general overview of the codebase organisation.
 !!! tip
     In order to explore the directories inside the CiviCRM repository it is
     generally quickest to make a local clone of CiviCRM from GitHub,
-    or better yet install the [buildkit](/basics/requirements.md#buildkit).
+    or better yet install the [buildkit](../basics/requirements.md#buildkit).
 
 !!! tip
     The CiviCRM codebase is object oriented. If you aren't familiar with object
@@ -57,7 +57,7 @@ The CiviCRM **data access objects** (DAOs) are PHP classes that
 ([e.g. `CRM/Pledge/DAO`](https://github.com/civicrm/civicrm-core/tree/master/CRM/Pledge/DAO))
 expose the contents
 of the database.  The release script generates each DAO automatically based
-on the matching XML file in the [data schema](/framework/database/schema-definition.md).  DAO objects tend to be instantiated in BAO classes.
+on the matching XML file in the [data schema](database/schema-definition.md).  DAO objects tend to be instantiated in BAO classes.
 
 The DAO classes all extend the core
 [DAO base class](https://github.com/civicrm/civicrm-core/blob/master/CRM/Core/DAO.php)
