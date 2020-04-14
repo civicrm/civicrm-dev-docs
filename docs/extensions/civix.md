@@ -6,7 +6,7 @@ The [`civix`](https://github.com/totten/civix/) command-line tool is the communi
 
 Follow the installation instructions in the [GitHub repository](https://github.com/totten/civix/).
 
-After fulfilling the [Pre-Requisites](extensions/index.md#pre-requisites), you can verify that all your configuration is correct by running the following command from within your extensions directory with:
+After fulfilling the [Pre-Requisites](/extensions/index.md#pre-requisites), you can verify that all your configuration is correct by running the following command from within your extensions directory with:
 
 ```bash
 civix civicrm:ping
@@ -24,7 +24,7 @@ civix help civicrm:ping
 
 ## Generate a skeletal extension {:#generate-module}
 
-To generate a skeletal extension module, we will use `civix generate:module` and pass in the name for our extension. See [here](extensions/index.md#extension-names) for details of naming conventions.
+To generate a skeletal extension module, we will use `civix generate:module` and pass in the name for our extension. See [here](/extensions/index.md#extension-names) for details of naming conventions.
 
 Start with:
 
@@ -39,17 +39,17 @@ Then use a command like this:
 civix generate:module com.example.myextension --license=AGPL-3.0
 ```
 
-This command will report that it has created three files, following the [standard extension structure](extensions/structure.md).
+This command will report that it has created three files, following the [standard extension structure](/extensions/structure.md).
 
 The command attempts to auto-detect authorship information (your name and email address) by reading your [`git`](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) configuration. If this fails or is otherwise incorrect, then you may pass explicit values with `--author` and `--email`.
 
-You can now update your `info.xml`. This file initially contains some examples and placeholders which you need to fix. You can edit most of these fields intuitively.  If you need detailed specifications, see [Extension Reference](extensions/index.md).
+You can now update your `info.xml`. This file initially contains some examples and placeholders which you need to fix. You can edit most of these fields intuitively.  If you need detailed specifications, see [Extension Reference](/extensions/index.md).
 
 Now that you have created your extension, you need to activate it by navigating to:
 
 **Administer » System Settings » Extensions**
 
-For more detailed instructions, see [Extensions](extensions/index.md).
+For more detailed instructions, see [Extensions](/extensions/index.md).
 
 ## Add features
 
@@ -84,12 +84,12 @@ The auto-generated code for the controller and view demonstrate a few basic oper
 
 **Edit In Place**
 
-If the data on the page is read and updated through the API, then you may want to consider using the [in-place editing](framework/ui.md#in-place-field-editing) API.
+If the data on the page is read and updated through the API, then you may want to consider using the [in-place editing](/framework/ui.md#in-place-field-editing) API.
 
 ### Add a basic web form {:#generate-form}
 
 !!! caution
-    The form system is not well documented and may undergo significant revision after the CiviCRM 4.x series. In general, migrating basic pages will be easier than migrating basic forms, so you may want to consider building your data-input interface using basic pages, the AJAX API, and the [in-place editing](framework/ui.md#in-place-field-editing) API.
+    The form system is not well documented and may undergo significant revision after the CiviCRM 4.x series. In general, migrating basic pages will be easier than migrating basic forms, so you may want to consider building your data-input interface using basic pages, the AJAX API, and the [in-place editing](/framework/ui.md#in-place-field-editing) API.
 
 CiviCRM uses a typical web-MVC architecture. To implement a basic web form, you must create a PHP controller class, create a Smarty template file, and create a routing rule. You can create the appropriate files by calling `civix generate:form`.
 
@@ -103,7 +103,7 @@ This creates three files:
 
 -   `xml/Menu/myextension.xml` defines request-routing rules and associates the controller `CRM_Myextension_Form_FavoriteColor`
     with the web path `civicrm/favcolor`.
--   `CRM/Myextension/Form/FavoriteColor.php` is the controller which coordinates any parsing, validation, business-logic, or database operations. For more details on how this class works, see [QuickForm Reference](framework/quickform/index.md).
+-   `CRM/Myextension/Form/FavoriteColor.php` is the controller which coordinates any parsing, validation, business-logic, or database operations. For more details on how this class works, see [QuickForm Reference](/framework/quickform/index.md).
 -   `templates/CRM/Myextension/Form/FavoriteColor.tpl` is loaded automatically after the controller executes. It defines the markup that is eventually displayed. For more information on the syntax of this file, see [the smarty guide](http://www.smarty.net/docs/en/).
 
 The auto-generated code for the controller and view demonstrate a few basic operations, such as adding a `<select>` element to the form.
@@ -133,9 +133,9 @@ If you want your extension to store data in the database, then you will need to 
     
     This creates a skeletal file for your XML schema, your BAO, and your API.
 
-1. Edit the [XML schema definitions](framework/database/schema-definition.md) that you just generated (in the `xml` folder). Define your desired fields.
+1. Edit the [XML schema definitions](/framework/database/schema-definition.md) that you just generated (in the `xml` folder). Define your desired fields.
 
-1. Generate your [DAO](framework/codebase.md#dao) and SQL files.
+1. Generate your [DAO](/framework/codebase.md#dao) and SQL files.
 
 
     ```bash
@@ -202,12 +202,12 @@ This creates two files and one directory:
 After reviewing the examples and creating your own upgrade functions, you can execute the upgrades through the web interface by visiting the "Manage Extensions" screen. This screen will display an alert with an action-link to perform the upgrades.
 
 !!! note
-    The "upgrader" class is a wrapper for [hook_civicrm_upgrade](hooks/hook_civicrm_upgrade.md) which aims to be easy-to-use for developers with Drupal experience. If you need to organize the upgrade logic differently, then consider providing your own implementation of hook_civicrm_upgrade.
+    The "upgrader" class is a wrapper for [hook_civicrm_upgrade](/hooks/hook_civicrm_upgrade.md) which aims to be easy-to-use for developers with Drupal experience. If you need to organize the upgrade logic differently, then consider providing your own implementation of hook_civicrm_upgrade.
 
 !!! caution
     Only use the upgrade system to manage new SQL tables. Do not manipulate core schema. 
 
-If you need to create triggers on core SQL tables, use [hook_civicrm_triggerInfo](hooks/hook_civicrm_triggerInfo.md). This allows your triggers to coexist with triggers from other modules.
+If you need to create triggers on core SQL tables, use [hook_civicrm_triggerInfo](/hooks/hook_civicrm_triggerInfo.md). This allows your triggers to coexist with triggers from other modules.
 
 ### Add a case type {:#generate-case-type}
 
@@ -314,7 +314,7 @@ $values = CRM_Core_BAO_CustomValueTable::getValues($params);
 
 ### Add a hook function
 
-CiviCRM [hook functions](hooks/index.md) allow extensions to run extra logic as part of the normal CiviCRM processing. For example, `hook_civicrm_buildForm()` allows a module to run logic whenever a web-form is displayed, and `hook_civicrm_post()` allows a module to run logic after any entity is saved.
+CiviCRM [hook functions](/hooks/index.md) allow extensions to run extra logic as part of the normal CiviCRM processing. For example, `hook_civicrm_buildForm()` allows a module to run logic whenever a web-form is displayed, and `hook_civicrm_post()` allows a module to run logic after any entity is saved.
 
 Hook function names follow the Drupal convention of being the module's short-name concatenated to the hook name. This strict but simple naming convention is what allows the CiviCRM core to locate your hook functions and call them at the appropriate times. For example, if our module's main file is `myextension.php` and we want to use `hook_civicrm_post()` to write to a log file every time a contribution is saved, then our function must be called `myextension_civicrm_post()`.
 
@@ -346,13 +346,13 @@ function myextension_civicrm_post($op, $objectName, $objectId, &$objectRef) {
 
 ### Add a resource file
 
-To include static resources such as stylesheets, Javascript files, or images place them in your extension directory. To load the files at runtime, see the examples in the [Resource Reference](framework/resources.md).
+To include static resources such as stylesheets, Javascript files, or images place them in your extension directory. To load the files at runtime, see the examples in the [Resource Reference](/framework/resources.md).
 
 ### Add a report {:#generate-report}
 
 CiviReport enables developers to define new business reports using customizable SQL logic and form layouts. This command is available if you want to create a new report. It also provides an option, if another existing report is close to your needs, to easily copy and modify it.
 
-In many cases you can take advantage of the [alterReportVar hook](hooks/hook_civicrm_alterReportVar) to adjust the columns, sql, or event rows of an existing report to modify it to suit your needs instead of creating a new report. 
+In many cases you can take advantage of the [alterReportVar hook](/hooks/hook_civicrm_alterReportVar) to adjust the columns, sql, or event rows of an existing report to modify it to suit your needs instead of creating a new report. 
 
 To see the available report generation options activate the `civix` help:
 
@@ -368,9 +368,9 @@ civix generate:report MyReport CiviContribute
 
 This creates three files:
 
--   `CRM/Myextension/Form/Report/MyReport.mgd.php` stores metadata about the report in a format based on [hook_civicrm_managed](hooks/hook_civicrm_managed.md) and the [API](api/index.md).
+-   `CRM/Myextension/Form/Report/MyReport.mgd.php` stores metadata about the report in a format based on [hook_civicrm_managed](/hooks/hook_civicrm_managed.md) and the [API](/api/index.md).
 -   `CRM/Myextension/Form/Report/MyReport.php` contains the form-builder and query-builder for the report. For details about its
-    structure, see the [CiviReport Reference](framework/civireport.md).
+    structure, see the [CiviReport Reference](/framework/civireport.md).
 -   `templates/CRM/Myextension/Form/Report/MyReport.tpl` contains the report's HTML template. This template usually delegates responsibility to a core template and does not need to be edited.
 
 If one of the existing reports is close to meeting your needs, but requires further PHP or SQL customization, you may simply make a new report based on that report. To copy a report, find the class-name of the original report within the `civicrm/CRM/Report/Form/` directory in the CiviCRM repository. Then run the `civix generate:report` command using the copy option from within your extension directory.
@@ -431,7 +431,7 @@ civix generate:search MySearch
 This command will create two files:
 
 -   `CRM/Myextension/Form/Search/MySearch.mgd.php` stores metadata about the custom search. The format of the file is based on
-    [hook_civicrm_managed](hooks/hook_civicrm_managed.md) and the [API](api/index.md).
+    [hook_civicrm_managed](/hooks/hook_civicrm_managed.md) and the [API](/api/index.md).
 -   `CRM/Myextension/Form/Search/MySearch.php` contains the form-builder and query-builder for the custom search.
 
 #### Copying an existing search
@@ -463,7 +463,7 @@ See this (somewhat outdated) [wiki page](https://wiki.civicrm.org/confluence/dis
 
 ### Add an API function {:#generate-api}
 
-The [CiviCRM API](api/index.md) provides a way to expose functions for use by other developers. API functions allow implementing AJAX interfaces (using the CRM.$().crmAPI() helper), and they can also be called via REST, PHP, Smarty, Drush CLI, and more. Each API requires a two-part name: an entity name (such as "Contact", "Event", or "MyEntity") and an action name (such as "create" or "myaction").
+The [CiviCRM API](/api/index.md) provides a way to expose functions for use by other developers. API functions allow implementing AJAX interfaces (using the CRM.$().crmAPI() helper), and they can also be called via REST, PHP, Smarty, Drush CLI, and more. Each API requires a two-part name: an entity name (such as "Contact", "Event", or "MyEntity") and an action name (such as "create" or "myaction").
 
 Get started by accessing the `civix` help:
 
@@ -500,7 +500,7 @@ When calling the API, follow these rules:
 For example: `cv api NewEntity.newaction`  `civicrm_api3('NewEntity', 'newaction')`
     
 !!! tip
-    Read more about [APIv4 architecture](api/v4/architecture.md) for help writing custom APIv4 implementations.
+    Read more about [APIv4 architecture](/api/v4/architecture.md) for help writing custom APIv4 implementations.
 
 ### Add a unit-test class {:#generate-test}
 
@@ -535,7 +535,7 @@ The skeletal test class does not do anything useful. For more details on how to 
 -   Read [PHP Unit Manual: Writing Tests for PHPUnit.](https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html).
 -   Review the example code in [org.civicrm.exampletests](https://github.com/totten/org.civicrm.exampletests).
 
-To run the tests see the instructions [for running PHPUnit tests](testing/phpunit.md#running-tests).
+To run the tests see the instructions [for running PHPUnit tests](/testing/phpunit.md#running-tests).
 
 ## Upgrade civix {:#upgrade}
 

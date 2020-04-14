@@ -2,7 +2,7 @@
 
 When writing new application code, developers should organize their code in a way which is amenable to internationalization, so that it may be localized to various languages and regions of the world.
 
-If you are an extension developer, there is additional documentation in the [Extension translation](translation/extensions.md) page.
+If you are an extension developer, there is additional documentation in the [Extension translation](/translation/extensions.md) page.
 
 ## PHP
 

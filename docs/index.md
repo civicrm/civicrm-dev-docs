@@ -9,7 +9,7 @@ The guide also includes detailed references for tools and subsystems of CiviCRM.
 ## Editing this guide
 
 * This guide is made with MkDocs and stored in a [GitHub repository](https://github.com/civicrm/civicrm-dev-docs).
-* See the "[Writing Documentation](documentation/index.md)" section in this guide for specific details on editing this guide.
+* See the "[Writing Documentation](/documentation/index.md)" section in this guide for specific details on editing this guide.
 
 ## Credits
 

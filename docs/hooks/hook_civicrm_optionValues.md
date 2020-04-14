@@ -2,14 +2,14 @@
 
 ## Summary
 
-This hook was deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](hooks/hook_civicrm_fieldOptions.md).
+This hook was deprecated in 4.7 in favor of [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md).
 
 ## Notes
 
 This hook is called after a option group is loaded. You can use this
 hook to add/remove options from the option group.
 
-Use [hook_civicrm_fieldOptions](hooks/hook_civicrm_fieldOptions.md) instead for modifying all option lists, not limited to items in the `civicrm_option_values` table.
+Use [hook_civicrm_fieldOptions](/hooks/hook_civicrm_fieldOptions.md) instead for modifying all option lists, not limited to items in the `civicrm_option_values` table.
 
 ## Definition
 

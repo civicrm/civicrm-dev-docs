@@ -107,7 +107,7 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 | addUploadElement | file upload | |
 | addCurrency | select currency  | |
 | addMoney | money field + select currency | |
-| addEntityRef | autocomplete select of contacts, tags, events, etc. | [EntityRef documentation](framework/quickform/entityref) |
+| addEntityRef | autocomplete select of contacts, tags, events, etc. | [EntityRef documentation](/framework/quickform/entityref) |
 
 ### Deprecated Form Elements
 
@@ -121,7 +121,7 @@ These basic elements can be added using `CRM_Core_Form()->add()`
 ## Request Lifecycle
 
 
-![](img/quickform-lifecycle.png)
+![](/img/quickform-lifecycle.png)
 
 CiviCRM provides a more nuanced request lifecycle than traditional `HTML_QuickForm`. This extended request lifecycle allows the original web developer to create the form using a class – and allows third-party developers to modify the form using hooks. The request lifecycle is divided into a few phases, and each phase may have multiple steps. The phases and steps are presented in sequence:
 
@@ -133,7 +133,7 @@ Generate a set of HTML form fields (`$form->addElement()`, `$form->add()`, etc) 
 | --- | --- | --- |
 | `CRM_Core_Form::preProcess` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `preProcess()` function can be overridden. |
 | `CRM_Core_Form::buildQuickForm` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `buildQuickForm()` function can be overridden. | 
-| [hook_civicrm_buildForm](hooks/hook_civicrm_buildForm.md) | Third-Party Developer |  |
+| [hook_civicrm_buildForm](/hooks/hook_civicrm_buildForm.md) | Third-Party Developer |  |
 | `CRM_Core_Form::addRules` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `addRules()` function can be overridden.
 
 ### Validate Phase
@@ -143,8 +143,8 @@ Examine submitted form data to determine validity. (Note: The "Validation" phase
 | Step | Audience | Comments |
 | --- | --- | --- |
 | (Process rules) | Original Developer & Third-Party Developer | Iteratively process any rules added during the "build" phase (i.e. call any callbacks registered via `$form()->addFormRule()`). |
-| [hook_civicrm_validate](hooks/hook_civicrm_validate.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
-| [hook_civicrm_validateForm](hooks/hook_civicrm_validateForm.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
+| [hook_civicrm_validate](/hooks/hook_civicrm_validate.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validateForm` but older) |
+| [hook_civicrm_validateForm](/hooks/hook_civicrm_validateForm.md) | Third-Party Developer | (Note: This is similar to `hook_civicrm_validate`; added in CiviCRM v4.2) |
 
 ### Process Phase
 
@@ -153,7 +153,7 @@ Save the data, execute business logic, etc. (Note: The "Process" phase runs duri
 | Step | Audience | Comments |
 | --- | --- | --- |
 | `CRM_Core_Form::postProcess` (override) | Original Developer | In any subclass of `CRM_Core_Form`, the `postProcess()` function can be overridden. |
-| [hook_civicrm_postProcess](hooks/hook_civicrm_postProcess.md) | Third-Party Developer | |
+| [hook_civicrm_postProcess](/hooks/hook_civicrm_postProcess.md) | Third-Party Developer | |
 
 ### Render Phase
 

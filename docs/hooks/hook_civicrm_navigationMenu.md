@@ -9,14 +9,14 @@ This hook is called after the menus are rebuilt.
 !!! note "Comparison of Related Hooks"
     This is one of three related hooks. The hooks:
 
-    -   [hook_civicrm_navigationMenu](hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
-    -   [hook_civicrm_alterMenu](hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
-    -   [hook_civicrm_xmlMenu](hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
+    -   [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md) manipulates the navigation bar at the top of every screen
+    -   [hook_civicrm_alterMenu](/hooks/hook_civicrm_alterMenu.md) manipulates the list of HTTP routes (using PHP arrays)
+    -   [hook_civicrm_xmlMenu](/hooks/hook_civicrm_xmlMenu.md) manipulates the list of HTTP routes (using XML files)
 
 You can use this hook to add new menu, add children to new menu and get the list of menu items for any parent.
 
 !!! warning "Use the Civix implementation"
-    [Civix](extensions/civix.md) comes with helper functions `_EXTENSION_NAME_civix_insert_navigation_menu` and `_EXTENSION_NAME_civix_navigation_menu` that simplify the process of inserting menu items. Consider using these functions rather than using the examples below or writing your own implementation of this hook.
+    [Civix](/extensions/civix.md) comes with helper functions `_EXTENSION_NAME_civix_insert_navigation_menu` and `_EXTENSION_NAME_civix_navigation_menu` that simplify the process of inserting menu items. Consider using these functions rather than using the examples below or writing your own implementation of this hook.
 
 ## Definition
 

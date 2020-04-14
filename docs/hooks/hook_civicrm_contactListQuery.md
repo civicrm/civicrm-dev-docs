@@ -2,7 +2,7 @@
 
 ## Summary
 
-Deprecated in favor of [hook_civicrm_apiWrappers](hooks/hook_civicrm_apiWrappers.md).
+Deprecated in favor of [hook_civicrm_apiWrappers](/hooks/hook_civicrm_apiWrappers.md).
 
 ## Notes
 

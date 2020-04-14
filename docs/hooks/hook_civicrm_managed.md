@@ -34,12 +34,12 @@ hook_civicrm_managed(&$entities)
         entity (*Note: Each module creates its own namespace*)
 
     -   string `entity` - an entity-type supported by the [CiviCRM
-        API](api/index.md) (*Note: this
+        API](/api/index.md) (*Note: this
         currently must be an entity which supports the 'is_active'
         property*)
 
     -   array `params` - the entity data as supported by the [CiviCRM
-        API](api/index.md)
+        API](/api/index.md)
 
     -   string `update` - a policy which describes when to
         update records

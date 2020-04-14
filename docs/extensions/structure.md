@@ -1,11 +1,11 @@
 # Extension Structure
 
 ## Extension Files
-The [civix](extensions/civix.md) command line tool will generate the following structure
+The [civix](/extensions/civix.md) command line tool will generate the following structure
 for you:
 
 -   ***info.xml*** is a manifest that describes your extension – the name, license, version number, etc. You should edit most information in this file. The information contained in this file will also be used if published on civicrm.org.
--   ***myextension.php*** stores source code for all your hooks. It includes a few default hook implementations which will make     development easier. You can add and remove hooks as you wish. (Note: This file name is different in each module – it is based the module's *[short-name](extensions/index.md#extension-names)*.)
+-   ***myextension.php*** stores source code for all your hooks. It includes a few default hook implementations which will make     development easier. You can add and remove hooks as you wish. (Note: This file name is different in each module – it is based the module's *[short-name](/extensions/index.md#extension-names)*.)
 -   ***myextension.civix.php*** contains auto-generated helper functions. These deal with common problems like registering your
     module in the template include-path. `civix` may automatically overwrite this file, so generally do not edit it.
 

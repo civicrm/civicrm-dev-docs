@@ -52,7 +52,7 @@ For example, at time of writing, it includes:
     * `extdir`: A mock website akin to civicrm.org/extdir/ . Useful for testing the extension download process.
     * `l10n`: WIP - A build environment for creating translation files.
     * `messages`: A backend service for delivering in-app messages (eg "Getting Started").
-    * [`universe`](tools/universe.md): A broad collection of publicly visible repos, extensions, infrastructure, etc.
+    * [`universe`](/tools/universe.md): A broad collection of publicly visible repos, extensions, infrastructure, etc.
 
 Build types can be mixed/matched with different versions of Civi, e.g.,
 
@@ -147,7 +147,7 @@ cd ~/buildkit/build/dmaster/sites/all/modules/civicrm/
 
 ### Check the status of all git repos {:#upgrade-site-git-scan}
 
-There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan) (installed with [buildkit](tools/buildkit.md)).
+There are multiple git repos in your build (`civicrm-core.git`, `civicrm-packages.git`, etal). Before making a major switch, first double-check that all of these repos are in sane condition &mdash; i.e. there shouldn't be any uncommitted changes, and the repos should be on normal branches. For this purpose, use [git-scan](https://github.com/totten/git-scan) (installed with [buildkit](/tools/buildkit.md)).
 
 ```
 git scan status
@@ -168,7 +168,7 @@ git scan up
 !!! tip
     If you didn't cleanup earlier, then "fast-forward" may not be possible. It takes some judgment to decide what to do &mdash; e.g. a "merge" versus "rebase". Rather than risk a wrong decision, `git scan` will skip these repos and display warnings instead.)
 
-Alternatively, if you'd like to hop to a specific tag, you can use `givi` (a tool included with [buildkit](tools/buildkit.md)), but keep in mind that if you hop to a *previous* tag with code that expects a different database scheme, there will be no way to run database downgrades.
+Alternatively, if you'd like to hop to a specific tag, you can use `givi` (a tool included with [buildkit](/tools/buildkit.md)), but keep in mind that if you hop to a *previous* tag with code that expects a different database scheme, there will be no way to run database downgrades.
 
 ```
 givi checkout 4.7.17
@@ -192,7 +192,7 @@ drush civicrm-upgrade-db
 
 ## Downgrading a site you installed with civibuild {:#downgrade-site}
 
-If you are [reviewing a pull request](core/pr-review.md) you may wish to *downgrade* a civibuild site in order to begin replicating the issue and testing the fix. Currently this is **not possible** with civibuild, so instead you will need to do a [rebuild](#rebuild) with the the `--civi-ver` argument to specify your target version of CiviCRM.
+If you are [reviewing a pull request](/core/pr-review.md) you may wish to *downgrade* a civibuild site in order to begin replicating the issue and testing the fix. Currently this is **not possible** with civibuild, so instead you will need to do a [rebuild](#rebuild) with the the `--civi-ver` argument to specify your target version of CiviCRM.
 
 
 ## Rebuilds {:#rebuild}

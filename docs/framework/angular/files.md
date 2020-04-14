@@ -18,7 +18,7 @@ they follow a naming convention.
 !!! note "What if I don't use `civix`? What if my code doesn't follow the naming convention?"
     The file-loader needs some information about the name and location of
     your AngularJS code, but you don't need to follow the convention.  You
-    can configure it via hook.  See: [AngularJS: Loading](framework/angular/loader.md).
+    can configure it via hook.  See: [AngularJS: Loading](/framework/angular/loader.md).
 
 ## Abridged convention
 
@@ -26,7 +26,7 @@ The abridged convention applies to small Angular modules with a narrow
 purpose -- such as defining a singular `service` or `directive`.  These
 modules only have 2 or 3 files.
 
-   * `ang/{mymodule}.ang.php` - General metadata about the module (per [hook_civicrm_angularModules](hooks/hook_civicrm_angularModules.md)).
+   * `ang/{mymodule}.ang.php` - General metadata about the module (per [hook_civicrm_angularModules](/hooks/hook_civicrm_angularModules.md)).
    * `ang/{mymodule}.js` - All Javascript for the module.
    * `ang/{mymodule}.css` - All CSS for the module (if applicable).
    * `ang/{mymodule}.md` - Developer documentation about the module (if applicable).
@@ -40,7 +40,7 @@ have multiple aspects (JS/HTML/CSS).
 
 __Module Files__
 
-   * `ang/{mymodule}.ang.php` - General metadata about the module (per [hook_civicrm_angularModules](hooks/hook_civicrm_angularModules.md)).
+   * `ang/{mymodule}.ang.php` - General metadata about the module (per [hook_civicrm_angularModules](/hooks/hook_civicrm_angularModules.md)).
    * `ang/{mymodule}.js` - General metadata about the module.
    * `ang/{mymodule}.css` - General CSS that applies throughout the module (if applicable).
    * `ang/{mymodule}.md` - Developer documentation about the module (if applicable).

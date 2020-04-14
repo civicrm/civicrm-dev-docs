@@ -167,7 +167,7 @@ files, but `civibuild` can automated that. For example:
 ### Option 1. Fully manual installation and upgrade
 
 You can, of course, follow the normal instructions for [Installation and
-Upgrades](confluence/display/CRMDOC/Installation+and+Upgrades).
+Upgrades](/confluence/display/CRMDOC/Installation+and+Upgrades).
 
 If you're not big into scripting/CLI, this is the way to go. But it can
 be time-consuming.
@@ -218,7 +218,7 @@ Also see this [StackExchange question](http://civicrm.stackexchange.com/question
 
 ### Option 3. Create an empty site with "civibuild"
 
-If you don't have a staging site, you can use [civibuild](tools/civibuild.md)
+If you don't have a staging site, you can use [civibuild](/tools/civibuild.md)
 to create empty sites for Drupal, WordPress, and Backdrop and preload
 the tarball. This will cue the system so that it's ready for you to go
 the installation screen.
@@ -236,7 +236,7 @@ the installation screen.
     $ civibuild destroy dempty
     ```
     
-See [civibuild](tools/civibuild.md) for more options.
+See [civibuild](/tools/civibuild.md) for more options.
     
 !!! note
     At time of writing, this supports Drupal 7, WordPress, and Backdrop.
@@ -274,7 +274,7 @@ civihydra create <civicrm-tar-files>
 
 ### See also: Headless installation testing for civibuild and git
 
-If you use [civibuild](tools/civibuild.md), then you most likely setup the local source tree using a conventional
+If you use [civibuild](/tools/civibuild.md), then you most likely setup the local source tree using a conventional
 configuration like `drupal-demo` or `wp-demo`. This downloads the
 pristine code from git and performs an automated installation and enables a convenient development loop:
 
@@ -285,7 +285,7 @@ pristine code from git and performs an automated installation and enables a conv
 1. Commit and open a pull request
 
 !!! note
-    In addition to re-running the installation, you can also test the DB upgrades by running "`civibuild upgrade-test <name>`". For more information about the available commands, see [civibuild](tools/civibuild.md).
+    In addition to re-running the installation, you can also test the DB upgrades by running "`civibuild upgrade-test <name>`". For more information about the available commands, see [civibuild](/tools/civibuild.md).
 
 This is convenient for most development but has a downside:  Most admins
 use the web-based graphical installer included with the tarballs (with a

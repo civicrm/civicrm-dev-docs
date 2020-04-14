@@ -7,7 +7,7 @@ The standard menu XML files can be found in `CRM/Core/xml/Menu/`. Each route is 
 !!! note
     For historical reasons, the routing files live in a `Menu` folder, but the contents of these files do *not* affect the navigation menu at the top of the screen.
 
-    Extension authors can add new menu entires by using [hook_civicrm_navigationMenu](hooks/hook_civicrm_navigationMenu.md).
+    Extension authors can add new menu entires by using [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
 
 ## Example
 

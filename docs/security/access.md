@@ -22,10 +22,10 @@ Much of the ACL control process happens within the `CRM/ACL/Api.php` file and `C
 
 There are a few ACL hooks that allow developers in their extension to extend the implementation of various ACLs for their own purposes.
 
- - [`hook_civicrm_aclGroup`](hooks/hook_civicrm_aclGroup.md) This hook alters what entities (e.g. CiviCRM Groups, CiviCRM Events) an end user is able to see.
+ - [`hook_civicrm_aclGroup`](/hooks/hook_civicrm_aclGroup.md) This hook alters what entities (e.g. CiviCRM Groups, CiviCRM Events) an end user is able to see.
 
- - [`hook_civicrm_aclWhereClause`](hooks/hook_civicrm_aclWhereClause.md) This hook adds extra SQL statements when the ACL contact cache table is to be filled up. Depending on how frequently your ACL cache is cleared this may become taxing on your database.
+ - [`hook_civicrm_aclWhereClause`](/hooks/hook_civicrm_aclWhereClause.md) This hook adds extra SQL statements when the ACL contact cache table is to be filled up. Depending on how frequently your ACL cache is cleared this may become taxing on your database.
 
- - [`hook_civicrm_selectWhereClause`](hooks/hook_civicrm_selectWhereClause.md) This hook was introduced in 4.7 and allows you to add specific restrictions or remove restrictions when querying specific entities. This is different to `hook_civicrm_aclWhereClause` because that only deals with contacts and limiting of contacts and also `hook_civicrm_selectWhereClause` is run every time a select query for that entity is run.
+ - [`hook_civicrm_selectWhereClause`](/hooks/hook_civicrm_selectWhereClause.md) This hook was introduced in 4.7 and allows you to add specific restrictions or remove restrictions when querying specific entities. This is different to `hook_civicrm_aclWhereClause` because that only deals with contacts and limiting of contacts and also `hook_civicrm_selectWhereClause` is run every time a select query for that entity is run.
 
 It should be noted that especially with `hook_civicrm_selectWhereClause` there is little CiviCRM Core test coverage on these items so it is always very important that administrators test their own ACLs when testing any upgrade to CiviCRM.

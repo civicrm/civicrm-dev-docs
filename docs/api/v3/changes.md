@@ -2,7 +2,7 @@
 
 *This page lists additions to the APIv3 with each new release of CiviCRM Core.*
 
-Also see: [Differences Between Api v3 and v4](api/v4/differences-with-v3.md) and [Hooks Changelog](hooks/changes.md).
+Also see: [Differences Between Api v3 and v4](/api/v4/differences-with-v3.md) and [Hooks Changelog](/hooks/changes.md).
 
 ## APIv3: Framework
 
@@ -43,7 +43,7 @@ A field defined with the key 'serialize' (in the metadata) will be serialized on
 
 ### 4.7.17: OR Operator
 
-Most API "get" operations (with the exception of some nonstandard entities - Contact, Contribution, Pledge & Participant) [now support the OR operator](https://issues.civicrm.org/jira/browse/CRM-20034). Use the API Explorer to see the syntax. ![Example use of API Or functionality](img/api-or-example.png)
+Most API "get" operations (with the exception of some nonstandard entities - Contact, Contribution, Pledge & Participant) [now support the OR operator](https://issues.civicrm.org/jira/browse/CRM-20034). Use the API Explorer to see the syntax. ![Example use of API Or functionality](/img/api-or-example.png)
 
 ### 4.7.13: Standardized output of EntityTag api
 
@@ -132,7 +132,7 @@ To detect other references, one must implement `hook_civicrm_referenceCounts` or
 
 API action "getlist" is a wrapper for API action "get." It is used mainly for quicksearch and autocomplete widgets. A call to, for example: `CRM.api3('contact', 'getlist', {input: 'bob'})` will internally call contact.get and return a list of resuts formatted for use by the select2 widget or other autocomplete/search forms. It supports formatted description, icons or other images in the results, infinite scrolling or paging of search results, and context-aware searching.
 
-See [EntityRef Fields documentation](framework/quickform/entityref.md) for more info.
+See [EntityRef Fields documentation](/framework/quickform/entityref.md) for more info.
 
 ### 4.4.5: Added client-side CRM.api3() wrapper
 
@@ -144,7 +144,7 @@ The new wrapper supports issuing multiple api calls in a single requestto save b
 
 ### 4.4.0: 'getoptions' action accepts additional params related to context
 
-See [Pseudoconstant (option list) Reference](framework/pseudoconstant.md)
+See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
 
 ### 4.4.0: 'getoptions' action respects 'sequential' param
 
@@ -230,7 +230,7 @@ Because 'sequential' gives a more concise format, it has been made the default i
 
 Fetch the options for a specified field e.g. `civicrm_api('contact', 'getoptions' array('field' => 'gender_id'));` returns `array(1 => 'Female', 2 => 'Male', 3 => 'Transgender')`
 
-See [Pseudoconstant (option list) Reference](framework/pseudoconstant.md)
+See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
 
 ### 4.3.0: Deprecating action=update
 
@@ -248,7 +248,7 @@ CRM-12140: The API update action was a clunky hack (get+create) to workaround th
 
 ### 4.3.0: AJAX: cj().crmAPI() is now CRM.api()
 
-Prior to 4.3, the syntax for [AJAX](api/interfaces.md#AJAX) API calls was 
+Prior to 4.3, the syntax for [AJAX](/api/interfaces.md#AJAX) API calls was 
 
 ```javascript
 cj().crmAPI('Entity', 'action', {...params...}, {
@@ -336,7 +336,7 @@ When creating a new Case record, the "create" API previously accepted `case_type
 
 ### 4.3.0: Deprecate Constant API
 
-Most `CRM_*_Pseudoconstant methods` (which the 'constant' api is a wrapper for) are deprecated in 4.3 and many are removed in 4.4. To future-proof your code, use the [api.getoptions](api/v3/actions.md#getoptions) method instead of the constant api. See [Pseudoconstant (option list) Reference](framework/pseudoconstant.md)
+Most `CRM_*_Pseudoconstant methods` (which the 'constant' api is a wrapper for) are deprecated in 4.3 and many are removed in 4.4. To future-proof your code, use the [api.getoptions](/api/v3/actions.md#getoptions) method instead of the constant api. See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
 
 ### 4.3.0: Contact get API now respects ACLS
 
@@ -360,7 +360,7 @@ This API can be used to create, update and delete 'state/province' entries via t
 
 ### 4.7.7 System.updatelogtables
 
-This api can be called to change the format of the `log_conn_id` fields to a 17 Char varchar - and to switch to using truly unique connection ids. Calling this api can also convert log tables to INNODB - using this hook [hook_civicrm_alterLogTables](hooks/hook_civicrm_alterLogTables.md) either in your code or with the [Extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers/blob/master/innodbtriggers.php)
+This api can be called to change the format of the `log_conn_id` fields to a 17 Char varchar - and to switch to using truly unique connection ids. Calling this api can also convert log tables to INNODB - using this hook [hook_civicrm_alterLogTables](/hooks/hook_civicrm_alterLogTables.md) either in your code or with the [Extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers/blob/master/innodbtriggers.php)
 
 Note that log table conversion can be slow which is why we are offering a conversion tool for the improved `log_conn_id` storage rather than springing it in an upgrade script
 
@@ -508,7 +508,7 @@ You need to upgrade civix as well so it generates this new code for a custom sea
 ### 4.6.0: CRM_Contact_Form_Search_Interface-&gt;buildTaskList
 
 Classes which implement this interface must implement a new method called buildTaskList. This method is responsible for building the list of actions (e.g., Add to Group) that may be performed on set of search results. It differs
-from [hook_civicrm_searchTasks](hooks/hook_civicrm_searchTasks.md) in that the hook allows a developer to specify tasks by entity (e.g., Contact, Event, etc.) whereas buildTaskList provides the ability to target a specific form. The new method takes a `CRM_Core_Form_Search` object as an argument and should return an array. Dump `CRM_Core_Form_Search()->_taskList` to learn about the format of the array. The array returned by buildTaskList will completely replace the task list.
+from [hook_civicrm_searchTasks](/hooks/hook_civicrm_searchTasks.md) in that the hook allows a developer to specify tasks by entity (e.g., Contact, Event, etc.) whereas buildTaskList provides the ability to target a specific form. The new method takes a `CRM_Core_Form_Search` object as an argument and should return an array. Dump `CRM_Core_Form_Search()->_taskList` to learn about the format of the array. The array returned by buildTaskList will completely replace the task list.
 
 Aside from the community-maintained custom searches in `CRM/Contact/Form/Search/Custom/`, this change does not affect CiviCRM core. Custom searches which extend `CRM_Contact_Form_Search_Custom_Base` (as do those built on civix) will not be affected, as the method is implemented there.
 
@@ -597,11 +597,11 @@ See also: [Pull Request](https://github.com/civicrm/civicrm-core/pull/4865)
 - `CRM_Core_Transaction` has traditionally used a reference-counting mechanism to combine multiple pieces of business-logic into a single transaction. In 4.6, this remains the default behavior, but  one can also use nested transactions (by passing `$nested=TRUE` to the constructor). Any work done in the nested transaction can be rolled back without affecting the overall transaction.
 - Prior to 4.6, the idiom for managing transactions was to call `$tx = new CRM_Core_Transaction()` and rely on the destructor to cleanup the transaction (e.g. issue the COMMIT/ROLLBACK). Unfortunately, it can be cumbersome to correctly apply this idiom when handling exceptions generated by non-Civi classes. 4.6 introduces a safer notation: `CRM_Core_Transaction::create()->run(function($tx){});` which automatically rolls back in case of an exception.
 
-For more details, see [Transaction Reference](framework/database/transactions.md).
+For more details, see [Transaction Reference](/framework/database/transactions.md).
 
 ### 4.5.3: AJAX, Regions, and Resources
 
-CiviCRM 4.2+ allowed developers to inject content on a web page using the [Region](framework/region.md) and [Resource](framework/resources.md) APIs. CiviCRM 4.5+ introduced broad changes to the page-loading process which cause many pages to load in-situ as "snippets". This significantly improved perceived load times but caused some regressions on customized backend forms which relied on Region or Resource APIs. v4.5.3 introduces the following changes:
+CiviCRM 4.2+ allowed developers to inject content on a web page using the [Region](/framework/region.md) and [Resource](/framework/resources.md) APIs. CiviCRM 4.5+ introduced broad changes to the page-loading process which cause many pages to load in-situ as "snippets". This significantly improved perceived load times but caused some regressions on customized backend forms which relied on Region or Resource APIs. v4.5.3 introduces the following changes:
 
 -   The `page-header`, `page-body`, and `page-footer` regions will all be processed on normal (full, standalone) pages as well as snippets (embedded AJAX pages).
 -   The `html-header` region is only processed on normal-pages.

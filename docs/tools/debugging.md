@@ -38,7 +38,7 @@ A backtrace is a list of all the functions that were run in the execution of the
 
 ## Viewing log files
 
-CiviCRM's log files are stored in the `ConfigAndLog` directory within CiviCRM's local file storage (see [the File System documentation](framework/filesystem.md) for details on your CMS).  Most runtime errors are logged here, as well as data that you explicitly write to log using the `CRM_Core_Error::debug log=true` parameter.
+CiviCRM's log files are stored in the `ConfigAndLog` directory within CiviCRM's local file storage (see [the File System documentation](/framework/filesystem.md) for details on your CMS).  Most runtime errors are logged here, as well as data that you explicitly write to log using the `CRM_Core_Error::debug log=true` parameter.
 
 One may also write to the log file without creating an error with:
 `Civi::log()->debug(__FUNCTION__);`
@@ -68,10 +68,10 @@ The following values can be added to your site's settings file `civicrm.settings
     When any sort of "logging stuff to a file" is enabled by one of the
     above settings, check the `ConfigAndLog` directory within the local files
     directory to find the log.  (See [the File System
-    documentation](framework/filesystem.md) for the location in your CMS.)
+    documentation](/framework/filesystem.md) for the location in your CMS.)
 
 !!! tip
-    If you're developing within a site built with [civibuild](tools/civibuild.md), then you can to apply settings to *all your local sites* by using the [civicrm.settings.d folders](tools/civibuild.md#settings-civicrm).
+    If you're developing within a site built with [civibuild](/tools/civibuild.md), then you can to apply settings to *all your local sites* by using the [civicrm.settings.d folders](/tools/civibuild.md#settings-civicrm).
 
 ## Viewing a query log from MySQL
 
@@ -280,7 +280,7 @@ The webserver can be configured to display errors to screen, but it also logs er
 
 *(The `*`s above represent a wildcard, not an actual filename. Eg the last entry might be public_html/error_log on Bluehost.)*
 
-And a **CiviCRM specific debug log** file - location varies depending on hosting environment *and* CMS, refer to [this page](tools/debugging.md#Debuggingfordevelopers-Logfiles) for location -
+And a **CiviCRM specific debug log** file - location varies depending on hosting environment *and* CMS, refer to [this page](/tools/debugging.md#Debuggingfordevelopers-Logfiles) for location -
 
     path/to/site/path/to/civicrm/files/ConfigAndLog/CiviCRM*log
 

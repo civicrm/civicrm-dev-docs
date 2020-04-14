@@ -8,7 +8,7 @@ CiviCRM maintains a number of standard practices which help ensure that CiviCRM 
 
 Like any large application, CiviCRM has many inputs and many outputs &mdash; and for adequate security, it must ensure that all data which flows from untrusted inputs to sensitive outputs receives *sanitizing* at some point along the way to protect against attacks.
 
-![Inputs vs outputs diagram](img/security-inputs-and-outputs.svg)
+![Inputs vs outputs diagram](/img/security-inputs-and-outputs.svg)
 
 ### Bad example
 
@@ -118,13 +118,13 @@ CiviCRM's strategy is as follows:
 
 * Inputs:
     1. Validate inputs when possible
-    1. For non-rich text, [partially encode inputs](security/inputs.md#input-encoding)
-    1. For rich text, [purify inputs](security/inputs.md#input-purification)
+    1. For non-rich text, [partially encode inputs](/security/inputs.md#input-encoding)
+    1. For rich text, [purify inputs](/security/inputs.md#input-purification)
 * Outputs:
     1. HTML:
-        * Do *not* perform HTML encoding for [data between tags](security/outputs.md#between-tags)
-        * *Do* perform HTML encoding for [data within attributes](security/outputs.md#in-attributes)
-    1. SQL: [validate and encode](security/outputs.md#sql)
-    1. Shell: [validate and encode](security/outputs.md#shell)
+        * Do *not* perform HTML encoding for [data between tags](/security/outputs.md#between-tags)
+        * *Do* perform HTML encoding for [data within attributes](/security/outputs.md#in-attributes)
+    1. SQL: [validate and encode](/security/outputs.md#sql)
+    1. Shell: [validate and encode](/security/outputs.md#shell)
 
 

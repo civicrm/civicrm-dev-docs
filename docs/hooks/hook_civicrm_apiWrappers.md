@@ -18,7 +18,7 @@ Introduced in CiviCRM 4.4.0.
 ## Parameters
 
 - API_Wrapper[] $wrappers - an array of objects which implement the [`API_Wrapper`](#wrapper-class) interface.
-- array $apiRequest - contains keys 'entity', 'action', and params; see [APIv3 Usage](api/v3/usage.md).
+- array $apiRequest - contains keys 'entity', 'action', and params; see [APIv3 Usage](/api/v3/usage.md).
 
 ## Returns
 

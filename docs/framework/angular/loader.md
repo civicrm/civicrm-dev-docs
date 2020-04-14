@@ -67,7 +67,7 @@ For a full list, try passing --user=[username].
     ```
 
 Under-the-hood, this library of modules is built via
-[hook_civicrm_angularModules](hooks/hook_civicrm_angularModules.md), e.g.
+[hook_civicrm_angularModules](/hooks/hook_civicrm_angularModules.md), e.g.
 
 ```php
 /**
@@ -88,7 +88,7 @@ function foobar_civicrm_angularModules(&$angularModules) {
 !!! tip "Tip: Generating skeletal code with `civix`"
     In practice, one usually doesn't need to implement this hook directly.
     Instead, generate skeletal code with `civix`.  For details, see
-    [AngularJS: Quick Start](framework/angular/quickstart.md).
+    [AngularJS: Quick Start](/framework/angular/quickstart.md).
 
 ## Default base-page
 
@@ -118,7 +118,7 @@ and loads them on the page. This will include:
     all modules are loaded on `civicrm/a`.
 
 !!! note "How does `load()` output the `<script>` tag(s)?"
-    `load()` uses [CRM_Core_Resources](framework/resources.md)
+    `load()` uses [CRM_Core_Resources](/framework/resources.md)
     to register JS/CSS files.
 
 ## Other base-pages
@@ -183,6 +183,6 @@ which *only* has the CiviCase administrative UI.
 
     In the example, we created a new, standalone page.  But you can use
     `AngularLoader` in other ways -- eg, you might listen for
-    [hook_civicrm_pageRun](hooks/hook_civicrm_pageRun.md) and embed Angular onto a pre-existing,
+    [hook_civicrm_pageRun](/hooks/hook_civicrm_pageRun.md) and embed Angular onto a pre-existing,
     non-Angular page.  Some extensions do this -- though it remains to be
     seen whether this is *wise*.

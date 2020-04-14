@@ -206,6 +206,6 @@ CRM.$(function($) {
 ## Additional Notes
 
 - Variables added via `CRM_Core_Resources` will be loaded as part of a snippet - new variables will be appended to the CRM object, and existing variables with the same name will be overwritten.
-- Scripts added via `CRM_Core_Resources` will be loaded as part of a snippet. This may not always be desirable, e.g. if the same snippet is refreshed multiple times it will reload all scripts every time. To avoid a script loading into a snippet one could specify the `html-header` region for the script. See [Resource Reference](framework/resources.md).
+- Scripts added via `CRM_Core_Resources` will be loaded as part of a snippet. This may not always be desirable, e.g. if the same snippet is refreshed multiple times it will reload all scripts every time. To avoid a script loading into a snippet one could specify the `html-header` region for the script. See [Resource Reference](/framework/resources.md).
 - Javascript header scripts, notably the wysiwyg editor library, are not loaded automatically, which causes many forms to not work without manually loading the necessary scripts prior to the ajax call.
 - If the page/form directly issues a redirect it will prevent ajax from working. Best practice is to not use `CRM_Utils_System::redirect()` but instead use `CRM_Core_Session::pushUserContext()` and allow the core controller to take care of the rest.

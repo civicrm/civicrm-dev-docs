@@ -12,7 +12,7 @@ with the supported actions and parameters:
 | <code>Address</code>     | A street-address related <br /> to a contact. |<code>create</code><br/><code>get</code><br/><code>delete</code><br/>| <code>contact\_id</code>,  <br /> <code>street\_address</code> <br /> <code>city</code>  <br /> <code>state\_province\_id</code> <br /> <code>country\_id</code>     |
 
 (*For full, up-to-date details about specific entities and parameters, use the
-[API Explorer](api/index.md#api-explorer).*)
+[API Explorer](/api/index.md#api-explorer).*)
 
 The API is available in many different environments (such as PHP, REST, and
 Javascript), and the notation differs slightly in each environment.
@@ -84,7 +84,7 @@ for usability:
 plugin, or a standalone script, then you may need to **bootstrap** CiviCRM
 before using the API.  See the examples in [Bootstrap Reference].
 
-[Bootstrap Reference](framework/bootstrap.md)
+[Bootstrap Reference](/framework/bootstrap.md)
 
 ## PHP (class.api.php)
 
@@ -148,11 +148,11 @@ http://www.example.com/civicrm/ajax/rest
 ```
 
 Obviously you should substitute your site in! You can explore the syntax
-and options available using the [API Explorer](api/index.md#api-explorer).
+and options available using the [API Explorer](/api/index.md#api-explorer).
 
-Please note that the REST interface is subject to [API Security](security/permissions.md#api-permissions).
+Please note that the REST interface is subject to [API Security](/security/permissions.md#api-permissions).
 
-For more details, see [REST interface](api/interfaces.md#rest). 
+For more details, see [REST interface](/api/interfaces.md#rest). 
 
 
 ## AJAX
@@ -201,7 +201,7 @@ CRM.api3(params).then(function(result) {
 The AJAX interface is automatically available for web-pages generated through CiviCRM (such as standard CiviCRM web-pages, CiviCRM extensions and custom CiviCRM templates).
 
 The AJAX interface could be made available to other parts of the same website (e.g. a Drupal module or WordPress widget) by calling `CRM_Core_Resources::singleton()->addCoreResources()`
-from php. Please note that the AJAX interface is subject to [API Security](security/permissions.md#api-permissions)
+from php. Please note that the AJAX interface is subject to [API Security](/security/permissions.md#api-permissions)
 and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see the REST interface documentation.
 
 ## Smarty
@@ -215,7 +215,7 @@ The smarty call is to add extra information, therefore *create* or *delete*
 actions don't make sense in this case.
 
 For more details, see
-[Smarty API interface](api/interfaces.md#smarty-api-interface).
+[Smarty API interface](/api/interfaces.md#smarty-api-interface).
 
 ## Scheduled jobs
 Any API call can be configured to be run as a scheduled job. These can be configured in the UI under Administer->System Settings->Scheduled jobs. Usually API calls run this way are written with the intent that they be run as scheduled jobs - e.g those with the Job entity or provided by payment processors to run recurring payments.
@@ -252,7 +252,7 @@ cv api contact.get first_name=Alice last_name=Roberts
 
 ## API Security
 
-API has security measures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](security/permissions.md).
+API has security measures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](/security/permissions.md).
 
 ## API Lookups by Username
 

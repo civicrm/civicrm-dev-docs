@@ -1,7 +1,7 @@
 # Documentation style guide
 
 All CiviCRM guides *(like this Developer Guide)* are intended to provide
-high-quality "finished" [documentation](documentation/index.md)
+high-quality "finished" [documentation](/documentation/index.md)
 about CiviCRM. This Style Guide page documents the standards we wish to
 uphold to ensure all guides maintain this high level of quality.
 
@@ -129,7 +129,7 @@ Alternative Text  (ALT Tags) should be included for every image.
 
 ### Machine-readable symbols
 
-Machine-readable symbols (e.g. files names, classes, functions, variables, database tables, database columns, commands, etc.) should be formatted either with inline monospace or preformatted code blocks (also in monospace). See the [markdown syntax](documentation/markdown.md#code) to use for such formatting.
+Machine-readable symbols (e.g. files names, classes, functions, variables, database tables, database columns, commands, etc.) should be formatted either with inline monospace or preformatted code blocks (also in monospace). See the [markdown syntax](/documentation/markdown.md#code) to use for such formatting.
 
 ### URLs
 

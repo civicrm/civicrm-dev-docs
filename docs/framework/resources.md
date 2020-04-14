@@ -5,15 +5,15 @@
 The *resources* subsystem supports loading Javascript code, CSS code, or image data. Most resources are static files bundled with CiviCRM. However, resources can also be external scripts, inline code-fragments, or dynamically-generated files. As of CiviCRM 4.2, the class `CRM_Core_Resources` manages these resources. This API works for both CiviCRM core and extensions.
 
 !!! note "Resources and Regions"
-    The HTML output for any CiviCRM page is divided into regions, such as the `html-header` or `page-footer`. When you add a resource, it must be added to some region. See also: [Region Reference](framework/region.md)
+    The HTML output for any CiviCRM page is divided into regions, such as the `html-header` or `page-footer`. When you add a resource, it must be added to some region. See also: [Region Reference](/framework/region.md)
 
-    Most regions have a fairly consistent operation. However, the HTML `<head>` may have special constraints or interactions with the CMS environment. This is discussed in greater depth in [HTML Header Region](framework/region.md#header).
+    Most regions have a fairly consistent operation. However, the HTML `<head>` may have special constraints or interactions with the CMS environment. This is discussed in greater depth in [HTML Header Region](/framework/region.md#header).
 
 !!! note "Resources and Extensions"
     The following examples assume that you wish to use resources provided by the extension `com.example.foo`. To use resources from your own extension, substitute appropriately. To use files provided by CiviCRM core, use the placeholder `civicrm`.
 
 !!! note "Resources and CMS Plugins"
-    If you are working outside CiviCRM Core or native extensions, you can still use `CRM_Core_Resources`, but you will need to ensure that CiviCRM is bootsrapped. See also: [Bootstraping guide](framework/bootstrap.md).
+    If you are working outside CiviCRM Core or native extensions, you can still use `CRM_Core_Resources`, but you will need to ensure that CiviCRM is bootsrapped. See also: [Bootstraping guide](/framework/bootstrap.md).
 
 ## Javascript
 
@@ -41,7 +41,7 @@ CRM_Core_Resources::singleton()->addVars('myNamespace', array('foo' => 'bar'));
 CRM.alert(CRM.vars.myNamespace.foo); // Alerts "bar"
 ```
 
-More infomation can be found in the [Javascript reference](standards/javascript.md).
+More infomation can be found in the [Javascript reference](/standards/javascript.md).
 
 ## CSS StyleSheets
 
@@ -92,4 +92,4 @@ For Smarty APIs (`{crmScript}` and `{crmStyle}`), the optional weight and region
 {crmStyle url="http://example.com/bar.css" weight=10 region=page-footer}
 ```
 
-If extensions want to modify what core styles and scripts are loaded you can use the hook [`hook_civicrm_coreResourceList`](hooks/hook_civicrm_coreResourceList.md) to modify which styles or scripts are loaded. The hook would also allow you to add an array of javascript settings into the CRM javascript object.
+If extensions want to modify what core styles and scripts are loaded you can use the hook [`hook_civicrm_coreResourceList`](/hooks/hook_civicrm_coreResourceList.md) to modify which styles or scripts are loaded. The hook would also allow you to add an array of javascript settings into the CRM javascript object.

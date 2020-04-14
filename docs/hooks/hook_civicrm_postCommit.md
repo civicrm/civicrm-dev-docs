@@ -72,7 +72,7 @@ hook_civicrm_postCommit($op, $objectName, $objectId, &$objectRef)
 -   `$objectId` - the unique identifier for the object. `tagID` in case of `EntityTag`
 -   `$objectRef` - the reference to the object if available. For case of `EntityTag` it is an array of (`entityTable`, `entityIDs`)
 
-For full details about these parameters, see [hook_civicrm_post](hooks/hook_civicrm_post.md) for full details.
+For full details about these parameters, see [hook_civicrm_post](/hooks/hook_civicrm_post.md) for full details.
 
 ## Returns
 

@@ -44,11 +44,11 @@ Checkout - the info is entered at the processors' site.
 
 ## Setup
 
-1. Use civix to [generate an skeleton extension](extensions/civix.md#generate-module)
+1. Use civix to [generate an skeleton extension](/extensions/civix.md#generate-module)
 
 1. Identify the processor type {:#type}
    
-   Read about [processor types](extensions/payment-processors/types.md) to find out which type you have.
+   Read about [processor types](/extensions/payment-processors/types.md) to find out which type you have.
 
 1. Add the processor to the database
 
@@ -62,7 +62,7 @@ Checkout - the info is entered at the processors' site.
 
 1. Edit the `info.xml` file.
 
-    Edit your [info.xml file](extensions/info-xml.md) and add the [typeInfo section](extensions/info-xml.md#typeInfo) with all relevant child elements.
+    Edit your [info.xml file](/extensions/info-xml.md) and add the [typeInfo section](/extensions/info-xml.md#typeInfo) with all relevant child elements.
 
 
 

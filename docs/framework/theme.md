@@ -42,7 +42,7 @@ We can explore each of these concepts in greater detail.
 
 ## Quick Start
 
-To generate an extension with a new, skeletal theme named `newyork`, use [civix](extensions/civix.md):
+To generate an extension with a new, skeletal theme named `newyork`, use [civix](/extensions/civix.md):
 
 ```bash
 $ civix generate:module org.civicrm.newyork
@@ -442,7 +442,7 @@ function _newyork_css_url($themes, $themeKey, $cssExt, $cssFile) {
 In our most sophisticated example, the `newyork` theme generates the
 `civicrm.css` content dynamically - by combining various CSS files and
 evaluating some inline variables (`{{NEWYORK_URL}}`).  This uses the
-[asset builder](framework/asset-builder.md) for caching.
+[asset builder](/framework/asset-builder.md) for caching.
 
 ```php
 function _newyork_civicrm_css_url($themes, $themeKey, $cssExt, $cssFile) {

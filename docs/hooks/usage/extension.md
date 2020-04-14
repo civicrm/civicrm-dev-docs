@@ -4,7 +4,7 @@ The names of all the hook functions follow a pattern:
 
 `EXTENSION-NAME_civicrm_HOOK-NAME`
 
-1. Review the [list of hooks](hooks/list.md) and find the hook that matches your need.
+1. Review the [list of hooks](/hooks/list.md) and find the hook that matches your need.
 1. Read the documentation page for that hook
 1. In your extension, create a function replacing `hook_`  with your extension name, and with the same signature.
 

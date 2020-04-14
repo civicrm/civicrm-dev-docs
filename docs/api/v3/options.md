@@ -1,6 +1,6 @@
 # API Options
 
-There are many API Options accepted by the CiviCRM API. These options allow the developer to add in more parameters to the resulting Query that is run against the database. E.g. Limit, Sort. You can explore these options using the the [API Explorer](api/index.md#api-explorer) and the [APIv3 Examples](api/v3/examples.md) However, some parameters are particularly dynamic or generic; these may not be explained well by the auto-generated documentation. The format for passing options as parameters using the REST interface is explained at [REST interface](api/interfaces.md#rest).
+There are many API Options accepted by the CiviCRM API. These options allow the developer to add in more parameters to the resulting Query that is run against the database. E.g. Limit, Sort. You can explore these options using the the [API Explorer](/api/index.md#api-explorer) and the [APIv3 Examples](/api/v3/examples.md) However, some parameters are particularly dynamic or generic; these may not be explained well by the auto-generated documentation. The format for passing options as parameters using the REST interface is explained at [REST interface](/api/interfaces.md#rest).
 
 
 ## sequential

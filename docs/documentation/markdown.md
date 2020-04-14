@@ -40,11 +40,11 @@ To maintain some consistency and peace of mind for documentation content editors
 
 Valid examples:
 
-1. `[Buildkit](tools/buildkit.md)`
-1. `[the API](api/index.md)`
-1. `[extension review process](extensions/lifefycle.md#formal-review)`
+1. `[Buildkit](/tools/buildkit.md)`
+1. `[the API](/api/index.md)`
+1. `[extension review process](/extensions/lifefycle.md#formal-review)`
 1. `[section within this page](#that-section)`
-1. `![awesome alt text](images/awesome-screenshot.png)`
+1. `![awesome alt text](/images/awesome-screenshot.png)`
 
 
 Rules:
@@ -568,12 +568,12 @@ Images function mostly the same as hyperlinks, but preceded by an exclamation
 point and with alt text in place of the link text.
 
 ```
-![Alt text](img/CiviCRM.png)
+![Alt text](/img/CiviCRM.png)
 ```
 
 ***Result:***
 
-> ![Alt text](img/CiviCRM.png)
+> ![Alt text](/img/CiviCRM.png)
 
 Note:
 

@@ -7,7 +7,7 @@ it can't do everything you want.  Smarty can be extended using "plugins"
 
 To install Smarty plugins without editing CiviCRM core (which is
 difficult to maintain), you will have to implement 
-[hook_civicrm_config](hooks/hook_civicrm_config.md).
+[hook_civicrm_config](/hooks/hook_civicrm_config.md).
 
 Once you've created your module or hook file, you can retrieve the
 Smarty object and register your custom plugin path:

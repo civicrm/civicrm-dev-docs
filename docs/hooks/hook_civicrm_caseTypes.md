@@ -7,7 +7,7 @@ This hook defines available case types.
 ## Notes
 
 Note that this hook is actually an adapter
-for [hook_civicrm_managed](hooks/hook_civicrm_managed.md), so any case
+for [hook_civicrm_managed](/hooks/hook_civicrm_managed.md), so any case
 type defined inside this hook will be automatically
 inserted, updated, deactivated, and deleted in tandem with enabling,
 disabling, and uninstalling the module. For more background, see [API

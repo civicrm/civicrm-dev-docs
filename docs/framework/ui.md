@@ -314,7 +314,7 @@ delete icon, which turns red)
 
 In-place field editing was added to CiviCRM circa v4.1 and is built upon
 
-* [The AJAX API](api/interfaces.md#ajax)
+* [The AJAX API](/api/interfaces.md#ajax)
 * The [Jeditable plugin](http://www.appelsiini.net/projects/jeditable) for jQuery
 
 !!! failure "Jeditable EOL"
@@ -378,7 +378,7 @@ ajax whenever the user clicks it.
 
 As of CiviCRM v4.6 you do not need to do anything to initialize
 crmEditable, it is handled automatically on every
-[crmLoad](framework/ajax.md)
+[crmLoad](/framework/ajax.md)
 event.
 
 In previous versions you would need to manually write out the javascript

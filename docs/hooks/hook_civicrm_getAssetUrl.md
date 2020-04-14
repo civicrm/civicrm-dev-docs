@@ -6,7 +6,7 @@ This hook is called when building a link to a semi-static asset, allowing you to
 
 ## Notes
 
-For more discussion, see [AssetBuilder](framework/asset-builder.md).
+For more discussion, see [AssetBuilder](/framework/asset-builder.md).
 
 ## Definition
 

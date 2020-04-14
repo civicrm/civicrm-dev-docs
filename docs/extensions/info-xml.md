@@ -1,8 +1,8 @@
 # info.xml
 
-Every CiviCRM [extension](extensions/index.md) must have an `info.xml` file within it to provide information about the extension. This page is a reference for the schema of the `info.xml` file.
+Every CiviCRM [extension](/extensions/index.md) must have an `info.xml` file within it to provide information about the extension. This page is a reference for the schema of the `info.xml` file.
 
-Typically, you'll begin by running [civix generate:module](extensions/civix.md#generate-module) and `civix` will create a basic `info.xml` file for you. Use this page to learn how to customize that file.
+Typically, you'll begin by running [civix generate:module](/extensions/civix.md#generate-module) and `civix` will create a basic `info.xml` file for you. Use this page to learn how to customize that file.
 
 ## Example
 
@@ -66,7 +66,7 @@ Here we describe all the elements acceptable within the XML file. They are prese
 ### `<civix>` {:#civix}
 
 * Containing element: [`<extension>`](#extension)
-* Description: Used to store settings which [civix](extensions/civix.md) reads and writes 
+* Description: Used to store settings which [civix](/extensions/civix.md) reads and writes 
 * Contains: elements
 
 Elements acceptable within `<civix>`
@@ -126,7 +126,7 @@ Elements acceptable within `<compatibility>`
 * Contains: text
 * Acceptable values: `stable`, `beta`, `alpha`
 * Notes: 
-    * If you want your extension to be available for [automated distribution](extensions/publish.md#automated-distribution), it must be marked as `stable`.
+    * If you want your extension to be available for [automated distribution](/extensions/publish.md#automated-distribution), it must be marked as `stable`.
     * If you use civicrm.org's automated release management (based on git tags), the `<develStage>` value will be determined automatically by searching for "alpha" or "beta" in the version.
 
 ### `<downloadUrl>` {:#downloadUrl}
@@ -165,7 +165,7 @@ Attributes acceptable for `<extension>`
 
 | Attribute | Description |
 | -- | -- |
-| `key` | The unique name of the extension, e.g. `org.example.myextension`. It should match the name of directory this extension resides in. Read more about [choosing a name](extensions/index.md#extension-names). |
+| `key` | The unique name of the extension, e.g. `org.example.myextension`. It should match the name of directory this extension resides in. Read more about [choosing a name](/extensions/index.md#extension-names). |
 | `type` | One of `module`, `search`, `payment`, `report`. |
 
 Elements acceptable within `<extension>`
@@ -236,7 +236,7 @@ Elements acceptable within `<maintainer>`
 ### `<namespace>` {:#namespace}
 
 * Containing element: [`<civix>`](#civix)
-* Description: The PHP namespace that [civix](extensions/civix.md) uses when generating code 
+* Description: The PHP namespace that [civix](/extensions/civix.md) uses when generating code 
 * Contains: text
 * Example: `CRM/Volunteer`
 

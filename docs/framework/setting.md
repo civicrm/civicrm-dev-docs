@@ -66,7 +66,7 @@ The Supported Properties for settings are:
 | `html_type` | Html type (admin form)| This is the preferred way to describe the html type as it is not quick form specific. It will be used it present. Syntax is lower case. e.g 'select', 'radio', 'checkboxes', 'checkbox', 'text', 'textarea', 'entity_reference|
 | `quick_form_type` | Widget type (admin form)| YesNo, CheckBox, CheckBoxes, Select, EntityRef. This is not required if html_type (preferred) is set|
 |`settings_pages`|Admin Pages to render this setting on|e.g  ['event' => ['weight' => 10]]. This works if the Generic form is used (see further down)|
-|`pseudoconstant`|Provides information to build a list of available options| This is the preferred methodology for lists of options and currently supports either a callback - e.g ```['callback' => 'CRM_Core_SelectValues::geoProvider']``` or an option group name [`'optionGroupName' => 'advanced_search_options'`]. When specifying an `optionGroupName` you can optionally specify `keyColumn` to return a column from `civicrm_option_value` to use as the key.  By default the `keyColumn` is the `value` column. The format is the same as that used for [DAO](framework/database/schema-definition.md#table-field-pseudoconstant)|
+|`pseudoconstant`|Provides information to build a list of available options| This is the preferred methodology for lists of options and currently supports either a callback - e.g ```['callback' => 'CRM_Core_SelectValues::geoProvider']``` or an option group name [`'optionGroupName' => 'advanced_search_options'`]. When specifying an `optionGroupName` you can optionally specify `keyColumn` to return a column from `civicrm_option_value` to use as the key.  By default the `keyColumn` is the `value` column. The format is the same as that used for [DAO](/framework/database/schema-definition.md#table-field-pseudoconstant)|
 |`options`|provides an array of available options|This is not the preferred methodology but make make sense for very simple lists. |
 |`entity_reference_options`|extra data to pass when adding an entity reference|e.g if the entity is not contact this make be needed as in `['entity' => 'group', 'select' => array('minimumInputLength' => 0)]`|
 |`documentation_link`|Array of information to build the 'learn more' link| 'page' is required, if on the wiki 'resource' is also needed - e.g 'documentation_link' => ['page' => 'Multi Site Installation', 'resource' => 'wiki'],|
@@ -196,7 +196,7 @@ To avoid naming conflicts, it makes sense to prefix settings defined in an exten
   </item>
 ```
 
-4. Add a menu item by implementing [hook_civicrm_navigationMenu](hooks/hook_civicrm_navigationMenu.md).
+4. Add a menu item by implementing [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
 5. Use `cv api system.flush` or `Admin → System Settings → Cleanup Caches` to flush CiviCRM caches and register your new settings metadata.
 
 ## Legacy method Adding Setting Config to Admin Forms.

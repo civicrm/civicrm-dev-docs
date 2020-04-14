@@ -32,11 +32,11 @@ Once you've written the requirements and specification document, you should go a
 
 ## Bugs
 
-Before starting work on a bug, your first step should be to check the [issue tracking systems](tools/issue-tracking.md) for any open issues before creating one yourself or working on a pull request.
+Before starting work on a bug, your first step should be to check the [issue tracking systems](/tools/issue-tracking.md) for any open issues before creating one yourself or working on a pull request.
 
 In order to reproduce the bug you can reproduce the issue in the appropriate [CiviCRM Sandbox](https://civicrm.org/sandboxes). Enabling debugging can help to get more details.
 
-Make sure to check [the contribution guidelines](core/contributing.md) for more information on how to create a pull request.
+Make sure to check [the contribution guidelines](/core/contributing.md) for more information on how to create a pull request.
 
 ## Recommendations
 
@@ -44,15 +44,15 @@ Make sure to check [the contribution guidelines](core/contributing.md) for more 
 
 **Install the [buildkit](https://github.com/civicrm/civicrm-buildkit)**, ideally as a [vagrant virtual-machine](https://github.com/civicrm/civicrm-buildkit-vagrant) or using one of available `docker` images ([progressivetech](https://github.com/progressivetech/docker-civicrm-buildkit) or [EricBSchulz](https://github.com/ErichBSchulz/dcbk)). The buildkit is not an absolute requirement but it is definitely the fastest path to a good development experience!
 
-**From the outset, [automate testing](testing/index.md)**. In the current climate of rapid evolution of not just CiviCRM, but also it's myriad of dependencies, automated testing of PHP code with `phpunit` and javascript with tools like `karma` and `jasmine` is essential. Start all your work by considering how you will provide automated testing for it. Starting with the buildkit will make this much simpler for you to set up. Getting started with unit-testing may seem daunting and onerous when you start, but you will soon come to love the freedom it gives you. If you are unsure how to proceed with testing ask the [community](basics/community.md).
+**From the outset, [automate testing](/testing/index.md)**. In the current climate of rapid evolution of not just CiviCRM, but also it's myriad of dependencies, automated testing of PHP code with `phpunit` and javascript with tools like `karma` and `jasmine` is essential. Start all your work by considering how you will provide automated testing for it. Starting with the buildkit will make this much simpler for you to set up. Getting started with unit-testing may seem daunting and onerous when you start, but you will soon come to love the freedom it gives you. If you are unsure how to proceed with testing ask the [community](/basics/community.md).
 
-**Create a native [extension](extensions/index.md)**. If you have new functionality to add to CiviCRM, it probably belongs in an extension.  "Native" extensions will install into all CiviCRM sites regardless of the  underlying CMS used (Drupal, WordPress, Joomla or Backdrop), making it easy to share your extension with the CiviCRM community.
+**Create a native [extension](/extensions/index.md)**. If you have new functionality to add to CiviCRM, it probably belongs in an extension.  "Native" extensions will install into all CiviCRM sites regardless of the  underlying CMS used (Drupal, WordPress, Joomla or Backdrop), making it easy to share your extension with the CiviCRM community.
 
-**Use the [API](api/index.md) and [hooks](hooks/index.md)** to access and manage CiviCRM data in any patch, native extension, CMS module, or external program that you develop. The API will function as expected with every new release and backwards compatibility of the API is maintained for several versions of CiviCRM. 
+**Use the [API](/api/index.md) and [hooks](/hooks/index.md)** to access and manage CiviCRM data in any patch, native extension, CMS module, or external program that you develop. The API will function as expected with every new release and backwards compatibility of the API is maintained for several versions of CiviCRM. 
 
-**Avoid [hacking the core](core/hacking.md)** of CiviCRM unless you understand the implications.
+**Avoid [hacking the core](/core/hacking.md)** of CiviCRM unless you understand the implications.
 
-**Follow the [Coding Standards](standards/index.md)** for uniform structure that will make everyone's development work easier.
+**Follow the [Coding Standards](/standards/index.md)** for uniform structure that will make everyone's development work easier.
 
 ## Make it happen
 
