@@ -1,4 +1,5 @@
 site_name: Developer Guide
+site_url: https://docs.civicrm.org/dev/en/stable/
 repo_url: https://github.com/civicrm/civicrm-dev-docs
 site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
