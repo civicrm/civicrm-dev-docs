@@ -127,3 +127,15 @@ class CRM_Myextension_API4Wrappers_Contact implements API_Wrapper {
 
 !!! note
     `$api4Request->addValue()` is appropriate because we are creating a record. You may need different calls to adjust other API requests.
+
+## Migrating away from this hook
+
+This hook is deprecated in favour of using more flexible Symfony event listeners to achieve what you want.
+
+This hook provides an onion-like middleware pattern where each wrapper added is the first to alter the input and the last to alter the output. If you need this style of wrapper, see [EventPrepareTest.php](https://lab.civicrm.org/dev/core/-/blob/master/tests/phpunit/Civi/API/Event/PrepareEventTest.php) which implements this functionality by replacing the API provider object with a special wrapper class that delegates calling the API to your callback code.
+
+However, often you don't need this onion-like before and after - often you only used `toApiOutput` or `fromApiInput` but not both. In which case you can instead just add a listener to the `Civi\API\Events::PREPARE` or `Civi\API\Events::RESPOND` as needed to do your work.
+
+For help understanding Symfony events see [Hooks in Symfony](/hooks/usage/symfony/).
+
+
