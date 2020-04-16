@@ -27,6 +27,10 @@ markdown_extensions:
   - pymdownx.betterem
   - pymdownx.mark
 
+plugins:
+  - search:
+      lang: en
+
 nav:
 - Home: index.md
 - Basics:
