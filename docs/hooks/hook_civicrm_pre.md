@@ -94,9 +94,8 @@ changing between the old and new data.
     -   'PriceFieldValue'
     -   'PriceSet'
 
-**
-
 -   $id is the unique identifier for the object if available
+
 -   &$params are the parameters passed
 
 ## Returns
