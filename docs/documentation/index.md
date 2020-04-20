@@ -83,7 +83,7 @@ The most advanced way to work on a guide is to use git to download all the markd
 	1. For folks who have a full Docker for Windows / Mac / Linux environment, run this command:
 
 		```
-		docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+		docker run --rm -v "$PWD:/docs" -p 8000:8000 -w /docs "mjcoltd/civicrm-docker-mkdocs" serve --dirtyreload -a 0.0.0.0:8000
 		```
 
 		and skip to the "view the guide" step below.
@@ -94,7 +94,7 @@ The most advanced way to work on a guide is to use git to download all the markd
 		1.  Run this command:
 
 		```
-		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs mjcoltd/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
 		```
 		and skip to the "view the guide locally ..." step below.
 
@@ -106,7 +106,7 @@ The most advanced way to work on a guide is to use git to download all the markd
 1.  Install MkDocs, plus the [Material theme](http://squidfunk.github.io/mkdocs-material/) and the [Pygments syntax highlighter](http://pygments.org/).
 
     ```bash
-    sudo pip install mkdocs mkdocs-material pygments pymdown-extensions
+    sudo pip install mkdocs==1.0.4 mkdocs-material==4.6.3
     ```
 
 1. Serve a local copy of the guide with MkDocs
