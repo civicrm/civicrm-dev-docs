@@ -7,7 +7,12 @@
     As CiviCRM evolves, the recommended ways of customizing it change.   The current preferred method is to Create an Extension to implement Hooks and use the API.  If you can't find a way to use existing hooks to accomplish what you want, discuss it on StackExchange or Chat.  It may be appropriate to add a new hook to core.
     
     (It is possible to override templates and php in an extension, but you face the same problems when it comes to upgrading - don't do it!)
+    
+The current preferred method for extending templates is to use [CiviCRM Regions](https://docs.civicrm.org/dev/en/latest/framework/region/), where applicable. CiviCRM Regions allow you to insert your own content into CiviCRM templates without making a duplicate of the template file. This makes maintaining your CiviCRM instance much easier, as you won't have to merge large diffs in your template files between upgrades. Check out the [documentation on regions](https://docs.civicrm.org/dev/en/latest/framework/region/) for more information.
 
+!!! caution
+    The rest of this document goes on to talk about the historical way of modifying templates by duplicating 
+    template files. This is highly discouraged over the preferred methods mentioned above.
 
 You can create customized versions of the standard CiviCRM
 forms and pages for your site. This gives you a lot of power to modify
