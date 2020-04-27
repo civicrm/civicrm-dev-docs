@@ -10,7 +10,9 @@
     
 The current preferred method for extending templates is to use [CiviCRM Regions](https://docs.civicrm.org/dev/en/latest/framework/region/), where applicable. CiviCRM Regions allow you to insert your own content into CiviCRM templates without making a duplicate of the template file. This makes maintaining your Civi instance much easier, as you won't have to merge large diffs in your template files between upgrades. Check out the [docs](https://docs.civicrm.org/dev/en/latest/framework/region/) for more information.
 
-The rest of this document goes on to talk about the historical way of modifying templates by duplicating template files. This is highly discouraged over the preferred methods mentioned above.
+!!! caution
+    The rest of this document goes on to talk about the historical way of modifying templates by duplicating 
+    template files. This is highly discouraged over the preferred methods mentioned above.
 
 You can create customized versions of the standard CiviCRM
 forms and pages for your site. This gives you a lot of power to modify
