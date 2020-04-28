@@ -88,9 +88,10 @@ The most advanced way to work on a guide is to use git to download all the markd
 
 		and skip to the "view the guide" step below.
 
-	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  Follow these steps:
+	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  The same is true if you have implemented virtual machines on your system using Oracle Virtual Box or VMWare tools.  These tools don't play well with native Windows HyperV virtualization.  In any case, follow these steps:
 		1.  Check that GitHub folder is in the path:  ```c:\Users\<username>\Documents\...```.  If it is, all is good; if not, move it there, and edit your GitHub configuration to reflect the changed location.
-		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM Box), and check that it is functioning properly (Hello-world container works).
+		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM VirtualBox), and check that it is functioning properly (Hello-world container works).
+		1.  Review the Docker-Toolbox instance in Oracle VM VirtualBox to ensure that it has the necessary port-forwarding configuration in place.  If there is no HTTP port forwarding rule, add one that specifies:  Name: HTTP, Protocol:  TCP, Host IP:  127.0.0.1, Host Port: 8000, Guest IP (empty), Guest Port:  8000.  If this configuration is not present, all attempts to open a browser session will receive a "connection refused" error.  
 		1.  Run this command:
 
 		```
