@@ -79,7 +79,7 @@ The most advanced way to work on a guide is to use git to download all the markd
         cd civicrm-dev-docs
         ```
 
-1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "view the guide locally ..." step below.
+1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "View the guide locally ..." step below.
 	1. For folks who have a full Docker for Windows / Mac / Linux environment, run this command:
 
 		```
