@@ -2,8 +2,8 @@
 
 So you've written an [extension](../extensions/index.md). Awesome! Now you want to add some documentation to help people use it. Great! Maybe you even want some docs for other *developers* working on it too. Very good. This page will help you set up your own documentation *guide* (just like this Developer Guide) for your extension.
 
-!!! summary "Example"
-    For a fully-featured working example of extensions documentation, look at CiviVolunteer.
+??? summary "Example: CiviVolunteer"
+    For a fully-featured working example of extension documentation we can look at CiviVolunteer.
 
     * Read the published [CiviVolunteer guide](https://docs.civicrm.org/volunteer/en/latest/)
     * Inspect the following source code to see how it's made:
@@ -32,22 +32,32 @@ Create a new file called `mkdocs.yml` in the root level of your project with the
 ```yaml
 site_name: Your Extension Name
 repo_url: https://lab.civicrm.org/extensions/yourproject
-theme: material
+site_description: 'A guide for the Your Extension Name extension.'
+site_author: 'J Doe'
+theme:
+  name: 
+    material
 
-pages:
+nav:
 - Home: index.md
 
 markdown_extensions:
   - attr_list
   - admonition
   - def_list
-  - codehilite
-  - toc(permalink=true)
+  - pymdownx.highlight:
+      guess_lang: false
+  - toc:
+      permalink:true
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.tilde
   - pymdownx.betterem
   - pymdownx.mark
+  
+plugins:
+  - search:
+      lang: en
 ```
 
 Replace values on the first two lines with your own. Leave everything else as-is (for now).
@@ -89,7 +99,7 @@ Add some [markdown](markdown.md) content in `docs/index.md`.
 You can add more pages by creating more markdown files and specifying these files under `pages` in `mkdocs.yml`.
 
 !!! note
-    We have [markdown coding standards](markdown.md#standards) and a documentation [style guide](style-guide.md). Adherence to these rules within your extensions docs is recommended but not required.
+    We have [markdown coding standards](markdown.md#standards) and a documentation [style guide](style-guide.md). Adherence to these rules within your extensions docs is not currently required for publishing - it will become required in future.
 
 
 ## Preview your guide
@@ -108,8 +118,9 @@ Once your guide is in good shape it's time to get it up on [docs.civicrm.org](ht
 1. Copy paste the following content into the file editor (note that the leading whitespace is important for lines in this file since it communicates structure in yaml):
 
     ```yaml
-    name: Foo Bar
-    description: Provides a baz for every contact's bat
+    name: 'Foo Bar'
+    description: 'Provides a baz for every contact's bat'
+    tags: 'foo bar baz contacts contact bat'
     langs:
       en:
         repo: 'https://lab.civicrm.org/extensions/foobar'
@@ -117,10 +128,13 @@ Once your guide is in good shape it's time to get it up on [docs.civicrm.org](ht
 
     * There are lots of other settings you can put here if you want to have multiple languages or versions. Look at `user.yml` as an example of a guide (the User Guide) which takes advantage of all the possible settings.
     * But if you want to keep it simple and just have one English edition which points to the `master` branch of your repo, then stick with the above settings.
+    
+??? note "Searching extension books."
+    Soon our docs-publisher will allow filtering/searching extension books this will be based on the values provided for 'tags' above.
 
 1. Adjust `name` and `repo` to your own values
 
-    * The `name` you set here will be shown in the list of all guides on [docs.civicrm.org](https://docs.civicrm.org) as well as at the top of every page of your guide. Use whatever **long name** you've chosen for your extension, such as "Foo Bar", or "CiviFoobar". (*Don't* use a fully qualified name like "org.civicrm.foobar" because that wouldn't look so nice to visitors.)
+    * The `name` you set here will be shown in the list of all guides on [docs.civicrm.org](https://docs.civicrm.org) as well as at the top of every page of your guide. Use whatever **short name** you've chosen for your extension, such as "Foo Bar", or "CiviFoobar". (*Don't* use a fully qualified name like "org.civicrm.foobar" because that wouldn't look so nice to visitors.)
 
 1. For the commit message, write something like "Add new Foobar Guide".
 1. Click **Commit changes**.
