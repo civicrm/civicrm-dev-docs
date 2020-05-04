@@ -89,19 +89,19 @@ of the line item that has been paid by that payment.
 For example if we have the scenario that an Order (Contribution) with 2 line items (values $100 & $200) is created then we will get
 
 * the order
-* 1 financial trxn record transferring the cost ($300) to accounts payable
+* 1 financial trxn record transferring the cost ($300) to accounts receivable
 * 2 financial items (one for each line item for the full amount - ie amounts of $100 & $200)
 * 2 financial entity transaction records linking the financial items to the accounts receivable transaction - the amounts will be $100 & $200
 
 If we later get a payment for $100 we will see the following changes
 
-* 1 financial trxn record with is_payment and amount of $100. From account is accounts receivable, to account is the payment asset account (e.g Bank account)
+* 1 financial trxn record with `is_payment` and amount of $100. From account is accounts receivable, to account is the payment asset account (e.g Bank account)
 * 2 financial entity transaction records linking the financial items payment to the payment transaction (the payment is allocated proportionally
 so the amounts are $33.33 and $66.67).
 
 If that payment were to be cancelled (using the Payment.cancel api) we would see the following
 
-* 1 financial trxn record with is_payment = 1 and a negative amount equal to the original payment ($100 in this example). From account is the payment asset account, to account is accounts receivable.
+* 1 financial trxn record with `is_payment` = 1 and a negative amount equal to the original payment ($100 in this example). From account is the payment asset account, to account is accounts receivable.
 * 2 financial entity transaction records linking the financial items back to the payment reversal transaction. These are effectively reversing
 the financial entity transaction records linked to the original payment and the amounts are negative - ie -$33.33 and -$66.67)
 
