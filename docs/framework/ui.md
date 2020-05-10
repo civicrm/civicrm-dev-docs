@@ -82,15 +82,15 @@ consider using two separate buttons instead of one dual-purpose button
 that changes state.
 
 CiviCRM provides a pre-themed button element, to be used for buttons
-throughout the system. Button elements may contain any of the optional
-icons provided by CiviCRM.
+throughout the system. Button elements may contain any of the Font Awesome
+icons (detailed below) provided by CiviCRM.
 
 * Create a button with an icon:
 
     ```html
     <a title="Button Text" class="button_name button" href="#">
       <span>
-        <div class="icon icon_name-icon"></div>
+        <i class="crm-i fa-icon-class-name"></i>
         Button Text
       </span>
     </a>
@@ -109,7 +109,7 @@ For example, create an "Edit" button from the Contact View page:
 ```html
 <a title="Edit" class="edit button" href="#">
   <span>
-    <div class="icon edit-icon"></div>
+    <i class="crm-i fa-pencil"></i>
     Edit
   </span>
 </a>
