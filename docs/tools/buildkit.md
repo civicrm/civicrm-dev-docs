@@ -250,7 +250,8 @@ There are no specific installer steps for macOS but Buildkit itself is fully usa
 ### Ubuntu
  Version | Codename | Release Date | EoL Date | Buildkit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------------- |
-19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
+20.04 | Focal Fossa | April 2020 | April 2025 | October 2025 |
+19.04 | Disco Dingo | April 2019 | January 2020 <sup>&#x1F534;</sup> | June 2020 |
 18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 <sup>&#x2705;</sup> |
 18.04 | Bionic Beaver | April 2018 | April 2023 | October 2023 |
 17.10 | Artful Aardvark | October 2017 | July 2018 <sup>&#x1F534;</sup> | January 2019 <sup>&#x2705;</sup> |
