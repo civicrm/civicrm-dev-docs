@@ -190,11 +190,86 @@ use the following:
 <div><i class="crm-i fa-bullhorn"></i>Create new announcement</div>
 ```
 
+See the [Screen reader text](#screen-reader-text) section below for including text necessary to convey information that icons otherwise indicate visually.  Not all icons need screen reader text, but an icon on its own might be visually efficient but require verbal explanation for visually-impaired users.
+
 !!! note "Why `crm-i`?"
 
     Many websites use Font Awesome, and a site's implementation of the `fa` class might differ from CiviCRM's Font Awesome implementation.  The version might be different, or other styling might be associated with the class.
 
     To avoid this, CiviCRM uses the `crm-i` class alongside the `fa-...` class for the specific icon.
+
+### Icon helper functions
+
+The construction of icons with text can be repetitive and prone to mistakes or minor inconsistencies.  To help with this, a few helper functions are included.
+
+#### CRM_Core_Page::crmIcon()
+
+**Language:** PHP
+
+**Usage:**
+
+```php
+// The Font Awesome icon class to use
+$icon = 'fa-birthday-cake';
+
+// Text to appear in the `title` (when hovering) and for screen readers
+$text = ts('This contact is celebrating a birthday');
+
+// Whether to display the icon at all (optional)
+$condition = birthdayIsToday($contact['birth_date']);
+
+$cake = CRM_Core_Page::crmIcon($icon, $text, $condition);
+```
+
+The $condition parameter is optional.  It's a useful tool in the context of a loop where the icon displays an attribute on only some rows.  For example, the same code can be used on the "Default?" column of results but only show a check mark when an item is the default.
+
+#### {icon}
+
+**Language:** Smarty
+
+**Usage:**
+
+```html
+{icon icon="fa-birthday-cake" condition=$row.is_birthday}{ts}This contact is celebrating a birthday{/ts}{/icon}
+```
+
+This is a wrapper around `CRM_Core_Page::crmIcon()` and the above example will produce identical results to the PHP example.
+
+#### CRM.utils.formatIcon
+
+**Language:** Javascript
+
+**Usage:**
+
+```js
+var cake = CRM.utils.formatIcon('fa-birthday-cake', ts('This contact is celebrating a birthday'), row.isBirthday);
+```
+
+This is the same as the two above functions, but for Javascript.
+
+#### {copyIcon}
+
+**Language:** Smarty
+
+**Usage:**
+
+```html
+{copyIcon name=$field.name title=$field.title}
+```
+
+This is a special-purpose helper for batch edit screens where you can click the copy icon to copy the value from the first row down through an entire column.
+
+#### {privacyFlag}
+
+**Language:** Smarty
+
+**Usage:**
+
+```html
+{privacyFlag field=do_not_phone condition=$row.do_not_phone}
+```
+
+This is a special-purpose helper to flag records for a communication type that the contact prefers not to receive.  Similarly to others, the condition parameter allows the code to be identical for each row, only displaying an icon if the condition is true.
 
 ### Icon meaning and consistency
 
