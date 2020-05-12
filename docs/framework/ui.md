@@ -85,35 +85,37 @@ CiviCRM provides a pre-themed button element, to be used for buttons
 throughout the system. Button elements may contain any of the Font Awesome
 icons (detailed below) provided by CiviCRM.
 
+A Smarty function `{crmButton}` helps automate and standardize button creation.
+
 * Create a button with an icon:
 
     ```html
-    <a title="Button Text" class="button_name button" href="#">
-      <span>
-        <i class="crm-i fa-icon-class-name"></i>
-        Button Text
-      </span>
-    </a>
+    {crmButton href="#" class="button-name" title="Explanatory text" icon="icon-class-name"}Button Text{/crmButton}
     ```
 
 * Create a button *without* an icon:
 
     ```html
-    <a title="Button Text" class="button_name button" href="#">
-      <span>Button Text</span>
-    </a>
+    {crmButton href="#" class="button-name" title="Explanatory text" icon=0}Button Text{/crmButton}
     ```
+
+Note that text should normally be translated with `{ts}`, which is omitted above for clarity.
 
 For example, create an "Edit" button from the Contact View page:
 
 ```html
-<a title="Edit" class="edit button" href="#">
-  <span>
-    <i class="crm-i fa-pencil"></i>
-    Edit
-  </span>
-</a>
+{crmButton title="Edit this item" icon="fa-pencil" class="edit" href="#"}Edit{/crmButton}
 ```
+
+!!! info "Parameters for {crmButton}"
+
+    The `{crmButton}` function's parameters relate to a mix of the URL, the link itself, and the icon.
+
+    First, parameters available for `{crmURL}` apply to the link that is formed.
+
+    Next, the `icon` parameter picks the icon.
+
+    Finally, any remaining parameters are added as attributes on the `<a>` element.
 
 ## Date-picker
 
