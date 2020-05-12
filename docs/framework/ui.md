@@ -541,6 +541,35 @@ CiviCRM 4.2 and below):
 CRM_Core_Session::setStatus(ts(This is just a yellow box with a message.), '', 'no-popup');
 ```
 
+## Screen reader text
+
+A well-designed interface will be immediately apparent visually without too many written instructions, but users accessing the site with a screen reader will not have the benefit of visual elements.  It's often useful to provide text that is hidden visually but will be picked up by screen readers.
+
+!!! tip "Don't rely on titles"
+
+    The `title` attribute on elements is not enough.  You can't count on screen readers picking that up, as a `title` isn't designed to be immediately visible in a browser anyway.
+
+A class `sr-only` is included to provide text that will be picked up by a screen reader but won't appear visually.  For the simplest example, you might state the same thing that an icon conveys visually:
+
+```html
+<i class="crm-i fa-heart"></i><span class="sr-only">This contact is a favorite</span>
+```
+
+You don't need to explain every icon: many icons exist to highlight text that already explains enough.  However, there are many places where the icon itself tells the story, and those need screen reader text.
+
+There is no limit on the size and scale of screen reader text.  If you have a substantial bit of media that conveys information visually, you could have a whole section of replacement text for screen readers.  This allows more advanced content than what an `alt` attribute would provide.
+
+```html
+<img src="gaul-diagram.png"/>
+<div class="sr-only">
+  All Gaul is divided into three parts:
+  <ul>
+    <li>one of which the <em>Belgae</em> inhabit</li>
+    <li>the <em>Aquitani</em> another</li>
+    <li>those who in their own language are called <em>Celts</em>, in ours <em>Gauls</em>, the third</li>
+  </ul>
+</div>
+```
 
 ## Section elements
 
