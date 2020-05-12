@@ -546,7 +546,7 @@ CRM_Core_Session::setStatus(ts(This is just a yellow box with a message.), '', '
 
 This element is to be used in the case that you have a number of
 elements that can be broken down into small groups of information. A
-good example of it's use is in the contribution page template.
+good example of its use is in the contribution page template.
 
 Here each logical grouping of related form elements are wrapped by a
 "section" div:
