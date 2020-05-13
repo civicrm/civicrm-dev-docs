@@ -187,7 +187,7 @@ For example, to insert a [bullhorn icon](http://fortawesome.github.io/Font-Aweso
 use the following:
 
 ```html
-<div><i class="crm-i fa-bullhorn"></i>Create new announcement</div>
+<div><i class="crm-i fa-bullhorn" aria-hidden="true"></i>Create new announcement</div>
 ```
 
 See the [Screen reader text](#screen-reader-text) section below for including text necessary to convey information that icons otherwise indicate visually.  Not all icons need screen reader text, but an icon on its own might be visually efficient but require verbal explanation for visually-impaired users.
@@ -627,10 +627,12 @@ A well-designed interface will be immediately apparent visually without too many
 
     The `title` attribute on elements is not enough.  You can't count on screen readers picking that up, as a `title` isn't designed to be immediately visible in a browser anyway.
 
+    In fact, icons should generally be given the attribute `aria-hidden="true"` in order to hide the icon from screen readers.
+
 A class `sr-only` is included to provide text that will be picked up by a screen reader but won't appear visually.  For the simplest example, you might state the same thing that an icon conveys visually:
 
 ```html
-<i class="crm-i fa-heart"></i><span class="sr-only">This contact is a favorite</span>
+<i class="crm-i fa-heart" aria-hidden="true"></i><span class="sr-only">This contact is a favorite</span>
 ```
 
 You don't need to explain every icon: many icons exist to highlight text that already explains enough.  However, there are many places where the icon itself tells the story, and those need screen reader text.
