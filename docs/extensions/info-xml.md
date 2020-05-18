@@ -104,7 +104,7 @@ For example, if you want to write PHP classes in the `Civi` namespace and autolo
 ### `<compatibility>` {:#compatibility}
 
 * Containing element: [`<extension>`](#extension)
-* Description: specifies the versions of CiviCRM with which this extension is compatible
+* Description: specifies the versions of CiviCRM with which this extension is compatible. Each `<ver>` child element should only contain a single compatible version of CiviCRM.
 * Contains: elements
 
 Elements acceptable within `<compatibility>`
@@ -360,12 +360,15 @@ Elements acceptable within `<urls>`
 ### `<ver>` {:#ver}
 
 * Containing element: [`<compatibility>`](#compatibility)
-* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits
+* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits, each `<ver>` element should only contain a single compatible version of CiviCRM.
 * Contains: text
 * Example: `4.7`
 
 !!! note "Point releases"
-    It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
+    With the change to semantic versioning in the 5.x.x series of CiviCRM you can technically specify minor version compatibility
+    e.g: `<ver>5.25</ver>` however as these are monthly releases this requires regular updating. Instead you should aim to specify `<ver>5.0</ver>` or clarify that you're specify the latest "tested" version in the [comments](#comments). 
+
+    It is not possible to specify "point" release version requirements and it is unlikely that this will be introduced, point (or patch) releases are now used for bug fixes and security releases that require a release outside the monthly scheduled release, it is not anticipated that it will ever be required or useful to "pin" an extension compatibility to one of these releases!
 
 !!! note "Forward compatibility (4.7/5.x)"
     For CiviCRM 3.x and 4.x, `<ver>` tags must explicitly list all compatible versions.
@@ -373,6 +376,8 @@ Elements acceptable within `<urls>`
     For CiviCRM 4.7.x and 5.x, `<ver>` tags imply forward compatibility.
 
     Because 4.7.x and 5.x are substantively the same series, `<ver>4.7</ver>` implies forward compatiblity with 5.x.
+
+    It is not currently possible to specify a "maximum compatible version".
 
 ### `<version>` {:#version}
 
