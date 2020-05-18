@@ -369,7 +369,9 @@ Elements acceptable within `<urls>`
     e.g: `<ver>5.25</ver>` however as these are monthly releases this requires regular updating. Instead you should aim to specify `<ver>5.0</ver>` or clarify that you're specify the latest "tested" version in the [comments](#comments). 
 
     It is not possible to specify "point" release version requirements and it is unlikely that this will be introduced, point (or patch) releases are now used for bug fixes and security releases that require a release outside the monthly scheduled release, it is not anticipated that it will ever be required or useful to "pin" an extension compatibility to one of these releases!
-
+    
+    For compatibility with CiviCRM versions prior to the 5.x.x version number change you should continue to specify the version as `<ver>4.6</ver>` or `<ver>4.7</ver>`.
+    
 !!! note "Forward compatibility (4.7/5.x)"
     For CiviCRM 3.x and 4.x, `<ver>` tags must explicitly list all compatible versions.
 
