@@ -365,7 +365,7 @@ Elements acceptable within `<urls>`
 * Example: `4.7`
 
 !!! note "Which version to choose?"
-    Specify the minimum version number required by this extension. It is recommended to use 5.0 whenever possible. 
+    Specify the minimum version number required by this extension.
     You may use a particular minor version, e.g. 5.23, but point releases (e.g. 5.23.2) are not supported.
     
     For compatibility with CiviCRM versions prior to the 5.x.x version number change you should continue to specify the version as `<ver>4.7</ver>`.
