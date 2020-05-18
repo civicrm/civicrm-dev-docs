@@ -364,19 +364,13 @@ Elements acceptable within `<urls>`
 * Contains: text
 * Example: `4.7`
 
-!!! note "Point releases"
-    With the change to semantic versioning in the 5.x.x series of CiviCRM you can technically specify minor version compatibility
-    e.g: `<ver>5.25</ver>` however as these are monthly releases this requires regular updating. Instead you should aim to specify `<ver>5.0</ver>` or clarify that you're specify the latest "tested" version in the [comments](#comments). 
-
-    It is not possible to specify "point" release version requirements and it is unlikely that this will be introduced, point (or patch) releases are now used for bug fixes and security releases that require a release outside the monthly scheduled release, it is not anticipated that it will ever be required or useful to "pin" an extension compatibility to one of these releases!
+!!! note "Which version to choose?"
+    Specify the minimum version number required by this extension. It is recommended to use 5.0 whenever possible. 
+    You may use a particular minor version, e.g. 5.23, but point releases (e.g. 5.23.2) are not supported.
     
-    For compatibility with CiviCRM versions prior to the 5.x.x version number change you should continue to specify the version as `<ver>4.6</ver>` or `<ver>4.7</ver>`.
-    
-!!! note "Forward compatibility (4.7/5.x)"
-    For CiviCRM 3.x and 4.x, `<ver>` tags must explicitly list all compatible versions.
+    For compatibility with CiviCRM versions prior to the 5.x.x version number change you should continue to specify the version as `<ver>4.7</ver>`.
 
-    For CiviCRM 4.7.x and 5.x, `<ver>` tags imply forward compatibility.
-
+    `<ver>` elements imply forward compatibility. So `<ver>5.0</ver>` means all 5.*.* versions of CiviCRM.
     Because 4.7.x and 5.x are substantively the same series, `<ver>4.7</ver>` implies forward compatiblity with 5.x.
 
     It is not currently possible to specify a "maximum compatible version".
