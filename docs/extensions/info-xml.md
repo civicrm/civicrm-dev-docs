@@ -104,7 +104,7 @@ For example, if you want to write PHP classes in the `Civi` namespace and autolo
 ### `<compatibility>` {:#compatibility}
 
 * Containing element: [`<extension>`](#extension)
-* Description: specifies the versions of CiviCRM with which this extension is compatible
+* Description: specifies the versions of CiviCRM with which this extension is compatible. Each `<ver>` child element should only contain a single compatible version of CiviCRM.
 * Contains: elements
 
 Elements acceptable within `<compatibility>`
@@ -360,19 +360,20 @@ Elements acceptable within `<urls>`
 ### `<ver>` {:#ver}
 
 * Containing element: [`<compatibility>`](#compatibility)
-* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits
+* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits, each `<ver>` element should only contain a single compatible version of CiviCRM.
 * Contains: text
 * Example: `4.7`
 
-!!! note "Point releases"
-    It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
+!!! note "Which version to choose?"
+    Specify the minimum version number required by this extension.
+    You may use a particular minor version, e.g. 5.23, but point releases (e.g. 5.23.2) are not supported.
+    
+    For compatibility with CiviCRM versions prior to the 5.x.x version number change you should continue to specify the version as `<ver>4.7</ver>`.
 
-!!! note "Forward compatibility (4.7/5.x)"
-    For CiviCRM 3.x and 4.x, `<ver>` tags must explicitly list all compatible versions.
-
-    For CiviCRM 4.7.x and 5.x, `<ver>` tags imply forward compatibility.
-
+    `<ver>` elements imply forward compatibility. So `<ver>5.0</ver>` means all 5.*.* versions of CiviCRM.
     Because 4.7.x and 5.x are substantively the same series, `<ver>4.7</ver>` implies forward compatiblity with 5.x.
+
+    It is not currently possible to specify a "maximum compatible version".
 
 ### `<version>` {:#version}
 
