@@ -47,7 +47,6 @@ function MODULENAME_civicrm_alterExternUrl(&$url, $path, $query, $fragment, $abs
 ```
 
 !!!note "Notes"
-
 * The function examines `$path`, `$query`, `$fragment`, `$absolute` -- these are the main *inputs*.
     * The function outputs the `$url` (per [PSR-7 UriInterface](https://www.php-fig.org/psr/psr-7/#35-psrhttpmessageuriinterface)).
     * The outputted `$url` *incorporates* the requested values, but they do not have to be used *literally*.
