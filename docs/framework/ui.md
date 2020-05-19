@@ -82,38 +82,40 @@ consider using two separate buttons instead of one dual-purpose button
 that changes state.
 
 CiviCRM provides a pre-themed button element, to be used for buttons
-throughout the system. Button elements may contain any of the optional
-icons provided by CiviCRM.
+throughout the system. Button elements may contain any of the Font Awesome
+icons (detailed below) provided by CiviCRM.
+
+A Smarty function `{crmButton}` helps automate and standardize button creation.
 
 * Create a button with an icon:
 
     ```html
-    <a title="Button Text" class="button_name button" href="#">
-      <span>
-        <div class="icon icon_name-icon"></div>
-        Button Text
-      </span>
-    </a>
+    {crmButton href="#" class="button-name" title="Explanatory text" icon="icon-class-name"}Button Text{/crmButton}
     ```
 
 * Create a button *without* an icon:
 
     ```html
-    <a title="Button Text" class="button_name button" href="#">
-      <span>Button Text</span>
-    </a>
+    {crmButton href="#" class="button-name" title="Explanatory text" icon=0}Button Text{/crmButton}
     ```
+
+Note that text should normally be translated with `{ts}`, which is omitted above for clarity.
 
 For example, create an "Edit" button from the Contact View page:
 
 ```html
-<a title="Edit" class="edit button" href="#">
-  <span>
-    <div class="icon edit-icon"></div>
-    Edit
-  </span>
-</a>
+{crmButton title="Edit this item" icon="fa-pencil" class="edit" href="#"}Edit{/crmButton}
 ```
+
+!!! info "Parameters for {crmButton}"
+
+    The `{crmButton}` function's parameters relate to a mix of the URL, the link itself, and the icon.
+
+    First, parameters available for `{crmURL}` apply to the link that is formed.
+
+    Next, the `icon` parameter picks the icon.
+
+    Finally, any remaining parameters are added as attributes on the `<a>` element.
 
 ## Date-picker
 
@@ -181,19 +183,93 @@ can be included with an element with the classes `crm-i` and the
 !!! tip
     Use [this extension](https://github.com/mattwire/uk.co.mjwconsult.fontawesome) if you want access to these icons in earlier versions of CiviCRM (for example, if you have an extension, that uses them).
 
-For example, to insert a [bullhorn
-icon](http://fortawesome.github.io/Font-Awesome/icon/bullhorn/),
+For example, to insert a [bullhorn icon](http://fortawesome.github.io/Font-Awesome/icon/bullhorn/),
 use the following:
 
 ```html
-<div><i class="crm-i fa-bullhorn"></i>Create new announcement</div>
+<div><i class="crm-i fa-bullhorn" aria-hidden="true"></i>Create new announcement</div>
 ```
+
+See the [Screen reader text](#screen-reader-text) section below for including text necessary to convey information that icons otherwise indicate visually.  Not all icons need screen reader text, but an icon on its own might be visually efficient but require verbal explanation for visually-impaired users.
 
 !!! note "Why `crm-i`?"
 
     Many websites use Font Awesome, and a site's implementation of the `fa` class might differ from CiviCRM's Font Awesome implementation.  The version might be different, or other styling might be associated with the class.
 
     To avoid this, CiviCRM uses the `crm-i` class alongside the `fa-...` class for the specific icon.
+
+### Icon helper functions
+
+The construction of icons with text can be repetitive and prone to mistakes or minor inconsistencies.  To help with this, a few helper functions are included.
+
+#### CRM_Core_Page::crmIcon()
+
+**Language:** PHP
+
+**Usage:**
+
+```php
+// The Font Awesome icon class to use
+$icon = 'fa-birthday-cake';
+
+// Text to appear in the `title` (when hovering) and for screen readers
+$text = ts('This contact is celebrating a birthday');
+
+// Whether to display the icon at all (optional)
+$condition = birthdayIsToday($contact['birth_date']);
+
+$cake = CRM_Core_Page::crmIcon($icon, $text, $condition);
+```
+
+The $condition parameter is optional.  It's a useful tool in the context of a loop where the icon displays an attribute on only some rows.  For example, the same code can be used on the "Default?" column of results but only show a check mark when an item is the default.
+
+#### {icon}
+
+**Language:** Smarty
+
+**Usage:**
+
+```html
+{icon icon="fa-birthday-cake" condition=$row.is_birthday}{ts}This contact is celebrating a birthday{/ts}{/icon}
+```
+
+This is a wrapper around `CRM_Core_Page::crmIcon()` and the above example will produce identical results to the PHP example.
+
+#### CRM.utils.formatIcon
+
+**Language:** Javascript
+
+**Usage:**
+
+```js
+var cake = CRM.utils.formatIcon('fa-birthday-cake', ts('This contact is celebrating a birthday'), row.isBirthday);
+```
+
+This is the same as the two above functions, but for Javascript.
+
+#### {copyIcon}
+
+**Language:** Smarty
+
+**Usage:**
+
+```html
+{copyIcon name=$field.name title=$field.title}
+```
+
+This is a special-purpose helper for batch edit screens where you can click the copy icon to copy the value from the first row down through an entire column.
+
+#### {privacyFlag}
+
+**Language:** Smarty
+
+**Usage:**
+
+```html
+{privacyFlag field=do_not_phone condition=$row.do_not_phone}
+```
+
+This is a special-purpose helper to flag records for a communication type that the contact prefers not to receive.  Similarly to others, the condition parameter allows the code to be identical for each row, only displaying an icon if the condition is true.
 
 ### Icon meaning and consistency
 
@@ -205,6 +281,7 @@ used:
 | Class | Meaning within CiviCRM | Compare with |
 | -- | -- | -- |
 | [`.fa-arrows`](https://fontawesome.com/v4.7.0/icon/arrows) | move something (anywhere) | [`.fa-chevron-left`](https://fontawesome.com/v4.7.0/icon/chevron-left) and [`.fa-chevron-right`](https://fontawesome.com/v4.7.0/icon/chevron-right) to advance through a series |
+| [`.fa-ban`](https://fontawesome.com/v4.7.0/icon/ban) | indicate something shouldn't be done | [`.fa-trash`](https://fontawesome.com/v4.7.0/icon/trash) to get rid of something<br/><br/>[`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) to cancel what you're doing<br/><br/>[`.fa-exclamation-triangle`](https://fontawesome.com/v4.7.0/icon/exclamation-triangle) to indicate something isn't working |
 | [`.fa-bars`](https://fontawesome.com/v4.7.0/icon/bars) | open a menu of options | [`.fa-chevron-right`](https://fontawesome.com/v4.7.0/icon/chevron-right) to advance to the next thing<br/><br/>[`.fa-expand`](https://fontawesome.com/v4.7.0/icon/expand) to make something full-screen |
 | [`.fa-bell-o`](https://fontawesome.com/v4.7.0/icon/bell-o) | sound alarms | [`.fa-paper-plane`](https://fontawesome.com/v4.7.0/icon/paper-plane) to send an email notification<br/><br/>[`.fa-exclamation-triangle`](https://fontawesome.com/v4.7.0/icon/exclamation-triangle) to highlight something dangerous |
 | [`.fa-bell-slash-o`](https://fontawesome.com/v4.7.0/icon/bell-slash-o) | hush alarms | [`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) to cancel something<br/><br/>[`.fa-user-secret`](https://fontawesome.com/v4.7.0/icon/user-secret) to cloak identity |
@@ -216,7 +293,7 @@ used:
 | [`.fa-clock-o`](https://fontawesome.com/v4.7.0/icon/clock-o) | schedule something | [`.fa-history`](https://fontawesome.com/v4.7.0/icon/history) to roll back the clock<br/><br/>[`.fa-calendar`](https://fontawesome.com/v4.7.0/icon/calendar) to display dates<br/><br/>[`.fa-birthday-cake`](https://fontawesome.com/v4.7.0/icon/birthday-cake) to schedule a celebration |
 | [`.fa-compress`](https://fontawesome.com/v4.7.0/icon/compress) | make a UI element smaller, or merge two things together | |
 | [`.fa-envelope`](https://fontawesome.com/v4.7.0/icon/envelope) | do something about email other than actually sending it *(use judiciously when within CiviMail, where everything is about email)* | [`.fa-paper-plane`](https://fontawesome.com/v4.7.0/icon/paper-plane) to actually send an email<br/><br/>[`.fa-pencil`](https://fontawesome.com/v4.7.0/icon/pencil) to edit a value |
-| [`.fa-exclamation-triangle`](https://fontawesome.com/v4.7.0/icon/exclamation-triangle) | provide a warning | [`.fa-info-circle`](https://fontawesome.com/v4.7.0/icon/info-circle) to give information<br/><br/>[`.fa-lightbulb-o`](https://fontawesome.com/v4.7.0/icon/lightbulb-o) to highlight a tip or suggestion |
+| [`.fa-exclamation-triangle`](https://fontawesome.com/v4.7.0/icon/exclamation-triangle) | provide a warning | [`.fa-info-circle`](https://fontawesome.com/v4.7.0/icon/info-circle) to give information<br/><br/>[`.fa-lightbulb-o`](https://fontawesome.com/v4.7.0/icon/lightbulb-o) to highlight a tip or suggestion<br/><br/>[`.fa-ban`](https://fontawesome.com/v4.7.0/icon/ban) to prohibit something |
 | [`.fa-expand`](https://fontawesome.com/v4.7.0/icon/expand) | make a UI element bigger | |
 | [`.fa-flag-checkered`](https://fontawesome.com/v4.7.0/icon/flag-checkered) | complete a multi-step action | [`.fa-trophy`](https://fontawesome.com/v4.7.0/icon/trophy) to award a prize<br/><br/>[`.fa-check`](https://fontawesome.com/v4.7.0/icon/check) to finish something quick |
 | [`.fa-floppy-o`](https://fontawesome.com/v4.7.0/icon/floppy-o) | save without advancing | [`.fa-check`](https://fontawesome.com/v4.7.0/icon/check) to save and complete<br/><br/>[`.fa-pencil`](https://fontawesome.com/v4.7.0/icon/pencil) to start editing a value |
@@ -231,7 +308,7 @@ used:
 | [`.fa-rocket`](https://fontawesome.com/v4.7.0/icon/rocket) | embark upon an adventure | [`.fa-chevron-right`](https://fontawesome.com/v4.7.0/icon/chevron-right) to advance to something less exciting and/or fraught with danger<br/><br/>[`.fa-check`](https://fontawesome.com/v4.7.0/icon/check) to agree to something that is already a done deal<br/><br/>[`.fa-flag-checkered`](https://fontawesome.com/v4.7.0/icon/flag-checkered) to finish a long process<br/><br/>[`.fa-space-shuttle`](https://fontawesome.com/v4.7.0/icon/space-shuttle) if you need to access your payload with the Canada Arm |
 | [`.fa-search`](https://fontawesome.com/v4.7.0/icon/search) | search for things | [`.fa-list-alt`](https://fontawesome.com/v4.7.0/icon/list-alt) to display details<br/><br/>[`.fa-search-plus`](https://fontawesome.com/v4.7.0/icon/search-plus) to zoom in |
 | [`.fa-television`](https://fontawesome.com/v4.7.0/icon/television) | preview something | [`.fa-search`](https://fontawesome.com/v4.7.0/icon/search) to search for things<br/><br/>[`.fa-list-alt`](https://fontawesome.com/v4.7.0/icon/list-alt) to view the details of something<br/><br/>[`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) to close the edit dialog and see the thing itself |
-| [`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) | close something without saving anything, or remove something that hasn't yet been saved | [`.fa-trash`](https://fontawesome.com/v4.7.0/icon/trash) to delete something that has been saved already<br/><br/>[`.fa-check`](https://fontawesome.com/v4.7.0/icon/check) to complete something (that has just been saved or that is to be saved upon clicking the icon)<br/><br/>[`.fa-undo`](https://fontawesome.com/v4.7.0/icon/undo) to roll something back<br/><br/>[`.fa-chevron-left`](https://fontawesome.com/v4.7.0/icon/chevron-left) to return to the previous step |
+| [`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) | close something without saving anything, or remove something that hasn't yet been saved | [`.fa-trash`](https://fontawesome.com/v4.7.0/icon/trash) to delete something that has been saved already<br/><br/>[`.fa-check`](https://fontawesome.com/v4.7.0/icon/check) to complete something (that has just been saved or that is to be saved upon clicking the icon)<br/><br/>[`.fa-undo`](https://fontawesome.com/v4.7.0/icon/undo) to roll something back<br/><br/>[`.fa-chevron-left`](https://fontawesome.com/v4.7.0/icon/chevron-left) to return to the previous step<br/><br/>[`.fa-ban`](https://fontawesome.com/v4.7.0/icon/ban) to indicate something shouldn't be done |
 | [`.fa-trash`](https://fontawesome.com/v4.7.0/icon/trash) | delete something that's already been saved | [`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) to cancel something that hasn't been saved yet<br/><br/>[`.fa-undo`](https://fontawesome.com/v4.7.0/icon/undo) to roll back a bigger process |
 | [`.fa-trophy`](https://fontawesome.com/v4.7.0/icon/trophy) | award something a prize | [`.fa-check`](https://fontawesome.com/v4.7.0/icon/check) to confirm something |
 | [`.fa-undo`](https://fontawesome.com/v4.7.0/icon/undo) | undo (or revert) things | [`.fa-chevron-left`](https://fontawesome.com/v4.7.0/icon/chevron-left) to move backwards in a process (revert things in accounting)<br/><br/>[`.fa-trash`](https://fontawesome.com/v4.7.0/icon/trash) to delete something<br/><br/>[`.fa-times`](https://fontawesome.com/v4.7.0/icon/times) to remove something (that hasn't yet been saved) or to exit without saving |
@@ -314,7 +391,7 @@ delete icon, which turns red)
 
 In-place field editing was added to CiviCRM circa v4.1 and is built upon
 
-* [The AJAX API](/api/interfaces.md#ajax)
+* [The AJAX API](../api/interfaces.md#ajax)
 * The [Jeditable plugin](http://www.appelsiini.net/projects/jeditable) for jQuery
 
 !!! failure "Jeditable EOL"
@@ -378,7 +455,7 @@ ajax whenever the user clicks it.
 
 As of CiviCRM v4.6 you do not need to do anything to initialize
 crmEditable, it is handled automatically on every
-[crmLoad](/framework/ajax.md)
+[crmLoad](ajax.md)
 event.
 
 In previous versions you would need to manually write out the javascript
@@ -542,12 +619,43 @@ CiviCRM 4.2 and below):
 CRM_Core_Session::setStatus(ts(This is just a yellow box with a message.), '', 'no-popup');
 ```
 
+## Screen reader text
+
+A well-designed interface will be immediately apparent visually without too many written instructions, but users accessing the site with a screen reader will not have the benefit of visual elements.  It's often useful to provide text that is hidden visually but will be picked up by screen readers.
+
+!!! tip "Don't rely on titles"
+
+    The `title` attribute on elements is not enough.  You can't count on screen readers picking that up, as a `title` isn't designed to be immediately visible in a browser anyway.
+
+    In fact, icons should generally be given the attribute `aria-hidden="true"` in order to hide the icon from screen readers.
+
+A class `sr-only` is included to provide text that will be picked up by a screen reader but won't appear visually.  For the simplest example, you might state the same thing that an icon conveys visually:
+
+```html
+<i class="crm-i fa-heart" aria-hidden="true"></i><span class="sr-only">This contact is a favorite</span>
+```
+
+You don't need to explain every icon: many icons exist to highlight text that already explains enough.  However, there are many places where the icon itself tells the story, and those need screen reader text.
+
+There is no limit on the size and scale of screen reader text.  If you have a substantial bit of media that conveys information visually, you could have a whole section of replacement text for screen readers.  This allows more advanced content than what an `alt` attribute would provide.
+
+```html
+<img src="gaul-diagram.png"/>
+<div class="sr-only">
+  All Gaul is divided into three parts:
+  <ul>
+    <li>one of which the <em>Belgae</em> inhabit</li>
+    <li>the <em>Aquitani</em> another</li>
+    <li>those who in their own language are called <em>Celts</em>, in ours <em>Gauls</em>, the third</li>
+  </ul>
+</div>
+```
 
 ## Section elements
 
 This element is to be used in the case that you have a number of
 elements that can be broken down into small groups of information. A
-good example of it's use is in the contribution page template.
+good example of its use is in the contribution page template.
 
 Here each logical grouping of related form elements are wrapped by a
 "section" div:

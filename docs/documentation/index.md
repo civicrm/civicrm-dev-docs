@@ -9,7 +9,7 @@ This page describes the details of the documentation systems within CiviCRM and 
 
 ## When to document {:#when}
 
-If you are [contributing to core](/core/contributing.md), updating documenting along with your changes is an important step to ensure the long-term usability and maintainability of CiviCRM.
+If you are [contributing to core](../core/contributing.md), updating documenting along with your changes is an important step to ensure the long-term usability and maintainability of CiviCRM.
 
 Not all changes require documentation updates. Here are some guidelines:
 
@@ -20,12 +20,12 @@ Not all changes require documentation updates. Here are some guidelines:
 !!! tip
     Try writing documentation *before* writing your code! Then you have a way to organize your thoughts and measure whether the feature works.
 
-If you are [submitting a core pull request](/tools/git.md#pr) and would like to submit accompanying doc changes, please provide comments in both pull requests for cross reference. Your docs PR will not be merged until your core PR is merged first.
+If you are [submitting a core pull request](../tools/git.md#pr) and would like to submit accompanying doc changes, please provide comments in both pull requests for cross reference. Your docs PR will not be merged until your core PR is merged first.
 
 
 ## Guides in MkDocs
 
-We are using [MkDocs](http://www.mkdocs.org) to produce guides. The content for each of these guides is written in [markdown](/documentation/markdown.md), stored in text files, and hosted in a repository on GitHub. Then, the guides are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
+We are using [MkDocs](http://www.mkdocs.org) to produce guides. The content for each of these guides is written in [markdown](markdown.md), stored in text files, and hosted in a repository on GitHub. Then, the guides are automatically published to [docs.civicrm.org](https://docs.civicrm.org) using our custom [publishing system](https://github.com/civicrm/civicrm-docs).
 
 
 ### Versions
@@ -50,9 +50,9 @@ We welcome contributions, small and large, to documentation!
 
 Before diving into editing, you may find helpful information within the following resources:
 
-- [Markdown syntax](/documentation/markdown.md) - necessary (but simple) syntax to format content
-- [Markdown coding standards](/documentation/markdown.md#standards) - recommendations for markdown syntax to use
-- [Style guide](/documentation/style-guide.md) - to maintain consistent language and formatting
+- [Markdown syntax](markdown.md) - necessary (but simple) syntax to format content
+- [Markdown coding standards](markdown.md#standards) - recommendations for markdown syntax to use
+- [Style guide](style-guide.md) - to maintain consistent language and formatting
 - [Documentation chat room](https://chat.civicrm.org/civicrm/channels/documentation) - live discussion, fast (most of the time) answers to your questions
 - [Documentation mailing list](https://lists.civicrm.org/lists/info/civicrm-docs) - low traffic, mostly used for informational updates regarding documentation projects
 
@@ -63,7 +63,7 @@ The simplest way to help out is to *describe* a change that you think *should* b
 
 ### Editing through GitHub
 
-Please see the documentation for editing with Git in the [CiviCRM user guide](https://docs.civicrm.org/user/en/stable/the-civicrm-community/contributing-to-this-manual/#single_changes).
+Please see the documentation for editing with Git in the [CiviCRM User Guide](https://docs.civicrm.org/user/en/stable/the-civicrm-community/contributing-to-this-manual/#single_changes).
 
 ### Testing locally with MkDocs {:#mkdocs}
 
@@ -79,34 +79,35 @@ The most advanced way to work on a guide is to use git to download all the markd
         cd civicrm-dev-docs
         ```
 
-1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "view the guide locally ..." step below.
+1. *(optional)* If you have [Docker](https://www.docker.com/) installed, then at this point you can run one of the following commands and then skip to the "View the guide locally ..." step below.
 	1. For folks who have a full Docker for Windows / Mac / Linux environment, run this command:
 
 		```
-		docker run --rm -v "$PWD":/docs -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+		docker run --rm -v "$PWD:/docs" -p 8000:8000 -w /docs "mjcoltd/civicrm-docker-mkdocs" serve --dirtyreload -a 0.0.0.0:8000
 		```
 
-		and skip to the "view the guide" step below.
+		and skip to the "View the guide" step below.
 
-	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  Follow these steps:
+	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  The same is true if you have implemented virtual machines on your system using Oracle VM VirtualBox or VMWare tools.  These tools don't play well with native Windows HyperV virtualization.  In any case, follow these steps:
 		1.  Check that GitHub folder is in the path:  ```c:\Users\<username>\Documents\...```.  If it is, all is good; if not, move it there, and edit your GitHub configuration to reflect the changed location.
-		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM Box), and check that it is functioning properly (Hello-world container works).
+		1.  Set up a Docker-Toolbox environment (which depends on Oracle VM VirtualBox), and check that it is functioning properly (Hello-world container works).
+		1.  Review the Docker-Toolbox instance in Oracle VM VirtualBox to ensure that it has the necessary port-forwarding configuration in place. If there is no HTTP port forwarding rule, add one that specifies: Name: HTTP, Protocol: TCP, Host IP: 127.0.0.1, Host Port: 8000, Guest IP (empty), Guest Port: 8000. If this configuration is not present, all attempts to open a browser session will receive a "connection refused" error.  
 		1.  Run this command:
 
 		```
-		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs seanmadsen/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
+		docker run --rm -v "/c/Users/<username>/Documents/GitHub/civicrm-user-guide:/docs" -p 8000:8000 -w /docs mjcoltd/civicrm-docker-mkdocs serve --dirtyreload -a 0.0.0.0:8000
 		```
-		and skip to the "view the guide locally ..." step below.
+		and skip to the "View the guide locally ..." step below.
 
 1. Install [pip](https://pypi.python.org/pypi/pip) (python package manager)
 
-    - OS X: `brew install python`
-    - Debian/Ubuntu: `sudo apt-get install python-pip python-wheel`
+    - OS X: `brew install python3`
+    - Debian/Ubuntu: `sudo apt-get install python3-pip`
 
 1.  Install MkDocs, plus the [Material theme](http://squidfunk.github.io/mkdocs-material/) and the [Pygments syntax highlighter](http://pygments.org/).
 
     ```bash
-    sudo pip install mkdocs mkdocs-material pygments pymdown-extensions
+    sudo pip install mkdocs==1.0.4 mkdocs-material==4.6.3
     ```
 
 1. Serve a local copy of the guide with MkDocs
@@ -121,7 +122,7 @@ The most advanced way to work on a guide is to use git to download all the markd
 
 1. View the guide locally in your browser at `http://localhost:8000`.
 
-1.  Edit the [markdown](/documentation/markdown.md) with an editor of your choice.  As you
+1.  Edit the [markdown](markdown.md) with an editor of your choice.  As you
     save your changes `mkdocs` will automatically reprocess the page and
     refresh your browser.
 
@@ -168,7 +169,7 @@ Some guides may have auto-generated content, which is summarized here.
 
 ### In the Developer Guide {:#auto-gen-dev}
 
-This Developer Guide has an automatically-generated [list of all hooks](/hooks/list.md). To re-create this list, run the following command from the root level of the repository:
+This Developer Guide has an automatically-generated [list of all hooks](../hooks/list.md). To re-create this list, run the following command from the root level of the repository:
 
 ```
 ./bin/tools generate:hooks-list

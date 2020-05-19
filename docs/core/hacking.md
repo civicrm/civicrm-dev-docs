@@ -5,7 +5,7 @@
 
 To help you decide, here are a couple of principles:
 
-- Bug fixes should always be applied to core.  See [Contributing to Core](/core/contributing.md) for details.
+- Bug fixes should always be applied to core.  See [Contributing to Core](contributing.md) for details.
 - Some (but not all) enhancements to existing features may be best applied to core, especially if they would be useful to others.
-- New features should generally be packed as [Extensions](/extensions/index.md).
-- If you aren't familiar with CiviCRM, by far the best way to get a sense if you should be editing core is by [talking with the CiviCRM developer community](/basics/community.md#collaboration-tools).
+- New features should generally be packed as [Extensions](../extensions/index.md).
+- If you aren't familiar with CiviCRM, by far the best way to get a sense if you should be editing core is by [talking with the CiviCRM developer community](../basics/community.md#collaboration-tools).

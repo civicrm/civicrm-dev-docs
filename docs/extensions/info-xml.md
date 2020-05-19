@@ -1,8 +1,8 @@
 # info.xml
 
-Every CiviCRM [extension](/extensions/index.md) must have an `info.xml` file within it to provide information about the extension. This page is a reference for the schema of the `info.xml` file.
+Every CiviCRM [extension](index.md) must have an `info.xml` file within it to provide information about the extension. This page is a reference for the schema of the `info.xml` file.
 
-Typically, you'll begin by running [civix generate:module](/extensions/civix.md#generate-module) and `civix` will create a basic `info.xml` file for you. Use this page to learn how to customize that file.
+Typically, you'll begin by running [civix generate:module](civix.md#generate-module) and `civix` will create a basic `info.xml` file for you. Use this page to learn how to customize that file.
 
 ## Example
 
@@ -66,7 +66,7 @@ Here we describe all the elements acceptable within the XML file. They are prese
 ### `<civix>` {:#civix}
 
 * Containing element: [`<extension>`](#extension)
-* Description: Used to store settings which [civix](/extensions/civix.md) reads and writes 
+* Description: Used to store settings which [civix](civix.md) reads and writes 
 * Contains: elements
 
 Elements acceptable within `<civix>`
@@ -104,7 +104,7 @@ For example, if you want to write PHP classes in the `Civi` namespace and autolo
 ### `<compatibility>` {:#compatibility}
 
 * Containing element: [`<extension>`](#extension)
-* Description: specifies the versions of CiviCRM with which this extension is compatible
+* Description: specifies the versions of CiviCRM with which this extension is compatible. Each `<ver>` child element should only contain a single compatible version of CiviCRM.
 * Contains: elements
 
 Elements acceptable within `<compatibility>`
@@ -126,7 +126,7 @@ Elements acceptable within `<compatibility>`
 * Contains: text
 * Acceptable values: `stable`, `beta`, `alpha`
 * Notes: 
-    * If you want your extension to be available for [automated distribution](/extensions/publish.md#automated-distribution), it must be marked as `stable`.
+    * If you want your extension to be available for [automated distribution](publish.md#automated-distribution), it must be marked as `stable`.
     * If you use civicrm.org's automated release management (based on git tags), the `<develStage>` value will be determined automatically by searching for "alpha" or "beta" in the version.
 
 ### `<downloadUrl>` {:#downloadUrl}
@@ -165,7 +165,7 @@ Attributes acceptable for `<extension>`
 
 | Attribute | Description |
 | -- | -- |
-| `key` | The unique name of the extension, e.g. `org.example.myextension`. It should match the name of directory this extension resides in. Read more about [choosing a name](/extensions/index.md#extension-names). |
+| `key` | The unique name of the extension, e.g. `org.example.myextension`. It should match the name of directory this extension resides in. Read more about [choosing a name](index.md#extension-names). |
 | `type` | One of `module`, `search`, `payment`, `report`. |
 
 Elements acceptable within `<extension>`
@@ -236,7 +236,7 @@ Elements acceptable within `<maintainer>`
 ### `<namespace>` {:#namespace}
 
 * Containing element: [`<civix>`](#civix)
-* Description: The PHP namespace that [civix](/extensions/civix.md) uses when generating code 
+* Description: The PHP namespace that [civix](civix.md) uses when generating code 
 * Contains: text
 * Example: `CRM/Volunteer`
 
@@ -291,7 +291,7 @@ Elements acceptable within `<requires>`
 ### `<tags>` {:#tags}
 
 * Containing element: [`<extension>`](#extension)
-* Description: Freeform tags allow extensions to be organized into categories or selected as subgroups. Tags MUST contain only letters, numbers, dashes,and colons. Tags are case-sensitive. Tags MUST follow the structure `<prefix>:<some-tag-name>`. Tags SHOULD be documented in the table below. (*If you need to use a new/unknown tag, then please submit a [documentation update](https://docs.civicrm.org/dev/en/latest/documentation/) with a description.*)
+* Description: Freeform tags allow extensions to be organized into categories or selected as subgroups. Tags MUST contain only letters, numbers, dashes,and colons. Tags are case-sensitive. Tags MUST follow the structure `<prefix>:<some-tag-name>`. Tags SHOULD be documented in the table below. (*If you need to use a new/unknown tag, then please submit a [documentation update](../documentation/index.md) with a description.*)
 * Contains: elements
 * Example:
 
@@ -360,19 +360,20 @@ Elements acceptable within `<urls>`
 ### `<ver>` {:#ver}
 
 * Containing element: [`<compatibility>`](#compatibility)
-* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits
+* Description: a version of CiviCRM with which this extension is compatible; expressed as two digits, each `<ver>` element should only contain a single compatible version of CiviCRM.
 * Contains: text
 * Example: `4.7`
 
-!!! note "Point releases"
-    It is not currently possible to specify compatibility with point releases. If your extension is compatible with CiviCRM 4.7.21 but *not* 4.7.20, then you will need to clearly specify this in the [comments](#comments).
+!!! note "Which version to choose?"
+    Specify the minimum version number required by this extension.
+    You may use a particular minor version, e.g. 5.23, but point releases (e.g. 5.23.2) are not supported.
+    
+    For compatibility with CiviCRM versions prior to the 5.x.x version number change you should continue to specify the version as `<ver>4.7</ver>`.
 
-!!! note "Forward compatibility (4.7/5.x)"
-    For CiviCRM 3.x and 4.x, `<ver>` tags must explicitly list all compatible versions.
-
-    For CiviCRM 4.7.x and 5.x, `<ver>` tags imply forward compatibility.
-
+    `<ver>` elements imply forward compatibility. So `<ver>5.0</ver>` means all 5.*.* versions of CiviCRM.
     Because 4.7.x and 5.x are substantively the same series, `<ver>4.7</ver>` implies forward compatiblity with 5.x.
+
+    It is not currently possible to specify a "maximum compatible version".
 
 ### `<version>` {:#version}
 

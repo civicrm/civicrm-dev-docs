@@ -54,4 +54,4 @@ new case.
 
 ## See also
 
-[hook_civicrm_pre_case_merge](/hooks/hook_civicrm_pre_case_merge.md)
+[hook_civicrm_pre_case_merge](hook_civicrm_pre_case_merge.md)

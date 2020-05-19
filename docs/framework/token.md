@@ -93,7 +93,7 @@ The basic process in the new subsystem is
 
 - Whenever an application's controller (e.g. for CiviMail or PDFs or scheduled reminders) needs to compose a message, it instantiates `Civi\Token\TokenProcessor`.
 - The `controller` passes some information to `TokenProcessor` – namely, the `$context` and the list of `$rows`.
-- The `TokenProcessor` fires an event (`TOKEN_EVALUATE`). Other modules respond with the actual token content.
+- The `TokenProcessor` fires an event (`civi.token.eval`). Other modules respond with the actual token content.
 - For each of the rows, the controller requests a rendered blob of text.
 
 ```php
@@ -121,7 +121,7 @@ foreach ($p->getRows() as $row) {
 
 ### hook_civicrm_tokens
 
-The oldest and most broadly supported way to define a new token is to use [hook_civicrm_tokens](/hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](/hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
+The oldest and most broadly supported way to define a new token is to use [hook_civicrm_tokens](../hooks/hook_civicrm_tokens.md) and [hook_civicrm_tokenValues](../hooks/hook_civicrm_tokenValues.md). These hooks have been included with CiviCRM for a number of years, and they work with a range of mailing use-cases.
 
 However, these hooks have some limitations:
 
@@ -139,10 +139,10 @@ If a use-case builds on the newer `TokenProcessor` (above), then an additional A
 function example_civicrm_container($container) {
   $container->addResource(new \Symfony\Component\Config\Resource\FileResource(__FILE__));
   $container->findDefinition('dispatcher')->addMethodCall('addListener',
-    array(\Civi\Token\Events::TOKEN_REGISTER, 'example_register_tokens')
+    ['civi.token.list', 'example_register_tokens']
   );
   $container->findDefinition('dispatcher')->addMethodCall('addListener',
-    array(\Civi\Token\Events::TOKEN_EVALUATE, 'example_evaluate_tokens')
+    ['civi.token.eval', 'example_evaluate_tokens']
   );
 }
 

@@ -2,7 +2,7 @@
 
 When writing new application code, developers should organize their code in a way which is amenable to internationalization, so that it may be localized to various languages and regions of the world.
 
-If you are an extension developer, there is additional documentation in the [Extension translation](/translation/extensions.md) page.
+If you are an extension developer, there is additional documentation in the [Extension translation](extensions.md) page.
 
 ## PHP
 
@@ -99,7 +99,43 @@ The general rules for avoiding errors may be summed up like this:
     ```smarty
     <p>{ts}Hello, world!{/ts}</p>
     ```
-    
+
+Hyperlinks within larger blocks of text are an exception to this rule, where you should place the `<a>` tags within the `ts`. Any link parameters should be provided as arguments to the ts. For example:
+
+!!! failure "Bad"
+
+    ```smarty
+    {ts}Here is a block of text with a link to the <a href="https://www.civicrm.org" target="_blank">CiviCRM Web Site</a>.{/ts}
+    ```
+
+!!! success "Less bad"
+
+    ```smarty
+    {ts 1='href="https://www.civicrm.org" target="_blank"'}Here is a block of text with a link to the <a %1>CiviCRM Web Site</a>.{/ts}
+    ```
+
+For `title` attributes in `<a>` links, within CiviCRM these usually only appear in links that aren't within a larger block of text or where there is no clickable text, such as a datepicker icon. In this situation, the title text needs to be translated:
+
+!!! failure "Bad"
+
+    ```smarty
+    {ts}<a href="https://www.example.org/civicrm/something?reset=1" title="List participants for this event (all statuses)">Participants</a>{/ts}
+    ```
+
+!!! failure "Less bad"
+
+    ```smarty
+    <a href="https://www.example.org/civicrm/something?reset=1" title="{ts}List participants for this event (all statuses){/ts}">{ts}Participants{/ts}</a>
+    ```
+
+If there is no clickable text, just translate the title attribute:
+
+!!! success "Good"
+
+    ```smarty
+    <a title="{ts}Select Date{/ts}"><i class="crm-i fa-calendar"></i></a>
+    ```
+
 ### Avoid multi-line strings
 
 Even if your code editor may not like it, long strings should be on a single line since a change in indentation might change where the line breaks are, which would then require re-translating the string.

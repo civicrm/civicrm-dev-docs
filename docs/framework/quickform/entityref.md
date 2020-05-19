@@ -27,30 +27,30 @@ using jQuery on the client-side.
 $this->addEntityRef('field_1', ts('Select Contact'));
 
 // Pass some params to allow creation of contacts, set multiple and make the field required
-$this->addEntityRef('field_2', ts('Select More Contacts'), array('create => TRUE', 'multiple' => TRUE), TRUE);
+$this->addEntityRef('field_2', ts('Select More Contacts'), ['create => TRUE', 'multiple' => TRUE], TRUE);
 
 // Set some filters in the api (in this case limit results by contact type)
-$this->addEntityRef('field_3', ts('Select Organization'), array(
-  'api' => array(
-    'params' => array('contact_type' => 'Organization'),
-  ),
-));
+$this->addEntityRef('field_3', ts('Select Organization'), [
+  'api' => [
+    'params' => ['contact_type' => 'Organization'],
+  ],
+]);
 
 // Select events instead of contacts - set minimumInputLength to 0 to display results immediately without waiting for search input
-$this->addEntityRef('field_4', ts('Select Event'), array(
+$this->addEntityRef('field_4', ts('Select Event'), [
   'entity' => 'event',
   'placeholder' => ts('- Select Event -'),
-  'select' => array('minimumInputLength' => 0),
-));
+  'select' => ['minimumInputLength' => 0],
+]);
 
 // Use the 'option_value' entity for most "option" lists, e.g. event types, activity types, gender, individual_prefix, custom field options, etc.
-$this->addEntityRef('field_5', ts('Activity Type'), array(
+$this->addEntityRef('field_5', ts('Activity Type'), [
   'entity' => 'option_value',
-  'api' => array(
-    'params' => array('option_group_id' => 'activity_type'),
-  ),
-  'select' => array('minimumInputLength' => 0),
-));
+  'api' => [
+    'params' => ['option_group_id' => 'activity_type'],
+  ],
+  'select' => ['minimumInputLength' => 0],
+]);
 ```
 
 Please see code-level documentation in [CRM_Core_Form](https://github.com/civicrm/civicrm-core/blob/master/CRM/Core/Form.php#L1813) for all available params.

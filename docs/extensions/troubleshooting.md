@@ -1,6 +1,6 @@
 # Troubleshooting
 
-If you are struggling, the best thing to do is reach out to the [CiviCRM community](/basics/community.md).
+If you are struggling, the best thing to do is reach out to the [CiviCRM community](../basics/community.md).
 
 If you cannot find the answer in this guide or by searching in the [CiviCRM StackExchange site](http://civicrm.stackexchange.com/) then please [ask](http://civicrm.stackexchange.com/questions/ask). Asking questions on StackExchange not only helps you but may well help others who follow you.
 
@@ -22,7 +22,7 @@ A: You might have missed the step about setting 'civicrm\_api3\_conf\_path' ([ht
 
 Q: I've tried to generate a page/report/search/upgrader/etc with civix but it's not working.
 
-A: For all of the various types, you must first run [generate:module](http://generatemodule), and then \`cd\` into the folder (e.g. com.example.myextension) before running one of the other \`generate:\` commands.
+A: For all of the various types, you must first run [generate:module](civix.md#generate-module), and then \`cd\` into the folder (e.g. com.example.myextension) before running one of the other \`generate:\` commands.
 
 ## Out-of-date templates
 

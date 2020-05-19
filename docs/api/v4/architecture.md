@@ -39,7 +39,7 @@ An API [`Result`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/
 
 ## Class Inheritance
 
-![Inheritance](/img/inheritance-community-chest.jpg)
+![Inheritance](../../img/inheritance-community-chest.jpg)
 
 To reduce code duplication and enforce consistency, APIv4 uses PHP class inheritance extensively.
 Compare these (slightly simplified) examples:
@@ -91,7 +91,7 @@ By taking advantage of class inheritance, APIv4 reduces this boilerplate to noth
 
 ### DAO vs Ad-hoc Entities
 
-![Entity Inheritance Diagram](/img/APIv4-entity-inheritance.svg)
+![Entity Inheritance Diagram](../../img/APIv4-entity-inheritance.svg)
 
 There are two categories of APIv4 entities: *standard* (aka DAO) entities, and *ad-hoc* entities.
 
@@ -105,7 +105,7 @@ There are two categories of APIv4 entities: *standard* (aka DAO) entities, and *
 
 To standardize parameter names and reduce code duplication, each action class inherits from an abstract parent.
 
-![Action Inheritance Diagram](/img/APIv4-action-inheritance.svg)
+![Action Inheritance Diagram](../../img/APIv4-action-inheritance.svg)
 
 ### DAO (standard) Actions
 
@@ -134,7 +134,7 @@ or one of the Basic actions.
 
 [**`AbstractAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php)
 is the base class for all API actions. Every action must, at minimum, extend this class.
-For example, the [`Example::random()`]() action extends this class directly.
+For example, the `Example::random()` action extends this class directly.
 Your custom action will define parameters as protected class properties, and implement a `_run` function to execute the action.
 
 Before extending `AbstractAction` directly, consider if your action could benefit from the features provided by one of the Basic actions:

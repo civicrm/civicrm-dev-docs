@@ -97,7 +97,7 @@ Tags acceptable within `<table>` / `<field>`
 | `<headerPattern>` | regex |  | 0 or 1 | *Not yet documented* |
 | `<dataPattern>` | regex |  | 0 or 1 | *Not yet documented* |
 | `<required>` | `true`/`false` |  | 0 or 1 | When `false`, MySQL will allow this field to be set to `NULL` |
-| `<localizable>` | `true`/`false` |  | 0 or 1 | If `true`, in a multilingual site the field will have separate per-language fields. See [this](https://docs.civicrm.org/dev/en/latest/translation/database/) link when adjusting localizable or adding localizable fields|
+| `<localizable>` | `true`/`false` |  | 0 or 1 | If `true`, in a multilingual site the field will have separate per-language fields. See [this](../../translation/database.md) link when adjusting localizable or adding localizable fields|
 | `<import>` | `true`/`false` |  | 0 or 1 | When `true`, this field will be available for use when importing data |
 | `<export>` | `true`/`false` |  | 0 or 1 | When `true`, users will be able to include this field in data exports |
 | `<rule>` | text |  | 0 or 1 | *Not yet documented* |

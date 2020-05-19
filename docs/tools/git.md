@@ -3,7 +3,7 @@
 CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid understanding of these tools (especially git) is important for developing CiviCRM. This page provides some information about *how CiviCRM uses these tools* &mdash; but, due to the wealth of resources already available elsewhere online, this page does *not* attempt to teach you everything you need know about how to use these tools for CiviCRM development.
 
 !!! tip
-    If you are new to git, a great way to get started using it within the CiviCRM community is to [contribute to documentation](/documentation/index.md). The editing workflow involves git in the same was that core coding does &mdash; but the stakes are much lower!
+    If you are new to git, a great way to get started using it within the CiviCRM community is to [contribute to documentation](../documentation/index.md). The editing workflow involves git in the same was that core coding does &mdash; but the stakes are much lower!
 
 ## External resources {:#resources}
 
@@ -42,24 +42,24 @@ CiviCRM uses git, GitHub, and GitLab to manage changes to the code. A solid unde
 
 Whether you are contributing to civicrm-core or an ancillary project (using GitHub or GitLab) the process generally goes somewhat like this:
 
-1. Consider [opening an issue on GitLab](/tools/issue-tracking.md#gitlab) to describe the change you'd like to make.  Not all changes need GitLab issues, but opening an issue is recommended if you are making significant changes, expect discussion, or expect your changes to be grouped into more than one [pull request](#pr).
+1. Consider [opening an issue on GitLab](issue-tracking.md#gitlab) to describe the change you'd like to make.  Not all changes need GitLab issues, but opening an issue is recommended if you are making significant changes, expect discussion, or expect your changes to be grouped into more than one [pull request](#pr).
 1. Find the page on GitHub or GitLab for the project to which you would like to contribute. We will call this repository the **upstream repository**.
-1. **Clone** the upstream repository to your local machine. (If you are working on core, you should use [civibuild](/tools/civibuild.md) for this step.)
+1. **Clone** the upstream repository to your local machine. (If you are working on core, you should use [civibuild](civibuild.md) for this step.)
 1. On the web page for the upstream repository, **fork** the upstream repository to your personal user account.
 1. Within your local repository **add your fork** as a second git *remote*. *[Learn more...](#remotes)*
 1. **Choose the correct base branch** in the upstream repository as the starting point for your changes. (Usually this will be `master`.) *[Learn more...](#base-branch)*
-1. (If it's been some time since you've cloned) **pull or fetch** the latest changes from the *upstream repository* into the appropriate branch of your local repository. *(You might also need to  [upgrade your civibuild site](/tools/civibuild.md#upgrade-site).)*
+1. (If it's been some time since you've cloned) **pull or fetch** the latest changes from the *upstream repository* into the appropriate branch of your local repository. *(You might also need to  [upgrade your civibuild site](civibuild.md#upgrade-site).)*
 1. Create (and checkout) a **new branch** for your changes, based on the correct branch (chosen above) in the upstream repository. *[Learn more...](#branching)*
-1. Make your changes. (Take care to follow the guidelines in [contributing to core](/core/contributing.md).)
+1. Make your changes. (Take care to follow the guidelines in [contributing to core](../core/contributing.md).)
 1. **Commit** your changes. *[Learn more...](#commiting)*
 1. **Push** your changes *to your fork*.
 1. **Open a pull request**. *[Learn more...](#pr)*
-1. Wait for someone else to [review your pull request](/core/pr-review.md).
+1. Wait for someone else to [review your pull request](../core/pr-review.md).
 1. If you need to make more changes later, commit them on the same branch and push your new commits to your fork. The new commits the will automatically appear in the pull request.
 1. If other people commit changes to the upstream repository which create *merge conflicts* in your pull request, then **rebase** your branch. *[Learn more...](#rebasing)*
 1. Once your changes are merged, delete your local branch
 
-See also: [reviewing someone else's pull request](/core/pr-review.md)
+See also: [reviewing someone else's pull request](../core/pr-review.md)
 
 
 ## Pull requests {:#pr}
@@ -89,8 +89,8 @@ When filing a pull-request, use a descriptive subject. These are good examples:
 A few elements to include:
 
  * **Acronyms** - You're welcome to use the [acronyms](#acronyms) below to flag your PR with certain characteristics.
- * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](/tools/issue-tracking.md#gitlab-reference).
- * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](/tools/issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
+ * **dev/_project_#_XXXX_** - This is a [GitLab issue reference](issue-tracking.md#gitlab-reference).
+ * **CRM-_XXXXX_** - This is a reference to the now-deprecated [Jira issue tracker](issue-tracking.md#jira). A bot will set up crosslinks between JIRA and GitHub.
  * **Description** - Provide a brief description of what the pull-request does.
 
 ### Acronyms within PR subjects {:#acronyms}
@@ -124,17 +124,19 @@ Here are some examples and counter-examples of NFC:
     * Modify whitespace in PHP code.
     * Update a code comment.
     * Fix a typo or grammatical error in a help dialog.
-    * (*Maybe*) Add a new unit-test where there was no coverage before.
+    * (*Maybe*) Add a new unit-test where there was no coverage before (see below).
+    * (*Maybe*) Update a PHP doc block (see below).
 * _Functional Change_:
-    * Refactoring
-    * Replace 20 lines of redundant code with a call to a helper function.
+    * Refactoring, e.g. replacing 20 lines of redundant code with a call to a helper function.
         * (__Why?__ A reviewer would consider whether the helper is truly equivalent, better, or worse.)
     * Fix a typo in a *symbol* (PHP class-name, PHP function-name, HTML field name, etc).
         * (__Why?__ A reviewer would consider dangling references to the symbol.)
     * Change the general wording of a help dialog or menu item.
         * (__Why?__ A reviewer would consider impact on the user's comprehension.)
-    * Alter the substance of an existing unit-test.
+    * Add or alter an existing unit-test.
         * (__Why?__ A reviewer would consider whether the change improves the correctness of the test.)
+    * Update annotations in a PHP doc block.
+        * (__Why?__ Some annotations affect functionality, e.g. the `@required` annotation on an APIv4 param.)
     * Alter the build process.
         * (__Why?__ A reviewer would consider whether the new build will work correctly.)
 
@@ -146,7 +148,7 @@ There is no size limit for PRs as long as they are focused on completely solving
 
 ### Reviewing a pull request
 
-See [How to review a core pull request](/core/pr-review.md)
+See [How to review a core pull request](../core/pr-review.md)
 
 ### Who merges pull requests? {:#pr-merge}
 
@@ -233,13 +235,17 @@ $ git checkout upstream/master -b mail-111
 
 When creating a new branch, you should explicitly declare a starting point.
 
-Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate*, or *Stable* branch. The table below summarizes the policies for each branch.
+Most of the time, your base branch should be `master`.  In special circumstances, a patch may be accepted for the *Release Candidate* (RC), or *Stable* branch. The table below summarizes the policies for each branch.
 
 | Name | Git branch (example) | Version number (example) | Acceptable patches |
 | --- | ---- | --- | --- |
 | Master | master | 5.99.alpha1 | This is primary target for most patches, including typical bugfixes, cleanups, and minor features. |
 | Release Candidate | 5.98 | 5.98.beta1 | Fixes for critical, recent regressions. The regression should be traced to a specific, recent change. In a typical cycle, only 1-10 RC patches are accepted.|
-| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. |
+| Stable | 5.97 | 5.97.1 | Backports of fixes for very critical issues. This is usually only done by the project maintainers. Make your PR against the RC instead and they will backport if necessary. |
+
+If you are unsure about which is the current RC or master branch, you can refer to https://download.civicrm.org/latest/, and look at the numbers in brackets to the right of the filename, e.g. if you see `civicrm-RC-drupal.tar.gz (5.24.beta1-...)` it means the current release candidate branch is the 5.24 branch.
+
+Don't make multiple PRs against multiple branches for the same thing even if the bug is present in both versions, e.g. both the RC and master. Consult the table above and just pick one branch.
 
 ### Committing {:#committing}
 

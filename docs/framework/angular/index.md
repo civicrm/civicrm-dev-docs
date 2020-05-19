@@ -87,7 +87,7 @@ The first interaction comes when CiviCRM generates the initial HTML page:
    way which is compatible with multiple CMSs -- Drupal, Joomla, WordPress, etc.)
  * CiviCRM builds the list of CSS/JS/JSON resources in lines 3-5.  (It does this in a
    way which allows extensions to add new CSS/JS/JSON. See also:
-   [Resource Reference](/framework/resources.md).)
+   [Resource Reference](../../framework/resources.md).)
  * CiviCRM ensures that the page includes the site-wide elements, such as
    lines 8 and 10. (It does this in a way which is compatible with multiple CMSs.)
 
@@ -105,7 +105,7 @@ data.  This uses the CiviCRM API.  Key concepts in CiviCRM API include
 
 !!! seealso "Read more about CiviCRM API"
     A good resource for understanding CiviCRM API concepts is the [APIv3:
-    Intro](/api/index.md).
+    Intro](../../api/index.md).
 
 In the remainder of this document, we'll try to avoid in-depth discussion
 about the internals of AngularJS 1.x or APIv3.  You should be able to follow

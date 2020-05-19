@@ -19,13 +19,13 @@ Consider these samples with commonly-used actions and parameters for the `Contac
 | `delete` | `#!json {"where":[["id", "=", 42]]}` | Delete the contact with id "42" |
 
 !!! tip
-    For full, up-to-date details about specific entities and parameters, use the [API Explorer](/api/index.md#api-explorer).
+    For full, up-to-date details about specific entities and parameters, use the [API Explorer](../index.md#api-explorer).
 
 !!! info
     As of CiviCRM version 5.18, not all core entities have been added to APIv4. You should check the API Explorer to see which entities are available. If the entity you require is not available then please open a pull request against the [`civicrm-core` repository](https://github.com/civicrm/civicrm-core) to add the entity or open an [issue](https://lab.civicrm.org/dev/core) and request that the entity is added.
 
 !!! info
-    Some parts of APIv4 differ significantly from APIv3, including the handling of `check_permissions` and the default limit for returned objects being removed. For details, refer to [Differences Between APIv3 and APIv4](/api/v4/differences-with-v3.md).
+    Some parts of APIv4 differ significantly from APIv3, including the handling of `check_permissions` and the default limit for returned objects being removed. For details, refer to [Differences Between APIv3 and APIv4](../v4/differences-with-v3.md).
 
 The API is available in many different environments (such as PHP, CLI, and JavaScript), and the notation differs slightly in each environment. However, if you understand the canonical notation, then other environments will appear as small adaptations.
 
@@ -37,7 +37,7 @@ There are two ways to call the api from PHP - which one you choose is a matter o
 For example you may prefer OOP syntax because IDE code editors provide autocompletion.
 Or if you need to work with the parameters as an array, traditional syntax will be more convenient.   
 
-[APIv4 PHP Examples](/img/Api4-PHP-Styles.svg)
+[APIv4 PHP Examples](../../img/Api4-PHP-Styles.svg)
 
 ### Traditional (Procedural)
 
@@ -82,7 +82,7 @@ Both OOP and traditional APIs return a **Result** ArrayObject, which can be acce
 - `$result->count()`: counts the results.
 
 !!! note
-    If you're writing a Drupal module, a Joomla extension, a WordPress plugin, or a standalone script, then you may need to **bootstrap** CiviCRM before using the API.  See the examples in [Bootstrap Reference](/framework/bootstrap.md).
+    If you're writing a Drupal module, a Joomla extension, a WordPress plugin, or a standalone script, then you may need to **bootstrap** CiviCRM before using the API.  See the examples in [Bootstrap Reference](../../framework/bootstrap.md).
 
 ## REST
 
@@ -117,7 +117,7 @@ CRM.api4('Contact', 'get', {
 
 !!! tip
     The AJAX interface could be made available to other parts of the same website (e.g. a Drupal module or WordPress widget) by calling `#!php CRM_Core_Resources::singleton()->addCoreResources()`
-    from PHP. Please note that the AJAX interface is subject to [API Security](/security/permissions.md#api-permissions)
+    from PHP. Please note that the AJAX interface is subject to [API Security](../../security/permissions.md#api-permissions)
     and [Same Origin Policy](http://en.wikipedia.org/wiki/Same_origin_policy). To use it from an external site or application, see REST interface documentation.
 
 ## Smarty
@@ -156,4 +156,4 @@ APIv4 is not yet available as a wp-cli command.
 
 ## API Security
 
-API has security measures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](/security/permissions.md).
+API has security measures built in depending on the way the API is called that can also be turned off or on. API Permissions are also able to be altered via hook. More information on API Security can be found in the [Security Documentation](../../security/permissions.md).

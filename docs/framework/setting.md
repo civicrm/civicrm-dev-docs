@@ -196,7 +196,7 @@ To avoid naming conflicts, it makes sense to prefix settings defined in an exten
   </item>
 ```
 
-4. Add a menu item by implementing [hook_civicrm_navigationMenu](/hooks/hook_civicrm_navigationMenu.md).
+4. Add a menu item by implementing [hook_civicrm_navigationMenu](../hooks/hook_civicrm_navigationMenu.md).
 5. Use `cv api system.flush` or `Admin → System Settings → Cleanup Caches` to flush CiviCRM caches and register your new settings metadata.
 
 ## Legacy method Adding Setting Config to Admin Forms.

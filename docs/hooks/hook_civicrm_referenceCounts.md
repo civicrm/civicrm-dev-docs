@@ -36,7 +36,7 @@ reference-counters.
 -   $refCounts: ***array***, each item in the array is an array with
     keys:
     -   name: ***string***, eg
-        "[sql:civicrm_email:contact_id](http://sqlcivicrm_emailcontact_id)"
+        "sql:civicrm_email:contact_id"
     -   type: ***string***, eg "sql"
     -   count: ***int***, eg "5" if there are 5 email addresses that
         refer to $dao

@@ -1,10 +1,38 @@
 site_name: Developer Guide
+site_url: https://docs.civicrm.org/dev/en/stable/
 repo_url: https://github.com/civicrm/civicrm-dev-docs
 site_description: A guide for CiviCRM developers.
 site_author: The CiviCRM community
-theme: material
+theme: 
+  name: material
 
-pages:
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      guess_lang: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.superfences:
+      css_class: codehilite
+  - pymdownx.inlinehilite:
+      css_class: codehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
+
+plugins:
+  - search:
+      lang: en
+
+nav:
 - Home: index.md
 - Basics:
   - Developer Community: basics/community.md
@@ -71,6 +99,7 @@ pages:
     - APIv3 Custom Data: api/v3/custom-data.md
     - APIv3 Examples: api/v3/examples.md
     - APIv3 Changelog: api/v3/changes.md
+    - WordPress REST Interface: api/v3/wp-rest.md
 - Hooks:
   - Hooks Introduction: hooks/index.md
   - Hooks Changelog: hooks/changes.md
@@ -96,6 +125,7 @@ pages:
     - hook_civicrm_managed: hooks/hook_civicrm_managed.md
     - hook_civicrm_merge: hooks/hook_civicrm_merge.md
     - hook_civicrm_post: hooks/hook_civicrm_post.md
+    - hook_civicrm_postCommit: hooks/hook_civicrm_postCommit.md
     - hook_civicrm_postSave_table_name: hooks/hook_civicrm_postSave_table_name.md
     - hook_civicrm_pre: hooks/hook_civicrm_pre.md
     - hook_civicrm_referenceCounts: hooks/hook_civicrm_referenceCounts.md
@@ -124,6 +154,7 @@ pages:
     - hook_civicrm_validateForm: hooks/hook_civicrm_validateForm.md
   - GUI Hooks:
     - hook_civicrm_activeTheme: hooks/hook_civicrm_activeTheme.md
+    - hook_civicrm_alterCustomFieldDisplayValue: hooks/hook_civicrm_alterCustomFieldDisplayValue.md
     - hook_civicrm_alterEntityRefParams: hooks/hook_civicrm_alterEntityRefParams.md
     - hook_civicrm_alterMenu: hooks/hook_civicrm_alterMenu.md
     - hook_civicrm_buildAmount: hooks/hook_civicrm_buildAmount.md
@@ -185,11 +216,13 @@ pages:
   - Uncategorized Hooks:
     - hook_civicrm_alterBadge: hooks/hook_civicrm_alterBadge.md
     - hook_civicrm_alterBarcode: hooks/hook_civicrm_alterBarcode.md
+    - hook_civicrm_alterExternUrl: hooks/hook_civicrm_alterExternUrl.md
     - hook_civicrm_alterLogTables: hooks/hook_civicrm_alterLogTables.md
     - hook_civicrm_alterMailingLabelParams: hooks/hook_civicrm_alterMailingLabelParams.md
     - hook_civicrm_alterPaymentProcessorParams: hooks/hook_civicrm_alterPaymentProcessorParams.md
     - hook_civicrm_alterSettingsFolders: hooks/hook_civicrm_alterSettingsFolders.md
     - hook_civicrm_alterSettingsMetaData: hooks/hook_civicrm_alterSettingsMetaData.md
+    - hook_civicrm_alterUFFIelds: hooks/hook_civicrm_alterUFFields.md
     - hook_civicrm_angularModules: hooks/hook_civicrm_angularModules.md
     - hook_civicrm_apiWrappers: hooks/hook_civicrm_apiWrappers.md
     - hook_civicrm_buildAsset: hooks/hook_civicrm_buildAsset.md
@@ -293,25 +326,4 @@ pages:
   - Documenting Extensions: documentation/extensions.md
   - Markdown: documentation/markdown.md
   - Style Guide: documentation/style-guide.md
-
-
-markdown_extensions:
-  - attr_list
-  - admonition
-  - def_list
-  - toc:
-      permalink: true
-  - pymdownx.highlight:
-      guess_lang: true
-      extend_pygments_lang:
-        - name: php
-          lang: php
-          options:
-            startinline: true
-  - pymdownx.superfences:
-      css_class: codehilite
-  - pymdownx.inlinehilite:
-      css_class: codehilite
-  - pymdownx.tilde
-  - pymdownx.betterem
-  - pymdownx.mark
+  

@@ -88,8 +88,8 @@ Depending on the scope of the test and the relevant language, one chooses among 
 Many test suites require information about your local development environment.  For example, headless tests may require credentials for an extra
 MySQL database, and end-to-end tests may require credentials for a CMS.
 
-The test tools obtain this information via [cv](https://github.com/civicrm/cv).  If your build was created by [buildkit](/tools/buildkit.md) and
-[civibuild](/tools/civibuild.md), then `cv` can fetch *all* the information automatically. Other builds may require some manual configuration.
+The test tools obtain this information via [cv](https://github.com/civicrm/cv).  If your build was created by [buildkit](../tools/buildkit.md) and
+[civibuild](../tools/civibuild.md), then `cv` can fetch *all* the information automatically. Other builds may require some manual configuration.
 
 To inspect the configuration, run:
 
@@ -117,7 +117,7 @@ $ vi ~/.cv.json
     Many tests interact with the database. In case they mess up the database, you should retain a snapshot of your baseline DB.
 
     If you used `civibuild`, it automatically retained a DB snapshot when you last (re)installed the site.
-    See [civibuild restore](/tools/civibuild.md#rebuild) for more information.
+    See [civibuild restore](../tools/civibuild.md#rebuild) for more information.
 
 !!! tip "Tip: Multi-user systems"
 

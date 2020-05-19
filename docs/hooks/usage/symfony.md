@@ -43,7 +43,7 @@ function _example_say_hello($event) {
 
 !!! tip "Using the `$event` object"
     Hook parameters are passed as an object, `$event`.
-    For example, [`hook_civicrm_alterContent`](/hooks/hook_civicrm_alterContent.md)
+    For example, [`hook_civicrm_alterContent`](../hook_civicrm_alterContent.md)
     has the parameters `(&$content, $context, $tplName, &$object)`.
     You can access the data as `$event->content`, `$event->context`, `$event->tplName`, and `$event->object`.
 
@@ -110,6 +110,49 @@ but the Symfony documentation describes other methods (`addSubscriber()`,
     However, _in practice_, the safest bet is to pass a string (function-name) or array
     (class-name, function-name). Other formats may not work with the
     [container-cache](http://symfony.com/doc/2.7/components/dependency_injection/compilation.html).
+
+## Priorities
+
+To control the order in which listeners run, one manages the `$priority`. It will help to have an example configuration:
+
+| Listener Name | Priority | Comment |
+|--|--|--|
+| `doSomePrep()`        | `+1000` | *Custom priority. Runs earlier than most.* |
+| `twiddleThis()`       | `0`     | *Typical priority of many listeners.* |
+| `delegateToUF()`      | `-100`  | *Typical priority of many listeners.* |
+| `doSomeAlteration()`  | `-1000` | *Custom priority. Runs later than most.* |
+
+The example supports a few general observations:
+
+* __Highest to lowest__:  As with any system using Symfony `EventDispatcher`, execution starts with the highest priority
+  (e.g. `+1000`) and ends with the lowest priority (e.g. `-1000`)..
+* __Symfony default is `0`__:  When registering new listeners via `addListener()`, the implied default is `$priority=0`.
+  We use `0` as the reference-point for "typical". All custom priorities will be higher or lower.
+* __External default is `-100`__:  All external listeners (e.g. Drupal modules and WordPress plugins) have an effective priority of `-100`.
+  This default is numerically close to the Symfony default, but it is distinct.
+
+Returning to the example: why would `doSomeAlteration()` specifically have priority `-1000`? It's purely a matter convention.
+
+Some Civi subsystems have explicit conventions.  For example, the API kernel and Flexmailer both make extensive use of "Internal Events" and internal
+listeners, and (by convention) the listeners are organized into *phases*. Each phase has a priority number:
+
+* In `civi.api.*` events, the listeners are grouped into three phases: `W_EARLY`, `W_MIDDLE`, `W_LATE` (respectively: `+100`, `0`, `-100`)
+* In `civi.flexmailer.*` events, the listeners are grouped into five phases: `WEIGHT_START`, `WEIGHT_PREPARE`, `WEIGHT_MAIN`,`WEIGHT_ALTER`, `WEIGHT_END` (respectively: `+2000`, `+1000`, `0`, `-1000`, `-2000`).
+
+In some rare cases where further precision is needed, one might apply a delta.  For example, `WEIGHT_ALTER+100` would come early in the alteration
+phase; `WEIGHT_ALTER-100` would run late in the alteration phase.
+
+Most Civi events do not have an explicit convention. For want of a convention, you may use this as a baseline:
+
+| Priority | Description | Availablity |
+| -- | -- | -- |
+| `0`      | "Normal" or "Default" or "Main" | For any listener/software |
+| `+1000`  | "Early" or "Before" or "Pre" or "Prepare" | For any listener/software |
+| `-1000`  | "Late" or "After" or "Post" or "Alter" | For any listener/software |
+| `+2000`  | Extrema: "First" or "Start" | Reserved, subject to the subsystem's design |
+| `-2000`  | Extrema: "Last" or "End"  | Reserved, subject to the subsystem's design |
+
+<!-- If we switched `civi.api.*` from +/-100 to +/-1000, then all the cases would be the same, and we could simplify the docs.  -->
 
 ## History
 

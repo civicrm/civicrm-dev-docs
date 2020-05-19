@@ -6,7 +6,7 @@ This hook fires whenever the system builds a semi-dynamic asset.
 
 ## Notes
 
-For more discussion, see [AssetBuilder](/framework/asset-builder.md).
+For more discussion, see [AssetBuilder](../framework/asset-builder.md).
 
 ## Definition
 

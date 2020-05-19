@@ -10,7 +10,7 @@ the list prior to the resources being added, or add your own.
 
 Added in v4.6.6.
 
-See [Resource Reference](/framework/resources.md)
+See [Resource Reference](../framework/resources.md)
 for more information.
 
 ## Definition

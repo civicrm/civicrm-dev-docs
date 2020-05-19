@@ -21,7 +21,7 @@ This hook allows you to dynamically modify the option list for any field (includ
 
 ## See Also
 
-See [Pseudoconstant (option list) Reference](/framework/pseudoconstant.md)
+See [Pseudoconstant (option list) Reference](../framework/pseudoconstant.md)
 for more information about how option lists work and the *context*
 parameter.
 

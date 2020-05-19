@@ -42,7 +42,7 @@ Fetch entity metadata, i.e. the list of fields supported by the entity
 ## getlist
 
 Used for autocomplete lookups by the
-[entityRef](/framework/quickform/entityref.md) widget
+[entityRef](./../../framework/quickform/entityref.md) widget
 
 ## getoptions
 

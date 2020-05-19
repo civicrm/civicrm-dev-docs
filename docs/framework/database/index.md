@@ -8,7 +8,7 @@ More documentation on tools to interact with the CiviCRM Database still to come.
 
 ### bin/regen.sh
 
-If you are making a change that requires changes to the core schema, then in addition to any steps described at [XML Schema definition](https://docs.civicrm.org/dev/en/latest/framework/database/schema-definition/) you may need to also update the sql/civicrm_generated.mysql file which is used when installing CiviCRM with the option to include sample data.
+If you are making a change that requires changes to the core schema, then in addition to any steps described at [XML Schema definition](schema-definition.md) you may need to also update the sql/civicrm_generated.mysql file which is used when installing CiviCRM with the option to include sample data.
 
 If the change doesn't touch on other parts of the data or schema and doesn't affect any generated foreign key ids for example, you might be able to get away with just editing the file directly, which will avoid having to commit a lot of otherwise unrelated changes because the data in the file is semi-randomly generated. But if it is more complex or affects other parts of the file you need to use bin/regen.sh to regenerate it.
 

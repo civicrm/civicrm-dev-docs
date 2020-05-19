@@ -8,8 +8,8 @@
 There are three options to create an ajax or web-service callback:
 
 -    **Full control:** Add a basic page. Remove the parent::run() call from the run() function, and at the bottom of the run() function, perform your own output (eg "*echo json\_encode($data)*") and then short-circuit processing (eg "*CRM\_Utils\_System::civiExit()*") so that neither Smarty nor the CMS modify the output.
--    **Using ajax helpers (CiviCRM 4.5 and above):** Generate a page with civix as above. Build your data in the run() function. If the client-side request includes *snippet=json* in the url, just append your data to *$this-\>ajaxResponse* array and the rest will happen automatically. If not, you can directly call CRM\_Core\_Page\_AJAX::returnJsonResponse() at the bottom of the run function. See [Ajax Pages and Forms](/framework/ajax.md) documentation.
--    **Using the API:** Add an API function using `civix`. The API function can be called with the API's [AJAX Interface](/api/interfaces.md#ajax). This automatically handles issues like encoding and decoding the request/response.
+-    **Using ajax helpers (CiviCRM 4.5 and above):** Generate a page with civix as above. Build your data in the run() function. If the client-side request includes *snippet=json* in the url, just append your data to *$this-\>ajaxResponse* array and the rest will happen automatically. If not, you can directly call CRM\_Core\_Page\_AJAX::returnJsonResponse() at the bottom of the run function. See [Ajax Pages and Forms](../framework/ajax.md) documentation.
+-    **Using the API:** Add an API function using `civix`. The API function can be called with the API's [AJAX Interface](../api/interfaces.md#ajax). This automatically handles issues like encoding and decoding the request/response.
 
 ## Standalone PHP scripts
 
@@ -30,7 +30,7 @@ If you really need to do it, it's theoretically possibly to emulate an example l
 
 ## Cron jobs
 
-One can add an API function (using the instructions above) and create a schedule record. In CiviCRM 4.3, the schedule record can be automatically created; to do this, call "civix [generate:api](http://generateapi)" with the option "–schedule Daily" (or "-schedule Hourly", etc). CiviCRM will make a best-effort to meet the stated schedule.
+One can add an API function (using the instructions above) and create a schedule record. In CiviCRM 4.3, the schedule record can be automatically created; to do this, call "civix [generate:api](civix.md#generate-api)" with the option "–schedule Daily" (or "-schedule Hourly", etc). CiviCRM will make a best-effort to meet the stated schedule.
 
 In CiviCRM 4.2, one can use APIs as cron jobs, but the schedule record won't be created automatically. The site administrator must manually insert a scheduling record by navigating to "Administer =\> System Settings =\> Scheduled Jobs".
 

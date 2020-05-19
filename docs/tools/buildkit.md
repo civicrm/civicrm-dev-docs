@@ -1,6 +1,6 @@
 # Buildkit
 
-[Buildkit](https://github.com/civicrm/civicrm-buildkit) is a collection of ~20 tools for developing and testing CiviCRM, the most important of which is [civibuild](/tools/civibuild.md).
+[Buildkit](https://github.com/civicrm/civicrm-buildkit) is a collection of ~20 tools for developing and testing CiviCRM, the most important of which is [civibuild](civibuild.md).
 
 Many of these tools are commonly used by web developers, so you may have already installed a few. Even so, it's generally easier to install the full collection &mdash; installing each individually takes a lot of work.
 
@@ -75,7 +75,7 @@ More information is in the Readme: https://github.com/michaelmcandrew/civicrm-bu
 
 ### Generic {:#other-platforms}
 
-You may download buildkit in an existing Unix-style environment if it meets the [system requirements](/basics/requirements.md).
+You may download buildkit in an existing Unix-style environment if it meets the [system requirements](../basics/requirements.md).
 
 Simply clone the `civicrm-buildkit.git` repo and run `civi-download-tools`, as in:
 
@@ -89,7 +89,7 @@ In the above example, all tools are downloaded under `~/buildkit`.
 
 !!! tip "Evaluating system requirements"
 
-    When using the generic steps, a primary consideration will be meeting the [system requirements](/basics/requirements.md).
+    When using the generic steps, a primary consideration will be meeting the [system requirements](../basics/requirements.md).
     It is common for personal/bespoke environments to have a couple of issues meeting these requirements.
 
     `civi-download-tools` will attempt to identify and report common issues (such as missing/unknown commands).
@@ -164,7 +164,7 @@ If you want to ensure that the buildkit CLI tools are always available, then:
 
 ### Configuring `amp` {:#amp-config}
 
-Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) uses when it needs to set up a new site. Before you can use `civibuild`, need to configure `amp` by telling it a bit about your system (e.g. what webserver you're using).
+Buildkit provides a tool called `amp` which [civibuild](civibuild.md) uses when it needs to set up a new site. Before you can use `civibuild`, need to configure `amp` by telling it a bit about your system (e.g. what webserver you're using).
 
 1. Run the interactive configuration tool.
 
@@ -190,7 +190,7 @@ Buildkit provides a tool called `amp` which [civibuild](/tools/civibuild.md) use
 
     If the test produces any errors, you might try re-running the above config steps and/or asking for help in the [developer chat room](https://chat.civicrm.org/civicrm/channels/dev).
 
-1. After `amp` is configured, you can move on to running [civibuild](/tools/civibuild.md) to build a local development installation of CiviCRM.
+1. After `amp` is configured, you can move on to running [civibuild](civibuild.md) to build a local development installation of CiviCRM.
 
 
 ## Troubleshooting {:#troubleshooting}
@@ -236,7 +236,7 @@ See the [buildkit changelog](https://github.com/civicrm/civicrm-buildkit/blob/ma
 !!! tip "When upgrading `civix`, check upgrade instructions."
 
     If you see an upgrade to `civix` in the changelog, and if you maintain extensions with `civix`,
-    then check the general [civix upgrade documentation](/extensions/civix.md#upgrade-templates) and [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md).
+    then check the general [civix upgrade documentation](../extensions/civix.md#upgrade-templates) and [UPGRADE.md](https://github.com/totten/civix/blob/master/UPGRADE.md).
 
 ## Appendix: Operating Systems {:#operating-systems}
 
@@ -250,7 +250,8 @@ There are no specific installer steps for macOS but Buildkit itself is fully usa
 ### Ubuntu
  Version | Codename | Release Date | EoL Date | Buildkit Removal |
 --------- | ------------ | -------------- | ---------- | ------------------------- |
-19.04 | Disco Dingo | April 2019 | January 2020 | June 2020 |
+20.04 | Focal Fossa | April 2020 | April 2025 | October 2025 |
+19.04 | Disco Dingo | April 2019 | January 2020 <sup>&#x1F534;</sup> | June 2020 |
 18.10 | Cosmic Cuttlefish | October 2018 | July 2019 <sup>&#x1F534;</sup> | January 2020 <sup>&#x2705;</sup> |
 18.04 | Bionic Beaver | April 2018 | April 2023 | October 2023 |
 17.10 | Artful Aardvark | October 2017 | July 2018 <sup>&#x1F534;</sup> | January 2019 <sup>&#x2705;</sup> |
