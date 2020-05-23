@@ -59,7 +59,7 @@ Before diving into editing, you may find helpful information within the followin
 
 ### Submitting issues
 
-The simplest way to help out is to *describe* a change that you think *should* be made by writing a new issue in the issue queue for the GitHub guide you are reading. Then someone will see your issue and act on it, hopefully fast. Each guide has its own issue queue. First find the GitHub repository for the guide (listed in the above table), then when viewing on GitHub, click on "Issues". You will need an account on GitHub to submit a new issue, but creating one is quick and free.
+The simplest way to help out is to *describe* a change that you think *should* be made by writing a new issue in the issue queue for the GitHub guide you are reading. Then someone will see your issue and act on it, hopefully fast. Each guide has its own issue queue. First find the GitHub repository of the guide, which can be found on their respective documentation guide ([User Guide](https://docs.civicrm.org/user/en/latest/), [SysAdmin Guide](https://docs.civicrm.org/sysadmin/en/latest/), [Developer Guide](https://docs.civicrm.org/dev/en/latest/)) at the right corner of the navigation bar. On viewing  GitHub, click on "Issues". You will need an account on GitHub to submit a new issue, but creating one is quick and free.
 
 ### Editing through GitHub
 
