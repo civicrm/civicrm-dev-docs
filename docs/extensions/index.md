@@ -7,7 +7,7 @@ Todo:
 
 ## Introduction
 
-**CiviCRM Extensions** are packaged pieces of functionality that extend CiviCRM's out-of-the-box functionality, independent of CMS plaform.
+**CiviCRM Extensions** are packaged pieces of functionality that extend CiviCRM's out-of-the-box functionality, independent of CMS platform.
 
 As of CiviCRM version 5.24.0 extensions are also used internally within CiviCRM to organise chunks of functionality that implement a specific feature. These extensions are part of the main CiviCRM repo and sit inside the ext folder. It is anticipated that over time more chunks of functionality will be moved into these core extensions, as part of our goal to make the code more readable and maintainable. Core extensions cannot be seen in the extensions UI and the structure is invisible to the end user.
 
@@ -27,11 +27,11 @@ Pick a unique single word for your extension's name. Note that this name is used
 
 -   Have basic knowledge of PHP, Unix, and object-oriented programming.
 -   Install ***civix v14.01*** or newer. For instructions, see [Civix Documentation](civix.md). This page assumes that "civix" is installed and registered in the PATH.
--   Configure an extensions directory. For instructions, see [Extensions](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/#installing-a-new-extension). This page assumes the directory is `/var/www/extensions`, but you should adapt as appropriate. Your extensions directory must be under the CMS root directory so that civix can find and bootstrap the CMS. Otherwise, it will fail with an error like "Sorry, could not locate bootstrap.inc" on most operations.
+-   Configure an extensions directory. For instructions, see [Extensions](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/#installing-a-new-extension). This page assumes the directory is `/var/www/extensions`and if you are using buildkit then the directory is `/buildkit/build/dmaster/web/sites/default/files/civicrm/ext`, but you should adapt as appropriate. Your extensions directory must be under the CMS root directory so that civix can find and bootstrap the CMS. Otherwise, it will fail with an error like "Sorry, could not locate bootstrap.inc" on most operations.
 -   The user account you use to develop the module must have permission to read all CMS files, including configuration files, and write to the extensions directory. For example, Debian's drupal7 package saves database configuration to `/etc/drupal/7/sites/default/dbconfig.php`, which is only readable by the www-data user. You will need to make this file readable by your development user account for civix to work.
 
 ### 0. Decide
-Writing an extension is a great way to implement a new feature – but it may be unnecessary if someone else has already implemented that feature. If you're not sure, you can do a couple things:
+Writing an extension is a great way to implement a new feature – but it may be unnecessary if someone else has already implemented that feature. If you're not sure, you can do a couple of things:
 - Search the [Extensions Directory](http://civicrm.org/extensions) for an existing extension.
 - Post about your planned extension in the [Extensions Channel](https://chat.civicrm.org/civicrm/channels/extensions).
 
