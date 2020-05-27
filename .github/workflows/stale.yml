@@ -21,4 +21,4 @@ jobs:
         days-before-close: -1
         exempt-issue-labels: 'awaiting-approval,work-in-progress'
         exempt-pr-labels: 'awaiting-approval,work-in-progress'
-        removeStaleWhenUpdated: True 
+        remove-stale-when-updated: 'True'
