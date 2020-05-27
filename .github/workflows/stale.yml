@@ -2,7 +2,7 @@ name: Mark stale issues and pull requests
 
 on:
   schedule:
-  - cron: "0 * * * *"
+  - cron: "5 * * * *"
 
 jobs:
   stale:
@@ -21,3 +21,4 @@ jobs:
         days-before-close: -1
         exempt-issue-labels: 'awaiting-approval,work-in-progress'
         exempt-pr-labels: 'awaiting-approval,work-in-progress'
+        removeStaleWhenUpdated: 'true' 
