@@ -126,7 +126,7 @@ If you want your extension to store data in the database, then you will need to 
 1. Generate the skeletal files 
 
     ```bash
-    $ civix generate:entity MyEntity
+     civix generate:entity MyEntity
     ```
 
     Make sure to use CamelCase here.
@@ -139,15 +139,16 @@ If you want your extension to store data in the database, then you will need to 
 
 
     ```bash
-    $ civix generate:entity-boilerplate
+     civix generate:entity-boilerplate
     ```
 
     You can safely re-run this command after you make changes to your XML schema definition. But if your schema changes require database migrations for existing installations, then you'll need to write a migration manually in addition to re-generating your boilerplate.
     
-1. Generate a database upgrader.
+1. Generate a da
+tabase upgrader.
 
     ```bash
-    $ civix generate:upgrader
+     civix generate:upgrader
     ```
     
     Even though you're not yet creating any upgrades for your extension, you need to do this step now so that CiviCRM will pick up `auto_install.sql` and `auto_uninstall.sql` later on.
@@ -155,8 +156,8 @@ If you want your extension to store data in the database, then you will need to 
 1. Re-install your extension.
 
     ```bash
-    $ cv ext:uninstall myextension
-    $ cv ext:enable myextension
+     cv ext:uninstall myextension
+     cv ext:enable myextension
     ```
     
 Now your entity should be ready to use. Try it out with `cv api MyEntity.create` and `cv api MyEntity.get`. Then [add some tests](#generate-test).
