@@ -100,6 +100,46 @@ Best practice right now would be to:
 
 - where your processor requires adding in custom data to the form, prefix it with your extension's name to avoid ambiguity with core fields. e.g. your forms might use a field called `myprocessor_weirdCustomToken` and you would access this via `$propertyBag->getCustomProperty('myprocessor_weirdCustomToken)`.
 
+## Cancelling a recurring contribution
+
+!!! note
+    The method `doCancelRecurring()` was added in CiviCRM 5.25. For older versions of CiviCRM you need to implement `cancelSubscription()`.
+
+!!! note
+    The method `supportsCancelRecurringNotifyOptional()` and `$propertyBag->get/setIsNotifyProcessorOnCancelRecur()` were added in CiviCRM 5.27. For older versions of CiviCRM you need to check they exist before calling them.
+
+The payment class should implement the following methods:
+
+- `protected function supportsCancelRecurring() { return TRUE; }` - return TRUE/FALSE if the payment processor supports cancelling a recurring contribution. CiviCRM will show cancellation links based on this.
+- `protected function supportsCancelRecurringNotifyOptional() { return TRUE; }` - return TRUE/FALSE if the user should get a choice whether to notify the payment processor when cancelling or just cancel in CiviCRM. If set to FALSE the payment processor should implement `doCancelRecurring()` and set a default using `$propertyBag->setIsNotifyProcessorOnCancelRecur();`
+
+Example implementation that maintains compatibility with CiviCRM < 5.25:
+
+```php
+  /**
+   * @param \Civi\Payment\PropertyBag $propertyBag
+   *
+   * @return array|null[]
+   * @throws \Civi\Payment\Exception\PaymentProcessorException
+   */
+  public function doCancelRecurring(PropertyBag $propertyBag) {
+    // By default we always notify Stripe and we don't give the user the option
+    // because supportsCancelRecurringNotifyOptional() = FALSE
+    if (!$propertyBag->has('isNotifyProcessorOnCancelRecur')) {
+      // @fixme setIsNotifyProcessorOnCancelRecur was added in 5.27 - remove method_exists once minVer is 5.27
+      // If isNotifyProcessorOnCancelRecur is NOT set then we set our default
+      if (method_exists($propertyBag, 'setIsNotifyProcessorOnCancelRecur')) {
+        $propertyBag->setIsNotifyProcessorOnCancelRecur(TRUE);
+      }
+    }
+    return parent::doCancelRecurring($propertyBag);
+  }
+```
+
+
+
+    
+
 ----------------------------
 **stop reading here, not done the rest yet.**
 
