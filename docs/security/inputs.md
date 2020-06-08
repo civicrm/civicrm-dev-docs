@@ -25,7 +25,7 @@ If you find yourself wanting to use the `'String'` type, beware that this type o
 ```php
 $angPage = CRM_Utils_Request::retrieve('angPage', 'String', $this);
 if (!preg_match(':^[a-zA-Z0-9\-_/]+$:', $angPage)) {
-  CRM_Core_Error::fatal('Malformed return URL');
+  throw new CRM_Core_Exception('Malformed return URL');
 }
 ```
 
