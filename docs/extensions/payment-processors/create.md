@@ -106,6 +106,9 @@ Best practice right now would be to:
     The method `doCancelRecurring()` was added in CiviCRM 5.25. For older versions of CiviCRM you need to implement `cancelSubscription()`.
 
 !!! note
+    From CiviCRM 5.25 `cancelSubscription()` will receive a `\Civi\Payment\PropertyBag` and *not* an array. This means that if you use any `array_` functions or `empty()` to check parameters your implementation will stop working. Also you will *only* receive a standard set of parameters as defined in `\Civi\Payment\PropertyBag` and will need to update to check for those instead of any you were using.
+
+!!! note
     The method `supportsCancelRecurringNotifyOptional()` and `$propertyBag->get/setIsNotifyProcessorOnCancelRecur()` were added in CiviCRM 5.27. For older versions of CiviCRM you need to check they exist before calling them.
 
 The payment class should implement the following methods:
