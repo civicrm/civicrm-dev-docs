@@ -74,3 +74,11 @@ Fully supported methods are:
 * Internal Symfony listeners (e.g. `civi.api.resolve`, `civi.api.prepare`)
 
 See also this [blog post](https://civicrm.org/blog/totten/the-static-is-dead-long-live-the-static) describing the `Civi::` facade in more detail.
+
+### Deprecated Methods
+
+Some methods within the CiviCRM Code base that extension developers have been relying on have now been deprecated:
+
+ * `CRM_Core_Error::fatal`
+    Extension authors should replace fucntion calls with either `throw new CRM_Core_Exception` or `throw new <insert CiviCRM Generated Exception>` or `CRM_Core_Error::statusBounce` if the error is being generaged from a form.
+
