@@ -11,7 +11,7 @@ You can adjust the specified tables and the engine and define indexes and except
 
 Turning logging on and off will cause any adjustments to the exceptions to be enacted as that information is in the triggers not the log tables, which are recreated.
 
-There is, however, a function that will convert Archive tables to log tables (one way) if the hook is in play. This has to be done deliberately by calling the `system.updatelogtables` api and it can be a slow process.
+There is, however, a function that will convert log tables from Archive to INNODB (one way) if the hook is in play. This has to be done deliberately by calling the `system.updatelogtables` api and it can be a slow process.
 
 ## Availability
 
