@@ -1,5 +1,7 @@
 # CiviCRM Developer Guide
 
+**From the 1st August 2020 this repository will move to https://lab.civicrm.org/documentation/docs/dev**
+
 A documentation guide for people who develop with/for [CiviCRM](https://civicrm.org).
 
 -   [Read published version](http://docs.civicrm.org/dev/en/master)
