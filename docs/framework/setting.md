@@ -47,6 +47,7 @@ Each file consists of a php snippet which returns an array. Array keys are strin
     'is_domain' => 1,
     'is_contact' => 0,
     'description' => ts('If enabled, CiviCRM will permit submissions from external sites to profiles. This is disabled by default to limit abuse.'),
+    `settings_pages` => ['remote' => ['weight' => 10]],
   ),
 ```
 
@@ -76,6 +77,7 @@ The Supported Properties for settings are:
 | `on_change` | Callback function when this setting is altered e.g when you enable a component or logging| |
 | `is_domain` | Domain setting| Setting is_domain to 1 indicates that the setting applies to the entire installation (in single site mode) or to a single domain in multi-site mode. If is_domain is set to 1, then is_contact must be set to 0. |
 | `is_contact` | Contact setting| Setting is_contact to 1 indicates that the setting applies to a single contact and can be different for each contact. If is_contact is set to 1, is_domain must be set to 0. |
+|`settings_pages`|Metadata for presentation on settings pages|The key (or keys) are the last part of the url on the page the setting should be displayed on. Adding a weight provides sorting|
 
 ### Deprecated Properties
 
