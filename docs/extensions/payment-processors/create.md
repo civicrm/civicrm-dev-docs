@@ -51,6 +51,9 @@ This object has getters and setters that enforce standardised property names and
 
 For backwards compatibility, this class implements `ArrayAccess` which means if old code does `$propertyBag['contact_id'] = '123'` or `$propertyBag['contactID'] = 123` it will translate this to the new `contactID` property and use that setter which will ensure that accesing the property returns the integer value *123*. When this happens deprecation messages are emitted to the log file. New code should not use array access.
 
+!!! note
+    In v.5.24 - 5.27 using `empty($propertyBag['something'])` was unreliable in the cases that `something` was not a standard property. From 5.28 it should work as expected.
+
 ### Checking for existence of a property
 
 Calling a getter for a property that has not been set will throw a `BadMethodCall` exception.
