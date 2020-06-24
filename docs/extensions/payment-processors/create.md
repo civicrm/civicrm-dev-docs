@@ -106,7 +106,7 @@ Best practice right now would be to:
 ## Cancelling a recurring contribution
 
 !!! note
-    The method `doCancelRecurring()` was added in CiviCRM 5.25. While no change is required to keep it working, `doCancelRecurring()`is the preferred function. We recommend you add this function and, if your release supports pre-5.25 versions of CiviCRM, you also implement `cancelSubscription()`, calling `doCancelRecurring()` from within that function. 
+    The method `doCancelRecurring()` was added in CiviCRM 5.25. While no change is required to keep it working, `doCancelRecurring()`is the preferred function. We recommend you add this function and, if your release supports pre-5.25 versions of CiviCRM, you also implement `cancelSubscription()`, calling `doCancelRecurring()` from within that function. `doCancelRecurring()` receives both `contributionRecurID` and `recurProcessorID` properties (`cancelSubscription()` did not have the `contributionRecurID` parameter).
 
 !!! note
     From CiviCRM 5.25 `cancelSubscription()` will receive a `\Civi\Payment\PropertyBag` and *not* an array. For most processors this will require no change. However, if you are using ``array_`` functions to interact with the $params/PropetyBag they will no longer work as it is not an array. In addition we recommend you switch your code to take advantage of the PropertyBag. For example 
