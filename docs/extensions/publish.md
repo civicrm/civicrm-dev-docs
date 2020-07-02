@@ -11,7 +11,7 @@ Publishing an extension is an easy way to:
 -   share a useful feature or set of configurations with worthy nonprofit and
     community organizations
 
-While you could simply publish your extension to a web-based code repository like GitHub, publishing through the [CiviCRM Extensions Directory](http://civicrm.org/extensions) makes it easy for others to find and download it. Moreover, CiviCRM-native extensions which undergo a formal review can even be distributed in-application to CiviCRM sites running version 4.2 or greater.
+While you could simply publish your extension to a web-based code repository like GitHub, publishing through the [CiviCRM Extensions Directory](http://civicrm.org/extensions) makes it easy for others to find and download it. Moreover, CiviCRM extensions which undergo a formal review can even be distributed in-application to CiviCRM sites running version 4.2 or greater.
 
 The following instructions assume you will be publishing a CiviCRM-native extension (i.e., a CMS-agnostic extension). Instructions for CMS-specific extensions are similar; differences are noted in [Notes for CMS-specific extensions](#notes-for-cms-specific-extensions).
 
@@ -32,10 +32,12 @@ CiviCRM's publishing process automates a number of tasks related to maintaining 
 ### Publishing an extension:
 
 -   [Register](https://civicrm.org/user/register) for an account on civicrm.org if you do not already have one.
--   [Login](https://civicrm.org/user) to civicrm.org and [create a new extension node](http://civicrm.org/node/add/extension). If you see an "Access Denied" message, you'll need to email [info@civicrm.org](mailto:info@civicrm.org) with your user id and request permission to publish extensions.
+-   [Login](https://civicrm.org/user) to civicrm.org and [create a new extension node](http://civicrm.org/node/add/extension). If you see an "Access Denied" message, you'll need to email [info@civicrm.org](mailto:info@civicrm.org) with your user id and request permission to publish extensions, or you can ask in the [extensions channel on the CiviCRM chat](https://chat.civicrm.org/civicrm/channels/extensions).
 -   Fill out all required fields. Also provide the "Git URL" for the extension.
 -   Complete the steps in "Publishing an extension release" below.
 -   Within a day, you will receive an email notifying you that the extension was published on civicrm.org or that a problem with the extension manifest (`info.xml`) prevented publication.
+
+Since July 2020, extensions added to civicrm.org automatically create a Gitlab project on [CiviCRM's Gitlab](https://lab.civicrm.org/extensions). You can still use your own git repository (ex: on Github), however using CiviCRM's Gitlab has the advantage of increasing the potential for collaboration with the rest of the community. Further more, new releases are published immediately on civicrm.org, instead of waiting 24 hours. [Read more on the CiviCRM blog](https://civicrm.org/blog/bgm/extension-directory-updates).
 
 ### Publishing an extension release:
 
