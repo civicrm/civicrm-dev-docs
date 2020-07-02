@@ -20,7 +20,7 @@ Using `EventDispatcher` is useful if you need more advanced features, such as:
  * Registering multiple listeners for the same event
  * Registering for internal/unpublished events
 
-For a general introduction or background on `EventDispatcher`, consult the [Symfony documentation](http://symfony.com/doc/2.7/components/event_dispatcher.html).
+For a general introduction or background on `EventDispatcher`, consult the [Symfony documentation](http://symfony.com/doc/3.4/components/event_dispatcher.html).
 
 ## Example: `Civi::dispatcher()`
 
@@ -69,7 +69,7 @@ function _example_say_hello($event) {
 
 <!--
   TODO: an example using a container-service and tag.  See "Registering Event Listeners
-  in the Service Container" from http://symfony.com/doc/2.7/components/event_dispatcher.html
+  in the Service Container" from http://symfony.com/doc/3.4/components/event_dispatcher.html
 -->
 
 ## Events
@@ -79,10 +79,10 @@ events fall into two categories:
 
  * __External Events/Hooks__ (v4.7.19+): These have a prefix `hook_civicrm_*`. They extend
    the class [`GenericHookEvent`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Core/Event/GenericHookEvent.php)
-   (which, in turn, extends  [`Event`](http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/Event.html)).
+   (which, in turn, extends  [`Event`](http://api.symfony.com/3.4/Symfony/Component/EventDispatcher/Event.html)).
    Hooks are simulcast across `EventDispatcher` as well as CMS-specific event systems.
  * __Internal Events__ (v4.5.0+): These have a prefix `civi.*`. They extend
-   the class  [`Event`](http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/Event.html).
+   the class  [`Event`](http://api.symfony.com/3.4/Symfony/Component/EventDispatcher/Event.html).
    They are *only* broadcast via `EventDispatcher` (**not** CMS-specific event systems).
 
 You can recognize these events by their naming convention. Compare:
@@ -99,17 +99,15 @@ Civi::dispatcher()->addListener('civi.api.resolve', $callback, $priority);
 
 The `EventDispatcher` has several different methods for registering a
 listener.  Our examples have focused on the simplest one, `addListener()`,
-but the Symfony documentation describes other methods (`addSubscriber()`,
-`addListenerService()`, and `addSubscriberService()`).  See also:
+but the Symfony documentation describes other methods (`addSubscriber()`).  See also:
 
- * [Symfony EventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher.html)
- * [Symfony ContainerAwareEventDispatcher](http://symfony.com/doc/2.7/components/event_dispatcher/container_aware_dispatcher.html)
+ * [Symfony EventDispatcher](http://symfony.com/doc/3.4/components/event_dispatcher.html)
 
 !!! tip "Using `addListener()`"
     When calling `addListener()`, you _can_ pass any [PHP callable](http://php.net/manual/en/language.types.callable.php).
     However, _in practice_, the safest bet is to pass a string (function-name) or array
     (class-name, function-name). Other formats may not work with the
-    [container-cache](http://symfony.com/doc/2.7/components/dependency_injection/compilation.html).
+    [container-cache](http://symfony.com/doc/3.4/components/dependency_injection/compilation.html).
 
 ## Priorities
 

@@ -44,7 +44,7 @@ For example, at time of writing, it includes:
         * `wp-empty`: WordPress CMS: An empty without CiviCRM. Useful for testing tarball installation.
     * Other
         * ~~`hrdemo`~~: A demo site running Drupal, CiviCRM, and CiviHR.
-        * ~~`symfony`~~: An experimental hybrid site running Drupal 7, Symfony 2, and CiviCRM.
+        * ~~`symfony`~~: An experimental hybrid site running Drupal 7, Symfony 3, and CiviCRM.
 * Special builds
     * `cxnapp`: A self-signed CiviConnect app based on the reference implementation.
     * `dist`: A website containing nightly builds akin to dist.civicrm.org. Useful for preparing CiviCRM tarballs.

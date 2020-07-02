@@ -162,7 +162,7 @@ $container->setDefinition("cache.hello", new Definition(
     'type' => ['*memory*', 'SqlGroup', 'ArrayCache'],
     'name' => 'HelloWorld',
   ]]
-))->setFactory('CRM_Utils_Cache::create');
+))->setFactory('CRM_Utils_Cache::create')->setPublic(TRUE);
 ```
 
 As before, notice that:
