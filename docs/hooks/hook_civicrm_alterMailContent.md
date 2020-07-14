@@ -15,7 +15,7 @@ tokenizing it.
 
 ## Details
 
-$content - fields include: html, text, subject, groupName, valueName, messageTemplateID, mailingID, template_type
+$content - fields include: html, text, subject, groupName, valueName, messageTemplateID, mailingID, campaign_id, template_type.
 Note that this hook is fired when: 
 
 * creating mailings through the traditional BAO mailer (standard CiviMail)
