@@ -2,6 +2,10 @@
 
 *This guide is intended for anyone wishing to extend the CiviCRM API itself, either in core or in their own extension.*
 
+!!! tip "Example extension"
+
+    As you read this, you can also follow-along with a live demo in the API Explorer by installing the [APIv4 Example Extension](https://lab.civicrm.org/extensions/api4example/).
+
 ## API Entity Classes
 
 Every API entity is a class which inherits from [`\Civi\Api4\Generic\AbstractEntity`](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractEntity.php). Each class serves two purposes:
@@ -134,7 +138,7 @@ or one of the Basic actions.
 
 [**`AbstractAction`**](https://github.com/civicrm/civicrm-core/blob/master/Civi/Api4/Generic/AbstractAction.php)
 is the base class for all API actions. Every action must, at minimum, extend this class.
-For example, the `Example::random()` action extends this class directly.
+For example, the [`Example::random()`](https://lab.civicrm.org/extensions/api4example/blob/master/Civi/Api4/Action/Example/Random.php) action extends this class directly.
 Your custom action will define parameters as protected class properties, and implement a `_run` function to execute the action.
 
 Before extending `AbstractAction` directly, consider if your action could benefit from the features provided by one of the Basic actions:
