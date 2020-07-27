@@ -174,14 +174,11 @@ The primary goal of using icons should be to help the user absorb and
 process information more efficiently. Icons can be used throughout the
 site whenever it would useful to give users a quick visual cue.
 
-Starting with version 4.7, CiviCRM's primary icon system is [Font Awesome](http://fontawesome.io/), an
-open-source icon font.  Font Awesome 4.4 is shipped with CiviCRM 4.7,
+CiviCRM's primary icon system is [Font Awesome](http://fontawesome.io/), an
+open-source icon font.  Font Awesome version 4.7 is shipped with CiviCRM 
 and any of the [Font Awesome icons](https://fontawesome.com/v4.7.0/icons/)
 can be included with an element with the classes `crm-i` and the
 `fa-...` class corresponding to the icon.
-
-!!! tip
-    Use [this extension](https://github.com/mattwire/uk.co.mjwconsult.fontawesome) if you want access to these icons in earlier versions of CiviCRM (for example, if you have an extension, that uses them).
 
 For example, to insert a [bullhorn icon](http://fortawesome.github.io/Font-Awesome/icon/bullhorn/),
 use the following:
@@ -324,7 +321,7 @@ with `crm-i`.
 ### Older icon system
 
 !!! failure "Deprecated icons"
-    Prior to 4.7, icons were included in CiviCRM using the jQuery UI icon set as well as custom-developed icons.  Those use sprites, which limit the size and color options for icons.  As of 4.7, support for older icons remains in CiviCRM, but new features and customizations should use Font Awesome instead.
+    Do not use these icons! You should use Font Awesome instead and replace any use of sprites/image icons. Prior to 4.7, icons were included in CiviCRM using the jQuery UI icon set as well as custom-developed icons.  Those use sprites, which limit the size and color options for icons.
 
 To use an existing icon simply find the one you want from the list below
 and use the following code (in this example we are using the
@@ -386,10 +383,9 @@ Non CRM-specific icons used inside of a button will change to
 "dark-icons" when you hover over the button (with the exception of the
 delete icon, which turns red)
 
-
 ## In-Place Field Editing
 
-In-place field editing was added to CiviCRM circa v4.1 and is built upon
+This is implemented using:
 
 * [The AJAX API](../api/interfaces.md#ajax)
 * The [Jeditable plugin](http://www.appelsiini.net/projects/jeditable) for jQuery
@@ -451,27 +447,7 @@ ajax whenever the user clicks it.
 </table>
 ```
 
-### Initializing the crmEditable Widget
-
-As of CiviCRM v4.6 you do not need to do anything to initialize
-crmEditable, it is handled automatically on every
-[crmLoad](ajax.md)
-event.
-
-In previous versions you would need to manually write out the javascript
-
-```javascript
-$.('crm-editable').crmEditable();
-```
-
-or else include the smarty template `crmeditable.tpl` (which contains that
-js snippet). This template if used in 4.6+ will output a deprecation
-warning to the console, as it no longer serves any purpose and will be
-removed in a future version.
-
-
 ## Notifications and Confirmations
-
 
 ### Popup Notifications
 
@@ -558,10 +534,7 @@ The **options** object takes any params accepted by jQuery UI dialog
 
 ### Unobtrusive Notifications
 
-Added in CIviCRM 4.5, these small messages tell the user the status of
-an api call, form submission, or other asynchronous operation without
-getting in the way.
-
+These small messages tell the user the status of an api call, form submission, or other asynchronous operation without getting in the way.
 
 **Basic Async Usage**
 
@@ -603,8 +576,7 @@ CRM.api3(entity, action, params, messages);
 
 ### Static Messages
 
-To display a static alert box in the document (this was standard in
-CiviCRM 4.2 and below):
+To display a static alert box in the document:
 
 **From Smarty**
 
