@@ -184,7 +184,7 @@ For example, to insert a [bullhorn icon](http://fortawesome.github.io/Font-Aweso
 use the following:
 
 ```html
-<div><i class="crm-i fa-bullhorn" aria-hidden="true"></i>Create new announcement</div>
+<div><i class="crm-i fa-bullhorn" aria-hidden="true"></i> Create new announcement</div>
 ```
 
 See the [Screen reader text](#screen-reader-text) section below for including text necessary to convey information that icons otherwise indicate visually.  Not all icons need screen reader text, but an icon on its own might be visually efficient but require verbal explanation for visually-impaired users.
