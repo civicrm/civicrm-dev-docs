@@ -355,12 +355,14 @@ The following **CRM-specific** icons are available:
 
 The following **non CRM-specific** icons are available:
 
-* `edit-icon`
-* `delete-icon`
-* `dashboard-icon`
-* `user-record-icon`
-* `inform-icon`
-* `tip-icon`
+| Icon | Replacement |
+| -- | -- |
+| `edit-icon` | To be decided |
+| `delete-icon` | To be decided |
+| `dashboard-icon` | To be decided |
+| `user-record-icon` | To be decided |
+| `inform-icon` | [fa-info-circle](https://fontawesome.com/v4.7.0/icon/info-circle) |
+| `tip-icon` | To be decided |
 
 Non CRM-specific icons can be altered to use one of 4 possible colors:
 
