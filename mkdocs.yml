@@ -122,6 +122,7 @@ nav:
     - hook_civicrm_alterLocationMergeData: hooks/hook_civicrm_alterLocationMergeData.md
     - hook_civicrm_copy: hooks/hook_civicrm_copy.md
     - hook_civicrm_custom: hooks/hook_civicrm_custom.md
+    - hook_civicrm_customPre: hooks/hook_civicrm_customPre.md
     - hook_civicrm_managed: hooks/hook_civicrm_managed.md
     - hook_civicrm_merge: hooks/hook_civicrm_merge.md
     - hook_civicrm_post: hooks/hook_civicrm_post.md

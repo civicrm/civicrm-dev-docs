@@ -39,7 +39,7 @@ def getSummary(hookFile):
 output = f = open(OUTPUT_FILE, 'w')
 with open(MKDOCS_YAML_FILE, 'r') as f:
     doc = yaml.load(f)
-    pages = doc["pages"]
+    pages = doc["nav"]
     for section in pages:
         if "Hooks" in section:
             hookSection = section.get("Hooks")
@@ -60,4 +60,5 @@ for section in hookSection:
         for hookDetails in categoryHooks:
             hookName, hookFile = hookDetails.popitem()
             summary = getSummary(hookFile)
-            output.write('* **[{}](/{})** - {}\n'.format(hookName, hookFile, summary))
+            hookNameForLink = hookFile.replace('hooks/', '')
+            output.write('* **[{}]({})** - {}\n'.format(hookName, hookNameForLink, summary))

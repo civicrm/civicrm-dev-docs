@@ -28,10 +28,11 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_alterLocationMergeData](hook_civicrm_alterLocationMergeData.md)** - allows you to alter the location information that will be moved from the duplicate contact to the master contact.
 * **[hook_civicrm_copy](hook_civicrm_copy.md)** - called after a CiviCRM object (Event, ContributionPage, Profile) has been copied.
 * **[hook_civicrm_custom](hook_civicrm_custom.md)** - called *after* the database write on a custom table.
+* **[hook_civicrm_customPre](hook_civicrm_customPre.md)** - called *before* the database write on a custom table.
 * **[hook_civicrm_managed](hook_civicrm_managed.md)** - allows a module to declare a list of managed entities using the API.
 * **[hook_civicrm_merge](hook_civicrm_merge.md)** - allows modification of the data used to perform merging of duplicates. It can be useful if your custom module has added its own tables related to CiviCRM contacts.
-* **[hook_civicrm_post](hook_civicrm_post.md)** - called after sending a DB write on some core objects.
-* **[hook_civicrm_postCommit](hook_civicrm_postCommit.md)** - called after committing a DB write on some core objects.
+* **[hook_civicrm_post](hook_civicrm_post.md)** - called after a db write on some core objects.
+* **[hook_civicrm_postCommit](hook_civicrm_postCommit.md)** - called after the DB *commits* changes (for certain objects).
 * **[hook_civicrm_postSave_table_name](hook_civicrm_postSave_table_name.md)** - called after writing to a database table that has an associated DAO, including core tables but not custom tables or log tables.
 * **[hook_civicrm_pre](hook_civicrm_pre.md)** - called before a db write on some core objects.
 * **[hook_civicrm_referenceCounts](hook_civicrm_referenceCounts.md)** - called to determine the reference-count for a record.
@@ -57,7 +58,7 @@ This is an overview list of all available hooks, listed by category.
 
 ## Form Hooks
 
-* **[hook_civicrm_alterAngular](hook_civicrm_alterAngular.md)** - alters the definition of some AngularJS HTML partials and allows you to inject [AngularJS changesets](/framework/angular/changeset/).
+* **[hook_civicrm_alterAngular](hook_civicrm_alterAngular.md)** - alters the definition of some AngularJS HTML partials and allows you to inject [AngularJS changesets](../framework/angular/changeset.md).
 * **[hook_civicrm_alterContent](hook_civicrm_alterContent.md)** - invoked after all the content of a CiviCRM form or page is generated and allows for direct manipulation of the generated content.
 * **[hook_civicrm_alterTemplateFile](hook_civicrm_alterTemplateFile.md)** - invoked while selecting the tpl file to use to render the page.
 * **[hook_civicrm_buildForm](hook_civicrm_buildForm.md)** - invoked when building a form. It can be used to set the default values of a form element, to change form elements attributes, and to add new fields to a form.
