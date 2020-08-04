@@ -6,7 +6,7 @@ Every API call consists of three elements: the *entity*, *action*, and *paramete
 CiviCRM entities include Contacts, Activities, Contributions, Events, etc.
 Each API entity usually (but not always) corresponds to a table in the database (e.g. the Contact entity is the `civicrm_contact` table).
 
-**Action:** The "verb" of the API. Each entity supports a number of actions, such as `get`, `create`, `update`, `delete`.
+**Action:** The "verb" of the API. The list of available actions varies for each entity, but in general, most entities support read/write actions `get`, `create`, `save`, `update`, `delete` and `replace`, as well as the metadata actions `getFields` and `getActions`.
  
 **Parameters:** Settings or data to pass to the api function. Each action accepts a different set of parameters.
 
@@ -98,7 +98,7 @@ Inputs are identical to the traditional PHP syntax:
 CRM.api4('entity', 'action', [params], [index])
 ```
 
-From an Angular app, use the service `crmApi4()` which is identical but works within the `$scope.digest` lifecycle.
+From an Angular app, use the service `crmApi4()` which has an identical signature but works within the `$scope.digest` lifecycle.
 
 Both functions return a Promise, which resolves to a Result array.
 
