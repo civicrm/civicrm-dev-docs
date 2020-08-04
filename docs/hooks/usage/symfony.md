@@ -1,10 +1,7 @@
 ## Overview
 
-The [__Symfony EventDispatcher__](http://symfony.com/components/EventDispatcher) is an
-event library used by several PHP applications and frameworks.  For example,
-Symfony SE, Drupal 8, Magento, Laravel, CiviCRM, and many others support
-`EventDispatcher`.  It provides a common mechanism for dispatching and listening
-to events.
+The [__Symfony EventDispatcher__](http://symfony.com/components/EventDispatcher) is an event library used by several PHP applications and frameworks.  For example, Symfony SE, Drupal 8, Magento, Laravel, CiviCRM, and many others support
+`EventDispatcher`.  It provides a common mechanism for dispatching and listening to events.
 
 In CiviCRM v4.7.19+, you can use Symfony `EventDispatcher` with hooks.
 
@@ -28,6 +25,8 @@ In this case, we have a CiviCRM extension or Drupal module named `example`.
 During the system initialization, we lookup the `EventDispatcher`, call
 `addListener()`, and listen for `hook_civicrm_alterContent`.
 
+Example 1:
+
 ```php
 function example_civicrm_config(&$config) {
   if (isset(Civi::$statics[__FUNCTION__])) { return; }
@@ -38,6 +37,22 @@ function example_civicrm_config(&$config) {
 
 function _example_say_hello($event) {
   $event->content = 'hello ' . $event->content;
+}
+```
+
+Example 2 - referencing a function within a class:
+
+```php
+function example_civicrm_config(&$config) {
+  Civi::dispatcher()->addListener('hook_civicrm_alterContent', ['CRM_Example_Utils', 'alterContent']);
+}
+
+abstract class CRM_Example_Utils {
+
+  function alterContent($event) {
+    $event->content = 'hello ' . $event->content;
+  }
+
 }
 ```
 
@@ -142,7 +157,7 @@ phase; `WEIGHT_ALTER-100` would run late in the alteration phase.
 
 Most Civi events do not have an explicit convention. For want of a convention, you may use this as a baseline:
 
-| Priority | Description | Availablity |
+| Priority | Description | Availability |
 | -- | -- | -- |
 | `0`      | "Normal" or "Default" or "Main" | For any listener/software |
 | `+1000`  | "Early" or "Before" or "Pre" or "Prepare" | For any listener/software |

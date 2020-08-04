@@ -139,6 +139,84 @@ This hook provides an onion-like middleware pattern where each wrapper added is 
 
 However, often you don't need this onion-like before and after - often you only used `toApiOutput` or `fromApiInput` but not both. In which case you can instead just add a listener to the `Civi\API\Events::PREPARE` or `Civi\API\Events::RESPOND` as needed to do your work.
 
-For help understanding Symfony events see [Hooks in Symfony](../usage/symfony/).
+For help understanding Symfony events see [Hooks in Symfony](../usage/symfony.md).
 
+To implement this form of hook in an Symfony the following example maybe useful:
 
+1. Define your hook listener.
+
+```php
+
+/**
+ * Implements hook_civicrm_config().
+ * Most of the magic is in the CRM_Example_APIWrapper class
+ */
+function example_civicrm_config(&$config) {
+  // Bind our wrapper for API Events
+  Civi::dispatcher()->addListener(\Civi\API\Events::PREPARE, ['CRM_Example_APIWrapper', 'PREPARE'], -100);
+  Civi::dispatcher()->addListener(\Civi\API\Events::RESPOND, ['CRM_Example_APIWrapper', 'RESPOND'], -100);
+}
+```
+
+1. Implement function that actually manages the event processing e.g.
+
+```php
+/**
+ * Implements an API Wrapper to signal the membership creation preHook that
+ * we're currently inside of a payment transaction.
+ */
+class CRM_Example_APIWrapper {
+
+  /**
+   * Callback to wrap completetransaction API calls.
+   */
+  public static function PREPARE ($event) {
+    $request = $event->getApiRequestSig(); //getApiRequestSig() returns '<api version>.<entity>.<action>', all lower case
+
+    switch($request) {
+      // Wrap completetransaction in the v3 API.
+      // Doesn't exist yet in the v4 API.
+      case '3.contribution.completetransaction':
+       $event->wrapAPI(['CRM_Example_APIWrapper', 'completeTransaction']);
+       break;
+
+    }
+  }
+
+  public static function RESPOND($event) {
+    $request = $event->getApiRequestSig();
+
+    switch($request) {
+      case '3.membership.create':
+        $apiRequest = $event->getApiRequest();
+        $result = $event->getResponse();
+        $this->membershipRespond($event->getApiKernel(), $apiRequest['params'], $result, $apiRequest['action'], $apiRequest['entity'], $apiRequest['version']);
+        $event->setResponse($result);
+        break;
+
+    }
+  }
+
+  public function completeTransaction($apiRequest, $callsame) {
+    // Do some work for the contribution.completetransaction api call
+  }
+
+  /**
+   * Call any nested api calls.
+   *
+   * TODO: We don't really need this to be a separate function.
+   * @param \Civi\API\Kernel $apiKernel
+   * @param $params
+   * @param $result
+   * @param $action
+   * @param $entity
+   * @param $version
+   * @throws \Exception
+   */
+  public function membershipRespond($apiKernel, &$params, &$result, $action, $entity, $version) {
+    $result['test_field'] = 1;
+    // Do some other work as applicable
+  }
+
+}
+```
