@@ -39,7 +39,6 @@ Each file consists of a php snippet which returns an array. Array keys are strin
   'remote_profile_submissions' => array(
     'name' => 'remote_profile_submissions',
     'type' => 'Boolean',
-    'quick_form_type' => 'YesNo',
     'default' => FALSE,
     'html_type' => 'radio',
     'add' => '4.7',
