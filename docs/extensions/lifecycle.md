@@ -281,11 +281,15 @@ When an extension author has stopped being responsive:
 
 1. Open an issue on the issue tracker of the project. [See example request](https://github.com/futurefirst/Email-Amender/pull/1#issuecomment-530755565)
 2. Wait 14 days for a response.
-3. If no response, or if a response clearly indicates the author has no intention to maintain the project going forward:
-   1. Change the node author for the extension from civicrm.org
-   2. Change the Git URL for the extension
-   3. Add the new author as a co-maintainer on civicrm.org
-   4. If the extension is on Gitlab, add the new maintainer on the project.
+3. If no response, or if a response clearly indicates the author has no intention to maintain the project going forward,
+    1. Create an issue in the [Extensions Review Request issues queue](https://lab.civicrm.org/extensions/extension-review-requests/issues) indicating that you are interested in stepping up as the new maintainer of the extension.
+    2. In the request, please tell us a bit about your plans and motivations to maintain the extension, and link to the issue where you tried to contact the original developer.
+4. The [extensions team](https://lab.civicrm.org/extensions/extension-review-requests/-/project_members?sort=access_level_desc) will handle the migration of the extension:
+    1. Migrate the extension's Git repository to CiviCRM's Gitlab, if it was previously hosted elsewhere
+    2. Change the node author for the extension from civicrm.org
+    3. Add the new author as a co-maintainer on civicrm.org
+    4. Change the Git URL for the extension, if it was moved to Gitlab
+    5. Add the new maintainer on the project on CiviCRM's Gitlab.
 
 ### Request Removal of the Extension
 
