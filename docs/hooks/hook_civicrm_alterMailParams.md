@@ -37,7 +37,7 @@ This hook is called when an email is being prepared for sending by CiviCRM.
 
 You can add custom headers by appending to `$params['headers']`. Example:
 
-    ``` php
+    ```php
     $params['headers']['X-My-Header'] = 'my header value';
     ```
 
