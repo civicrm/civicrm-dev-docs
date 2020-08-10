@@ -86,7 +86,11 @@ The most advanced way to work on a guide is to use git to download all the markd
 		docker run --rm -v "$PWD:/docs" -p 8000:8000 -w /docs "mjcoltd/civicrm-docker-mkdocs" serve --dirtyreload -a 0.0.0.0:8000
 		```
 
-		and skip to the "View the guide" step below.
+		and skip to the "View the guide" step below. To update this docker image periodically, run the following before the command above.
+
+    ```
+    docker rmi mjcoltd/civicrm-docker-mkdocs
+    ```
 
 	1. For folks who have a legacy or "Home" operating system (Windows 7, 8.1, 10 Home Premium), the situation is a bit more complex.  The same is true if you have implemented virtual machines on your system using Oracle VM VirtualBox or VMWare tools.  These tools don't play well with native Windows HyperV virtualization.  In any case, follow these steps:
 		1.  Check that GitHub folder is in the path:  ```c:\Users\<username>\Documents\...```.  If it is, all is good; if not, move it there, and edit your GitHub configuration to reflect the changed location.
