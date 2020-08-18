@@ -289,7 +289,7 @@ function newyork_civicrm_themes(&$themes) {
   $themes['newyork'] = array(
     'ext' => 'org.civicrm.newyork',
     'title' => 'New York',
-    'excludes' => array('civicrm:css/bootstrap.css'),
+    'excludes' => array('css/civicrm.css'),
   );
 }
 ```
