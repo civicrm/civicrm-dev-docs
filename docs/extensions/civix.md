@@ -144,8 +144,7 @@ If you want your extension to store data in the database, then you will need to 
 
     You can safely re-run this command after you make changes to your XML schema definition. But if your schema changes require database migrations for existing installations, then you'll need to write a migration manually in addition to re-generating your boilerplate.
     
-1. Generate a da
-tabase upgrader.
+1. Generate a database upgrader.
 
     ```bash
      civix generate:upgrader
