@@ -139,7 +139,7 @@ This hook provides an onion-like middleware pattern where each wrapper added is 
 
 However, often you don't need this onion-like before and after - often you only used `toApiOutput` or `fromApiInput` but not both. In which case you can instead just add a listener to the `Civi\API\Events::PREPARE` or `Civi\API\Events::RESPOND` as needed to do your work.
 
-For help understanding Symfony events see [Hooks in Symfony](../usage/symfony.md).
+For help understanding Symfony events see [Hooks in Symfony](./usage/symfony.md).
 
 To implement this form of hook in an Symfony the following example maybe useful:
 
