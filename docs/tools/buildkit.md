@@ -14,19 +14,19 @@ Buildkit supports several Unix-style environments. It may be installed on [a fre
 
 If you have a fresh system install of Ubuntu or Debian (with a [recent version](#operating-systems) like Ubuntu 18.04 LTS), then you can download everything using the `get-buildkit.sh` script.
 
-```bash
-sudo apt-get install curl
-curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
-```
-
-This creates a personal workspace folder (`~/buildkit`) for helper scripts, caches, and builds. It also uses `--full` mode to download a complete set of system packages (PHP, MySQL, Apache, etc).
-
 !!! tip "Usage tips"
 
     * You should *not* use `root`, `su`, or `sudo` except where specifically noted. Buildkit is generally designed to run as your regular user, and unnecessary `root` privileges *will* cause problems. If the installer needs elevated privileges, it will call `sudo` on a case-by-case basis.
     * The install script will only execute `--full` mode on a supported release of Ubuntu / Debian. See also: [Appendix: Operating Systems](#operating-systems).
     * The `--full` option is *very opinionated*; it specifically installs `php`, `apache`, and `mysql` (rather than `hhvm`, `nginx`, `lighttpd`, or `percona`). If you try to mix `--full` with alternative systems, then expect conflicts.
     * If you use the Ubuntu feature for "encrypted home directories", then don't put buildkit in `~/buildkit`. Consider `/opt/buildkit`, `/srv/buildkit`, or some other location that remains available during reboot.
+
+```bash
+sudo apt-get install curl
+curl -Ls https://civicrm.org/get-buildkit.sh | bash -s -- --full --dir ~/buildkit
+```
+
+This creates a personal workspace folder (`~/buildkit`) for helper scripts, caches, and builds. It also uses `--full` mode to download a complete set of system packages (PHP, MySQL, Apache, etc).
 
 After running the above command, then proceed to the [post-installation configuration](#config).
 
