@@ -18,9 +18,9 @@ Requirements:
     - `api_key` - **required**, the contact api key
     - `entity` - **required**, the API entity
     - `action` - **required**, the API action
-    - `json` - **optional**, json formatted string with the API parameters/argumets, or `1` as in `json=1`
+    - `json` - **optional**, json formatted string with the API parameters/arguments, or `1` as in `json=1`
 
-    It mimics CiviCRM's REST [interface](../interfaces.md), by default all calls to `civicrm/v3/rest` return XML formatted results, to get `json` formatted result pass `json=1` or a json formatted string with the API parameters, like in the example 2 below.
+    It mimics CiviCRM's REST [interface](../interfaces.md), by default all calls to `civicrm/v3/rest` return XML formatted results. To get `json` formatted result pass `json=1` or a json formatted string with the API parameters, like in example 2 below.
 
     **Examples**:
 
@@ -28,27 +28,27 @@ Requirements:
 
     2. `https://example.com/wp-json/civicrm/v3/rest?entity=Contact&action=get&key=<site_key>&api_key=<api_key>&json={"group": "Administrators"}`
 
-2. `civicrm/v3/url` - a substition for `civicrm/extern/url.php` mailing tracking
+2. `civicrm/v3/url` - a substitution for `civicrm/extern/url.php` mailing tracking
 
-3. `civicrm/v3/open` - a substition for `civicrm/extern/open.php` mailing tracking
+3. `civicrm/v3/open` - a substitution for `civicrm/extern/open.php` mailing tracking
 
-4. `civicrm/v3/authorizeIPN` - a substition for `civicrm/extern/authorizeIPN.php` (for testing Authorize.net as per [docs](https://docs.civicrm.org/sysadmin/en/latest/setup/payment-processors/authorize-net/#shell-script-testing-method))
-
-    **_Note_**: this endpoint has **not been tested**
-
-5. `civicrm/v3/ipn` - a substition for `civicrm/extern/ipn.php` (for PayPal Standard and Pro live transactions)
+4. `civicrm/v3/authorizeIPN` - a substitution for `civicrm/extern/authorizeIPN.php` (for testing Authorize.net as per [docs](https://docs.civicrm.org/sysadmin/en/latest/setup/payment-processors/authorize-net/#shell-script-testing-method))
 
     **_Note_**: this endpoint has **not been tested**
 
-6. `civicrm/v3/cxn` - a substition for `civicrm/extern/cxn.php`
-
-7. `civicrm/v3/pxIPN` - a substition for `civicrm/extern/pxIPN.php`
+5. `civicrm/v3/ipn` - a substitution for `civicrm/extern/ipn.php` (for PayPal Standard and Pro live transactions)
 
     **_Note_**: this endpoint has **not been tested**
 
-8. `civicrm/v3/widget` - a substition for `civicrm/extern/widget.php`
+6. `civicrm/v3/cxn` - a substitution for `civicrm/extern/cxn.php`
 
-9. `civicrm/v3/soap` - a substition for `civicrm/extern/soap.php`
+7. `civicrm/v3/pxIPN` - a substitution for `civicrm/extern/pxIPN.php`
+
+    **_Note_**: this endpoint has **not been tested**
+
+8. `civicrm/v3/widget` - a substitution for `civicrm/extern/widget.php`
+
+9. `civicrm/v3/soap` - a substitution for `civicrm/extern/soap.php`
 
     **_Note_**: this endpoint has **not been tested**
 
