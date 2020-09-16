@@ -56,7 +56,7 @@ The following values can be added to your site's settings file `civicrm.settings
 
 - `define('CIVICRM_DEBUG_LOG_QUERY', 1);` outputs all SQL queries to a log file.
 
-- `define('CIVICRM_DEBUG_LOG_QUERY', 'n');` outputs all SQL queries to a log file, includes 'n' in the file name (useful if you want to capture some portion of the queries in a separate log file). **Added in CiviCRM  5.30.**
+- `define('CIVICRM_DEBUG_LOG_QUERY', 'n');` outputs all SQL queries to a log file, includes 'n' in the file name (useful if you want to capture some portion of the queries in a separate log file). **Added in CiviCRM 5.30.**
 
 - `define('CIVICRM_DEBUG_LOG_QUERY', 'backtrace');` will include a backtrace of the PHP functions that led to the query.
 
