@@ -90,7 +90,7 @@ This is an overview list of all available hooks, listed by category.
 * **[hook_civicrm_summary](hook_civicrm_summary.md)** - called when the contact summary is rendered, allowing you to modify the summary with your own content.
 * **[hook_civicrm_summaryActions](hook_civicrm_summaryActions.md)** - allows you to customize the context menu actions on the Contact Summary Page.
 * **[hook_civicrm_themes](hook_civicrm_themes.md)** - called when building a list of available themes for use within CiviCRM.
-* **[<del>hook_civicrm_tabs</del>](hook_civicrm_tabs.md)** - deprecated in 4.7 in favor of [hook_civicrm_tabset](hook_civicrm_tabset.md).
+* **[<del>hook_civicrm_tabs</del>](hook_civicrm_tabs.md)** - deprecated in 4.7 & removed in 5.31 in favor of [hook_civicrm_tabset](hook_civicrm_tabset.md).
 * **[hook_civicrm_tabset](hook_civicrm_tabset.md)** - called when composing the tabs interface used for contacts, contributions and events.
 * **[hook_civicrm_xmlMenu](hook_civicrm_xmlMenu.md)** - called when building CiviCRM's menu structure, which is used to render urls in CiviCRM.
 
