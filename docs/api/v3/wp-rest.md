@@ -28,7 +28,7 @@ Requirements:
 
     2. `https://example.com/wp-json/civicrm/v3/rest?entity=Contact&action=get&key=<site_key>&api_key=<api_key>&json={"group": "Administrators"}`
 
-2. `civicrm/v3/url` - a substitution for `civicrm/extern/url.php` mailing tracking
+2. `civicrm/v3/url` - a substitution for `civicrm/extern/url.php` to track when links in mailings are clicked.
 
 3. `civicrm/v3/open` - a substitution for `civicrm/extern/open.php` mailing tracking
 
