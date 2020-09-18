@@ -6,7 +6,7 @@ For API changes, see [APIv4 Changelog](../api/v4/changes.md) and [APIv3 Changelo
 
 ## CiviCRM 5.x
 
-### 5.25: deprecated hook_civicrm_tabs finally removed
+### 5.31: deprecated hook_civicrm_tabs finally removed
 
 https://github.com/civicrm/civicrm-core/pull/18503
 
