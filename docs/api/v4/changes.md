@@ -4,11 +4,19 @@
 
 Also see: [Differences Between Api v3 and v4](../v4/differences-with-v3.md) and [Hooks Changelog](../../hooks/changes.md).
 
+## CiviCRM 5.29
+
+### 5.29.0
+
+Added `target_contact_id` and `assignee_contact_id` to `Activity.create` in the API explorer. Each can take an array of contact IDs. This feature existed before version 5.29.0 but was previously not discoverable in the explorer.
+
+For more information see the [commit to CiviCRM Core](https://github.com/civicrm/civicrm-core/commit/8c6a5fd64b)
+
 ## CiviCRM 5.23
 
 ### 5.23 Added PaymentProcessor and PaymentProcessorType APIv4 Entities
 
-See https://github.com/civicrm/civicrm-core/pull/15624
+See [CiviCRM core pull request 15624](https://github.com/civicrm/civicrm-core/pull/15624)
 
 ### 5.23 `$index` param supports array input
 
