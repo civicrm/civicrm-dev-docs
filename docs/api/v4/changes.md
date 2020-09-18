@@ -10,7 +10,7 @@ Also see: [Differences Between Api v3 and v4](../v4/differences-with-v3.md) and 
 
 Added `target_contact_id` and `assignee_contact_id` to `Activity.create` in the API explorer. Each can take an array of contact IDs. This feature existed before version 5.29.0 but was previously not discoverable in the explorer.
 
-See https://github.com/civicrm/civicrm-core/commit/8c6a5fd64b
+For more information see the [commit to CiviCRM Core](https://github.com/civicrm/civicrm-core/commit/8c6a5fd64b)
 
 ## CiviCRM 5.23
 
