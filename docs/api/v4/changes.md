@@ -16,7 +16,7 @@ For more information see the [commit to CiviCRM Core](https://github.com/civicrm
 
 ### 5.23 Added PaymentProcessor and PaymentProcessorType APIv4 Entities
 
-See https://github.com/civicrm/civicrm-core/pull/15624
+See [CiviCRM core pull request 15624](https://github.com/civicrm/civicrm-core/pull/15624)
 
 ### 5.23 `$index` param supports array input
 
