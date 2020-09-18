@@ -30,7 +30,7 @@ Requirements:
 
 2. `civicrm/v3/url` - a substitution for `civicrm/extern/url.php` to track when links in mailings are clicked.
 
-3. `civicrm/v3/open` - a substitution for `civicrm/extern/open.php` mailing tracking
+3. `civicrm/v3/open` - a substitution for `civicrm/extern/open.php` to track when recipients open mailings.
 
 4. `civicrm/v3/authorizeIPN` - a substitution for `civicrm/extern/authorizeIPN.php` (for testing Authorize.net as per [docs](https://docs.civicrm.org/sysadmin/en/latest/setup/payment-processors/authorize-net/#shell-script-testing-method))
 
