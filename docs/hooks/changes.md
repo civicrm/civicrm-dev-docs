@@ -6,6 +6,10 @@ For API changes, see [APIv4 Changelog](../api/v4/changes.md) and [APIv3 Changelo
 
 ## CiviCRM 5.x
 
+### 5.31: deprecated hook_civicrm_tabs finally removed
+
+https://github.com/civicrm/civicrm-core/pull/18503
+
 ### 5.25: hook_civicrm_postCommit added
 
 [hook_civicrm_postCommit](hook_civicrm_postCommit.md) is a variant of [hook_civicrm_post](hook_civicrm_post.md) which is deferred until the relevant data is fully committed to the database.
