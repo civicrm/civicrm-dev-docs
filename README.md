@@ -1,6 +1,7 @@
 # CiviCRM Developer Guide
 
-**From the 1st September 2020 the canonical home for this repository will move to https://lab.civicrm.org/documentation/docs/dev this repository will then function as a copy.**
+* **Issues have moved to https://lab.civicrm.org/documentation/docs/dev/-/issues**
+* **Submit new merge/pull requests at  https://lab.civicrm.org/documentation/docs/dev**
 
 A documentation guide for people who develop with/for [CiviCRM](https://civicrm.org).
 
