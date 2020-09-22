@@ -118,12 +118,20 @@ Once your guide is in good shape it's time to get it up on [docs.civicrm.org](ht
 1. Copy paste the following content into the file editor (note that the leading whitespace is important for lines in this file since it communicates structure in yaml):
 
     ```yaml
-    name: 'Foo Bar'
-    description: 'Provides a baz for every contact's bat'
-    tags: 'foo bar baz contacts contact bat'
+    name: Foo Bar
+    description: Provides a baz for every contact's bat
+    category: extension
+    
     langs:
       en:
         repo: 'https://lab.civicrm.org/extensions/foobar'
+        
+    searchterms:
+      - provides baz
+      - every contact's bat
+      - bat
+      - baz
+      - contact
     ```
 
     * There are lots of other settings you can put here if you want to have multiple languages or versions. Look at `user.yml` as an example of a guide (the User Guide) which takes advantage of all the possible settings.
